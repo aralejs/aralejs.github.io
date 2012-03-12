@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<assembler>
+	<scripts>
+		<script>
+			<includes>
+				<include>uri.js</include>
+			</includes>
+		</script>
+	</scripts>
+</assembler>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aspect Test</title>
+    <script type="text/javascript" src="http://static.dev.alipay.net/ar/arale.core-1.0.js"></script>
+    <script type="text/javascript">
+        function classA() {
+            this.a = 1;
+        }
+        classA.prototype.func1 = function(a, b) {
+            console.log('func1');
+            return a + b;
+        };
+
+        var traceObj = {
+            before: function() {
+                var jp = $Aspect.getContext().joinPoint;
+                console.log('before', jp.targetName, arguments);
+            },
+            after: function() {
+                console.log('after', arguments);
+            },
+            around: function() {
+                        /*
+                console.log('around', arguments);
+                return true;
+                */
+                var args = Array.prototype.join.call(arguments, ", ");
+                console.log(" => around " + this.name + "(" + args + ")");
+                var retVal = $Aspect.proceed.apply(null, arguments);
+                console.log(" <= around " + this.name + " returns " + retVal);
+                return retVal;	// should return a value, if the target returns a value
+            },
+            afterReturning: function(rtv) {
+                console.log('afterReturning', rtv);
+            },
+            afterThrowing: function() {
+                console.log('afterThrowing', arguments);
+            }
+        };
+        var obj = new classA();
+
+        arale.aspect.advise(obj, 'func1', traceObj);
+        var r = obj.func1(1, 2);
+        console.log(r);
+    </script>
+</head>
+<body>
+</body>
+</html>

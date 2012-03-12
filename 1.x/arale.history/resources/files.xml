@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<assembler>
+    <scripts>
+        <script>
+            <includes>
+                <include>history.adaptor.arale.js</include>
+                <include>history.js</include>
+                <!--include>history.html4.js</include>-->
+            </includes>
+        </script>
+    </scripts>
+</assembler>

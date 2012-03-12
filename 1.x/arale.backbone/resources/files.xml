@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<assembler>
+    <scripts>
+        <script>
+            <includes>
+                <include>underscore.js</include>
+                <include>backbone.js</include>
+                <include>backbone-arale-adaptor.js</include>
+            </includes>
+        </script>
+    </scripts>
+</assembler>
