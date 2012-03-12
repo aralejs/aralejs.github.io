@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<assembler>
+	<scripts>
+		<script>
+			<includes>
+				<include>event-object.js</include>
+				<include>event-store.js</include>
+				<include>event-chain.js</include>
+				<include>event-core.js</include>
+			</includes>
+		</script>
+	</scripts>
+</assembler>

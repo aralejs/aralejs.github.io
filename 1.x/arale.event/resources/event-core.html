@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<script type="text/javascript" charset="utf-8" src="../base.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../loader.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../deps.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../lang/string.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../class/class.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../lang/array.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../dom/dom.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../dom/node.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../dom/sizzle.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../event/event-store.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../event/event-core.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../event/event-chain.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../event/event-object.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../testcase/firebug.js"></script>
+
+
+	<style type="text/css" media="screen">
+		 .hover{
+			background-color: blue;
+		}
+	</style>
+	<title>event</title>
+</head>
+
+<body>
+
+<script type="text/javascript" charset="utf-8">
+	//arale.require('arale.Node');
+	function testConnectDom(){
+		var d = $('div1');
+		var fn = function(){
+		    console.log(22);
+		    $E.disConnect(c1);
+		}
+		var fn3 = function(){
+		    console.log(33);
+		}
+		var fn4 = function(){
+		    console.log(44);
+		}
+		var fn5 = function(){
+		    console.log(55);
+		    $E.disAllConnect(d,"onclick");
+		}
+	var c1 = $E.connect(d,"onclick",fn);
+	var c2 = $E.connect(d,"onclick",fn3);
+	var c3 = $E.connect(d,"onclick",fn4);
+	var c4 = $E.connect(d,"onclick",fn5);
+	}
+	function testDomBubble(){
+		var dom = arale.dom;
+		var d1 = $("div1");
+		var d2 = $("div11");
+		var d3 = $("div111");
+		var f1 = function(e){
+		    console.log("f1");
+		}
+		var f2 = function(e){
+		    console.log("f2");
+		    e.stopPropagation();
+		}
+
+		var f3 = function(e){
+		    console.log("f3");
+		}
+		$E.connect(d1,"onclick",f1);
+		$E.connect(d2,"onclick",f2);
+		$E.connect(d3,"onclick",f3);
+	}
+	function testConnectObject(){
+		var obj = {
+			fn: function(){
+				console.log("fn");
+			}
+		}
+		var fn1 = function(){
+		    console.log(1);
+		    $E.disConnect(c1);
+		}
+		var fn3 = function(){
+		    console.log(3);
+		}
+		var fn4 = function(){
+		    console.log(4);
+		}
+		var fn5 = function(){
+		    console.log(5);
+		    //$E.disAllConnect(d,"onclick");
+		}
+		var c1 = $E.connect(obj,"fn",fn1);
+		$E.connect(obj,"fn",fn3);
+		$E.connect(obj,"fn",fn4);
+		$E.connect(obj,"fn",fn5);
+		obj.fn();
+	}
+	function testActionBubble(){
+		//测试我们的action的冒泡
+		var fn1 = function(e){console.log("begin1")};
+		var fn2 = function(e){
+		    console.log("begin2");
+		};
+		var fn3 = function(e){
+			console.log("begin3");
+			e.stopPropagation();
+			
+		};
+		var fn4 = function(e){
+		    console.log("begin4")
+		   // e.stopPropagation();
+		};
+		var chains = $E.getChains(fn1);
+		//console.log(chains);
+		chains.addAction(fn2);
+		chains.addAction(fn3);
+		chains.addAction(fn4);
+		chains.fire("kang");		
+	}
+	function testPublishSubscribe(){
+		$E.subscribe("/pay/succ",function(data){
+			console.log("succ:"+data.num);
+		});
+		console.log("一秒后，你将会看到事件被发布出去");
+		setTimeout(function(){
+			$E.publish("/pay/succ",[{num:21}]);
+		},1000);
+	}
+	function testTriggerPre(){
+		$('div111').click(function(e,name,age){
+		    console.log('div111',name,age);
+		});
+		$('div11').click(function(e){
+		    console.log('div11');
+		    e.stopPropagation();
+		});
+		$('div1').click(function(){
+		    console.log('div1');
+		});
+	}
+	function testTrigger2(){
+		//$E.trigger($('div111'),'onclick',"kang");
+		$('div111').trigger('onclick',["kang",21]);
+	}
+</script>
+	<a onclick="testConnectDom()" href="javascript:void(0)">testConnectDom</a><br/>
+	<a onclick="testDomBubble()" href="javascript:void(0)">testDomBubble</a><br/>
+	<a onclick="testConnectObject()" href="javascript:void(0)">testConnectObject</a><br/>
+	<a onclick="testActionBubble()" href="javascript:void(0)">testActionBubble</a><br/>
+	<a onclick="testPublishSubscribe()" href="javascript:void(0)">testPublishSubscribe</a><br/>
+	<a onclick="testTriggerPre()" href="javascript:void(0)">testTriggerPre</a>
+	<a onclick="testTrigger2()" href="javascript:void(0)">testTrigger2</a>
+	<div id="div1" style="border:1px solid red;width:200px;height:200px">
+		<div id="div11" style="border:1px solid blue;width:100px;height:100px">
+			<div id="div111" style="border:1px solid red;width:50px;height:50px">
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

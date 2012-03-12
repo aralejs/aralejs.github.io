@@ -1,0 +1,13 @@
+//JS
+
+var a = [1, 2, 3]; //原生数组
+
+//想遍历怎么办？
+//1. 先转化为封装对象
+
+var arrobj = A(a); //arrobj已经被转化了，通过arrobj.arr可以访问到原来的arr数组
+
+//2.可以遍历了
+arrobj.each(function(value, index) {
+    console.log(value, index);
+});

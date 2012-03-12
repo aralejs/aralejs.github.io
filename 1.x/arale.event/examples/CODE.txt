@@ -1,0 +1,42 @@
+示例一: 基本的事件绑定和取消
+
+    var handler = $E.connect('div1','onclick',function(e) {
+         alert(e)
+    });
+    //也可以用on来进行事件帮顶
+
+    $E.disConnect(handler);
+    //也可以用off来进行事件帮顶
+
+    //可以直接通过dom元素绑定事件
+    $('domId').click( function(e) {
+        console.log(e);
+    });
+
+    $E.disAllConnect($('domId'), 'click');
+    //也可以用这个方法把这个对象上所有注册的click方法移除
+
+示例二: 事件的发布和订阅. 事件的发布和订阅大家应该很清楚, 这个在日常的开发还是很常见的. 这作为程序的解耦是很重要的一部分. 具体使用看下面的例子
+
+var pay = {
+    submit: function(name, value) {
+        console.log(name, value);
+    }
+};
+//订阅一个'/pay/validata' 这个主题事件, 当收到事件的时候会执行pay.submit这个方法, 第二个参数为执行的context.
+var handler = $E.subscribe('/pay/validata',pay, pay.submit);
+//我们还可以有很多订阅者, 当有人发布这个主题的时候, 订阅者都会收到这个主题.
+
+//2秒后发布'/pay/validata' 这个主题事件. 主题是['name', 22]. 
+setTimeout(function(
+    $E.publish('/pay/validata',['name',22]);
+),2000);
+
+$E.unsubscribe(handler); //我们也可以随时取消事件的订阅
+
+
+
+示例三: 事件的触发
+
+$E.trigger($('domId'), 'click', "11");
+

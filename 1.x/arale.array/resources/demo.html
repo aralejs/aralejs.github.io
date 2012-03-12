@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>${project.artifactId}-${project.version} Demo</title>
+    <script type="text/javascript">
+        araleConfig = {
+            combo_host: 'dev.assets.alipay.net',
+            combo_path: '/ar/??'
+        }
+    </script>
+    <script type="text/javascript" src="http://dev.assets.alipay.net/ar/arale.core-1.1.js"></script>
+    <script type="text/javascript" src="http://dev.assets.alipay.net/ar/${project.artifactId}-${project.version}.js"></script>
+    <script type="text/javascript">
+        var console = {};
+
+        E.domReady(function() {
+            var consoleDiv = $('console');
+    
+            console.log = function() {
+                consoleDiv.adopt(D.toDom('<div>' + [].slice.call(arguments).join(' ') + '</div>'));
+            };
+
+            A($$('script.example')).each(function(script) {
+                //Node(D.toDom('<pre>'  + script.node.innerHTML + '</pre>')).replace(script);
+                script.replace(Node(D.toDom('<pre>'  + script.node.innerHTML + '</pre>')));
+            });
+        });
+    </script>
+    <style>
+        * {font-size: 12px;}
+        div.item {border-bottom: 1px solid gray;margin-bottom: 10px;}
+        div h3 {font-size:14px;}
+        div h3 span {font-style: italic;font-weight:normal;}
+        #console {position:fixed;left: 560px;border-left:1px solid #efefef;padding:10px;}
+    </style>
+</head>
+<body>
+<div id="console"></div>
+<div class="item">
+    <h3>associate <span>将两个数组合并成key:value Object，传入的数组的元素作为key</span></h3>
+    <script class="example">
+        function example1()  {
+            var result = A([1, 2]).associate(['a', 'b']);
+            console.log('result.a = ' + result.a);
+            console.log('result.b = ' + result.b);
+        }
+    </script>
+    <button onclick="example1()">Excute</button>
+</div>
+<div class="item">
+    <h3>clean <span>清除所有未定义(undefined)的变量并返回新数组。</span></h3>
+    <script class="example">
+        function example2() {
+            var arr = A([null, 1, 0, true, false, "foo", undefined, ""]).clean();
+            A(arr).each(function(value, key) {
+                console.log(key + ': ' + value);
+            });
+        }
+    </script>
+    <button onclick="example2()">Excute</button>
+</div>
+<div class="item">
+    <h3>combine <span>合并两个数组，去掉重复项。</span></h3>
+    <script class="example">
+        function example3() {
+            var arr = A(['a', 'b']).combine(['b', 'c']);
+            A(arr).each(function(value, key) {
+                console.log(key + ': ' + value);
+            });
+        }
+    </script>
+    <button onclick="example3()">Excute</button>
+</div>
+<div class="item">
+    <h3>contains <span>是否包含提供的项。</span></h3>
+    <script class="example">
+        function example4() {
+            var b1 = A(['a', 'b', 'c']).contains('b'),
+                b2 = A(['a', 'b', 'c']).contains('d');
+            console.log(b1, b2);
+        }
+    </script>
+    <button onclick="example4()">Excute</button>
+</div>
+<div class="item">
+    <h3>each <span>遍历数组(对象)。此方法不允许通过返回值停止遍历。如果需要可以中断的遍历，请使用every, some方法。</span></h3>
+    <script class="example">
+        function example5() {
+            A(['a', 'b', 'c']).each(function(value, index) {
+                console.log(index, value);
+            });
+        }
+    </script>
+    <button onclick="example5()">Excute</button>
+</div>
+<div class="item">
+    <h3>every <span>测试是否数组(对象)每一项符合所给条件。当callback返回false时立刻停止遍历，并且every函数的调用返回值为false。</span></h3>
+    <script class="example">
+        function example6() {
+            var b = A([1, 3, 4, 65]).every(function(value, index) {
+                return value < 30;
+            });
+            console.log(b);
+        }
+    </script>
+    <button onclick="example6()">Excute</button>
+</div>
+<div class="item">
+    <h3>some <span>遍历数组，只要有一项满足条件则返回true，并且停止遍历。</span></h3>
+    <script class="example">
+        function example7() {
+            var b = A([1, 3, 4, 65]).some(function(value, index) {
+                return value > 30;
+            });
+            console.log(b);
+        }
+    </script>
+    <button onclick="example7()">Excute</button>
+</div>
+<div class="item">
+    <h3>filter <span>过滤出与条件相符的项并返回新数组(对象)。</span></h3>
+    <script class="example">
+        function example8() {
+            var arr = A([1, 3, 4, 65]).filter(function(value, index) {
+                return value < 30;
+            });
+            console.log(arr);
+        }
+    </script>
+    <button onclick="example8()">Excute</button>
+</div>
+<div class="item">
+    <h3>map <span>改变每一项并创建一个新数组。</span></h3>
+    <script class="example">
+        function example9() {
+            var arr = A([1, 3, 4, 65]).map(function(value, index) {
+                return value + 1;
+            });
+            console.log(arr);
+        }
+    </script>
+    <button onclick="example9()">Excute</button>
+</div>
+
+<h1>更多方法请参考API文档。</h1>
+</body>
+</html>

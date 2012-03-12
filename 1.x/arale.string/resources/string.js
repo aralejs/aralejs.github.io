@@ -7,7 +7,7 @@
  */
 arale.module('arale.string', (function(){
 
-    var arale = require('arale.base');
+    var arale = window.arale || require('arale.base');
         
     var _encodeUriRegExp = /^[a-zA-Z0-9\-_.!~*'()]*$/;
     var _amperRe = /&/g;

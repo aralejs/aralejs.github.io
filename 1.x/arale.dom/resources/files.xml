@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<assembler>
+	<scripts>
+		<script>
+			<includes>
+				<include>sizzle.js</include>
+				<include>dom.js</include>
+				<include>node.js</include>
+			</includes>
+		</script>
+	</scripts>
+</assembler>

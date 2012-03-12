@@ -1,0 +1,6 @@
+var obj = {name:'xx'}; //hash对象
+
+var hash = H(obj); //封装成arale.hash
+
+hash.set("sex", "female"); //使用arale.hash提供的各种键值操作API。
+
