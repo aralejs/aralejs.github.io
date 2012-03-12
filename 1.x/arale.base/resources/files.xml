@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<assembler>
+	<scripts>
+		<script>
+			<includes>
+			    <include>config.js</include>
+				<include>base.js</include>
+				<include>browser.js</include>
+				<include>deps.js</include>
+				<include>loader.js</include>
+				<include>script.js</include>
+				<include>domready.js</include>
+                <include>exports.js</include>
+			</includes>
+		</script>
+	</scripts>
+</assembler>

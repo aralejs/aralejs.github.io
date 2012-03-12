@@ -1,0 +1,9 @@
+Loader.use(['aralex.xbox', 'alipay.http'], function() {
+    var a = new aralex.IframeXbox({}, 'id');
+});
+
+arale.$try(function() {
+    console.log(1/0);
+});
+
+arale.namespace('a.b.c');
