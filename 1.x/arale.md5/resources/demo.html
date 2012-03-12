@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>${project.artifactId}-${project.version} Demo</title>
+    <script type="text/javascript">
+        araleConfig = {
+            combo_host: 'dev.assets.alipay.net',
+            combo_path: '/ar/??'
+        }
+    </script>
+    <script type="text/javascript" src="http://dev.assets.alipay.net/ar/arale.core-1.1.js"></script>
+    <script type="text/javascript" src="http://dev.assets.alipay.net/ar/${project.artifactId}-${project.version}-index.js"></script>
+    <script type="text/javascript">
+        var console = {};
+
+        E.domReady(function() {
+            var consoleDiv = $('console');
+    
+            console.log = function() {
+                consoleDiv.adopt(D.toDom('<div>' + [].slice.call(arguments).join(' ') + '</div>'));
+            };
+
+            A($$('script.example')).each(function(script) {
+                //Node(D.toDom('<pre>'  + script.node.innerHTML + '</pre>')).replace(script);
+                script.replace(Node(D.toDom('<pre>'  + script.node.innerHTML + '</pre>')));
+            });
+        });
+    </script>
+    <style>
+        * {font-size: 12px;}
+        div.item {border-bottom: 1px solid gray;margin-bottom: 10px;}
+        div h3 {font-size:14px;}
+        div h3 span {font-style: italic;font-weight:normal;}
+        #console {position:fixed;left: 560px;border-left:1px solid #efefef;padding:10px;}
+    </style>
+</head>
+<body>
+<div id="console"></div>
+<div class="item">
+    <input id="password" type="text" />
+    <button id="hex_md5">hex_md5</button>
+    <button id="b64_md5">b64_md5</button>
+    <script>
+        Loader.use('arale.md5', function() {
+            $('hex_md5').click(function() {
+                console.log(hex_md5($(password).node.value));
+            });
+            $('b64_md5').click(function() {
+                console.log(b64_md5($(password).node.value));
+            });
+        });
+    </script>
+</div>
+<div class="item">
+    <h3>hex_md5 <span>16进制md5加密</span></h3>
+    <script class="example">
+        function example1() {
+            Loader.use('arale.md5', function() {
+                var str = hex_md5('abc');
+                console.log('hex_md5: ' + str);
+            });
+        }
+    </script>
+    <button onclick="example1()">Excute</button>
+</div>
+<div class="item">
+    <h3>b64_md5 <span>Base64编码md5加密</span></h3>
+    <script class="example">
+        function example2() {
+            Loader.use('arale.md5', function() {
+                var str = b64_md5('abc');
+                console.log('b64_md5: ' + str);
+            });
+        }
+    </script>
+    <button onclick="example2()">Excute</button>
+</div>
+
+</body>
+</html>

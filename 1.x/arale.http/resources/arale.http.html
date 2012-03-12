@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>arale.http demo</title>
+    <script charset="utf-8" type="text/javascript">
+        araleConfig = {
+            combo_host: 'dev.assets.alipay.net',
+            combo_path: '/ar/??'
+        }
+    </script>
+    <style>
+        .codeContainer {
+            position: relative;
+            padding: 20px;
+        }
+
+        .codeContainer:hover {
+            background-color: #ccc;
+        }
+
+        .executeBtn {
+            display: none;
+        }
+
+        .hover .executeBtn, .codeContainer:hover .executeBtn {
+            display: block;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+    </style>
+    <script charset="utf-8" type="text/javascript" src="http://dev.assets.alipay.net/ar/arale.core-1.1-src.js"></script>
+    <script charset="utf-8" type="text/javascript" src="http://dev.assets.alipay.net/ar/arale.http-${project.version}-index.js"></script>
+    <script charset="utf-8" type="text/javascript" class="example">
+    function example1() {
+        Loader.use('arale.http', function() {
+            Ajax.get('/ar/demo/json/banklist.json', {
+                //encoding: 'utf-8',
+                //dataType: 'json', //'text',
+                //form: 'formId' //会把form里面的内容序列化到data中发送
+                success: function(data) {
+                    if (console && console.log) {
+                        console.log(data);
+                    } else {
+                        alert(data);
+                    }
+                },
+                failure: function(data) {
+                    arale.error(data);
+                }
+            })
+        });
+    }
+    </script>
+    <script charset="utf-8" type="text/javascript" class="example">
+    function example2() {
+        Loader.use('arale.http', function() {
+            Ajax.post('/ar/demo/json/banklist.json', {
+                //encoding: 'utf-8',
+                //dataType: 'json', //'text',
+                //data: {}, //要发送的数据
+                //form: 'formId' //会把form里面的内容序列化到data中发送
+                success: function(data) {
+                    if (console && console.log) {
+                        console.log(data);
+                    } else {
+                        alert(data);
+                    }
+                },
+                failure: function(data) {
+                    arale.error(data);
+                }
+            })
+        });
+    }
+    </script>
+    <script charset="utf-8" type="text/javascript" class="example">
+    function example3() {
+        Loader.use('arale.http', function() {
+            $Ajax.jsonp('http://personal.d16.alipay.net/home/statusbar/getRelativeAccounts.json?_input_charset=utf-8&r=0', {
+                //timeout: 0,     //设置为0，则没有超时限制
+                //data: {} //要发送的数据
+                success: function(data) {
+                    if (console && console.log) {
+                        console.log(data);
+                    } else {
+                        alert(data);
+                    }
+                },
+                failure: function(data) {
+                    arale.error(data);
+                }
+            });
+        });
+    }
+    </script>
+    <script charset="utf-8" type="text/javascript">
+    E.domReady(function() {
+        A($$('.example')).each(function(script, index) {
+            var id = 'example' + (index + 1);
+            var container = Node(D.toDom('<div class="codeContainer"></div>'));
+            Node(D.toDom('<pre id="' + id + '">'  + script.node.innerHTML + '</pre>')).inject(container);
+            Node(D.toDom('<button class="executeBtn" onclick="' + id + '()">Execute</button>')).inject(container);
+
+            if (arale.isIE()) {
+                var hoverClass = 'hover';
+
+                container.mouseover(function(e) {
+                    container.addClass(hoverClass);
+                });
+                container.mouseout(function(e) {
+                    container.removeClass(hoverClass);
+                });
+
+            }
+            container.inject(document.body);
+        });
+    });
+    </script>
+</head>
+<body>
+</body>
+</html>
