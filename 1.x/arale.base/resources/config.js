@@ -49,6 +49,9 @@ var _baseAraleConfig =
      */
 	depSrc: false
 };
+
+var araleConfig = window.araleConfig;
+
 if (window['araleConfig']) {
     //mixin
     (function() {
@@ -59,5 +62,5 @@ if (window['araleConfig']) {
         }
     }());
 } else {
-    var araleConfig = _baseAraleConfig;
+    araleConfig = _baseAraleConfig;
 }

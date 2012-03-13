@@ -11,6 +11,7 @@
  */
 arale.module("arale.node", (function(){
     var arale = window.arale || require('arale.base');
+    var $E = window.$E || require('arale.event');
     var $S = window.$S || require('arale.string');
     var $A = window.$A || require('arale.array');
     var $ = window.$,
@@ -821,7 +822,7 @@ arale.module("arale.node", (function(){
 	NodeFactory.fn = Node.prototype;
 
     NodeFactory.D = exports.D;
-	module.exports = NodeFactory;
+	exports = module.exports = NodeFactory;
 
 	window.Node = NodeFactory;
 	return NodeFactory;

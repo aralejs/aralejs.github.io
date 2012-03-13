@@ -133,8 +133,7 @@ arale.module('arale.event.store', (function(arale) {
             this.targets[id] = target;
         }
     });
-    var exportsObject = {
-        /** @lends arale.event.store.prototype */{
+    var exportsObject = /** @lends arale.event.store.prototype */{
         /**
          * 获取一个事件仓库.
          * @memberOf arale.event.store.
