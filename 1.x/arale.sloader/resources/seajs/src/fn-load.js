@@ -39,7 +39,6 @@
       callback();
     }
     else {
-      console.log('trace1----->');
       preloadCallbacks.push(callback);
 
       if (preloadingCount === 0) {
