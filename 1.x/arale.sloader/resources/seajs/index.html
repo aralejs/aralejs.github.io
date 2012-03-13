@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta charset="utf-8"/>
+<title>sea.js</title>
+<link rel="stylesheet" href="docs/assets/home.css"/>
+</head>
+<body>
+
+<div id="toc">
+  <ul>
+    <li><a href="#download">Download</a></li>
+    <li><a href="docs/">Documentation</a></li>
+    <li><a href="docs/zh-cn/">中文文档</a></li>
+    <li><a href="docs/release-notes.html">Release Notes</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <ul>
+    <li><a href="https://github.com/seajs/seajs/wiki">Wiki</a></li>
+    <li><a href="http://lifesinger.wordpress.com/?s=seajs">Blog</a></li>
+    <li><a href="https://github.com/seajs/seajs/wiki/Community">Community</a></li>
+    <li><a href="docs/demo/">Demo</a></li>
+  </ul>
+</div>
+
+<div id="content">
+
+  <img id="logo" src="docs/assets/logo.png" alt="sea.js"/>
+
+  <p>A <a href="http://wiki.commonjs.org/wiki/Modules">Module</a> Loader for the Web</p>
+
+
+  <p>Here below is an example of a JavaScript module which provides a <code>sayHello</code> method:</p>
+
+  <pre>
+define(function(require, exports, module) {
+  exports.sayHello = function() {
+    alert('Hello from module: ' + module.id);
+  };
+});
+</pre>
+
+  <p>
+    To use the above module, put the code into a file <code>example.js</code> and
+    launch it with a html file:
+  </p>
+
+  <pre>
+&lt;script src="sea.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  seajs.use('./example', function(example) {
+    example.sayHello();
+  });
+&lt;/script&gt;
+</pre>
+
+  <p>Please refer to the <a href="docs/">API documentation</a> for more details.</p>
+
+
+<!--  <h2 id="intro">Introduction</h2>
+
+  <iframe src="http://www.slideshare.net/slideshow/embed_code/7735168" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+-->
+
+
+  <h2 id="download">Download</h2>
+
+  <p><a href="http://github.com/seajs/seajs">git repo</a></p>
+
+  <p class="download">
+    <a href="http://modules.seajs.com/seajs/1.1.0/sea-debug.js">Development Version (1.1.0)</a> <i>32KB, Uncompressed with Comments</i><br/>
+    <a href="http://modules.seajs.com/seajs/1.1.0/sea.js">Production Version (1.1.0)</a> <i>4KB, Minified and Gzipped</i>
+  </p>
+
+  <p class="promotejs">
+    <a href="https://developer.mozilla.org/en/JavaScript/Guide" title="JavaScript Guide"><img src="docs/assets/promotejsv.gif" height="275" width="157" alt="JavaScript Guide"/></a>
+  </p>
+
+
+  <h2 id="compatible">Compatible</h2>
+
+  <pre class="text">
+IE 5.5+           ✔
+Chrome 3+         ✔
+Firefox 2+        ✔
+Safari 3.2+       ✔
+Opera 10+         ✔
+</pre>
+
+  
+  <h2 id="about">About</h2>
+
+  <p>
+    The sea, holding water from thousands of rivers, is huge owing to its
+    capacity.
+  </p>
+
+  <p>
+    SeaJS is a module loader for the web. It is designed to change the way that
+    you organize JavaScript. With SeaJS, it is pleasure to build scalable web
+    applications.
+  </p>
+
+  <p>
+    SeaJS is available under the terms of the <a href="http://seajs.com/MIT-LICENSE.txt">MIT license</a>.
+  </p>
+
+  <p>
+    For questions, comments, and feedbacks, please go to <a href="http://groups.google.com/group/seajs">SeaJS Group</a>.
+  </p>
+
+  <p class="copyright">Copyright&copy;2011-2022 seajs.com</p>
+</div>
+
+<script src="build/sea.js" data-main="docs/assets/init"></script>
+
+</body>
+</html>

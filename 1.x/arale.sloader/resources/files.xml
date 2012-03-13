@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<assembler>
+    <scripts>
+        <script>
+            <includes>
+                <!--
+                <include>seajs/build/sea-debug.js</include>
+                -->
+                <include>seajs/src/sea.js</include>
+                <include>seajs/src/util-lang.js</include>
+                <include>seajs/src/util-error.js</include>
+                <include>seajs/src/util-path.js</include>
+                <include>seajs/src/util-fetch.js</include>
+                <include>seajs/src/fn-module.js</include>
+                <include>seajs/src/fn-define.js</include>
+                <include>seajs/src/fn-require.js</include>
+                <include>seajs/src/fn-load.js</include>
+                <!--
+                <include>plugin-combo.js</include>
+                -->
+                <include>seajs/src/fn-config.js</include>
+                <include>seajs/src/plugins/plugin-init.js</include>
+                <include>seajs/src/fn-bootstrap.js</include>
+                <include>seajs/src/sea-api.js</include>
+            </includes>
+        </script>
+    </scripts>
+</assembler>

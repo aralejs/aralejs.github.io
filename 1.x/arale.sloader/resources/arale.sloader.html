@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    
+        <title>Arale.loader</title>
+        <script type="text/javascript" charset="utf-8">
+            araleConfig = {
+                    combo_host: 'http://assets.dev.alipay.net',
+                    debug: true,
+                    depSrc: true,
+                    combo_path: '/ar/??'
+
+                    //一些个性化配置
+                    //combo_host: 'static.p3.alipay.net',
+            }
+                
+        </script>
+        <!--
+        <script type="text/javascript" charset="utf-8" src='./target/${artifactId}-${version}.js'></script>
+        <script type="text/javascript" charset="utf-8" src='../resources/seajs/build/sea-debug.js'></script>
+        <script type="text/javascript" charset="utf-8" src='./arale.sloader-2.0-SNAPSHOT-src.js'></script>
+        -->
+        <script type="text/javascript" charset="utf-8" src="http://assets.dev.alipay.net/ar/${artifactId}-${version}-src.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            seajs.config({
+                base: 'http://assets.dev.alipay.net/??',
+                preload: ['arale.sp-combo-2.0-SNAPSHOT.js'],
+                charset: 'utf-8',
+                timeout: 20000,
+                debug: true
+            });
+        </script>
+    </head>
+    <body>
+        test arale.loader
+
+        <script type="text/javascript" charset="utf-8">
+            console.log('begin');
+            function testRequire0() {
+                seajs.use('arale.string-2.0-SNAPSHOT.js', function(str) {
+                        console.log('===============');
+                        console.log(str.toString());
+                        console.log(str('      abc      ').trim());
+                        console.log('===============');
+                });      
+            }
+            function testRequire1() {
+                seajs.use('arale.dom-2.0-SNAPSHOT.js', function(dom) {
+                        console.log('===============');
+                        console.log(dom);
+                        console.log('===============');
+                });      
+            }
+            function testRequire2() {
+                seajs.use(['arale.event-2.0-SNAPSHOT.js', 'arale.dom-2.0-SNAPSHOT.js'], function(E, dom) {
+                        console.log('===============');
+                        console.log(E);
+                        console.log(dom);
+                        console.log('===============');
+                    E.on(document.body, 'click', function() {
+                        console.log('click----1');        
+                    }); 
+                });      
+            }
+            testRequire2();
+        </script>
+    </body>
+</html>
