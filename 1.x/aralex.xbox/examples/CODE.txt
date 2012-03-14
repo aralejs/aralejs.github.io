@@ -1,0 +1,29 @@
+$Loader.use(['aralex.xbox.Xbox'],function(){
+
+	var x1 =  new aralex.xbox.IframeXbox({
+		el: 'fireIFRAME',
+		width: 500,
+		height: 200,
+		value: "inner.html?q=11111",
+		xboxClass: {
+			MOCK_CLASS: 'test'
+		}
+	});
+
+	var x2 = new aralex.xbox.DomXbox({
+		//el: $$(".J_firedom"),
+		el:'fireDOM',
+		width: 500,
+		beforeHide: function(){	
+			alert("hidding...")
+		},
+		value: function(e) {
+			return $('DOMToBeCopy');
+		}
+	});
+
+	var x3 = new aralex.xbox.StringXbox({
+		el: "fireString",
+		value: "<div style=\"margin: 10px;padding: 20px;color: red\">big stringbig stringbig stringbig stringbig stringbig stringbig stringbig string</div>"
+	});
+});

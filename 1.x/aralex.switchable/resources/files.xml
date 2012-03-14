@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<assembler>
+	<scripts>
+		<script>
+			<fileName>${project.build.finalName}-src.${packaging}</fileName>
+			<includes>
+				<include>switchable.js</include>
+			</includes>
+		</script>
+	</scripts>
+</assembler>
+

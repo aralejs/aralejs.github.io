@@ -1,0 +1,79 @@
+arale.declare('aralex.Test', [aralex.Widget], {
+    init: function(params) {
+       console.log('init-->');
+       console.log(params);
+       //在这个方法中可以对用户传入的参数进行加工和修改
+       params.value = "-->" + params.value + "<--";
+    },
+    beforeCreate: function() {
+        console.log('breforeCreate!');
+        //组件还未创建出来, 在这里我们可以进一步做些初始化操作, 比如去初始化一些额外的操作啥
+    },
+    initDom: function() {
+        console.log('init dom');
+        //组件容器初始化方法, 在这里我们可以初始化我们的组件容器, 我们所有组件的dom操作都是基于这个容器对象的. 默认这个对象为domNode.
+        //默认实现为this.domNode = $(this.id); 如果我们的程序没有提供id, 也没有提供domNode这个属性, 则表明我们这个组件是一个纯逻辑组件
+        //不需要相应的dom操作, 如果调用添加事件等方法则会报错.
+        this.parent(arguments);
+        var p = document.createElement('p');
+        $(p).setHtml(this.value);
+        this.domNode.adopt(p);
+    },
+    bind: function() {
+        var that = this;
+        console.log('bind');
+        //通过delegate的方式绑定事件, 类似于$E.delegate(this.domNode, 'click', function(){}, 'p');
+        this.addEvent('click', function() {
+            alert(that.value);             
+        }, 'p');
+    },
+    postCreate: function() {
+        console.log('post create');
+        //组件容器初始化完毕. 可以继续做事情了
+    }
+});
+
+var t = new aralex.Test({
+    value: 'content',
+    id: 'test'
+});
+
+
+
+
+test2.tpl--
+`<div id="test2" class="fn-hide">
+    <!--下面的script的内容, 会自动被抽取出来. 然后渲染的时候会合相对应的模版进行渲染通过id. -->
+	<script type="text/html" id="suggestItems">
+		<ul>
+		<% for (var i=0; i<items.length; i++){ %>
+			<% var item = items[i]; %>
+			<li class="ui-menu-item"><%=item.value%></li>		
+		<% } %>
+		</ul>
+	</script>
+	<!--由于页面可能存在多个实例, 这种情况下就需要把id加到前面, 这样我们会自动把组件容器的id给加上去, 这样就可以保证id的唯一-->
+    <div id="${id}_suggestItems" class="ui-menu</div>
+</div>
+`
+`
+arale.declare('aralex.Test2', [aralex.TplWidget, aralex.View], {
+    //templateString: @template('autocomplete.tpl'), //程序在打包的过程中会自动把指定的模版文件给内联进来. @template是自定义的语法. 
+    templateString: '%20%3Cdiv%20id%3D%22test2%22%20class%3D%22fn-hide%22%3E%0A%20%09%3Cscript%20type%3D%22text%2Fhtml%22%20id%3D%22suggestItems%22%3E%0A%20%09%09%3Cul%3E%0A%20%09%09%3C%25%20for%20%28var%20i%3D0%3B%20i%3Citems.length%3B%20i%2B%2B%29%7B%20%25%3E%0A%20%09%09%09%3C%25%20var%20item%20%3D%20items%5Bi%5D%3B%20%25%3E%0A%20%09%09%09%3Cli%20class%3D%22ui-menu-item%22%3E%3C%25%3Ditem.value%25%3E%3C%2Fli%3E%09%09%0A%20%09%09%3C%25%20%7D%20%25%3E%0A%20%09%09%3C%2Ful%3E%0A%20%09%3C%2Fscript%3E%0A%20%20%20%20%20%3Cdiv%20id%3D%22%24%7Bid%7D%5FsuggestItems%22%20class%3D%22ui-menu%22%3E%3C%2Fdiv%3E%0A%20%3C%2Fdiv%3E%0A',
+    bind: function() {
+        this.addEvent('click', function(target, e) {
+            alert($(target).getHtml());
+        }, 'li');
+    }
+    //, data:{items: [{value:'a'}, {value: 'b'}, {value: 'c'}]} //默认也可以把数据提供, 会自动渲染模版          
+} 
+});
+
+var test2 = new aralex.Test2();
+test2.renderData({
+    items: [{value:'a'}, {value: 'b'}, {value: 'c'}]              
+});
+
+test2.show(); // 显示组件
+test2.hide(); //隐藏组建
+

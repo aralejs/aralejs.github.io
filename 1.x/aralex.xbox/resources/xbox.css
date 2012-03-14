@@ -1,0 +1,91 @@
+/*
+	@name: ui-xbox
+	@desc: xbox
+	@required: ui-dialog,ui-dialog-modal
+	@note: 自适应
+	@example: 
+        <!-- xbox -->				
+        <!-- alpha layer -->
+        <div class="ui-xbox-shadow">
+            <iframe src="javascript:'';" frameborder="0"></iframe>
+        </div>
+        <!-- /alpha layer -->
+        <div class="ui-xbox">
+            <div class="ui-xbox-action"><a href="#">关闭</a></div>
+            <!-- xbox content -->
+            <div class="ui-xbox-content">
+               content...
+            </div>
+            <!-- /xbox content -->
+        </div>
+        <!-- /xbox -->
+*/
+.ui-xbox,.ui-xbox-shadow,
+.ui-xbox-action{
+    position:absolute;/* required */
+    top:0;/* overwrite */
+}
+.ui-xbox{
+    z-index:999;/* required */
+    left:50%;/* overwrite */
+    top:50%;/* overwrite */
+    width:300px;/* overwrite */
+    height:200px;/* overwrite */
+    background:#FFF;/* overwrite */
+    border:6px solid rgba(0, 0, 0, 0.3); /* overwrite */
+	*border:6px solid #767576; /* overwrite */
+	border:6px solid #767576\0; /* overwrite */
+	border:6px solid rgba(0, 0, 0, 0.3)\9\0;  /* ie 9*/
+	-moz-background-clip: padding-box; /* 半透明边框，只支持高级浏览器 */
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+}
+.ui-xbox-shadow{
+    position:fixed;/* required */
+    _position:absolute;/* required */
+    z-index:998;/* required */
+    left:0;
+    width:100%;/* overwrite */
+    height:100%;/* overwrite */
+    opacity:.2;/* overwrite */
+    filter:alpha(opacity=20);/* overwrite */
+    -ms-filter:"alpha(opacity=20)";/* overwrite */
+    background:#000;/* overwrite */
+}
+.ui-xbox-shadow iframe{
+    width:100%;/* overwrite */
+    height:100%;/* overwrite */
+    opacity:0;/* overwrite */
+    filter:alpha(opacity=0);/* overwrite */
+    -ms-filter:"alpha(opacity=0)";/* overwrite */
+}
+.ui-xbox-action{
+    display:block;/* overwrite */
+    right:10px;/* overwrite */
+    top:4px;/* overwrite */
+}
+.ui-xbox-close {
+    color: #999;
+    font-family: tahoma;
+    font-size: 24px;
+	line-height: 24px;
+    text-decoration: none;
+}
+.ui-xbox-close:hover {
+    color: #808080;
+}
+#xbox-load {
+    height: 13px;
+    left: 50%;
+    margin: -6px 0 0 -104px;
+    position: fixed;
+    top: 50%;
+    width: 208px;
+    z-index: 1003;
+}
+
+html #xbox-load {
+    position:absolute;
+}
+
+

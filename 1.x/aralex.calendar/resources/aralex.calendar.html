@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>slider test</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<script type="text/javascript" charset="utf-8" src="http://assets.dev.alipay.net/ar/arale.sloader-2.0-SNAPSHOT-src.js"></script>
+<script type="text/javascript" charset="utf-8">
+    araleConfig = {
+        combo_host: 'http://assets.dev.alipay.net',
+        debug: true,
+        depSrc: true,
+        combo_path: '/ar/??'
+    }
+    var date = new Date();
+    seajs.config({
+        base: 'http://assets.dev.alipay.net/??',
+        preload: ['arale.sp-combo-2.0-SNAPSHOT.js'],
+        charset: 'utf-8',
+        timeout: 20000,
+        debug: true
+    });
+</script>
+<!--
+<script charset="utf-8" src="./calendar.js"></script>
+-->
+<style type="text/css">
+	pre{color:#333;font-family:'courier new';}
+	pre cite{color:#999;font-size:12px;}
+	*{padding:0;margin:0;}
+	body{padding:30px 30px 30px 590px;font:14px/1.5 tohama;}
+	#eg{width:500px;position:absolute;top:30px;left:30px;font:12px courier;padding:20px;background:#f7f7f7;border:1px dotted #a3a3a3;}
+	#eg h4{padding:0;margin: 0 0 5px;font-size:14px;}
+	#slider-wrap, #switchslider-wrap{overflow:hidden;width:950px;height:255px;}
+	#slider li, #switchslider li{float:left;}
+</style>
+</head>
+<body>
+<pre id="eg" style="display:none">
+<h3>1. 无Select控件日历</h3>
+<strong>示例HTML</strong><br/>
+&lt;input type="button" value="Show Calendar" id="btn1" /&gt;
+&lt;input type="text" value="select date from calendar" id="text" /&gt;
+&lt;div id="cal_cantainer1"&gt;&lt;/div&gt;
+<br />
+<strong>实例代码</strong><br/>
+$E.domReady(function(){
+    var cal = new aralex.calendar.Calendar({
+	srcId : 'cal_cantainer1',
+	week_start : '7',
+	selected : ['2010/10/23','2010/10/29'],
+	afterDoSelectEvent : function(date){
+		$('text').attr('value',date);
+	},
+	full_selector:true,
+	position : [100,100]
+    });
+    cal.render();
+	
+    $('btn1').click(function(e){
+	var target = $(e.target);
+	if($(e.target).hasClass('show')){
+		cal.hide();
+		target.removeClass('show');
+		target.attr('value','Hide Calendar')
+	}else{
+		cal.show();
+		target.addClass('show');
+		target.attr('value','Show Calendar')
+	}
+    });
+});
+<br/><br/><br/>
+<h3>2. 有Select控件日历</h3>
+<strong>Useful Tips</strong>
+<ul>
+<li style="background-color: rgb(255, 255, 0);">
+dropfliter参数必须与mindate,maxdate参数一起使用， 如不设置将默认从2004到当前年区间。
+</li>
+</ul>
+<strong>示例HTML</strong><br/>
+&lt;input type="button" value="Show Calendar" id="btn1" /&gt;
+&lt;input type="text" value="select date from calendar" id="text" /&gt;
+&lt;div id="cal_cantainer"&gt;&lt;/div&gt;
+<br/>
+<strong>实例代码</strong><br/>
+$E.domReady(function(){
+    var cal = new aralex.calendar.Calendar({
+	srcId : 'cal_cantainer2',
+	week_start : '7',
+	dropfilter : true,
+	mindate  : '1999/11/11',
+	maxdate  : '2012/12/11',
+	selected : ['2010/10/23','2010/10/29'],
+	afterDoSelectEvent : function(date){
+		$('text').attr('value',date);
+	},
+	position : [100,100]
+	});
+});
+
+</pre>
+<div sytle="float:left;margin-left:30px">
+<h3>控件日历演示</h3>
+<input type="button" value="显示" id="btn1" />
+<p id="xtt" style="display:none">
+<input type="button" value="设置坐标" id="btn2" />
+<input type="button" value="改变DropFilter属性" id="btn3" />
+</p>
+<p>
+<input type="text" value="select date from calendar" id="text" />
+</p>
+<div id="cal_cantainer1"></div>
+<br/>
+<br/>
+<br/>
+</div>
+<script type="text/javascript" charset="utf-8">
+    seajs.use(['arale.dom-2.0-SNAPSHOT.js', '${artifactId}-${version}.js'], function(dom, Cal) {
+        console.log('arale.calendar', Cal);
+		var cal = new Cal({
+			srcId : 'cal_cantainer1',
+			week_start : '7',
+			selected : ['2010.10.23','2010.10.29'],
+			afterDoSelectEvent : function(date){
+				$('text').attr('value',date);
+			},
+			mindate : "2011.3.2",
+			maxdate : "2012.3.2",
+			date_delimiter : ".",
+			position : [400,50]
+		});
+		//setTimeout(function(){
+			cal.render();
+		//},1000);
+		
+		$('btn1').click(function(e){
+			
+			var target = $(e.target);
+			if($(e.target).hasClass('show')){
+				target.removeClass('show');
+				target.attr('value','显示Calendar');
+				cal.hide();
+				$('xtt').setStyle('display','none');
+			}else{
+				target.addClass('show');
+				target.attr('value','隐藏Calendar');
+				cal.show();
+				$('xtt').setStyle('display','block');
+			}
+		});
+		
+		$('btn2').click(function(e){
+			//改变坐标
+			var x = arale.$random(100,500);
+			var y = arale.$random(100,500);
+			cal.setPosition(x,y);
+		});
+		
+		$('btn3').click(function(e){
+			try{
+				cal.attr('dropfilter',true);
+				cal.render();
+			}catch(e){
+				console.log(e);
+			}
+		});
+    });
+</script>
+</body>
+</html>

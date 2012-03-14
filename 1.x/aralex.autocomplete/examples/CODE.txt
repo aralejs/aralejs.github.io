@@ -1,0 +1,50 @@
+一. 直接初始化方式
+
+     $Loader.use('aralex.autocomplete', function() {
+                
+            var autocomplete = new aralex.autocomplete.AutoComplete({
+                textInput: $('textinput'),
+                datasource: {
+                    getData: function(inputValue, callback) {
+                        var data = [];
+                        if ($S(inputValue).trim().length == 0) {
+                            data = [{value: '请输入数据'}];
+                        } else {
+                            console.log("ds get data---->");
+                            for (var i = 0; i < 10; i++) {
+                                data[i] = {value: inputValue+i};
+                            }
+                        }
+                        callback.call(null, data);
+                    }
+                }
+            });
+    });
+
+二. 继承方式
+
+//@$Loader.css;
+arale.declare('staticsys.ModuleSearch', [aralex.autocomplete.AutoComplete], {
+    /**
+     * 这个是提示容器的className
+     */
+    scClassName: 'suggest_c',
+    /**
+     * 这个是选中的className
+     */
+    ssClassName: 'suggest_s',
+    /**
+     * 这个是提示条目的className
+     */
+    soClassName: 'suggest_o',
+
+    templateString: @template('autocomplete.tpl'),
+
+    datasource: datasource, //(可以在后面的代码初始化这个对象)
+    selectEvent: function(target) {
+    
+    },
+    change: function(value) {
+    
+    }
+});

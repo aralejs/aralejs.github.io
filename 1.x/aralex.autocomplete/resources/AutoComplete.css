@@ -1,0 +1,30 @@
+.keystring {
+    color: #FF6600;
+}
+.suggest_c {
+	display:none;
+	font-size:13px;
+	cursor:default;
+	line-height:17px;
+	border:1px solid black;
+	z-index:99;background:white;
+	position:absolute;
+	margin:0;
+	list-style:none;
+	padding-left:0px;
+}
+
+.suggest_s {
+	background:#36c;
+	color:white;
+}
+.suggest_o {
+	overflow:hidden;
+	padding-left:3px;
+	text-align:left;
+	white-space:nowrap;	
+}
+.suggest_error {
+	background:red;
+	padding:1px;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>${project.artifactId}-${project.version} Demo</title>
+        <style type="text/css">
+            ul{margin:0;padding:0;}
+            .viewWrapper{overflow:hidden; width:600px;position:relative;}
+            /*span a{margin:10px;}*/
+            ul#J-trigger li.current {
+                background-color:pink;
+            }
+            ul#J-view li{
+                float:left;
+                overflow:hidden;
+                width: 600px;
+            }
+            ul#J-view2 li {
+                width: 200px;
+                float: left;
+                overflow: hidden;
+            }
+            ul#J-trigger li{
+                float: left;
+                list-style: none;
+                padding: 10px;
+                text-align: center;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+ 
+        <div class="viewWrapper" style="width:600px;">
+            <ul id="J-view">
+                <li>
+                    <img src="../images/sindex01.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="../images/sindex02.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="../images/sindex03.jpg" alt="" />
+                </li>
+            </ul>
+        </div>
+        <ul id="J-trigger">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <br />
+        <p>effect: persistent(一直向一个方向滚动。要求不能有trigger)</p>
+        <div class="viewWrapper" style="width: 600px;">
+            <ul id="J-view2">
+                <li>
+                    <img src="../images/sindex01.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="../images/sindex02.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="../images/sindex03.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="../images/sindex01.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="../images/sindex02.jpg" alt="" />
+                </li>
+                <li>
+                    <img src="../images/sindex03.jpg" alt="" />
+                </li>
+            </ul>
+        </div>
+
+        <button id="previous">上一张</button>
+        <button id="next">下一张</button>
+        <button id="previous3">上3张</button>
+        <button id="next3">下3张</button>
+        <script type="text/javascript" charset="utf-8" src="http://assets.dev.alipay.net/ar/arale.sloader-2.0-SNAPSHOT-src.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            araleConfig = {
+                combo_host: 'http://assets.dev.alipay.net',
+                debug: true,
+                depSrc: true,
+                combo_path: '/ar/??'
+            }
+            var date = new Date();
+            seajs.config({
+                base: 'http://assets.dev.alipay.net/??',
+                preload: ['arale.sp-combo-2.0-SNAPSHOT.js'],
+                charset: 'utf-8',
+                timeout: 20000,
+                debug: true
+            });
+        </script>
+        <script type="text/javascript" charset="utf-8">
+            seajs.use(['arale.dom-2.0-SNAPSHOT.js', 'aralex.slider.ScrollSlider-2.0-SNAPSHOT.js'], function(dom, SS) {
+                console.log('aralex.slider.ScrollSlider', SS);
+                var s = new SS({
+                    id: "J-view",
+                    triggerId: "J-trigger",
+                    start: 2
+                });
+
+                s2 = new aralex.slider.ScrollSlider({
+                    id: "J-view2",
+                    effect: 'persistent',
+                    step: 1,
+                    delay: 500,
+                    auto: true,
+                    afterSwitchView: function() {
+                        //console.log(arguments);
+                    },
+                    capacity: 3
+                });
+
+                $('next').click(function() {
+                    s2.next();
+                });
+                $('next3').click(function() {
+                    s2.next(3);
+                });
+
+                $('previous').click(function() {
+                    s2.previous();
+                });
+                $('previous3').click(function() {
+                    s2.previous(3);
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,1 @@
+//Switchable的设计是为了约束生命周期和统一接口，不建议直接使用。可以使用它的子类 Tab， ScrollSlider， FadeSlider，Accordion。
