@@ -6,7 +6,8 @@
  */
 
 
-var arale = window.arale || require('arale.base');
+var arale = require('arale.base');
+var $Node, $D;
 (function(arale){
 
 var chunker = /((?:\((?:\([^()]+\)|[^()]+)+\)|\[(?:\[[^\[\]]*\]|['"][^'"]*['"]|[^\[\]'"]+)+\]|\\.|[^ >+~,(\[\\]+)+|[>+~])(\s*,\s*)?((?:.|\r|\n)*)/g,
@@ -1089,12 +1090,12 @@ exports.$ = window.$  = function(id){
 	return null;
 };
 
-arale.dom = arale.dom || {};
+//arale.dom = arale.dom || {};
 
-arale.dom.filter_ = function(selector, eles) {
+exports.filter_ = function(selector, eles) {
     return Sizzle.matches(selector, eles);
 };
 
-arale.dom.sizzle = Sizzle;
+exports.sizzle = Sizzle;
 
 })(arale);

@@ -5,11 +5,11 @@
  * @description
  * arale.dom 封装了主要针对document, window的一些操作方法，另外少许对HTMLElement操作的方法，更多对dom操作的方法以及链式操作 具体请参见 { @link arale.Node }
  */
+var $A = require('arale.array');
+var $H = require('arale.hash');
+
 arale.module("arale.dom", (function(){
 	
-    var arale = window.arale || require('arale.base');
-    var $A = window.$A || require('arale.array');
-    var $H = window.$H || require('arale.hash');
 
 	var isIE     = arale.browser.Engine.trident;
 	var isOpera  = arale.browser.Engine.presto;
@@ -388,9 +388,10 @@ arale.module("arale.dom", (function(){
 				parent.appendChild(fragment);
 			});	
 		}
-	}
-	exports.D = window.D = exportsObject;
+	};
+    $D = window.D = window.$D = exports.$D = exportsObject; 
 	return exportsObject;
 }), '$D');
 
 //TODO create,getText,getValue,ancestor
+//var $Node;

@@ -12,9 +12,9 @@
  * @param  {} opt_milliseconds
  * @returns {CData} 包装后的日期类
  */
-var arale = window.arale || require('arale.base');
-var arale = window.$H || require('arale.hash');
-var arale = window.$N || require('arale.number');
+var arale = require('arale.base');
+var $H = require('arale.hash');
+var $N = require('arale.number');
 
 arale.module("arale.date", function () {
     var _week_day = {

@@ -171,8 +171,8 @@ var arale = window.arale = arale || {
      * 2.function() {//code  return {fn: function() {}}} //一个可执行并返回一个字面常量的对象
      * 3.function() {//code  return function() {}} //一个可执行并返回一个函数
      */
-    module: function(module, obj, alias) {
-        var current = this.namespace(module), root = window;
+    module: function(module, obj, alias, context) {
+        var current = this.namespace(module), root = context || window;
         if (arale.isFunction(obj)) {
             obj = obj.call(arale, obj);
         }

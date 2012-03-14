@@ -5,7 +5,6 @@
  * @description
  * 可以直接使用$E.来操作方法
  */
-var arale = window.arale || require('arale.base');
 arale.module('arale.event.chain', (function(arale) {
     var array = arale.array;
     var Action = function(fn) {
@@ -95,5 +94,5 @@ arale.module('arale.event.chain', (function(arale) {
             return new Chain(fn);
         }
     };
-    exports.getChains = exportsObject.getChains;
-})(arale), '$E');
+    return exportsObject
+})(arale), 'exports', module);

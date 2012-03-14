@@ -491,8 +491,9 @@ arale.module('arale.event.core', (function(arale) {
             }
         }
     };
-    for (var eKey in exportsObject) {
-        exports[eKey] = exportsObject[eKey];
-    }
-})(arale), '$E');
-window.E = window.$E;
+    return exportsObject;
+})(arale), 'exports', module);
+
+
+//
+window.E = window.$E = exports;

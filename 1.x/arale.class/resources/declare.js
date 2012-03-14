@@ -24,7 +24,6 @@ TOOD
     //本类的prototype
 })
 */
-var arale = window.arale || require('arale.base');
 
 arale.module('arale.declare', function() {
     var a = arale, contextStack = [];
@@ -78,7 +77,7 @@ arale.module('arale.declare', function() {
         if (parents && parents.length > 0) {
             safeMixin.apply(null, [couns].concat(parents));
         }
-        current._parentModule[current._moduleName] = couns;
+        return current._parentModule[current._moduleName] = couns;
     };
     module.exports = ConstructorFactory;
     return ConstructorFactory;

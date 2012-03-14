@@ -32,7 +32,20 @@
         </script>
     </head>
     <body>
-        test arale.loader
+        <a href="#" onclick="testRequire2()">测试加载arale.event模块</a></br></br>
+        <a href="#" onclick="testRequireXbox()">测试加载xbox</a></br></br>
+        <a href="#" onclick="testRequireAutocomplete()">测试加载autocomplete</a></br></br>
+        <div id="d1">
+            <div style="padding:17px;border:1px solid red;width:400px">
+                <div style="padding:10px;">
+                    <form action="" onsubmit="javascript:return false">
+                        test autocomplete:<input name="textinput" id="textinput" type="text" size="50" />
+                        <br/>
+                        <input type="submit" value="save"/>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <script type="text/javascript" charset="utf-8">
             console.log('begin');
@@ -62,7 +75,64 @@
                     }); 
                 });      
             }
-            testRequire2();
+            function testRequireAraleClass() {
+                seajs.use('arale.class-2.0-SNAPSHOT.js', function(d) {
+                        arale.declare('declare.b', null, {
+                            name: 'declare'
+                        });
+                        var a = new declare.b();
+                        console.log(a.name);
+
+                });
+                
+            }
+            function testRequireAralexBase() {
+                seajs.use('aralex.base-2.0-SNAPSHOT.js', function(base) {
+                    console.log(aralex.Widget, aralex.TplWidget, aralex.View);        
+                    console.log("==============");
+                    console.log(base.Widget, base.TplWidget, base.Widget);
+                }); 
+            }
+            function testRequireXbox() {
+                seajs.use('aralex.xbox-2.0-SNAPSHOT.js', function(xbox) {
+                    x3 = new xbox.StringXbox({
+                        value: "<div style=\"margin: 10px;padding: 20px;color: red\">big stringbig stringbig stringbig stringbig stringbig stringbig stringbig string</div>",
+                        beforeShow: function(){	
+                            console.log("show...");
+                            currentBox = this;
+                        }
+                    });
+                    x3.show();
+                });
+            }
+            function testRequireAutocomplete() {
+            
+                seajs.use(['arale.dom-2.0-SNAPSHOT.js', 'aralex.autocomplete-2.0-SNAPSHOT.js'], function(dom, Autocomplete) {
+                    var ac = new Autocomplete({
+                        textInput: $('textinput'),
+                        datasource: {
+                            getData: function(inputValue, callback) {
+                                var data = [];
+                                
+                                if ($S(inputValue).trim().length == 0) {
+                                    data = [{value: '请输入数据'}];
+                                } else {
+                                    console.log("ds get data---->");
+                                    for (var i = 0; i < 10; i++) {
+                                        data[i] = {value: inputValue+i};
+                                    }
+                                }
+                                if (inputValue == 'e') {
+                                    callback.call(null, {items: []});
+                                } else {
+                                    callback.call(null, {items: data});
+                                }
+                            }
+                        }
+                    });
+                });
+            }
+            //testRequireAralexBase();
         </script>
     </body>
 </html>

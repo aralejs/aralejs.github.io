@@ -1,0 +1,112 @@
+//HTML
+<form id="validate-form">
+    <fieldset>
+    <legend>表单标题</legend>
+    <div class="ui-fm-item">
+        <label class="ui-fm-label" for="name">name：</label>
+        <input id="name" placeholder="Shawn" name="name" type="text" />
+        <div class="ui-fm-explain">长度在2-8之间</div>
+    </div>
+    <div class="ui-fm-item">
+        <label class="ui-fm-label" for="email">emaii：</label>
+        <input placeholder="请填写email信息" id="email" name="email" type="text" />
+        <div class="ui-fm-explain">不超过10位的email</div>
+    </div>
+    <div class="ui-fm-item">
+        <label class="ui-fm-label" for="phone">mobile：</label>
+        <input id="phone" name="phone" type="text" ui-fm-explain="" />
+        <div class="ui-fm-explain">请输入11位手机号</div>
+    </div>
+    <div class="ui-fm-item">
+        <label class="ui-fm-label" for="information">information：</label>
+        <textarea id="information" placeholder="b不要超过200个字符" name="information">alsgjl</textarea>
+        <div class="ui-fm-explain">输入一些东西</div>
+    </div>
+    <div class="ui-fm-item">
+        <label class="ui-fm-label" for="website">website：</label>
+        <input id="website" name="website" type="text" />
+        <div class="ui-fm-explain">2-50个字符之间</div>
+    </div>
+    <div class="ui-fm-item">
+        <label class="ui-fm-label" for="">性别：</label>
+        <label for="boy">男</label><input type="radio" id="boy" name="gender" value="boy" />
+        <label for="girl">女</label><input type="radio" id="girl" class="marginLeft" name="gender" value="girl"/>
+        <div class="ui-fm-explain">必填</div>
+    </div>
+    <div class="ui-fm-item">
+        <label class="ui-fm-label" for="">爱好：</label>
+        <label for="1">1</label><input type="checkbox" id="1" name="hobby" value="1" />
+        <label for="2">2</label><input type="checkbox" id="2" class="marginLeft" name="hobby" value="2"/>
+        <label for="3">3</label><input type="checkbox" id="3" class="marginLeft2" name="hobby" value="3"/>
+        <div class="ui-fm-explain">必填</div>
+    </div>
+    <button type="submit">提交</button>
+    <div class="fn-hide ui-fm-status">正在提交中</div>
+    </fieldset>
+</form>
+
+
+//JS
+Loader.use('aralex.validator.Validator', function() {
+    var validator = new aralex.validator.Validator({
+        formId: "validate-form",
+        triggerMethod: [/*"keyup", "focus", "blur"*/"blur"],
+        rules: {
+            "input[name='name']": {
+                type: ["alpha", ["lengthBetween", 2, 8]],
+                //type: ["cnMobile"],
+                desc: "姓名"
+                //errorMsg: "长度在2-8之间"
+                //triggerMethod:"blur"
+            },
+            "input[name='email']": {
+                type: ["requiredText", "email", ["maxLength", 10]/*, ["post", "./check.php", function(obj){return obj.valid}, function(obj){return "如果不是abc@g.cn是不会过的哦"}]*/],
+                //errorMsg: "只能是字母",
+                desc: "email"
+            },
+            "input[name='phone']": {
+                type: ['required', "cnMobile"]
+            },
+            "textarea[name='information']": {
+                type: [["maxLength", 100]],
+                desc: "信息"
+            },
+            "input[name='website']": {
+                type: ['requiredText', ["lengthBetween", 2, 50]],
+                checkNull: true
+            },
+            "input[name='gender']": {
+                type: ["requiredRadio"],
+                desc: "性别"
+            },
+            "input[name='hobby']": {
+                type: ["requiredCheckbox"]
+            }
+        },
+        afterValidate: function() {
+            alert("afterValidate: " + [].slice.call(arguments).join(' '));
+        },
+        afterValidateAll: function() {
+            alert("afterValidateAll: " + [].slice.call(arguments).join(' '));
+        },
+        onSuccess: function() {
+           alert("success");
+           //this.stop();
+           //this.submit();
+        },
+        onFail: function() {
+            alert("fail");
+        },
+        beforeSubmit: function() {
+           alert("beforeSubmit");
+       }
+
+    });
+    /*
+    validator.unbind();
+    setTimeout(arale.hitch(validator, function(){
+        this.bind();
+    }), 3000);
+    */
+});
+

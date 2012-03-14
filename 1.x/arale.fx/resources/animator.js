@@ -47,8 +47,8 @@
  * anim.addCSSMotion($ele, "height:183px");
  * anim.play();
  */
-var arale = window.arale || require('arale.base');
-var $Node = window.$Node || require('arale.dom');
+var arale = require('arale.base');
+var $Node = require('arale.dom').$Node;
 (function() {
 function Animator(options) {
 	this.setOptions(options);
@@ -976,6 +976,5 @@ $Node.fn['slideUp'] = function(duration, callback) {
 	anim.play();
 	return this;
 }
-
+module.exports = window.Animator = Animator;
 })();
-Animator = $Animator;

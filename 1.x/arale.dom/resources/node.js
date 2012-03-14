@@ -9,16 +9,13 @@
  * @example
  * $Node(document.getElementById("id"));
  */
+//var $E = window.$E || require('arale.event');
+//console.log('arale.dom', $E);
+var $S = require('arale.string');
+var $ = window.$,
+    $$ = window.$$;
+
 arale.module("arale.node", (function(){
-    var arale = window.arale || require('arale.base');
-    var $E = window.$E || require('arale.event');
-    var $S = window.$S || require('arale.string');
-    var $A = window.$A || require('arale.array');
-    var $ = window.$,
-        $$ = window.$$;
-    
-    var $D = exports.D;
-    var $Node = exports;
 
 	var attributes = {
 		'html': 'innerHTML',
@@ -61,7 +58,7 @@ arale.module("arale.node", (function(){
 	var match = function(element, selector){
         //return (!tag || (tag == element) || element.tagName.toLowerCase() == tag.toLowerCase());
 		//return (!selector || (selector == element) || $A($A($$(selector, element.parentNode)).map(function(item){return item.node;})).contains(element));
-        return !selector || (selector == element) || arale.dom.filter_(selector, [element]).length;
+        return !selector || (selector == element) || exports.filter_(selector, [element]).length;
     };
 	var Node = arale.dblPrototype(document.createElement("div"),function(node){
 		this.node  = node;
@@ -821,10 +818,7 @@ arale.module("arale.node", (function(){
 	
 	NodeFactory.fn = Node.prototype;
 
-    NodeFactory.D = exports.D;
-	exports = module.exports = NodeFactory;
-
-	window.Node = NodeFactory;
+	$Node = window.Node = NodeFactory = exports.$Node = NodeFactory;
 	return NodeFactory;
 }), '$Node');
 
@@ -832,13 +826,13 @@ arale.module("arale.node", (function(){
 $A(("blur focus focusin focusout load resize scroll unload click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
 	"change select submit keydown keypress keyup error").split(" ")).each(function(key){
-		exports.fn[key] = function(context,method){
+		exports.$Node.fn[key] = function(context,method){
 			$E.connect(this,'on'+key,arale.hitch(context,method));
 			return this;
 			//return $E.connect(this,'on'+key,arale.hitch(context,method));
 		};
 });
-exports.fn['trigger'] = function(type,data){
+exports.$Node.fn['trigger'] = function(type,data){
 	$E.trigger(this,type,data);
 };
 

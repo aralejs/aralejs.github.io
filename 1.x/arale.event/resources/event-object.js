@@ -5,9 +5,7 @@
  * @description
  * 可以直接使用$E.来操作方法
  */
-
-
-var arale = window.arale || require('arale.base');
+var arale = require('arale.base');
 arale.module('arale.event.object', (function(arale) {
     //fix delete currentTarget
     var doc = document,
@@ -164,6 +162,5 @@ arale.module('arale.event.object', (function(arale) {
             return new EventObject(target, event);
         }
     };
-    exports.getEventObject = exportsObject.getEventObject;
     return exportsObject;
-})(arale), '$E');
+})(arale), 'exports', module);

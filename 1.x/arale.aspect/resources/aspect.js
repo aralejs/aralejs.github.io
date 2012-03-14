@@ -5,7 +5,7 @@
  * @author <a href="mail:hui.kang@alipay.com">hui.kang</a> 
  */
 var arale = window.arale || require('arale.base');
-arale.module("arale.aspect",(function(arale){
+arale.module("arale.aspect", (function(arale){
     var a = arale, aop = arale.aspect, ap = Array.prototype,
             contextStack = [], context;
         // this class implements a topic-based double-linked list

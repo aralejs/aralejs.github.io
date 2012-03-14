@@ -153,6 +153,5 @@ arale.module('arale.event.store', (function(arale) {
             return new store();
         }
     };
-    exports.getStore = exportsObject.getStore;
     return exportsObject;
-})(arale), '$E');
+})(arale), 'exports', module);
