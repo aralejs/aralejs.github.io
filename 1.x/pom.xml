@@ -24,7 +24,7 @@
 		<module>arale.hash</module>
 		<module>arale.history</module>
 		<module>arale.http</module>
-		<module>arale.localstorage</module>
+		<module>alipay.localstorage</module>
 		<module>arale.md5</module>
 		<module>arale.number</module>
 		<module>arale.string</module>

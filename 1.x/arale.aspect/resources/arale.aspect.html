@@ -2,7 +2,16 @@
 <html>
 <head>
     <title>Aspect Test</title>
-    <script type="text/javascript" src="http://static.dev.alipay.net/ar/arale.core-1.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="http://assets.dev.alipay.net/ar/arale.sloader-2.0-SNAPSHOT-src.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        seajs.config({
+            base: 'http://assets.dev.alipay.net/??',
+            preload: ['arale.sp-combo-2.0-SNAPSHOT.js'],
+            charset: 'utf-8',
+            timeout: 20000,
+            debug: true
+        });
+    </script>
     <script type="text/javascript">
         function classA() {
             this.a = 1;
@@ -40,9 +49,11 @@
         };
         var obj = new classA();
 
-        arale.aspect.advise(obj, 'func1', traceObj);
-        var r = obj.func1(1, 2);
-        console.log(r);
+        seajs.use('${artifactId}-${version}.js', function(aspect) {
+            aspect.advise(obj, 'func1', traceObj);
+            var r = obj.func1(1, 2);
+            console.log(r);
+        });
     </script>
 </head>
 <body>
