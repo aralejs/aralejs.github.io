@@ -32,71 +32,73 @@ arale.__cookieProps = function(){
  * arale.cookie("configObj", null, {expires: -1}); //删除一个cookie
  * var config = JSON.parse(arale.cookie("configObj"));
  */
-var arale = window.arale || require('arale.base');
-
-arale.cookie = function(/*String*/name, /*String?*/value, /*arale.__cookieProps?*/props) {
+var arale = require('arale.base');
+!function (arale) {
+    
+    var cookie = function(/*String*/name, /*String?*/value, /*arale.__cookieProps?*/props) {
 	
-	var c = document.cookie;
-	if (arguments.length == 1) {
-		var matches = c.match(new RegExp("(?:^|; )" + arale.cookie._expEscapeString(name) + "=([^;]*)"));
-		return matches ? decodeURIComponent(matches[1]) : undefined; // String or undefined
-	} else {
-		props = props || {};
-// FIXME: expires=0 seems to disappear right away, not on close? (FF3)  Change docs?
-		var exp = props.expires;
-		if (typeof exp == "number") {
-			var d = new Date();
-			d.setTime(d.getTime() + exp*24*60*60*1000);
-			exp = props.expires = d;
-		}
-		if (exp && exp.toUTCString) {
-		    props.expires = exp.toUTCString(); 
-		}
+        var c = document.cookie;
+        if (arguments.length == 1) {
+            var matches = c.match(new RegExp("(?:^|; )" + cookie._expEscapeString(name) + "=([^;]*)"));
+            return matches ? decodeURIComponent(matches[1]) : undefined; // String or undefined
+        } else {
+            props = props || {};
+    // FIXME: expires=0 seems to disappear right away, not on close? (FF3)  Change docs?
+            var exp = props.expires;
+            if (typeof exp == "number") {
+                var d = new Date();
+                d.setTime(d.getTime() + exp*24*60*60*1000);
+                exp = props.expires = d;
+            }
+            if (exp && exp.toUTCString) {
+                props.expires = exp.toUTCString(); 
+            }
 
-		value = encodeURIComponent(value);
-		var updatedCookie = name + "=" + value, propName;
-		for (propName in props) {
-			updatedCookie += "; " + propName;
-			var propValue = props[propName];
-			if(propValue !== true){ updatedCookie += "=" + propValue; }
-		}
-		document.cookie = updatedCookie;
-	}
-};
+            value = encodeURIComponent(value);
+            var updatedCookie = name + "=" + value, propName;
+            for (propName in props) {
+                updatedCookie += "; " + propName;
+                var propValue = props[propName];
+                if(propValue !== true){ updatedCookie += "=" + propValue; }
+            }
+            document.cookie = updatedCookie;
+        }
+    };
 
-/**
- * 给正则表达式中的特殊字符增加转移字符
- *
- * @param {String} str 
- * @param {String} except 需要排除的字符序列
- */
-arale.cookie._expEscapeString = function(/*String*/str, /*String?*/except){
-	return str.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, function(ch){
-		if(except && except.indexOf(ch) != -1){
-			return ch;
-		}
-		return "\\" + ch;
-	}); // String
-};
+    /**
+     * 给正则表达式中的特殊字符增加转移字符
+     *
+     * @param {String} str 
+     * @param {String} except 需要排除的字符序列
+     */
+    cookie._expEscapeString = function(/*String*/str, /*String?*/except){
+        return str.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, function(ch){
+            if(except && except.indexOf(ch) != -1){
+                return ch;
+            }
+            return "\\" + ch;
+        }); // String
+    };
 
-/**
- * 当前页面是否支持cookie
- */
+    /**
+     * 当前页面是否支持cookie
+     */
 
-arale.cookie.isSupported = function(){
-	//	summary:
-	//		Use to determine if the current browser supports cookies or not.
-	//
-	//		Returns true if user allows cookies.
-	//		Returns false if user doesn't allow cookies.
+    cookie.isSupported = function(){
+        //	summary:
+        //		Use to determine if the current browser supports cookies or not.
+        //
+        //		Returns true if user allows cookies.
+        //		Returns false if user doesn't allow cookies.
 
-	if(!("cookieEnabled" in navigator)){
-		this("__djCookieTest__", "CookiesAllowed");
-		navigator.cookieEnabled = this("__djCookieTest__") == "CookiesAllowed";
-		if(navigator.cookieEnabled){
-			this("__djCookieTest__", "", {expires: -1});
-		}
-	}
-	return navigator.cookieEnabled;
-};
-
+        if(!("cookieEnabled" in navigator)){
+            this("__djCookieTest__", "CookiesAllowed");
+            navigator.cookieEnabled = this("__djCookieTest__") == "CookiesAllowed";
+            if(navigator.cookieEnabled){
+                this("__djCookieTest__", "", {expires: -1});
+            }
+        }
+        return navigator.cookieEnabled;
+    };
+   arale.cookie = exports = module.exports = cookie;
+}(arale);

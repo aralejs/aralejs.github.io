@@ -1,5 +1,7 @@
 var arale = require('arale.base');
+var http = require('arale.http');
 arale.namespace('alipay.http');
+
 (function(arale) {
     var success = function(data, options) {
         if (data) {
@@ -34,10 +36,10 @@ arale.namespace('alipay.http');
     };
     var typeSelect = function(type, url, options) {
         if (type == 'json') {
-            var ajax = arale.ajax.getAjaxFactory();
+            var ajax = http.$Ajax.getAjaxFactory();
             return new ajax(url, options);
         }else if (type == 'jsonp') {
-            return new $Jsonp.JsonpFactory(url, options);
+            return new http.$Jsonp.JsonpFactory(url, options);
         }
     };
 	alipay.http.core = function(url, options) {

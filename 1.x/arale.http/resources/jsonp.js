@@ -15,12 +15,12 @@
  * });
  * api.send({'name':'fackweb'});
  */
-var arale = window.arale || require('arale.base');
-var $H = window.$H || require('arale.hash');
-var $S = window.$S || require('arale.string');
-var $A = window.$A || require('arale.array');
-var $ = window.$ || require('arale.dom').$;
-var $$ = window.$$ || require('arale.dom').$$;
+var arale = require('arale.base');
+var $H = require('arale.hash');
+var $S = require('arale.string');
+var $A = require('arale.array');
+var $ = require('arale.dom').$;
+var $$ = require('arale.dom').$$;
 var $Ajax = exports.$Ajax;
 
 arale.module('arale.jsonp', (function() {
@@ -150,9 +150,9 @@ arale.module('arale.jsonp', (function() {
             }
         }
     });
-    exports.$Jsonp = JsonpFactory;
-    window.Jsonp = JsonpFactory;
-    return {
+    var exportsObject = {
         JsonpFactory: JsonpFactory
     };
+    window.Jsonp = exports.$Jsonp = exportsObject;
+    return exportsObject;
 }()), '$Jsonp');

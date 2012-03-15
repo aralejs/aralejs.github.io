@@ -2,27 +2,28 @@
 <html>
 <head>
     <title>${project.artifactId}-${project.version} Demo</title>
-    <script type="text/javascript">
-        araleConfig = {
-            combo_host: 'dev.assets.alipay.net',
-            combo_path: '/ar/??'
-        }
+    <script type="text/javascript" charset="utf-8" src="http://assets.dev.alipay.net/ar/arale.sloader-2.0-SNAPSHOT-src.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        seajs.config({
+            base: 'http://assets.dev.alipay.net/??',
+            preload: ['arale.sp-combo-2.0-SNAPSHOT.js'],
+            charset: 'utf-8',
+            timeout: 20000,
+            debug: true
+        });
     </script>
-    <script type="text/javascript" src="http://dev.assets.alipay.net/ar/arale.core-1.1.js"></script>
-    <script type="text/javascript" src="http://dev.assets.alipay.net/ar/${project.artifactId}-${project.version}.js"></script>
     <script type="text/javascript">
         var console = {};
-
-        E.domReady(function() {
-            var consoleDiv = $('console');
-    
-            console.log = function() {
-                consoleDiv.adopt(D.toDom('<div>' + [].slice.call(arguments).join(' ') + '</div>'));
-            };
-
-            A($$('script.example')).each(function(script) {
-                //Node(D.toDom('<pre>'  + script.node.innerHTML + '</pre>')).replace(script);
-                script.replace(Node(D.toDom('<pre>'  + script.node.innerHTML + '</pre>')));
+        seajs.use(['arale.event-2.0-SNAPSHOT.js', 'arale.dom-2.0-SNAPSHOT.js', 'arale.array-2.0-SNAPSHOT.js'], function(E, dom, A) {
+            E.domReady(function() {
+                var consoleDiv = dom.$('console');
+                console.log = function() {
+                    consoleDiv.adopt(dom.$D.toDom('<div>' + [].slice.call(arguments).join(' ') + '</div>'));
+                };
+                A(dom.$$('script.example')).each(function(script) {
+                    //Node(D.toDom('<pre>'  + script.node.innerHTML + '</pre>')).replace(script);
+                    script.replace(dom.$Node(dom.$D.toDom('<pre>'  + script.node.innerHTML + '</pre>')));
+                });
             });
         });
     </script>
@@ -40,12 +41,16 @@
     <h3>arale.cookie <span>操作cookie</span></h3>
     <script class="example">
         function example1()  {
-            arale.cookie("newcookie", "8", { expires: 5 });
-            console.log('document.cookie result: '+document.cookie);
+            seajs.use('${artifactId}-${version}.js', function(cookie) {
+                cookie("newcookie", "8", { expires: 5 });
+                console.log('document.cookie result: '+document.cookie);
+            });
         }
         function example2()  {
-            arale.cookie("newcookie", null, { expires: -1 });
-            console.log('document.cookie result: '+document.cookie);
+            seajs.use('${artifactId}-${version}.js', function(cookie) {
+                cookie("newcookie", null, { expires: -1 });
+                console.log('document.cookie result: '+document.cookie);
+            });
         }
         
     </script>
@@ -56,8 +61,10 @@
     <h3>arale.cookie.isSupported <span>当前页面是否支持cookie</span></h3>
     <script class="example">
         function example3()  {
-            arale.cookie.isSupported();
-            console.log('本页面是否支持cooki : '+arale.cookie.isSupported());
+            seajs.use('${artifactId}-${version}.js', function(cookie) {
+                cookie.isSupported();
+                console.log('本页面是否支持cooki : '+ cookie.isSupported());
+            });
         }
     </script>
     <button onclick="example3()">Excute</button>

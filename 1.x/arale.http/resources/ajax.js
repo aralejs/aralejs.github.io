@@ -3,13 +3,14 @@
  * @name arale.ajax
  * @description ajax请求模块,arale.ajax可以通过全局变量Ajax来代替访问
  */
-var arale = window.arale || require('arale.base');
-var $H = window.$H || require('arale.hash');
-var $S = window.$S || require('arale.string');
-var $A = window.$A || require('arale.array');
-var $ = window.$ || require('arale.dom').$;
-var $$ = window.$$ || require('arale.dom').$$;
-var $URI = window.$URI || require('arale.uri');
+var arale = require('arale.base');
+var $H = require('arale.hash');
+var $S = require('arale.string');
+var $A = require('arale.array');
+var $ = require('arale.dom').$;
+var $$ = require('arale.dom').$$;
+var $URI = require('arale.uri');
+var $Ajax;
 
 arale.module('arale.ajax', (function() {
     var getOptions = function() {
@@ -243,7 +244,6 @@ arale.module('arale.ajax', (function() {
             }
             //2011.10.27 增加url装饰功能, 通过对这个方法的扩展来对请求的url进行扩展
             var url_old = url;
-            url = $Ajax.decorateUrl(url);
             url = url ? url : url_old;
             this._xhr.open(this._options.method.toUpperCase(), url, this._options.async);
             $H(this._options.headers).each(function(key, value) {
@@ -532,7 +532,8 @@ arale.module('arale.ajax', (function() {
                     succuss: options
                 };
             }
-            var jsonp = new $Jsonp.JsonpFactory(url,options);
+            console.log(exports);
+            var jsonp = new exports.$Jsonp.JsonpFactory(url,options);
             var data = options.data || {};
             data['_input_charset'] = 'utf-8';
             if(!delay){
@@ -565,8 +566,7 @@ arale.module('arale.ajax', (function() {
             return text;
         }
      };
-    window.Ajax = exportsObject;
-    exports.$Ajax = exportsObject;
+    $Ajax = window.Ajax = exports.$Ajax = exportsObject;
     return exportsObject;
 }()), '$Ajax');
 

@@ -397,7 +397,7 @@ function bit_rol(num, cnt)
   return (num << cnt) | (num >>> (32 - cnt));
 }
 
-var arale = window.arale || require('arale.base');
+var arale = require('arale.base');
 arale.namespace('arale.md5')
 exports.md5 = arale.md5 = hex_md5;
 

@@ -3,7 +3,7 @@
  * @namespace
  * uri处理模块，其中包括等同Location相关的处理函数(hostname,pathname等)
  */
-var arale = window.arale || require('arale.base');
+var arale = require('arale.base');
 arale.module("arale.uri", (function(){
     
     var _re_search = /\?(.*)/,
