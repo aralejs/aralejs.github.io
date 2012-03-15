@@ -7,8 +7,8 @@
  * @author <a href="mailto:xuning@alipay.com">xuning@alipay.com</a>
  * $H({name : "xuning", email : "xuning@alipay.com"}); 
  */
+var arale = require('arale.base');
 arale.module("arale.hash", (function(){
-    var arale = window.arale || require('arale.base');
 	var CHash = arale.dblPrototype({},function(obj){
 		this.obj = obj;
 	});
@@ -250,9 +250,8 @@ arale.module("arale.hash", (function(){
 	var HashFactory = function(obj){	
 		return new CHash(obj);
 	}
-	HashFactory.fn =CHash.prototype;
+	HashFactory.fn = CHash.prototype;
     //exports interface
-    window.H = HashFactory;
-    module.exports = HashFactory;
+    window.H = module.exports = HashFactory;
 	return HashFactory;
 }),"$H");

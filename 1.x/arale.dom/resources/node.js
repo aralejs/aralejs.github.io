@@ -9,11 +9,10 @@
  * @example
  * $Node(document.getElementById("id"));
  */
-//var $E = window.$E || require('arale.event');
-//console.log('arale.dom', $E);
-var $S = require('arale.string');
-var $ = window.$,
-    $$ = window.$$;
+var $Node,
+    $ = exports.$,
+    $$ = exports.$$,
+    $D = exports.$D;
 
 arale.module("arale.node", (function(){
 
@@ -818,7 +817,7 @@ arale.module("arale.node", (function(){
 	
 	NodeFactory.fn = Node.prototype;
 
-	$Node = window.Node = NodeFactory = exports.$Node = NodeFactory;
+	$Node = window.Node = exports.$Node = NodeFactory;
 	return NodeFactory;
 }), '$Node');
 
@@ -827,12 +826,11 @@ $A(("blur focus focusin focusout load resize scroll unload click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
 	"change select submit keydown keypress keyup error").split(" ")).each(function(key){
 		exports.$Node.fn[key] = function(context,method){
-			$E.connect(this,'on'+key,arale.hitch(context,method));
-			return this;
+		    throw new Error('请先加载arale.event模块在使用此方法!');
 			//return $E.connect(this,'on'+key,arale.hitch(context,method));
 		};
 });
 exports.$Node.fn['trigger'] = function(type,data){
-	$E.trigger(this,type,data);
+	throw new Error('请先加载arale.event模块在使用此方法!');
 };
 

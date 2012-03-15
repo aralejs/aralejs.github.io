@@ -7,6 +7,8 @@
 
 
 var arale = require('arale.base');
+var $A = require('arale.array');
+var $S = require('arale.string');
 var $Node, $D;
 (function(arale){
 

@@ -5,7 +5,9 @@
  * @description
  * 可以直接使用$E.来操作方法
  */
-var arale = require('arale.base');
+var arale = require('arale.base'),
+    $A = require('arale.array');
+
 arale.module('arale.event.object', (function(arale) {
     //fix delete currentTarget
     var doc = document,

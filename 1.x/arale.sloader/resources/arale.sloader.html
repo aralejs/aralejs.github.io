@@ -35,6 +35,11 @@
         <a href="#" onclick="testRequire2()">测试加载arale.event模块</a></br></br>
         <a href="#" onclick="testRequireXbox()">测试加载xbox</a></br></br>
         <a href="#" onclick="testRequireAutocomplete()">测试加载autocomplete</a></br></br>
+        <a href="#" onclick="testCyclingRequireDom()">测试dom和事件的循环依赖(只加载dom)</a></br></br>
+        <a href="#" onclick="testCyclingRequireEvent()">测试dom和事件的循环依赖(加载event)</a></br></br>
+        <div>
+            <div id="dom2" style="border:solid black 2px; width: 300px; height:40px; margin-bottom:20px">点击测试dom和事件的循环依赖(加载event)这个链接后在点我!</div>
+        </div>
         <div id="d1">
             <div style="padding:17px;border:1px solid red;width:400px">
                 <div style="padding:10px;">
@@ -129,6 +134,20 @@
                                 }
                             }
                         }
+                    });
+                });
+            }
+            function testCyclingRequireDom() {
+                seajs.use('arale.dom-2.0-SNAPSHOT.js', function(dom) {
+                    dom.$('dom2').click( function() {
+                        alert('hi');    
+                    });
+                });
+            }
+            function testCyclingRequireEvent() {
+                seajs.use(['arale.event-2.0-SNAPSHOT.js', 'arale.dom-2.0-SNAPSHOT.js'], function(eve, dom) {
+                    dom.$('dom2').click( function() {
+                        alert('hi');    
                     });
                 });
             }

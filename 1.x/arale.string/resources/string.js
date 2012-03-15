@@ -5,10 +5,8 @@
  * @returns {CString} 封装后的字符串
  * 字符串操作模块，提供trim、clean等众多对字符串操作的功能函数
  */
+var arale = require('arale.base');
 arale.module('arale.string', (function(){
-
-    var arale = window.arale || require('arale.base');
-        
     var _encodeUriRegExp = /^[a-zA-Z0-9\-_.!~*'()]*$/;
     var _amperRe = /&/g;
     var _ltRe    = /</g;
@@ -438,9 +436,7 @@ arale.module('arale.string', (function(){
 		return new CString(strr);
 	}
 	StringFactory.fn = CString.prototype;
-
-    window.S = StringFactory;
-    module.exports = StringFactory;
+    window.S = module.exports = StringFactory;
 
 	return StringFactory;
 }), '$S');

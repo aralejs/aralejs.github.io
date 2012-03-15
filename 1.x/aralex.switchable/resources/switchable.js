@@ -25,7 +25,8 @@ var arale = require('arale.base');
 var declare = require('arale.class');
 var $E = require('arale.event');
 var $A = require('arale.array');
-require('arale.dom');
+var $ = require('arale.dom').$;
+var $$ = require('arale.dom').$$;
 var aralexBase = require('aralex.base');
 module.exports = declare('aralex.Switchable', [aralexBase.Widget], {
         /** @lends aralex.Switchable.prototype */

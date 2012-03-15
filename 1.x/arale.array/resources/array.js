@@ -1,5 +1,6 @@
+var arale = require('arale.base');
+
 arale.module('arale.array', function() {
-    var arale = window.arale || require('arale.base');
     /**
      * @name CArray
      * @description arale框架中对原生数组的封装类型，调用arale.array()或$A()来把原生数组转换为CArray类型，这样就可以使用我们封装好的很多数组操作了。<br/>CArray类型的数组保存了一个arr属性，是对原生数组的引用。这个类型是私有的，无法直接访问到。
@@ -444,8 +445,7 @@ arale.module('arale.array', function() {
     }
     ArrayFactory.fn = CArray.prototype;
 
-    window.A = ArrayFactory;
-    module.exports = ArrayFactory;
+    window.A = module.exports = ArrayFactory;
 
     return ArrayFactory;
 }, '$A');

@@ -22,6 +22,8 @@ var validator = new aralex.validator.ClassicValidator({
  */
 var $Node = require('arale.dom').$Node;
 var $D = require('arale.dom').$D;
+var $ = require('arale.dom').$;
+var $$ = require('arale.dom').$$;
 var $E = require('arale.event');
 var $A = require('arale.array');
 var Validator = require('aralex.validator.Validator');

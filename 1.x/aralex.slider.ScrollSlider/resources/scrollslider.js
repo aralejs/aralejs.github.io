@@ -32,6 +32,8 @@ var $A = require('arale.array');
 var declare = require('arale.class');
 var Switchable = require('aralex.switchable');
 var $Node = require('arale.dom').$Node;
+var $ = require('arale.dom').$;
+var $$ = require('arale.dom').$$;
 var $Animator = require('arale.fx');
 module.exports = declare('aralex.slider.ScrollSlider', [Switchable], {
     /** @lends aralex.slider.ScrollSlider.prototype */

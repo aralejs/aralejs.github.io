@@ -1,5 +1,6 @@
 var arale = require('arale.base');
-require('arale.dom');
+var $ = require('arale.dom').$;
+var $$ = require('arale.dom').$$;
 var $E = require('arale.event');
 var $S = require('arale.string');
 var $A = require('arale.array');

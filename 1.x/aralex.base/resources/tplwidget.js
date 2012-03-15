@@ -5,6 +5,7 @@
  * @extends aralex.Widget
  * @author <a href="hui.kang@alipay.com">康辉</a>
 */
+var tmpl = require('arale.tmpl');
 
 exports.TplWidget = arale.declare('aralex.TplWidget', exports.Widget, {
     /** @lends aralex.TplWidget.prototype */

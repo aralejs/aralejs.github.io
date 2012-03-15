@@ -5,8 +5,6 @@
  * @description
  * 可以直接使用$E.来操作方法 .
  */
-var arale = window.arale || require('arale.base');
-var $A = window.$A || require('arale.array');
 
 arale.module('arale.event.store', (function(arale) {
     var array = arale.array, arr = Array.prototype;

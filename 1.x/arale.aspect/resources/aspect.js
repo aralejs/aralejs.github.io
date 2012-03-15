@@ -4,10 +4,11 @@
  * 面向切面编程实现，可以方便的外部对某个对象的方法进行增强
  * @author <a href="mail:hui.kang@alipay.com">hui.kang</a> 
  */
-var arale = window.arale || require('arale.base');
+var arale = require('arale.base');
 arale.module("arale.aspect", (function(arale){
-    var a = arale, aop = arale.aspect, ap = Array.prototype,
-            contextStack = [], context;
+    var a = arale,
+        ap = Array.prototype,
+        contextStack = [], context;
         // this class implements a topic-based double-linked list
 	var Advice = function(){
 		 this.next_before = this.prev_before =
@@ -90,7 +91,7 @@ arale.module("arale.aspect", (function(arale){
                 // process around and after events
                 try{
                     // call the around advice or the original method
-                    ret = (advices.prev_around == advices ? self.target : arale.aspect.proceed).apply(this, arguments);
+                    ret = (advices.prev_around == advices ? self.target : exports.proceed).apply(this, arguments);
                 }catch(e){
                     // process after throwing and after events
                     context.dynIndex = context.dynAdvices.length;
@@ -201,7 +202,7 @@ arale.module("arale.aspect", (function(arale){
                     }
                 }
                 if(!a.isArray(advice)){ advice = [advice]; }
-                return arale.aspect.adviseRaw(obj, methods, advice);    // Object
+                return exports.adviseRaw(obj, methods, advice);    // Object
             },
             /**
              * 添加一个advice到指定的方法,这个和上面的比较类似,这个给上面的方法提供服务

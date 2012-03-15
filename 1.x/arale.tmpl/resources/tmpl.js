@@ -1,6 +1,6 @@
-(function(){
+var arale = require('arale.base');
+(function(arale){
   var cache = {};
-  
   exports.tmpl = arale.tmpl = function tmpl(str, data, opt_context){
     //获取模版
     var fn = !/\W/.test(str) ?
@@ -29,4 +29,4 @@
     // 如果用户可能根据数据的不同,反复要用到模版,我们可以给用户提供这样的机会
     return data ? fn.call(opt_context || window, data) : fn;
   };
-})();
+})(arale);

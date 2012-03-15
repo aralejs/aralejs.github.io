@@ -5,14 +5,14 @@
  * @description
  * 可以直接使用$E.来操作方法
  */
-var arale = window.arale || require('arale.base');
-var $A = window.$A || require('arale.array');
-var $E = window.$E || exports;
+var $Node = require('arale.dom').$Node,
+    $ = require('arale.dom').$,
+    $$ = require('arale.dom').$$,
+    $E = exports;
 
 arale.module('arale.event.core', (function(arale) {
     var slice = Array.prototype.slice,
-        array = arale.array, dom = arale.dom,
-        store = arale.event.store.getStore(),
+        store = exports.getStore(),
         doc = document;
 
     var STORE_GUID = 'storeTargetId', SId = arale.now();
@@ -431,39 +431,39 @@ arale.module('arale.event.core', (function(arale) {
          * });
          */
         domReady: function(fn) {
-            var core = arale.event.core;
-            if (core.domReady.loaded) {
+            var domReady = exports.domReady;
+            if (domReady.loaded) {
 				fn();
 				return;
             }
-            core.domReady.observers = core.domReady.observers || [];
-            var observers = core.domReady.observers;
+            domReady.observers = domReady.observers || [];
+            var observers = domReady.observers;
             observers[observers.length] = fn;
-            if (core.domReady.callback) {
+            if (domReady.callback) {
                 return;
             }
-            core.domReady.callback = function() {
-                if (core.domReady.loaded) {
+            domReady.callback = function() {
+                if (domReady.loaded) {
                     return;
                 }
-                core.domReady.loaded = true;
-                if (core.domReady.timer) {
-                    clearInterval(core.domReady.timer);
-                    core.domReady.timer = null;
+                domReady.loaded = true;
+                if (domReady.timer) {
+                    clearInterval(domReady.timer);
+                    domReady.timer = null;
                 }
                 for (var i = 0, length = observers.length; i < length; i++) {
                     var fn = observers[i];
                     observers[i] = null;
                     fn();
                 }
-                core.domReady.callback = core.domReady.observers = null;
+                domReady.callback = domReady.observers = null;
             };
 			//add arale.browser.Engine gecko fixed firefox domReady bug 20110322
 			if (document.readyState && (arale.browser.Engine.gecko || arale.browser.Engine.webkit)) {
-                core.domReady.timer = setInterval(function() {
+                domReady.timer = setInterval(function() {
                     var state = document.readyState;
                     if (state == 'loaded' || state == 'complete') {
-                        core.domReady.callback();
+                        domReady.callback();
                     }
                 }, 50);
             }else if (document.readyState && arale.browser.Engine.trident) {
@@ -473,18 +473,18 @@ arale.module('arale.event.core', (function(arale) {
                 '><\/script>');
             }else {
                 if (window.addEventListener) {
-                    document.addEventListener('DOMContentLoaded', core.domReady.callback, false);
-                    window.addEventListener('load', core.domReady.callback, false);
+                    document.addEventListener('DOMContentLoaded', domReady.callback, false);
+                    window.addEventListener('load', domReady.callback, false);
                 } else if (window.attachEvent) {
 					if(document.readyState == 'complete') {
-						core.domReady.callback();
+						domReady.callback();
 						return;
 					}
-                    window.attachEvent('onload', core.domReady.callback);
+                    window.attachEvent('onload', domReady.callback);
                 } else {
                     var fn = window.onload;
                     window.onload = function() {
-                        core.domReady.callback();
+                        domReady.callback();
                         if (fn) fn();
                     };
                 }
@@ -497,3 +497,18 @@ arale.module('arale.event.core', (function(arale) {
 
 //
 window.E = window.$E = exports;
+
+// enhance dom method
+
+$A(("blur focus focusin focusout load resize scroll unload click dblclick " +
+	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
+	"change select submit keydown keypress keyup error").split(" ")).each(function(key){
+		$Node.fn[key] = function(context, method){
+			$E.connect(this, 'on'+key, arale.hitch(context, method));
+			return this;
+		};
+});
+$Node.fn['trigger'] = function(type, data){
+	$E.trigger(this, type, data);
+};
+

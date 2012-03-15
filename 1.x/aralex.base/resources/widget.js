@@ -106,7 +106,7 @@ exports.Widget = arale.declare('aralex.Widget', null, {
                          }
                      }
                  }
-                 return arale.aspect.proceed.apply(null, arguments);
+                 return $Aspect.proceed.apply(null, arguments);
              }
          };
          $Aspect.advise(this, fn, tracer);

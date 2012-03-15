@@ -5,12 +5,12 @@
  * @author hui.kang@alipay.com
  * @example
 */
-require('arale.base');
-require('arale.class');
-require('arale.aspect');
-require('arale.tmpl');
-require('arale.dom');
-
+var arale = require('arale.base');
+var declare = require('arale.class');
+var $Aspect = require('arale.aspect');
+var $A = require('arale.array');
+var $Node = require('arale.dom').$Node;
+var $E = require('arale.event');
 
 exports.View = arale.declare('aralex.View',null, {
     /** @lends aralex.View.prototype */

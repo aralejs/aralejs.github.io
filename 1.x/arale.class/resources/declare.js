@@ -24,6 +24,7 @@ TOOD
     //本类的prototype
 })
 */
+var arale = require('arale.base');
 
 arale.module('arale.declare', function() {
     var a = arale, contextStack = [];
@@ -79,6 +80,6 @@ arale.module('arale.declare', function() {
         }
         return current._parentModule[current._moduleName] = couns;
     };
-    module.exports = ConstructorFactory;
+    arale.declare = module.exports = ConstructorFactory;
     return ConstructorFactory;
 }, '$Declare');

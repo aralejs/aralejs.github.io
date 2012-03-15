@@ -4,12 +4,13 @@
  * 通过autocomplete类, 方便用户创建一个简单的支持用户上下, 鼠标滑动来选择的suggest.
  */
 var arale = require('arale.base');
+var declare = require('arale.class');
 var aralexBase = require('aralex.base');
 var $E = require('arale.event');
-require('arale.dom');
-declare = require('arale.class');
+var $ = require('arale.dom').$;
+var $$ = require('arale.dom').$$;
 //@$Loader.css;
-module.exports = declare('aralex.autocomplete.AutoComplete', [aralexBase.TplWidget, aralexBase.View], {
+module.exports = arale.declare('aralex.autocomplete.AutoComplete', [aralexBase.TplWidget, aralexBase.View], {
     /** @lends aralex.autocomplete.AutoComplete.prototype */
     /**
      * 数据源, 只需要提供一个方法getData即可, 具体数据的缓存, 数据请求都由数据源来完成

@@ -6,7 +6,6 @@
         <artifactId>arale2-parent</artifactId>
         <version>1.0</version>
     </parent>
-
 	<version>1.0</version>
 	<artifactId>arale2-1.x</artifactId>
 	<name>arale2.1.x</name>
@@ -33,6 +32,12 @@
     	<module>arale.uri</module>
     	<module>aralex.base</module>
     	<module>aralex.xbox</module>
+        <module>aralex.autocomplete</module>
+        <module>aralex.calendar</module>
+        <module>aralex.slider.ScrollSlider</module>
+        <module>aralex.switchable</module>
+        <module>aralex.validator.ClassicValidator</module>
+        <module>aralex.validator.Validator</module>
   </modules>
     <repositories>
         <repository>
