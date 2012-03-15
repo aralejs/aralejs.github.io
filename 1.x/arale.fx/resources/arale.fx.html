@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>arale.fx Demo</title>
+        <script type="text/javascript">
+            araleConfig = {
+                combo_host: 'dev.assets.alipay.net',
+                depSrc: true,
+                combo_path: '/ar/??'
+            }
+        </script>
+        <script type="text/javascript" charset="utf-8" src="http://assets.dev.alipay.net/ar/arale.sloader-2.0-SNAPSHOT-src.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            seajs.config({
+                base: 'http://assets.dev.alipay.net/??',
+                preload: ['arale.sp-combo-2.0-SNAPSHOT.js'],
+                charset: 'utf-8',
+                timeout: 20000,
+                debug: true
+            });
+        </script>
+        <style type="text/css">
+            #div {background:#339966;padding: 20px;width: 300px;position:fixed;right:0;top:0;z-index: 100;}
+
+            .codeContainer {position: relative;padding: 20px;}
+            .codeContainer.hover, .codeContainer:hover {background-color: #ccc;}
+            .executeBtn {display: none;}
+            .hover .executeBtn, .codeContainer:hover .executeBtn {display: block;position: absolute;left: 10px;top: 10px;}
+        </style>
+    </head>
+
+    <body>
+        <button id="fadeInBtn">FadeIn</button>
+        <button id="FadeOutBtn">FadeOut</button>
+        <button id="hideBtn">Hide</button>
+        <button id="showBtn">show</button>
+        <button id="slideDownBtn">slideDown</button>
+        <button id="slideUpBtn">slideUp</button>
+        <div id="div">
+            blablablablabla....</br></br>
+            blablablablabla....</br></br>
+            blablablablabla....</br></br>
+            blablablablabla....</br></br>
+            blablablablabla....</br></br>
+            blablablablabla....</br></br>
+            blablablablabla....</br></br>
+            blablablablabla....</br></br>
+            blablablablabla....</br></br>
+            blablablablabla....</br></br>
+        </div>
+        <script type="text/javascript">
+        seajs.use(['arale.dom-${version}.js', '${artifactId}-${version}.js', 'arale.event-${version}.js'], function(dom, fx) {
+            var $ = dom.$;
+            $("fadeInBtn").click(function(){
+                $("div").fadeIn(1000, function(){
+                    //console.log("fadeIn Complete");
+                });
+            });
+            $("FadeOutBtn").click(function(){
+                $("div").fadeOut(1000, function(){
+                    //console.log("fadeOut Complete");
+                });
+            });
+            $("hideBtn").click(function(){
+                $("div").hide(1000);
+            });
+            $("showBtn").click(function(){
+                $("div").show(1000);
+            });
+            $("slideDownBtn").click(function(){
+                $("div").slideDown(1000);
+            });
+            $("slideUpBtn").click(function(){
+                $("div").slideUp(1000);
+            });
+        });
+        </script>
+        <script charset="utf-8" type="text/javascript" class="example">
+            function example1() {
+                seajs.use(['${artifactId}-${version}.js', 'arale.dom-${version}.js'], function(fx, dom) {
+                    var $ = window.$;
+                    $("div").fadeIn(1000, function(){
+                        //console.log("fadeIn Complete");
+                    });
+                })
+            }
+        </script>
+        <script charset="utf-8" type="text/javascript" class="example">
+            function example2() {
+                seajs.use(['${artifactId}-${version}.js', 'arale.dom-${version}.js'], function(fx, dom) {
+                    var $ = window.$;
+                    $("div").fadeOut(1000, function(){
+                        //console.log("fadeOut Complete");
+                    });
+                });
+            };
+        </script>
+        <script charset="utf-8" type="text/javascript" class="example">
+            function example3() {
+                seajs.use(['${artifactId}-${version}.js', 'arale.dom-${version}.js'], function(fx, dom) {
+                    var $ = window.$;
+                    $("div").hide(1000);
+                });
+            }
+        </script>
+        <script charset="utf-8" type="text/javascript" class="example">
+            function example4() {
+                seajs.use(['${artifactId}-${version}.js', 'arale.dom-${version}.js'], function(fx, dom) {
+                    var $ = window.$;
+                    $("div").show(1000);
+                });
+            }
+        </script>
+        <script charset="utf-8" type="text/javascript" class="example">
+            function example5() {
+                seajs.use(['${artifactId}-${version}.js', 'arale.dom-${version}.js'], function(fx, dom) {
+                    var $ = window.$;
+                    $("div").slideDown(1000);
+                });
+            }
+        </script>
+        <script charset="utf-8" type="text/javascript" class="example">
+            function example6() {
+                seajs.use(['${artifactId}-${version}.js', 'arale.dom-${version}.js'], function(fx, dom) {
+                    var $ = window.$;
+                    $("div").slideUp(1000);
+                });
+            }
+        </script>
+
+
+        <script charset="utf-8" type="text/javascript">
+            seajs.use(['arale.base-${version}.js', 'arale.array-${version}.js', 'arale.event-${version}.js', '${artifactId}-${version}.js', 'arale.dom-${version}.js'], function(arale, A, $E, fx, dom) {
+                var $ = dom.$;
+                var $$ = dom.$$;
+                var Node = dom.$Node;
+                var D = dom.$D;
+                arale.domReady(function() {
+                    A($$('.example')).each(function(script, index) {
+                        var id = 'example' + (index + 1);
+                        var container = Node(D.toDom('<div class="codeContainer"></div>'));
+                        Node(D.toDom('<pre id="' + id + '">'  + script.node.innerHTML + '</pre>')).inject(container);
+                        Node(D.toDom('<button class="executeBtn" onclick="' + id + '()">Execute</button>')).inject(container);
+
+                        if (arale.isIE()) {
+                            var hoverClass = 'hover';
+
+                            container.mouseover(function(e) {
+                                container.addClass(hoverClass);
+                            });
+                            container.mouseout(function(e) {
+                                container.removeClass(hoverClass);
+                            });
+
+                        }
+                        container.inject(document.body);
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
