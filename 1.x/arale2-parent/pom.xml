@@ -136,7 +136,7 @@
         <repository>
             <id>alipay</id>
             <name>alipay</name>
-            <url>http://static.arale.alipay.net:8081/nexus/content/groups/alipay-group</url>
+            <url>http://repo.alipay.im:8081/nexus/content/groups/alipay-group</url>
         </repository>
     </repositories>
 </project>
