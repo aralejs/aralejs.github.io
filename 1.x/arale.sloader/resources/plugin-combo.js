@@ -49,7 +49,6 @@
         //检查id, 如果符合我们的id规则, 则进行combo式的, 等待式的url处理. 如果是不符合我们规则的, 则直接pass(也就是直接调用原有的load.这个可能没有必要
         //因为我们打包的这个插件本来就是为我们所用的.)
         //我们这里需要收集callback即可.
-        console.log('test', arguments);
         if (modUrls.indexOf(url) < 0) {
             modUrls.push(url);
         }

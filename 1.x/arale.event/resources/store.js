@@ -6,8 +6,10 @@
  * 可以直接使用$E.来操作方法 .
  */
 
-arale.module('arale.event.store', (function(arale) {
-    var array = arale.array, arr = Array.prototype;
+define(function(require, exports) {
+    var arale = require('arale.base'),
+        $A = require('arale.array'),
+        arr = Array.prototype;
     /**
         {
             targets:{
@@ -152,4 +154,4 @@ arale.module('arale.event.store', (function(arale) {
         }
     };
     return exportsObject;
-})(arale), 'exports', module);
+});

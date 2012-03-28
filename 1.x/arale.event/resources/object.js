@@ -5,11 +5,11 @@
  * @description
  * 可以直接使用$E.来操作方法
  */
-var arale = require('arale.base'),
-    $A = require('arale.array');
 
-arale.module('arale.event.object', (function(arale) {
+define(function(require, exports) {
     //fix delete currentTarget
+    var arale = require('arale.base'),
+        $A = require('arale.array');
     var doc = document,
         props = 'altKey attrChange attrName bubbles button cancelable charCode clientX clientY ctrlKey data detail eventPhase fromElement handler keyCode layerX layerY metaKey newValue offsetX offsetY originalTarget pageX pageY prevValue relatedNode relatedTarget screenX screenY shiftKey srcElement target toElement view wheelDelta which'.split(' ');
     var EventObject = function(target, domEvent) {
@@ -165,4 +165,4 @@ arale.module('arale.event.object', (function(arale) {
         }
     };
     return exportsObject;
-})(arale), 'exports', module);
+});

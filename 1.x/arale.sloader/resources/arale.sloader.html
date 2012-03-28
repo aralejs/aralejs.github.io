@@ -24,12 +24,13 @@
         <script type="text/javascript" charset="utf-8">
             seajs.config({
                 base: 'http://assets.dev.alipay.net/??',
-                preload: ['arale.sp-combo-2.0-SNAPSHOT.js'],
+                //preload: ['arale.sp-combo-2.0-SNAPSHOT.js'],
                 charset: 'utf-8',
                 timeout: 20000,
                 debug: true
             });
         </script>
+        <script type="text/javascript" charset="utf-8" src="http://assets.dev.alipay.net/ar/arale.core-${version}-src.js"></script>
     </head>
     <body>
         <a href="#" onclick="testRequire2()">测试加载arale.event模块</a></br></br>

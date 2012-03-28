@@ -17,7 +17,7 @@
         <plugins>
             <plugin>
                 <groupId>com.alipay.static.plugins</groupId>
-                <artifactId>maven-arale-plugin</artifactId>
+                <artifactId>arale-maven-plugin</artifactId>
                 <configuration>
                     <type>js</type>
                     <compressLevel>normal</compressLevel>
@@ -26,6 +26,7 @@
                     <repalceCss>false</repalceCss>
                     <gjslint>false</gjslint>
                     <tagBase>http://sources.alipay.net/svn/ueddocs/project/01.Arale/tags/arale2</tagBase>
+                    <define>false</define>
                 </configuration>
                 <executions>
                     <execution>
@@ -61,6 +62,13 @@
                         <phase>package</phase>
                         <goals>
                             <goal>define</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>requireMerge</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>requireMerge</goal>
                         </goals>
                     </execution>
                     <execution>

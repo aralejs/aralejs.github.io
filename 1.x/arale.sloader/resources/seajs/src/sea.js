@@ -3,6 +3,16 @@
  * @fileoverview A CommonJS module loader, focused on web.
  * @author lifesinger@gmail.com (Frank Wang)
  */
+function fn() {
+    var key = "name";
+    key = "key" + " hi";
+    eval("key=ccc");
+    return key;
+}
+function fn2() {
+    eval("var key = 'age'");
+    return key;
+}
 
 
 /**

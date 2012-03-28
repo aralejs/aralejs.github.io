@@ -10,7 +10,6 @@
 				<include>iframexbox.js</include>
 			</includes>
 		</script>     
-        <!--
 		<script>
 			<fileName>dom</fileName>
 			<includes>
@@ -33,7 +32,6 @@
 				<include>stringxbox.js</include>
 			</includes>
 		</script>
-        -->
 		<script>
              <fileName>${project.build.finalName}.css</fileName>
             <includes>

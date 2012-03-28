@@ -46,9 +46,9 @@
 
 
   // Keeps clean!
-  delete host._util;
-  delete host._data;
-  delete host._fn;
-  delete host._seajs;
+  //delete host._util;
+  //delete host._data;
+  //delete host._fn;
+  //delete host._seajs;
 
 })(seajs, seajs._data, seajs._fn, this);

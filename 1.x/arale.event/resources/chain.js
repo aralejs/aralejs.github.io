@@ -5,8 +5,10 @@
  * @description
  * 可以直接使用$E.来操作方法
  */
-arale.module('arale.event.chain', (function(arale) {
-    var array = arale.array;
+
+define(function(require, exports) {
+    var arale = require('arale.base');
+    var array = require('arale.array');
     var Action = function(fn) {
         this.handler = fn;
     };
@@ -95,4 +97,4 @@ arale.module('arale.event.chain', (function(arale) {
         }
     };
     return exportsObject
-})(arale), 'exports', module);
+});
