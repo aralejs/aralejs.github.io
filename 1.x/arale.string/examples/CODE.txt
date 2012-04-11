@@ -1,4 +1,0 @@
-//使用arale.string各个API需要先转成封装对象。
-//trim()去除前后空格
-$S(' a a a ').trim();//将" a a a "转化为封装对象后执行trim
-//返回'a a a'

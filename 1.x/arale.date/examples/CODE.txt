@@ -1,2 +1,0 @@
-//封装成Date对象，可以使用$Date提供的各种API。
-$Date(2000).isLeapYear(); //return true;

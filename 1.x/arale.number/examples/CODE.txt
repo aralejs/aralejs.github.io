@@ -1,3 +1,0 @@
-//封装成N对象，可以使用arale.number提供的API。
-N(22).pad(3,1);
-//return '022.0'

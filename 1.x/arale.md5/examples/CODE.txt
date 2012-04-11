@@ -1,2 +1,0 @@
-hex_md5('some string')  //16进制md5加密
-b64_md5('some string')  //Base64编码加密

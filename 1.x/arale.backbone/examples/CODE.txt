@@ -1,1 +1,0 @@
-请查看Backbone官方教程。http://documentcloud.github.com/backbone/docs/todos.html

@@ -1,1 +1,0 @@
-window.res.push('B');
