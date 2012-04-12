@@ -8,7 +8,7 @@
 
 ### 细则
 
-1. 不与 jQuery 冲突，延续 Write Less, Do More 风格
+1. API 设计不与 jQuery 冲突
 1. 支持 DATA-ATTRIBUTE API
 
 
