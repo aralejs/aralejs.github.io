@@ -6,8 +6,7 @@
 1. 一目了然，容易学习
 
 
-细则
-===
+### 细则
 
 1. 不与 jQuery 冲突，延续 Write Less, Do More 风格
 1. 支持 DATA-ATTRIBUTE API
