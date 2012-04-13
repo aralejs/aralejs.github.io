@@ -34,4 +34,4 @@ Jasmine 官方文档：http://pivotal.github.com/jasmine/
 </html>
 ````
 
-这样就好了。
+这样就可以开始愉悦的 BDD 之旅了。
