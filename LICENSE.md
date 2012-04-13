@@ -1,3 +1,5 @@
+MIT LICENSE
+
 Copyright (c) 2012 Alipay.com, https://alipay.com/
 
 Permission is hereby granted, free of charge, to any person obtaining
