@@ -2,9 +2,9 @@
 
 define(function(require) {
 
-  var Class = require('./../class');
-  var Options = require('./../options');
-  var EventTarget = require('./../event-target');
+  var Class = require('../js/class');
+  var Options = require('../js/options');
+  var EventTarget = require('../js/event-target');
 
   return Class.create({
     Implements: [Options, EventTarget]
