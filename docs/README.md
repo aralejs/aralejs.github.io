@@ -1,2 +1,2 @@
 
-http://aralejs.org/
+请访问：http://aralejs.org/
