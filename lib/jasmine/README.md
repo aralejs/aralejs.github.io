@@ -6,9 +6,9 @@ JavaScript 类库，也不需要 DOM. 使用 Jasmine 可以很容易写出简洁
 
 ````javascript
 describe("Jasmine", function() {
-  it("makes testing JavaScript awesome!", function() {
-    expect(yourCode).toBeLotsBetter();
-  });
+    it("makes testing JavaScript awesome!", function() {
+        expect(yourCode).toBeLotsBetter();
+    });
 });
 ````
 

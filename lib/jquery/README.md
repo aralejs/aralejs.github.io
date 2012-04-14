@@ -9,16 +9,16 @@ Ajax 操作。jQuery 的设计目的是：改变你编写 JavaScript 代码的�
 
 ````javascript
 seajs.config({
-  alias: {
-    'jquery': 'jquery/1.7.2/jquery'
-  }
+    alias: {
+        'jquery': 'jquery/1.7.2/jquery'
+    }
 });
 
 define(function(require, exports) {
 
-  var $ = require('jquery');
+    var $ = require('jquery');
 
-  // 快乐使用 $ 吧
+    // 快乐使用 $ 吧
 
 });
 ````
@@ -33,10 +33,10 @@ jQuery 官方文档：http://api.jquery.com/
 3. 推荐 jQuery 对象的变量命名加上 $ 前缀，比如：
 
 ````javascript
-  var $ = require('jquery');
+    var $ = require('jquery');
 
-  var $tds = $('table td');
-  // 前缀 $ 可以让大家清晰识别出这是一个 jQuery 对象。
+    var $tds = $('table td');
+    // 前缀 $ 可以让大家清晰识别出这是一个 jQuery 对象。
 ````
 
 
