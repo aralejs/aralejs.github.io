@@ -1,4 +1,3 @@
-
 // load sea.js
 (function(m, o, d, u, l, a, r) {
   if(m[d]) return;
@@ -15,48 +14,48 @@
 
 // default config
 seajs.config({
-  alias: {
-    'json': 'json/1.0.1/json',
-    'jasmine-html': 'jasmine/1.1.0/jasmine-html'
-  },
-  preload: [this.JSON ? '' : 'json', 'plugin-text']
+    alias: {
+        'json': 'json/1.0.1/json',
+        'jasmine-html': 'jasmine/1.1.0/jasmine-html'
+    },
+    preload: [this.JSON ? '' : 'json', 'plugin-text']
 });
 
 
 seajs.use(['text!../package.json', 'jasmine-html'], function(data) {
 
-  var jasmineEnv = getJasmineEnv();
-  runSpecs();
+    var jasmineEnv = getJasmineEnv();
+    runSpecs();
 
 
-  function getJasmineEnv() {
-    var env = jasmine.getEnv();
-    env.updateInterval = 1000;
+    function getJasmineEnv() {
+        var env = jasmine.getEnv();
+        env.updateInterval = 1000;
 
-    var trivialReporter = new jasmine.TrivialReporter();
+        var trivialReporter = new jasmine.TrivialReporter();
 
-    env.addReporter(trivialReporter);
+        env.addReporter(trivialReporter);
 
-    env.specFilter = function(spec) {
-      return trivialReporter.specFilter(spec);
-    };
+        env.specFilter = function(spec) {
+            return trivialReporter.specFilter(spec);
+        };
 
-    return env;
-  }
-
-
-  function runSpecs() {
-    var meta = JSON.parse(data);
-
-    var specs = [];
-    for (var i = 0; i < meta.files.length; i++) {
-      var name = meta.files[i].split('/').pop().split('.')[0];
-      specs[i] = './' + name + '-spec.js';
+        return env;
     }
 
-    seajs.use(specs, function() {
-      jasmineEnv.execute();
-    });
-  }
+
+    function runSpecs() {
+        var meta = JSON.parse(data);
+
+        var specs = [];
+        for (var i = 0; i < meta.files.length; i++) {
+            var name = meta.files[i].split('/').pop().split('.')[0];
+            specs[i] = './' + name + '-spec.js';
+        }
+
+        seajs.use(specs, function() {
+            jasmineEnv.execute();
+        });
+    }
 
 });
