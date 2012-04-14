@@ -2,7 +2,7 @@
   "name"          : "base",
   "description"   : "Base 是一个基础模块，包括 Class, EventTarget, Options 等功能。",
   "version"       : "1.0.0",
-  "src"           : [
+  "files"         : [
                       "./js/class.js",
                       "./js/event-target.js",
                       "./js/options.js",
