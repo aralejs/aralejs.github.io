@@ -19,8 +19,8 @@ Jasmine 官方文档：http://pivotal.github.com/jasmine/
 
 在 Arale 项目中使用时，更简单：
 
-1. 首先组件文件遵循 [文件命名与目录结构](https://github.com/alipay/arale/wiki/文件命名与目录结构)
-1. `tests/runner.html` 的内容为：
+1. 首先按照 [文件命名与目录结构](https://github.com/alipay/arale/wiki/文件命名与目录结构) 规范组织好组件文件。
+1. 然后创建 `tests/runner.html` ：
 
 ````html
 <!doctype html>
@@ -35,3 +35,14 @@ Jasmine 官方文档：http://pivotal.github.com/jasmine/
 ````
 
 这样就可以开始愉悦的 BDD 之旅了。
+
+
+## 更新
+
+当 Jasmine 发布新版本，需要更新时，只要运行：
+
+````
+$ node update.js
+````
+
+然后更改 `tools/jasmine-runner.js` 中的版本号就好。
