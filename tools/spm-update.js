@@ -5,7 +5,7 @@ var Install = require('spm').Install;
 
 
 exports.update = function(name) {
-  new Install([name], {
-    to: path.join(__dirname, '../dist')
-  }).run();
+    new Install([name], {
+        to: path.join(__dirname, '../dist')
+    }).run();
 };
