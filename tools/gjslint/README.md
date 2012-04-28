@@ -1,9 +1,17 @@
+##概要
 
-## 概要
-
-请补充（南伯负责）
+gjslint 由 google 出品
 
 
-## 使用说明
+##使用说明
 
-请补充
+###安装
+
+    python setup.py install
+
+###使用
+
+    gjslint a.js
+    
+    // 有些风格问题可能过命令解决
+    fixjsstyle a.js
