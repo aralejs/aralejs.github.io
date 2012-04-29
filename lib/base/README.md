@@ -9,7 +9,7 @@ Base 是一个基础类，提供 Class、Events 和 Options 支持。
 ## 使用说明
 
 
-### extend `SomeClass.extend(properties, [classProperties])`
+### extend `Base.extend(properties, [classProperties])`
 
 使用 `extend` 方法，可以基于 `Base` 类来创建自己的类。参数 `properties`
 是实例属性，`classProperties` 是静态属性，会直接添加到类上。
