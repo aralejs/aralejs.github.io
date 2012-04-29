@@ -20,10 +20,10 @@ var MyClass = Base.extend(properties, staticProperties);
    * (object) 原型属性对象，其属性会被添加到 MyClass.prototype 上。该对象上可以有一些特殊属性，包括
      `Implements` 和 `initialize`.
      * `Implements` - 混入属性，取值如下：
-       * (class) 混入类，该类的原型方法会复制到 MyClass 上。
-       * (array) 混入类组成的数组，这些混入类的原型方法都会复制到 MyClass 上。
+         * (class) 混入类，该类的原型方法会复制到 MyClass 上。
+         * (array) 混入类组成的数组，这些混入类的原型方法都会复制到 MyClass 上。
      * `initialize` - 初始化属性，取值如下：
-       * (function) 初始化方法，会在 MyClass 实例化时调用。
+         * (function) 初始化方法，会在 MyClass 实例化时调用。
    * (function) 初始化方法，含义同 `initialize` 属性。
 1. `staticProperties` - 可选，取值如下：
    * (object) 静态属性对象，其属性会直接添加到 MyClass 上。
