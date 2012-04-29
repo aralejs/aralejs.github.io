@@ -1,15 +1,13 @@
 
 Base 是一个基础类，提供 OO、Events 和 Options 支持。
 
-***
+---
 
 
 ## 使用说明
 
 
 ### Class Method: extend
-
----
 
 基于 Base 创建子类。
 
@@ -110,10 +108,10 @@ define(function(require, exports, module) {
 });
 ```
 
+---
+
 
 ### Class Method: implement
-
----
 
 将传入的对象属性添加到类的原型上。该方法与 `Implements` 属性的功能相同，但如果某个类已存在，
 需要动态修改时，用 `implement` 方法会更方便。
