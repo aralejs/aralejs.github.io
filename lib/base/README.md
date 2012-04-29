@@ -135,14 +135,14 @@ define(function(require, exports, module) {
 
 以上是基本使用方法，`Base` 还提供了 Class、Events 和 Options 模块。去喝杯茶吧，休息一下，回来后继续阅读：
 
-- [Events 使用文档](./docs/events.md)
-- [Options 使用文档](./docs/options.md)
-- [Class 使用文档](./docs/class.md)
-- [类与模块](./docs/meta.md)
+- [Events 使用文档](docs/events.md)
+- [Options 使用文档](docs/options.md)
+- [Class 使用文档](docs/class.md)
+- [类与模块](docs/meta.md)
 
 还有一个很精彩的：
 
-- [竞争对手分析](./docs/competitors.md)
+- [竞争对手分析](docs/competitors.md)
 
 
 ## 模块依赖
