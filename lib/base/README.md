@@ -1,8 +1,7 @@
 
-## 概要
-
 Base 是一个基础类，提供 OO、Events 和 Options 支持。
 
+---
 
 
 ## 使用说明
@@ -15,7 +14,7 @@ Base 是一个基础类，提供 OO、Events 和 Options 支持。
 
 来看一个简单的例子：
 
-```
+```js
 /* pig.js */
 define(function(require, exports, module) {
     var Base = require('base');
@@ -38,7 +37,7 @@ define(function(require, exports, module) {
 
 使用 `extend` 方法创建的类，也拥有 `extend` 方法，可以继续创建子类：
 
-```
+```js
 /* red-pig.js */
 define(function(require, exports, module) {
     var Pig = require('./pig');
@@ -80,7 +79,7 @@ define(function(require, exports, module) {
 });
 ```
 
-```
+```js
 /* flyable-red-pig.js */
 define(function(require, exports, module) {
     var RedPig = require('./red-pig');
@@ -105,7 +104,7 @@ define(function(require, exports, module) {
 方法会更便捷。
 
 
-```
+```js
 /* flyable-red-pig-extension.js */
 define(function(require, exports, module) {
     var FlyableRedPig = require('./flyable-red-pig');
@@ -118,9 +117,9 @@ define(function(require, exports, module) {
 });
 ```
 
-最后，我们得到了会说话、会飞、还会游泳的飞天红猪侠：
+这样，我们得到了会说话、会飞、还会游泳的飞天红猪侠：
 
-```
+```js
 /* test.js */
 define(function(require, exports, module) {
     var FlyableRedPig = require('./flyable-red-pig');
@@ -134,7 +133,18 @@ define(function(require, exports, module) {
 ```
 
 
-## 参考
+以上是基本使用方法，`Base` 还提供了 Class, Events 和 Options 类。去喝杯茶吧，休息一下，回来后继续阅读：
 
-- http://mootools.net/docs/core/Class/Class
-- http://ryanflorence.com/object-oriented-jquery-with-mootools-pigs-take-flight/
+- [Events 使用文档](./docs/events.md)
+- [Options 使用文档](./docs/options.md)
+- [Class 使用文档](./docs/class.md)
+
+还有一个很精彩的：
+
+- [竞争对手分析](./docs/competitors.md)
+
+
+## 反馈
+
+觉得好、有建议，或想拍砖、吐槽，都可以创建 [github issue](https://github.com/alipay/arale/issues/new)
+来告诉我们。
