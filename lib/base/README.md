@@ -17,9 +17,9 @@ var MyClass = Base.extend(properties, staticProperties);
 #### 参数：
 
 1. `properties` - 可选，取值如下：
-   * (object) 原型属性对象，其属性会被添加到 MyClass.prototype 上。该对象上可以有一些特殊
-   属性，包括 implements 和 initialize.
-     * `implements`: 混入属性，取值如下：
+   * (object) 原型属性对象，其属性会被添加到 MyClass.prototype 上。该对象上可以有一些特殊属性，包括
+     `Implements` 和 `initialize`.
+     * `Implements`: 混入属性，取值如下：
        * (class) 混入类，该类的原型方法会复制到 MyClass 上。
        * (array) 混入类组成的数组，这些混入类的原型方法都会复制到 MyClass 上。
      * `initialize`: 初始化属性，取值如下：
@@ -80,7 +80,7 @@ define(function(require, exports, module) {
     var Flyable = require('./flyable');
 
     var FlyablePig = Pig.extend({
-        implements: Flyable,
+        Implements: Flyable,
         
         initialize: function(name) {
             this.superclass.initialize.call(this, name);
