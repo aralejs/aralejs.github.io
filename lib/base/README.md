@@ -1,49 +1,22 @@
 
+## 概要
+
 Base 是一个基础类，提供 OO、Events 和 Options 支持。
 
----
 
 
 ## 使用说明
 
 
-### extend `Base.extend(properties, [classProperties])`
+### extend `extend(properties, [classProperties])`
 
-基于 Base 创建子类。
+使用 `extend` 方法，可以基于 `Base` 类来创建自己的类。参数 `properties`
+是实例属性，`classProperties` 则指明静态属性，会直接添加到类上。
 
-
-#### 语法：
-
-```js
-var MyClass = Base.extend(properties, classProperties);
-```
-
-
-#### 参数：
-
-1. `properties` - 可选，取值如下：
-   * (object) 原型属性对象，其属性会被添加到 MyClass.prototype 上。该对象上可以有一些特殊属性，包括
-     `Implements` 和 `initialize`.
-     * `Implements` - 混入属性，取值如下：
-         * (class) 混入类，该类的原型方法会复制到 MyClass 上。
-         * (array) 混入类组成的数组，这些混入类的原型方法都会复制到 MyClass 上。
-     * `initialize` - 初始化属性，取值如下：
-         * (function) 初始化方法，会在 MyClass 实例化时调用。
-   * (function) 初始化方法，含义同 `initialize` 属性。
-1. `classProperties` - 可选，取值如下：
-   * (object) 类属性对象，其属性会直接添加到 MyClass 上。
-
-
-#### 返回值：
-
-* (class) 创建的新类。
-
-
-#### 例子：
-
-pig.js:
+来看一个简单的例子：
 
 ```js
+/* pig.js */
 define(function(require, exports, module) {
     var Base = require('base');
 
@@ -51,101 +24,114 @@ define(function(require, exports, module) {
         initialize: function(name) {
             this.name = name;
         },
-        
+
         talk: function() {
             alert('我是' + this.name);
         }
     });
-        
+
     module.exports = Dog;
 });
 ```
 
-flyable.js:
+`properties` 的 `initialize` 属性，标明实例的初始化方法，会在构建实例时被调用。
+
+使用 `extend` 方法创建的类，也拥有 `extend` 方法，可以继续创建子类：
 
 ```js
+/* red-pig.js */
 define(function(require, exports, module) {
-    
+    var Pig = require('./pig');
+
+    var RedPig = Pig.extend({
+        initialize: function(name) {
+            this.superclass.initialize.call(this, name);
+        },
+
+        color: '红色'
+    });
+
+    module.exports = RedPig;
+});
+```
+
+需要在子类方法中，调用同名父类方法时，JavaScript 语言自身没有提供类似 `super`
+的方式来轻松实现。用 `extend` 方法来扩展类时，可以通过 `this.superclass.methodName`
+来显式调用父类上的方法。
+
+**注意**：之所以不提供 `super` 方法，原因有二：一是实现起来很麻烦。现有类库的实现方案，都不完美。二是因为在
+JavaScript 编程中，调用 `super` 的需求并不多。简单地通过 `this.superclass`
+来实现已经够用，并足够灵活、清晰。
+
+`properties` 参数中，除了支持用 `initialize` 来标明初始化方法，还可以用 `Implements`
+来标明所创建的类需要从哪些类中混入原型属性。来看例子：
+
+```js
+/* flyable.js */
+define(function(require, exports, module) {
     function Flyable() {
     }
-    
+
     Flyable.prototype.fly = function() {
         alert('我飞起来了');
     };
-    
+
     module.exports = Flyable;
 });
 ```
 
-flyable-pig.js:
-
 ```js
+/* flyable-red-pig.js */
 define(function(require, exports, module) {
-    var Pig = require('./pig');
+    var RedPig = require('./red-pig');
     var Flyable = require('./flyable');
 
-    var FlyablePig = Pig.extend({
+    var FlyableRedPig = RedPig.extend({
         Implements: Flyable,
-        
+
         initialize: function(name) {
             this.superclass.initialize.call(this, name);
         }
     });
-    
-    module.exports = FlyablePig;
+
+    module.exports = FlyableRedPig;
 });
 ```
 
-test.js:
+
+### implement `implement(properties)`
+
+该方法与 `Implements` 属性的功能类似，但如果某个类已存在，需要动态修改时，用 `implement`
+方法会更便捷。
+
 
 ```js
+/* flyable-red-pig-extension.js */
 define(function(require, exports, module) {
-    var FlyablePig = require('./flyable-pig');
-    
-    var pig = new FlyablePig('飞天红猪侠');
-    pig.talk(); // alerts '我是飞天红猪侠'
-    pig.fly();  // alerts '我飞起来了'
-});
-```
+    var FlyableRedPig = require('./flyable-red-pig');
 
----
-
-
-### Base.implement
-
-将传入的对象属性添加到类的原型上。该方法与 `Implements` 属性的功能相同，但如果某个类已存在，
-需要动态修改时，用 `implement` 方法会更方便。
-
-
-#### 语法：
-
-```js
-MyClass.implement(properties);
-```
-
-
-#### 参数：
-
-1. `properties` - 取值如下：
-   * (object) 该对象的属性会添加到类的原型上。
-
-
-#### 例子：
-
-pig-extension.js:
-
-```js
-define(function(require, exports, module) {
-    var Pig = require('./pig');
-
-    Pig.implement({
+    FlyableRedPig.implement({
        swim: function() {
-           alert('我会游泳');
+           alert('我还会游泳');
        }
     });
 });
 ```
 
+最后，我们得到了会说话、会飞、还会游泳的飞天红猪侠：
+
+```js
+/* test.js */
+define(function(require, exports, module) {
+    var FlyableRedPig = require('./flyable-red-pig');
+    require('./flyable-red-pig-extension');
+
+    var pig = new FlyableRedPig('飞天红猪侠');
+    pig.talk(); // alerts '我是飞天红猪侠'
+    pig.fly();  // alerts '我飞起来了'
+    pig.swim(); // alerts '我还会游泳'
+});
+```
 
 
 ## 参考
