@@ -8,11 +8,42 @@
 
 ## 使用说明
 
+使用 `extend` 创建的类，会自动添加上 Events 提供的方法。
 
-### on `object.on(events, callback, [context])`
+```js
+/* book.js */
+define(function(require, exports, module) {
+    var Base = require('base');
+
+    var Book = Base.extend({
+        initialize: function(name, author) {
+            this.name = name;
+            this.author = author;
+        }
+    });
+
+    module.exports = Book;
+});
+```
+
+```js
+/* test.js */
+define(function(require, exports, module) {
+    var Book = require('./book');
+
+    var book = new Book('红楼梦', '曹雪芹');
 
 
-### off `object.off([events], [callback], [context])`
+});
+```
+
+
+### on `object.on(event, callback, [context])`
+
+给对象添加一个事件回调函数。
+
+
+### off `object.off([event], [callback], [context])`
 
 
 * on
