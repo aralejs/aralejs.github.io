@@ -52,7 +52,7 @@ define(function(require, exports, module) {
 上面的例子已经展现了 `on` 和 `trigger` 的基本用法，下面详细阐述所有用法。
 
 
-### on ### `object.on(event, callback, [context])`
+### on `object.on(event, callback, [context])`
 
 给对象添加一个事件回调函数。
 
