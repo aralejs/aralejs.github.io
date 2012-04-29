@@ -15,7 +15,7 @@ Base 是一个基础类，提供 OO、Events 和 Options 支持。
 
 来看一个简单的例子：
 
-```js
+```
 /* pig.js */
 define(function(require, exports, module) {
     var Base = require('base');
@@ -38,7 +38,7 @@ define(function(require, exports, module) {
 
 使用 `extend` 方法创建的类，也拥有 `extend` 方法，可以继续创建子类：
 
-```js
+```
 /* red-pig.js */
 define(function(require, exports, module) {
     var Pig = require('./pig');
@@ -80,7 +80,7 @@ define(function(require, exports, module) {
 });
 ```
 
-```js
+```
 /* flyable-red-pig.js */
 define(function(require, exports, module) {
     var RedPig = require('./red-pig');
@@ -105,7 +105,7 @@ define(function(require, exports, module) {
 方法会更便捷。
 
 
-```js
+```
 /* flyable-red-pig-extension.js */
 define(function(require, exports, module) {
     var FlyableRedPig = require('./flyable-red-pig');
@@ -120,7 +120,7 @@ define(function(require, exports, module) {
 
 最后，我们得到了会说话、会飞、还会游泳的飞天红猪侠：
 
-```js
+```
 /* test.js */
 define(function(require, exports, module) {
     var FlyableRedPig = require('./flyable-red-pig');
