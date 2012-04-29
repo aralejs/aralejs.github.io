@@ -48,9 +48,8 @@ seajs.use(['text!../package.json', 'jasmine-html'], function(data) {
         var meta = JSON.parse(data);
 
         var specs = [];
-        for (var i = 0; i < meta.files.length; i++) {
-            var name = meta.files[i].split('/').pop().split('.')[0];
-            specs[i] = './' + name + '-spec.js';
+        for (var i = 0; i < meta.tests.length; i++) {
+            specs[i] = './' + meta.tests[i] + '-spec.js';
         }
 
         seajs.use(specs, function() {
