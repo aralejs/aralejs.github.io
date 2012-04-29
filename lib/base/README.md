@@ -6,6 +6,11 @@ Base 是一个基础类，提供 Class、Events 和 Options 支持。
 ---
 
 
+## 模块依赖
+
+仅依赖 [seajs](seajs/README.md) 模块。
+
+
 ## 使用说明
 
 
@@ -145,9 +150,14 @@ define(function(require, exports, module) {
 - [竞争对手分析](base/docs/competitors.md)
 
 
-## 模块依赖
+## 演示页面
 
-仅依赖 seajs 模块。
+- [examples/base.html](http://alipay.github.com/arale/lib/base/examples/base.html)
+
+
+## 测试用例
+
+- [tests/runner.html](http://alipay.github.com/arale/lib/base/tests/runner.html)
 
 
 ## 反馈
