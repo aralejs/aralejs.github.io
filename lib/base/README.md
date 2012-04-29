@@ -145,6 +145,11 @@ define(function(require, exports, module) {
 - [竞争对手分析](./docs/competitors.md)
 
 
+## 模块依赖
+
+仅依赖 seajs 模块。
+
+
 ## 反馈
 
 觉得好、有建议，或想拍砖、吐槽，都可以创建 [GitHub Issue](https://github.com/alipay/arale/issues/new)
