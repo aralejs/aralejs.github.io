@@ -11,7 +11,7 @@
 使用 `extend` 创建的类，会自动添加上 `Events` 提供的方法。
 
 ```js
-/* Post.js */
+/* post.js */
 define(function(require, exports, module) {
     var Base = require('base');
 
@@ -22,7 +22,7 @@ define(function(require, exports, module) {
         },
 
         save: function() {
-            // 将内容保存好 ⋯⋯
+            // 将内容保存好⋯⋯
 
             // 然后触发事件：
             this.trigger('saved')
@@ -49,10 +49,10 @@ define(function(require, exports, module) {
 });
 ```
 
-上面的例子已经展现了 `on` 和 `trigger` 方法的基本用法，下面详细阐述所有用法。
+上面的例子已经展现了 `on` 和 `trigger` 的基本用法，下面详细阐述所有用法。
 
 
-### on `object.on(event, callback, [context])`
+### on ### `object.on(event, callback, [context])`
 
 给对象添加一个事件回调函数。
 
