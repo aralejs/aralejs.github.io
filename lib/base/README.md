@@ -94,6 +94,9 @@ define(function(require, exports, module) {
 });
 ```
 
+**注意**：`Implements` 采用首字母大写，是因为小写的 `implements` 是 JavaScript
+保留字。大写也表示其特殊性，与 Mootools 的方式一致。
+
 
 ### implement `SomeClass.implement(properties)`
 
