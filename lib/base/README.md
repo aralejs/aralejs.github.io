@@ -9,7 +9,7 @@ Base 是一个基础类，提供 Class、Events 和 Options 支持。
 ## 使用说明
 
 
-### extend `extend(properties, [classProperties])`
+### extend `SomeClass.extend(properties, [classProperties])`
 
 使用 `extend` 方法，可以基于 `Base` 类来创建自己的类。参数 `properties`
 是实例属性，`classProperties` 则指明静态属性，会直接添加到类上。
@@ -95,7 +95,7 @@ define(function(require, exports, module) {
 ```
 
 
-### implement `implement(properties)`
+### implement `SomeClass.implement(properties)`
 
 该方法与 `Implements` 属性的功能类似，但如果某个类已存在，需要动态修改时，用 `implement`
 方法会更便捷。
