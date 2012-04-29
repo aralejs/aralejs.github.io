@@ -8,34 +8,48 @@
 
 ## 使用说明
 
-使用 `extend` 创建的类，会自动添加上 Events 提供的方法。
+使用 `extend` 创建的类，会自动添加上 `Events` 提供的方法。
 
 ```js
-/* book.js */
+/* Post.js */
 define(function(require, exports, module) {
     var Base = require('base');
 
-    var Book = Base.extend({
-        initialize: function(name, author) {
-            this.name = name;
-            this.author = author;
+    var Post = Base.extend({
+        initialize: function(title, content) {
+            this.title = title;
+            this.content = content;
+        },
+
+        save: function() {
+            // 将内容保存好 ⋯⋯
+
+            // 然后触发事件：
+            this.trigger('saved')
         }
     });
 
-    module.exports = Book;
+    module.exports = Post;
 });
 ```
 
 ```js
 /* test.js */
 define(function(require, exports, module) {
-    var Book = require('./book');
+    var Post = require('./post');
 
-    var book = new Book('红楼梦', '曹雪芹');
+    var post = new Post('岁月如歌', '岁月是一首歌⋯⋯');
 
+    // 监听事件
+    post.on('saved', function() {
+        alert('保存成功');
+    });
 
+    post.save();
 });
 ```
+
+上面的例子已经展现了 `on` 和 `trigger` 方法的基本用法，下面详细阐述所有用法。
 
 
 ### on `object.on(event, callback, [context])`
@@ -44,51 +58,3 @@ define(function(require, exports, module) {
 
 
 ### off `object.off([event], [callback], [context])`
-
-
-* on
-* off
-* trigger 
-* once
-
-### 代码示例一
-默认从base继承下来的对象, 已经具有事件监听和发布功能.
-
-```
-    var Base = require('base');
-    var Foo = base.extend({
-        initialize: function() {
-        
-        }
-    });
-
-    var f = new Foo();
-
-    f.on('say', function() {
-        console.log("hi");
-    });
-    var hello = function() {
-        console.log('hello');
-    };
-    f.on('say', hello);
-    f.once('say', function() {
-        console.log('hi once!');
-    });
-    f.trigger('say');
-
-    f.off('say', hello);
-
-```
-### 代码示例二
-我们也可以自己实例化一个Event对象.
-```
-    var MyEvent = require('base').Events();
-    MyEvent.on('say', function() {
-    
-    });
-```
-
-
-
-
-
