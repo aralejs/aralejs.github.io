@@ -1,7 +1,19 @@
-## Events
-事件扩展. 提供了基本的事件的监听和发布. 
 
-### API
+# Events
+
+`Base.Events` 模块，提供了基本的事件监听、卸载和触发等功能。
+
+---
+
+
+## 使用说明
+
+
+### on `object.on(events, callback, [context])`
+
+
+### off `object.off([events], [callback], [context])`
+
 
 * on
 * off
