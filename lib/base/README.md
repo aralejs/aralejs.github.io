@@ -12,7 +12,7 @@ Base 是一个基础类，提供 Class、Events 和 Options 支持。
 ### extend `SomeClass.extend(properties, [classProperties])`
 
 使用 `extend` 方法，可以基于 `Base` 类来创建自己的类。参数 `properties`
-是实例属性，`classProperties` 则指明静态属性，会直接添加到类上。
+是实例属性，`classProperties` 是静态属性，会直接添加到类上。
 
 来看一个简单的例子：
 
@@ -35,7 +35,7 @@ define(function(require, exports, module) {
 });
 ```
 
-`properties` 的 `initialize` 属性，标明实例的初始化方法，会在构建实例时被调用。
+`initialize` 属性，标明实例的初始化方法，会在构建实例时调用。
 
 使用 `extend` 方法创建的类，也拥有 `extend` 方法，可以继续创建子类：
 
@@ -56,13 +56,13 @@ define(function(require, exports, module) {
 });
 ```
 
-需要在子类方法中，调用同名父类方法时，JavaScript 语言自身没有提供类似 `super`
-的方式来轻松实现。用 `extend` 方法来扩展类时，可以通过 `this.superclass.methodName`
-来显式调用父类上的方法。
+**注意**：需要在子类方法中，调用父类中的同名方法时，JavaScript 语言自身并没有提供类似 `super`
+的方式来轻松实现。用 `extend` 方法来创建类时，可以使用 `this.superclass.methodName`
+来显式调用父类方法。之所以不提供 `super` 方法，原因有二：
 
-**注意**：之所以不提供 `super` 方法，原因有二：一是实现起来很麻烦。现有类库的实现方案，都不完美。二是因为在
-JavaScript 编程中，调用 `super` 的需求并不多。简单地通过 `this.superclass`
-来实现已经够用，并足够灵活、清晰。
+1. 实现起来很麻烦。现有类库的实现方案，都不完美。
+2. 在 JavaScript 编程中，调用 `super` 的需求并不多。简单地通过 `this.superclass`
+来调用已经够用，并很灵活、清晰。
 
 `properties` 参数中，除了支持用 `initialize` 来标明初始化方法，还可以用 `Implements`
 来标明所创建的类需要从哪些类中混入属性。来看例子：
@@ -97,8 +97,8 @@ define(function(require, exports, module) {
 
 ### implement `SomeClass.implement(properties)`
 
-该方法与 `Implements` 属性的功能类似，但如果某个类已存在，需要动态修改时，用 `implement`
-方法会更便捷。
+该方法与 `Implements` 属性的功能相同。当某个类已存在，需要动态修改时，用 `implement`
+方法更便捷。
 
 
 ```js
