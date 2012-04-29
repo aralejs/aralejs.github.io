@@ -1,5 +1,5 @@
 
-Base 是一个基础类，提供 OO、Events 和 Options 支持。
+Base 是一个基础类，提供 Class、Events 和 Options 支持。
 
 ---
 
@@ -133,7 +133,7 @@ define(function(require, exports, module) {
 ```
 
 
-以上是基本使用方法，`Base` 还提供了 Class, Events 和 Options 类。去喝杯茶吧，休息一下，回来后继续阅读：
+以上是基本使用方法，`Base` 还提供了 Class、Events 和 Options 类。去喝杯茶吧，休息一下，回来后继续阅读：
 
 - [Events 使用文档](./docs/events.md)
 - [Options 使用文档](./docs/options.md)
@@ -146,5 +146,5 @@ define(function(require, exports, module) {
 
 ## 反馈
 
-觉得好、有建议，或想拍砖、吐槽，都可以创建 [github issue](https://github.com/alipay/arale/issues/new)
+觉得好、有建议，或想拍砖、吐槽，都可以创建 [GitHub Issues](https://github.com/alipay/arale/issues/new)
 来告诉我们。
