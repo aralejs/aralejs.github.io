@@ -65,19 +65,14 @@ JavaScript 编程中，调用 `super` 的需求并不多。简单地通过 `this
 来实现已经够用，并足够灵活、清晰。
 
 `properties` 参数中，除了支持用 `initialize` 来标明初始化方法，还可以用 `Implements`
-来标明所创建的类需要从哪些类中混入原型属性。来看例子：
+来标明所创建的类需要从哪些类中混入属性。来看例子：
 
 ```js
 /* flyable.js */
 define(function(require, exports, module) {
-    function Flyable() {
-    }
-
-    Flyable.prototype.fly = function() {
+    exports.fly = function() {
         alert('我飞起来了');
     };
-
-    module.exports = Flyable;
 });
 ```
 
@@ -135,7 +130,7 @@ define(function(require, exports, module) {
 ```
 
 
-以上是基本使用方法，`Base` 还提供了 Class、Events 和 Options 类。去喝杯茶吧，休息一下，回来后继续阅读：
+以上是基本使用方法，`Base` 还提供了 Class、Events 和 Options 模块。去喝杯茶吧，休息一下，回来后继续阅读：
 
 - [Events 使用文档](./docs/events.md)
 - [Options 使用文档](./docs/options.md)
