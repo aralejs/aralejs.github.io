@@ -65,7 +65,7 @@ define(function(require, exports, module) {
 来调用已经够用，并很灵活、清晰。
 
 `properties` 参数中，除了支持用 `initialize` 来标明初始化方法，还可以用 `Implements`
-来标明所创建的类需要从哪些类中混入属性。来看例子：
+来标明所创建的类需要从哪些类中混入属性：
 
 ```js
 /* flyable.js */
@@ -135,6 +135,7 @@ define(function(require, exports, module) {
 - [Events 使用文档](./docs/events.md)
 - [Options 使用文档](./docs/options.md)
 - [Class 使用文档](./docs/class.md)
+- [类与模块](./docs/meta.md)
 
 还有一个很精彩的：
 
@@ -143,5 +144,5 @@ define(function(require, exports, module) {
 
 ## 反馈
 
-觉得好、有建议，或想拍砖、吐槽，都可以创建 [GitHub Issues](https://github.com/alipay/arale/issues/new)
+觉得好、有建议，或想拍砖、吐槽，都可以创建 [GitHub Issue](https://github.com/alipay/arale/issues/new)
 来告诉我们。
