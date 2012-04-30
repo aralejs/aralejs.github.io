@@ -6,7 +6,7 @@
 ---
 
 
-## OO 模拟哪些事儿
+## OO 模拟那些事儿
 
 
 ### Douglas Crockford 的尝试与悟道
@@ -87,11 +87,54 @@ YUI 团队是 Douglas 的铁杆粉丝团。从 YUI2 到 YUI3, 都高度贯彻了
 function Animal() {}
 function Dog() {}
 
-Y.extend(Dog, Animal)
+Y.extend(Dog, Animal, {
+    talk: fn,
+    run: fn
+});
 ```
 
+YUI 还提供了 `augment`, `mix` 等方法来混入原型和静态方法。理论上足够用了，但对普通使用者来说，依旧存在陷阱：
 
-JavaScript 是一门大众语言，在类继承模式当道的今天，直接让用户去面对原型继承，未必是最好的选择。
+```js
+function Animal() {}
+function Dog() {}
+
+Y.extend(Dog, Animal);
+
+Dog.prototype = {
+    talk: fn,
+    run: fn
+};
+```
+
+上面的写法，会破坏 `Dog.prototype.constructor`. 正确的写法是：
+
+```js
+Dog.prototype = {
+    constructor: Dog,
+    talk: fn,
+    run: fn
+};
+```
+
+或
+
+```js
+Dog.prototype.talk = fn;
+Dog.prototype.run = fn;
+};
+```
+
+通过 `extend` 等方式来实现原型继承，写法上很灵活。`constructor` 是个不小不大的问题，
+但对于类库来说，任何小问题，都有可能成为大问题。
+
+`extend` 的方式，仅仅是对 JavaScript 语言中原型继承的简单封装，需要有一定 JS
+编程经验后才能娴熟使用。（我个人其实蛮喜欢简简单单的 `extend`）。
+
+然而，JavaScript 是一门大众语言，在类继承模式当道的今天，直接让用户去面对原型继承，未必是最好的选择。
+
+此外，`extend` 的灵活性也是一种“伤害”。定义一个类时，我们更希望能有一种比较固定的书写模式，
+什么东西写在什么地方，都能更简单，更一目了然。
 
 世界的进步在于人类的不满足。作为前端的我们，只是想用更简单更舒适的方式来书写代码。JavaScript
 新的语言规范里，已经提出了 `class` 概念。但在规范确定和浏览器原生支持前，故事还得继续。
