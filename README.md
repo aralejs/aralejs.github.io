@@ -1,8 +1,8 @@
 
 ## 设计原则：KISS
 
-- Simple - 如无必要，勿增实体
-- Stupid - 一目了然，容易学习
+- Simple - 如无必要，勿增实体。
+- Stupid - 一目了然，容易学习。
 
 
 ## 向 Facebook 学习
