@@ -276,7 +276,7 @@ Arale 2.0 的核心原则是 KISS：
 1. 去除 `this.parent()` 语法糖，需要调用时，和 Backbone 类似，推荐直接使用 `SuperClass.prototype.methodName` 来调用。
 1. 借鉴 `Y.Base` 和 `Backbone.Model`, 提供 `Base` 基类，默认集成 `Events` 和 `Options` 功能。
 1. `Events` 的 API 与 jQuery 保持一致，和 `Backbone.Events` 类似。
-1. `Options` 的想法来自 MooTools 的 Class.Extra, 很方便便捷。
+1. `Options` 的想法来自 MooTools 的 Class.Extra, 很简洁方便。
 
 最后形式的 API 文档请阅读：
 
