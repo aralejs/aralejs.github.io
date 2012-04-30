@@ -44,10 +44,10 @@ define(function(require, exports, module) {
 
 ### extend `SomeClass.extend(properties, [classProperties])`
 
-由 `Class.create` 创建的类，也具有 `extend` 方法，功能与 `Base.extend` 完全一样，就不多说了。
+由 `Class.create` 创建的类，也具有 `extend` 方法，功能与 `Base.extend` 完全一样，不多说。
 
 
-### Base 与 Class 的关系
+## Base 与 Class 的关系
 
 Base 是使用 `Class` 创建的一个基础类，默认混入了 `Events` 和 `Options` 支持：
 
