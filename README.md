@@ -1,13 +1,11 @@
 
-设计原则
-----
+## 设计原则：KISS
 
-1. 如无必要，勿增实体。
-1. 一目了然，容易学习。
+- Simple - 如无必要，勿增实体
+- Stupid - 一目了然，容易学习
 
 
-向 Facebook 学习
-----
+## 向 Facebook 学习
 
 1. Done is better than perfect.
 1. Move fast and break things.
