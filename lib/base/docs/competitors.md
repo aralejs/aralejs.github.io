@@ -261,3 +261,25 @@ JavaScript 里，OO 的实现还有很多很多，比较有名气的还有：
 
 ## 我们的选择
 
+Arale 2.0 的核心原则是 KISS：
+
+1. 如无必要，勿增实体 —— 简称 Simple 原则。
+2. 一目了然，容易学习 —— 简称 Stupid 原则。
+
+这两个原则一定程度上是互斥的。比如从 Simple 原则出发，`Y.extend` 就很好了。但从 Stupid
+的原则考虑，明显 `Class.create` 的形式更一目了然。从功能上来讲，这两者本质上都是对原型继承的封装。
+
+权衡考虑后，我们选择 `Class.create`, 一些细节考虑如下：
+
+1. 主要 API 与 MooTools 保持一致，但不用 `new Class`, 而用 `Class.create` 和 `SomeClass.extend`。
+1. `Implements` 接收的参数就是普通对象，与 `implement` 方法保持一致。MooTools 中 `Implements` 属性需要是类。
+1. 去除 `this.parent()` 语法糖，需要调用时，和 Backbone 类似，推荐直接使用 `SuperClass.prototype.methodName` 来调用。
+1. 借鉴 `Y.Base` 和 `Backbone.Model`, 提供 `Base` 基类，默认集成 `Events` 和 `Options` 功能。
+1. `Events` 的 API 与 jQuery 保持一致，和 `Backbone.Events` 类似。
+1. `Options` 的想法来自 MooTools 的 Class.Extra, 很方便便捷。
+
+最后形式的 API 文档请阅读：
+
+- [Base 使用文档](../README.md)
+
+欢迎交流反馈。
