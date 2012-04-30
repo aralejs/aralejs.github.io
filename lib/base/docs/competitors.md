@@ -147,7 +147,7 @@ JavaScript 是一门大众语言，在类继承模式当道的今天，直接让
 
 ### Dean Edwards 的 Base.js
 
-Dean Edwards 是前端界的另一位老前辈。老前辈做过一个当时很著名的 JavaScript 类库：
+Dean Edwards 是前端界的一位老前辈。老前辈做过一个当时很著名的 JavaScript 类库：
 Base.js, 其中有一套非常不错的 OO 实现：
 
 - [A Base Class for JavaScript Inheritance](http://dean.edwards.name/weblog/2006/03/base/)
@@ -160,19 +160,19 @@ Base.js, 其中有一套非常不错的 OO 实现：
 
 作为一名前端，如果没用过 Prototype, 那么恭喜你，说明你还年轻，潜力无限。来看一名老前端的吐槽：
 
-- [Prototype 1.6 的超级符咒](http://hax.iteye.com/blog/167131
+- [Prototype 1.6 的超级符咒](http://hax.iteye.com/blog/167131)
 
-Prototype 目前已经 v1.7 了。从其官方文档来看，Class 继承已经很成熟：
+Prototype 目前已经 v1.7 了。从官方文档来看，Class 继承已经很成熟：
 
 - [Defining classes and inheritance](http://prototypejs.org/learn/class-inheritance)
 
-`Class.create` 的写法已经比较优美了，悲催的是，`$super` 的约定真的让人无语。`super`
+`Class.create` 的写法已经比较优美。然而悲催的是，`$super` 的约定真让人无语。`super`
 虽然很难实现，但也不要这样实现呀：代码一压缩就都浮云了。
 
 
 ### John Resig 的实现
 
-jQuery 专注于 DOM 操作，因此无论现在还是以后，应该都不会添加类继承模拟。但风云变幻的年代里，jQuery
+jQuery 专注于 DOM 操作，因此无论现在还是以后，应该都不会去模拟类继承。但在风云变幻的年代里，jQuery
 作者 John Resig 也忍不住掺合一脚：
 
 - [Simple JavaScript Inheritance](http://ejohn.org/blog/simple-javascript-inheritance/)
@@ -203,8 +203,43 @@ Dog.prototype.sleep = function() {
 };
 ```
 
-很明显，要使用 `super`, 必须严格按照固定模式来写。面对灵活的 JavaScript, 所有 `super`
+很明显，要使用 `_super`, 必须严格按照固定模式来写。面对灵活的 JavaScript, 所有 `super`
 都是美丽的谎言。
+
+
+### MooTools Class
+
+MooTools 的全称是 My OO Tools, 因此其 OO 模拟必然得出类拔萃，否则愧对名字。来看文档：
+
+- [Class](http://mootools.net/docs/core/Class/Class)
+
+`new Class` 的方式很优美，`Extends` 和 `Implements` 的首字母大写，是为了避免与 JavaScript
+的保留字冲突，看习惯了也觉得挺好。
+
+`Class` 和所创建的类上，也都有 `extend` 方法，可以认为是 John Resig 版本的增强版。
+
+`super` 语法糖，MooTools 采用了 `this.parent()` 的形式。原理与 John Resig
+的差不多，都是采用 `wrap` 的方式，但 MooTools 利用了非标准属性 `caller` 来实现。
+
+所有 `wrap` 的实现方式，都要求使用者彻底忘记 `prototype`. 以下代码在 MooTools 里也会出问题：
+
+```js
+Dog.prototype.sleep = function() {
+    this.parent(); // 会报错
+};
+```
+
+在 MooTools 里，需要这样写：
+
+```js
+Dog.implement({
+    sleep: function() {
+        this.parent();
+    }
+});
+```
+
+
 
 
 ## 我们的选择
