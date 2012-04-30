@@ -127,7 +127,7 @@ Dog.prototype.talk = fn;
 Dog.prototype.run = fn;
 ```
 
-通过 `extend` 等方式来实现原型继承，写法上很灵活。`constructor` 虽然是个不小不大的问题，
+通过 `extend` 等方式来实现原型继承，写法上很灵活。`constructor` 是个不小不大的问题，
 但对于类库来说，任何小问题，都有可能成为大问题。
 
 `extend` 的方式，仅仅是对 JavaScript 语言中原型继承的简单封装，需要有一定 JavaScript
@@ -147,12 +147,64 @@ JavaScript 是一门大众语言，在类继承模式当道的今天，直接让
 
 ### Dean Edwards 的 Base.js
 
-这是前端界的另一位老前辈。老前辈做过一个当时很著名的 JavaScript 类库：
-Base.js. 其中有一套非常不错的 OO 实现：
+Dean Edwards 是前端界的另一位老前辈。老前辈做过一个当时很著名的 JavaScript 类库：
+Base.js, 其中有一套非常不错的 OO 实现：
 
 - [A Base Class for JavaScript Inheritance](http://dean.edwards.name/weblog/2006/03/base/)
 
+这个方案开辟了一条阳光大道：通过精心构造的 `Base` 基类来实现类继承。同一时期，JavaScript
+界 OO 模拟蔚然成风，万马奔腾。让我们继续考考古。
 
+
+### Prototype 的 Class
+
+作为一名前端，如果没用过 Prototype, 那么恭喜你，说明你还年轻，潜力无限。来看一名老前端的吐槽：
+
+- [Prototype 1.6 的超级符咒](http://hax.iteye.com/blog/167131
+
+Prototype 目前已经 v1.7 了。从其官方文档来看，Class 继承已经很成熟：
+
+- [Defining classes and inheritance](http://prototypejs.org/learn/class-inheritance)
+
+`Class.create` 的写法已经比较优美了，悲催的是，`$super` 的约定真的让人无语。`super`
+虽然很难实现，但也不要这样实现呀：代码一压缩就都浮云了。
+
+
+### John Resig 的实现
+
+jQuery 专注于 DOM 操作，因此无论现在还是以后，应该都不会添加类继承模拟。但风云变幻的年代里，jQuery
+作者 John Resig 也忍不住掺合一脚：
+
+- [Simple JavaScript Inheritance](http://ejohn.org/blog/simple-javascript-inheritance/)
+
+与 Base2 和 Prototype 相比，John Resig 的实现无疑更漂亮。`_super`
+的实现方案也简单有效，不过在 JavaScript 实现原生的 `class` 之前，所有 `super`
+方案都很难完美。比如：
+
+```js
+var Animal = Class.extend({
+    talk: function() {
+        alert('I am talking.');
+    },
+    sleep: function() {
+        alert('I am sleeping.')
+    }
+});
+
+var Dog = Animal.extend({
+    talk: function() {
+        this._super();
+    }
+});
+
+// 在另一个文件里，扩展 Dog 对象：
+Dog.prototype.sleep = function() {
+    this._super(); // 会报错
+};
+```
+
+很明显，要使用 `super`, 必须严格按照固定模式来写。面对灵活的 JavaScript, 所有 `super`
+都是美丽的谎言。
 
 
 ## 我们的选择
