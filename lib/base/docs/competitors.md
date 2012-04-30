@@ -15,7 +15,7 @@
 
 - [Classical Inheritance in JavaScript](http://javascript.crockford.com/inheritance.html)
 
-这篇文章里，老道分析了为什么要在 JavaScript 里模拟类继承，最主要的目的是复用。老道的实现方式是给
+这篇文章里，老道分析了为什么要在 JavaScript 里模拟类继承：主要目的是复用。老道的实现方式是给
 `Function.prototype` 增加 `method` 和 `inherits` 两个方法，并提供了 `uber` 语法糖。
 
 悲催的是，大神实现的 `inherits` 和 `uber` 存在不少缺陷，国内和国外都有不少人剖析过，可以参考
@@ -33,12 +33,12 @@ JavaScript 中支持类模型的尝试是一个错误。
 
 - [Prototypal Inheritance in JavaScript](http://javascript.crockford.com/prototypal.html)
 
-继续悲催的是，老道的实现，依旧不尽完美。可以参考两篇博文：
+继续悲催的是，老道的实现，依旧有不足之处。可以参考两篇博文：
 
 - [Debunking object\(\)](http://www.nczonline.net/blog/2006/10/14/debunking-object/)
 - [Javascript – How Prototypal Inheritance really works](http://blog.vjeux.com/2011/javascript/how-prototypal-inheritance-really-works.html)
 
-老道的代码虽然存在不少缺陷，但老道的尝试和对原型继承的呼吁依旧非常值得我们尊敬和思考。
+老道的代码虽然不尽完美，但老道的尝试和对原型继承的呼吁依旧非常值得我们尊敬和思考。
 
 研究到此，如果大家都能理解原型继承，问题其实已经终结，特别是在 webkit 等支持 `__proto__` 的运行环境下。比如：
 
@@ -56,11 +56,11 @@ var dog = new Dog();
 // 原型链已成功建立起来，而且很清晰
 ```
 
-老道的 `inherits` 和 NCZ 的 `inherit` 都是本质上都是设置好 `__proto__`
-属性，看清楚了这一点后，一切都很简单。
+老道的 `inherits` 和 NCZ 的 `inherit` 本质上都是设置好 `__proto__`
+属性。看清楚这一点，一切都很简单。
 
 原型继承的确已经够用，但这需要大家都能理解原型继承的原理，对 `__proto__`, `prototype` 和 `new`
-等有清晰的认识。通过 `inherits` 等方法，可以简化部分细节，但用户在使用时，依旧需要面对
+等有清晰的认识。通过 `inherits` 等方法，可以简化部分细节。但用户在使用时，依旧需要面对
 `prototype` 等属性，并且很容易写出有隐患的代码，比如：
 
 ```js
