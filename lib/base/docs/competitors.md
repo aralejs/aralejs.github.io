@@ -276,6 +276,7 @@ Arale 2.0 的核心原则是 KISS：
 1. `Events` 的 API 与 jQuery 保持一致，这与 `Backbone.Events` 也是一样的。
 1. `Options` 的想法来自 MooTools 的 Class.Extra, 很简洁方便。对构建组件非常有帮助。
 
+
 最后形式的 API 文档请阅读：
 
 - [Base 使用文档](../README.md)
