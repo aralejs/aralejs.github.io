@@ -42,10 +42,10 @@ define(function(require, exports, module) {
 });
 ```
 
-大部分类库（比如 YUI、MooTools、KISSY 等）的 OO 实现方式，上面的代码在 `console`
-中的输出都很难直接看出 `collie` 的继承关系：
+大部分类库的 OO 实现方式，上面的代码在 `console` 中的输出都很难直接看出 `collie`
+的继承关系。比如使用 MooTools 时，输出如下：
 
-![mootools-collie.png](docs/assets/mootools-collie.png)
+![mootools-collie.png](assets/mootools-collie.png)
 
 在 SeaJS 环境下，通过 `Class.create` 或 `Base.extend` 创建类时，可以通过
 `seajs.getActiveModule` 方法将类与模块关联起来，这样，最终可以得到下面的效果：
