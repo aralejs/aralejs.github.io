@@ -1,12 +1,12 @@
 
-# 竞争对手分析
+# Base 模块之竞争对手分析
 
 感谢所有老前辈们，感谢所有同类代码。因为有了你们，世界才丰富多采。
 
 ---
 
 
-## 这是一个经典话题
+## OO 模拟哪些事儿
 
 
 ### Douglas Crockford 的尝试与悟道
@@ -43,11 +43,8 @@ JavaScript 中支持类模型的尝试是一个错误。
 研究到此，如果大家都能理解原型继承，问题其实已经终结，特别是在 webkit 等支持 `__proto__` 的运行环境下。比如：
 
 ```js
-function Animal() {
-}
-
-function Dog() {
-}
+function Animal() {}
+function Dog() {}
 
 // 要让 Dog 继承 Animal, 只需：
 Dog.prototype.__proto__ == Animal.prototype;
@@ -59,8 +56,42 @@ var dog = new Dog();
 // 原型链已成功建立起来，而且很清晰
 ```
 
+老道的 `inherits` 和 NCZ 的 `inherit` 都是本质上都是设置好 `__proto__`
+属性，看清楚了这一点后，一切都很简单。
+
 原型继承的确已经够用，但这需要大家都能理解原型继承的原理，对 `__proto__`, `prototype` 和 `new`
-等有清晰的认识。JavaScript 是一门大众语言，在类继承模式当道的今天，直接让用户去面对原型继承，未必是最好的选择。
+等有清晰的认识。通过 `inherits` 等方法，可以简化部分细节，但用户在使用时，依旧需要面对
+`prototype` 等属性，并且很容易写出有隐患的代码，比如：
+
+```js
+function Animal() {}
+function Dog() {}
+
+util.inherits(Dog, Animal);
+
+Dog.prototype = {
+  talk: function() {},
+  run: function() {}
+};
+```
+
+上面的代码，你知道问题在哪吗？请继续阅读。
+
+
+### YUI 之路
+
+YUI 团队是 Douglas 的铁杆粉丝团。从 YUI2 到 YUI3, 都高度贯彻了 Douglas 的精神。在 YUI
+里，提供了 `extend` 方法：
+
+```js
+function Animal() {}
+function Dog() {}
+
+Y.extend(Dog, Animal)
+```
+
+
+JavaScript 是一门大众语言，在类继承模式当道的今天，直接让用户去面对原型继承，未必是最好的选择。
 
 世界的进步在于人类的不满足。作为前端的我们，只是想用更简单更舒适的方式来书写代码。JavaScript
 新的语言规范里，已经提出了 `class` 概念。但在规范确定和浏览器原生支持前，故事还得继续。

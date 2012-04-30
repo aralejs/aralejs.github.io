@@ -51,7 +51,7 @@ define(function(require, exports, module) {
 
     var RedPig = Pig.extend({
         initialize: function(name) {
-            this.superclass.initialize.call(this, name);
+            Pig.prototype.initialize.call(this, name);
         },
 
         color: '红色'
@@ -62,11 +62,11 @@ define(function(require, exports, module) {
 ```
 
 **注意**：需要在子类方法中，调用父类中的同名方法时，JavaScript 语言自身并没有提供类似 `super`
-的方式来轻松实现。用 `extend` 方法来创建类时，可以使用 `this.superclass.methodName`
+的方式来轻松实现。用 `extend` 方法来创建类时，可以使用 `Pig.prototype.methodName`
 来显式调用父类方法。之所以不提供 `super` 方法，原因有二：
 
 1. 实现起来很麻烦。现有类库的实现方案，都不完美。
-2. 在 JavaScript 编程中，调用 `super` 的需求并不多。简单地通过 `this.superclass`
+2. 在 JavaScript 编程中，调用 `super` 的需求并不多。简单地通过 `SuperClass.prototype`
 来调用已经够用，并很灵活、清晰。
 
 `properties` 参数中，除了支持用 `initialize` 来标明初始化方法，还可以用 `Implements`
@@ -91,7 +91,7 @@ define(function(require, exports, module) {
         Implements: Flyable,
 
         initialize: function(name) {
-            this.superclass.initialize.call(this, name);
+            RedPig.prototype.initialize.call(this, name);
         }
     });
 
