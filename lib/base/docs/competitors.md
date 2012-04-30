@@ -239,7 +239,25 @@ Dog.implement({
 });
 ```
 
+除了 `parent`, MooTools 的 `Class` 接口是我见过的最舒服的，最一目了然的。
 
+
+### 还有很多很多
+
+JavaScript 里，OO 的实现还有很多很多，比较有名气的还有：
+
+- [Dojo declare](http://dojotoolkit.org/reference-guide/1.7/dojo/declare.html#dojo-declare)
+- [Klass](https://github.com/ded/klass)
+- [Joose](http://joose.it/)
+- [JS Class](http://jsclass.jcoglan.com/inheritance.html)
+- [Backbone.Model.extend](http://documentcloud.github.com/backbone/#Model-extend)
+
+还有一个很有意思的、崇尚组合的：[traits.js](http://soft.vub.ac.be/~tvcutsem/traitsjs/)
+
+实现方式上都大同小异，有兴趣的可以逐一看看。
+
+写文档比写代码还累呀，终于快接近尾声了 —— 最重要的尾声部分。如果你在家里的话，强烈建议去洗把冷水脸，清爽一下后再来看。
 
 
 ## 我们的选择
+
