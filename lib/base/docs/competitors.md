@@ -239,20 +239,18 @@ Dog.implement({
 });
 ```
 
-除了 `parent`, MooTools 的 `Class` 接口是我见过的最舒服的，最一目了然的。
-
 
 ### 还有很多很多
 
-JavaScript 里，OO 的实现还有很多很多，比较有名气的还有：
+JavaScript 的世界里，OO 的实现还有很多很多，比较有名气的还有：
 
-- [Dojo declare](http://dojotoolkit.org/reference-guide/1.7/dojo/declare.html#dojo-declare)
-- [Klass](https://github.com/ded/klass)
 - [Joose](http://joose.it/)
 - [JS Class](http://jsclass.jcoglan.com/inheritance.html)
+- [Dojo](http://dojotoolkit.org/reference-guide/1.7/dojo/declare.html#dojo-declare)
+- [Klass](https://github.com/ded/klass)
 - [Backbone.Model.extend](http://documentcloud.github.com/backbone/#Model-extend)
 
-还有一个很有意思的、崇尚组合的：[traits.js](http://soft.vub.ac.be/~tvcutsem/traitsjs/)
+还有一个很有意思的、崇尚组合的：[Traits.js](http://soft.vub.ac.be/~tvcutsem/traitsjs/)
 
 实现方式上都大同小异，有兴趣的可以逐一看看。
 
@@ -266,8 +264,8 @@ Arale 2.0 的核心原则是 KISS：
 1. 如无必要，勿增实体 —— 简称 Simple 原则。
 2. 一目了然，容易学习 —— 简称 Stupid 原则。
 
-这两个原则一定程度上是互斥的。比如从 Simple 原则出发，`Y.extend` 就很好了。但从 Stupid
-的原则考虑，明显 `Class.create` 的形式更一目了然。从功能上来讲，这两者本质上都是对原型继承的封装。
+这两个原则是我们选择的权衡点。从 Simple 原则出发，`Y.extend` 就很好了。但从 Stupid
+的原则考虑，明显 `Class.create` 的形式更一目了然，同时在功能上也具有 `Y.extend` 的简洁适用性。
 
 权衡考虑后，我们选择 `Class.create`, 一些细节考虑如下：
 
@@ -275,8 +273,8 @@ Arale 2.0 的核心原则是 KISS：
 1. `Implements` 接收的参数就是普通对象，与 `implement` 方法保持一致。MooTools 中 `Implements` 属性需要是类。
 1. 去除 `this.parent()` 语法糖，需要调用时，和 Backbone 类似，推荐直接使用 `SuperClass.prototype.methodName` 来调用。
 1. 借鉴 `Y.Base` 和 `Backbone.Model`, 提供 `Base` 基类，默认集成 `Events` 和 `Options` 功能。
-1. `Events` 的 API 与 jQuery 保持一致，和 `Backbone.Events` 类似。
-1. `Options` 的想法来自 MooTools 的 Class.Extra, 很简洁方便。
+1. `Events` 的 API 与 jQuery 保持一致，这与 `Backbone.Events` 也是一样的。
+1. `Options` 的想法来自 MooTools 的 Class.Extra, 很简洁方便。对构建组件非常有帮助。
 
 最后形式的 API 文档请阅读：
 
