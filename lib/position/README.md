@@ -1,13 +1,15 @@
-##arale.positon系分整理
-* * *
 
-###功能
+# Position
 
 工具组件，将一个dom节点相对对另一个dom节点进行定位操作。
 
-###API
+---
 
-####position.pin(pinObj, relativeObj)
+
+## 使用说明
+
+
+### position.pin(pinObj, relativeObj)
 
 基础定位方法，接收两个参数。
 
@@ -31,7 +33,8 @@
 		
 		Position.pin({elem:a, x:-10, y:-10});
 
-####position.center
+
+### position.center
 
 居中定位，接收两个参数，将pinElem定位在relativeElem元素的中央位置。
 
@@ -39,7 +42,8 @@
 
 2. relativeElem：相对定位节点，可选。缺省时表示将pinElem定位在屏幕中央。
 
-####position.VIEWPORT
+
+### position.VIEWPORT
 
 当前可视区域的伪元素，当需要相对于当前可视区域定位时，上述参数的elem可传入position.VIEWPORT。
 
