@@ -1,4 +1,6 @@
 
+![arale logo](/alipay/arale/docs/assets/arale-logo.jpg?raw=true)
+
 Arale 是一个开放、简单、易用的前端基础类库。
 
 ---
