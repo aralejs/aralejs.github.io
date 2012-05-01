@@ -1,6 +1,6 @@
 MIT LICENSE
 
-Copyright (c) 2012 Alipay.com, https://alipay.com/
+Copyright (c) 2012 Alipay.com, https://www.alipay.com/
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
