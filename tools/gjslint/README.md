@@ -1,15 +1,20 @@
-##概要
 
-gjslint 由 google 出品
+# gjslint
+
+由 Google 出品。
+
+---
 
 
-##使用说明
+## 使用说明
 
-###安装
+
+### 安装
 
     python setup.py install
 
-###使用
+
+### 使用
 
     gjslint a.js
     
