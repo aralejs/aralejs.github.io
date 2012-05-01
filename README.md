@@ -29,8 +29,10 @@ Arale 是一个开放、简单、易用的前端基础类库。
 1. Code wins arguments.
 
 
-## 相关链接
+## 社区信息
 
 - Website：<http://aralejs.org/>
 - Wiki：<https://github.com/alipay/arale/wiki>
 - Google Groups：<https://groups.google.com/forum/#!forum/aralejs>
+- 阿里旺旺群：66486486（加入密码：aralejs.org）
+- QQ 群：59443088
