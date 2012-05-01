@@ -1,0 +1,204 @@
+/*! comfortable style by lifesinger@gmail.com */
+
+/* =============================================================================
+   Basic style
+   ========================================================================== */
+
+html {
+    background: #F4F4F4;
+    /*background: #F7F6EE url(page-bg.jpg);*/
+    text-rendering: optimizelegibility;
+    /*-webkit-font-smoothing: antialiased; 对中文效果不好 */
+}
+
+body, button, input, select, textarea,
+.comfortable .normal-text {
+    font: 16px/1.62 Georgia, 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #222;
+}
+
+.comfortable p, .comfortable pre,
+.comfortable ul, .comfortable ol, .comfortable dl,
+.comfortable form, .comfortable hr,
+.comfortable .content div {
+    margin: 0.62em 0 1.62em;
+}
+
+.comfortable h1,
+.comfortable h2,
+.comfortable h3,
+.comfortable h4,
+.comfortable h5,
+.comfortable h6 {
+    margin: 1.62em 0 0.62em;
+}
+
+.comfortable h1 {
+    font-size: 1.5em;
+}
+
+.comfortable h2 {
+    font-size: 1.25em;
+}
+
+.comfortable h3,
+.comfortable h4,
+.comfortable h5,
+.comfortable h6 {
+    font-size: 1em;
+}
+
+.comfortable ul {
+    list-style: disc;
+    margin-left: 1em;
+}
+
+.comfortable ol {
+    list-style: decimal;
+    margin-left: 1em;
+}
+
+.comfortable li ul, .comfortable li ol {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1em;
+}
+.comfortable li ul {
+    list-style: circle;
+}
+
+.comfortable a {
+    color: #222;
+    text-decoration: none;
+    border-bottom: 1px dashed #CCC;
+}
+
+.comfortable img {
+    margin: 0.62em 1em 0.31em 0;
+    max-width: 100%;
+}
+
+.comfortable .large-image {
+    display: block;
+    text-align: center;
+    float: none !important;
+}
+
+.comfortable .large-image img {
+    margin-right: 0;
+}
+
+.comfortable td img {
+    /* Sometimes, td is very narrow. Removing max-width can make sure the width
+of td is equal or large than the width of image. */
+    max-width: none;
+}
+
+.comfortable pre,
+.comfortable code,
+.comfortable tt {
+    font-size: 1em;
+    line-height: 1.714285em;
+    font-family: Inconsolata, 'Courier New', monospace;
+}
+
+.comfortable pre {
+    border-left: 1px solid RGB(223, 223, 218);
+    padding: 0.2em 1em;
+    margin-left: 1em;
+}
+
+.comfortable .normal-text {
+    font-size: 1em;
+    border: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+.comfortable blockquote {
+    background: transparent url(quote-open.gif) no-repeat 5px 10px;
+    margin: 0.62em 2em 1em;
+    padding: 0.62em 2em 0.2em;
+    /*border: 1px dashed #CCC;*/
+    color: #555;
+}
+
+.comfortable blockquote p:last-child {
+    margin-bottom: 0.2em;
+}
+
+.comfortable .align-left {
+    float: left;
+    margin-right: 1em;
+    margin-left: 0;
+}
+
+.comfortable .align-right {
+    float: right;
+    margin-right: 0;
+    margin-left: 1em;
+}
+
+.comfortable table {
+    margin-bottom: 1.5em;
+    font-size: 1em;
+    width: 100%;
+}
+
+.comfortable th {
+    text-align: left;
+    padding: .25em .25em .25em .4em;
+}
+
+.comfortable td {
+    vertical-align: top;
+    padding: .25em .25em .25em .4em;
+}
+
+.comfortable tr:nth-child(even) {
+    background: #E8E7E7;
+}
+
+.comfortable hr {
+    color: #DDD;
+    background-color: #DDD;
+    height: 1px;
+    border: none;
+}
+
+/* =============================================================================
+   Layout
+   ========================================================================== */
+
+#page {
+    margin: 0 auto;
+    padding: 20px 75px;
+
+    width: 36em;
+    min-height: 800px;
+    overflow: auto;
+
+    position: relative;
+    left: -25px;
+}
+
+/* =============================================================================
+   Article
+   ========================================================================== */
+
+.article .title {
+    margin-bottom: 2px;
+}
+
+.article .content {
+    margin-top: 1em;
+}
+
+.article hr.end {
+    display: block;
+    margin: 85px 0 125px;
+    height: 10px;
+    border: none;
+    clear: both;
+    background: url(end.png) no-repeat 50% 50%;
+}
