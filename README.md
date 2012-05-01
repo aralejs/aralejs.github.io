@@ -31,5 +31,6 @@ Arale 是一个开放、简单、易用的前端基础类库。
 
 ## 相关链接
 
+- Website：<http://aralejs.org/>
 - Wiki：<https://github.com/alipay/arale/wiki>
-- 官网：<http://aralejs.org/>
+- Google Groups：<https://groups.google.com/forum/#!forum/aralejs>
