@@ -1,4 +1,9 @@
 
+Arale 是一个开放、简单、易用的前端基础类库。
+
+---
+
+
 ## 类库风格
 
 
@@ -11,8 +16,6 @@
 1. **合理抽象，最佳实践。**组件要丰富，也要合理抽象，追求最佳实践。
 1. **适度灵活，适量重复。**不过度设计，只预留必要的可扩展接口。不追求代码的零重复，更追求组件的合理解耦。
 
-Wiki：<https://github.com/alipay/arale/wiki>
-
 
 ## 社区风貌
 
@@ -22,3 +25,9 @@ Wiki：<https://github.com/alipay/arale/wiki>
 1. Move fast and break things.
 1. Stay focused and keep shipping.
 1. Code wins arguments.
+
+
+## 相关链接
+
+- Wiki：<https://github.com/alipay/arale/wiki>
+- 官网：<http://aralejs.org/>
