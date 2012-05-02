@@ -1,9 +1,6 @@
 {
-    "version": "0.1.0",
-
+    "version": "0.9.0",
     "dist": {
         "base.js": "default"
-    },
-
-    "tests": ["class", "base", "events", "options"]
+    }
 }
