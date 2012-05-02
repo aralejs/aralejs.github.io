@@ -46,10 +46,16 @@ seajs.use(['text!../package.json', 'jasmine-html'], function(data) {
 
     function runSpecs() {
         var meta = JSON.parse(data);
+        var tests = meta['tests'] || [];
+
+        // 默认从路径中截取：path/to/xxx/tests/runner.html
+        if (tests.length === 0) {
+            tests.push(location.href.replace(/.+\/(\w+)\/tests\/runner.+/, '$1'));
+        }
 
         var specs = [];
-        for (var i = 0; i < meta.tests.length; i++) {
-            specs[i] = './' + meta.tests[i] + '-spec.js';
+        for (var i = 0; i < tests.length; i++) {
+            specs[i] = './' + tests[i] + '-spec.js';
         }
 
         seajs.use(specs, function() {
