@@ -36,7 +36,7 @@ define(function(require, exports, module) {
         }
     });
 
-    module.exports = Dog;
+    module.exports = Pig;
 });
 ```
 
