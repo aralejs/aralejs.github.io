@@ -1,28 +1,7 @@
-// load sea.js
-(function(m, o, d, u, l, a, r) {
-  if(m[d]) return;
-  function f(n, t) { return function() { r.push(n, arguments); return t; } }
-  m[d] = a = { args: (r = []), config: f(0, a), use: f(1, a) };
-  m.define = f(2);
-  u = o.createElement('script');
-  u.id = d + 'node';
-  u.src = '../../../dist/seajs/1.1.0/sea.js';
-  l = o.getElementsByTagName('head')[0];
-  l.insertBefore(u, l.firstChild);
-})(window, document, 'seajs');
 
-
-// default config
-seajs.config({
-    alias: {
-        'json': 'json/1.0.1/json',
-        'jasmine-html': 'jasmine/1.1.0/jasmine-html'
-    },
-    preload: [this.JSON ? '' : 'json', 'plugin-text']
-});
-
-
-seajs.use(['text!../package.json', 'jasmine-html'], function(data) {
+seajs.use([
+    'text!../package.json',
+    'jasmine/1.1.0/jasmine-html'], function(data) {
 
     var jasmineEnv = getJasmineEnv();
     runSpecs();
@@ -48,9 +27,10 @@ seajs.use(['text!../package.json', 'jasmine-html'], function(data) {
         var meta = JSON.parse(data);
         var tests = meta['tests'] || [];
 
-        // 默认从路径中截取：path/to/xxx/tests/runner.html
+        // Gets the default test from path: path/to/xxx/tests/runner.html
         if (tests.length === 0) {
-            tests.push(location.href.replace(/.+\/(\w+)\/tests\/runner.+/, '$1'));
+            tests.push(location.href
+                    .replace(/.+\/(\w+)\/tests\/runner.+/, '$1'));
         }
 
         var specs = [];
