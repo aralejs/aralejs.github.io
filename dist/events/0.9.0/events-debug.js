@@ -1,6 +1,6 @@
 /* @author lifesinger@gmail.com */
 
-define(function() {
+define("#events/0.9.0/events", [""], function() {
 
     // Events
     // -----------------

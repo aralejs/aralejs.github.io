@@ -4,7 +4,7 @@
  * @author <a href="mailto:xingmin.zhu@alipay.com">偏右</a>
  */
 
-define(function(require, exports, module) {
+define("#position/0.9.0/position", ["jquery"], function(require, exports, module) {
 
 	var position = {},
 		VIEWPORT = { _id : 'VIEWPORT', nodeType : 1 },
