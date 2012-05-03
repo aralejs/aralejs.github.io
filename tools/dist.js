@@ -22,24 +22,26 @@ Object.keys(meta['dist']).forEach(function(filename) {
    build(filename);
 });
 
-console.log('Successfully built to: ' + DIST_DIR);
+console.log('');
+console.log('  Successfully distributed to: ' + DIST_DIR);
+console.log('');
 
 
 function build(filename) {
-    var code = fs.readFileSync(path.join(SRC_DIR, filename));
+    var code = fs.readFileSync(path.join(SRC_DIR, filename), 'utf8');
 
     var id = '#' + module + '/' + meta.version + '/' + module;
     var deps = parseDependencies(code);
 
     code = code.replace('define(function',
-            'define("' + id + '", ["' + deps.join('","') + '"],function');
+            'define("' + id + '", ["' + deps.join('","') + '"], function');
 
     var minfile = path.join(DIST_DIR, filename);
     var debugfile = minfile.replace('.js', '-debug.js');
 
     mkdirS(DIST_DIR);
-    fs.writeFileSync(debugfile, code);
-    fs.writeFileSync(minfile, compress(code));
+    fs.writeFileSync(debugfile, code, 'utf8');
+    fs.writeFileSync(minfile, compress(code), 'utf8');
 }
 
 
