@@ -86,6 +86,6 @@
 
 6. 定位元素到可视区域中央
 
-	position.center(a);
+		position.center(a);
 
 
