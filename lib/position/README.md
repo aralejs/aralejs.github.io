@@ -9,7 +9,7 @@
 ## 使用说明
 
 
-### position.pin(pinObj, relativeObj)
+### position.pin(pinObj, [relativeObj])
 
 基础定位方法，接收两个参数。
 
@@ -34,7 +34,7 @@
 		Position.pin({elem:a, x:-10, y:-10});
 
 
-### position.center
+### position.center(pinElem, [relativeElem])
 
 居中定位，接收两个参数，将pinElem定位在relativeElem元素的中央位置。
 
