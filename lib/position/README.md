@@ -80,7 +80,7 @@
 	
 	Position.pin(a, {elem:b, x:'right', y:'center'});
 	
-或者
+	或者
 	
 	Position.pin(a, {elem:b, x:'100%', y:'50%'});
 
