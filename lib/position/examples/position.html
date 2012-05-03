@@ -66,6 +66,11 @@ h2 {
     <h2>定位到屏幕中央：position.center(a7);</h2>
     <div id="a7" class="elem1">目标元素a7</div>
 </div>
+<div class="example">
+    <h2>处理类似于100%+20px这样的定位：position.pin(a8, {elem:b8, x:'100%+50px', y:'50%-50'});</h2>
+	<div id="a8" class="elem1">目标元素a8</div>
+	<div id="b8" class="elem2">基准元素b8</div
+</div>
 
 <script>
     seajs.use('../src/position', function(position) {
@@ -83,15 +88,18 @@ h2 {
                 a6 = id('a6'),
                 b6 = id('b6'),
                 a7 = id('a7'),
-                b7 = id('b7');
+				b7 = id('b7'),
+				a8 = id('a8'),
+                b8 = id('b8');
 
-        position.pin(a1, {elem:b1, x:50, y:50});
-        position.pin(a2, {elem:b2, x:50, y:50});
+        position.pin(a1, {elem:b1, x:'50px', y:'50px'});
+		position.pin(a2, {elem:b2, x:50, y:50});
         position.pin({elem:a3, x:-50, y:-50}, {elem:b3});
         position.pin({elem:a4, x:'center', y:'50%'}, {elem:b4, x:'100%', y:'50%'});
         position.center(a5, b5);
         position.pin(a6, {x:50,y:50});
-        position.center(a7);
+		position.center(a7);
+        position.pin(a8, {elem:b8, x:'100%+50px', y:'50%-50'});
     });
 </script>
 </body>
