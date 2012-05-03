@@ -68,11 +68,15 @@
 	
 	Position.pin(a, {elem:b, x:'20px', y:0});
 
-3.定位元素到基准元素下方
+3.定位元素到基准元素下方20像素的位置
 	
-	Position.pin(a, {elem:b, x:0, y:'100%'});
+	Position.pin(a, {elem:b, x:0, y:'100%+20px'});
+
+4.定位元素到可视区域中央
+
+	position.center(a);
 	
-4.定位元素到基准元素右方中间位置
+5.定位元素到基准元素右方中间位置
 	
 	Position.pin(a, {elem:b, x:'right', y:'center'});
 	
@@ -80,7 +84,8 @@
 	
 	Position.pin(a, {elem:b, x:'100%', y:'50%'});
 
-5.定位元素到可视区域中央
+6.定位元素到可视区域中央
 
 	position.center(a);
+
 
