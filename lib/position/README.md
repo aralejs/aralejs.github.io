@@ -62,27 +62,27 @@
 
 1. 定位元素到可视区域左上角
 
-	Position.pin(a, {x:0, y:0});	//后一个参数可理解为偏移量
+		position.pin(a, {x:0, y:0});	//后一个参数可理解为偏移量
 
 2. 定位元素到基准元素位置向右偏移20px
 	
-	Position.pin(a, {elem:b, x:'20px', y:0});
+		position.pin(a, {elem:b, x:'20px', y:0});
 
 3. 定位元素到基准元素下方20像素的位置
 	
-	Position.pin(a, {elem:b, x:0, y:'100%+20px'});
+		position.pin(a, {elem:b, x:0, y:'100%+20px'});
 
 4. 定位元素到可视区域中央
 
-	position.center(a);
+		position.center(a);
 	
 5. 定位元素到基准元素右方中间位置
 	
-	Position.pin(a, {elem:b, x:'right', y:'center'});
+		position.pin(a, {elem:b, x:'right', y:'center'});
 	
 	或者
 	
-	Position.pin(a, {elem:b, x:'100%', y:'50%'});
+		position.pin(a, {elem:b, x:'100%', y:'50%'});
 
 6. 定位元素到可视区域中央
 
