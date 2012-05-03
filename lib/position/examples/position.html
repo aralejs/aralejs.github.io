@@ -3,41 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <title>Position Example</title>
-<script src="../../../dist/seajs/1.1.0/sea.js"></script>
-<script>
-    seajs.config({
-		debug: true,
-		alias: {
-			'jquery': '../../../dist/jquery/1.7.2/jquery',
-            'position': '../src/position'
-        }
-	});
-	seajs.use('position', function(position) {
-		var id = function(_id) { return document.getElementById(_id) },
-			a1 = id('a1'),
-			b1 = id('b1'),
-			a2 = id('a2'),
-			b2 = id('b2'),
-			a3 = id('a3'),
-			b3 = id('b3'),
-			a4 = id('a4'),
-			b4 = id('b4'),
-			a5 = id('a5'),
-			b5 = id('b5'),
-			a6 = id('a6'),
-			b6 = id('b6'),
-			a7 = id('a7'),
-			b7 = id('b7');
-		position.pin(a1, {elem:b1, x:50, y:50});
-		position.pin(a2, {elem:b2, x:50, y:50});
-		position.pin({elem:a3, x:-50, y:-50}, {elem:b3});
-		position.pin({elem:a4, x:'center', y:'50%'}, {elem:b4, x:'100%', y:'50%'});
-		position.center(a5, b5);
-		position.pin(a6, {x:50,y:50});
-		position.center(a7);		
-	});
-</script>
-<style type="text/css">
+<script src="../../../tools/seajs-and-its-friends.js"></script>
+<style>
 .example {
 	border:3px dashed #ccc;
 	margin:30px 50px;
@@ -66,38 +33,66 @@ h2 {
 </style>
 </head>
 <body>
-	<div class="example">
-		<h2>基本情况：position.pin(a1, {elem:b1, x:50, y:50});</h2>
-		<div id="a1" class="elem1">目标元素a1</div>
-		<div id="b1" class="elem2">基准元素b1</div>
-	</div>
-	<div class="example">
-		<h2>目标元素的offsetParent不为body：position.pin(a2, {elem:b2, x:50, y:50});</h2>		
-		<div style="position:relative;margin:20px;"><div id="a2" class="elem1">目标元素a2</div></div>
-		<div id="b2" class="elem2">基准元素b2</div>
-	</div>
-	<div class="example">
-		<h2>目标元素带偏移量：position.pin({elem:a3, x:-50, y:-50}, {elem:b3});</h2>		
-		<div id="a3" class="elem1">目标元素a3</div>
-		<div id="b3" class="elem2">基准元素b3</div>
-	</div>
-	<div class="example">
-		<h2>偏移量为left|center|top|%的情况：position.pin({elem:a4, x:'center', y:'50%'}, {elem:b4, x:'100%', y:'50%'});</h2>		
-		<div id="a4" class="elem1">目标元素a4</div>
-		<div id="b4" class="elem2">基准元素b4</div>
-	</div>
-	<div class="example">
-		<h2>定位到元素中央：position.center(a5, b5);</h2>		
-		<div id="a5" class="elem1">目标元素a5</div>
-		<div id="b5" class="elem2">基准元素b5</div>
-	</div>
-	<div class="example">
-		<h2>相对可见区域定位：position.pin(a6, {x:50,y:50});</h2>		
-		<div id="a6" class="elem1">目标元素a6</div>
-	</div>
-	<div class="example">
-		<h2>定位到屏幕中央：position.center(a7);</h2>		
-		<div id="a7" class="elem1">目标元素a7</div>
-	</div>
+<div class="example">
+    <h2>基本情况：position.pin(a1, {elem:b1, x:50, y:50});</h2>
+    <div id="a1" class="elem1">目标元素a1</div>
+    <div id="b1" class="elem2">基准元素b1</div>
+</div>
+<div class="example">
+    <h2>目标元素的offsetParent不为body：position.pin(a2, {elem:b2, x:50, y:50});</h2>
+    <div style="position:relative;margin:20px;"><div id="a2" class="elem1">目标元素a2</div></div>
+    <div id="b2" class="elem2">基准元素b2</div>
+</div>
+<div class="example">
+    <h2>目标元素带偏移量：position.pin({elem:a3, x:-50, y:-50}, {elem:b3});</h2>
+    <div id="a3" class="elem1">目标元素a3</div>
+    <div id="b3" class="elem2">基准元素b3</div>
+</div>
+<div class="example">
+    <h2>偏移量为left|center|top|%的情况：position.pin({elem:a4, x:'center', y:'50%'}, {elem:b4, x:'100%', y:'50%'});</h2>
+    <div id="a4" class="elem1">目标元素a4</div>
+    <div id="b4" class="elem2">基准元素b4</div>
+</div>
+<div class="example">
+    <h2>定位到元素中央：position.center(a5, b5);</h2>
+    <div id="a5" class="elem1">目标元素a5</div>
+    <div id="b5" class="elem2">基准元素b5</div>
+</div>
+<div class="example">
+    <h2>相对可见区域定位：position.pin(a6, {x:50,y:50});</h2>
+    <div id="a6" class="elem1">目标元素a6</div>
+</div>
+<div class="example">
+    <h2>定位到屏幕中央：position.center(a7);</h2>
+    <div id="a7" class="elem1">目标元素a7</div>
+</div>
+
+<script>
+    seajs.use('../src/position', function(position) {
+        var id = function(_id) { return document.getElementById(_id) },
+                a1 = id('a1'),
+                b1 = id('b1'),
+                a2 = id('a2'),
+                b2 = id('b2'),
+                a3 = id('a3'),
+                b3 = id('b3'),
+                a4 = id('a4'),
+                b4 = id('b4'),
+                a5 = id('a5'),
+                b5 = id('b5'),
+                a6 = id('a6'),
+                b6 = id('b6'),
+                a7 = id('a7'),
+                b7 = id('b7');
+
+        position.pin(a1, {elem:b1, x:50, y:50});
+        position.pin(a2, {elem:b2, x:50, y:50});
+        position.pin({elem:a3, x:-50, y:-50}, {elem:b3});
+        position.pin({elem:a4, x:'center', y:'50%'}, {elem:b4, x:'100%', y:'50%'});
+        position.center(a5, b5);
+        position.pin(a6, {x:50,y:50});
+        position.center(a7);
+    });
+</script>
 </body>
 </html>
