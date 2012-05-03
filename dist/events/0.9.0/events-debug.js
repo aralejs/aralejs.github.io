@@ -145,7 +145,7 @@ define("#events/0.9.0/events", [""], function() {
         ];
 
         keys = function(o) {
-            var result = [], name;
+            var result = [], name, i = 0;
 
             for (var p in o) {
                 if (hasOwnProperty(o, p)) {
@@ -154,7 +154,7 @@ define("#events/0.9.0/events", [""], function() {
             }
 
             if (hasDontEnumBug) {
-                while (name = DontEnums.pop()) {
+                while (name = DontEnums[i++]) {
                     if (hasOwnProperty(o, name)) {
                         result.push(name);
                     }
@@ -162,7 +162,7 @@ define("#events/0.9.0/events", [""], function() {
             }
 
             return result;
-        }
+        };
     }
 
 
