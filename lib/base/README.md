@@ -8,7 +8,7 @@ Base 是一个基础类，提供 Class、Events 和 Options 支持。
 
 ## 模块依赖
 
-仅依赖 [seajs](seajs/README.md) 模块。
+依赖 [seajs](seajs/README.md)
 
 
 ## 使用说明
@@ -157,10 +157,11 @@ define(function(require, exports, module) {
 
 ## 测试用例
 
-- [tests/runner.html](http://alipay.github.com/arale/lib/base/tests/runner.html)
+- <http://aralejs.org/lib/base/tests/runner.html>
 
 
 ## 反馈
 
-觉得好、有建议，或想拍砖、吐槽，都可以创建 [GitHub Issue](https://github.com/alipay/arale/issues/new)
+觉得好、有建议，或想拍砖、吐槽，都可以创建
+[GitHub Issue](https://github.com/alipay/arale/issues/new)
 来告诉我们。
