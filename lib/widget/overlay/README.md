@@ -50,13 +50,15 @@
 
 	浮层的父元素，例如document.body。
 	
-* `x` {string|number}
+* `pinOffset` {object}
 
-	相对父元素的横向偏移位置。
+	当前节点的定位点对象，如：{x:0, y:0}。
 	
-* `y` {string|number}
+* `relativeObj` {object}
 
-	相对父元素的纵向偏移位置。
+	基准元素及其定位点对象，如{elem:b, x:10, y:10}。
+
+	这块的定位原理可参照arale.position组件的pin方法。
 
 * `render()` 
 
