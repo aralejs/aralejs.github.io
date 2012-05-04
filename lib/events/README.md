@@ -147,6 +147,11 @@ object.off();
 - <http://aralejs.org/lib/events/tests/runner.html>
 
 
+## 性能对比
+
+- <http://jsperf.com/linked-list-vs-array-for-events>
+
+
 ## 反馈
 
 觉得好、有建议，或想拍砖、吐槽，都可以创建
