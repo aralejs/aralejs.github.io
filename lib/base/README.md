@@ -151,7 +151,7 @@ define(function(require, exports, module) {
 
 ## 演示页面
 
-- [examples/base.html](http://alipay.github.com/arale/lib/base/examples/base.html)
+- [Example](./examples/base.html)
 
 
 ## 测试用例
