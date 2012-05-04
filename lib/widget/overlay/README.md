@@ -20,7 +20,7 @@
 
 * `tpl` {string}
 
-	浮层容器的模板，如'<div class="myoverlay"></div>'。
+	浮层容器的模板，如'\<div class="myoverlay">\</div>'。
 	
 * `content` {string}
 
@@ -57,7 +57,7 @@
 * `relativeObj` {object}
 
 	基准元素及其定位点对象，如{elem:b, x:10, y:10}。
-
+	
 	这块的定位原理可参照arale.position组件的pin方法。
 
 * `render()` 
@@ -113,4 +113,5 @@
         		this.closable && this.superclass.hide();
         	}
 		});
+
 
