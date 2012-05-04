@@ -40,7 +40,7 @@ h2 {
 </div>
 <div class="example">
     <h2>目标元素的offsetParent不为body：position.pin(a2, {elem:b2, x:50, y:50});</h2>
-    <div style="position:relative;margin:20px;border:20px red solid;padding:5px;"><div id="a2" style="position:absolute;top:0;left:0" class="elem1">目标元素a2</div></div>
+    <div style="position:relative;margin:20px;border:20px red solid;padding:10px;"><div id="a2" style="position:absolute;top:0;left:0;" class="elem1">目标元素a2</div></div>
     <div id="b2" class="elem2">基准元素b2</div>
 </div>
 <div class="example">
@@ -60,11 +60,13 @@ h2 {
 </div>
 <div class="example">
     <h2>相对可见区域定位：position.pin(a6, {x:50,y:50});</h2>
-    <div id="a6" class="elem1">目标元素a6</div>
+	<div id="a6" class="elem1">目标元素a6</div>
+	<input type="button" id="J_reposition6" value="点击重定位">	
 </div>
 <div class="example">
     <h2>定位到屏幕中央：position.center(a7);</h2>
     <div id="a7" class="elem1">目标元素a7</div>
+	<input type="button" id="J_reposition7" value="点击重定位">
 </div>
 <div class="example">
     <h2>处理类似于100%+20px这样的定位：position.pin(a8, {elem:b8, x:'100%+50px', y:'50%-50'});</h2>
@@ -73,33 +75,40 @@ h2 {
 </div>
 
 <script>
-    seajs.use('../src/position', function(position) {
-        var id = function(_id) { return document.getElementById(_id) },
-                a1 = id('a1'),
-                b1 = id('b1'),
-                a2 = id('a2'),
-                b2 = id('b2'),
-                a3 = id('a3'),
-                b3 = id('b3'),
-                a4 = id('a4'),
-                b4 = id('b4'),
-                a5 = id('a5'),
-                b5 = id('b5'),
-                a6 = id('a6'),
-                b6 = id('b6'),
-                a7 = id('a7'),
-				b7 = id('b7'),
-				a8 = id('a8'),
-                b8 = id('b8');
-
-        position.pin(a1, {elem:b1, x:'50px', y:'50px'});
-		position.pin(a2, {elem:b2, x:50, y:50});
-        position.pin({elem:a3, x:-50, y:-50}, {elem:b3});
-        position.pin({elem:a4, x:'center', y:'50%'}, {elem:b4, x:'100%', y:'50%'});
-        position.center(a5, b5);
-        position.pin(a6, {x:50,y:50});
-		position.center(a7);
-        position.pin(a8, {elem:b8, x:'100%+50px', y:'50%-50'});
+	seajs.use(['../src/position', 'jquery'], function(position, $) {
+		$(function() {
+			var id = function(_id) { return document.getElementById(_id) },
+					a1 = id('a1'),
+					b1 = id('b1'),
+					a2 = id('a2'),
+					b2 = id('b2'),
+					a3 = id('a3'),
+					b3 = id('b3'),
+					a4 = id('a4'),
+					b4 = id('b4'),
+					a5 = id('a5'),
+					b5 = id('b5'),
+					a6 = id('a6'),
+					b6 = id('b6'),
+					a7 = id('a7'),
+					b7 = id('b7'),
+					a8 = id('a8'),
+					b8 = id('b8');
+			position.pin(a1, {elem:b1, x:'50px', y:'50px'});
+			position.pin(a2, {elem:b2, x:50, y:50});
+			position.pin({elem:a3, x:-50, y:-50}, {elem:b3});
+			position.pin({elem:a4, x:'center', y:'50%'}, {elem:b4, x:'100%', y:'50%'});
+			position.center(a5, b5);
+			position.pin(a6, {x:50,y:50});
+			id('J_reposition6').onclick = function() {
+				position.pin(a6, {x:50,y:50});			
+			};
+			position.center(a7);
+			id('J_reposition7').onclick = function() {
+				position.center(a7);
+			};
+			position.pin(a8, {elem:b8, x:'100%+50px', y:'50%-50'});
+		});
     });
 </script>
 </body>
