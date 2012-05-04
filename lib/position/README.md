@@ -6,7 +6,7 @@
 ---
 
 
-## 使用说明
+## API说明
 
 
 ### position.pin(pinObj, [relativeObj])
