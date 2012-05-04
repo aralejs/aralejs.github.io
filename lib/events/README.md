@@ -149,7 +149,7 @@ object.off();
 
 ## 性能对比
 
-- <http://jsperf.com/linked-list-vs-array-for-events>
+- <http://jsperf.com/events-perfs>
 
 
 ## 反馈
