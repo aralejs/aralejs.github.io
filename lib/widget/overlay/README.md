@@ -105,7 +105,7 @@
 		var overlay = require('overlay');
 		var dialog = overlay.extend({
 			initialize: function(options) {
-         	   this.superclass.initialize.call(this, options);
+         	   this.setOptions(options);
         	},
         	close: function() {
         		this.closable && this.superclass.hide();
