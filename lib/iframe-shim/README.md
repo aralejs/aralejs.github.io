@@ -1,6 +1,6 @@
 # iframe-shim
 
-工具类，在IE6/7下生成空iframe遮挡select和object。此组件对开发者透明，开发者无需再判断浏览器版本。
+工具类，在IE6下生成空iframe遮挡select和object。此组件对开发者透明，开发者无需再判断浏览器版本。
 
 ---
 
