@@ -32,9 +32,10 @@ function build(filename) {
 
     var id = '#' + module + '/' + meta.version + '/' + module;
     var deps = parseDependencies(code);
+    deps = deps.length ? '"' + deps.join('","') + '"' : '';
 
     code = code.replace('define(function',
-            'define("' + id + '", ["' + deps.join('","') + '"], function');
+            'define("' + id + '", [' + deps + '], function');
 
     var minfile = path.join(DIST_DIR, filename);
     var debugfile = minfile.replace('.js', '-debug.js');
