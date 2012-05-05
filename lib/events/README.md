@@ -152,8 +152,8 @@ object.off();
 - <http://jsperf.com/events-perfs>
 
 
-## 反馈
+## 交流讨论
 
-觉得好、有建议，或想拍砖、吐槽，都可以创建
+欢迎创建
 [GitHub Issue](https://github.com/alipay/arale/issues/new)
-来告诉我们。
+来提交反馈。
