@@ -8,6 +8,7 @@ define("#events/0.9.1/events", [], function() {
     //  - https://github.com/documentcloud/backbone/blob/master/backbone.js
     //  - https://github.com/joyent/node/blob/master/lib/events.js
 
+
     // Regular expression used to split event strings
     var eventSplitter = /\s+/;
 
@@ -117,6 +118,19 @@ define("#events/0.9.1/events", [], function() {
         }
 
         return this;
+    };
+
+
+    // Mix `Events` to object instance or Class function.
+    Events.mixTo = function(receiver) {
+        receiver = receiver.prototype || receiver;
+        var proto = Events.prototype;
+
+        for (var p in proto) {
+            if (proto.hasOwnProperty(p)) {
+                receiver[p] = proto[p];
+            }
+        }
     };
 
 
