@@ -32,15 +32,15 @@ define(function(require) {
 
 ```js
 define(function(require) {
-    var Class = require('class');
     var Events = require('events');
 
-    var Dog = Class.create({
-        Implements: Events,
-        sleep: function() {
-            this.trigger('sleep');
-        }
-    });
+    function Dog() {
+    }
+    Events.mixTo(Dog);
+
+    Dog.prototype.sleep = function() {
+        this.trigger('sleep');
+    };
 
     var dog = new Dog();
     dog.on('sleep', function() {
@@ -51,7 +51,7 @@ define(function(require) {
 });
 ```
 
-上面的例子已经展现了 `on` 和 `trigger` 的基本用法，下面详细阐述所有 API.
+上面的例子已经展现了 `on`, `trigger` `mixTo` 等方法的基本用法，下面详细阐述所有 API.
 
 
 ### on `object.on(event, callback, [context])`
@@ -111,6 +111,12 @@ obj.on('x y', fn);
 // 等价：
 obj.on('x').on('y');
 ```
+
+
+### mixTo `Events.mixTo(receiver)`
+
+将 `Events` 的原型方法混入到指定对象或函数原型中。
+
 
 
 ## 测试用例
