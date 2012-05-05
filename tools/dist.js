@@ -1,7 +1,11 @@
 /* @author lifesinger@gmail.com */
 
 // 简洁版构建脚本，等 spm 完善好后，此脚本可废弃
-// Usage: $ node dist.js moduleName
+// Usage:
+//
+//    $ cd arale
+//    $ node tools/dist.js moduleName
+//
 
 var fs = require('fs');
 var path = require('path');
@@ -10,8 +14,8 @@ var jsp = uglifyjs.parser;
 var pro = uglifyjs.uglify;
 
 var module = process.argv[2];
-var SRC_DIR = path.join('../lib', module, 'src');
-var DIST_DIR = path.join('../dist', module);
+var SRC_DIR = path.join('lib', module, 'src');
+var DIST_DIR = path.join('dist', module);
 
 var meta = JSON.parse(fs.readFileSync(path.join(SRC_DIR, '../package.json')));
 DIST_DIR = path.join(DIST_DIR, meta.version);
