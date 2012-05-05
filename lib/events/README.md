@@ -51,48 +51,7 @@ define(function(require) {
 });
 ```
 
-此外，使用 `Base.extend` 创建的类，会自动添加上 `Events` 提供的方法：
-
-```js
-/* post.js */
-define(function(require, exports, module) {
-    var Base = require('base');
-
-    var Post = Base.extend({
-        initialize: function(title, content) {
-            this.title = title;
-            this.content = content;
-        },
-
-        save: function() {
-            // 将内容保存好⋯⋯
-
-            // 然后触发事件：
-            this.trigger('saved')
-        }
-    });
-
-    module.exports = Post;
-});
-```
-
-```js
-/* test.js */
-define(function(require, exports, module) {
-    var Post = require('./post');
-
-    var post = new Post('岁月如歌', '岁月是一首歌⋯⋯');
-
-    // 监听事件
-    post.on('saved', function() {
-        alert('保存成功');
-    });
-
-    post.save();
-});
-```
-
-上面的例子已经展现了 `on` 和 `trigger` 的基本用法，下面详细阐述所有用法。
+上面的例子已经展现了 `on` 和 `trigger` 的基本用法，下面详细阐述所有 API.
 
 
 ### on `object.on(event, callback, [context])`
@@ -105,8 +64,8 @@ define(function(require, exports, module) {
 post.on('saved', callback, that);
 ```
 
-**注意**：`event` 参数有个特殊取值：`all`. 对象上触发任何事件时，都会触发 `all`
-事件的回调函数，传给回调函数的第一个参数是事件名。例如，下面的代码可以将一个对象上的所有事件代理到另一个对象上：
+**注意**：`event` 参数有个特殊取值：`all`. 对象上触发任何事件，都会触发 `all`
+事件的回调函数，传给 `all` 事件回调函数的第一个参数是事件名。例如，下面的代码可以将一个对象上的所有事件代理到另一个对象上：
 
 ```js
 proxy.on('all', function(eventName) {
@@ -140,6 +99,18 @@ object.off();
 ### trigger `object.trigger(event, [*args])`
 
 触发一个或多个事件（用空格分隔）。`*args` 参数会依次传给回调函数。
+
+
+**注意**：`on` 和 `off` 的 `event` 参数也可以表示多个事件（用空格分隔），比如：
+
+```js
+var obj = new Events();
+
+obj.on('x y', fn);
+
+// 等价：
+obj.on('x').on('y');
+```
 
 
 ## 测试用例
