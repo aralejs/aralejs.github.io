@@ -17,7 +17,7 @@
 seajs.config({
     alias: {
         'cookie': 'cookie/1.0.2/cookie',
-        'events': 'events/0.9.0/events',
+        'events': 'events/0.9.1/events',
         'jquery': 'jquery/1.7.2/jquery',
         'json': 'json/1.0.1/json',
         'moment': 'moment/1.6.1/moment',

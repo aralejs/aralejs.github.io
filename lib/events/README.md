@@ -32,15 +32,15 @@ define(function(require) {
 
 ```js
 define(function(require) {
-    var Class = require('class');
     var Events = require('events');
 
-    var Dog = Class.create({
-        Implements: Events,
-        sleep: function() {
-            this.trigger('sleep');
-        }
-    });
+    function Dog() {
+    }
+    Events.mixTo(Dog);
+
+    Dog.prototype.sleep = function() {
+        this.trigger('sleep');
+    };
 
     var dog = new Dog();
     dog.on('sleep', function() {
@@ -51,48 +51,7 @@ define(function(require) {
 });
 ```
 
-此外，使用 `Base.extend` 创建的类，会自动添加上 `Events` 提供的方法：
-
-```js
-/* post.js */
-define(function(require, exports, module) {
-    var Base = require('base');
-
-    var Post = Base.extend({
-        initialize: function(title, content) {
-            this.title = title;
-            this.content = content;
-        },
-
-        save: function() {
-            // 将内容保存好⋯⋯
-
-            // 然后触发事件：
-            this.trigger('saved')
-        }
-    });
-
-    module.exports = Post;
-});
-```
-
-```js
-/* test.js */
-define(function(require, exports, module) {
-    var Post = require('./post');
-
-    var post = new Post('岁月如歌', '岁月是一首歌⋯⋯');
-
-    // 监听事件
-    post.on('saved', function() {
-        alert('保存成功');
-    });
-
-    post.save();
-});
-```
-
-上面的例子已经展现了 `on` 和 `trigger` 的基本用法，下面详细阐述所有用法。
+上面的例子已经展现了 `on`, `trigger` `mixTo` 等方法的基本用法，下面详细阐述所有 API.
 
 
 ### on `object.on(event, callback, [context])`
@@ -105,8 +64,8 @@ define(function(require, exports, module) {
 post.on('saved', callback, that);
 ```
 
-**注意**：`event` 参数有个特殊取值：`all`. 对象上触发任何事件时，都会触发 `all`
-事件的回调函数，传给回调函数的第一个参数是事件名。例如，下面的代码可以将一个对象上的所有事件代理到另一个对象上：
+**注意**：`event` 参数有个特殊取值：`all`. 对象上触发任何事件，都会触发 `all`
+事件的回调函数，传给 `all` 事件回调函数的第一个参数是事件名。例如，下面的代码可以将一个对象上的所有事件代理到另一个对象上：
 
 ```js
 proxy.on('all', function(eventName) {
@@ -142,6 +101,24 @@ object.off();
 触发一个或多个事件（用空格分隔）。`*args` 参数会依次传给回调函数。
 
 
+**注意**：`on` 和 `off` 的 `event` 参数也可以表示多个事件（用空格分隔），比如：
+
+```js
+var obj = new Events();
+
+obj.on('x y', fn);
+
+// 等价：
+obj.on('x').on('y');
+```
+
+
+### mixTo `Events.mixTo(receiver)`
+
+将 `Events` 的原型方法混入到指定对象或函数原型中。
+
+
+
 ## 测试用例
 
 - <http://aralejs.org/lib/events/tests/runner.html>
@@ -149,11 +126,11 @@ object.off();
 
 ## 性能对比
 
-- <http://jsperf.com/linked-list-vs-array-for-events>
+- <http://jsperf.com/events-perfs>
 
 
-## 反馈
+## 交流讨论
 
-觉得好、有建议，或想拍砖、吐槽，都可以创建
+欢迎创建
 [GitHub Issue](https://github.com/alipay/arale/issues/new)
-来告诉我们。
+来提交反馈。

@@ -4,6 +4,12 @@ seajs.use([
     'jasmine/1.1.0/jasmine-html'], function(data) {
 
     var jasmineEnv = getJasmineEnv();
+
+    // make alias
+    this.test = it;
+    this.xtest = xit;
+
+    // go
     runSpecs();
 
 
