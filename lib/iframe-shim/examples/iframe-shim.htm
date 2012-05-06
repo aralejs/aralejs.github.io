@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Iframe-shim Example</title>
+<script src="../../../tools/seajs-and-its-friends.js"></script>
+<script>
+    seajs.config({
+        alias: {
+            'position': '../../position/src/position.js'
+        }
+    });
+</script>
+<style>
+    .example{
+        position:relative;
+        margin:50px;
+        padding:50px;
+        border: 2px dashed #ccc;
+        height:150px;
+    }
+
+    .overlay{
+        position:absolute;
+        width:200px;
+        height:100px;
+        border:1px solid green;
+        background:#fff;
+        z-index:10;
+    }
+
+    h2{
+        position: absolute;
+        top: 0;
+        font-size: 18px;
+        margin: 15px 0;
+    }
+
+    code{
+        position: absolute;
+        right: 0;
+        top:50px;
+        padding-right: 50px;
+    }
+
+    iframe{
+        background:red;
+    }
+</style>
+</head>
+<body>
+
+    <div id="example1" class="example">
+        <h2>正常情况，创建一个遮罩</h2>
+        <code>
+            <pre>
+            iframeshim($('#example1 .overlay')[0]);
+            </pre>
+        </code>
+        <div class="overlay">
+            #example1 .overlay
+        </div>
+        <p>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        </p>
+        <p>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        </p>
+    </div>
+    <div id="example2" class="example">
+        <h2>遮罩会根据dom的宽高进行调节</h2>
+        <code>
+            <pre>
+            var example2 = iframeshim($('#example2 .overlay')[0]);
+            $('#example2 input').blur(function(e){
+                var value = e.currentTarget.value;
+                $('#example2 .overlay').css({
+                    'height': value+'px',
+                    'width': value+'px'
+                });
+                example2.sync();
+            });
+            iframeshim($('#example1 .overlay')[0]);
+            </pre>
+        </code>
+        <div class="overlay" style="top:100px;">
+            #example2 .overlay
+        </div>
+        <p>
+            <input type="text" value="" />
+            输入宽高，blur输入框
+        </p>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+
+    </div>
+    <div id="example3" class="example">
+        <h2>遮罩只会遮盖border以及内容部分，margin则不算</h2>
+        <code>
+            <pre>
+            iframeshim($('#example3 .overlay')[0]);
+            </pre>
+        </code>
+        <div class="overlay" style="border-width:20px;margin:20px;">
+            #example3 .overlay<br>
+            border-width:20px;<br>
+            margin:20px;
+        </div>
+        <p>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        </p>
+        <p>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        </p>
+    </div>
+<script>
+seajs.use(['jquery','../src/iframe-shim'], function($, iframeshim){
+    // example1
+    iframeshim($('#example1 .overlay')[0]);
+
+    //example2
+    var example2 = iframeshim($('#example2 .overlay')[0]);
+    $('#example2 input').blur(function(e){
+        var value = e.currentTarget.value;
+        $('#example2 .overlay').css({
+            'height': value+'px',
+            'width': value+'px'
+        });
+        example2.sync();
+    });
+
+    // example3
+    iframeshim($('#example3 .overlay')[0]);
+
+});
+</script>
+</body>
+</html>
+
