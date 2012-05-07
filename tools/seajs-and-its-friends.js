@@ -16,6 +16,7 @@
 // and its friends
 seajs.config({
     alias: {
+        'base': 'base/0.9.0/base',
         'class': 'class/0.9.0/class',
         'cookie': 'cookie/1.0.2/cookie',
         'events': 'events/0.9.1/events',
