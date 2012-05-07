@@ -8,17 +8,17 @@ Base 是一个基础类，提供 Class, Events 和 Options 支持。
 
 ## 模块依赖
 
-依赖 [seajs](seajs/README.md), [class](class/README.md), [events](events/README.md)
+ - [seajs](seajs/README.md)
+ - [class](class/README.md)
+ - [events](events/README.md)
 
 
 ## 使用说明
 
-基于 Base,
-
 
 ### extend `Base.extend(properties)`
 
-使用 `extend` 方法，可以很方便地创建具有 Events 和 Options 功能的新类。例子：
+基于 Base 创建子类。例子：
 
 ```js
 /* pig.js */
@@ -39,10 +39,10 @@ define(function(require, exports, module) {
 });
 ```
 
-具体请参考：[Class 使用文档](class/README.md)。
+具体用法请参考：[Class 使用文档](class/README.md)
 
 
-## Base 与 Class 的关系
+### Base 与 Class 的关系
 
 Base 是使用 `Class` 创建的一个基础类，默认混入了 `Events` 和 `Options` 支持：
 
@@ -50,19 +50,19 @@ Base 是使用 `Class` 创建的一个基础类，默认混入了 `Events` 和 `
 /* base.js */
 define(function(require) {
     var Class = require('./class');
-    var Options = require('./options');
     var Events = require('./events');
+    var Options = require('./options');
 
     return Class.create({
-        Implements: [Options, Events]
+        Implements: [Events, Options]
     });
 });
 ```
 
-去喝杯茶吧，休息一下，回来后继续阅读：
+具体用法请参考：
 
 - [Events 使用文档](events/README.md)
-- [Options 使用文档](docs/options.md)
+- [Options 使用文档](./docs/options.md)
 
 
 ## 测试用例
