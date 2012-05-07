@@ -23,7 +23,8 @@ seajs.config({
         'json': 'json/1.0.1/json',
         'moment': 'moment/1.6.1/moment',
         'underscore': 'underscore/1.3.3/underscore',
-        'zepto': 'zepto/0.8.0/zepto'
+        'zepto': 'zepto/0.8.0/zepto',
+        'position': 'position/0.9.0/position'
     },
     preload: [this.JSON ? '' : 'json', 'plugin-text']
 });
