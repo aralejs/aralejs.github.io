@@ -30,13 +30,17 @@ seajs.use([
 
 
     function runSpecs() {
-        var meta = JSON.parse(data);
+        if(typeof JSON === 'undefined'){
+            var meta = eval('('+ data +')');
+        }else{
+            var meta = JSON.parse(data);
+        }
         var tests = meta['tests'] || [];
 
         // Gets the default test from path: path/to/xxx/tests/runner.html
         if (tests.length === 0) {
             tests.push(location.href
-                    .replace(/.+\/(\w+)\/tests\/runner.+/, '$1'));
+                    .replace(/.+\/([\w-]+)\/tests\/runner.+/, '$1'));
         }
 
         var specs = [];

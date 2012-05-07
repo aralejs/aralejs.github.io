@@ -40,3 +40,7 @@ define(function(require, exports, module) {
 ### sync `shim.sync()`
 
 实例方法，重新计算iframe的宽高和定位。
+
+## demo
+
+在ie6下访问[demo](http://aralejs.org/lib/iframe-shim/examples/iframe-shim.htm)
