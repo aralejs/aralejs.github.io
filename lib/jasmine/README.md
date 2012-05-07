@@ -22,8 +22,7 @@ Jasmine 官方文档：http://pivotal.github.com/jasmine/
 在 Arale 项目中使用时，更简单：
 
 1. 首先按照 [文件命名与目录结构](https://github.com/alipay/arale/wiki/文件命名与目录结构) 规范组织好组件文件。
-2. 然后创建 `tests/runner.html`（文件内容可参考 `events/test/runner.html`）。
-3. 如果有多个 spec 文件，需要编辑 `package.json` 文件中的 `tests` 字段，加入需要测试 spec 名称（参考 `base/package.json`）。
+2. 然后创建 `tests/runner.html`, 文件内容可参考 [events/test/runner.html](events/test/runner.html)
 
 这样就可以开始愉悦的 BDD 之旅了。
 

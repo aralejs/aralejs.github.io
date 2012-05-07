@@ -3,6 +3,5 @@
     "dist": {
         "base.js": "default",
         "options.js": "default"
-    },
-    "tests": ["base", "options"]
+    }
 }
