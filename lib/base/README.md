@@ -29,7 +29,6 @@ define(function(require, exports, module) {
        initialize: function(name) {
            this.name = name;
        },
-
        talk: function() {
            alert('我是' + this.name);
        }
@@ -62,7 +61,7 @@ define(function(require) {
 具体用法请参考：
 
 - [Events 使用文档](events/README.md)
-- [Options 使用文档](./docs/options.md)
+- [Options 使用文档](base/docs/options.md)
 
 
 ## 测试用例
