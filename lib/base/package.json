@@ -1,6 +1,7 @@
 {
     "version": "0.9.0",
     "dist": {
-        "base.js": "default"
+        "base.js": "default",
+        "options.js": "default"
     }
 }
