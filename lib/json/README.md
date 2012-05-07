@@ -13,7 +13,7 @@
 ```js
 seajs.config({
     alias: {
-        'json': 'json/1.0.1/json'
+        'json': 'json/1.0.2/json'
     },
     // 只在需要时进行预加载
     preload: [ this.JSON ? '' : 'json' ]
