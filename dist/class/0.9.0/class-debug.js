@@ -1,6 +1,6 @@
 /* @author lifesinger@gmail.com */
 
-define(function() {
+define("#class/0.9.0/class", [], function() {
 
     // Class
     // -----------------

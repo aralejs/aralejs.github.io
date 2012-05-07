@@ -7,7 +7,7 @@
 /* animal.js */
 define(function(require, exports, module) {
     ...
-    var Animal = Base.extend(...);
+    var Animal = Class.create(...);
     ...
 });
 ```

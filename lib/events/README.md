@@ -118,7 +118,6 @@ obj.on('x').on('y');
 将 `Events` 的原型方法混入到指定对象或函数原型中。
 
 
-
 ## 测试用例
 
 - <http://aralejs.org/lib/events/tests/runner.html>
@@ -127,6 +126,17 @@ obj.on('x').on('y');
 ## 性能对比
 
 - <http://jsperf.com/events-perfs>
+
+**注**：最开始，该模块的主要代码直接来自 Backbone.Events. 后来发现 Backbone
+的代码实现有较大的改进空间，因此将内部的数据结构从链表改成了数组，重构后大幅度提升了性能。目前
+Backbone 已合并 Arale 的代码：
+
+- <https://github.com/documentcloud/backbone/pull/1284>
+
+
+## 调研文档
+
+- [Events 竞争对手分析](events/docs/competitors.md)
 
 
 ## 交流讨论

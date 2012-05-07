@@ -13,10 +13,6 @@
 * `srcNode` {element} 
 	
 	页面dom节点。
-	
-* `id` {string} 
-
-	浮层id。
 
 * `tpl` {string}
 
@@ -32,19 +28,15 @@
 	
 * `width` {string|number}
 
-	浮层宽度。
+	浮层宽度(px)。
 	
 * `height` {string|number}
 
-	浮层高度。
+	浮层高度(px)。
 	
 * `minHeight` {string|number}
 
 	浮层最小高度。
-
-* `zIndex` {string|number}
-
-	浮层的z-index属性。
 	
 * `parentNode` {element}
 
@@ -63,6 +55,10 @@
 * `render()` 
 
 	生成浮层的dom结构和样式并插入文档流。
+
+* `sync()` 
+
+	重新同步浮层状态。
 	
 * `show()` 
 
