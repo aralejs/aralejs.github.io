@@ -175,8 +175,8 @@ var Dog = Class(Animal).extend({
 
 ## 调研文档
 
-- [OO 模拟那些事儿](base/docs/competitors.md)
-- [类与模块](base/docs/meta.md)
+- [OO 模拟那些事儿](class/docs/competitors.md)
+- [类与模块](class/docs/meta.md)
 
 
 ## 交流讨论
