@@ -53,7 +53,6 @@ define("#class/0.9.0/class", [], function() {
             // Only call initialize in self constructor.
             if (this.constructor === SubClass && this.initialize) {
                 this.initialize.apply(this, arguments);
-                this.__initialized = true;
             }
         }
 
