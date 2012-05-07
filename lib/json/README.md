@@ -30,12 +30,3 @@ define(function(require, exports) {
 
 });
 ```
-
-
-## 更新
-
-当 json 组件有新版本发布，需要更新时，只需运行以下命令就好：
-
-```
-$ node update.js
-```
