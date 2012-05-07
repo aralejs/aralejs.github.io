@@ -118,7 +118,6 @@ obj.on('x').on('y');
 将 `Events` 的原型方法混入到指定对象或函数原型中。
 
 
-
 ## 测试用例
 
 - <http://aralejs.org/lib/events/tests/runner.html>
@@ -135,7 +134,7 @@ Backbone 已合并 Arale 的代码：
 - <https://github.com/documentcloud/backbone/pull/1284>
 
 
-## 竞争对手分析
+## 调研文档
 
 - [Events 竞争对手分析](events/docs/competitors.md)
 
