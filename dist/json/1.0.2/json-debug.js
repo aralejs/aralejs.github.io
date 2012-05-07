@@ -1,32 +1,8 @@
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#json/1.0.1/json-debug', [], factory);
-  }
-  else if (typeof exports !== 'undefined') {
-    factory(require, exports);
-  }
-  else {
-    factory();
-  }
-
-})(function(require, exports) {
-
-/**
- * @preserve http://www.JSON.org/json2.js | 2011-10-19
- */
-
-(function () {
-
-  var JSON;
-
-  if (typeof exports !== 'undefined') {
-    JSON = exports;
-  } else {
-    JSON = this.JSON = {};
-  }
-
+define(function() {
 /*
+    json2.js
+    2011-10-19
+
     Public Domain.
 
     NO WARRANTY EXPRESSED OR IMPLIED. USE AT YOUR OWN RISK.
@@ -183,6 +159,14 @@
 
 // Create a JSON object only if one does not already exist. We create the
 // methods in a closure to avoid creating global variables.
+
+var JSON;
+if (!JSON) {
+    JSON = {};
+}
+
+(function () {
+    'use strict';
 
     function f(n) {
         // Format integers to have at least two digits.
@@ -503,4 +487,5 @@
     }
 }());
 
+return this.JSON = JSON;
 });

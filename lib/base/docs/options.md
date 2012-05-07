@@ -1,14 +1,14 @@
 
 # Options
 
-`Base.Options` 模块，可用来自动处理对象实例的 options.
+可用来自动处理对象实例的 options 选项。
 
 ---
 
 
 ## 使用说明
 
-使用 `extend` 创建的类，会自动添加上 `Options` 提供的功能。
+基于 `Base.extend` 创建的类，会自动添加上 `Options` 提供的功能。例子：
 
 ```js
 /* panel.js */
@@ -38,7 +38,7 @@ define(function(require, exports, module) {
 });
 ```
 
-在 `initialize` 方法中，调用 `setOptions` 方法，就可以自动设置好实例的 `options` 属性：
+在 `initialize` 方法中，调用 `setOptions` 方法，就可以自动设置好实例的 `options` 属性。
 
 ```js
 /* test.js */
@@ -57,8 +57,8 @@ define(function(require, exports, module) {
 });
 ```
 
-使用 `extend` 创建类时，混入的 `Events` 和 `Options` 模块，还可以使得实例化时，直接在
-`options` 中通过 `on` 前缀来表示事件回调：
+使用 `extend` 创建类时，如果混入了 `Events` 模块，还可以在
+`options` 中通过 `on` 前缀来添加事件回调：
 
 ```js
 /* test2.js */
@@ -81,3 +81,6 @@ define(function(require, exports, module) {
     panel.show(); // 弹出两个 alert
 });
 ```
+
+
+返回 [Base 使用文档](../README.md)

@@ -5,11 +5,11 @@ seajs.use([
 
     var jasmineEnv = getJasmineEnv();
 
-    // make alias
+    // Make alias
     this.test = it;
     this.xtest = xit;
 
-    // go
+    // Go
     runSpecs();
 
 
@@ -30,14 +30,10 @@ seajs.use([
 
 
     function runSpecs() {
-        if(typeof JSON === 'undefined'){
-            var meta = eval('('+ data +')');
-        }else{
-            var meta = JSON.parse(data);
-        }
+        var meta = JSON.parse(data);
         var tests = meta['tests'] || [];
 
-        // Gets the default test from path: path/to/xxx/tests/runner.html
+        // Get the default test from path: path/to/xxx/tests/runner.html
         if (tests.length === 0) {
             tests.push(location.href
                     .replace(/.+\/([\w-]+)\/tests\/runner.+/, '$1'));
