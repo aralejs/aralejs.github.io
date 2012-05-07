@@ -23,6 +23,7 @@ Jasmine 官方文档：http://pivotal.github.com/jasmine/
 
 1. 首先按照 [文件命名与目录结构](https://github.com/alipay/arale/wiki/文件命名与目录结构) 规范组织好组件文件。
 2. 然后创建 `tests/runner.html` ：
+
 ```html
 <!doctype html>
 <html>
