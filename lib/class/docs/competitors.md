@@ -153,7 +153,7 @@ Base.js, 其中有一套非常不错的 OO 实现：
 界 OO 模拟蔚然成风，万马奔腾。让我们继续考考古。
 
 
-### Prototype 的 Class
+## Prototype 的 Class
 
 作为一名前端，如果没用过 Prototype, 那么恭喜你，说明你还年轻，潜力无限。来看一名老前端的吐槽：
 
