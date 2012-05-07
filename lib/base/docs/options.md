@@ -1,14 +1,14 @@
 
 # Options
 
-可用来自动处理对象实例的 options.
+可用来自动处理对象实例的 options 选项。
 
 ---
 
 
 ## 使用说明
 
-基于 `Base.extend` 创建的类，会自动添加上 `Options` 提供的功能。
+基于 `Base.extend` 创建的类，会自动添加上 `Options` 提供的功能。例子：
 
 ```js
 /* panel.js */
@@ -38,7 +38,7 @@ define(function(require, exports, module) {
 });
 ```
 
-在 `initialize` 方法中，调用 `setOptions` 方法，就可以自动设置好实例的 `options` 属性：
+在 `initialize` 方法中，调用 `setOptions` 方法，就可以自动设置好实例的 `options` 属性。
 
 ```js
 /* test.js */
