@@ -143,16 +143,28 @@ define(function(require, exports, module) {
 - [Events 使用文档](base/docs/events.md)
 - [Options 使用文档](base/docs/options.md)
 - [Class 使用文档](base/docs/class.md)
-- [类与模块](base/docs/meta.md)
 
 还有一个很精彩的：
 
 - [竞争对手分析](base/docs/competitors.md)
 
 
-## 演示页面
+## Base 与 Class 的关系
 
-- [examples/base.html](http://alipay.github.com/arale/lib/base/examples/base.html)
+Base 是使用 `Class` 创建的一个基础类，默认混入了 `Events` 和 `Options` 支持：
+
+```js
+/* base.js */
+define(function(require) {
+    var Class = require('./class');
+    var Options = require('./options');
+    var Events = require('./events');
+
+    return Class.create({
+        Implements: [Options, Events]
+    });
+});
+```
 
 
 ## 测试用例
