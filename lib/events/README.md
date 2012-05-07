@@ -144,3 +144,7 @@ Backbone 已合并 Arale 的代码：
 欢迎创建
 [GitHub Issue](https://github.com/alipay/arale/issues/new)
 来提交反馈。
+
+已有议题：
+
+- [Events 增加 mixTo 方法](https://github.com/alipay/arale/issues/33)
