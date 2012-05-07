@@ -6,7 +6,7 @@
 ---
 
 
-### Douglas Crockford 的尝试与悟道
+## Douglas Crockford 的尝试与悟道
 
 关于类继承，Douglas 有一篇经典文章：
 
@@ -75,7 +75,7 @@ Dog.prototype = {
 上面的代码，你知道问题在哪吗？请继续阅读。
 
 
-### YUI 之路
+## YUI 之路
 
 YUI 团队是 Douglas 的铁杆粉丝团。从 YUI2 到 YUI3, 都高度贯彻了 Douglas 的精神。在 YUI
 里，提供了 `extend` 方法：
@@ -142,7 +142,7 @@ JavaScript 是一门大众语言，在类继承模式当道的今天，直接让
 来创建新类，但是该方法比较重量级了，用起来不轻便。
 
 
-### Dean Edwards 的 Base.js
+## Dean Edwards 的 Base.js
 
 Dean Edwards 是前端界的一位老前辈。老前辈做过一个当时很著名的 JavaScript 类库：
 Base.js, 其中有一套非常不错的 OO 实现：
@@ -167,7 +167,7 @@ Prototype 目前已经 v1.7 了。从官方文档来看，Class 继承已经很�
 虽然很难实现，但也不要这样实现呀：代码一压缩就都浮云了。
 
 
-### John Resig 的实现
+## John Resig 的实现
 
 jQuery 专注于 DOM 操作，因此无论现在还是以后，应该都不会去模拟类继承。但在风云变幻的年代里，jQuery
 作者 John Resig 也忍不住掺合一脚：
@@ -204,7 +204,7 @@ Dog.prototype.sleep = function() {
 都是美丽的谎言。
 
 
-### MooTools Class
+## MooTools Class
 
 MooTools 的全称是 My OO Tools, 有一套口碑很不错的 Class 机制：
 
@@ -236,7 +236,7 @@ Dog.implement({
 ```
 
 
-### 还有很多很多
+## 还有很多很多
 
 JavaScript 的世界里，OO 的实现还有很多很多，比较有名气的还有：
 
