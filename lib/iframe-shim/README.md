@@ -43,4 +43,4 @@ define(function(require, exports, module) {
 
 ## demo
 
-在ie6下访问(demo)[http://aralejs.org/lib/iframe-shim/examples/iframe-shim.htm]
+在ie6下访问[demo](http://aralejs.org/lib/iframe-shim/examples/iframe-shim.htm)
