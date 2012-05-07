@@ -50,8 +50,8 @@ define("#class/0.9.0/class", [], function() {
             // Call the parent constructor.
             parent.apply(this, arguments);
 
-            // All construction is actually done in the `initialize` method.
-            if (!this.__initialized && this.initialize) {
+            // Only call initialize in self constructor.
+            if (this.constructor === SubClass && this.initialize) {
                 this.initialize.apply(this, arguments);
                 this.__initialized = true;
             }
