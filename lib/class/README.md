@@ -64,9 +64,9 @@ define(function(require, exports, module) {
 的方式来轻松实现。用 `create` 或 `extend` 方法创建类时，可以使用 `superclass.methodName`
 来显式调用父类方法。之所以不提供 `super` 方法，原因有二：
 
-1. 实现起来很麻烦。现有类库的实现方案，都不完美。
-2. 在 JavaScript 编程中，调用 `super` 的需求并不多。简单地通过 `superclass.methodName`
-来调用已经够用，并很灵活、清晰。
+1. 实现起来较麻烦。现有类库的实现方案，都不完美。
+2. 在 JavaScript 编程中，调用 `super` 的需求并不多。简单通过 `superclass.methodName`
+来调用已经能够满足需求，并很灵活、清晰。
 
 `properties` 参数中，除了支持用 `initialize` 来标明初始化方法，还可以用 `Implements`
 来标明所创建的类需要从哪些类中混入属性：
@@ -145,7 +145,7 @@ define(function(require, exports, module) {
 ### extend `SomeClass.extend(properties)`
 
 由 `Class.create` 创建的类，自动具有 `extend` 方法，功能与 `Class.create`
-完全一样，只是继承的父类是 `SomeClass` 自身，前面的例子中已阐述。
+完全一样，只是继承的父类是 `SomeClass` 自身，前面的例子中已说明，不赘述。
 
 
 ### Class `Class(fn)`
