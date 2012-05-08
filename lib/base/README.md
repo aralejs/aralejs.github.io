@@ -74,3 +74,7 @@ define(function(require) {
 欢迎创建
 [GitHub Issue](https://github.com/alipay/arale/issues/new)
 来提交反馈。
+
+已有议题：
+
+- [Base 中默认混入 Events/Options 等是否合适](https://github.com/alipay/arale/issues/24)
