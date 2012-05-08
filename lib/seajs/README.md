@@ -10,11 +10,4 @@ SeaJS 的设计目的是：改变你组织 JavaScript 代码的方式。
 
 ## 使用说明
 
-请访问 SeaJS 官方文档：http://seajs.org/
-
-
-## 交流讨论
-
-欢迎创建
-[GitHub Issue](https://github.com/seajs/seajs/issues/new)
-来提交反馈。
+请访问质朴的 SeaJS 官方文档：http://seajs.org/
