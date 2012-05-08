@@ -18,5 +18,5 @@
 
     gjslint a.js
     
-    // 有些风格问题可能过命令解决
+    // 有些风格问题可以通过以下命令解决：
     fixjsstyle a.js
