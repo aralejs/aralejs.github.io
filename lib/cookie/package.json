@@ -1,11 +1,16 @@
 {
     "name": "cookie",
     "description": "Provides utilities for dealing with cookies.",
-    "url": "https://github.com/seajs/dew/tree/master/src/cookie",
+    "url": "https://github.com/alipay/arale/tree/master/lib/cookie",
     "keywords": [ "util" ],
     "author": "Frank Wang <lifesinger@gmail.com>",
     "version": "1.0.2",
+
     "files": [ "./src/cookie.js" ],
-    "src": "https://raw.github.com/seajs/dew/master/dist/cookie/cookie-debug.js",
-    "min": "https://raw.github.com/seajs/dew/master/dist/cookie/cookie.js"
+    "src": "https://aralejs.org/dist/cookie/{{version}}/cookie-debug.js",
+    "min": "https://aralejs.org/dist/cookie/{{version}}/cookie.js",
+
+    "dist": {
+        "cookie.js": ["default"]
+    }
 }
