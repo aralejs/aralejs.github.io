@@ -17,7 +17,7 @@ describe("Jasmine", function() {
 
 ## 使用说明
 
-官方文档：http://pivotal.github.com/jasmine/
+Jasmine 官方文档：http://pivotal.github.com/jasmine/
 
 在 Arale 项目中使用时，更简单：
 
