@@ -28,22 +28,40 @@ define("#position/0.9.0/position", ["jquery"], function(require, exports, module
 		};
 	};
 
-	//对x, y两个参数为left|center|right|%|px时的处理
+	//对x, y两个参数为left|center|right|%|px时的处理，以及对elem的包装处理
 	var _posConverter = function(pinObj) {
 		var pinElem = (pinObj.elem !== VIEWPORT) ? $(pinObj.elem) : $(window);
-		(pinObj.x === 'left') && (pinObj.x = '0%');
-		(pinObj.x === 'center') && (pinObj.x = '50%'); 
-		(pinObj.x === 'right') && (pinObj.x = '100%'); 
-		(pinObj.y === 'left') && (pinObj.y = '0%');
-		(pinObj.y === 'center') && (pinObj.y = '50%'); 
-		(pinObj.y === 'right') && (pinObj.y = '100%');
-		
-		if(typeof pinObj.x === 'string' && pinObj.x.indexOf('%') !== -1) {
-			pinObj.x = pinElem.width() * (parseFloat(pinObj.x ,10)/100.0);
-		}
-		if(typeof pinObj.y === 'string' && pinObj.y.indexOf('%') !== -1) {
-			pinObj.y = pinElem.height() * (parseFloat(pinObj.y ,10)/100.0);
-		}
+		var _xyConverter = function(x, isX) {
+			//先转成字符串再说！好处理
+			x = x + '';
+
+			//处理位置为百分比
+			x = x.replace(/left/gi, '0%').replace(/center/gi, '50%').replace(/right/gi, '100%');
+
+			//处理px
+			x = x.replace(/(\d+)px/gi, '$1');
+
+			//将百分比转为像素值
+			if(x.indexOf('%') !== -1) {
+				var percents = x.match(/\d+\%/gi);
+				if(percents) {
+					for(var i=0; i<percents.length; i++) {
+						x = x.replace(percents[i], pinElem['outer'+(isX?'Width':'Height')]() * (parseFloat(percents[i] ,10)/100.0) + '');
+					}
+				}
+			}
+
+			//处理类似100%+20px的情况
+			if (x.indexOf('+') !== -1 || x.indexOf('-') !== -1) {
+				try {
+					x = eval(x);
+				} catch(ex) {}
+			}
+			//转回为数字
+			return parseFloat(x, 10);
+		};
+		pinObj.x = _xyConverter(pinObj.x, true);
+		pinObj.y = _xyConverter(pinObj.y, false);
 		return pinObj;
 	};
 	
@@ -78,7 +96,18 @@ define("#position/0.9.0/position", ["jquery"], function(require, exports, module
 		relativeObj = _posConverter(relativeObj);
 
 		//寻找基准元素的offsetParent
-		parentOffset = pinElem.offsetParent().offset();
+		parentOffset = (pinElem.offsetParent()[0] !== document.body) 
+						? pinElem.offsetParent().offset() 
+						: { left:0, top:0 };
+
+		//修正ie6下absolute定位不准的bug
+		if ($.browser.msie && $.browser.version == 6.0) {
+			pinElem.offsetParent().css('zoom', 1);
+		}
+
+		//根据基准元素offsetParent的border宽度，来修正offsetParent的基准位置
+		parentOffset.top = parentOffset.top + (parseFloat(pinElem.offsetParent().css('border-top-width'), 10) || 0);
+		parentOffset.left = parentOffset.left + (parseFloat(pinElem.offsetParent().css('border-left-width'), 10) || 0);		
 
 		//基准元素的位置
 		//若基准元素为VIEWPORT，则目标元素相对于浏览器当前可见区域定位

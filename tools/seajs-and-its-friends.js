@@ -16,14 +16,16 @@
 // and its friends
 seajs.config({
     alias: {
+        'base': 'base/0.9.0/base',
         'class': 'class/0.9.0/class',
         'cookie': 'cookie/1.0.2/cookie',
         'events': 'events/0.9.1/events',
         'jquery': 'jquery/1.7.2/jquery',
-        'json': 'json/1.0.1/json',
+        'json': 'json/1.0.2/json',
         'moment': 'moment/1.6.1/moment',
         'underscore': 'underscore/1.3.3/underscore',
-        'zepto': 'zepto/0.8.0/zepto'
+        'zepto': 'zepto/0.8.0/zepto',
+        'position': 'position/0.9.0/position'
     },
     preload: [this.JSON ? '' : 'json', 'plugin-text']
 });
