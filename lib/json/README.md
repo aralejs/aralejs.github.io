@@ -27,6 +27,5 @@ define(function(require, exports) {
 
     var str = JSON.stringify(data);
     // ==> '{"name":"Frank Wang","age":80}'
-
 });
 ```
