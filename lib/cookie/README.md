@@ -6,6 +6,12 @@
 ---
 
 
+## 模块依赖
+
+ - [seajs](seajs/README.md)
+
+
+
 ## 使用说明
 
 ```js
@@ -37,13 +43,14 @@ define(function(require, exports) {
 });
 ```
 
-官方文档：https://github.com/seajs/dew/tree/master/src/cookie
+
+## 测试用例
+
+- <http://aralejs.org/lib/cookie/tests/runner.html>
 
 
-## 更新
+## 交流讨论
 
-当 cookie 组件有新版本发布，需要更新时，只需运行以下命令就好：
-
-```
-$ node update.js
-```
+欢迎创建
+[GitHub Issue](https://github.com/alipay/arale/issues/new)
+来提交反馈。
