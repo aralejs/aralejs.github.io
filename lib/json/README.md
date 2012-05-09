@@ -29,3 +29,7 @@ define(function(require, exports) {
     // ==> '{"name":"Frank Wang","age":80}'
 });
 ```
+
+具体用法，请参考 Douglas Crockford 的源码：
+
+- <https://github.com/douglascrockford/JSON-js/blob/master/json2.js>
