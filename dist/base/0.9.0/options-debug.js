@@ -1,5 +1,3 @@
-/* @author lifesinger@gmail.com */
-
 define("#base/0.9.0/base", [], function(require, exports) {
 
     // Options
