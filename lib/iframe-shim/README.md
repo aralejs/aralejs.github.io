@@ -14,11 +14,11 @@
 
 ### new Shim(target)
 
-此方法会根据目标元素生成一个和目标元素等宽等高无偏移的 iframe，此 iframe 的高度比目标元素低。
+实例化对象，实例化后会生成一个 iframe，插入到 body 中。需要手动调用 `sync` 方法同步样式。
 
-此方法是一个工厂方法，每次都会生成一个实例，所以如有多个浮层使用遮罩不会互相影响。
+如果是 ie6 以外的浏览器只会返回一个空实例，什么都不会执行。
 
-target 可为 `Dom Element` 或 `Selector`。
+target 为需要被遮挡的目标元素， 可以传 `Dom Element` 或 `Selector`。
 
 
 ```
@@ -26,27 +26,35 @@ define(function(require, exports, module) {
 	var Shim = require('iframe-shim'),
 		$ = require('jquery');
 	
-	new Shim($('iframe-shim-target')[0]);
+	var iframe = new Shim('#iframe-shim-target');
+	iframe.sync();	
 });
 ```
 
 **注意**
 
-* 目标元素需要设置 z-index，不然无法保证 iframe 的高度
+* 目标元素需要设置 z-index，不然无法保证 iframe 的高度。
 * iframe 计算的宽高包括 border，例如 width 为100px，border 为1px，iframe 的 width 为102px。
-* iframe会插入到 body 中，建议在 domready 后使用
+* iframe会插入到 body 中，建议在 domready 后使用。
 
 
 ### sync `shim.sync()`
 
-实例方法，此方法会根据目标元素的变化而改变iframe
+实例方法，此方法会根据目标元素的变化而改变 iframe 的样式。
 
 有以下几种情况 iframe 会改变
 
-* 宽高及 border 改变后 iframe 会相应改变。 
-* 目标元素或父级元素 display:none 会隐藏
-* 宽和高等于0(包括 border )会隐藏
-* 目标元素移动后 iframe 定位会改变
+* 目标元素的宽高及 border 改变后 iframe 的宽高也会相应改变。 
+* 目标元素或父级元素 display:none，iframe 会隐藏。
+* 目标元素宽和高等于0(包括 border )，iframe 会隐藏。
+* 目标元素移动后 iframe 定位会改变。
+
+sync可进行链式操作，上面的例子可直接一行完成
+
+```
+var iframe = new Shim('#iframe-shim-target').sync();
+```
+
 
 ### destroy `shim.destroy()`
 
@@ -54,7 +62,7 @@ define(function(require, exports, module) {
 
 ## 演示页面
 
-在 ie6 下访问 [demo](http://aralejs.org/lib/iframe-shim/examples/iframe-shim.htm)
+在 ie6 下访问 [demo](http://aralejs.org/lib/iframe-shim/examples/iframe-shim.html)
 
 ## 测试用例
 
