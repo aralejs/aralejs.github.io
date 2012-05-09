@@ -5,7 +5,7 @@
 
 这个组件的定位原理是，通过两个对象分别描述定位元素及其定位点，然后将其定位点重合的过程。
 
-比如有目标元素a和基准元素b，先设定a的定位点为左上角，b的定位点为中央。则分别描述为 { elem:a, x:0, y:0 } 和 { elem:b, x:'50%', y:'50%' }，然后将a的左上角定位到b的中央，就完成了定位。
+比如有目标元素a和基准元素b，先设定a的定位点为左上角，b的定位点为中央。则分别描述为 { element: a, x: 0, y: 0 } 和 { element: b, x: '50%', y: '50%' }，然后将a的左上角定位到b的中央，就完成了定位。
 
 ---
 
@@ -19,49 +19,49 @@
 ## 使用说明
 
 
-### Position.pin(pinObj, [relativeObj])
+### Position.pin(pinObject, [baseObject])
 
 基础定位方法，接收两个参数。
 
-1. `pinObj`：目标定位元素，必选。
+1. `pinObject`：目标定位元素，必选。
 
-    类型为字面量对象 { elem:a, x:10, y:10 }，elem 为需定位元素， x 和 y 表示定位元素的定位点。
+    类型为字面量对象 { element: a, x: 10, y: 10 }，element 为需定位元素， x 和 y 表示定位元素的定位点。
     
-    也可简单写成 dom 节点 a，相当于 { elem:a, x:0, y:0 }，表示定位点是节点左上角。
+    也可简单写成 dom 节点 a，相当于 { element: a, x: 0, y: 0 }，表示定位点是节点左上角。
     
-2. `relativeObj`：基准定位元素，可选。
+2. `baseObject`：基准定位元素，可选。
 
-    类型为字面量对象 { elem:b, x:10, y:10 }，elem 为基准定位元素，x和y表示基准定位元素的定位点。
+    类型为字面量对象 { element: b, x: 10, y: 10 }，element 为基准定位元素，x和y表示基准定位元素的定位点。
     
-    也可简单写成dom节点 a，相当于 { elem:a, x:0, y:0 }，表示定位点是节点左上角。
+    也可简单写成dom节点 a，相当于 { element: a, x: 0, y: 0 }，表示定位点是节点左上角。
     
-    当elem缺省时，表示pinObj相对屏幕可见区域的左上角定位。比如可以写成
+    当 element 缺省时，表示 pinObject 相对屏幕可见区域的左上角定位。比如可以写成
         
-        Position.pin(a, { x:10, y:10 });    //这样后一个参数可简单理解为偏移量
+        Position.pin(a, { x: 10, y: 10 });    //这样后一个参数可简单理解为偏移量
         
     或写成
         
-        Position.pin({ elem:a, x:-10, y:-10 });
+        Position.pin({ element: a, x: -10, y: -10 });
 
 
-### Position.center(pinElem, [relativeElem])
+### Position.center(pinElement, [baseElement])
 
-居中定位，接收两个参数，将 pinElem 定位在 relativeElem 元素的中央位置。
+居中定位，接收两个参数，将 pinElement 定位在 baseElement 元素的中央位置。
 
-1. `pinElem`：定位节点，必选。
+1. `pinElement`：定位节点，必选。
 
-2. `relativeElem`：基准定位节点，可选。缺省时表示将 pinEle m定位在屏幕中央。
+2. `baseElement`：基准定位节点，可选。缺省时表示将 pinElement 定位在屏幕中央。
 
 
 ### Position.VIEWPORT
 
-当前可视区域的伪元素，当需要相对于当前可视区域定位时，上述参数的 elem 可传入 Position.VIEWPORT。
+当前可视区域的伪元素，当需要相对于当前可视区域定位时，上述参数的 element 可传入 Position.VIEWPORT。
 
 比如相对于屏幕中央定位：
 
     Position.pin(
-        { elem:a, x:'center', y:'center' }, 
-        { elem:Position.VIEWPORT, x:'center', y:'center' }
+        { element: a, x: 'center', y: 'center' }, 
+        { element: Position.VIEWPORT, x: 'center', y: 'center' }
     );
 
 或写成
@@ -72,15 +72,15 @@
 
 1. 定位元素到可视区域左上角
 
-        Position.pin(a, { x:0, y:0 });    //后一个参数可理解为偏移量
+        Position.pin(a, { x: 0, y: 0 });    //后一个参数可理解为偏移量
 
 2. 定位元素到基准元素位置向右偏移20px
     
-        Position.pin(a, { elem:b, x:'20px', y:0 });
+        Position.pin(a, { element: b, x: '20px', y: 0 });
 
 3. 定位元素到基准元素下方20像素的位置
     
-        Position.pin(a, { elem:b, x:0, y:'100%+20px' });
+        Position.pin(a, { element: b, x: 0, y: '100%+20px' });
 
 4. 定位元素到基准元素正中央
 
@@ -88,11 +88,11 @@
     
 5. 定位元素到基准元素右方中间位置
     
-        Position.pin(a, { elem:b, x:'right', y:'center' });
+        Position.pin(a, { element: b, x: 'right', y: 'center' });
     
     或者
     
-        Position.pin(a, { elem:b, x:'100%', y:'50%' });
+        Position.pin(a, { element: b, x: '100%', y: '50%' });
 
 6. 定位元素到可视区域中央
 
