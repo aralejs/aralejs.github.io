@@ -8,11 +8,14 @@
 //
 
 var path = require('path');
-update(process.argv[2]);
+var Install = require('spm').Install;
+
+update(process.argv[2], process.argv[3]);
 
 
-function update(name) {
+function update(name, force) {
     new Install([name], {
+        force: force === '-f' || force === '--force',
         to: path.join(__dirname, '../dist')
     }).run();
 }
