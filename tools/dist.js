@@ -1,6 +1,6 @@
-/* @author lifesinger@gmail.com */
-
+//
 // 简洁版构建脚本，等 spm 完善好后，此脚本可废弃
+//
 // Usage:
 //
 //    $ cd arale

@@ -1,4 +1,3 @@
-/* @author lifesinger@gmail.com */
 
 var path = require('path');
 var Install = require('spm').Install;
