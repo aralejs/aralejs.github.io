@@ -3,8 +3,8 @@
 //
 // Usage:
 //
-//    $ cd arale
-//    $ node tools/dist.js moduleName
+//   $ cd arale
+//   $ node tools/dist.js moduleName
 //
 
 var fs = require('fs');
@@ -34,7 +34,7 @@ console.log('');
 function build(filename) {
     var code = fs.readFileSync(path.join(SRC_DIR, filename), 'utf8');
 
-    var id = '#' + module + '/' + meta.version + '/' + module;
+    var id = '#' + module + '/' + meta.version + '/' + filename.split('.')[0];
     var deps = parseDependencies(code);
     deps = deps.length ? '"' + deps.join('","') + '"' : '';
 
