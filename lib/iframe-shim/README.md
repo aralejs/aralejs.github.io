@@ -48,7 +48,7 @@ define(function(require, exports, module) {
 * 宽和高等于0(包括 border )会隐藏
 * 目标元素移动后 iframe 定位会改变
 
-### destroy `shim.sync()`
+### destroy `shim.destroy()`
 
 实例方法，销毁 iframe
 
