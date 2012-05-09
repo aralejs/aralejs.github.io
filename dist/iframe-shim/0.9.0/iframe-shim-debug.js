@@ -1,72 +1,78 @@
-/*
- * @author guangao@alipay.com
- **/
-
 define("#iframe-shim/0.9.0/iframe-shim", ["jquery","position"], function(require, exports, module) {
-    var $ = require('jquery'),
-        position = require('position'),
-        useIframe = $.browser.msie && Number($.browser.version) < 7;
 
-    var iframeshim = function(element){
+    var $ = require('jquery');
+    var Position = require('position');
 
-        this.iframe = $('<iframe src="javascript:\'\'" frameborder="0" scrolling="no"></iframe>').css({'opacity':0,'position':'absolute'});
-        this.element = $(element).after(this.iframe);
 
-        this.sync();
-    };
+    // target 为需要被遮盖的目标元素，可以传 `DOM Element` 或 `Selector`
+    function Shim(target) {
+        // 如果选择器选了多个 DOM，则只取第一个
+        this.target = $(target).eq(0);
 
-    iframeshim.prototype = {
+        this.iframe = createShim();
+        this.iframe.appendTo(document.body);
+    }
 
-        sync: function(){
 
-            var height = this.element.outerHeight();
-            var width = this.element.outerWidth();
-            var zIndex = Number(this.element.css('zIndex'));
-           
-            // 如果目标元素隐藏或者宽高其中一个为0则隐藏
-            // http://api.jquery.com/hidden-selector/
-            if(this.element.is(':hidden') || !(height && width)){
-                this.hide();
-            }else{
-                this.show();
-                this.iframe.css({
-                    'height': height + 'px',
-                    'width': width + 'px',
-                    'zIndex': isNaN(zIndex) ? 0 : (zIndex-1)
-                });
+    // 根据目标元素计算 iframe 的显隐、宽高、定位
+    Shim.prototype.sync = function() {
+        var target = this.target;
+        var iframe = this.iframe;
 
-                position.pin(this.iframe[0], this.element[0]);
-            }
-        },
+        var height = target.outerHeight();
+        var width = target.outerWidth();
+        var zIndex = Number(target.css('zIndex'));
 
-        show: function(){
-            this.iframe.css('display','block');
-        },
+        // 如果目标元素隐藏，iframe 也隐藏
+        // jquery 判断宽高同时为0才算隐藏，这里判断宽高其中一个为0就隐藏
+        // http://api.jquery.com/hidden-selector/
+        if (!height || !width || target.is(':hidden')) {
+            iframe.hide();
+        } else {
+            iframe.css({
+                'height': height,
+                'width': width,
+                'zIndex': isNaN(zIndex) ? 0 : (zIndex - 1)
+            });
 
-        hide: function(){
-            this.iframe.css('display','none');
+            Position.pin(iframe[0], target[0]);
+            iframe.show();
         }
     };
 
-    module.exports =  function(element){
 
-        if(!element){
-            throw('Element must be spicified');
-        }
+    // 销毁 iframe 等
+    Shim.prototype.destroy = function() {
+        this.iframe.remove();
+        delete this.iframe;
+        delete this.target;
+    };
 
-        if(useIframe){
-            // 如果element是个数组则只取第一个
-            return new iframeshim($(element)[0]); 
-        }
 
-        // 除了ie6都返回空实例
-        return new function(){
-            var method = ['sync', 'show', 'hide'], i;
+    if ($.browser.msie && $.browser.version == 6.0) {
+        module.exports = Shim;
+    } else {
+        // 除了 IE6 都返回空的构造函数
+        function Noop() {}
+        Noop.prototype.sync = Noop;
+        Noop.prototype.destroy = Noop;
 
-            for(i in method){
-                this[method[i]] = function(){};
+        module.exports = Noop;
+    }
+
+
+    // Helpers
+
+    function createShim() {
+        return $('<iframe>', {
+            frameborder: 0,
+            css: {
+                border: 'none',
+                opacity: 0,
+                position: 'absolute'
             }
-        };
+        });
     }
 
 });
+

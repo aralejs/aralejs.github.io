@@ -182,23 +182,29 @@
         </p>
     </div>
 <script>
-seajs.use(['jquery','../src/iframe-shim'], function($, iframeshim){
+seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
+
     // example1
-    iframeshim($('#example1 .overlay')[0]);
+    new Shim('#example1 .overlay').sync();
+
 
     //example2
-    var example2 = iframeshim($('#example2 .overlay')[0]);
+    var shim2 = new Shim('#example2 .overlay').sync();
+
     $('#example2 input').blur(function(e){
         var value = e.currentTarget.value;
+
         $('#example2 .overlay').css({
-            'height': value+'px',
-            'width': value+'px'
+            'height': value,
+            'width': value
         });
-        example2.sync();
+
+        shim2.sync();
     });
 
+
     // example3
-    iframeshim($('#example3 .overlay')[0]);
+    new Shim('#example3 .overlay').sync();
 
 });
 </script>
