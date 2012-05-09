@@ -12,6 +12,16 @@
         width: 960px;
         margin: 50px auto;
     }
+    .fn-hide, .ui-dropdown {
+        display: none;
+    }
+    .ui-dropdown {
+        border: 1px solid #CCC;
+        padding: 3px 5px;
+    }
+    .ui-dropdown li {
+        list-style: none;
+    }
 </style>
 <script src="../../../tools/seajs-and-its-friends.js"></script>
 </head>
@@ -24,8 +34,24 @@
     <div class="example" id="example2">
         <h3>范例2: data-api</h3>
         <div class="dropdown">
-            <a href="#" data-action-trigger="click">下拉框</a>
+            <a href="#" data-action-trigger="click"
+                data-action-target=".ui-dropdown">下拉框</a>
             <ul class="ui-dropdown">
+                <li>内容1</li>
+                <li>内容2</li>
+                <li>内容3</li>
+                <li>内容4</li>
+            </ul>
+        </div>
+        <pre>
+        data-action-target='.ui-dropdown' 可以写成你要的id，也可以不写采用默认值。
+        </pre>
+    </div>
+    <div class="example" id="example3">
+        <h3>范例3: 手动实例化</h3>
+        <div class="dropdown">
+            <a href="#" data-action-trigger="click" id="srcId3">下拉框</a>
+            <ul class="ui-dropdown" id="targetId3">
                 <li>内容1</li>
                 <li>内容2</li>
                 <li>内容3</li>
@@ -35,8 +61,12 @@
     </div>
 </div>
 <script type="text/javascript">
-seajs.use(['jquery','../src/dropdown'], function($, dropdown){
-    var exmaple1 = dropdown();
+seajs.use(['jquery','../src/dropdown'], function($, Dropdown){
+    var example3 = new Dropdown({
+        srcId: '#srcId3',
+        targetId: '#targetId3'
+    });
+    console.log(example3);
 });
 </script>
 </body>
