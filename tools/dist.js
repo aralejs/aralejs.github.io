@@ -3,8 +3,8 @@
 //
 // Usage:
 //
-//    $ cd arale
-//    $ node tools/dist.js moduleName
+//   $ cd arale
+//   $ node tools/dist.js moduleName
 //
 
 var fs = require('fs');
