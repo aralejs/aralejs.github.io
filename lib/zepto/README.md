@@ -7,6 +7,11 @@ Zepto 是一个非常小巧的适用于现代浏览器的 JavaScript 类库。Ze
 ---
 
 
+## 模块依赖
+
+ - [seajs](seajs/README.md)
+
+
 ## 使用说明
 
 ```js
@@ -20,3 +25,13 @@ define(function(require, exports) {
 ```
 
 详细 API, 请阅读精心编写的 Zepto 官方文档：<http://zeptojs.com/>
+
+
+## 更新
+
+当 Zepto 发布新版本，需要更新时，只要运行：
+
+```
+$ cd arale/dist
+$ spm install zepto
+```

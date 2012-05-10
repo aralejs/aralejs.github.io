@@ -47,7 +47,7 @@
         <h2>正常情况，创建一个遮罩</h2>
         <code>
             <pre>
-            iframeshim($('#example1 .overlay')[0]);
+            new Shim('#example1 .overlay').sync();
             </pre>
         </code>
         <div class="overlay">
@@ -92,16 +92,17 @@
         <h2>遮罩会根据dom的宽高进行调节</h2>
         <code>
             <pre>
-            var example2 = iframeshim($('#example2 .overlay')[0]);
+            var shim2 = new Shim('#example2 .overlay').sync();
             $('#example2 input').blur(function(e){
                 var value = e.currentTarget.value;
+
                 $('#example2 .overlay').css({
-                    'height': value+'px',
-                    'width': value+'px'
+                    'height': value,
+                    'width': value
                 });
-                example2.sync();
+
+                shim2.sync();
             });
-            iframeshim($('#example1 .overlay')[0]);
             </pre>
         </code>
         <div class="overlay" style="top:100px;">
@@ -138,7 +139,7 @@
         <h2>遮罩只会遮盖border以及内容部分，margin则不算</h2>
         <code>
             <pre>
-            iframeshim($('#example3 .overlay')[0]);
+            new Shim('#example3 .overlay').sync();
             </pre>
         </code>
         <div class="overlay" style="border-width:20px;margin:20px;">
@@ -182,23 +183,29 @@
         </p>
     </div>
 <script>
-seajs.use(['jquery','../src/iframe-shim'], function($, iframeshim){
+seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
+
     // example1
-    iframeshim($('#example1 .overlay')[0]);
+    new Shim('#example1 .overlay').sync();
+
 
     //example2
-    var example2 = iframeshim($('#example2 .overlay')[0]);
+    var shim2 = new Shim('#example2 .overlay').sync();
+
     $('#example2 input').blur(function(e){
         var value = e.currentTarget.value;
+
         $('#example2 .overlay').css({
-            'height': value+'px',
-            'width': value+'px'
+            'height': value,
+            'width': value
         });
-        example2.sync();
+
+        shim2.sync();
     });
 
+
     // example3
-    iframeshim($('#example3 .overlay')[0]);
+    new Shim('#example3 .overlay').sync();
 
 });
 </script>
