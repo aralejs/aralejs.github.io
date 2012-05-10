@@ -1,13 +1,4 @@
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#jquery/1.7.2/jquery-debug', [], factory);
-  }
-  else {
-    factory();
-  }
-
-})(function(require) {
+define('#jquery/1.7.2/jquery-debug', [], function(require) {
 
   /*!
  * jQuery JavaScript Library v1.7.2
@@ -4079,7 +4070,7 @@ var Sizzle = function( selector, context, results, seed ) {
 			}
 
 		} else {
-			checkSet = [];
+			checkSet = parts = [];
 		}
 	}
 
@@ -5396,7 +5387,7 @@ jQuery.find = Sizzle;
 jQuery.expr = Sizzle.selectors;
 jQuery.expr[":"] = jQuery.expr.filters;
 jQuery.unique = Sizzle.uniqueSort;
-jQuery['text'] = Sizzle.getText;
+jQuery.text = Sizzle.getText;
 jQuery.isXMLDoc = Sizzle.isXML;
 jQuery.contains = Sizzle.contains;
 
@@ -9415,5 +9406,5 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 })( window );
 
 
-  if (require) return $.noConflict(true);
+  return $.noConflict(true);
 });

@@ -1,13 +1,4 @@
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#zepto/0.8.0/zepto-debug', [], factory);
-  }
-  else {
-    factory();
-  }
-
-})(function(require) {
+define('#zepto/0.8.0/zepto-debug', [], function(require) {
 
   var _zepto = window.Zepto;
   var _$ = window.$;
@@ -1485,11 +1476,8 @@ window.Zepto = Zepto
 })(Zepto)
 
 
-  if (require) {
-    window.Zepto = _zepto;
-    window.$ = _$;
+  window.Zepto = _zepto;
+  window.$ = _$;
 
-    return Zepto;
-  }
-
+  return Zepto;
 });

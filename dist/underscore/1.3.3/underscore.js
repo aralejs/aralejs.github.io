@@ -1,16 +1,4 @@
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#underscore/1.3.3/underscore', [], factory);
-  }
-  else if (typeof exports !== 'undefined') {
-    factory(require, exports, module);
-  }
-  else {
-    factory();
-  }
-
-})(function(require, exports, module) {
+define('#underscore/1.3.3/underscore', [], function(require, exports, module) {
 
 // Underscore.js 1.3.3
 // (c) 2009-2012 Jeremy Ashkenas, DocumentCloud Inc.
