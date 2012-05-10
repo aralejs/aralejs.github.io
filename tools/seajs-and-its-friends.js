@@ -27,6 +27,7 @@ seajs.config({
         'json': 'json/1.0.2/json',
         'underscore': 'underscore/1.3.3/underscore',
         'cookie': 'cookie/1.0.2/cookie',
+        'handlebars': 'handlebars/1.0.0/handlebars',
         'store': 'store/1.3.3/store',
         'swfobject': 'swfobject/2.2.0/swfobject',
         'moment': 'moment/1.6.2/moment',
