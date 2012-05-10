@@ -9,3 +9,13 @@
 ## 使用说明
 
 请参考漂亮的官方文档：<http://momentjs.com/docs/>
+
+
+## 更新
+
+当 Moment.js 发布新版本，需要更新时，只要运行：
+
+```
+$ cd arale/dist
+$ spm install moment
+```

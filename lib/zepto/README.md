@@ -20,3 +20,13 @@ define(function(require, exports) {
 ```
 
 详细 API, 请阅读精心编写的 Zepto 官方文档：<http://zeptojs.com/>
+
+
+## 更新
+
+当 Zepto 发布新版本，需要更新时，只要运行：
+
+```
+$ cd arale/dist
+$ spm install zepto
+```

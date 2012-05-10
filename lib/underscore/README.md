@@ -10,3 +10,13 @@ Object 等便捷、强大的操作方法。可以与 jQuery, Backbone 等组件�
 ## 使用说明
 
 请访问淡雅的官方文档：<http://documentcloud.github.com/underscore/>
+
+
+## 更新
+
+当 Underscore 发布新版本，需要更新时，只要运行：
+
+```
+$ cd arale/dist
+$ spm install underscore
+```

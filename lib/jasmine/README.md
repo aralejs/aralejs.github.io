@@ -34,7 +34,8 @@ Jasmine 官方文档：http://pivotal.github.com/jasmine/
 当 Jasmine 发布新版本，需要更新时，只要运行：
 
 ```
-$ node update.js
+$ cd arale/dist
+$ spm install jasmine
 ```
 
 然后更改 `tools/jasmine-runner.js` 中的版本号就好。

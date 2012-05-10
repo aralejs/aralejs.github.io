@@ -33,3 +33,13 @@ define(function(require, exports) {
 具体用法，请参考 Douglas Crockford 的源码：
 
 - <https://github.com/douglascrockford/JSON-js/blob/master/json2.js>
+
+
+## 更新
+
+当 JSON 发布新版本，需要更新时，只要运行：
+
+```
+$ cd arale/dist
+$ spm install json
+```

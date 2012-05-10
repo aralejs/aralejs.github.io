@@ -32,3 +32,13 @@ jQuery 官方文档：<http://api.jquery.com/>
     var $srcNode = $(srcNode);
     // 前缀 $ 可以让大家清晰识别出这是一个 jQuery 对象。
 ```
+
+
+## 更新
+
+当 jQuery 发布新版本，需要更新时，只要运行：
+
+```
+$ cd arale/dist
+$ spm install jquery
+```
