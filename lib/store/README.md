@@ -6,6 +6,11 @@
 ---
 
 
+## 模块依赖
+
+ - [seajs](seajs/README.md)
+
+
 ## 使用说明
 
 官方文档：<https://github.com/marcuswestin/store.js#readme>
