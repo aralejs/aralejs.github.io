@@ -18,6 +18,11 @@ var SRC_DIR = path.join('lib', module, 'src');
 var DIST_DIR = path.join('dist', module);
 
 var meta = JSON.parse(fs.readFileSync(path.join(SRC_DIR, '../package.json')));
+if (!meta['dist']) {
+    meta['dist'] = {};
+    meta['dist'][module + '.js'] = 'default';
+}
+
 DIST_DIR = path.join(DIST_DIR, meta.version);
 
 
