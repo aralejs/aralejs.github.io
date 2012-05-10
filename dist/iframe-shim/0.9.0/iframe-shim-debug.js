@@ -1,4 +1,4 @@
-define("#iframe-shim/0.9.0/iframe-shim", ["jquery","position"], function(require, exports, module) {
+define("#iframe-shim/0.9.0/iframe-shim-debug", ["jquery","position"], function(require, exports, module) {
 
     var $ = require('jquery');
     var Position = require('position');
@@ -38,6 +38,8 @@ define("#iframe-shim/0.9.0/iframe-shim", ["jquery","position"], function(require
             Position.pin(iframe[0], target[0]);
             iframe.show();
         }
+
+        return this;
     };
 
 
@@ -67,6 +69,7 @@ define("#iframe-shim/0.9.0/iframe-shim", ["jquery","position"], function(require
         return $('<iframe>', {
             frameborder: 0,
             css: {
+                display: 'none',
                 border: 'none',
                 opacity: 0,
                 position: 'absolute'

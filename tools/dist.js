@@ -34,19 +34,25 @@ console.log('');
 function build(filename) {
     var code = fs.readFileSync(path.join(SRC_DIR, filename), 'utf8');
 
+    // 得到 id 和 deps 信息
     var id = '#' + module + '/' + meta.version + '/' + filename.split('.')[0];
     var deps = parseDependencies(code);
     deps = deps.length ? '"' + deps.join('","') + '"' : '';
 
-    code = code.replace('define(function',
+    // 获取源码
+    var minCode = code.replace('define(function',
             'define("' + id + '", [' + deps + '], function');
 
+    var debugCode = minCode.replace(id, id + '-debug');
+
+    // 文件路径
     var minfile = path.join(DIST_DIR, filename);
     var debugfile = minfile.replace('.js', '-debug.js');
 
+    // 写入 dist 目录
     mkdirS(DIST_DIR);
-    fs.writeFileSync(debugfile, code, 'utf8');
-    fs.writeFileSync(minfile, compress(code), 'utf8');
+    fs.writeFileSync(debugfile, debugCode, 'utf8');
+    fs.writeFileSync(minfile, compress(minCode), 'utf8');
 }
 
 

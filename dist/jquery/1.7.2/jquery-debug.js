@@ -4079,7 +4079,7 @@ var Sizzle = function( selector, context, results, seed ) {
 			}
 
 		} else {
-			checkSet = parts = [];
+			checkSet = [];
 		}
 	}
 
@@ -5396,7 +5396,7 @@ jQuery.find = Sizzle;
 jQuery.expr = Sizzle.selectors;
 jQuery.expr[":"] = jQuery.expr.filters;
 jQuery.unique = Sizzle.uniqueSort;
-jQuery.text = Sizzle.getText;
+jQuery['text'] = Sizzle.getText;
 jQuery.isXMLDoc = Sizzle.isXML;
 jQuery.contains = Sizzle.contains;
 
