@@ -6,6 +6,11 @@
 ---
 
 
+## 模块依赖
+
+ - [seajs](seajs/README.md)
+
+
 ## 使用说明
 
 请参考漂亮的官方文档：<http://momentjs.com/docs/>

@@ -6,6 +6,11 @@
 ---
 
 
+## 模块依赖
+
+ - [seajs](seajs/README.md)
+
+
 ## 使用说明
 
 官方文档：<http://code.google.com/p/swfobject/wiki/documentation>

@@ -15,6 +15,11 @@ describe("Jasmine", function() {
 ---
 
 
+## 模块依赖
+
+ - [seajs](seajs/README.md)
+
+
 ## 使用说明
 
 Jasmine 官方文档：http://pivotal.github.com/jasmine/
