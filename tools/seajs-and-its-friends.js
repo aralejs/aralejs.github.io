@@ -28,6 +28,7 @@ seajs.config({
         'underscore': 'underscore/1.3.3/underscore',
         'cookie': 'cookie/1.0.2/cookie',
         'store': 'store/1.3.3/store',
+        'swfobject': 'swfobject/2.2.0/swfobject',
         'moment': 'moment/1.6.2/moment',
 
         'iframe-shim': 'iframe-shim/0.9.0/iframe-shim',
