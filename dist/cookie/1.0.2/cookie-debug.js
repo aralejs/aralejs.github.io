@@ -1,6 +1,4 @@
-/* @author lifesinger@gmail.com (Frank Wang) */
-
-define("#cookie/1.0.2/cookie", [], function(require, exports) {
+define("#cookie/1.0.2/cookie-debug", [], function(require, exports) {
 
     // Cookie
     // -------------
@@ -10,7 +8,6 @@ define("#cookie/1.0.2/cookie", [], function(require, exports) {
 
 
     var Cookie = exports;
-    Cookie.version = '1.0.2';
 
     var decode = decodeURIComponent;
     var encode = encodeURIComponent;
