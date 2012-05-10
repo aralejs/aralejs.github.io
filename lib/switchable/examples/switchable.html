@@ -88,12 +88,40 @@
         </div>
     </div>
 
+    <<div id="testHandlebars">
+        <script id="entry-template" type="text/x-handlebars-template">
+        <div class="entry">
+          <h1>{{title}}</h1>
+          <div class="body">
+              {{{body}}}
+          </div>
+        </div>
+        </script>
+    <div id="output" style="border:1px solid red; width:200px; height:200px">
+        
+    </div>        
+    </div>
     <script>
-        var jQuery, sa, $;
+        var jQuery, sa, $, hb;
         seajs.use(['jquery', '../src/switchable'], function(jquery, Switchable, widget) {
             $ = jQuery = jquery;
             sa = new Switchable({element: '#scrollable', 'testAttr': 'test---'}, {name: 'switchable'}); 
+
+             seajs.use('handlebars', function(h) {
+                hb = h;
+                var source = $('#entry-template').html();
+                var template = h.compile(source);
+                //var context = {title: "My New Post", body: "This is my first post!"}
+                var context = {title: "My New Post", body: "<p>This is a post about &lt;p&gt; tags</p>"}
+                var html    = template(context);
+
+                $('#output').html(html);
+                
+            });
         });
+
+
+
     </script>
 </body>
 </html>
