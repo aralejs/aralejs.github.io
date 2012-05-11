@@ -7,8 +7,8 @@
     "version": "1.0.2",
 
     "files": [ "./src/cookie.js" ],
-    "src": "https://aralejs.org/dist/cookie/{{version}}/cookie-debug.js",
-    "min": "https://aralejs.org/dist/cookie/{{version}}/cookie.js",
+    "src": "http://aralejs.org/dist/cookie/{{version}}/cookie-debug.js",
+    "min": "http://aralejs.org/dist/cookie/{{version}}/cookie.js",
 
     "dist": {
         "cookie.js": ["default"]

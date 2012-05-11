@@ -1,25 +1,25 @@
 
 # Widget 
 
-Widget 是一个组件基础类，提供组件的一些基础功能。 比如基本的事件发布机制, 模板处理, 样式加载, 模板分析等功能。
-并提供了组件的基本生命周期和一些标准属性配置。 用户可以按照这些基本的配置和覆盖对应的生命周期的方法就可以创建出自己
-的组件。
+Widget 是 UI 类组件的基础类。提供一些基础功能，比如事件发布机制、模板处理、样式加载、结构分析等功能，
+并提供了组件的基本生命周期管理和一些标准属性配置。 用户按照这些基本配置，以及覆盖生命周期的特定方法就可以创建出自己的组件。
 
 ---
 
 
 ## 模块依赖
 
+ - [seajs](seajs/README.md)
  - [base](base/README.md)
  - [jquery](jquery/README.md)
+
 
 ## 使用说明
 
 
 ### extend `Widget.extend(properties)`
 
-使用 `extend` 方法，可以基于 `Widget` 类来创建自己的类。参数 `properties`
-是实例属性。
+使用 `extend` 方法，可以基于 `Widget` 类来创建自己的类。参数 `properties` 是实例属性。
 
 
 ```js
@@ -72,24 +72,37 @@ sw.on('next', function() {
 
 ```
 
-## Widget实例方法
-如果一个组件通过Widget.extend来创建，会自动继承下面这些方法。 
 
-### on, trigger, off 继承于Event，具体的使用可以去 [Event](events/README.md) 参看相关使用说明。
+## Widget 实例方法
 
-### beforeCreate() 
-需要子类去覆盖，在组件View渲染完毕后， 会自动调用此方法。
+如果一个组件通过 `Widget.extend` 来创建，会自动继承下面这些方法：
 
-### bindAction()
-需要子类覆盖， 在beforeCreate处理完毕后，会调用此方法。 这个方法主要是负责组件事件的绑定。
 
-### postCreate()
-需要子类覆盖，当事件绑定完毕后， 会调用方法。 在这个方法调用之前，组件基本已经初始化完毕。 子类可以在这里做些收尾等工作。
+### `on`, `trigger`, `off` 继承自 Event，具体使用请参考 [events 使用文档](events/README.md)。
 
-### onElement this.onElement(type [, selector] [, data], handler(eventObject));
-给组件对应的dom元素进行事件绑定。
 
-### aroundFn this.aroundFn(methodName [, before] [, after])
+### `beforeCreate()`
+
+在组件 View 渲染完毕后，会自动调用此方法。
+
+
+### `bindAction()`
+
+在 `beforeCreate` 处理完毕后，会调用此方法。这个方法主要是负责组件事件的绑定。
+
+
+### `postCreate()`
+
+当事件绑定完毕后，会调用此方法。在这个方法调用之前，组件基本已经初始化完毕，子类可以在这里做些收尾工作。
+
+
+### onElement `this.onElement(type [, selector] [, data], handler(eventObject))`
+
+给组件对应的 DOM 元素进行事件绑定。
+
+
+### aroundFn `this.aroundFn(methodName [, before] [, after])`
+
 给组件中指定的函数增加函数调用之前和之后的事件发布功能。
 
 
@@ -99,6 +112,7 @@ sw.on('next', function() {
 
 
 ## 性能对比
+
 
 
 ## 调研文档

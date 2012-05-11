@@ -1,6 +1,4 @@
-/* @author lifesinger@gmail.com */
-
-define("#base/0.9.0/base", [], function(require, exports) {
+define("#base/0.9.0/options-debug", [], function(require, exports) {
 
     // Options
     // -----------------

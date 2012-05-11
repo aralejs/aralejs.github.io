@@ -1,6 +1,4 @@
-/* @author lifesinger@gmail.com */
-
-define("#class/0.9.0/class", [], function() {
+define("#class/0.9.0/class-debug", [], function() {
 
     // Class
     // -----------------
