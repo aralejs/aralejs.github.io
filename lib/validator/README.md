@@ -44,7 +44,7 @@ API
 
 如何自定义规则：
 
-*   函数类型
+*   函数检验
 
         var rules = require('validator.ruleFactory');
 
@@ -55,7 +55,7 @@ API
 
         rules.setMessage('valueBetween', '{{name}}必须在{{min}}和{{max}}之间');
 
-*   正则类型
+*   正则校验
 
         rules.setRule('phone', /^1\d{10}$/);
         rules.setMessage('phone', '请输入合法的{{name}}');
@@ -64,8 +64,7 @@ API
 
         rules.setAsyncRule('checkUseranmeAvailable', function(options, commit) {
             $.post('http://youdomain/checkUsernameAvailable', {username: options.field.value}, function(data) {
-                rules.setMessage('checkUseranmeAvailable', data.msg);
-                commit(data.state);
+                commit(data.state, data.msg);
             })
         });
 
