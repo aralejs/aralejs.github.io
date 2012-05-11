@@ -18,7 +18,7 @@ seajs.config({
     alias: {
         'events': 'events/0.9.1/events',
         'class': 'class/0.9.0/class',
-        'base': 'base/0.9.0/base',
+        'base': 'base/0.9.1/base',
 
         '$': 'jquery/1.7.2/jquery',
         'jquery': 'jquery/1.7.2/jquery',
