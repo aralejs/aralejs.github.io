@@ -31,6 +31,7 @@ seajs.config({
         'store': 'store/1.3.3/store',
         'swfobject': 'swfobject/2.2.0/swfobject',
         'moment': 'moment/1.6.2/moment',
+        'async': 'async/0.1.18/async',
 
         'iframe-shim': 'iframe-shim/0.9.0/iframe-shim',
         'position': 'position/0.9.0/position'
