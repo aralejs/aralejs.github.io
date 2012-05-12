@@ -68,6 +68,12 @@ API
             })
         });
 
+函数校验规则和异步校验规则接收的第一个参数options对象中，包含以下字段：
+    
+*   `options.element` - 当前在校验的表单项。如果是多项，例如多个 radio。
+*   用户使用校验规则时传入的object。例如用户定义'lengthBetween{"min":1, "max":3}'，那么options对象中将存在 min 和 max 字段。
+
+
 
 检验核心
 ==============
