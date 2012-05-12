@@ -32,15 +32,15 @@ feature list
 
 API
 
-*   `.setRule`
+*   `.addRule`
 
-*   `.setMessage`
+*   `.addMessage`
 
-*   `.setAsyncRule`
+*   `.addAsyncRule`
 
 *   `.getRule`
 
-*   `.setCombinedRule`
+*   `.addCombinedRule`
 
 如何自定义规则：
 
@@ -48,21 +48,21 @@ API
 
         var rules = require('validator.ruleFactory');
 
-        rules.setRule('valueBetween', function(options) {
+        rules.addRule('valueBetween', function(options) {
             var v = Number(options.field.value);
             return v <= options.max && v >= options.min;
         });
 
-        rules.setMessage('valueBetween', '{{name}}必须在{{min}}和{{max}}之间');
+        rules.addMessage('valueBetween', '{{name}}必须在{{min}}和{{max}}之间');
 
 *   正则校验
 
-        rules.setRule('phone', /^1\d{10}$/);
-        rules.setMessage('phone', '请输入合法的{{name}}');
+        rules.addRule('phone', /^1\d{10}$/);
+        rules.addMessage('phone', '请输入合法的{{name}}');
 
 *   异步检验
 
-        rules.setAsyncRule('checkUseranmeAvailable', function(options, commit) {
+        rules.addAsyncRule('checkUseranmeAvailable', function(options, commit) {
             $.post('http://youdomain/checkUsernameAvailable', {username: options.field.value}, function(data) {
                 commit(data.state, data.msg);
             })

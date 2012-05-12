@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>validator demo</title>
+        <script type="text/javascript" charset="utf-8" src="../../../tools/seajs-and-its-friends.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            seajs.config({
+                alias: {
+                    validator: '../src/core'
+                }
+            });
+
+            seajs.use(['validator', 'jquery'], function(validator, $) {
+                $(function() {
+                    validator.validateItem('username', {
+                        rules: ['required', 'lengthBetween{"min":1, "max":3}']
+                    });
+
+                    validator.validateItem('sex', {
+                        rules: ['required']
+                    });
+
+                    validator.validateItem('vehicle', {
+                        rules: ['required']
+                    });
+
+                    validator.validateItem('country', {
+                        rules: ['required']
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <form>
+
+            <p>
+                <label for="username">Username:</label>
+                <input id="username" name="username" type="text" data-constraints="@required @emailOrPhone(@email | @phone(/^1\d{10}$/)) @maxLength{max:20} @ajax" data-notice-required="用户名不能为空" data-notice-emailOrPhone="用户名必须为email或者电话号码" data-notice-default="这条信息会显示" value="adsd" />
+            </p>
+
+            <p>
+                <span>Sex:</span>
+                <label for="male">Male</label>
+                <input id="male" type="radio" name="sex" value="male" />
+                <label for="female">Female</label>
+                <input id="female" type="radio" name="sex" value="female" checked />
+            </p>
+
+            <p>
+                <input type="checkbox" name="vehicle" value="Bike" /> I have a bike<br />
+                <input type="checkbox" name="vehicle" value="Car" checked /> I have a car
+            </p>
+
+            <p>
+                <span>Country:</span>
+                <select name="country">
+                  <option value="china">China</option>
+                  <option value="usa">USA</option>
+                </select>
+            </p>
+
+            <input type="submit" value="submit" />
+        </form>
+    </body>
+</html>
