@@ -71,7 +71,28 @@ API
 函数校验规则和异步校验规则接收的第一个参数options对象中，包含以下字段：
     
 *   `options.element` - 当前在校验的表单项。如果是多项，例如多个 radio。
-*   用户使用校验规则时传入的object。例如用户定义'lengthBetween{"min":1, "max":3}'，那么options对象中将存在 min 和 max 字段。
+*   用户使用校验规则时传入对象的所有字段。例如用户定义'lengthBetween{"min":1, "max":3}'，那么options对象中将存在 min 和 max 字段。
+*   `options.display` - 若用户传入的规则参数字段中含有 display，或者检验配置项字段中有 display，则使用 display 字段，否则使用表单域的 name 属性。
+    例如
+
+        validator.configItem('username' {
+            rules: ['required']
+        });
+        //出错校验信息为"username不能为空"
+
+        validator.configItem('username' {
+            rules: ['required', lengthBetween{"min": 1, "max":5}],
+            display: '用户名'
+        });
+        //出错校验信息为"用户名不能为空"或者“用户名的长度必须在1和5之间"。
+
+
+        validator.configItem('username' {
+            rules: ['required{"display": "用户名字段"}', lengthBetween{"min": 1, "max":5}],
+            display: '用户名'
+        });
+        //出错校验信息为"用户名字段不能为空"或者“用户名的长度必须在1和5之间”，请注意两者的区别。
+
 
 
 
@@ -110,16 +131,16 @@ API
 
 *   添加检验项
 
-        .validateItem(name, cfg)
+        .configItem(name, cfg)
 
     Example
 
-        vCore.validateItem('email', {
-            rules: ['required', 'lengthBetween{min: 12, max: 13}'],
+        vCore.configItem('email', {
+            rules: ['required', 'lengthBetween{"min": 12, "max": 13}'],
             name: '电子邮箱',
             msg-success: '您的用户名校验通过！',
             msg-failure: '用户名校验失败！',
-            checkOn: ['blur', 'submit'],
+            triggerType: ['blur', 'submit'],
             before: function() {},
             after: function() {}
         });

@@ -12,22 +12,35 @@
 
             seajs.use(['validator', 'jquery'], function(validator, $) {
                 $(function() {
-                    validator.validateItem('username', {
+                    validator.configItem('username', {
                         rules: ['required', 'lengthBetween{"min":1, "max":3}'],
                         display: '用户名',
-                        message: '用户名的格式必须是正确的哦'
+                        message: '用户名的格式必须是正确的哦',
+                        triggerType: ['blur'],
+                        after: function() {
+                            console.log(arguments);
+                        }
                     });
 
-                    validator.validateItem('sex', {
-                        rules: ['required']
+                    validator.configItem('sex', {
+                        rules: ['required'],
+                        after: function() {
+                            console.log(arguments);
+                        }
                     });
 
-                    validator.validateItem('vehicle', {
-                        rules: ['required']
+                    validator.configItem('vehicle', {
+                        rules: ['required'],
+                        after: function() {
+                            console.log(arguments);
+                        }
                     });
 
-                    validator.validateItem('country', {
-                        rules: ['required']
+                    validator.configItem('country', {
+                        rules: ['required'],
+                        after: function() {
+                            console.log(arguments);
+                        }
                     });
                 });
             });
@@ -51,7 +64,7 @@
 
             <p>
                 <input type="checkbox" name="vehicle" value="Bike" /> I have a bike<br />
-                <input type="checkbox" name="vehicle" value="Car" checked /> I have a car
+                <input type="checkbox" name="vehicle" value="Car" /> I have a car
             </p>
 
             <p>
