@@ -10,8 +10,9 @@
                 }
             });
 
-            seajs.use(['validator', 'jquery'], function(validator, $) {
+            seajs.use(['validator', 'jquery'], function(Validator, $) {
                 $(function() {
+                    var validator = new Validator();
                     validator.configItem('username', {
                         rules: ['required', 'lengthBetween{"min":1, "max":3}'],
                         display: '用户名',
