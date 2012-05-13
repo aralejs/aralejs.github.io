@@ -32,15 +32,15 @@ feature list
 
 API
 
-*   `.setRule`
+*   `.addRule`
 
-*   `.setMessage`
+*   `.addMessage`
 
-*   `.setAsyncRule`
+*   `.addAsyncRule`
 
 *   `.getRule`
 
-*   `.setCombinedRule`
+*   `.addCombinedRule`
 
 如何自定义规则：
 
@@ -48,25 +48,31 @@ API
 
         var rules = require('validator.ruleFactory');
 
-        rules.setRule('valueBetween', function(options) {
+        rules.addRule('valueBetween', function(options) {
             var v = Number(options.field.value);
             return v <= options.max && v >= options.min;
         });
 
-        rules.setMessage('valueBetween', '{{name}}必须在{{min}}和{{max}}之间');
+        rules.addMessage('valueBetween', '{{name}}必须在{{min}}和{{max}}之间');
 
 *   正则校验
 
-        rules.setRule('phone', /^1\d{10}$/);
-        rules.setMessage('phone', '请输入合法的{{name}}');
+        rules.addRule('phone', /^1\d{10}$/);
+        rules.addMessage('phone', '请输入合法的{{name}}');
 
 *   异步检验
 
-        rules.setAsyncRule('checkUseranmeAvailable', function(options, commit) {
+        rules.addAsyncRule('checkUseranmeAvailable', function(options, commit) {
             $.post('http://youdomain/checkUsernameAvailable', {username: options.field.value}, function(data) {
                 commit(data.state, data.msg);
             })
         });
+
+函数校验规则和异步校验规则接收的第一个参数options对象中，包含以下字段：
+    
+*   `options.element` - 当前在校验的表单项。如果是多项，例如多个 radio。
+*   用户使用校验规则时传入的object。例如用户定义'lengthBetween{"min":1, "max":3}'，那么options对象中将存在 min 和 max 字段。
+
 
 
 检验核心
