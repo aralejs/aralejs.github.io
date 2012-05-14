@@ -22,15 +22,15 @@
         </style>
     </head>
     <body>
-
+        <div id="test"></div>
         <script>
-            seajs.use(['../src/overlay', 'jquery'], function(Overlay, $) {
+            seajs.use(['../src/overlay', 'jquery', 'events'], function(Overlay, $, events) {
                 $(function() {
-                    var o = Overlay({
-                        tpl : '<div class="test"></div>',
+                    var o = new Overlay({
+                        template : '<div class="test"></div>',
                         width : 300,
                         height : 200,
-                        relativeObj : {
+                        baseObject : {
                             x : 200,
                             y : 180
                         }
