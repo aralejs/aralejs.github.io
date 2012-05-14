@@ -1,6 +1,10 @@
+>Use the Source, Luke!
+
+>所谓读文档不如看源码啊，少年!
+
 # Dropdown
 
-工具类，生成下拉浮层。
+组件类，用于生成下拉浮层。
 
 ---
 
@@ -10,12 +14,11 @@
 
 
 ```
-define(function(require, exports, module) {
-    var $ = require('jquery');
-	var Dropdown = require('dropdown');
-
-    var nav = new Dropdown();
-	
+seajs.use(['jquery','dropdown'], function($, Dropdown){
+    var example = new Dropdown({
+        trigger: '#triggerId',
+        target: '#targetId'
+    });
 });
 ```
 
@@ -26,3 +29,6 @@ define(function(require, exports, module) {
 ## 测试用例
 
 * [http://aralejs.org/lib/dropdown/tests/runner.html](http://aralejs.org/lib/dropdown/tests/runner.html)
+
+## 感谢
+* Bootstrap Dropdown
