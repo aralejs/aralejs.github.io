@@ -1,52 +1,58 @@
+(function() {
 
-seajs.use([
-    'text!../package.json',
-    'jasmine/1.1.0/jasmine-html'], function(data) {
+    var HAS_PACKAGE = !this.NO_PACKAGE;
 
-    var jasmineEnv = getJasmineEnv();
-
-    // Make alias
-    this.test = it;
-    this.xtest = xit;
-
-    // Go
-    runSpecs();
+    var modules = ['jasmine/1.1.0/jasmine-html'];
+    HAS_PACKAGE && modules.unshift('text!../package.json');
 
 
-    function getJasmineEnv() {
-        var env = jasmine.getEnv();
-        env.updateInterval = 1000;
+    seajs.use(modules, function(data) {
+        var jasmineEnv = getJasmineEnv();
 
-        var trivialReporter = new jasmine.TrivialReporter();
+        // Make alias
+        this.test = it;
+        this.xtest = xit;
 
-        env.addReporter(trivialReporter);
-
-        env.specFilter = function(spec) {
-            return trivialReporter.specFilter(spec);
-        };
-
-        return env;
-    }
+        // Go
+        runSpecs();
 
 
-    function runSpecs() {
-        var meta = JSON.parse(data);
-        var tests = meta['tests'] || [];
+        function getJasmineEnv() {
+            var env = jasmine.getEnv();
+            env.updateInterval = 1000;
 
-        // Get the default test from path: path/to/xxx/tests/runner.html
-        if (tests.length === 0) {
-            tests.push(location.href
-                    .replace(/.+\/([\w-]+)\/tests\/runner.+/, '$1'));
+            var trivialReporter = new jasmine.TrivialReporter();
+
+            env.addReporter(trivialReporter);
+
+            env.specFilter = function(spec) {
+                return trivialReporter.specFilter(spec);
+            };
+
+            return env;
         }
 
-        var specs = [];
-        for (var i = 0; i < tests.length; i++) {
-            specs[i] = './' + tests[i] + '-spec.js';
+
+        function runSpecs() {
+            var meta = HAS_PACKAGE ? JSON.parse(data) : {};
+            var tests = meta['tests'] || [];
+
+            // Get the default test from path: path/to/xxx/tests/runner.html
+            if (tests.length === 0) {
+                tests.push(location.href
+                        .replace(/.+\/([\w-]+)\/tests\/runner.+/, '$1'));
+            }
+
+            var specs = [];
+            for (var i = 0; i < tests.length; i++) {
+                specs[i] = './' + tests[i] + '-spec.js';
+            }
+
+            seajs.use(specs, function() {
+                jasmineEnv.execute();
+            });
         }
 
-        seajs.use(specs, function() {
-            jasmineEnv.execute();
-        });
-    }
+    });
 
-});
+})();

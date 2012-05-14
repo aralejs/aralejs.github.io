@@ -12,8 +12,16 @@
         width: 960px;
         margin: 50px auto;
     }
+    #container h1 {
+        border-bottom: 1px solid #CCC;
+        padding: 3px 5px;
+    }
     .fn-hide, .ui-dropdown {
         display: none;
+    }
+    .example {
+        padding: 10px 5px;
+        border-bottom: 1px solid #CCC;
     }
     .ui-dropdown {
         border: 1px solid #CCC;
@@ -27,6 +35,7 @@
 </head>
 <body>
 <div id="container">
+    <h1>Arale Dropdown</h1>
     <div class="example" id="example1">
         <h3>范例1: 普通</h3>
         <a href="#">下拉框</a>
@@ -63,8 +72,8 @@
 <script type="text/javascript">
 seajs.use(['jquery','../src/dropdown'], function($, Dropdown){
     var example3 = new Dropdown({
-        srcId: '#srcId3',
-        targetId: '#targetId3'
+        trigger: '#srcId3',
+        target: '#targetId3'
     });
     console.log(example3);
 });

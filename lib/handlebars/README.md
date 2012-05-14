@@ -14,7 +14,9 @@ logicless 特质。
 
 ## 使用说明
 
-官方文档：<http://handlebarsjs.com/>
+精心书写的官方文档：<http://handlebarsjs.com/>
+
+很棒的在线试用页面：<http://tryhandlebarsjs.com/>
 
 
 ## 更新
