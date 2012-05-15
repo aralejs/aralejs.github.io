@@ -67,9 +67,14 @@ define("#base/0.9.1/options-debug", [], function(require, exports) {
 
         for (key in supplier) {
             value = supplier[key];
-            if (typeof value === 'object') {
+
+            if (isArray(value)) {
+                value = value.slice();
+            }
+            else if (isPlainObject(value)) {
                 value = merge(receiver[key] || {}, value);
             }
+
             receiver[key] = value;
         }
 
@@ -82,4 +87,20 @@ define("#base/0.9.1/options-debug", [], function(require, exports) {
         return name.charAt(2).toLowerCase() + name.substring(3);
     }
 
+
+    var toString = Object.prototype.toString;
+
+    var isArray = Array.isArray || function(val) {
+        return toString.call(val) === '[object Array]';
+    };
+
+    function isPlainObject(o) {
+        return o &&
+            // 排除 boolean/string/number/function 等
+            // 标准浏览器下，排除 window 等非 JS 对象
+            // 注：ie8- 下，toString.call(window 等对象)  返回 '[object Object]'
+                toString.call(o) === '[object Object]' &&
+            // ie8- 下，排除 window 等非 JS 对象
+                ('isPrototypeOf' in o);
+    }
 });

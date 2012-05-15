@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#overlay/0.9.0/overlay-debug", ["$","position","iframe-shim","base"], function(require, exports, module) {
 
     var $ = require('$'),
         Position = require('position'),
@@ -38,9 +38,6 @@ define(function(require, exports, module) {
                 elem = $(this.template);
                 this.content && elem.html(this.content);
                 this.srcNode = elem[0];
-            }
-            else {
-                elem = $(this.srcNode);
             }
             this.sync();
             elem.appendTo(this.parentNode);

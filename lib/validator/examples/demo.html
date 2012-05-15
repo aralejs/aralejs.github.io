@@ -7,40 +7,56 @@
             seajs.config({
                 alias: {
                     validator: '../src/core'
-                }
+                },
             });
 
             seajs.use(['validator', 'jquery'], function(Validator, $) {
                 $(function() {
-                    var validator = new Validator();
+                    var validator = new Validator('test-form', {
+                        triggerType: ['blur'],
+                        onFormValidate: function() {
+                            console.log('onFormValidate', arguments);
+                        },
+                        onFormValidated: function() {
+                            console.log('onFormValidated', arguments);
+                        },
+                        onItemValidated: function() {
+                            console.log('validator.onItemValidated', arguments);
+                        }
+                    });
+
                     validator.configItem('username', {
                         rules: ['required', 'lengthBetween{"min":1, "max":3}'],
                         display: '用户名',
                         message: '用户名的格式必须是正确的哦',
-                        triggerType: ['blur'],
-                        after: function() {
-                            console.log(arguments);
+                        triggerType: ['keyup'],
+                        onItemValidate: function() {
+                            console.log('onItemValidate', arguments);
+                        },
+                        onItemValidated: function() {
+                            console.log('onItemValidated', arguments);
                         }
                     });
 
                     validator.configItem('sex', {
                         rules: ['required'],
-                        after: function() {
-                            console.log(arguments);
+                        triggerType: ['change'],
+                        onItemValidated: function() {
+                            console.log('onItemValidated', arguments);
                         }
                     });
 
                     validator.configItem('vehicle', {
                         rules: ['required'],
-                        after: function() {
-                            console.log(arguments);
+                        onItemValidated: function() {
+                            console.log('onItemValidated', arguments);
                         }
                     });
 
                     validator.configItem('country', {
                         rules: ['required'],
-                        after: function() {
-                            console.log(arguments);
+                        onItemValidated: function() {
+                            console.log('onItemValidated', arguments);
                         }
                     });
                 });
@@ -48,11 +64,11 @@
         </script>
     </head>
     <body>
-        <form>
+        <form id="test-form">
 
             <p>
                 <label for="username">Username:</label>
-                <input id="username" name="username" type="text" data-constraints="@required @emailOrPhone(@email | @phone(/^1\d{10}$/)) @maxLength{max:20} @ajax" data-notice-required="用户名不能为空" data-notice-emailOrPhone="用户名必须为email或者电话号码" data-notice-default="这条信息会显示" value="adsd" />
+                <input id="username" name="username" type="text" data-constraints="@required @emailOrPhone(@email | @phone(/^1\d{10}$/)) @maxLength{max:20} @ajax" data-notice-required="用户名不能为空" data-notice-emailOrPhone="用户名必须为email或者电话号码" data-notice-default="这条信息会显示" value="add" />
             </p>
 
             <p>
@@ -65,7 +81,7 @@
 
             <p>
                 <input type="checkbox" name="vehicle" value="Bike" /> I have a bike<br />
-                <input type="checkbox" name="vehicle" value="Car" /> I have a car
+                <input type="checkbox" name="vehicle" value="Car" checked /> I have a car
             </p>
 
             <p>

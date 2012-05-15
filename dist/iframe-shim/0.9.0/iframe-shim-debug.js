@@ -4,12 +4,12 @@ define("#iframe-shim/0.9.0/iframe-shim-debug", ["jquery","position"], function(r
     var Position = require('position');
 
 
-    // target 为需要被遮盖的目标元素，可以传 `DOM Element` 或 `Selector`
+    // target 是需要添加垫片的目标元素，可以传 `DOM Element` 或 `Selector`
     function Shim(target) {
         // 如果选择器选了多个 DOM，则只取第一个
         this.target = $(target).eq(0);
 
-        this.iframe = createShim();
+        this.iframe = createIframe();
         this.iframe.appendTo(document.body);
     }
 
@@ -21,10 +21,10 @@ define("#iframe-shim/0.9.0/iframe-shim-debug", ["jquery","position"], function(r
 
         var height = target.outerHeight();
         var width = target.outerWidth();
-        var zIndex = Number(target.css('zIndex'));
+        var zIndex = parseInt(target.css('zIndex')) - 1 || 0;
 
-        // 如果目标元素隐藏，iframe 也隐藏
-        // jquery 判断宽高同时为0才算隐藏，这里判断宽高其中一个为0就隐藏
+        // 如果目标元素隐藏，则 iframe 也隐藏
+        // jquery 判断宽高同时为 0 才算隐藏，这里判断宽高其中一个为 0 就隐藏
         // http://api.jquery.com/hidden-selector/
         if (!height || !width || target.is(':hidden')) {
             iframe.hide();
@@ -32,7 +32,7 @@ define("#iframe-shim/0.9.0/iframe-shim-debug", ["jquery","position"], function(r
             iframe.css({
                 'height': height,
                 'width': width,
-                'zIndex': isNaN(zIndex) ? 0 : (zIndex - 1)
+                'zIndex': zIndex
             });
 
             Position.pin(iframe[0], target[0]);
@@ -54,7 +54,7 @@ define("#iframe-shim/0.9.0/iframe-shim-debug", ["jquery","position"], function(r
     if ($.browser.msie && $.browser.version == 6.0) {
         module.exports = Shim;
     } else {
-        // 除了 IE6 都返回空的构造函数
+        // 除了 IE6 都返回空函数
         function Noop() {}
         Noop.prototype.sync = Noop;
         Noop.prototype.destroy = Noop;
@@ -65,7 +65,7 @@ define("#iframe-shim/0.9.0/iframe-shim-debug", ["jquery","position"], function(r
 
     // Helpers
 
-    function createShim() {
+    function createIframe() {
         return $('<iframe>', {
             frameborder: 0,
             css: {
@@ -78,4 +78,3 @@ define("#iframe-shim/0.9.0/iframe-shim-debug", ["jquery","position"], function(r
     }
 
 });
-

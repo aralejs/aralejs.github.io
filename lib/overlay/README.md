@@ -3,9 +3,13 @@
 
 基础浮层组件，提供浮层显示隐藏、dom结构自定义、定位和select遮挡等特性。
 
-继承了arale.widget组件。
-
 ---
+
+## 模块依赖
+
+ - [seajs](seajs/README.md)
+ - [jquery](jquery/README.md)
+ - [position](position/README.md)
 
 
 ## API说明
@@ -103,7 +107,7 @@
 		var overlay = require('overlay');
 		var dialog = overlay.extend({
 			initialize: function(options) {
-         	   this.setOptions(options);
+                this.setOptions(options);
         	},
         	close: function() {
         		this.closable && this.superclass.hide();
