@@ -34,7 +34,7 @@ define(function(require, exports, module) {
 });
 ```
 
-**注意**
+**注意：**
 
 * 目标元素需要设置 z-index，不然无法保证 iframe 的高度。
 * iframe 计算的宽高包括 border，例如 width 为 100px，border 为 1px，iframe 的 width 为 102px。
@@ -58,9 +58,10 @@ sync 可进行链式操作，上面的例子可直接一行完成：
 var shim = new Shim('#target').sync();
 ```
 
-**注意**
+**注意：**
 
 * 如果目标元素有变化，需要同步 shim 时，需要在目标元素变化之后，再调用 `sync` 方法：
+
 ```js
 target.show();
 shim.sync(); // 在 target 显示之后，再同步 shim 的显示。
