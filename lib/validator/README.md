@@ -26,21 +26,19 @@ feature list
 校验规则
 =====================
 
-提供一个默认的校验规则集合:
-
-    var rules = require('validator.ruleFactory');
+提供默认的校验规则集合
 
 API
 
 *   `.addRule`
 
-*   `.addMessage`
-
 *   `.addAsyncRule`
 
-*   `.getRule`
-
 *   `.addCombinedRule`
+
+*   `.addMessage`
+
+*   `.getRule`
 
 如何自定义规则：
 
