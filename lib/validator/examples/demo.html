@@ -14,11 +14,14 @@
                 $(function() {
                     var validator = new Validator('test-form', {
                         triggerType: ['blur'],
-                        before: function() {
-                            console.log('beforeValidateAll', arguments);
+                        onFormValidate: function() {
+                            console.log('onFormValidate', arguments);
                         },
-                        after: function() {
-                            console.log('afterValidateAll', arguments);
+                        onFormValidated: function() {
+                            console.log('onFormValidated', arguments);
+                        },
+                        onItemValidated: function() {
+                            console.log('validator.onItemValidated', arguments);
                         }
                     });
 
@@ -27,33 +30,33 @@
                         display: '用户名',
                         message: '用户名的格式必须是正确的哦',
                         triggerType: ['keyup'],
-                        before: function() {
-                            console.log('beforeValidate', arguments);
+                        onItemValidate: function() {
+                            console.log('onItemValidate', arguments);
                         },
-                        after: function() {
-                            console.log('afterValiate', arguments);
+                        onItemValidated: function() {
+                            console.log('onItemValidated', arguments);
                         }
                     });
 
                     validator.configItem('sex', {
                         rules: ['required'],
                         triggerType: ['change'],
-                        after: function() {
-                            console.log(arguments);
+                        onItemValidated: function() {
+                            console.log('onItemValidated', arguments);
                         }
                     });
 
                     validator.configItem('vehicle', {
                         rules: ['required'],
-                        after: function() {
-                            console.log(arguments);
+                        onItemValidated: function() {
+                            console.log('onItemValidated', arguments);
                         }
                     });
 
                     validator.configItem('country', {
                         rules: ['required'],
-                        after: function() {
-                            console.log(arguments);
+                        onItemValidated: function() {
+                            console.log('onItemValidated', arguments);
                         }
                     });
                 });
@@ -78,7 +81,7 @@
 
             <p>
                 <input type="checkbox" name="vehicle" value="Bike" /> I have a bike<br />
-                <input type="checkbox" name="vehicle" value="Car" /> I have a car
+                <input type="checkbox" name="vehicle" value="Car" checked /> I have a car
             </p>
 
             <p>
