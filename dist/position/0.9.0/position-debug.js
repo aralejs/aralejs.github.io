@@ -1,11 +1,12 @@
 // Position
 // 定位工具组件，将一个dom节点相对对另一个dom节点进行定位操作。
+// 代码易改，人生难得
 
-define("#position/0.9.0/position-debug", ["jquery"], function(require, exports, module) {
+define("#position/0.9.0/position-debug", ["$"], function(require, exports) {
 
     var Position = exports,
-        VIEWPORT = { _id: 'VIEWPORT', nodeType: 1 },
-        $ = require('jquery'),
+        VIEWPORT = { id: 'VIEWPORT', nodeType: 1 },
+        $ = require('$'),
         isIE6 = $.browser.msie && $.browser.version == 6.0;
 
 
@@ -25,7 +26,7 @@ define("#position/0.9.0/position-debug", ["jquery"], function(require, exports, 
 
 
         // 设定目标元素的 Position 为绝对定位
-        // 若元素的初始 Position 不为 absolute，这里会影响元素的 display、宽高等属性
+        // 若元素的初始 position 不为 absolute，这里会影响元素的 display、宽高等属性
         pinElement.css('position', 'absolute');
 
         // 对 x, y 两个参数为 left|center|right|%|px 时的处理，全部处理为纯数字
