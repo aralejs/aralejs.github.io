@@ -12,29 +12,36 @@
 
             seajs.use(['validator', 'jquery'], function(Validator, $) {
                 $(function() {
+
+                    Validator.addCombinedRule('emailOrMobile', Validator.getRule('email').or('mobile'));
+                    Validator.addMessage('emailOrMobile', '{{display}}必须是Email或者手机号码');
+
+                    Validator.addCombinedRule('lengthConstraint', Validator.getRule('maxLength', {max: 8}).or('minLength', {min: 15}));
+                    Validator.addMessage('lengthConstraint', '{{display}}的长度必须小于{{max}}或者大于{{min}}');
+
                     var validator = new Validator('test-form', {
                         triggerType: ['blur'],
                         onFormValidate: function() {
-                            console.log('onFormValidate', arguments);
+                            //console.log('onFormValidate', arguments);
                         },
                         onFormValidated: function() {
-                            console.log('onFormValidated', arguments);
+                            //console.log('onFormValidated', arguments);
                         },
                         onItemValidated: function() {
-                            console.log('validator.onItemValidated', arguments);
+                            //console.log('validator.onItemValidated', arguments);
                         }
                     });
 
                     validator.addItem('username', {
-                        rules: ['required', 'lengthBetween{"min":1, "max":3}'],
+                        rules: ['required', 'emailOrMobile', 'lengthConstraint'],
                         display: '用户名',
                         message: '用户名的格式必须是正确的哦',
                         triggerType: ['keyup'],
                         onItemValidate: function() {
-                            console.log('onItemValidate', arguments);
+                            //console.log('onItemValidate', arguments);
                         },
-                        onItemValidated: function() {
-                            console.log('onItemValidated', arguments);
+                        onItemValidated: function(err, msg, ele) {
+                            console.log('onItemValidated', err, msg);
                         }
                     });
 
@@ -60,7 +67,7 @@
                         }
                     });
 
-                    validator.removeItem('username');
+                    //validator.removeItem('username');
                 });
             });
         </script>
