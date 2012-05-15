@@ -3,11 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <title>Dropdown Example</title>
+<link media="all" rel="stylesheet" href="https://a.alipayobjects.com/al/alice.base-1.0.css" type="text/css" />
 <style type="text/css">
-    * {
-        margin: 0;
-        padding: 0;
-    }
+    a { color: #0090F0; }
     #container {
         width: 960px;
         margin: 50px auto;
@@ -26,6 +24,7 @@
     .ui-dropdown {
         border: 1px solid #CCC;
         padding: 3px 5px;
+        background: #FFC;
     }
     .ui-dropdown li {
         list-style: none;
@@ -59,18 +58,24 @@
     <div class="example" id="example3">
         <h3>范例3: 手动实例化</h3>
         <div class="dropdown">
-            <a href="#" data-action-trigger="click" id="srcId3">下拉框</a>
-            <ul class="ui-dropdown" id="targetId3">
-                <li>内容1</li>
-                <li>内容2</li>
-                <li>内容3</li>
-                <li>内容4</li>
+            <a href="#" id="srcId3">下拉框</a>
+            <ul id="targetId3" class="fn-hide">
+                <li><a href="#1">内容1</a></li>
+                <li><a href="#2">内容2</a></li>
+                <li><a href="#3">内容3</a></li>
+                <li><a href="#4">内容4</a></li>
             </ul>
         </div>
     </div>
 </div>
 <script type="text/javascript">
-seajs.use(['jquery','../src/dropdown'], function($, Dropdown){
+seajs.config({
+    alias: {
+        dropdown: '../src/dropdown',
+        overlay: '../../overlay/src/overlay'
+    }
+});
+seajs.use(['jquery','dropdown'], function($, Dropdown){
     var example3 = new Dropdown({
         trigger: '#srcId3',
         target: '#targetId3'
