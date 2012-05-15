@@ -89,10 +89,11 @@
         </p>
     </div>
     <div id="example2" class="example">
-        <h2>遮罩会根据dom的宽高进行调节</h2>
+        <h2>遮罩会根据 DOM 的宽高进行调节</h2>
         <code>
             <pre>
             var shim2 = new Shim('#example2 .overlay').sync();
+                
             $('#example2 input').blur(function(e){
                 var value = e.currentTarget.value;
 
@@ -110,7 +111,7 @@
         </div>
         <p>
             <input type="text" value="" />
-            输入宽高，blur输入框
+            输入宽高，blur 输入框
         </p>
         <select>
             <option value="option"></option>
@@ -136,7 +137,7 @@
 
     </div>
     <div id="example3" class="example">
-        <h2>遮罩只会遮盖border以及内容部分，margin则不算</h2>
+        <h2>遮罩只会遮盖 border 以及内容部分，margin 则不算</h2>
         <code>
             <pre>
             new Shim('#example3 .overlay').sync();
