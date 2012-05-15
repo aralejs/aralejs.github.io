@@ -34,7 +34,7 @@ seajs.config({
         'async': 'async/0.1.18/async',
 
         'iframe-shim': 'iframe-shim/0.9.0/iframe-shim',
-        'position': 'position/0.9.0/position'
+        'position': 'position/0.9.1/position'
     },
     preload: [this.JSON ? '' : 'json', 'plugin-text']
 });
