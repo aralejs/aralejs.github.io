@@ -27,7 +27,7 @@ define("#overlay/0.9.0/overlay-debug", ["$","position","iframe-shim","base"], fu
         },
 
         initialize: function(options) {
-            this.options = $.extend({}, this.options, options)
+            this.options = $.extend({}, this.options, options);
             //this.setOptions(options);
             $.extend(this, this.options);
         },
@@ -38,9 +38,11 @@ define("#overlay/0.9.0/overlay-debug", ["$","position","iframe-shim","base"], fu
                 elem = $(this.template);
                 this.content && elem.html(this.content);
                 this.srcNode = elem[0];
+                elem.appendTo(this.parentNode);
+            } else {
+                elem = $(this.srcNode);
             }
             this.sync();
-            elem.appendTo(this.parentNode);
             this.iframeshim = new Shim(this.srcNode);
             this.on('show hidden sync', this.iframeshim.sync);
             return this;
