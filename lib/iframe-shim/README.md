@@ -81,3 +81,10 @@ shim.sync(); // 在 target 显示之后，再同步 shim 的显示。
 ## 测试用例
 
 * <http://aralejs.org/lib/iframe-shim/tests/runner.html>
+
+
+## 交流讨论
+
+欢迎创建
+[GitHub Issue](https://github.com/alipay/arale/issues/new)
+来提交反馈。
