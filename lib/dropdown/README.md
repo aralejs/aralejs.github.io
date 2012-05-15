@@ -1,6 +1,6 @@
 >Use the Source, Luke!
 
->所谓读文档不如看源码啊，少年!
+>看源码，少年!
 
 # Dropdown
 
@@ -10,8 +10,7 @@
 
 ## 使用说明
 
-### dropdown(options)
-
+### 一般用法
 
 ```
 seajs.use(['jquery','dropdown'], function($, Dropdown){

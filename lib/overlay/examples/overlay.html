@@ -16,8 +16,14 @@
                 margin:0;
                 padding:0;
             }
+            #test {
+                width: 500px;
+                height: 300px;
+                margin: 100px auto;
+                background: #FAFAFA;
+            }
             .test {
-                border:1px solid red;
+                background: #FFC;
             }
         </style>
     </head>
@@ -31,8 +37,9 @@
                         width : 300,
                         height : 200,
                         baseObject : {
-                            x : 200,
-                            y : 180
+                            element: $('#test')[0],
+                            x : 0,
+                            y : 0
                         }
                     });
                     o.render().show();
