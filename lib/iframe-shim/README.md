@@ -36,7 +36,7 @@ define(function(require, exports, module) {
 
 **注意：**
 
-* 目标元素需要设置 z-index，不然无法保证 iframe 的高度。
+* 目标元素需要设置 z-index，不然无法保证 iframe 的层级。
 * iframe 计算的宽高包括 border，例如 width 为 100px，border 为 1px，iframe 的 width 为 102px。
 * iframe 会自动插入到 body 中，建议在 domready 后使用。
 
