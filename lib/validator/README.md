@@ -73,19 +73,19 @@ API
 *   `options.display` - 若用户传入的规则参数字段中含有 display，或者检验配置项字段中有 display，则使用 display 字段，否则使用表单域的 name 属性。
     例如
 
-        validator.configItem('username' {
+        validator.addItem('username' {
             rules: ['required']
         });
         //出错校验信息为"username不能为空"
 
-        validator.configItem('username' {
+        validator.addItem('username' {
             rules: ['required', lengthBetween{"min": 1, "max":5}],
             display: '用户名'
         });
         //出错校验信息为"用户名不能为空"或者“用户名的长度必须在1和5之间"。
 
 
-        validator.configItem('username' {
+        validator.addItem('username' {
             rules: ['required{"display": "用户名字段"}', lengthBetween{"min": 1, "max":5}],
             display: '用户名'
         });
@@ -129,11 +129,11 @@ API
 
 *   添加检验项
 
-        .configItem(name, cfg)
+        .addItem(name, cfg)
 
     Example
 
-        vCore.configItem('email', {
+        vCore.addItem('email', {
             rules: ['required', 'lengthBetween{"min": 12, "max": 13}'],
             name: '电子邮箱',
             msg-success: '您的用户名校验通过！',
