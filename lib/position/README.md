@@ -15,13 +15,13 @@
 ## 模块依赖
 
  - [seajs](seajs/README.md)
- - [jquery](jquery/README.md)
+ - [jquery](jquery/README.md) / [zepto](zepto/README.md)
 
 
 ## 使用说明
 
 
-### `Position.pin(pinObject, [baseObject])`
+### pin `Position.pin(pinObject, [baseObject])`
 
 基础定位方法，接收两个参数。
 
@@ -46,7 +46,7 @@
         Position.pin({ element: a, x: -10, y: -10 });
 
 
-### `Position.center(pinElement, [baseElement])`
+### center `Position.center(pinElement, [baseElement])`
 
 居中定位，接收两个参数，将 pinElement 定位在 baseElement 元素的中央位置。
 
@@ -55,7 +55,7 @@
 2. `baseElement`：基准定位节点，可选。缺省时表示将 pinElement 定位在屏幕中央。
 
 
-### Position.VIEWPORT
+### VIEWPORT `Position.VIEWPORT`
 
 当前可视区域的伪元素，当需要相对于当前可视区域定位时，上述参数的 element 可传入 Position.VIEWPORT。
 
