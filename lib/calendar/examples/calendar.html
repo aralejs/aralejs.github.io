@@ -9,7 +9,9 @@
         <script>
             seajs.use(['../src/calendar'], function(Calendar) {
                 var cal = new Calendar({width: 900});
-                console.log(cal.options);
+                console.log(cal.width());
+                console.log(cal.width(100));
+                console.log(cal.width());
             });
         </script>
     </body>
