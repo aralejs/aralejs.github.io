@@ -47,10 +47,10 @@ define(function(require, exports, module) {
 
 有以下几种情况 iframe 会改变：
 
-* 目标元素的宽高及 border 改变后 iframe 的宽高也会相应改变。 
-* 目标元素或父级元素 `display: none`，iframe 会隐藏。
-* 目标元素宽和高等于 0 （包括 border ），iframe 会隐藏。
-* 目标元素移动后 iframe 定位会改变。
+1. 目标元素的宽高及 border 改变后 iframe 的宽高也会相应改变。
+1. 目标元素或父级元素 `display: none`，iframe 会隐藏。
+1. 目标元素宽和高等于 0 （包括 border ），iframe 会隐藏。
+1. 目标元素移动后 iframe 定位会改变。
 
 sync 可进行链式操作，上面的例子可直接一行完成：
 
@@ -61,7 +61,6 @@ var shim = new Shim('#target').sync();
 **注意**
 
 * 如果目标元素有变化，需要同步 shim 时，需要在目标元素变化之后，再调用 `sync` 方法：
-
 ```js
 target.show();
 shim.sync(); // 在 target 显示之后，再同步 shim 的显示。
