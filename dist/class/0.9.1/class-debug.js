@@ -125,6 +125,10 @@ define("#class/0.9.1/class-debug", [], function() {
             while (item = items.shift()) {
                 mix(proto, item.prototype || item);
             }
+        },
+
+        'Statics': function(staticProperties) {
+            mix(this, staticProperties);
         }
     };
 
