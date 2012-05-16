@@ -1,1 +1,1 @@
-define("#base/0.9.1/base",["class","events","./options"],function(a){var b=a("class"),c=a("events"),d=a("./options");return b.create({Implements:[c,d]})});
+define("#base/0.9.1/base",["class","events","./options"],function(a){var b=a("class"),c=a("events"),d=a("./options");return b.create({Implements:[c,d],destroy:function(){this.off()}})});
