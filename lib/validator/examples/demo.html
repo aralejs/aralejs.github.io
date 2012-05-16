@@ -45,6 +45,25 @@
                         }
                     });
 
+                    validator.addItem('password', {
+                        rules: ['required'],
+                        display: '密码',
+                        onItemValidate: function() {
+                        },
+                        onItemValidated: function(err, msg, ele) {
+                            console.log('onItemValidated', arguments);
+                        }
+                    });
+
+                    validator.addItem('password-confirmation', {
+                        rules: ['required', 'confirmation{"id": "password"}'],
+                        onItemValidate: function() {
+                        },
+                        onItemValidated: function(err, msg, ele) {
+                            console.log('onItemValidated', arguments);
+                        }
+                    });
+
                     validator.addItem('sex', {
                         rules: ['required'],
                         triggerType: ['change'],
@@ -78,6 +97,16 @@
             <p>
                 <label for="username">Username:</label>
                 <input id="username" name="username" type="text" data-constraints="@required @emailOrPhone(@email | @phone(/^1\d{10}$/)) @maxLength{max:20} @ajax" data-notice-required="用户名不能为空" data-notice-emailOrPhone="用户名必须为email或者电话号码" data-notice-default="这条信息会显示" value="add" />
+            </p>
+
+            <p>
+                <label for="password">Password:</label>
+                <input id="password" name="password" type="password" />
+            </p>
+
+            <p>
+                <label for="password-confirmation">Password Confirmation</label>
+                <input id="password-confirmation" name="password-confirmation" type="password" />
             </p>
 
             <p>
