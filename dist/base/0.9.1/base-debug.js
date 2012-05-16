@@ -4,6 +4,10 @@ define("#base/0.9.1/base-debug", ["class","events","./options"], function(requir
     var Options = require('./options');
 
     return Class.create({
-        Implements: [Events, Options]
+        Implements: [Events, Options],
+
+        destroy: function() {
+            this.off();
+        }
     });
 });

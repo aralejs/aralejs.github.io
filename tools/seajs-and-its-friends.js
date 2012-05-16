@@ -17,7 +17,7 @@
 seajs.config({
     alias: {
         'events': 'events/0.9.1/events',
-        'class': 'class/0.9.0/class',
+        'class': 'class/0.9.1/class',
         'base': 'base/0.9.1/base',
 
         '$': 'jquery/1.7.2/jquery',
@@ -32,6 +32,7 @@ seajs.config({
         'swfobject': 'swfobject/2.2.0/swfobject',
         'moment': 'moment/1.6.2/moment',
         'async': 'async/0.1.18/async',
+        'backbone': 'backbone/0.9.2/backbone',
 
         'iframe-shim': 'iframe-shim/0.9.0/iframe-shim',
         'position': 'position/0.9.1/position'

@@ -101,10 +101,9 @@ define(function(require, exports, module) {
 **注意**：`Implements` 采用首字母大写，是因为小写的 `implements` 是 JavaScript
 保留字。大写也表示其特殊性，与 MooTools 的方式一致。
 
-除了 `Implements`, 还有两个特殊属性：
+除了 `Implements`, 还有一个特殊属性：
 
-1. `Extends` - 用来指定继承的父类，注意只能有一个父类，不支持多继承。
-1. `Statics` - 用来指定需要混入的静态属性。
+- `Extends` - 用来指定继承的父类，注意只能有一个父类，不支持多继承。
 
 
 ### implement `SomeClass.implement(properties)`
