@@ -10,16 +10,14 @@
     seajs.config({
         alias: {
             'widget': '../../widget/src/widget'
+            'tabs': '../src/tabs',
+            'slide': '../src/slide',
+            'accordion': '../src/accordion',
+            'carousel': '../src/carousel'
         }
     });
 
 </script>
-<!--
-<script src="../src/kissy.js"></script>
-<script src="../src/k_base.js"></script>
-<script src="../src/k_tabs_base.js"></script>
-<script src="../src/k_switchable.js"></script>
--->
 </head>
 <body>
 
@@ -31,14 +29,14 @@
                 padding-top: 29px;
             }
 
-            #demo1 .ks-switchable-nav {
+            #demo1 .ar-switchable-nav {
                 position: absolute;
                 left: 20px;
                 margin-top: -29px;
                 z-index: 99;
             }
 
-            #demo1 .ks-switchable-nav li {
+            #demo1 .ar-switchable-nav li {
                 float: left;
                 width: 130px;
                 height: 27px;
@@ -50,12 +48,12 @@
                 cursor: pointer;
             }
 
-            #demo1 .ks-switchable-nav li.ks-active {
+            #demo1 .ar-switchable-nav li.ar-active {
                 background-position: 0 -40px;
                 cursor: default;
             }
 
-            #demo1 .ks-switchable-content {
+            #demo1 .ar-switchable-content {
                 position: relative;
                 height: 120px;
                 padding: 20px;
@@ -64,7 +62,7 @@
         </style>
 
         <div id="demo1" class="s-demo">
-            <ul class="ks-switchable-nav">
+            <ul class="ar-switchable-nav">
                 <!-- title 争渡读屏器不读-->
                 <li aria-labelledby='a_tip' title="读屏器读不出来">
                     <span style="display:none" id="a_tip">标题 A，可左右键切换操作</span>
@@ -74,7 +72,7 @@
                 <li>标题 D</li>
                 <li>标题 E</li>
             </ul>
-            <div class="ks-switchable-content">
+            <div class="ar-switchable-content">
                 <div style="display: none">
 
 <pre>
@@ -90,15 +88,15 @@
 
                 <div style="display: none"><a href="#">内容 D</a></div>
                 <div style="display: none">
-                    <textarea class="ks-datalazyload-custom">
+                    <textarea class="ar-datalazyload-custom">
                         <a href="#">我是延迟内容</a>
                         <script>alert('我是延迟内容中的脚本，仅在第一次加载时执行。');</script>
                     </textarea>
                 </div>
             </div>
             <script>
-                seajs.use(['jquery', '../src/base'], function($, Switchable) {
-                    var s = new Switchable({
+                seajs.use(['jquery', '../src/tabs'], function($, Tabs) {
+                    var s = new Tabs({
                         element: '#demo1',
                         switchTo: 2
                     });
