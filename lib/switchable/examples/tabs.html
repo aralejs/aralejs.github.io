@@ -10,10 +10,6 @@
     seajs.config({
         alias: {
             'widget': '../../widget/src/widget'
-            'tabs': '../src/tabs',
-            'slide': '../src/slide',
-            'accordion': '../src/accordion',
-            'carousel': '../src/carousel'
         }
     });
 
@@ -95,10 +91,14 @@
                 </div>
             </div>
             <script>
-                seajs.use(['jquery', '../src/tabs'], function($, Tabs) {
-                    var s = new Tabs({
+                var T, $, s;
+                seajs.use(['jquery', '../src/tabs'], function(jquery, Tabs) {
+                    T = Tabs;
+                    $ = jquery;
+                    s = new Tabs({
                         element: '#demo1',
-                        switchTo: 2
+                        switchTo: 2,
+                        effect: 'fade'
                     });
 
                 });
