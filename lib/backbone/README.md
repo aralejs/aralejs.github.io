@@ -11,7 +11,7 @@ Backbone 是一个轻量级的单页面应用前端开发框架，提供了 Mode
 
  - [seajs](seajs/README.md)
  - [underscore](underscore/README.md)
- - [jquery](jquery/README.md) or [zepto](zepto/README.md)
+ - [jquery](jquery/README.md) / [zepto](zepto/README.md)
 
 
 ## 使用说明
