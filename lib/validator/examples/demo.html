@@ -96,7 +96,7 @@
 
             <p>
                 <label for="username">Username:</label>
-                <input id="username" name="username" type="text" data-constraints="@required @emailOrPhone(@email | @phone(/^1\d{10}$/)) @maxLength{max:20} @ajax" data-notice-required="用户名不能为空" data-notice-emailOrPhone="用户名必须为email或者电话号码" data-notice-default="这条信息会显示" value="add" />
+                <input id="username" name="username" type="email" data-constraints="@required @emailOrPhone(@email | @phone(/^1\d{10}$/)) @maxLength{max:20} @ajax" data-notice-required="用户名不能为空" data-notice-emailOrPhone="用户名必须为email或者电话号码" data-notice-default="这条信息会显示" value="add" />
             </p>
 
             <p>
