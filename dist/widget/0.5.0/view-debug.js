@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#widget/0.5.0/view-debug", ["class","$","handlebars","./daparser.js"], function(require, exports, module) {
 
     var Class = require('class');
     var $ = require('$');

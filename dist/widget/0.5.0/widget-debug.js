@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#widget/0.5.0/widget-debug", ["base","$","./view","./action","./daparser"], function(require, exports, module) {
 
     var Base = require('base');
     var $ = require('$');
