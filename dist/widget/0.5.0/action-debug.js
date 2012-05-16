@@ -1,7 +1,7 @@
 //TODO 1. 目前准备对所有的行为绑定应该是widget来控制, 那我们的action到底来管理什么? type and handler?
 //
 //TODO 2. 当我们拿到一个 action, widget 来负责执行。 action 只负责管理对 action 的存储?
-define(function(require, exports, module) {
+define("#widget/0.5.0/action-debug", ["class","$"], function(require, exports, module) {
 
     var Class = require('class');
     var $ = require('$');

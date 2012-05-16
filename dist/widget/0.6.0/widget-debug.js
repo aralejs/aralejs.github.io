@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#widget/0.6.0/widget-debug", ["base","$"], function(require, exports, module) {
 
     // Widget
     // -----------
@@ -16,10 +16,10 @@ define(function(require, exports, module) {
 
     var Widget = Base.extend({
 
-        // 如果未传入 element 选项，默认会用 $('<div>') 构建
+        // 如果 options 中未传入 element，默认会用 $('<div>') 来构建
         element: '<div>',
 
-        // 初始化方法，完成基本操作。子类覆盖时，记得调用父类的
+        // 初始化方法，完成基本操作。子类覆盖时，一般需要调用父类的
         initialize: function(options) {
             this.cid = uniqueId();
             this._initOptions(options);
@@ -28,12 +28,14 @@ define(function(require, exports, module) {
         },
 
         // 渲染方法，提供给子类覆盖，这是子类中最核心的一个方法
+        // 约定：render 方法需要需要返回 this
         render: function() {
-            // 比如：
+            // 比如
             // this.$element.html(this.template(this.model));
+            return this;
         },
 
-        // 移除掉对应的 DOM 元素，卸载掉注册的事件等销毁工作
+        // 移除掉对应的 DOM 元素、卸载掉注册的事件等
         destroy: function() {
             Widget.superclass.destroy.call(this);
             this.undelegateEvents();
@@ -55,18 +57,20 @@ define(function(require, exports, module) {
         },
 
         _initOptions: function(options) {
-            this.setOptions(options);
-            options = this.options;
+            var proto = this.constructor.prototype;
+            proto.options || (proto.options = {});
 
-            for (var i = 0, len = attrOptions.length; i < len; i++) {
-                var attr = attrOptions[i];
-                if (options[attr]) {
-                    this[attr] = options[attr];
-                }
-            }
+            // 将 proto 上的特殊 attributes 放到 proto.options 上，以便合并
+            setAttrOptions(proto.options, this);
+
+            // 合并 options
+            options = this.setOptions(options).options;
+
+            // 将 options 上的特殊 attributes 放回 this 上
+            setAttrOptions(this, options);
         },
 
-        // 根据传入的选项，构建 this.$element 等属性
+        // 根据传入的选项，构建 this.$element 属性
         _initElement: function(element) {
             element = element || this.element;
             var $element = element instanceof $ ? element : $(element);
@@ -84,7 +88,7 @@ define(function(require, exports, module) {
             this.$element = $element;
         },
 
-        // 自动绑定代理事件
+        // 绑定代理事件
         //     {
         //       'mousedown .title':  'edit',
         //       'click .button':     'save'
@@ -115,7 +119,7 @@ define(function(require, exports, module) {
             }
         },
 
-        // 卸载掉自动绑定的代理事件
+        // 卸载绑定的代理事件
         undelegateEvents: function() {
             this.$element.off('.delegateEvents' + this.cid);
         }
@@ -138,6 +142,20 @@ define(function(require, exports, module) {
 
         var v = obj[prop];
         return isFunction(v) ? v() : v;
+    }
+
+
+    function setAttrOptions(receiver, supplier) {
+        var i = 0;
+        var len = attrOptions.length;
+        var attr;
+
+        for (; i < len; i++) {
+            attr = attrOptions[i];
+            if (supplier[attr]) {
+                receiver[attr] = supplier[attr];
+            }
+        }
     }
 
 

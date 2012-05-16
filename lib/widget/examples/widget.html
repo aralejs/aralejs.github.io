@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf8">
+<title>Widget Example</title>
+<script src="../../../tools/seajs-and-its-friends.js"></script>
+<style>
+    body {
+        font: 16px/1.62 Georgia, 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #222;
+    }
+
+    .example {
+        position: relative;
+        margin: 50px;
+        padding: 50px;
+        border: 2px dashed #ccc;
+    }
+
+    h2, h3 {
+        font-size: 22px;
+    }
+
+    h2 {
+        position: absolute;
+        top: 0;
+        margin: 15px 0;
+    }
+
+    pre {
+        font-family: monospace;
+        position: absolute;
+        right: 0;
+        top: 50px;
+        padding-right: 50px;
+    }
+
+    .widget {
+        zoom: 1;
+        display: inline;
+        display: inline-block;
+        border: 1px solid #ccc;
+        padding: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div id="example1" class="example">
+
+    <div id="a" class="widget">
+        <h3>我是标题，请点击我一下。</h3>
+        <p>我是段落，请将鼠标悬浮在我上面，我会变色的。</p>
+    </div>
+
+</div>
+
+<div id="example2" class="example">
+
+</div>
+
+<div id="example3" class="example">
+<script id="template-c" type="text/x-handlebars-template">
+    <h3>{{title}}</h3>
+    <ul>{{list items}}</ul>
+</script>
+</div>
+
+<script>
+    seajs.use(['../src/widget', 'handlebars', 'jquery'], function(Widget, Handlebars, $) {
+
+        // example1: 简单的事件代理
+        // -------------------------------
+        var WidgetA = Widget.extend({
+
+            events: {
+                'click h3': 'heading',
+                'mouseover p': 'paragraph'
+            },
+
+            heading: function() {
+                this.$('h3').html('标题被点击了。');
+            },
+
+            paragraph: function() {
+                this.$('p').css('background-color', 'red');
+            }
+        });
+
+        var a = new WidgetA({ element: '#a' });
+
+
+        // example2: 覆盖 render 方法
+        // ---------------------------------
+        var WidgetB = Widget.extend({
+
+            element: '<div id="b" class="widget"></div>',
+
+            model: {
+                title: '我是默认标题',
+                content: '我是默认内容'
+            },
+
+            template: '<h3>{{title}}</h3><p>{{content}}</p>',
+
+            events: {
+                'click': 'animate'
+            },
+
+            animate: function() {
+                this.$('p').slideToggle('slow');
+            },
+
+            render: function() {
+                var html = Handlebars.compile(this.template)(this.model);
+                this.$element.html(html).appendTo('#example2');
+
+                this.$('p').css({
+                    'height': 100,
+                    'padding': 20,
+                    'backgroundColor': '#eee'
+                });
+
+                return this;
+            }
+        });
+
+        var b = new WidgetB({
+            model: {
+                content: '我是传入的内容，点击我试试'
+            }
+        }).render();
+
+
+        // example3: Handlebars.registerHelper
+        // ---------------------------------------
+        var WidgetC = Widget.extend({
+
+            events: {
+                'click a.remove': 'remove'
+            },
+
+            remove: function(event) {
+                event.preventDefault();
+                $(event.target).parent().remove();
+            },
+
+            initialize: function(options) {
+                WidgetC.superclass.initialize.call(this, options);
+                options = this.options;
+
+                this.template = $(options.templateId).html();
+                this.container = $(options.container);
+
+                if (options.style) {
+                    this.container.attr('style', options.style);
+                }
+
+                this.initHelpers();
+            },
+
+            initHelpers: function() {
+                Handlebars.registerHelper('list', function(items) {
+                    var out = '';
+
+                    for (var i = 0, len = items.length; i < len; i++) {
+                        var item = items[i];
+                        out += '<li><a href="' + item.href + '">' +
+                                item.text +
+                                '</a><a href="#" class="remove" style="float: right; text-decoration: none; color: red">X</a></li>';
+                    }
+
+                    return new Handlebars.SafeString(out);
+                });
+            },
+
+            render: function() {
+                var html = Handlebars.compile(this.template)(this.model);
+                this.$element.html(html).appendTo(this.container);
+                return this;
+            }
+
+        });
+
+        var c = new WidgetC({
+            style: 'width: 300px',
+            model: {
+                title: "精品文章列表",
+                items: [
+                    { "href": "http://google.com/", "text": "爱的力量" },
+                    { "href": "http://google.com/", "text": "天下武功，唯快不破" },
+                    { "href": "http://google.com/", "text": "开放的意义" },
+                    { "href": "http://google.com/", "text": "Arale 棒棒的" }
+                ]
+            },
+            templateId: '#template-c',
+            container: '#example3'
+        }).render();
+
+
+    });
+</script>
+</body>
+</html>
+
