@@ -10,6 +10,10 @@
     seajs.config({
         alias: {
             'widget': '../../widget/src/widget'
+            'tabs': '../src/tabs',
+            'slide': '../src/slide',
+            'accordion': '../src/accordion',
+            'carousel': '../src/carousel'
         }
     });
 
@@ -91,8 +95,8 @@
                 </div>
             </div>
             <script>
-                seajs.use(['jquery', '../src/base'], function($, Switchable) {
-                    var s = new Switchable({
+                seajs.use(['jquery', '../src/tabs'], function($, Tabs) {
+                    var s = new Tabs({
                         element: '#demo1',
                         switchTo: 2
                     });
