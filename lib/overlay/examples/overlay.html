@@ -27,15 +27,15 @@
 <script>
 seajs.config({
     map: [
+        [/^.+\/position.js$/, '../../position/src/position.js'],
         [/^.+\/widget.js$/, '../../widget/src/widget.js']
     ]
 });
 
 seajs.use('../src/overlay', function(Overlay) {
 
-    debugger
     var o = new Overlay({
-        element: '<div class="overlay"></div>',
+        template: '<div class="overlay"></div>',
         width: 300,
         height: 200,
         baseObject: {
@@ -45,7 +45,7 @@ seajs.use('../src/overlay', function(Overlay) {
         }
     });
 
-    o.render().show();
+    o.render();
 
     o.width = 400;
     o.sync();
