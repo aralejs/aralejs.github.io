@@ -25,13 +25,6 @@
 <div id="a"></div>
 
 <script>
-seajs.config({
-    map: [
-        [/^.+\/position.js$/, '../../position/src/position.js'],
-        [/^.+\/widget.js$/, '../../widget/src/widget.js']
-    ]
-});
-
 seajs.use('../src/overlay', function(Overlay) {
 
     var o = new Overlay({
@@ -47,7 +40,7 @@ seajs.use('../src/overlay', function(Overlay) {
 
     o.render();
 
-    o.width = 400;
+    o.options.width = 400;
     o.sync();
 
 });
