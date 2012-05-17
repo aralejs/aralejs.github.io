@@ -31,15 +31,14 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
             }
         },
 
-        initialize: function(options) {
-            Overlay.superclass.initialize.call(this, options);
+        init: function() {
             $.extend(this, this.options);
 
             var shim = this.shim = new Shim(this.element);
             this.on('show hidden sync', shim.sync, shim);
         },
 
-        renderUI: function() {
+        render: function() {
             this.content && this.$element.html(this.content);
             this.element.appendTo(this.parentNode);
             this.sync();
