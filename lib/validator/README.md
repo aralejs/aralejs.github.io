@@ -155,7 +155,7 @@ data-attribute API支持
 HTML
 
     <form>
-        <input id="username" name="username" type="text" placeholder="请输入邮箱或手机号" data-constraints="@required @emailOrPhone(@email | @phone(/^1\d{10}$/)) @maxLength{min:20} @ajax" data-notice-required="用户名不能为空" data-notice-emailOrPhone="用户名必须为email或者电话号码" data-notice-default="这条信息会显示" />
+        <input id="username" name="username" type="text" placeholder="请输入邮箱或手机号" data-rules="required emailOrPhone maxLength{min:20} ajax" data-notice-required="用户名不能为空" data-notice-emailOrPhone="用户名必须为email或者电话号码" data-notice-default="这条信息会显示" />
         
     </form>
 

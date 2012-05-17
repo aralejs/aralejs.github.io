@@ -12,6 +12,10 @@
 
             seajs.use(['validator', 'jquery'], function(Validator, $) {
                 $(function() {
+                    Validator.parsePage();
+                });
+                    /*
+                $(function() {
 
                     Validator.addCombinedRule('emailOrMobile', Validator.getRule('email').or('mobile'));
                     Validator.addMessage('emailOrMobile', '{{display}}必须是Email或者手机号码');
@@ -88,20 +92,21 @@
 
                     //validator.removeItem('username');
                 });
+                */
             });
         </script>
     </head>
     <body>
-        <form id="test-form">
+        <form id="test-form" data-enable-validate="true">
 
             <p>
                 <label for="username">Username:</label>
-                <input id="username" name="username" type="email" data-constraints="@required @emailOrPhone(@email | @phone(/^1\d{10}$/)) @maxLength{max:20} @ajax" data-notice-required="用户名不能为空" data-notice-emailOrPhone="用户名必须为email或者电话号码" data-notice-default="这条信息会显示" value="add" />
+                <input id="username" required name="username" type="email" data-rules="emailOrPhone maxLength{max:20} ajax" data-notice-required="用户名不能为空" data-notice-emailOrPhone="用户名必须为email或者电话号码" data-notice-default="这条信息会显示" value="add" />
             </p>
 
             <p>
                 <label for="password">Password:</label>
-                <input id="password" name="password" type="password" />
+                <input id="password" name="password" type="password" pattern=".*" />
             </p>
 
             <p>
