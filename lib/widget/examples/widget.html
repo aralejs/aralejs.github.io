@@ -149,9 +149,12 @@
                 $(event.target).parent().remove();
             },
 
-            init: function() {
-                this.template = $(this.options.templateId).html();
+            parseElement: function() {
                 this.initHelpers();
+                var template = $(this.options.templateId).html();
+
+                var html = Handlebars.compile(template)(this.model);
+                this.element = $(html);
             },
 
             initHelpers: function() {
@@ -167,12 +170,6 @@
 
                     return new Handlebars.SafeString(out);
                 });
-            },
-
-            parseElement: function() {
-                var template = $(this.options.templateId).html();
-                var html = Handlebars.compile(template)(this.model);
-                this.element = $(html);
             },
 
             render: function() {
