@@ -130,9 +130,7 @@ define("#widget/0.6.2/widget-debug", ["base","$"], function(require, exports, mo
 
     function getValue(obj, prop) {
         if (!obj || !obj[prop]) return null;
-
-        var v = obj[prop];
-        return isFunction(v) ? v() : v;
+        return isFunction(obj[prop]) ? obj[prop]() : obj[prop];
     }
 
 
