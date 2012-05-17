@@ -11,10 +11,11 @@
             });
 
             seajs.use(['validator', 'jquery'], function(Validator, $) {
+                    /*
                 $(function() {
                     Validator.parsePage();
                 });
-                    /*
+                */
                 $(function() {
 
                     Validator.addCombinedRule('emailOrMobile', Validator.getRule('email').or('mobile'));
@@ -92,7 +93,6 @@
 
                     //validator.removeItem('username');
                 });
-                */
             });
         </script>
     </head>
