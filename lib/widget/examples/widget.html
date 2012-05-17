@@ -49,6 +49,14 @@
         color: red;
     }
 
+    #example4 .action {
+        padding: 0 20px
+    }
+
+    #example4 .action a {
+        padding: 0 10px
+    }
+
 </style>
 </head>
 <body>
@@ -73,6 +81,18 @@
     <ul>{{list items}}</ul>
 </div>
 </script>
+</div>
+
+<div id="example4" class="example">
+
+    <div id="d" class="widget">
+        <ol>
+            <li>开放：开源开放，海纳百川。<span class="action"><a data-action="moveDown" href="#">向下移动</a></span></li>
+            <li>简单：如无必要，勿增实体。<span class="action"><a data-action="moveUp" href="#">向上移动</a><a data-action="moveDown" href="#">向下移动</a></span></li>
+            <li>易用：一目了然，容易学习。<span class="action"><a data-action="click moveUp" href="#">向上移动</a></span></li>
+        </ol>
+    </div>
+
 </div>
 
 <script>
@@ -223,6 +243,24 @@
             templateId: '#template-c',
             parentId: '#example3'
         }).render();
+
+
+        // example4: parse data-api
+        // ---------------------------------------
+        var WidgetD = Widget.extend({
+
+            moveDown: function(ev) {
+                ev.preventDefault();
+                console.log('move down');
+            },
+
+            moveUp: function(ev) {
+                ev.preventDefault();
+                console.log('move up');
+            }
+        });
+
+        var d = new WidgetD({ element: '#d' });
 
     });
 </script>
