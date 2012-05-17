@@ -90,7 +90,7 @@
             }
         });
 
-        var a = new WidgetA({ element: '#a' }).render();
+        var a = new WidgetA({ element: '#a' });
 
 
         // example2: 覆盖 render 方法
@@ -112,12 +112,12 @@
                 this.$('p').slideToggle('slow');
             },
 
-            prepareElement: function() {
+            parseElement: function() {
                 var html = Handlebars.compile(this.template)(this.model);
                 this.element = $(html);
             },
 
-            renderUI: function() {
+            render: function() {
                 this.$('p').css({
                     'height': 100,
                     'padding': 20,
@@ -125,6 +125,7 @@
                 });
 
                 this.element.appendTo('#example2');
+                return this;
             }
         });
 
@@ -148,8 +149,7 @@
                 $(event.target).parent().remove();
             },
 
-            initialize: function(options) {
-                WidgetC.superclass.initialize.call(this, options);
+            init: function() {
                 this.template = $(this.options.templateId).html();
                 this.initHelpers();
             },
@@ -169,13 +169,13 @@
                 });
             },
 
-            prepareElement: function() {
+            parseElement: function() {
                 var template = $(this.options.templateId).html();
                 var html = Handlebars.compile(template)(this.model);
                 this.element = $(html);
             },
 
-            renderUI: function() {
+            render: function() {
                 var options = this.options;
 
                 if (options.style) {
@@ -187,6 +187,7 @@
                 }
 
                 this.element.appendTo(options.parentId);
+                return this;
             }
 
         });
