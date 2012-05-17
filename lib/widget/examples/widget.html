@@ -61,13 +61,16 @@
 
 <div id="example3" class="example">
 <script id="template-c" type="text/x-handlebars-template">
+<div>
     <h3>{{title}}</h3>
     <ul>{{list items}}</ul>
+</div>
 </script>
 </div>
 
 <script>
     seajs.use(['../src/widget', 'handlebars', 'jquery'], function(Widget, Handlebars, $) {
+
 
         // example1: 简单的事件代理
         // -------------------------------
@@ -87,21 +90,19 @@
             }
         });
 
-        var a = new WidgetA({ element: '#a' });
+        var a = new WidgetA({ element: '#a' }).render();
 
 
         // example2: 覆盖 render 方法
         // ---------------------------------
         var WidgetB = Widget.extend({
 
-            element: '<div id="b" class="widget"></div>',
+            template: '<div id="b" class="widget"><h3>{{title}}</h3><p>{{content}}</p></div>',
 
             model: {
                 title: '我是默认标题',
                 content: '我是默认内容'
             },
-
-            template: '<h3>{{title}}</h3><p>{{content}}</p>',
 
             events: {
                 'click': 'animate'
@@ -111,17 +112,19 @@
                 this.$('p').slideToggle('slow');
             },
 
-            render: function() {
+            prepareElement: function() {
                 var html = Handlebars.compile(this.template)(this.model);
-                this.$element.html(html).appendTo('#example2');
+                this.element = $(html);
+            },
 
+            renderUI: function() {
                 this.$('p').css({
                     'height': 100,
                     'padding': 20,
                     'backgroundColor': '#eee'
                 });
 
-                return this;
+                this.element.appendTo('#example2');
             }
         });
 
@@ -147,15 +150,7 @@
 
             initialize: function(options) {
                 WidgetC.superclass.initialize.call(this, options);
-                options = this.options;
-
-                this.template = $(options.templateId).html();
-                this.container = $(options.container);
-
-                if (options.style) {
-                    this.container.attr('style', options.style);
-                }
-
+                this.template = $(this.options.templateId).html();
                 this.initHelpers();
             },
 
@@ -174,15 +169,30 @@
                 });
             },
 
-            render: function() {
-                var html = Handlebars.compile(this.template)(this.model);
-                this.$element.html(html).appendTo(this.container);
-                return this;
+            prepareElement: function() {
+                var template = $(this.options.templateId).html();
+                var html = Handlebars.compile(template)(this.model);
+                this.element = $(html);
+            },
+
+            renderUI: function() {
+                var options = this.options;
+
+                if (options.style) {
+                    this.element.attr('style', options.style);
+                }
+
+                if (options.className) {
+                    this.element.addClass(options.className);
+                }
+
+                this.element.appendTo(options.parentId);
             }
 
         });
 
         var c = new WidgetC({
+            className: 'widget',
             style: 'width: 300px',
             model: {
                 title: "精品文章列表",
@@ -194,9 +204,8 @@
                 ]
             },
             templateId: '#template-c',
-            container: '#example3'
+            parentId: '#example3'
         }).render();
-
 
     });
 </script>

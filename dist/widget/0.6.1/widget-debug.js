@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#widget/0.6.1/widget-debug", ["base","$"], function(require, exports, module) {
 
     // Widget
     // ------------------------------------
