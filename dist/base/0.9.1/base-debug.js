@@ -7,7 +7,11 @@ define("#base/0.9.1/base-debug", ["class","events","./options"], function(requir
         Implements: [Events, Options],
 
         destroy: function() {
-            this.off();
+            for (var p in this) {
+                if (this.hasOwnProperty(p)) {
+                    delete this[p];
+                }
+            }
         }
     });
 });
