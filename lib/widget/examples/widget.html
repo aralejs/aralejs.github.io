@@ -41,6 +41,7 @@
         display: inline-block;
         border: 1px solid #ccc;
         padding: 20px;
+        min-width: 300px;
     }
 
     #example3 .remove {
@@ -84,15 +85,16 @@
 </div>
 
 <div id="example4" class="example">
-
+<script id="template-d" type="text/x-handlebars-template">
     <div id="d" class="widget">
-        <ol>
-            <li>开放：开源开放，海纳百川。<span class="action"><a data-action="moveDown" href="#">向下移动</a></span></li>
-            <li>简单：如无必要，勿增实体。<span class="action"><a data-action="moveUp" href="#">向上移动</a><a data-action="moveDown" href="#">向下移动</a></span></li>
-            <li>易用：一目了然，容易学习。<span class="action"><a data-action="click moveUp" href="#">向上移动</a></span></li>
+        <h3 data-action="click toggle">{{title}}</h3>
+        <ol data-action="mouseenter highlight">
+            {{#list}}
+            <li>{{text}}</li>
+            {{/list}}
         </ol>
     </div>
-
+</script>
 </div>
 
 <script>
@@ -182,14 +184,16 @@
             },
 
             parseElement: function() {
-                this.initHelpers();
+                this.registerHelpers();
                 var template = $(this.options.templateId).html();
 
                 var html = Handlebars.compile(template)(this.model);
                 this.element = $(html);
+
+                this.unregisterHelpers();
             },
 
-            initHelpers: function() {
+            registerHelpers: function() {
                 Handlebars.registerHelper('list', function(items) {
                     var out = '';
 
@@ -202,6 +206,10 @@
 
                     return new Handlebars.SafeString(out);
                 });
+            },
+
+            unregisterHelpers: function() {
+                delete Handlebars.helpers['list'];
             },
 
             init: function() {
@@ -249,18 +257,40 @@
         // ---------------------------------------
         var WidgetD = Widget.extend({
 
-            moveDown: function(ev) {
-                ev.preventDefault();
-                console.log('move down');
+            toggle: function() {
+                this.$('ol').slideToggle('slow');
             },
 
-            moveUp: function(ev) {
-                ev.preventDefault();
-                console.log('move up');
+            highlight: function(ev) {
+                $(ev.target).css('backgroundColor', '#eee');
+            },
+
+            parseElement: function() {
+                var html = Handlebars.compile(this.options.template)(this.model);
+                this.element = $(html);
+            },
+
+            render: function() {
+                this.element.appendTo(this.options.parentNode);
+                return this;
             }
         });
 
-        var d = new WidgetD({ element: '#d' });
+        var d = new WidgetD({
+            template: $('#template-d').html(),
+
+            model: {
+                title: "设计原则（点击我）",
+                list: [
+                    {"text": "开放：开源开放，海纳百川。（悬浮上来）"},
+                    {"text": "简单：如无必要，勿增实体。"},
+                    {"text": "易用：一目了然，容易学习。"}
+                ]
+            },
+
+            parentNode: '#example4'
+
+        }).render();
 
     });
 </script>
