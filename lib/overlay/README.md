@@ -14,60 +14,52 @@
 
 ## API说明
 
-* `srcNode` {element} 
-	
+* `element` {element} 
+
 	页面dom节点。
 
-* `tpl` {string}
+* `template` {string}
 
 	浮层容器的模板，如'\<div class="myoverlay">\</div>'。
-	
-* `content` {string}
 
-	浮层的innerHTML。
-	
 * `zIndex` {string|number}
 
 	浮层的z-index属性。
-	
+
 * `width` {string|number}
 
 	浮层宽度(px)。
-	
+
 * `height` {string|number}
 
 	浮层高度(px)。
-	
-* `minHeight` {string|number}
 
-	浮层最小高度。
-	
 * `parentNode` {element}
 
-	浮层的父元素，例如document.body。
-	
+	浮层的父元素，默认为document.body。
+
 * `pinOffset` {object}
 
 	当前节点的定位点对象，如：{x:0, y:0}。
-	
+
 * `relativeObj` {object}
 
 	基准元素及其定位点对象，如{elem:b, x:10, y:10}。
-	
+
 	这块的定位原理可参照arale.position组件的pin方法。
 
 * `render()` 
 
 	生成浮层的dom结构和样式并插入文档流。
 
-* `sync()` 
+* `setStyles(styles)` 
 
-	重新同步浮层状态。
-	
+	设定浮层元素的样式值。
+
 * `show()` 
 
 	显示浮层。
-	
+
 * `hide()` 
 
 	隐藏浮层。

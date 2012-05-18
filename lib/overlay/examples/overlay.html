@@ -38,10 +38,10 @@ seajs.use('../src/overlay', function(Overlay) {
         }
     });
 
-    o.render();
-
-    o.options.width = 400;
-    o.sync();
+    o.render().show();
+    o.setStyles({
+        width: 100
+    });
 
 });
 </script>
