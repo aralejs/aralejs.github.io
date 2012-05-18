@@ -21,14 +21,14 @@ define("#widget/0.6.3/daparser-debug", [], function(require, exports) {
     // 输出是
     //
     //  {
-    //     "widget": { "dialog": ["da_0"] }
+    //     "widget": { "dialog": ".da_0" }
     //     "role": {
-    //        "title": ["da_1"],
-    //        "content": "[da_2"],
-    //        "role": ["da_3", "da_4"],
+    //        "title": ".da_1",
+    //        "content": ".da_2",
+    //        "role": ".da_3,.da_4",
     //     },
     //     "action": {
-    //        "click close": ["da_5"]
+    //        "click close": ".da_5"
     //     }
     //  }
     //
@@ -42,25 +42,28 @@ define("#widget/0.6.3/daparser-debug", [], function(require, exports) {
 
         for (var i = 0, len = elements.length; i < len; i++) {
             var element = elements[i];
-            var dataset = getDataSet(element);
-            var uid = element.getAttribute(ATTR_DA_UID);
+            var dataset = getDataset(element);
+            var cid = element.getAttribute(ATTR_DA_CID);
             var first = true;
 
             for (var key in dataset) {
 
                 // 给 dataset 不为空的元素设置 uid
                 if (first) {
-                    if (!uid) {
-                        uid = uniqueId();
-                        element.setAttribute(ATTR_DA_UID, uid);
-                        element.className += ' ' + uid;
+                    if (!cid) {
+                        cid = uniqueId();
+                        element.setAttribute(ATTR_DA_CID, cid);
+                        element.className += ' ' + cid;
                     }
                     first = false;
                 }
 
-                var o = hash[key] || (hash[key] = {});
                 var val = dataset[key];
-                (o[val] || (o[val] = [])).push(uid);
+                var o = hash[key] || (hash[key] = {});
+
+                // 用 selector 的形式存储
+                o[val] || (o[val] = '');
+                o[val] += (o[val] ? ',' : '') + '.' + cid;
             }
         }
 
@@ -82,14 +85,14 @@ define("#widget/0.6.3/daparser-debug", [], function(require, exports) {
     var RE_DATA_ATTR = /^data-/i;
     var RE_DASH = /-[\w\d_]/;
 
-    function getDataSet(element) {
+    function getDataset(element) {
         // ref: https://developer.mozilla.org/en/DOM/element.dataset
         if (element.dataset) {
             return element.dataset;
         }
 
         var attrs = element.attributes;
-        var hash = {};
+        var dataset = {};
 
         for (var attr in attrs) {
             if (attrs.hasOwnProperty(attr)) {
@@ -100,21 +103,21 @@ define("#widget/0.6.3/daparser-debug", [], function(require, exports) {
                         return c.toUpperCase();
                     });
 
-                    hash[name] = attrs[attr].value;
+                    dataset[name] = attrs[attr].value;
                 }
             }
         }
 
-        return hash;
+        return dataset;
     }
 
 
-    var ATTR_DA_UID = 'data-daparser-uid';
+    var ATTR_DA_CID = 'data-daparser-cid';
 
     var idCounter = 0;
 
     function uniqueId() {
-        return 'da_' + idCounter++;
+        return 'daparser-' + idCounter++;
     }
 
 });
