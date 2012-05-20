@@ -76,29 +76,29 @@
 </div>
 
 <div id="example3" class="example">
-<script id="template-c" type="text/x-handlebars-template">
-<div>
-    <h3>{{title}}<a href="#" class="remove">X</a></h3>
-    <ul>{{list items}}</ul>
-</div>
-</script>
+    <script id="template-c" type="text/x-handlebars-template">
+        <div>
+            <h3>{{title}}</h3>
+            <ul>{{list items}}</ul>
+        </div>
+    </script>
 </div>
 
 <div id="example4" class="example">
-<script id="template-d" type="text/x-handlebars-template">
-    <div id="d" class="widget">
-        <h3 data-action="click toggle">{{title}}</h3>
-        <ol data-action="mouseenter highlight">
-            {{#list}}
-            <li>{{text}}</li>
-            {{/list}}
-        </ol>
-    </div>
-</script>
+    <script id="template-d" type="text/x-handlebars-template">
+        <div id="d" class="widget">
+            <h3 data-action="click toggle">{{title}}</h3>
+            <ol data-action="mouseenter focus, mouseleave blur">
+                {{#list}}
+                <li>{{text}}</li>
+                {{/list}}
+            </ol>
+        </div>
+    </script>
 </div>
 
 <script>
-    seajs.use(['../src/widget', 'handlebars', 'jquery'], function(Widget, Handlebars, $) {
+    seajs.use(['../src/widget', '../src/template-widget', 'handlebars', 'jquery'], function(Widget, TemplateWidget, Handlebars, $) {
 
 
         // example1: 简单的事件代理
@@ -122,11 +122,13 @@
         var a = new WidgetA({ element: '#a' });
 
 
-        // example2: 覆盖 render 方法
+        // example2: template widget
         // ---------------------------------
-        var WidgetB = Widget.extend({
+        var WidgetB = TemplateWidget.extend({
 
-            template: '<div id="b" class="widget"><h3>{{title}}</h3><p>{{content}}</p></div>',
+            options: {
+                template: '<div id="b" class="widget"><h3>{{title}}</h3><p>{{content}}</p></div>'
+            },
 
             model: {
                 title: '我是默认标题',
@@ -141,60 +143,33 @@
                 this.$('p').slideToggle('slow');
             },
 
-            parseElement: function() {
-                var html = Handlebars.compile(this.template)(this.model);
-                this.element = $(html);
-            },
-
-            render: function() {
+            init: function() {
                 this.$('p').css({
                     'height': 100,
                     'padding': 20,
                     'backgroundColor': '#eee'
                 });
-
-                this.element.appendTo('#example2');
-                return this;
             }
         });
 
         var b = new WidgetB({
             model: {
                 content: '我是传入的内容，点击我试试'
-            }
+            },
+            parentNode: '#example2'
         }).render();
 
 
         // example3: Handlebars.registerHelper
         // ---------------------------------------
-        var WidgetC = Widget.extend({
+        var WidgetC = TemplateWidget.extend({
 
-            events: function() {
-                var hash = {
-                    'click li .remove': 'remove'
-                };
-
-                hash['click .' + this.options.titleClassName] = 'remove';
-                return hash;
+            events: {
+                'click li .remove': 'remove'
             },
 
-            remove: function(event) {
-                event.preventDefault();
-                $(event.target).parent().remove();
-            },
-
-            parseElement: function() {
-                this.registerHelpers();
-                var template = $(this.options.templateId).html();
-
-                var html = Handlebars.compile(template)(this.model);
-                this.element = $(html);
-
-                this.unregisterHelpers();
-            },
-
-            registerHelpers: function() {
-                Handlebars.registerHelper('list', function(items) {
+            helpers: {
+                'list': function(items) {
                     var out = '';
 
                     for (var i = 0, len = items.length; i < len; i++) {
@@ -205,11 +180,12 @@
                     }
 
                     return new Handlebars.SafeString(out);
-                });
+                }
             },
 
-            unregisterHelpers: function() {
-                delete Handlebars.helpers['list'];
+            remove: function(event) {
+                event.preventDefault();
+                $(event.target).parent().remove();
             },
 
             init: function() {
@@ -222,15 +198,6 @@
                 if (options.className) {
                     this.element.addClass(options.className);
                 }
-
-                if (options.titleClassName) {
-                    this.$('h3').addClass(options.titleClassName);
-                }
-            },
-
-            render: function() {
-                this.element.appendTo(this.options.parentId);
-                return this;
             }
 
         });
@@ -248,31 +215,25 @@
                     { "href": "http://google.com/", "text": "Arale 棒棒的" }
                 ]
             },
-            templateId: '#template-c',
-            parentId: '#example3'
+            template: $('#template-c').html(),
+            parentNode: '#example3'
         }).render();
 
 
         // example4: parse data-api
         // ---------------------------------------
-        var WidgetD = Widget.extend({
+        var WidgetD = TemplateWidget.extend({
 
             toggle: function() {
                 this.$('ol').slideToggle('slow');
             },
 
-            highlight: function(ev) {
-                $(ev.target).css('backgroundColor', '#eee');
+            focus: function() {
+                this.$('ol').css('backgroundColor', '#eee');
             },
 
-            parseElement: function() {
-                var html = Handlebars.compile(this.options.template)(this.model);
-                this.element = $(html);
-            },
-
-            render: function() {
-                this.element.appendTo(this.options.parentNode);
-                return this;
+            blur: function() {
+                this.$('ol').css('backgroundColor', '');
             }
         });
 
