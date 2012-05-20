@@ -1,7 +1,9 @@
 {
-    "version": "0.6.3",
+    "version": "0.8.0",
     "dist": {
         "widget.js": "default",
-        "daparser.js": "default"
-    }
+        "daparser.js": "default",
+        "template-widget.js": "default"
+    },
+    "tests": ["daparser", "widget", "template-widget"]
 }
