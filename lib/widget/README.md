@@ -30,6 +30,7 @@ define(function(require, exports, module) {
 
     // 定义 SimpleTabView 类
     var SimpleTabView = Widget.extend({
+
         events: {
             'click .nav li': 'switchTo'
         },
@@ -40,10 +41,6 @@ define(function(require, exports, module) {
 
         ...
 
-        render: function() {
-            this.switchTo(0);
-            return this;
-        }
     });
 
     // 实例化
