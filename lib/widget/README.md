@@ -14,7 +14,7 @@ Widget 是 UI 组件的基础类，约定了组件的基本生命周期，实现
  - [jquery](jquery/README.md) / [zepto](zepto/README.md)
  - [handlebars](handlebars/README.md)
 
-**注**：handlebars 仅在混入 `Widget.Template` 后才产生依赖。
+**注**：handlebars 依赖仅在混入 `Templatable` 后才产生。
 
 
 ## 使用说明
