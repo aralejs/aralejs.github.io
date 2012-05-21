@@ -95,7 +95,7 @@ initialize: function(options) {
 
 ### initOptions `widget.initOptions(options)`
 
-选项的初始化方法。通过该方法，会自动将传入的 `options` 参数与所继承的类中的默认 `options`
+选项的初始化方法。通过该方法，会将传入的 `options` 参数与所继承的类中的默认 `options`
 进行合并处理。
 
 子类如果想在 `initOptions` 执行之前或之后进行一些额外处理，可以覆盖该方法：
@@ -121,8 +121,8 @@ var MyWidget = Widget.extend({
 
 该方法只干一件事：根据选项信息，构建好 `this.element`。
 
-默认情况下，如果 `options` 参数中传入了 `element` 选项（取值可为 DOM element / Selector），会直接
-根据该选项来获取 `this.element` 对象。否则会根据 `options.template` 来构建。
+默认情况下，如果 `options` 参数中传入了 `element` 选项（取值可为 DOM element / selector），
+会直接根据该选项来获取 `this.element` 对象。
 
 `this.element` 是一个 jQuery / Zepto 对象。
 
@@ -137,18 +137,19 @@ var MyWidget = Widget.extend({
 
 ### element `widget.element`
 
-通过 `parseElement` 方法获取的当前 widget 实例对应的 DOM 根节点。这是一个 jQuery / Zepto 对象。
+widget 实例对应的 DOM 根节点，是一个 jQuery / Zepto 对象。
 
 
 ### parseDataAttrs `widget.parseDataAttrs()`
 
-解析对应 DOM 结构中的 data-attribute api。假设 `this.element` 的 html 为：
+解析对应 DOM 结构中的 DATA-ATTRIBUTE API。假设 `this.element` 的 html 为：
 
 ```
 <div data-widget="dialog">
     <div data-role="title">{{title}}</div>
     <div data-role="content">{{content}}</div>
     <span data-action="click close">X</span>
+</div>
 ```
 
 通过 `parseDataAttrs` 方法，可以得到 `this.dataset` 属性：
@@ -164,11 +165,11 @@ var MyWidget = Widget.extend({
 }
 ```
 
-`daparser-n` 是自动添加到对应 DOM 元素上的 className。通过 `this.dataset`
-属性，可以快速找到匹配特定 data 属性的元素。比如
+`daparser-n` 是自动添加到对应 DOM 元素上具有唯一性质的 className。通过 `this.dataset`
+属性，可以快速找到具有特定 data 属性的元素。比如
 
 ```
-this.titleElement = this.$(this.dataset.role.title);
+this.title = this.$(this.dataset.role.title);
 ```
 
 
@@ -177,7 +178,7 @@ this.titleElement = this.$(this.dataset.role.title);
 ### delegateEvents `widget.delegateEvents(eventType, handler)`
 
 注册事件代理。在 Widget 组件的设计里，推荐使用代理的方式来注册事件。这样可以使得对应的
-DOM 内容有修改时，无需重新绑定事件。
+DOM 内容有修改时，无需重新绑定。
 
 `widget.delegateEvents()` 会在实例初始化时自动调用，这时会从 `this.events`
 中取得声明的代理事件，比如
@@ -208,7 +209,7 @@ var MyWidget = Widget.extend({
 时，默认会将事件绑定到 `this.element` 上。`callback` 可以是字符串，表示当前实例上的方法名；
 也可以直接传入函数。
 
-`events` 还可以是方法，返回一个 events 对象即可。比如
+`events` 还可以是方法，返回一个 events hash 对象即可。比如
 
 ```js
 var MyWidget = Widget.extend({
@@ -231,6 +232,7 @@ var MyWidget = Widget.extend({
     ...
 
 });
+```
 
 实例化后，还可以通过 `delegateEvents` 方法动态添加事件代理：
 
