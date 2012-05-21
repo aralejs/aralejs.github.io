@@ -166,10 +166,10 @@ define("#widget/0.8.2/widget-debug", ["base","$","./daparser"], function(require
             return this.element.find(selector);
         },
 
-        // 获取 element 上具有唯一性的 className，如果没有则添加
-        uniqueClass: function(element) {
+        // 给 element 添加具有唯一性的 class，并返回由该 class 构成的 selector
+        stamp: function(element) {
           element = element instanceof $ ? element : $(element);
-            return '.' + DAParser.uniqueClass(element[0]);
+            return '.' + DAParser.stamp(element[0]);
         },
 
         destroy: function() {
