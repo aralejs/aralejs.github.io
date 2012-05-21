@@ -1,4 +1,6 @@
 
+当省略 `selector`
+时，默认会将事件绑定到 `this.element` 上。
 
  - events 可以为 function，this 指向 widget 实例。
 

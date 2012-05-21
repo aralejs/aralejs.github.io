@@ -136,6 +136,11 @@ var MyWidget = Widget.extend({
 子类可覆盖该方法，以支持 Handlebars、Mustache 等模板引擎。
 
 
+### element `widget.element`
+
+通过 `parseElement` 方法获取的当前 widget 实例对应的 DOM 根节点。这是一个 jQuery / Zepto 对象。
+
+
 ### parseDataAttrs `widget.parseDataAttrs()`
 
 解析对应 DOM 结构中的 data-attribute api。假设 `this.element` 的 html 为：
@@ -168,28 +173,119 @@ this.titleElement = this.$(this.dataset.role.title);
 ```
 
 
-### delegateEvents `widget.delegateEvents(events, [handler])`
+### delegateEvents `widget.delegateEvents([events])`
+
+### delegateEvents `widget.delegateEvents(eventType, handler)`
+
+注册事件代理。在 Widget 组件的设计里，推荐使用代理的方式来注册事件。这样可以使得对应的
+DOM 内容有修改时，无需重新绑定事件。
+
+`widget.delegateEvents()` 会在实例初始化时自动调用，这时会从 `this.events`
+中取得声明的代理事件，比如
+
+```js
+var MyWidget = Widget.extend({
+
+  events: {
+    "dblclick": "open",
+    "click .icon.doc": "select",
+    "mouseover .date": "showTooltip"
+  },
+
+  open: function() {
+    ...
+  },
+
+  select: function() {
+    ...
+  },
+
+  ...
+
+});
+```
+
+`events` 中每一项的格式是：`"event selector": "callback"`，当省略 `selector`
+时，默认会将事件绑定到 `this.element` 上。`callback` 可以是字符串，表示当前实例上的方法名；
+也可以直接传入函数。
+
+`events` 还可以是方法，返回一个 events 对象即可。比如
+
+```js
+var MyWidget = Widget.extend({
+
+    events: function() {
+        var hash = {
+            "click": "open",
+            "click .close": "close"
+        };
+
+        // 给 data-role="title" 的元素声明 toggle 事件代理
+        hash["click " + this.dataset.role.title] = "toggle";
+
+        // 给 trigger DOM element 声明 open 事件代理
+        hash["mouseover " + this.uniqueClass(this.trigger)] = "open";
+
+        return hash;
+    },
+
+    ...
+
+});
+
+实例化后，还可以通过 `delegateEvents` 方法动态添加事件代理：
+
+```js
+var myWidget = new Widget();
+
+myWidget.delegateEvents('click .move', function() {
+  // ...
+});
+```
 
 
+### undelegateEvents `widget.undelegateEvents([eventType], [handler])`
 
-### undelegateEvents `widget.undelegateEvents(eventType, [handler])`
-
+卸载事件代理。不带参数时，表示卸载所有事件。
 
 
 ### init `widget.init()`
 
+提供给子类覆盖的初始化方法。可以在此处理子类的个性化属性，比如
+
+```js
+var TabView = Widget.extend({
+
+    ...
+
+    init: function() {
+        var options = this.options;
+
+        this.triggers = this.$(options.triggerClassName);
+        this.panels = this.$(options.panelClassName);
+    },
+
+    ...
+
+});
+```
 
 
 ### render `widget.render()`
 
+提供给子类覆盖的初始化方法。render 方法只干一件事件：将 `this.element` 添加到 DOM 树上。
+
+默认无需覆盖。需要覆盖时，请使用 `return this` 来保持该方法的链式约定。
 
 
 ### $ `widget.$(selector)`
 
+在 `this.element` 内查找匹配节点。
 
 
 ### destroy `widget.destroy()`
 
+销毁实例。
 
 
 ### on `widget.on(event, callback, [context])`
@@ -201,8 +297,8 @@ this.titleElement = this.$(this.dataset.role.title);
 
 ## TemplateWidget 类
 
-
-
+继承自 Widget 类，默认添加了 Handlebars 模板支持。需要高级模板功能的组件，基于 TemplateWidget
+来构建会更简单便捷。
 
 
 ## 演示页面
