@@ -38,10 +38,7 @@ define(function(require, exports, module) {
             ...
         },
 
-        init: function() {
-            this.triggers = this.$('.nav li');
-            this.panels = this.$('.content div');
-        },
+        ...
 
         render: function() {
             this.switchTo(0);
@@ -55,16 +52,12 @@ define(function(require, exports, module) {
 
 ```
 
-详细源码可访问：<http://aralejs.org/lib/widget/examples/simple-tabview.html>
+详细源码可访问：[simple-tabview.html](http://aralejs.org/lib/widget/examples/simple-tabview.html)
 
 
 ### initialize `new Widget([options])`
 
 Widget 实例化时，会调用此方法。
-
-`options` 参数用于指定选项配置，之后可以通过 `this.options` 来访问。`options`
-参数如果包含 `element` 和 `model` 属性，实例化后会直接放到 `this` 上，可通过
-`this.element`、`this.model` 来获取。
 
 ```js
 var widget = new Widget({
@@ -77,9 +70,11 @@ var widget = new Widget({
 });
 ```
 
-`options` 参数中还可以通过 `parentNode` 属性来指定当前 widget 在 DOM 中的父节点。
+`options` 参数用来传入选项，实例化后可以通过 `this.options` 来访问。`options`
+参数如果包含 `element` 和 `model` 属性，实例化后会直接放到 `this` 上，即可通过
+`this.element`、`this.model` 来获取。
 
-如果是 TemplateWidget，则还可以通过 `options.template` 指定对应的模板代码。
+`options` 参数中还可以通过 `parentNode` 属性来指定当前 widget 在 DOM 中的父节点。
 
 
 在 `initialize` 方法中，确定了组件构建的基本流程：
@@ -94,6 +89,8 @@ initialize: function(options) {
     this.init();
 }
 ```
+
+下面逐一讲述。
 
 
 ### initOptions `widget.initOptions(options)`
