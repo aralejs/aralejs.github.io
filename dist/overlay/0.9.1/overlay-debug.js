@@ -9,21 +9,22 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
     var Overlay = Widget.extend({
 
         options: {
+            // 页面节点，和template二选一，element优先
             element: null,
+            // 初始化的模板
             template: '',
-            content: '',
-
+            // overlay 的基本属性
             zIndex: 10,
             width: 'auto',
             height: 'auto',
-            minHeight: 0,
-
+            // overlay 的父元素
             parentNode: document.body,
-
+            // element 的定位点，默认为左上角
             pinOffset: {
                 x: 0,
                 y: 0
             },
+            // 基准定位对象，指定了基准定位元素及其定位点
             baseObject: {
                 element: document.body,
                 x: 0,
@@ -31,48 +32,45 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
             }
         },
 
-        init: function() {
-            this.content = this.options.content;
-            this.parentNode = this.options.parentNode;
-
+        init: function () {
+            // 加载 iframe 遮罩层并与 overlay 保持同步
             var shim = this.shim = new Shim(this.element);
-            this.on('show hidden sync', shim.sync, shim);
-        },
+            this.on('show hidden', shim.sync, shim);
 
-        render: function() {
-            this.content && this.element.html(this.content);
-            this.element.appendTo(this.parentNode);
-            this.sync();
-            return this;
-        },
-
-        sync: function() {
-            this.trigger('sync');
+            // 渲染 DOM 结构
             var options = this.options;
-
-            this.element.css({
+            this.setStyles({
                 width: options.width,
                 height: options.height,
-                zIndex: options.zIndex,
-                minHeight: options.minHeight
+                zIndex: options.zIndex
             });
-
+            //进行定位
             Position.pin({
                 element: this.element,
                 x: options.pinOffset.x,
                 y: options.pinOffset.y
             }, options.baseObject);
-
+        },
+        
+        // 插入到文档流中，但不显示
+        render: function () {
+            this.element.appendTo(this.options.parentNode).hide();
             return this;
         },
 
-        show: function() {
+        // 修改 overlay 元素的样式
+        setStyles: function (styles) {
+            this.element && this.element.css(styles);
+            return this;
+        },
+        
+        show: function () {
             this.trigger('show');
             this.element.show();
             return this;
         },
 
-        hide: function() {
+        hide: function () {
             this.element.hide();
             this.trigger('hidden');
             return this;
