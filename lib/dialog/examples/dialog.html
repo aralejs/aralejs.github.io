@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Dialog Example</title>
+<script src="../../../tools/seajs-and-its-friends.js"></script>
+<style>
+    * {
+        margin:0;
+        padding:0;
+    }
+    .overlay {
+        width: 500px;
+        height: 300px;
+        background: green;
+        margin:20px;
+    }
+</style>
+</head>
+<body>
+<input type="button" id="trigger" value="点我打开对话框" />
+<script>
+seajs.use('../src/dialog', function(Dialog) {
+
+    var o = new Dialog({
+        trigger: '#trigger',
+        template: '<div class="overlay"><button id="comfirm">确认按钮</button><button id="close">点击关闭</button></div>',
+        width: 300,
+        height: 200,
+        comfirmElement: '#comfirm',
+        closeElement: '#close',
+        onComfirm: function() {
+            alert('点击了确定按钮');
+        },
+        onClose: function() {
+            alert('点击了关闭按钮');
+        },
+        baseObject: {
+            x: 200,
+            y: 100
+        },
+        hasMask: true
+    });
+
+});
+</script>
+</body>
+</html>
+
+
