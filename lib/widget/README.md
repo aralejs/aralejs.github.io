@@ -20,103 +20,200 @@ Widget 是 UI 组件的基础类，约定了组件的基本生命周期，实现
 
 ### extend `Widget.extend(properties)`
 
-使用 `extend` 方法，可以基于 `Widget` 来构建 UI 组件。
+使用 `extend` 方法，可以基于 `Widget` 来创建子类。
 
 ```js
-/* switchable.js */
 define(function(require, exports, module) {
     var Widget = require('widget');
 
-    module.exports = Widget.extend({
-        options: {
-            prev: '.prev',
-            next: '.next'
+    // 定义 SimpleTabView 类
+    var SimpleTabView = Widget.extend({
+        events: {
+            'click .nav li': 'switchTo'
         },
 
-        beforeCreate: function() {
-            //view已经处理完毕， 可以在这个方法对view进一步处理。
-            
-            this.prevElement = find(this.getElement(), options.prev); 
-            this.nextElement = find(this.getElement(), options.next);
+        switchTo: function(index) {
+            ...
         },
 
-        bindAction: function() {
-            
-            this.onElement('click', options.prev, function(e) {
-                e.stopPropagation();
-                that.prev();
-            });
-            this.onElement('click', options.next, function(e) {
-                e.stopPropagation();
-                that.next();
-            });
-
-            this.on('next', function() {
-                console.log('next--->');
-            });
-
+        init: function() {
+            this.triggers = this.$('.nav li');
+            this.panels = this.$('.content div');
         },
-        next: function() {
-            this.trigger('next1'); 
-        },
-        prev: function() {
-        
+
+        render: function() {
+            this.switchTo(0);
+            return this;
         }
     });
-});
 
-var sw = new Switchable({element: '#switchable', next: '.nextClass'});
-sw.on('next', function() {
-    console.log('next2');
+    // 实例化
+    var demo = new SimpleTabView({ element: '#demo' }).render();
 });
 
 ```
 
-
-## Widget 实例方法
-
-如果一个组件通过 `Widget.extend` 来创建，会自动继承下面这些方法：
+详细源码可访问：<http://aralejs.org/lib/widget/examples/simple-tabview.html>
 
 
-### `on`, `trigger`, `off` 继承自 Event，具体使用请参考 [events 使用文档](events/README.md)。
+### initialize `new Widget([options])`
+
+Widget 实例化时，会调用此方法。
+
+`options` 参数用于指定选项配置，之后可以通过 `this.options` 来访问。`options`
+参数如果包含 `element` 和 `model` 属性，实例化后会直接放到 `this` 上，可通过
+`this.element`、`this.model` 来获取。
+
+```js
+var widget = new Widget({
+   element: '#demo',
+   className: 'widget',
+   model: {
+       title: '设计原则',
+       content: '开放、简单、易用'
+   }
+});
+```
+
+`options` 参数中还可以通过 `parentNode` 属性来指定当前 widget 在 DOM 中的父节点。
+
+如果是 TemplateWidget，则还可以通过 `options.template` 指定对应的模板代码。
 
 
-### `beforeCreate()`
+在 `initialize` 方法中，确定了组件构建的基本流程：
 
-在组件 View 渲染完毕后，会自动调用此方法。
-
-
-### `bindAction()`
-
-在 `beforeCreate` 处理完毕后，会调用此方法。这个方法主要是负责组件事件的绑定。
-
-
-### `postCreate()`
-
-当事件绑定完毕后，会调用此方法。在这个方法调用之前，组件基本已经初始化完毕，子类可以在这里做些收尾工作。
-
-
-### onElement `this.onElement(type [, selector] [, data], handler(eventObject))`
-
-给组件对应的 DOM 元素进行事件绑定。
+```js
+initialize: function(options) {
+    this.cid = uniqueId();
+    this.initOptions(options);
+    this.parseElement();
+    this.parseDataAttrs();
+    this.delegateEvents();
+    this.init();
+}
+```
 
 
-### aroundFn `this.aroundFn(methodName [, before] [, after])`
+### initOptions `widget.initOptions(options)`
 
-给组件中指定的函数增加函数调用之前和之后的事件发布功能。
+选项的初始化方法。通过该方法，会自动将传入的 `options` 参数与所继承的类中的默认 `options`
+进行合并处理。
 
+子类如果想在 `initOptions` 执行之前或之后进行一些额外处理，可以覆盖该方法：
+
+```
+var MyWidget = Widget.extend({
+    initOptions: function(options) {
+        // 提前做点处理
+
+        // 调用父类的
+        MyWidget.superclass.initOptions.call(this, options);
+
+        // 之后做点处理
+    }
+});
+
+```
+
+**注意**：一般情况下不需要覆盖 `initOptions`。
+
+
+### parseElement `widget.parseElement()`
+
+该方法只干一件事：根据选项信息，构建好 `this.element`。
+
+默认情况下，如果 `options` 参数中传入了 `element` 选项（取值可为 DOM element / Selector），会直接
+根据该选项来获取 `this.element` 对象。否则会根据 `options.template` 来构建。
+
+`this.element` 是一个 jQuery / Zepto 对象。
+
+
+### parseElementFromTemplate `widget.parseElementFromTemplate()`
+
+如果 `options` 参数中未传入 `element` 选项，则会根据 `template` 选项来构建
+`this.element`。 默认的 `template` 是 `<div></div>`。
+
+子类可覆盖该方法，以支持 Handlebars、Mustache 等模板引擎。
+
+
+### parseDataAttrs `widget.parseDataAttrs()`
+
+解析对应 DOM 结构中的 data-attribute api。假设 `this.element` 的 html 为：
+
+```
+<div data-widget="dialog">
+    <div data-role="title">{{title}}</div>
+    <div data-role="content">{{content}}</div>
+    <span data-action="click close">X</span>
+```
+
+通过 `parseDataAttrs` 方法，可以得到 `this.dataset` 属性：
+
+```
+{
+    "widget": { "dialog": ".daparser-0" },
+    "role": {
+              "title": ".daparser-1"
+              "content": ".daparser-2"
+            },
+    "action": { "click close": ".daparser-3" }
+}
+```
+
+`daparser-n` 是自动添加到对应 DOM 元素上的 className。通过 `this.dataset`
+属性，可以快速找到匹配特定 data 属性的元素。比如
+
+```
+this.titleElement = this.$(this.dataset.role.title);
+```
+
+
+### delegateEvents `widget.delegateEvents(events, [handler])`
+
+
+
+### undelegateEvents `widget.undelegateEvents(eventType, [handler])`
+
+
+
+### init `widget.init()`
+
+
+
+### render `widget.render()`
+
+
+
+### $ `widget.$(selector)`
+
+
+
+### destroy `widget.destroy()`
+
+
+
+### on `widget.on(event, callback, [context])`
+
+这是从 Events 中自动混入进来的方法。还包括 `off` 和 `trigger`。
+
+具体使用请参考 [events 使用文档](events/README.md)。
+
+
+## TemplateWidget 类
+
+
+
+
+
+## 演示页面
+
+ - <http://aralejs.org/lib/widget/examples/widget.html>
+ - <http://aralejs.org/lib/widget/examples/simple-tabview.html>
 
 
 ## 测试用例
 
-
-
-## 性能对比
-
-
-
-## 调研文档
-
+ - <http://aralejs.org/lib/widget/tests/runner.html>
 
 
 ## 交流讨论
@@ -124,5 +221,3 @@ sw.on('next', function() {
 欢迎创建
 [GitHub Issue](https://github.com/alipay/arale/issues/new)
 来提交反馈。
-
-
