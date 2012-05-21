@@ -21,13 +21,17 @@
 
     对话框触发点。
 
-* `comfirmElement` : {element}
+* `comfirmElement` : {element|array|$}
 
     确定或提交按钮。
 
-* `closeElement` : {element|array}
+* `cancelElement` : {element|array|$}
 
-    关闭按钮，可以为节点数组。
+    取消按钮。
+
+* `closeElement` : {element|array|$}
+
+    关闭按钮。
 
 * `onComfirm` : {function}
 
@@ -37,9 +41,26 @@
 
     关闭时的操作。
 
+* `hasMask` : {boolean}
+
+    是否有背景遮罩层。
+
+其他API参照[overlay](overlay/README.md)。
+
 
 ## 最佳实践
 
-
+    var o = new Dialog({
+        trigger: '#trigger',
+        template: '<div class="overlay"><button id="close">点击关闭</button></div>',
+        width: 300,
+        height: 200,
+        closeElement: '#close',
+        baseObject: {
+            x: 200,
+            y: 100
+        },
+        hasMask: true
+    });
 
 
