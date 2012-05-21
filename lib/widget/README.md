@@ -313,10 +313,29 @@ var MyWidget = Widget.extend({
 具体使用请参考 [events 使用文档](events/README.md)。
 
 
-## TemplateWidget 类
+### Widget.Template
 
-继承自 Widget 类，默认添加了 Handlebars 模板支持。需要高级模板功能的组件，基于 TemplateWidget
-来构建会更简单便捷。
+可混入的功能类，提供 Handlebars 模板支持。
+
+```js
+var MyWidget = Widget.extend({
+    Implements: Widget.Template
+});
+
+var myWidget = new MyWidget({
+    template: '<h3>{{title}}</h3><ol>{{#each list}}<li>{{item}}</li>{{/each}}',
+    model: {
+        'title': '标题',
+        'list': [
+            { 'item': '文章一' },
+            { 'item': '文章二' }
+        ]
+    },
+    parentNode: '#demo'
+});
+
+myWidget.render();
+```
 
 
 ## 演示页面
