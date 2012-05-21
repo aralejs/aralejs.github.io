@@ -30,17 +30,13 @@ define(function(require, exports, module) {
 
     // 定义 SimpleTabView 类
     var SimpleTabView = Widget.extend({
-
         events: {
             'click .nav li': 'switchTo'
         },
-
         switchTo: function(index) {
             ...
         },
-
         ...
-
     });
 
     // 实例化
@@ -182,23 +178,18 @@ DOM 内容有修改时，无需重新绑定。
 
 ```js
 var MyWidget = Widget.extend({
-
-  events: {
-    "dblclick": "open",
-    "click .icon.doc": "select",
-    "mouseover .date": "showTooltip"
-  },
-
-  open: function() {
+    events: {
+        "dblclick": "open",
+        "click .icon.doc": "select",
+        "mouseover .date": "showTooltip"
+    },
+    open: function() {
+        ...
+    },
+    select: function() {
+        ...
+    },
     ...
-  },
-
-  select: function() {
-    ...
-  },
-
-  ...
-
 });
 ```
 
@@ -210,7 +201,6 @@ var MyWidget = Widget.extend({
 
 ```js
 var MyWidget = Widget.extend({
-
     events: function() {
         var hash = {
             "click": "open",
@@ -225,9 +215,7 @@ var MyWidget = Widget.extend({
 
         return hash;
     },
-
     ...
-
 });
 ```
 
@@ -253,15 +241,11 @@ myWidget.delegateEvents('click .move', function() {
 
 ```js
 var TabView = Widget.extend({
-
     ...
-
     init: function() {
         this.activeIndex = getActiveIndex();
     },
-
     ...
-
 });
 ```
 
@@ -285,7 +269,6 @@ events 的声明函数中。
 
 ```js
 var MyWidget = Widget.extend({
-
     events: function() {
         var hash = {
             'click p': 'light'
@@ -294,7 +277,6 @@ var MyWidget = Widget.extend({
         hash['click ' + this.stamp(this.title)] = 'toggle';
         return hash;
     },
-
     ...
 });
 ```
