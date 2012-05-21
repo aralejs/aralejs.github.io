@@ -59,7 +59,7 @@
 
     <div id="demo">
         <ul class="nav">
-            <li class="active">开放</li>
+            <li>开放</li>
             <li>简单</li>
             <li>易用</li>
         </ul>
@@ -70,12 +70,14 @@
         </div>
     </div>
 
+    <button id="egg">手贱</button>
 </div>
 
 
 <script>
-    seajs.use(['../src/widget'], function(Widget) {
+    seajs.use(['../src/widget', 'jquery'], function(Widget, $) {
 
+        // 基于 Widget 定义 SimpleTabView 组件
         var SimpleTabView = Widget.extend({
 
             events: {
@@ -85,40 +87,79 @@
             switchTo: function(index) {
                 var triggers = this.triggers;
                 var panels = this.panels;
+                var activeIndex = this.activeIndex;
 
+                // 触发点击事件时，index 是 ev 对象
                 if (typeof index === 'object') {
                     index = triggers.index(index.target);
                 }
 
-                panels.each(function(i) {
-                    var trigger = triggers.eq(i);
-                    var panel = panels.eq(i);
+                triggers.eq(activeIndex).removeClass('active');
+                triggers.eq(index).addClass('active');
 
-                    if (i === index) {
-                        trigger.addClass('active');
-                        panel.show();
-                    }
-                    else {
-                        trigger.removeClass('active');
-                        panel.hide();
-                    }
-                });
+                panels.eq(activeIndex).hide();
+                panels.eq(index).show();
+
+                this.activeIndex = index;
             },
 
             init: function() {
                 this.triggers = this.$('.nav li');
                 this.panels = this.$('.content div');
+                this.panels.hide();
+                this.activeIndex = this.options.activeIndex || 0;
             },
 
             render: function() {
-                this.switchTo(0);
+                this.switchTo(this.activeIndex);
                 return this;
+            },
+
+            add: function(title, content) {
+                var li = $('<li>' + title + '</li>');
+                var div = $('<div>' + content + '</div>');
+
+                li.appendTo(this.$('.nav'));
+                div.appendTo(this.$('.content'));
+
+                this.triggers = this.triggers.add(li);
+                this.panels = this.panels.add(div);
+
+                return this;
+            },
+
+            setActiveContent: function(content) {
+              this.panels.eq(this.activeIndex).html(content);
+            },
+
+            size: function() {
+                return this.triggers.length;
             }
         });
 
-        var demo = new SimpleTabView({
-            element: '#demo'
+
+        var tabView = new SimpleTabView({
+            element: '#demo',
+            activeIndex: 1
         }).render();
+
+
+        var counter = 1;
+
+        $('#egg').click(function() {
+            if (counter < 4) {
+                tabView.add('哈哈', '你居然点击了 ' + counter++ + ' 次')
+                        .switchTo(tabView.size() - 1);
+            }
+            else if (counter++ === 4) {
+                tabView.setActiveContent('囧，你居然还点击，手真贱呀');
+            }
+            else {
+                tabView.element.remove();
+                $(this).remove();
+                $('.example').html('悄悄的我走了，不带走一行代码⋯⋯');
+            }
+        });
 
     });
 </script>
