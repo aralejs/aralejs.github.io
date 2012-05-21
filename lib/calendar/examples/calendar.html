@@ -2,16 +2,18 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Overlay Example</title>
+        <title>Calendar Example</title>
         <script src="../../../tools/seajs-and-its-friends.js"></script>
     </head>
     <body>
         <script>
             seajs.use(['../src/calendar'], function(Calendar) {
                 var cal = new Calendar({width: 900});
+                cal.render();
                 console.log(cal.width());
                 console.log(cal.width(100));
                 console.log(cal.width());
+                console.log(cal.options.template);
             });
         </script>
     </body>
