@@ -14,7 +14,7 @@ Widget 是 UI 组件的基础类，约定了组件的基本生命周期，实现
  - [jquery](jquery/README.md) / [zepto](zepto/README.md)
  - [handlebars](handlebars/README.md)
 
-**注**：handlebars 仅在混入 `Widget.Template` 后才产生依赖。
+**注**：handlebars 依赖仅在混入 `Templatable` 后才产生。
 
 
 ## 使用说明
@@ -314,13 +314,15 @@ var MyWidget = Widget.extend({
 具体使用请参考 [events 使用文档](events/README.md)。
 
 
-### Widget.Template
+### Templatable
 
 可混入的功能类，提供 Handlebars 模板支持。
 
 ```js
+var Templatable = require('widget-templatable');
+
 var MyWidget = Widget.extend({
-    Implements: Widget.Template
+    Implements: Templatable
 });
 
 var myWidget = new MyWidget({

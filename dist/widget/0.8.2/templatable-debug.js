@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#widget/0.8.2/templatable-debug", ["handlebars","$"], function(require, exports, module) {
 
 
     // 提供 Template 支持
@@ -9,7 +9,7 @@ define(function(require, exports, module) {
     var $ = require('$');
 
 
-    var Template = {
+    var Templatable = {
 
         // Handlebars 的 helpers
         helpers: null,
@@ -39,6 +39,6 @@ define(function(require, exports, module) {
         }
     };
 
-    module.exports = Template;
+    module.exports = Templatable;
 
 });
