@@ -24,6 +24,7 @@
     }
     .overlay {
         background: #FFC;
+        width:500px;
     }
 </style>
 </head>
@@ -31,25 +32,31 @@
 
     <div id="a"></div>
     <div id="b"></div>
+    <div id="c" style="position:relative;margin:300px;"></div>
 
 <script>
 seajs.use('../src/overlay', function(Overlay) {
 
     var o = new Overlay({
         template: '<div class="overlay"></div>',
-        width: 300,
         height: 200,
+        pinOffset: {
+            x: '-100%',
+            y:0
+        },
+        parentNode: '#c',
         baseObject: {
             element: '#a',
-            x: 100,
-            y: 100
+            x: 0,
+            y: 0
         }
     });
 
     o.render().show();
-    o.setStyles({
+    o.setStyle({
         width: 100
     });
+
 
     var o2 = new Overlay({
         element: '#b',
