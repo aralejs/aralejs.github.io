@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf8">
+<meta charset="utf-8">
 <title>Overlay Example</title>
 <script src="../../../tools/seajs-and-its-friends.js"></script>
 <style>
@@ -12,8 +12,15 @@
     #a {
         width: 500px;
         height: 300px;
-        margin: 100px auto;
-        background: #FAFAFA;
+        background: green;
+        margin:20px;
+    }
+    #b {
+        width: 100px;
+        height: 100px;
+        margin: 0;
+        background: #e80;
+        display:none;
     }
     .overlay {
         background: #FFC;
@@ -22,7 +29,8 @@
 </head>
 <body>
 
-<div id="a"></div>
+    <div id="a"></div>
+    <div id="b"></div>
 
 <script>
 seajs.use('../src/overlay', function(Overlay) {
@@ -33,8 +41,8 @@ seajs.use('../src/overlay', function(Overlay) {
         height: 200,
         baseObject: {
             element: '#a',
-            x: 0,
-            y: 0
+            x: 100,
+            y: 100
         }
     });
 
@@ -42,6 +50,17 @@ seajs.use('../src/overlay', function(Overlay) {
     o.setStyles({
         width: 100
     });
+
+    var o2 = new Overlay({
+        element: '#b',
+        width: 300,
+        height: 200,
+        baseObject: {
+            x: 200,
+            y: 200
+        }
+    });
+    o2.render().show();
 
 });
 </script>
