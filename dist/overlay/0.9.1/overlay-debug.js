@@ -9,17 +9,22 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
     var Overlay = Widget.extend({
 
         options: {
+            // 页面节点，和template二选一，element优先
+            element: null,
+            // 初始化的模板
             template: '',
-
+            // overlay 的基本属性
             zIndex: 10,
             width: 'auto',
             height: 'auto',
+            // overlay 的父元素
             parentNode: document.body,
-
+            // element 的定位点，默认为左上角
             pinOffset: {
                 x: 0,
                 y: 0
             },
+            // 基准定位对象，指定了基准定位元素及其定位点
             baseObject: {
                 element: document.body,
                 x: 0,
@@ -39,6 +44,7 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
                 height: options.height,
                 zIndex: options.zIndex
             });
+            //进行定位
             Position.pin({
                 element: this.element,
                 x: options.pinOffset.x,
