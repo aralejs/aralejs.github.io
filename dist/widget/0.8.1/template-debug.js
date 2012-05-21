@@ -1,16 +1,15 @@
-define(function(require, exports, module) {
-
-    // Template Widget
-    // --------------------------------------------------
-    // 模板类 UI 组件的基类，默认集成了 Handlebars 等功能
+define("#widget/0.8.1/template-debug", ["handlebars","$"], function(require, exports, module) {
 
 
-    var Widget = require('./widget');
+    // 提供 Template 支持
+    // ----------------
+
+
     var Handlebars = require('handlebars');
     var $ = require('$');
 
 
-    var TemplateWidget = Widget.extend({
+    var Template = {
 
         // Handlebars 的 helpers
         helpers: null,
@@ -38,8 +37,8 @@ define(function(require, exports, module) {
 
             this.element = $(html);
         }
-    });
+    };
 
-    module.exports = TemplateWidget;
+    module.exports = Template;
 
 });

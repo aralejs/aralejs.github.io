@@ -19,7 +19,7 @@ seajs.config({
         'events': 'events/0.9.1/events',
         'class': 'class/0.9.1/class',
         'base': 'base/0.9.1/base',
-        'widget': 'widget/0.8.0/widget',
+        'widget': 'widget/0.8.1/widget',
 
         '$': 'jquery/1.7.2/jquery',
         'jquery': 'jquery/1.7.2/jquery',
