@@ -7,3 +7,4 @@
 
  - model 类目前有无必要？特别是当 model 内容发生变化时，需不需要如何自动更新对应 dom 节点？
    有无必要引入类似 Ember 或 Knockout 的 bindings 和 auto-updating templates ?
+
