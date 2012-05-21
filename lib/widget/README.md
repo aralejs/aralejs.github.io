@@ -1,7 +1,8 @@
 
 # Widget 
 
-Widget 是基础类，为 UI 类组件提供了基本的生命周期约定和一些通用功能的实现。
+Widget 是 UI 组件的基础类，约定了组件的基本生命周期，实现了一些通用功能。基于 Widget
+可以构建出任何你想要的 Web 界面。
 
 ---
 
@@ -11,6 +12,7 @@ Widget 是基础类，为 UI 类组件提供了基本的生命周期约定和一
  - [seajs](seajs/README.md)
  - [base](base/README.md)
  - [jquery](jquery/README.md) / [zepto](zepto/README.md)
+ - TemplateWidget 还依赖 [handlebars](handlebars/README.md)
 
 
 ## 使用说明
@@ -18,7 +20,7 @@ Widget 是基础类，为 UI 类组件提供了基本的生命周期约定和一
 
 ### extend `Widget.extend(properties)`
 
-使用 `extend` 方法，可以基于 `Widget` 类来创建 UI 子类。
+使用 `extend` 方法，可以基于 `Widget` 来构建 UI 组件。
 
 ```js
 /* switchable.js */

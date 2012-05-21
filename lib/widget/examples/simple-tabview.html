@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf8">
+<title>Simple TabView Example</title>
+<script src="../../../tools/seajs-and-its-friends.js"></script>
+<style>
+    body {
+        font: 16px/1.62 Georgia, 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: #222;
+    }
+
+    .example {
+        position: relative;
+        margin: 50px;
+        padding: 50px;
+        border: 2px dashed #ccc;
+    }
+
+    h2, h3 {
+        font-size: 22px;
+    }
+
+    #simple-tabs {
+        width: 400px;
+    }
+
+    .nav li {
+        list-style: none;
+        float: left;
+        border: 1px solid #eee;
+        padding: 5px 10px;
+        border-bottom: none;
+        cursor: pointer;
+    }
+
+    .nav li.active {
+        background: #eee;
+    }
+
+    .content {
+        clear: both;
+        border: 1px solid #eee;
+        height: 200px;
+        width: 500px;
+        overflow: hidden;
+    }
+
+    .content div {
+        height: 200px;
+        padding: 20px;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="example">
+
+    <div id="demo">
+        <ul class="nav">
+            <li class="active">开放</li>
+            <li>简单</li>
+            <li>易用</li>
+        </ul>
+        <div class="content">
+            <div>开源开放，海纳百川。</div>
+            <div>如无必要，勿增实体。</div>
+            <div>一目了然，容易学习。</div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    seajs.use(['../src/widget'], function(Widget) {
+
+        var SimpleTabView = Widget.extend({
+
+            events: {
+                'click .nav li': 'switchTo'
+            },
+
+            switchTo: function(index) {
+                var triggers = this.triggers;
+                var panels = this.panels;
+
+                if (typeof index === 'object') {
+                    index = triggers.index(index.target);
+                }
+
+                panels.each(function(i) {
+                    var trigger = triggers.eq(i);
+                    var panel = panels.eq(i);
+
+                    if (i === index) {
+                        trigger.addClass('active');
+                        panel.show();
+                    }
+                    else {
+                        trigger.removeClass('active');
+                        panel.hide();
+                    }
+                });
+            },
+
+            init: function() {
+                this.triggers = this.$('.nav li');
+                this.panels = this.$('.content div');
+            },
+
+            render: function() {
+                this.switchTo(0);
+                return this;
+            }
+        });
+
+        var demo = new SimpleTabView({
+            element: '#demo'
+        }).render();
+
+    });
+</script>
+</body>
+</html>
+
