@@ -314,13 +314,15 @@ var MyWidget = Widget.extend({
 具体使用请参考 [events 使用文档](events/README.md)。
 
 
-### Widget.Template
+### Templatable
 
 可混入的功能类，提供 Handlebars 模板支持。
 
 ```js
+var Templatable = require('widget-templatable');
+
 var MyWidget = Widget.extend({
-    Implements: Widget.Template
+    Implements: Templatable
 });
 
 var myWidget = new MyWidget({
