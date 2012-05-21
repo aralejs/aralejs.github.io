@@ -52,7 +52,7 @@ define("#widget/0.8.2/daparser-debug", [], function(require, exports) {
 
                 // 给 dataset 不为空的元素设置 uid
                 if (!cid) {
-                    cid = DAParser.uniqueClass(element);
+                    cid = DAParser.stamp(element);
                 }
 
                 var val = dataset[key];
