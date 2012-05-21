@@ -2,7 +2,7 @@
 # Widget 
 
 Widget 是 UI 组件的基础类，约定了组件的基本生命周期，实现了一些通用功能。基于 Widget
-可以构建出任何你想要的 Web 界面。
+可以构建出任何你想要的 Web 组件。
 
 ---
 
@@ -12,7 +12,9 @@ Widget 是 UI 组件的基础类，约定了组件的基本生命周期，实现
  - [seajs](seajs/README.md)
  - [base](base/README.md)
  - [jquery](jquery/README.md) / [zepto](zepto/README.md)
- - TemplateWidget 还依赖 [handlebars](handlebars/README.md)
+ - [handlebars](handlebars/README.md)
+
+**注**：handlebars 仅在混入 `Widget.Template` 后才产生依赖。
 
 
 ## 使用说明
