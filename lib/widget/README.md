@@ -251,7 +251,7 @@ myWidget.delegateEvents('click .move', function() {
 
 ### init `widget.init()`
 
-提供给子类覆盖的初始化方法。可以在此处理子类的个性化属性，比如
+提供给子类覆盖的初始化方法。可以在此处理更多初始化信息，比如
 
 ```js
 var TabView = Widget.extend({
@@ -259,10 +259,7 @@ var TabView = Widget.extend({
     ...
 
     init: function() {
-        var options = this.options;
-
-        this.triggers = this.$(options.triggerClassName);
-        this.panels = this.$(options.panelClassName);
+        this.activeIndex = getActiveIndex();
     },
 
     ...
@@ -273,7 +270,7 @@ var TabView = Widget.extend({
 
 ### render `widget.render()`
 
-提供给子类覆盖的初始化方法。render 方法只干一件事件：将 `this.element` 添加到 DOM 树上。
+提供给子类覆盖的初始化方法。render 方法只干一件事件：将 `this.element` 渲染到页面上。
 
 默认无需覆盖。需要覆盖时，请使用 `return this` 来保持该方法的链式约定。
 
@@ -281,6 +278,27 @@ var TabView = Widget.extend({
 ### $ `widget.$(selector)`
 
 在 `this.element` 内查找匹配节点。
+
+
+### uniqueClass `widget.uniqueClass(element)`
+
+获取 `element` 上具有唯一性的 className，如果没有则添加。经常用在 events 的声明函数中。
+
+```js
+var MyWidget = Widget.extend({
+
+    events: function() {
+        var hash = {
+            'click p': 'light'
+        };
+
+        hash['click ' + this.uniqueClass(this.title)] = 'toggle';
+        return hash;
+    },
+
+    ...
+});
+```
 
 
 ### destroy `widget.destroy()`
