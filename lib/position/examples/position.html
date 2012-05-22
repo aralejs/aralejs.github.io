@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
 <title>Position Example</title>
 <script src="../../../tools/seajs-and-its-friends.js"></script>
@@ -23,7 +23,7 @@
         height:200px;
         margin:50px 0 0 100px;
         line-height:200px;
-        text-align:center;	
+        text-align:center;
     }
     h2 {
         color:#7191A7;
@@ -41,7 +41,7 @@
 </div>
 <div class="example">
     <h2>目标元素的offsetParent不为body：Position.pin(a2, {element: b2, x: 50, y: 50});</h2>
-    <div style="Position:relative;margin:20px;border:20px red solid;padding:10px;">
+    <div style="position:relative;margin:20px;border:20px red solid;padding:10px;">
         <div id="a2" style="Position:absolute;top:0;left:0;" class="elem1">目标元素a2</div>
         <div id="b2" class="elem2">基准元素b2</div>
     </div>
@@ -101,7 +101,7 @@ seajs.use(['../src/position', 'jquery'], function(Position, $) {
         Position.pin(a1, {element: b1, x: '50px', y: '50px'});
         Position.pin(a2, {element: b2, x: 50, y: 50});
         Position.pin({element: a3, x: -50, y: -50}, {element: b3});
-        Position.pin({element: a4, x: 'center', y: '50%'}, {element: b4, x: '100%', y: '50%'});
+        Position.pin({element: a4, x: 'center', y: '50%'}, {element: b4, x: '100%', y: '50.5%'});
         Position.center(a5, b5);
         Position.pin(a6, {x: 50,y: 50});
         id('J_rePosition6').onclick = function() {
@@ -112,7 +112,6 @@ seajs.use(['../src/position', 'jquery'], function(Position, $) {
             Position.center(a7);
         };
         Position.pin(a8, {element: $('#b8'), x: '100%+50px', y: '50%-50'});
-
     });
 });
 </script>

@@ -12,17 +12,6 @@ feature list
 *   校验规则的组合，与、或、非。
 
 
-组成
-===
-
-*   检验规则工厂`validator.ruleFactory`。它负责维护所有的校验规则和消息提示。
-
-*   校验核心`validator.Core`。它负责校验的执行，校验动作的消息/事件处理，校验提示消息的产生等。
-
-*   data-attribute api支持模块`validator.Parser`，负责将data-attribute解析成校验核心可以理解的对象。
-
-*   一套默认的校验反馈UI处理模块`validator.Ex`，根据支付宝的交互规范定制的特定validator。
-
 校验规则
 =====================
 
@@ -32,11 +21,7 @@ API
 
 *   `.addRule`
 
-*   `.addAsyncRule`
-
-*   `.addCombinedRule`
-
-*   `.addMessage`
+*   `.setMessage`
 
 *   `.getRule`
 
@@ -44,23 +29,20 @@ API
 
 *   函数检验
 
-        var rules = require('validator.ruleFactory');
+        var Validator = require('validator');
 
-        rules.addRule('valueBetween', function(options) {
+        Validator.addRule('valueBetween', function(options) {
             var v = Number(options.field.value);
             return v <= options.max && v >= options.min;
-        });
-
-        rules.addMessage('valueBetween', '{{name}}必须在{{min}}和{{max}}之间');
+        }, '{{name}}必须在{{min}}和{{max}}之间');
 
 *   正则校验
 
-        rules.addRule('phone', /^1\d{10}$/);
-        rules.addMessage('phone', '请输入合法的{{name}}');
+        Validator.addRule('phone', /^1\d{10}$/, '请输入合法的{{name}}');
 
 *   异步检验
 
-        rules.addAsyncRule('checkUseranmeAvailable', function(options, commit) {
+        Validator.addRule('checkUseranmeAvailable', function(options, commit) {
             $.post('http://youdomain/checkUsernameAvailable', {username: options.field.value}, function(data) {
                 commit(data.state, data.msg);
             })
