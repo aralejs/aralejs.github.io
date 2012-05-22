@@ -6,7 +6,7 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
     // 代码易改，人生难得
 
     var Position = exports,
-        VIEWPORT = { id: 'VIEWPORT', nodeType: 1 },
+        VIEWPORT = { _id: 'VIEWPORT', nodeType: 1 },
         $ = require('$'),
         isIE6 = $.browser.msie && $.browser.version == 6.0;
 
@@ -22,7 +22,9 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
         // 设定目标元素的 position 为绝对定位
         // 若元素的初始 position 不为 absolute，会影响元素的 display、宽高等属性
         var pinElement = $(pinObject.element);
-        pinElement.css('position', 'absolute');
+        if(pinElement.css('position') !== 'fixed') {
+            pinElement.css('position', 'absolute');
+        }
 
         // 将位置属性归一化为数值
         // 注：必须放在上面这句 `css('position', 'absolute')` 之后，
@@ -85,7 +87,8 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
             y: pinObject.y || 0
         };
 
-        var isVIEWPORT = element === VIEWPORT;
+        // options的深度克隆貌似会替换掉 Position.VIEWPORT , 导致直接比较为false
+        var isVIEWPORT = (element === VIEWPORT || element._id === 'VIEWPORT');
 
         // 归一化 offset
         result.offset = function() {
@@ -178,7 +181,6 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
     function numberize(s) {
         return parseFloat(s, 10) || 0;
     }
-
 
     function toElement(element) {
         if (typeof element === 'string') {
