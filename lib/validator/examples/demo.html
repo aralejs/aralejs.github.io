@@ -42,7 +42,7 @@
                     });
 
                     validator.addItem('username', {
-                        rule: ['required', 'emailOrMobile', 'lengthConstraint{"min": 15, "max": 8}'],
+                        rule: 'required emailOrMobile lengthConstraint{"min": 15, "max": 8}',
                         display: '用户名',
                         message: '用户名的格式必须是正确的哦',
                         triggerType: ['keyup'],
@@ -55,7 +55,7 @@
                     });
 
                     validator.addItem('password', {
-                        rule: ['required'],
+                        rule: 'required',
                         display: '密码',
                         onItemValidate: function() {
                         },
@@ -65,7 +65,7 @@
                     });
 
                     validator.addItem('password-confirmation', {
-                        rule: ['required', 'confirmation{"id": "password"}'],
+                        rule: 'required confirmation{"id": "password"}',
                         onItemValidate: function() {
                         },
                         onItemValidated: function(err, msg, ele) {
@@ -74,7 +74,7 @@
                     });
 
                     validator.addItem('sex', {
-                        rule: ['required'],
+                        rule: 'required',
                         triggerType: ['change'],
                         onItemValidated: function() {
                             console.log('onItemValidated', arguments);
@@ -82,14 +82,14 @@
                     });
 
                     validator.addItem('vehicle', {
-                        rule: ['required'],
+                        rule: 'required',
                         onItemValidated: function() {
                             console.log('onItemValidated', arguments);
                         }
                     });
 
                     validator.addItem('country', {
-                        rule: ['required'],
+                        rule: 'required',
                         onItemValidated: function() {
                             console.log('onItemValidated', arguments);
                         }
