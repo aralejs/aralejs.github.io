@@ -115,4 +115,14 @@
             }
         });
 
+3. Mask 组件的使用：
+
+        var mask = require('mask');
+        mask.show();
+        //mask.hide();
+
+    改变默认配置：
+
+        mask.set({backgroundColor:'red', opacity:0.5}).show();
+
 

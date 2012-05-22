@@ -9,17 +9,23 @@
         margin:0;
         padding:0;
     }
+    body {
+        height:1000px;
+        margin-top:400px;
+    }
 </style>
 </head>
 <body>
 
-<div id="a">aaa</div>
+<div id="a">显示遮罩层</div>
 
 <script>
 seajs.use('../src/mask', function(mask) {
 
-    mask.set({backgroundColor:'red', opacity:0.5}).show();
-    mask.set({backgroundColor:'green', opacity:0.2}).show();
+    //mask.set({backgroundColor:'red', opacity:0.5}).show();
+    document.getElementById('a').onclick = function() {
+        mask.set({backgroundColor:'green', opacity:0.2}).show();
+    };
 
 });
 </script>
