@@ -26,6 +26,7 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
             },
             // 基准定位对象，指定了基准定位元素及其定位点
             baseObject: {
+                element: Position.VIEWPORT,
                 x: 0,
                 y: 0
             }
@@ -34,7 +35,7 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
         init: function () {
             // 加载 iframe 遮罩层并与 overlay 保持同步
             var shim = this.shim = new Shim(this.element);
-            this.on('show hidden', shim.sync, shim);
+            this.on('shown hidden', shim.sync, shim);
             // 渲染 DOM 结构
             var options = this.options;
             this.setStyles({
@@ -72,8 +73,8 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
         },
         
         show: function () {
-            this.trigger('show');
             this.element.show();
+            this.trigger('shown');
             this.setPosition();
             return this;
         },

@@ -20,7 +20,11 @@ define("#overlay/0.9.1/mask-debug", ["$","overlay"], function(require, exports, 
                     template: '<div id="J_mask"></div>',
                     width: (isIE6 ? $(document).width() : '100%'),
                     height: (isIE6 ? $(document).height() : '100%'),
-                    zIndex: this.zIndex
+                    zIndex: this.zIndex,
+                    baseObject: {
+                        x: 0,
+                        y: 0
+                    }
                 });
                 this.overlay.setStyles({
                     'position': (isIE6 ? 'absolute' : 'fixed')
