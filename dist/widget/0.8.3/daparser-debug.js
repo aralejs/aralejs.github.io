@@ -1,10 +1,11 @@
-define("#widget/0.8.3/daparser-debug", [], function(require, exports) {
+define("#widget/0.8.3/daparser-debug", ["$"], function(require, exports) {
 
     // DAParser
     // ---------------
     // data-api 解析器
 
     var DAParser = exports;
+    var $ = require('$');
 
 
     // 输入是 DOM element，假设 html 为
@@ -101,12 +102,13 @@ define("#widget/0.8.3/daparser-debug", [], function(require, exports) {
         if (element.dataset) {
             return element.dataset;
         }
-
+        return $(element).data(); 
+        /**
         var attrs = element.attributes;
         var dataset = {};
 
         for (var attr in attrs) {
-            if (attrs.hasOwnProperty(attr)) {
+            //if (attrs.hasOwnProperty(attr)) {
                 var name = attrs[attr].name;
 
                 if (RE_DATA_ATTR.test(name)) {
@@ -116,10 +118,11 @@ define("#widget/0.8.3/daparser-debug", [], function(require, exports) {
 
                     dataset[name] = attrs[attr].value;
                 }
-            }
+            //}
         }
 
         return dataset;
+        **/
     }
 
     function hasDataset(element) {

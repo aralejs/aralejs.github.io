@@ -74,6 +74,7 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
         
         show: function () {
             this.element.show();
+            this.trigger('shown');
             this.setPosition();
             this.trigger('shown');
             return this;
