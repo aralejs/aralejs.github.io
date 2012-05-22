@@ -19,7 +19,8 @@ seajs.config({
         'events': 'events/0.9.1/events',
         'class': 'class/0.9.1/class',
         'base': 'base/0.9.1/base',
-        'widget': 'widget/0.8.1/widget',
+        'widget': 'widget/0.8.3/widget',
+        'widget-templatable': 'widget/0.8.3/templatable',
 
         '$': 'jquery/1.7.2/jquery',
         'jquery': 'jquery/1.7.2/jquery',
@@ -36,6 +37,8 @@ seajs.config({
         'backbone': 'backbone/0.9.2/backbone',
 
         'iframe-shim': 'iframe-shim/0.9.0/iframe-shim',
+        'overlay': 'overlay/0.9.1/overlay',
+        'mask': 'overlay/0.9.1/mask',
         'position': 'position/0.9.1/position'
     },
     preload: [this.JSON ? '' : 'json', 'plugin-text']

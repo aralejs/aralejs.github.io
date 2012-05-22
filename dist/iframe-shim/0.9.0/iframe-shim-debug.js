@@ -67,6 +67,7 @@ define("#iframe-shim/0.9.0/iframe-shim-debug", ["jquery","position"], function(r
 
     function createIframe() {
         return $('<iframe>', {
+            src: 'javascript:\'\'',
             frameborder: 0,
             css: {
                 display: 'none',

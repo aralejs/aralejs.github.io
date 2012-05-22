@@ -98,7 +98,7 @@
 </div>
 
 <script>
-    seajs.use(['../src/widget', 'handlebars', 'jquery'], function(Widget, Handlebars, $) {
+    seajs.use(['../src/widget', '../src/templatable', 'handlebars', 'jquery'], function(Widget, Templatable, Handlebars, $) {
 
 
         // example1: 简单的事件代理
@@ -126,7 +126,7 @@
         // ---------------------------------
         var WidgetB = Widget.extend({
 
-            Implements: Widget.Template,
+            Implements: Templatable,
 
             options: {
                 template: '<div id="b" class="widget"><h3>{{title}}</h3><p>{{content}}</p></div>'
@@ -166,7 +166,7 @@
         // ---------------------------------------
         var WidgetC = Widget.extend({
 
-            Implements: Widget.Template,
+            Implements: Templatable,
 
             events: {
                 'click li .remove': 'remove'
@@ -228,7 +228,7 @@
         // ---------------------------------------
         var WidgetD = Widget.extend({
 
-            Implements: Widget.Template,
+            Implements: Templatable,
 
             toggle: function() {
                 this.$('ol').slideToggle('slow');

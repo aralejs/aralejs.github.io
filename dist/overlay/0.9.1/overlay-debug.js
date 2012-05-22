@@ -15,8 +15,8 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
             template: '',
             // overlay 的基本属性
             zIndex: 10,
-            width: 'auto',
-            height: 'auto',
+            width: '',
+            height: '',
             // overlay 的父元素
             parentNode: document.body,
             // element 的定位点，默认为左上角
@@ -36,7 +36,6 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
             // 加载 iframe 遮罩层并与 overlay 保持同步
             var shim = this.shim = new Shim(this.element);
             this.on('show hidden', shim.sync, shim);
-
             // 渲染 DOM 结构
             var options = this.options;
             this.setStyles({
@@ -44,17 +43,13 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
                 height: options.height,
                 zIndex: options.zIndex
             });
-            //进行定位
-            Position.pin({
-                element: this.element,
-                x: options.pinOffset.x,
-                y: options.pinOffset.y
-            }, options.baseObject);
         },
         
         // 插入到文档流中，但不显示
         render: function () {
-            this.element.appendTo(this.options.parentNode).hide();
+            var options = this.options;
+            options.parentNode = $(options.parentNode);
+            this.element.appendTo(options.parentNode);
             return this;
         },
 
@@ -63,10 +58,21 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
             this.element && this.element.css(styles);
             return this;
         },
+
+        // 进行定位
+        setPosition: function() {
+            var options = this.options;
+            Position.pin({
+                element: this.element,
+                x: options.pinOffset.x,
+                y: options.pinOffset.y
+            }, options.baseObject);
+        },
         
         show: function () {
             this.trigger('show');
             this.element.show();
+            this.setPosition();
             return this;
         },
 

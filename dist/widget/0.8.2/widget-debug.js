@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#widget/0.8.2/widget-debug", ["base","$","./daparser"], function(require, exports, module) {
 
     // Widget
     // ------------------------------------
@@ -229,7 +229,7 @@ define(function(require, exports, module) {
 
         // 理论上会冲突，但实际上冲突的概率几乎为零
         if (isFunction(handler) && isFunction(handler.toString)) {
-            return handler.toString().substring(0, 50) + cid;
+            return handler.toString().substring(0, 50);
         }
 
         throw '"handler" must be a string or a function';
