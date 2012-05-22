@@ -29,7 +29,7 @@
                     Validator.setMessage('lengthConstraint', '{{display}}的长度必须小于{{max}}或者大于{{min}}');
 
                     var validator = new Validator('test-form', {
-                        triggerType: ['blur'],
+                        triggerType: 'blur',
                         onFormValidate: function() {
                             //console.log('onFormValidate', arguments);
                         },
@@ -45,7 +45,7 @@
                         rule: 'required emailOrMobile lengthConstraint{"min": 15, "max": 8}',
                         display: '用户名',
                         message: '用户名的格式必须是正确的哦',
-                        triggerType: ['keyup'],
+                        triggerType: 'keyup',
                         onItemValidate: function() {
                             //console.log('onItemValidate', arguments);
                         },
@@ -75,7 +75,7 @@
 
                     validator.addItem('sex', {
                         rule: 'required',
-                        triggerType: ['change'],
+                        triggerType: 'change',
                         onItemValidated: function() {
                             console.log('onItemValidated', arguments);
                         }
