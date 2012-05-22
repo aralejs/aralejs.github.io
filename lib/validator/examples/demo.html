@@ -21,11 +21,11 @@
                 /*
                 $(function() {
 
-                    Validator.addCombinedRule('emailOrMobile', Validator.getRule('email').or('mobile'));
-                    Validator.addMessage('emailOrMobile', '{{display}}必须是Email或者手机号码');
+                    Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'));
+                    Validator.setMessage('emailOrMobile', '{{display}}必须是Email或者手机号码');
 
-                    Validator.addCombinedRule('lengthConstraint', Validator.getRule('maxLength', {max: 8}).or('minLength', {min: 15}));
-                    Validator.addMessage('lengthConstraint', '{{display}}的长度必须小于{{max}}或者大于{{min}}');
+                    Validator.addRule('lengthConstraint', Validator.getRule('maxLength', {max: 8}).or('minLength', {min: 15}));
+                    Validator.setMessage('lengthConstraint', '{{display}}的长度必须小于{{max}}或者大于{{min}}');
 
                     var validator = new Validator('test-form', {
                         triggerType: ['blur'],
