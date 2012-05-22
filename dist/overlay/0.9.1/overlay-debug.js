@@ -26,7 +26,6 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
             },
             // 基准定位对象，指定了基准定位元素及其定位点
             baseObject: {
-                element: document.body,
                 x: 0,
                 y: 0
             }
@@ -49,7 +48,10 @@ define("#overlay/0.9.1/overlay-debug", ["$","position","iframe-shim","widget"], 
         render: function () {
             var options = this.options;
             options.parentNode = $(options.parentNode);
-            this.element.appendTo(options.parentNode);
+            // 若节点未插入文档流，则 append 到它的父元素上
+            if(this.element.parent().length === 0) {
+                this.element.appendTo(options.parentNode);
+            }
             return this;
         },
 
