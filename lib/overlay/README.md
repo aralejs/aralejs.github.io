@@ -69,41 +69,50 @@
 
 1. 直接使用：
 
-		var overlay = [new] Overlay({
-			srcNode : $('#testElem')[0],
-			width : 300,
-			height : 100,
-			x : 50,
-			y : 50,
-			zIndex : 99
-		});
-		overlay.render().show();
-	
-	或者
-	
-		var overlay = [new] Overlay({
-			id : 'testElem',
-			tpl : '<div class="myoverlay"></div>',
-			content : '初始内容',
-			parentNode : document.body,
-			height : 100,
-			x : 50,
-			y : 50,
-			zIndex : 99
-		});
-		overlay.setContent('内容变化了。');
-		overlay.render().show();
+        var overlay = new Overlay({
+            template: '<div class="overlay"></div>',
+            width: 500,
+            height: 200,
+            pinOffset: {
+                x: '-100%',
+                y:0
+            },
+            parentNode: '#c',
+            baseObject: {
+                element: '#a',
+                x: 0,
+                y: 0
+            }
+        });
+        overlay.render().show();
+        overlay.setStyles({
+            height: 100,
+            backgroundColor: 'red'
+        });
 
 2. 继承使用：
 
-		var overlay = require('overlay');
-		var dialog = overlay.extend({
-			initialize: function(options) {
-                this.setOptions(options);
-        	},
-        	close: function() {
-        		this.closable && this.superclass.hide();
-        	}
-		});
+        var Overlay = require('overlay');
+        var Dialog = Overlay.extend({
+            options: {
+                trigger: null,
+                triggerType: 'click',
+                comfirmElement: null,
+                cancelElement: null,
+                closeElement: null,
+                hasMask: false,
+                onComfirm: function() {},
+                onClose: function() {}
+            },
+            init: function() {
+                
+            },
+            parseElement: function() {
+                
+            }
+            delegateEvents: function() {
+                
+            }
+        });
 
 
