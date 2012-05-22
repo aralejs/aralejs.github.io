@@ -7,10 +7,11 @@
             seajs.config({
                 alias: {
                     validator: '../src/core'
-                },
+                }
             });
 
             seajs.use(['validator', 'jquery'], function(Validator, $) {
+                /*
                 $(function() {
                     Validator.parsePage();
 
@@ -18,7 +19,7 @@
                         console.log('username validated', arguments);
                     });
                 });
-                /*
+                */
                 $(function() {
 
                     Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'));
@@ -28,7 +29,7 @@
                     Validator.setMessage('lengthConstraint', '{{display}}的长度必须小于{{max}}或者大于{{min}}');
 
                     var validator = new Validator('test-form', {
-                        triggerType: ['blur'],
+                        triggerType: 'blur',
                         onFormValidate: function() {
                             //console.log('onFormValidate', arguments);
                         },
@@ -41,10 +42,10 @@
                     });
 
                     validator.addItem('username', {
-                        rules: ['required', 'emailOrMobile', 'lengthConstraint{"min": 15, "max": 8}'],
+                        rule: 'required emailOrMobile lengthConstraint{"min": 15, "max": 8}',
                         display: '用户名',
                         message: '用户名的格式必须是正确的哦',
-                        triggerType: ['keyup'],
+                        triggerType: 'keyup',
                         onItemValidate: function() {
                             //console.log('onItemValidate', arguments);
                         },
@@ -54,7 +55,7 @@
                     });
 
                     validator.addItem('password', {
-                        rules: ['required'],
+                        rule: 'required',
                         display: '密码',
                         onItemValidate: function() {
                         },
@@ -64,7 +65,7 @@
                     });
 
                     validator.addItem('password-confirmation', {
-                        rules: ['required', 'confirmation{"id": "password"}'],
+                        rule: 'required confirmation{"id": "password"}',
                         onItemValidate: function() {
                         },
                         onItemValidated: function(err, msg, ele) {
@@ -73,22 +74,22 @@
                     });
 
                     validator.addItem('sex', {
-                        rules: ['required'],
-                        triggerType: ['change'],
+                        rule: 'required',
+                        triggerType: 'change',
                         onItemValidated: function() {
                             console.log('onItemValidated', arguments);
                         }
                     });
 
                     validator.addItem('vehicle', {
-                        rules: ['required'],
+                        rule: 'required',
                         onItemValidated: function() {
                             console.log('onItemValidated', arguments);
                         }
                     });
 
                     validator.addItem('country', {
-                        rules: ['required'],
+                        rule: 'required',
                         onItemValidated: function() {
                             console.log('onItemValidated', arguments);
                         }
@@ -96,7 +97,6 @@
 
                     //validator.removeItem('username');
                 });
-                */
             });
         </script>
     </head>
@@ -105,7 +105,7 @@
 
             <p>
                 <label for="username">Username:</label>
-                <input id="username" required name="username" type="email" data-rules='lengthBetween{"max":12, "min":1}' data-onItemValidate="sddgas" value="add" />
+                <input id="username" required name="username" type="email" data-rule='lengthBetween{"max":12, "min":1}' data-onItemValidate="sddgas" value="add" />
             </p>
 
             <p>
