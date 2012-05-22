@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#dialog/0.9.0/dialog-debug", ["$","position","overlay","mask","events"], function(require, exports, module) {
 
     var $ = require('$'),
         Position = require('position'),
@@ -42,8 +42,7 @@ define(function(require, exports, module) {
             });
 
             // 点击确定元素
-            var comfirmHandler = function(e) {
-                e.preventDefault();
+            var comfirmHandler = function() {
                 that.trigger('comfirm');
                 options.hasMask && mask.hide();
                 that.hide();
@@ -51,8 +50,7 @@ define(function(require, exports, module) {
             options.comfirmElement.bind('click', comfirmHandler);
 
             // 点击取消或关闭元素
-            var closeHandler = function(e) {
-                e.preventDefault();
+            var closeHandler = function() {
                 that.trigger('close');
                 options.hasMask && mask.hide();
                 that.hide();

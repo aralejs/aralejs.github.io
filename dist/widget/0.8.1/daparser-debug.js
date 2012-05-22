@@ -1,4 +1,4 @@
-define(function(require, exports) {
+define("#widget/0.8.1/daparser-debug", [], function(require, exports) {
 
     // DAParser
     // ---------------
@@ -52,7 +52,7 @@ define(function(require, exports) {
 
                 // 给 dataset 不为空的元素设置 uid
                 if (!cid) {
-                    cid = DAParser.stamp(element);
+                    cid = DAParser.uniqueClass(element);
                 }
 
                 var val = dataset[key];
@@ -68,7 +68,8 @@ define(function(require, exports) {
     };
 
 
-    DAParser.stamp = function(element) {
+    // 获取 element 上具有唯一性的 className，如果没有则添加
+    DAParser.uniqueClass = function(element) {
         var cid = element.getAttribute(ATTR_DA_CID);
 
         if (!cid) {

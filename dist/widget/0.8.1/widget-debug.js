@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#widget/0.8.1/widget-debug", ["base","$","./daparser","./template"], function(require, exports, module) {
 
     // Widget
     // ------------------------------------
@@ -8,6 +8,7 @@ define(function(require, exports, module) {
     var Base = require('base');
     var $ = require('$');
     var DAParser = require('./daparser');
+    var Template = require('./template');
 
     // options 中的这些属性会直接添加到实例上
     var attrOptions = ['element', 'model'];
@@ -166,10 +167,10 @@ define(function(require, exports, module) {
             return this.element.find(selector);
         },
 
-        // 给 element 添加具有唯一性的 class，并返回由该 class 构成的 selector
-        stamp: function(element) {
+        // 获取 element 上具有唯一性的 className，如果没有则添加
+        uniqueClass: function(element) {
           element = element instanceof $ ? element : $(element);
-            return '.' + DAParser.stamp(element[0]);
+            return '.' + DAParser.uniqueClass(element[0]);
         },
 
         destroy: function() {
@@ -178,6 +179,7 @@ define(function(require, exports, module) {
         }
     });
 
+    Widget.Template = Template;
     module.exports = Widget;
 
 
@@ -229,7 +231,7 @@ define(function(require, exports, module) {
 
         // 理论上会冲突，但实际上冲突的概率几乎为零
         if (isFunction(handler) && isFunction(handler.toString)) {
-            return handler.toString().substring(0, 50) + cid;
+            return handler.toString().substring(0, 50);
         }
 
         throw '"handler" must be a string or a function';
