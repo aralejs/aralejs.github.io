@@ -40,6 +40,9 @@
         padding: 10px;
         margin: 10px 0;
     }
+    .tips-grey {
+        background: #DDD;
+    }
 </style>
 <script src="../../../tools/seajs-and-its-friends.js"></script>
 </head>
@@ -58,11 +61,11 @@
                 <li><a href="http://aralejs.org#4">内容4</a></li>
             </ul>
         </div>
-        <div class="tips">
-            <h4>说明:</h4> 
+        <div class="tips tips-grey">
+            <h4>说明: 暂不支持 data-api。</h4> 
             <ul>
-                <li>data-trigger='click', 不指定则采用 hover 为默认值。可选有：click|hover</li>
-                <li>可以在 href 或者 data-target='#dropdown1' 指定你要展示的元素id。不指定则默认采用兄弟元素('.ui-dropdown')。</li>
+                <li><del>data-trigger='click', 不指定则采用 hover 为默认值。可选有：click|hover</del></li>
+                <li><del>可以在 href 或者 data-target='#dropdown1' 指定你要展示的元素id。不指定则默认采用兄弟元素('.ui-dropdown')。</del></li>
             </ul>
         </div>
     </div>
@@ -134,6 +137,7 @@ seajs.use(['jquery','dropdown'], function($, Dropdown){
         y: $('#triggerId2').height()
     });
     example2.render();
+    // 订阅事件
     example2.on('shown', function(){
         console.log('example2 is shown');
     }).on('hidden', function(){
@@ -149,9 +153,9 @@ seajs.use(['jquery','dropdown'], function($, Dropdown){
     example3.render();
 
     var animDropdown = Dropdown.extend({
-        //@todo show 方法待讨论
         show: function(){
-            this.overlay.show();
+            this.overlay.setPosition(); //潜规则： 需调用 overlay 的计算位置方法
+            $(this.overlay.element).fadeIn();
         },
         hide: function(){
             $(this.overlay.element).fadeOut();
