@@ -113,9 +113,19 @@
     </div>
 
     <div class="example">
-        <h3>范例5: 定制Templae</h3>
+        <h3>范例5: 定制Template</h3>
         <div class="dropdown">
             <a href="#dropdown5" id="triggerId5">下拉框<span class="icon">▼</span></a>
+        </div>
+    </div>
+
+    <div class="example">
+        <h3>范例6: 定制 Overlay</h3>
+        <div class="dropdown">
+            <a href="#dropdown6" id="triggerId6">下拉框<span class="icon">▼</span></a>
+        </div>
+        <div class="tips tips-grey">
+            <h4>说明: 暂不支持传递 Overlay 作为参数。</h4> 
         </div>
     </div>
 
@@ -126,7 +136,7 @@ seajs.config({
         dropdown: '../src/dropdown'
     }
 });
-seajs.use(['jquery','dropdown'], function($, Dropdown){
+seajs.use(['jquery','dropdown', 'overlay'], function($, Dropdown, Overlay){
     window.$ = window.jQuery = $; // for debuging only;
 
     //var example1;
@@ -175,7 +185,23 @@ seajs.use(['jquery','dropdown'], function($, Dropdown){
         template: '<div class="ui-dropdown fn-hide"><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>'
     });
     example5.render();
-    console.log(example5)
+
+    /*
+    var overlay6 = new Overlay({
+        template: '<div class="ui-dropdown fn-hide"><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>',
+        baseObject: {
+            element: '#triggerId6',
+            x: 0,
+            y: 20
+        }
+    });
+    var example6 = new Dropdown({
+        trigger: '#triggerId6',
+        overlay: overlay6,
+        y: 20,
+    });
+    example6.render();
+    */
 
 });
 </script>
