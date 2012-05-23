@@ -39,14 +39,8 @@ seajs.config({
         'iframe-shim': 'iframe-shim/0.9.0/iframe-shim',
         'overlay': 'overlay/0.9.1/overlay',
         'mask': 'overlay/0.9.1/mask',
-        'position': 'position/0.9.1/position',
+        'position': 'position/0.9.1/position'
 
-        'switchable': 'switchable/0.8.0/base',
-        'autorender': 'switchable/0.8.0/autorender-debug',
-        'tabs': 'switchable/0.8.0/tabs',
-        'slide': 'switchable/0.8.0/slide',
-        'accordion': 'switchable/0.8.0/accordion',
-        'carousel': 'switchable/0.8.0/carousel'
 
     },
     preload: [this.JSON ? '' : 'json', 'plugin-text']
