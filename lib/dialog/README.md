@@ -21,7 +21,7 @@
 
     对话框触发点。
 
-* `comfirmElement` : {element|array|$}
+* `confirmElement` : {element|array|$}
 
     确定或提交按钮。
 
@@ -33,9 +33,9 @@
 
     关闭按钮。
 
-* `onComfirm` : {function}
+* `onConfirm` : {function}
 
-    确定时的操作。
+    确定时的操作，可在函数内使用this.activeTrigger得到触发节点，下同。
 
 * `onClose` : {function}
 
