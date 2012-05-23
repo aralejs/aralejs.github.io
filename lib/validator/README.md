@@ -40,7 +40,6 @@ HTML
 *   [Validator::addRule](#Validator-addRule)
 *   [Validator::setMessage](#Validator-setMessage)
 *   [Validator::getRule](#Validator-getRule)
-
 *   [Rule#and](#Rule-and)
 *   [Rule#or](#Rule-or)
 *   [Rule#not](#Rule-not)
@@ -142,6 +141,15 @@ __Arguments__
 
 *   name - 校验规则名称。
 *   opt_options - 可选参数。如果传入一个对象，那么这个校验规则执行的时候，这个对象都会 merge 到 options 对象中。
+
+<a name="Rule-and"></a>
+### Rule#and(name)
+
+将两个校验规则合并成一个逻辑“与”校验，即当两个校验规则都校验正确的时候合并后的规则才算校验通过。
+
+__Arguments__
+
+*   name - 校验规则名称。
 
 ##检验核心
 
