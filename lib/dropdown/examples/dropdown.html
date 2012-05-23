@@ -71,15 +71,16 @@
 <script type="text/javascript">
 seajs.config({
     alias: {
-        dropdown: '../src/dropdown',
-        overlay: '../../overlay/src/overlay'
+        dropdown: '../src/dropdown'
     }
 });
 seajs.use(['jquery','dropdown'], function($, Dropdown){
     var example3 = new Dropdown({
         trigger: '#srcId3',
-        target: '#targetId3'
+        element: '#targetId3',
+        y: $('#srcId3').height()
     });
+    example3.render();
     console.log(example3);
 });
 </script>
