@@ -18,18 +18,19 @@
 </style>
 </head>
 <body>
-<input type="button" id="trigger" value="点我打开对话框" />
+    <input type="button" id="trigger" value="点我打开对话框" />
+
 <script>
 seajs.use('../src/dialog', function(Dialog) {
 
     var o = new Dialog({
         trigger: '#trigger',
-        template: '<div class="overlay"><button id="comfirm">确认按钮</button><button id="close">点击关闭</button></div>',
+        template: '<div class="overlay"><button id="confirm">确认按钮</button><button id="close">点击关闭</button></div>',
         width: 300,
         height: 200,
-        comfirmElement: '#comfirm',
+        confirmElement: '#confirm',
         closeElement: '#close',
-        onComfirm: function() {
+        onConfirm: function() {
             alert('点击了确定按钮');
         },
         onClose: function() {

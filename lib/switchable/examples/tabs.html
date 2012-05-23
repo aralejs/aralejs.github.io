@@ -91,12 +91,12 @@
             </div>
             <script>
                 var T, $, s;
-                seajs.use(['jquery', '../src/tabs'], function(jquery, Tabs) {
+                seajs.use(['jquery', 'tabs'], function(jquery, Tabs) {
                     T = Tabs;
                     $ = jquery;
                     s = new Tabs({
                         element: '#demo1',
-                        switchTo: 2,
+                        switchTo: 1,
                         effect: 'fade'
                     });
 

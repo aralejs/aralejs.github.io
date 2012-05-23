@@ -22,6 +22,9 @@
         background: #e80;
         display:none;
     }
+    #c {
+        border:5px solid blue;
+    }
     .overlay {
         background: #FFC;
         width:500px;
@@ -30,9 +33,10 @@
 </head>
 <body>
 
-    <div id="a"></div>
-    <div id="b"></div>
-    <div id="c" style="position:relative;margin:300px;"></div>
+    <div id="a">a</div>
+    <div id="c" style="position:relative;margin:300px;">c</div>
+    <div id="b">b</div>
+    
 
 <script>
 seajs.use('../src/overlay', function(Overlay) {
@@ -54,7 +58,8 @@ seajs.use('../src/overlay', function(Overlay) {
 
     o.render().show();
     o.setStyles({
-        width: 100
+        height: 100,
+        backgroundColor: 'red'
     });
 
 

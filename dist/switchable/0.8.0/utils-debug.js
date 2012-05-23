@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#switchable/0.8.0/utils-debug", ["jquery"], function(require, exports, module) {
 
     var utils = module.exports;
     var $ = require('jquery');
@@ -24,6 +24,7 @@ define(function(require, exports, module) {
     var AP = Array.prototype;
     var indexOf = AP.indexOf;
     var lastIndexOf = AP.lastIndexOf;
+    var FALSE = false;
 
     //数组indexOf
 
@@ -204,7 +205,6 @@ define(function(require, exports, module) {
         }
 
         for (; i < len; i++) {
-            console.log(args[i])
             args[i] && mix(r.prototype, args[i].prototype || args[i], ov, wl);
         }
         return r;
