@@ -16,7 +16,7 @@
 seajs.use(['jquery','dropdown'], function($, Dropdown){
     var example = new Dropdown({
         trigger: '#triggerId',
-        target: '#targetId'
+        element: '#targetId'
     });
 });
 ```

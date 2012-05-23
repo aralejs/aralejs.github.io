@@ -18,9 +18,14 @@ define("#overlay/0.9.1/mask-debug", ["$","overlay"], function(require, exports, 
             if(!this.overlay) {
                 this.overlay = new Overlay({
                     template: '<div id="J_mask"></div>',
-                    width: (isIE6 ? $(document).width() : '100%'),
-                    height: (isIE6 ? $(document).height() : '100%'),
-                    zIndex: this.zIndex
+                    width: (isIE6 ? $(document.body).outerWidth(true) : '100%'),
+                    height: (isIE6 ? $(document.body).outerHeight(true) : '100%'),
+                    zIndex: this.zIndex,
+                    baseObject: {
+                        element: isIE6 ? document.body : undefined, // undefined 表示相对于当前可视范围定位
+                        x: 0,
+                        y: 0
+                    }
                 });
                 this.overlay.setStyles({
                     'position': (isIE6 ? 'absolute' : 'fixed')

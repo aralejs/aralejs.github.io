@@ -40,6 +40,8 @@ seajs.config({
         'overlay': 'overlay/0.9.1/overlay',
         'mask': 'overlay/0.9.1/mask',
         'position': 'position/0.9.1/position'
+
+
     },
     preload: [this.JSON ? '' : 'json', 'plugin-text']
 });

@@ -1,34 +1,33 @@
  //Switchable autoplay Plugin
-define(function(require, exports, module) {
-    var utils = require('./utils');
+define("#switchable/0.8.0/plugins/autoplay-debug", ["../utils"], function(require, exports, module) {
+    var utils = require('../utils');
 
     var DURATION = 200,
-        //win = S.Env.host,
-        win = window,
-//TODO 看是否能通过postion模块进行改造
+        win = window, //这个是不是需要优化？
         checkElemInViewport = function(elem) {
-            return true;
             // 只计算上下位置是否在可视区域, 不计算左右
-            var scrollTop = DOM.scrollTop(),
-                vh = DOM.viewportHeight(),
-                elemOffset = DOM.offset(elem),
-                elemHeight = DOM.height(elem);
+            var w = $(win);
+            elem = $(elem);
+            var scrollTop = w.scrollTop(),
+                vh = w.height(),
+                elemOffset = elem.offset();
+                elemHeight = elem.height();
             return elemOffset.top > scrollTop &&
                 elemOffset.top + elemHeight < scrollTop + vh;
         };
 
     var defaults = {
         // 当 Switchable 对象不在可视区域中时停止动画切换
-        pauseOnScroll: false,
+        pauseOnScroll: true,
         autoplay: false,
-        interval: 5, // 自动播放间隔时间
+        interval: 3, // 自动播放间隔时间
         pauseOnHover: true  // triggerType 为 mouse 时，鼠标悬停在 slide 上是否暂停自动播放
     };
     var Autoplay = module.exports = {
         initAutoplay: function() {
             var that = this;
             var options = this.options;
-            var container = this.container;
+            var element = this.element;
             //插件中的默认配置混入到模块中，默认不覆盖。因为初始化的参数已经提前混入了。
             utils.mix(this.options, defaults, false);
 
@@ -37,7 +36,7 @@ define(function(require, exports, module) {
             if (options.pauseOnScroll) {
                 this.__scrollDetect = utils.buffer(function() {
                     // 依次检查页面上所有 switchable 对象是否在可视区域内
-                    that[checkElemInViewport(container) ? 'start' : 'stop']();
+                    that[checkElemInViewport(element) ? 'start' : 'stop']();
                 }, DURATION);
                 $(win).on('scroll', this.__scrollDetect);
             }
@@ -79,8 +78,11 @@ define(function(require, exports, module) {
 
             // 鼠标悬停，停止自动播放
             if (options.pauseOnHover) {
-                $(this.container).on('mouseenter', this.stop, this);
-                $(this.container).on('mouseleave', this.start, this);
+
+                var events = {};
+                events['mouseenter'] = 'stop';
+                events['mouseleave'] = 'start';
+                this.delegateEvents(events);
             }
         }
     };

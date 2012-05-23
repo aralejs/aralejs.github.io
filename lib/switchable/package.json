@@ -1,0 +1,17 @@
+{
+    "version": "0.8.1",
+    "dist": {
+        "switchable.js": "default",
+        "accordion.js": "default",
+        "autorender.js": "default",
+        "carousel.js": "default",
+        "slide.js": "default",
+        "tabs.js": "default",
+        "extra/utils.js": "default",
+        "extra/easing.js": "default",
+        "plugins/autoplay.js": "default",
+        "plugins/circular.js": "default",
+        "plugins/effects.js": "default"
+    },
+    "tests": ["base"]
+}
