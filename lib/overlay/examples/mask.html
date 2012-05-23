@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Overlay Example</title>
+<title>Mask Example</title>
 <script src="../../../tools/seajs-and-its-friends.js"></script>
 <script type="text/javascript">
     seajs.config({
@@ -22,14 +22,20 @@
 </style>
 </head>
 <body>
-
-<div id="a" style="margin-top:400px;">显示遮罩层</div>
+    
+    <button id="a" style="margin-top:400px;">显示默认遮罩层</button>
+    <pre>mask.show()</pre>
+    <button id="b" style="margin-top:100px;">显示修改的遮罩层</button>
+    <pre>mask.set({backgroundColor:'green', opacity:0.2}).show()</pre>
 
 <script>
 seajs.use('../src/mask', function(mask) {
 
     //mask.set({backgroundColor:'red', opacity:0.5}).show();
     document.getElementById('a').onclick = function() {
+        mask.show();
+    };
+    document.getElementById('b').onclick = function() {
         mask.set({backgroundColor:'green', opacity:0.2}).show();
     };
 

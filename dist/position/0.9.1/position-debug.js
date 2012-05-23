@@ -7,6 +7,7 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
 
     var Position = exports,
         VIEWPORT = { _id: 'VIEWPORT', nodeType: 1 },
+        isFixpin = false,
         $ = require('$'),
         isIE6 = $.browser.msie && $.browser.version == 6.0;
 
@@ -24,6 +25,9 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
         var pinElement = $(pinObject.element);
         if(pinElement.css('position') !== 'fixed') {
             pinElement.css('position', 'absolute');
+        }
+        else {
+            isFixpin = true;
         }
 
         // 将位置属性归一化为数值
@@ -92,12 +96,19 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
 
         // 归一化 offset
         result.offset = function() {
-            if (isVIEWPORT) {
+            if (isFixpin) {
+                return {
+                    left: 0,
+                    top: 0
+                };
+            }
+            else if (isVIEWPORT) {
                 return {
                     left: $(document).scrollLeft(),
                     top: $(document).scrollTop()
                 };
-            } else {
+            } 
+            else {
                 return $(element).offset();
             }
         };
