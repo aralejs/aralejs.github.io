@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#switchable/0.8.0/base-debug", ["jquery","widget","base","./utils","./plugins/effects","./plugins/autoplay","./plugins/circular"], function(require, exports, module) {
 
     // Switchable
     // -----------------

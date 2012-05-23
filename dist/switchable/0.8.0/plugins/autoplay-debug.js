@@ -1,6 +1,6 @@
  //Switchable autoplay Plugin
-define(function(require, exports, module) {
-    var utils = require('../extra/utils');
+define("#switchable/0.8.0/plugins/autoplay-debug", ["../utils"], function(require, exports, module) {
+    var utils = require('../utils');
 
     var DURATION = 200,
         win = window, //这个是不是需要优化？

@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#switchable/0.8.1/autorender-debug", ["jquery"], function(require, exports, module) {
     var $ = require('jquery');
 
     module.exports = autoRender = function(hook, rootElement) {

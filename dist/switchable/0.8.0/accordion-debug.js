@@ -1,7 +1,7 @@
-define(function(require, exports, module) {
-    var Switchable = require('./switchable');
+define("#switchable/0.8.0/accordion-debug", ["./base","jquery"], function(require, exports, module) {
+    var Base = require('./base');
     var $ = require('jquery');
-    var Accordion = module.exports = Switchable.extend({
+    var Accordion = module.exports = Base.extend({
         options: {
             markupType: 1,
             triggerType: 'click',

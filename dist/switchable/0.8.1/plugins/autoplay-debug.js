@@ -1,5 +1,5 @@
  //Switchable autoplay Plugin
-define(function(require, exports, module) {
+define("#switchable/0.8.1/plugins/autoplay-debug", ["../extra/utils"], function(require, exports, module) {
     var utils = require('../extra/utils');
 
     var DURATION = 200,

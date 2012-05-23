@@ -1,6 +1,6 @@
 //Carousel Widget
-define(function(require, exports, module) {
-    var Switchable = require('./switchable');
+define("#switchable/0.8.0/carousel-debug", ["./base"], function(require, exports, module) {
+    var Base = require('./base');
 
     var CLS_PREFIX = 'ar-switchable-',
         PREV_BTN = 'prevBtn',
@@ -12,7 +12,7 @@ define(function(require, exports, module) {
             }
         };
 
-    var Carousel = module.exports = Switchable.extend({
+    var Carousel = module.exports = Base.extend({
         options: {
             circular: true,
             prevBtnCls: CLS_PREFIX + 'prev-btn',

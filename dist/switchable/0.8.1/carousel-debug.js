@@ -1,5 +1,5 @@
 //Carousel Widget
-define(function(require, exports, module) {
+define("#switchable/0.8.1/carousel-debug", ["./switchable"], function(require, exports, module) {
     var Switchable = require('./switchable');
 
     var CLS_PREFIX = 'ar-switchable-',

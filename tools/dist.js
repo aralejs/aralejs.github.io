@@ -56,6 +56,10 @@ function build(filename) {
 
     // 写入 dist 目录
     mkdirS(DIST_DIR);
+    var subdir = debugfile.substring(DIST_DIR.length + 1, debugfile.lastIndexOf('/'));
+    if (subdir.length > 1) {
+        mkdirS(DIST_DIR + '/' + subdir);
+    }
     fs.writeFileSync(debugfile, debugCode, 'utf8');
     fs.writeFileSync(minfile, compress(minCode), 'utf8');
 }
