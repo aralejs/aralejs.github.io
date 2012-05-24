@@ -21,11 +21,11 @@ seajs.use(['jquery','dropdown'], function($, Dropdown){
 });
 ```
 
-## demo
+## Demo
 
-[demo](http://aralejs.org/lib/dropdown/examples/dropdown.htm)
+* [http://aralejs.org/lib/dropdown/examples/dropdown.html](http://aralejs.org/lib/dropdown/examples/dropdown.html)
 
-## 测试用例
+## 单元测试
 
 * [http://aralejs.org/lib/dropdown/tests/runner.html](http://aralejs.org/lib/dropdown/tests/runner.html)
 
