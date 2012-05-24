@@ -149,9 +149,13 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
   切换到某个视图。
 
       index {Number} 切换的项。
+      
       direction {String}(可选)方向, 用于 effect, 可取 ‘forward’, ‘backward’, 或者不设置。
+      
       ev {EventObject} – (可选) 引起该操作的事件。
+      
       callback {Function} – (可选) 运行完回调, 和绑定 switch 事件作用一样。
+      
   
 * prev
 
