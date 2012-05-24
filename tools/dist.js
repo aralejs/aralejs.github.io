@@ -55,11 +55,7 @@ function build(filename) {
     var debugfile = minfile.replace('.js', '-debug.js');
 
     // 写入 dist 目录
-    mkdirS(DIST_DIR);
-    var subdir = debugfile.substring(DIST_DIR.length + 1, debugfile.lastIndexOf('/'));
-    if (subdir.length > 1) {
-        mkdirS(DIST_DIR + '/' + subdir);
-    }
+    mkdirS(path.dirname(minfile));
     fs.writeFileSync(debugfile, debugCode, 'utf8');
     fs.writeFileSync(minfile, compress(minCode), 'utf8');
 }
