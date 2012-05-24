@@ -80,6 +80,10 @@
     <h2>相对于自身定位：Position.pin(a9, {element: a9, x: '100%', y: '-100%'});</h2>
     <div id="a9" class="elem1">目标元素a9</div>
 </div>
+<div class="example">
+    <h2>定位fixed元素：Position.pin(a10, { x: 400, y: 400);</h2>
+    <div id="a10" class="elem1" style="position:fixed;">目标元素a10</div>
+</div>
 
 <script>
 seajs.use(['../src/position', 'jquery'], function(Position, $) {
@@ -101,7 +105,8 @@ seajs.use(['../src/position', 'jquery'], function(Position, $) {
             b7 = id('b7'),
             a8 = id('a8'),
             b8 = id('b8'),
-            a9 = id('a9');
+            a9 = id('a9'),
+            a10 = id('a10');
 
         Position.pin(a1, {element: b1, x: '50px', y: '50px'});
         Position.pin(a2, {element: b2, x: 50, y: 50});
@@ -118,6 +123,7 @@ seajs.use(['../src/position', 'jquery'], function(Position, $) {
         };
         Position.pin(a8, {element: $('#b8'), x: '100%+50px', y: '50%-50'});
         Position.pin(a9, {element: a9, x: '100%', y: 0});
+        Position.pin(a10, { x: 400, y: 0 });
     });
 });
 </script>
