@@ -23,7 +23,7 @@ seajs.use(['jquery','dropdown'], function($, Dropdown){
 
 ## Demo
 
-[http://aralejs.org/lib/dropdown/examples/dropdown.html](http://aralejs.org/lib/dropdown/examples/dropdown.html)
+* [http://aralejs.org/lib/dropdown/examples/dropdown.html](http://aralejs.org/lib/dropdown/examples/dropdown.html)
 
 ## 单元测试
 

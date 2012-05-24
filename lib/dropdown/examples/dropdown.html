@@ -131,12 +131,7 @@
 
 </div>
 <script type="text/javascript">
-seajs.config({
-    alias: {
-        dropdown: '../src/dropdown'
-    }
-});
-seajs.use(['jquery','dropdown', 'overlay'], function($, Dropdown, Overlay){
+seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay){
     window.$ = window.jQuery = $; // for debuging only;
 
     //var example1;
@@ -153,6 +148,8 @@ seajs.use(['jquery','dropdown', 'overlay'], function($, Dropdown, Overlay){
     }).on('hidden', function(){
         console.log('example2 is hidden');
     });
+    // 触发事件
+    example2.trigger('shown');
 
     var example3 = new Dropdown({
         trigger: '#triggerId3',

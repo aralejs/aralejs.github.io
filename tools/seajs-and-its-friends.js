@@ -39,8 +39,8 @@ seajs.config({
         'iframe-shim': 'iframe-shim/0.9.0/iframe-shim',
         'overlay': 'overlay/0.9.1/overlay',
         'mask': 'overlay/0.9.1/mask',
-        'position': 'position/0.9.1/position'
-
+        'position': 'position/0.9.1/position',
+        'dropdown': 'dropdown/0.9.0/dropdown'
 
     },
     preload: [this.JSON ? '' : 'json', 'plugin-text']
