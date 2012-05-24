@@ -1,0 +1,35 @@
+.ui-calendar {
+    background: #f9f9f9;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #dadada;
+    box-shadow: 1px 1px 9px #ccc;
+}
+.ui-calendar td {
+    text-align: center;
+}
+.ui-calendar-months {
+    border-bottom: 1px solid #dadada;
+}
+.ui-calendar-previous-year,
+.ui-calendar-previous-month,
+.ui-calendar-next-month,
+.ui-calendar-next-year {
+    width: 1.8em;
+    font-size: 90%;
+}
+.ui-calendar-weeks td {
+    width: 1.8em;
+}
+.ui-calendar tbody {
+    border: 1px solid #dadada;
+}
+.ui-calendar tbody td {
+    text-align: center;
+    width: 1.8em;
+    border: 1px solid #dadada;
+}
+.ui-calendar tbody td:hover {
+    background: #dadada;
+    cursor: pointer;
+}

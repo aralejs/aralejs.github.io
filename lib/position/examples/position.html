@@ -76,6 +76,10 @@
     <div id="a8" class="elem1">目标元素a8</div>
     <div id="b8" class="elem2">基准元素b8</div>
 </div>
+<div class="example">
+    <h2>相对于自身定位：Position.pin(a9, {element: a9, x: '100%', y: '-100%'});</h2>
+    <div id="a9" class="elem1">目标元素a9</div>
+</div>
 
 <script>
 seajs.use(['../src/position', 'jquery'], function(Position, $) {
@@ -96,7 +100,8 @@ seajs.use(['../src/position', 'jquery'], function(Position, $) {
             a7 = id('a7'),
             b7 = id('b7'),
             a8 = id('a8'),
-            b8 = id('b8');
+            b8 = id('b8'),
+            a9 = id('a9');
 
         Position.pin(a1, {element: b1, x: '50px', y: '50px'});
         Position.pin(a2, {element: b2, x: 50, y: 50});
@@ -112,6 +117,7 @@ seajs.use(['../src/position', 'jquery'], function(Position, $) {
             Position.center(a7);
         };
         Position.pin(a8, {element: $('#b8'), x: '100%+50px', y: '50%-50'});
+        Position.pin(a9, {element: a9, x: '100%', y: 0});
     });
 });
 </script>
