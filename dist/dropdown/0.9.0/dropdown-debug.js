@@ -1,74 +1,92 @@
 // May the Source be with you
 // 愿源码与你同在
 
-define("#dropdown/0.9.0/dropdown-debug", ["jquery","base","overlay"], function(require, exports, module) {
+define("#dropdown/0.9.0/dropdown-debug", ["jquery","widget","overlay"], function(require, exports, module) {
     var $ = require('jquery');
-    var Base = require('base');
+    var Widget = require('widget');
     var Overlay = require('overlay');
-    var MyOverlay = Overlay.extend({
-        getElem: function() {
-            return this.srcNode;
-        },
-        toggle: function() {
-            $(this.srcNode).toggle();
-        }
-    });
-    var Dropdown = Base.extend({
+    var Dropdown = Widget.extend({
         options: {
-            trigger: '', // required
-            triggerType: 'hover', // click, hover
-            target: '.ui-dropdown',
-            position: 'left', // center, right
-            container: 'ui-content',
-            animateType: '', // height, width, opacity
+            trigger: null, // required
+            triggerType: 'hover', // click|hover
+            element: '', // the overlay target
+            template: '',
             width: 'auto',
             height: 'auto',
-            speed: '200',
+            timeout: '100', //鼠标移出覆层后自动隐藏的时间。
             x: 0,
             y: 0,
-            z: 999 // z-index
+            z: 99 // z-index
         },
 
         initOverlay: function() {
-            var opt = this.options;
-            var $trigger = $(opt.trigger);
-            var $target = $(opt.target);
-            var overlay = new MyOverlay({
-                //srcNode: $trigger[0],
-                template: '<div class="ui-dropdown"></div>',
-                content : $target.html(),
-                parentNode : $trigger.parent()[0],
-                width : opt.width,
-                height : opt.heigth,
-                zIndex: opt.z,
+            options = this.options;
+            var that = this;
+            var overlay = new Overlay({
+                element: that.element,
+                parentNode : that.element.parent()[0] || document.body,
+                width : options.width,
+                height : options.heigth,
+                zIndex: options.z,
                 baseObject : {
-                    element: $trigger[0],
-                    x : 0,
-                    y : $trigger.height(),
+                    element: this.triggerNode[0],
+                    x : options.x,
+                    y : options.y
                 }
             });
             return overlay;
         },
 
-        initialize: function(options) {
-            if (!options || !options.trigger) {
-                throw 'options/trigger missing';
-            }
-            this.setOptions(options);
+        parseElement: function() {
+            Dropdown.superclass.parseElement.call(this);
+            var options = this.options;
+            this.triggerNode = $(options.trigger);
+            this.overlay = this.initOverlay().render();
+        },
+
+        show: function() {
+            this.overlay.show();
+            this.trigger('shown');
+        },
+
+        hide: function() {
+            this.overlay.hide();
+            this.trigger('hidden');
+        },
+
+        delegateEvents: function() {
             var that = this;
-            var opt = this.options;
-            var $target;
-            $(opt.trigger).on(opt.triggerType, function() {
-                if (!$target) {
-                    $target = that.initOverlay();
+            var options = this.options;
+            var timeout;
+            var hide = function() {
+                timeout = window.setTimeout(function() {
+                    that.hide();
+                }, options.timeout);
+            };
+            var clear = function() {
+                window.clearTimeout(timeout);
+            };
+
+            this.triggerNode.on(options.triggerType, function(e) {
+                e.preventDefault();
+                var $this = $(this);
+                var status = $this.data('status');
+                that.show();
+                // 以下代码可以考虑是否让 Overlay 提供 toggle 方法。
+                if (options.triggerType === 'click') {
+                    if (!status || status === 'hidden') {
+                        that.show();
+                        $this.data('status', 'shown');
+                    } else {
+                        that.hide();
+                        $this.data('status', 'hidden');
+                    }
                 }
-                $target.render().show();
-            });
-            $(opt.trigger).parent().on('hover', $.noop, function() {
-                if ($target) {
-                    $target.hide();
-                }
-            });
+            }).on('mouseover', clear).on('mouseout', hide);
+            this.element.on('mouseover', clear).on('mouseout', hide);
+        },
+
+        init: function() {
         }
     });
 
