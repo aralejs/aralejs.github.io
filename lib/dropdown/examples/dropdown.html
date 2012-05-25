@@ -62,7 +62,7 @@
             </ul>
         </div>
         <div class="tips tips-grey">
-            <h4>说明: 暂不支持 data-api。</h4> 
+            <h4>说明: 暂不支持 data-api。data-api 将由另外的组件支持。</h4> 
             <ul>
                 <li><del>data-trigger='click', 不指定则采用 hover 为默认值。可选有：click|hover</del></li>
                 <li><del>可以在 href 或者 data-target='#dropdown1' 指定你要展示的元素id。不指定则默认采用兄弟元素('.ui-dropdown')。</del></li>
@@ -116,16 +116,6 @@
         <h3>范例5: 定制Template</h3>
         <div class="dropdown">
             <a href="#dropdown5" id="triggerId5">下拉框<span class="icon">▼</span></a>
-        </div>
-    </div>
-
-    <div class="example">
-        <h3>范例6: 定制 Overlay</h3>
-        <div class="dropdown">
-            <a href="#dropdown6" id="triggerId6">下拉框<span class="icon">▼</span></a>
-        </div>
-        <div class="tips tips-grey">
-            <h4>说明: 暂不支持传递 Overlay 作为参数。</h4> 
         </div>
     </div>
 
@@ -183,22 +173,6 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         template: '<div class="ui-dropdown fn-hide"><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>'
     });
     example5.render();
-
-    /*
-    var overlay6 = new Overlay({
-        template: '<div class="ui-dropdown fn-hide"><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>',
-        baseObject: {
-            element: '#triggerId6',
-            offset: [0, 20]
-        }
-    });
-    var example6 = new Dropdown({
-        trigger: '#triggerId6',
-        overlay: overlay6,
-        offset: [0, 20]
-    });
-    example6.render();
-    */
 
 });
 </script>
