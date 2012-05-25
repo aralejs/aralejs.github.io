@@ -235,14 +235,14 @@ myWidget.delegateEvents('click .move', function() {
 卸载事件代理。不带参数时，表示卸载所有事件。
 
 
-### init `widget.init()`
+### setup `widget.setup()`
 
 提供给子类覆盖的初始化方法。可以在此处理更多初始化信息，比如
 
 ```js
 var TabView = Widget.extend({
     ...
-    init: function() {
+    setup: function() {
         this.activeIndex = getActiveIndex();
     },
     ...
