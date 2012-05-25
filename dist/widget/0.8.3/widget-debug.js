@@ -153,6 +153,7 @@ define("#widget/0.8.3/widget-debug", ["base","$","./daparser"], function(require
         // 将 widget 渲染到页面上
         // 约定：子类覆盖时，需保持 `return this`
         render: function() {
+            // parentNode maybe a document fragment.
             var parentNode = this.element[0].parentNode || { nodeType: 11 };
 
             if (parentNode.nodeType === 11 && this.options.parentNode) {
@@ -223,16 +224,23 @@ define("#widget/0.8.3/widget-debug", ["base","$","./daparser"], function(require
     }
 
     function getHandlerKey(handler, cid) {
+        var key;
+
         if (isString(handler)) {
-            return cid + '-' + handler;
+            key = handler;
         }
-
         // 理论上会冲突，但实际上冲突的概率几乎为零
-        if (isFunction(handler) && isFunction(handler.toString)) {
-            return handler.toString().substring(0, 50) + cid;
+        else if (isFunction(handler) && isFunction(handler.toString)) {
+            key = handler.toString().substring(0, 50);
         }
 
-        throw '"handler" must be a string or a function';
+        if (key) {
+            // 加上 cid, 确保实例间不会冲突
+            return cid + '-' + key;
+        }
+        else {
+            throw '"handler" must be a string or a function';
+        }
     }
 
 

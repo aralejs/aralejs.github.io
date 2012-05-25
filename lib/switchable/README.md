@@ -23,13 +23,13 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
     
     ```
     <div id="J_Slide">  <!-- 容器元素 -->
-        <ul class="ks-switchable-nav">  <!-- 触发器列表 -->
+        <ul class="ar-switchable-nav">  <!-- 触发器列表 -->
             <li class="ks-active">标题 A</li>
             <li>标题 B</li>
             <li>标题 C</li>
             <li>标题 D</li>
         </ul>
-        <div class="ks-switchable-content">  <!-- 面板列表 -->
+        <div class="ar-switchable-content">  <!-- 面板列表 -->
             <div>内容 A</div>
             <div style="display: none">内容 B</div>
             <div style="display: none">内容 C</div>
@@ -51,14 +51,14 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
     
     ```
     <div id="J_Accordion">
-        <div class="ks-switchable-trigger ks-active"><i class="ks-icon"></i><h3>标题A</h3></div>
-        <div class="ks-switchable-panel">内容A<br/>内容A<br/>内容A</div>
-        <div class="ks-switchable-trigger"><i class="ks-icon"></i><h3>标题B</h3></div>
-        <div class="ks-switchable-panel" style="display:none;">内容B<br/>内容B<br/>内容B</div>
-        <div class="ks-switchable-trigger"><i class="ks-icon"></i><h3>标题C</h3></div>
-        <div class="ks-switchable-panel" style="display:none;">内容C<br/>内容C<br/>内容C<br/>内容C<br/>内容C</div>
-        <div class="ks-switchable-trigger last-trigger"><i class="ks-icon"></i><h3>标题D</h3></div>
-        <div class="ks-switchable-panel last-panel" style="display:none;">内容D<br/>内容D<br/>内容D</div>
+        <div class="ar-switchable-trigger ks-active"><i class="ar-icon"></i><h3>标题A</h3></div>
+        <div class="ar-switchable-panel">内容A<br/>内容A<br/>内容A</div>
+        <div class="ar-switchable-trigger"><i class="ar-icon"></i><h3>标题B</h3></div>
+        <div class="ar-switchable-panel" style="display:none;">内容B<br/>内容B<br/>内容B</div>
+        <div class="ar-switchable-trigger"><i class="ar-icon"></i><h3>标题C</h3></div>
+        <div class="ar-switchable-panel" style="display:none;">内容C<br/>内容C<br/>内容C<br/>内容C<br/>内容C</div>
+        <div class="ar-switchable-trigger last-trigger"><i class="ar-icon"></i><h3>标题D</h3></div>
+        <div class="ar-switchable-panel last-panel" style="display:none;">内容D<br/>内容D<br/>内容D</div>
     </div>
     ```
     当取 2 时, 表示 DOM 结构 完全自由: 直接传入 triggers 和 panels, 即通过配置以下两个参数获取. 这种方式下, DOM 结构就非常自由了, 传入什么内容有你自己定, 只需要 triggers 和 panels 的数量保持一致就好.
