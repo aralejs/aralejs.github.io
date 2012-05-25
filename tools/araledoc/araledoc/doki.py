@@ -2,7 +2,6 @@
 
 import re
 import misaka as m
-from tornado import escape
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
@@ -111,18 +110,19 @@ def _emoji(text):
 
 
 class JuneRender(m.HtmlRenderer, m.SmartyPants):
-    def set_pygments_options(self, options):
-        self._pygments_options = options
+    def set_pygments_options(self, noclasses=False, lang='python'):
+        self._pygments_noclasses = noclasses
+        self._pygments_lang = lang
+
+    def set_defaults(self, options):
+        self._options = options
 
     def block_code(self, text, lang):
         if not lang:
-            return '\n<pre><code>%s</code></pre>\n' %\
-                    escape.xhtml_escape(text.strip())
-        lexer = get_lexer_by_name(lang, stripall=True)
-        if hasattr(self, '_pygments_options'):
-            formatter = HtmlFormatter(**self._pygments_options)
+            lexer = get_lexer_by_name(self._pygments_lang, stripall=True)
         else:
-            formatter = HtmlFormatter()
+            lexer = get_lexer_by_name(lang, stripall=True)
+        formatter = HtmlFormatter(noclasses=self._pygments_noclasses)
         return highlight(text, lexer, formatter)
 
     def autolink(self, link, is_email):
@@ -170,11 +170,11 @@ class JuneRender(m.HtmlRenderer, m.SmartyPants):
         return '<a href="%s">%s</a>' % (link, title)
 
 
-def markdown(text, noclasses=False):
-    text = escape.to_unicode(text)
-    options = {'noclasses': noclasses}
+def markdown(text, noclasses=False, lang='python'):
+    if not isinstance(text, (unicode, type(None))):
+        text = text.decode('utf-8')
     render = JuneRender(flags=m.HTML_USE_XHTML)
-    render.set_pygments_options(options)
+    render.set_pygments_options(noclasses=noclasses, lang=lang)
     md = m.Markdown(
         render,
         extensions=m.EXT_FENCED_CODE | m.EXT_AUTOLINK,
@@ -183,6 +183,32 @@ def markdown(text, noclasses=False):
 
 
 if __name__ == '__main__':
-    import sys
-    text = open(sys.argv[1]).read()
-    print(markdown(text))
+    import os
+    import argparse
+    parser = argparse.ArgumentParser(prog='doki')
+    parser.add_argument('file', nargs='*', type=str)
+    parser.add_argument('-i', '--inline', dest='inline', action='store_true',
+                        help='inline style for code')
+    parser.add_argument('-t', '--template', dest='template')
+    parser.add_argument('-l', '--language', dest='language',
+                        default='python')
+
+    args = parser.parse_args()
+    if args.template and args.template == 'default':
+        path = os.path.join(os.path.dirname(__file__), 'template.html')
+        template = open(os.path.abspath(path)).read()
+    elif args.template:
+        template = open(args.template).read()
+    else:
+        template = "{{text}}"
+
+    if args.inline:
+        noclasses = True
+    else:
+        noclasses = False
+    text = ''
+    for f in args.file:
+        text += markdown(open(f).read(), noclasses, args.language)
+
+    text = template.replace('{{text}}', text)
+    print(text.encode('utf-8'))
