@@ -9,7 +9,7 @@ Zepto 是一个非常小巧的适用于现代浏览器的 JavaScript 类库。Ze
 
 ## 模块依赖
 
- - [seajs](seajs/README.md)
+ - [seajs](../seajs/README.md)
 
 
 ## 使用说明
