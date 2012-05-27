@@ -10,8 +10,8 @@ define("#base/0.9.2/base-debug", ["class","events","./attrs","./options"], funct
         Implements: [Events, Attrs, Options],
 
         initialize: function(config) {
-            this._initAttrs(config);
-            this._initOptions(config);
+            this.initAttrs(config);
+            this.initOptions(config);
         },
 
         destroy: function() {

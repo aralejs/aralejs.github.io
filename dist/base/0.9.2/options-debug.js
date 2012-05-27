@@ -10,7 +10,7 @@ define("#base/0.9.2/options-debug", ["./util"], function(require, exports) {
     var EVENT_PATTERN = /^on[A-Z]/;
 
 
-    exports._initOptions = function(config) {
+    exports.initOptions = function(config) {
         // Keep existed options.
         if (!this.hasOwnProperty('options')) {
             this.options = {};

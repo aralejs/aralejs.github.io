@@ -11,7 +11,7 @@ define("#base/0.9.2/attrs-debug", ["./util"], function(require, exports) {
     var Util = require('./util');
 
 
-    exports._initAttrs = function(config) {
+    exports.initAttrs = function(config) {
         // Keep existed attrs.
         if (!this.hasOwnProperty('attrs')) {
             this.attrs = {};
