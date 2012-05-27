@@ -69,9 +69,9 @@ define(function(require) {
 
 具体用法请参考：
 
-- [Events 使用文档](events/README.md)
-- [Attrs 使用文档](base/docs/attrs.md)
-- [Options 使用文档](base/docs/options.md)
+- [Events 使用文档](../events/README.md)
+- [Attrs 使用文档](docs/attrs.md)
+- [Options 使用文档](docs/options.md)
 
 
 ## 测试用例
