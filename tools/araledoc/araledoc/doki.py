@@ -2,6 +2,7 @@
 
 import re
 import misaka as m
+from tornado import escape
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
@@ -110,7 +111,7 @@ def _emoji(text):
 
 
 class JuneRender(m.HtmlRenderer, m.SmartyPants):
-    def set_pygments_options(self, noclasses=False, lang='python'):
+    def set_pygments_options(self, noclasses=False, lang=None):
         self._pygments_noclasses = noclasses
         self._pygments_lang = lang
 
@@ -118,10 +119,13 @@ class JuneRender(m.HtmlRenderer, m.SmartyPants):
         self._options = options
 
     def block_code(self, text, lang):
-        if not lang:
+        if lang:
+            lexer = get_lexer_by_name(lang, stripall=True)
+        elif self._pygments_lang:
             lexer = get_lexer_by_name(self._pygments_lang, stripall=True)
         else:
-            lexer = get_lexer_by_name(lang, stripall=True)
+            return '\n<pre><code>%s</code></pre>\n' %\
+                    escape.xhtml_escape(text.strip())
         formatter = HtmlFormatter(noclasses=self._pygments_noclasses)
         return highlight(text, lexer, formatter)
 
@@ -170,7 +174,7 @@ class JuneRender(m.HtmlRenderer, m.SmartyPants):
         return '<a href="%s">%s</a>' % (link, title)
 
 
-def markdown(text, noclasses=False, lang='python'):
+def markdown(text, noclasses=False, lang=None):
     if not isinstance(text, (unicode, type(None))):
         text = text.decode('utf-8')
     render = JuneRender(flags=m.HTML_USE_XHTML)
@@ -190,8 +194,7 @@ if __name__ == '__main__':
     parser.add_argument('-i', '--inline', dest='inline', action='store_true',
                         help='inline style for code')
     parser.add_argument('-t', '--template', dest='template')
-    parser.add_argument('-l', '--language', dest='language',
-                        default='python')
+    parser.add_argument('-l', '--language', dest='language')
 
     args = parser.parse_args()
     if args.template and args.template == 'default':
