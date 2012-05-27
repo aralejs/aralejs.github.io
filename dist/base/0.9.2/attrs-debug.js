@@ -11,6 +11,8 @@ define("#base/0.9.2/attrs-debug", ["./util"], function(require, exports) {
     var Util = require('./util');
 
 
+    // 负责 attributes 的初始化
+    // attributes 是与实例相关的状态信息，可读可写，发生变化时，会自动触发相关事件
     exports.initAttrs = function(config) {
         // Keep existed attrs.
         if (!this.hasOwnProperty('attrs')) {

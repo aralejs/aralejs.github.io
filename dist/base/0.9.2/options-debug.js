@@ -10,6 +10,8 @@ define("#base/0.9.2/options-debug", ["./util"], function(require, exports) {
     var EVENT_PATTERN = /^on[A-Z]/;
 
 
+    // 根据 config 中传入的 options 参数，和继承过来的父类的 options，构建 this.options
+    // options 是实例化时用户传入的配置选项，只读不写
     exports.initOptions = function(config) {
         // Keep existed options.
         if (!this.hasOwnProperty('options')) {
