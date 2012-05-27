@@ -57,9 +57,11 @@ define(function(require) {
     return Class.create({
         Implements: [Events, Attrs, Options],
 
-        destroy: function() {
+        initialize: function(config) {
             ...
-        }
+        },
+
+        ...
     });
 
 });
