@@ -8,9 +8,9 @@ Base 是一个基础类，提供 Class、Events、Attrs 和 Options 支持。
 
 ## 模块依赖
 
- - [seajs](seajs/README.md)
- - [class](class/README.md)
- - [events](events/README.md)
+ - [seajs](../seajs/README.md)
+ - [class](../class/README.md)
+ - [events](../events/README.md)
 
 
 ## 使用说明
