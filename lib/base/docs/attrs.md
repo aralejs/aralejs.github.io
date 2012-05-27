@@ -14,9 +14,10 @@
 /* panel.js */
 define(function(require, exports, module) {
     var Base = require('base');
+    var $ = require('$');
 
     var Panel = Base.extend({
-        options: {
+        attrs: {
             color: '#fff',
             size: {
                 width: 100,
@@ -24,61 +25,48 @@ define(function(require, exports, module) {
             }
         },
 
-        initialize: function(id, options) {
-            this.srcNode = document.getElementById(id);
-            this.setOptions(options);
+        initialize: function(config) {
+            Panel.superclass.initialize.call(this, config);
+            this.element = $(config.element).eq(0);
         },
 
-        show: function() {
-            this.trigger('show');
-            this.srcNode.style.display = 'block';
-            this.trigger('shown');
+        _onChangeColor: function(val) {
+            this.element.css('backgroundColor', val);
         }
     });
 });
 ```
 
-在 `initialize` 方法中，调用 `setOptions` 方法，就可以自动设置好实例的 `options` 属性。
+在 `initialize` 方法中，调用 `superclass.initialize` 方法，就可以自动设置好实例的属性。
 
 ```js
 /* test.js */
 define(function(require, exports, module) {
     var Panel = require('./panel');
 
-    var panel = new Panel('test', {
+    var panel = new Panel({
+        element: '#test',
         color: '#f00',
         size: {
             width: 200
         }
     });
 
-    console.log(panel.options.color); // '#f00'
-    console.log(panel.options.size);  // { width: 200, height: 100 }
+    console.log(panel.get('color')); // '#f00'
+    console.log(panel.get('size')); // { width: 200, height: 100 }
 });
 ```
 
-使用 `extend` 创建类时，如果混入了 `Events` 模块，还可以在
-`options` 中通过 `change` 等事件来监听属性变化：
+使用 `extend` 创建类时，如果混入了 `Events` 模块，则在初始化时，实例中的 `_onChangeX`
+方法会自动注册到 `change:x` 事件的回调队列中：
 
 ```js
 /* test2.js */
 define(function(require, exports, module) {
     var Panel = require('./panel');
 
-    var panel = new Panel('test', {
-        color: '#f00',
-        size: {
-            width: 200
-        },
-        onShow: function() {
-            alert('准备显示');
-        },
-        onShown: function() {
-            alert('显示完毕');
-        }
-    });
-
-    panel.show(); // 弹出两个 alert
+    var panel = new Panel({ element: '#test' });
+    panel.set('color', '#00f'); // this.element 的背景色自动变为 '#00f'
 });
 ```
 

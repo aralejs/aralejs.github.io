@@ -51,7 +51,7 @@ define(function(require) {
 
     var Class = require('class');
     var Events = require('events');
-    var Attrs = require('attrs');
+    var Attrs = require('./attrs');
     var Options = require('./options');
 
     return Class.create({
