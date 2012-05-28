@@ -80,6 +80,10 @@
         // 基于 Widget 定义 SimpleTabView 组件
         var SimpleTabView = Widget.extend({
 
+            options: {
+                startIndex: 1
+            },
+
             attrs: {
                 triggers: {
                     value: '.nav li',
@@ -125,10 +129,10 @@
 
             setup: function() {
                 this.get('panels').hide();
-                this._onChangeActiveIndex(this.get('activeIndex'), 0);
             },
 
             render: function() {
+                this.set('activeIndex', this.options.startIndex);
                 return this;
             },
 
@@ -136,17 +140,14 @@
                 var li = $('<li>' + title + '</li>');
                 var div = $('<div>' + content + '</div>');
 
-                li.appendTo(this.$('.nav'));
-                div.appendTo(this.$('.content'));
-
-                this.triggers = this.triggers.add(li);
-                this.panels = this.panels.add(div);
+                li.appendTo(this.get('triggers')[0].parentNode);
+                div.appendTo(this.get('panels')[0].parentNode);
 
                 return this;
             },
 
             setActiveContent: function(content) {
-              this.panels.eq(this.activeIndex).html(content);
+              this.get('panels').eq(this.get('activeIndex')).html(content);
             },
 
             size: function() {
@@ -157,7 +158,7 @@
 
         var tabView = new SimpleTabView({
             element: '#demo',
-            activeIndex: 1
+            startIndex: 1
         }).render();
 
 
