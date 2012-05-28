@@ -60,7 +60,7 @@
         border: 1px solid #AEC7E5;
     }
 </style>
-<div id="demo1" class="AR_Widget section" data-widget-type="tabs" data-widget-config="{'data-panels': '.ui-switchable-content div'}">
+<div id="demo1" class="AR_Widget section" data-widget-type="tabs" data-widget-config="{'panels': '.ui-switchable-content div'}">
     <ul class="ui-switchable-nav">
         <li>标题 A</li>
         <li>标题 B</li>
@@ -279,7 +279,7 @@
             <img alt="" src="http://farm4.static.flickr.com/3624/3323893148_8318838fbd_t.jpg"/>
         </div>
         <ul class="ui-switchable-nav">
-            <li class="ar-active">&bull;</li>
+            <li class="ui-active">&bull;</li>
             <li>&bull;</li>
             <li>&bull;</li>
         </ul>
@@ -291,7 +291,7 @@
     .scroll-news { height: 20px; overflow: hidden; }
     .scroll-news a { color: #FF7E00; }
 </style>
-<div id="demo5" class="AR_Widget scroll-news" data-widget-type="slide" data-widget-config="{'panels':'.news-items li', 'effect':'scrolly','easing':'easeOutStrong','interval':3,'duration':200}">
+<div id="demo5" class="AR_Widget scroll-news" data-widget-type="slide" data-widget-config="{'panels':'.news-items li', 'effect':'scrolly','easing':'easeOutStrong','interval':3,'duration':2}">
     <ul class="news-items">
         <li><a target="_blank" href="http://youa.baidu.com/shop/72e01b38fb26b4ebc5db0136">“一分钱”轻松体验有啊网购流程</a></li>
         <li><a target="_blank" href="http://co.youa.baidu.com/content/payhelp/b12/zhaoshang/">开通网银，百付宝为您一路护航</a></li>
@@ -305,33 +305,33 @@
 <h2>Accordion - 手风琴</h2>
 <style>
     #accordion1 {width:300px;border:1px solid #ccc;}
-    #accordion1 .ar-switchable-trigger{padding:3px 10px;cursor:pointer;border-bottom:1px solid #ddd;background:#f3f3f3;overflow:hidden; height: 18px;}
-    #accordion1 .ar-switchable-trigger h3{float: left; width: 100px; margin-left: 5px; }
-    #accordion1 .ar-switchable-panel{height:150px;padding:3px 10px;border-bottom:1px solid #ddd;}
-    #accordion1 .ar-icon{float:left;width:12px;height:12px;overflow:hidden;margin-top:2px;font-size:0;vertical-align:middle;background:url(assets/accordion-sprite.png) no-repeat 0 0;}
-    #accordion1 .ar-active .ar-icon{background-position:-20px 0;}
+    #accordion1 .ui-switchable-trigger{padding:3px 10px;cursor:pointer;border-bottom:1px solid #ddd;background:#f3f3f3;overflow:hidden; height: 18px;}
+    #accordion1 .ui-switchable-trigger h3{float: left; width: 100px; margin-left: 5px; }
+    #accordion1 .ui-switchable-panel{height:150px;padding:3px 10px;border-bottom:1px solid #ddd;}
+    #accordion1 .ui-icon{float:left;width:12px;height:12px;overflow:hidden;margin-top:2px;font-size:0;vertical-align:middle;background:url(assets/accordion-sprite.png) no-repeat 0 0;}
+    #accordion1 .ui-active .ui-icon{background-position:-20px 0;}
     #accordion1 .last-trigger { border-bottom-width: 0 }
-    #accordion1 .ar-active { border-bottom-width: 1px }
+    #accordion1 .ui-active { border-bottom-width: 1px }
     #accordion1 .last-panel { border-bottom: none }
 </style>
-<div id="accordion1" class="AR_Widget section" data-widget-type="accordion">
-    <div class="ar-switchable-trigger ar-active"><i class="ar-icon"></i><h3>标题A</h3></div>
-    <div class="ar-switchable-panel">
+<div id="accordion1" class="AR_Widget section" data-widget-type="accordion" data-widget-config="{'panels':'.ui-switchable-panel', 'triggers': '.ui-switchable-trigger'}">
+    <div class="ui-switchable-trigger ui-active"><i class="ui-icon"></i><h3>标题A</h3></div>
+    <div class="ui-switchable-panel">
         1、支持鼠标滑过和点击触点两种方式<br/>
         2、支持同时展开多个面板
     </div>
-    <div class="ar-switchable-trigger"><i class="ar-icon"></i><h3>标题B</h3></div>
-    <div class="ar-switchable-panel" style="display:none;">内容B<br/>内容B<br/>内容B</div>
-    <div class="ar-switchable-trigger"><i class="ar-icon"></i><h3>标题C</h3></div>
-    <div class="ar-switchable-panel" style="display:none;">内容C<br/>内容C<br/>内容C<br/>内容C<br/>内容C</div>
-    <div class="ar-switchable-trigger last-trigger"><i class="ar-icon"></i><h3>标题D</h3></div>
-    <div class="ar-switchable-panel last-panel" style="display:none;">内容D<br/>内容D<br/>内容D</div>
+    <div class="ui-switchable-trigger"><i class="ui-icon"></i><h3>标题B</h3></div>
+    <div class="ui-switchable-panel" style="display:none;">内容B<br/>内容B<br/>内容B</div>
+    <div class="ui-switchable-trigger"><i class="ui-icon"></i><h3>标题C</h3></div>
+    <div class="ui-switchable-panel" style="display:none;">内容C<br/>内容C<br/>内容C<br/>内容C<br/>内容C</div>
+    <div class="ui-switchable-trigger last-trigger"><i class="ui-icon"></i><h3>标题D</h3></div>
+    <div class="ui-switchable-panel last-panel" style="display:none;">内容D<br/>内容D<br/>内容D</div>
 </div>
 
 <style>
     #big { position: relative; border: 1px solid #B6D1E6; overflow: hidden; }
-    #big .ar-switchable-nav { position: absolute; bottom: 5px; right: 5px; z-index: 99; }
-    #big .ar-switchable-nav li {
+    #big .ui-switchable-nav { position: absolute; bottom: 5px; right: 5px; z-index: 99; }
+    #big .ui-switchable-nav li {
         float: left;
         width: 16px;
         height: 16px;
@@ -343,7 +343,7 @@
         text-align: center;
         cursor: pointer;
     }
-    #big .ar-switchable-nav li.ar-active {
+    #big .ui-switchable-nav li.ui-active {
         width: 18px;
         height: 18px;
         line-height: 18px;
@@ -354,16 +354,16 @@
     }
 </style>
 
-<div id="big" class="AR_Widget section" data-widget-type="slide" style="height:450px;" data-widget-config="{'navClass':'ar-switchable-nav','effect':'fade'}">
+<div id="big" class="AR_Widget section" data-widget-type="slide" style="height:450px;" data-widget-config="{'navClass':'ui-switchable-nav','effect':'fade'}">
     <ul class="ui-switchable-content">
         <li><a href="http://item.taobao.com/item.htm?id=7002076261" style="height:450px;" target="_blank"><img src="http://img02.taobaocdn.com/imgextra/i2/438942225/T27Z0bXeRdXXXXXXXX_!!438942225.jpg" alt=""/></a></li>
         <li><a href="http://gearband.tmall.com/view_page-74632436.htm" style="height:450px;" target="_blank"><img src="http://img03.taobaocdn.com/imgextra/i3/438942225/T2eMBHXkFaXXXXXXXX_!!438942225.jpg" alt=""/></a></li>
     </ul>
 </div>
-
-<script>
-    var $;
-    seajs.use(['jquery', 'autorender'], function(jquery, autoRender) {
+   <script>
+    var $, _;
+    seajs.use(['jquery', 'autorender', 'underscore'], function(jquery, autoRender, u) {
+        _ = u;
         $ = jquery;
         autoRender(); 
     });
