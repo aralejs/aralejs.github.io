@@ -1,5 +1,5 @@
 
-# Attrs
+# Attribute
 
 提供基本的属性添加、获取、移除等功能。
 
@@ -8,7 +8,7 @@
 
 ## 使用说明
 
-基于 `Base.extend` 创建的类，会自动添加上 `Attrs` 提供的功能。例子：
+基于 `Base.extend` 创建的类，会自动添加上 `Attribute` 提供的功能。例子：
 
 ```js
 /* panel.js */
@@ -18,10 +18,25 @@ define(function(require, exports, module) {
 
     var Panel = Base.extend({
         attrs: {
+            element: {
+                value: '#test',
+                readOnly: true
+            },
             color: '#fff',
             size: {
                 width: 100,
                 height: 100
+            },
+            x: 200,
+            y: 200,
+            xy: {
+                getter: function() {
+                    return this.get('x') + this.get('y');
+                },
+                setter: function(val) {
+                    this.set('x', val[0]);
+                    this.set('y', val[1]);
+                }
             }
         },
 
