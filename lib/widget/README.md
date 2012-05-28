@@ -9,10 +9,10 @@ Widget 是 UI 组件的基础类，约定了组件的基本生命周期，实现
 
 ## 模块依赖
 
- - [seajs](../seajs/README.md)
- - [base](../base/README.md)
- - [jquery](../jquery/README.md) / [zepto](../zepto/README.md)
- - [handlebars](../handlebars/README.md)
+ - [seajs](seajs/README.md)
+ - [base](base/README.md)
+ - [jquery](jquery/README.md) / [zepto](zepto/README.md)
+ - [handlebars](handlebars/README.md)
 
 **注**：handlebars 依赖仅在混入 `Templatable` 后才产生。
 
