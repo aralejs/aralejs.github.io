@@ -5,6 +5,11 @@
     var modules = ['jasmine/1.1.0/jasmine-html'];
     HAS_PACKAGE && modules.unshift('text!../package.json');
 
+    // no cache
+    seajs.config({
+        debug: 2
+    });
+
 
     seajs.use(modules, function(data) {
         var jasmineEnv = getJasmineEnv();

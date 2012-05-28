@@ -17,7 +17,7 @@ describe("Jasmine", function() {
 
 ## 模块依赖
 
- - [seajs](seajs/README.md)
+ - [seajs](../seajs/README.md)
 
 
 ## 使用说明
@@ -29,7 +29,7 @@ Jasmine 官方文档：http://pivotal.github.com/jasmine/
 1. 首先按照 [文件命名与目录结构](https://github.com/alipay/arale/wiki/文件命名与目录结构) 规范组织好组件文件。
 2. 然后创建 `tests/runner.html`, 文件内容可参考 [events/test/runner.html](events/test/runner.html)
 
-可以参考 [events](events/) 等模块的代码。
+可以参考 [events](../events/) 等模块的代码。
 
 赶快开始愉悦的 BDD 之旅吧。
 

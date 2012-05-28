@@ -9,7 +9,7 @@ logicless 特质。
 
 ## 模块依赖
 
- - [seajs](seajs/README.md)
+ - [seajs](../seajs/README.md)
 
 
 ## 使用说明

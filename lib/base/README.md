@@ -1,16 +1,16 @@
 
 # Base
 
-Base 是一个基础类，提供 Class, Events 和 Options 支持。
+Base 是一个基础类，提供 Class、Events、Attrs、Options 和 Aspect 支持。
 
 ---
 
 
 ## 模块依赖
 
- - [seajs](seajs/README.md)
- - [class](class/README.md)
- - [events](events/README.md)
+ - [seajs](../seajs/README.md)
+ - [class](../class/README.md)
+ - [events](../events/README.md)
 
 
 ## 使用说明
@@ -48,20 +48,32 @@ Base 是使用 `Class` 创建的一个基础类，默认混入了 `Events` 和 `
 ```js
 /* base.js */
 define(function(require) {
-    var Class = require('./class');
-    var Events = require('./events');
+
+    var Class = require('class');
+    var Events = require('events');
+    var Attrs = require('./attrs');
     var Options = require('./options');
+    var Aspect = require('./aspect');
 
     return Class.create({
-        Implements: [Events, Options]
+        Implements: [Events, Attrs, Options, Aspect],
+
+        initialize: function(config) {
+            ...
+        },
+
+        ...
     });
+
 });
 ```
 
 具体用法请参考：
 
-- [Events 使用文档](events/README.md)
-- [Options 使用文档](base/docs/options.md)
+- [Events 使用文档](../events/README.md)
+- [Attrs 使用文档](docs/attrs.md)
+- [Options 使用文档](docs/options.md)
+- [Aspect 使用文档](docs/aspect.md)
 
 
 ## 测试用例

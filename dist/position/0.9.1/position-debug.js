@@ -7,8 +7,8 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
 
     var Position = exports,
         VIEWPORT = { _id: 'VIEWPORT', nodeType: 1 },
-        isFixpin = false,
         $ = require('$'),
+        isPinFixed = false,
         isIE6 = $.browser.msie && $.browser.version == 6.0;
 
 
@@ -25,9 +25,11 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
         var pinElement = $(pinObject.element);
         if(pinElement.css('position') !== 'fixed') {
             pinElement.css('position', 'absolute');
+            isPinFixed = false;
         }
         else {
-            isFixpin = true;
+            // 定位 fixed 元素的标志位，下面有特殊处理
+            isPinFixed = true;
         }
 
         // 将位置属性归一化为数值
@@ -76,6 +78,7 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
     // 将参数包装成标准的定位对象，形似 { element: a, x: 0, y: 0 }
     function normalize(pinObject) {
         pinObject = toElement(pinObject) || {};
+
         if (pinObject.nodeType) {
             pinObject = { element: pinObject };
         }
@@ -91,12 +94,13 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
             y: pinObject.y || 0
         };
 
-        // options的深度克隆貌似会替换掉 Position.VIEWPORT , 导致直接比较为false
+        // options 的深度克隆貌似会替换掉 Position.VIEWPORT, 导致直接比较为 false
         var isVIEWPORT = (element === VIEWPORT || element._id === 'VIEWPORT');
 
         // 归一化 offset
         result.offset = function() {
-            if (isFixpin) {
+            // 若定位 fixed 元素，则父元素的 offset 没有意义
+            if (isPinFixed) {
                 return {
                     left: 0,
                     top: 0
@@ -174,13 +178,23 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
     function getParentOffset(element) {
         var parent = element.offsetParent();
 
+        if(parent[0] === document.documentElement) {
+            parent = $(document.body);
+        }
+
         // 修正 ie6 下 absolute 定位不准的 bug
         if (isIE6) {
             parent.css('zoom', 1);
         }
 
         // offsetParent 的 offset
-        var offset = (parent[0] === document.body) ?
+        // document.body 会默认带8像素的偏差
+
+        // IE7下，body子节点的 offsetParent 为 html 元素，其 offset 为 { top: 2, left: 2 }
+        // 会导致定位差2像素，所以这里将 parent 转为 document.body
+
+        // 所以这两种情况直接赋为0
+        var offset = (parent[0] === document.body || parent[0] === document.documentElement) ?
             { left: 0, top: 0 } : parent.offset();
 
         // 根据基准元素 offsetParent 的 border 宽度，来修正 offsetParent 的基准位置

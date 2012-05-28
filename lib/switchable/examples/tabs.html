@@ -9,6 +9,7 @@
 <script>
     seajs.config({
         alias: {
+            'tabs': '../src/tabs'
         }
     });
 
@@ -24,14 +25,14 @@
                 padding-top: 29px;
             }
 
-            #demo1 .ar-switchable-nav {
+            #demo1 .ui-switchable-nav {
                 position: absolute;
                 left: 20px;
                 margin-top: -29px;
                 z-index: 99;
             }
 
-            #demo1 .ar-switchable-nav li {
+            #demo1 .ui-switchable-nav li {
                 float: left;
                 width: 130px;
                 height: 27px;
@@ -43,12 +44,12 @@
                 cursor: pointer;
             }
 
-            #demo1 .ar-switchable-nav li.ar-active {
+            #demo1 .ui-switchable-nav li.ui-active {
                 background-position: 0 -40px;
                 cursor: default;
             }
 
-            #demo1 .ar-switchable-content {
+            #demo1 .ui-switchable-content {
                 position: relative;
                 height: 120px;
                 padding: 20px;
@@ -57,7 +58,7 @@
         </style>
 
         <div id="demo1" class="s-demo">
-            <ul class="ar-switchable-nav">
+            <ul class="ui-switchable-nav">
                 <!-- title 争渡读屏器不读-->
                 <li aria-labelledby='a_tip' title="读屏器读不出来">
                     <span style="display:none" id="a_tip">标题 A，可左右键切换操作</span>
@@ -67,7 +68,7 @@
                 <li>标题 D</li>
                 <li>标题 E</li>
             </ul>
-            <div class="ar-switchable-content">
+            <div class="ui-switchable-content">
                 <div style="display: none">
 
 <pre>
@@ -96,7 +97,9 @@
                     $ = jquery;
                     s = new Tabs({
                         element: '#demo1',
-                        switchTo: 1,
+                        triggers: '.ui-switchable-nav li',
+                        panels: '.ui-switchable-content div',
+                        activeIndex: 2,
                         effect: 'fade'
                     });
 

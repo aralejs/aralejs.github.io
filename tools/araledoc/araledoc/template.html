@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{title}}</title>
+        <style type="text/css">
+            html, body {
+                background: #f9f9f9;
+                color: #333;
+                padding: 0;
+                margin: 0;
+                font: 14px/1.6 "Lucida Grande", "Helvetica", sans-serif;
+            }
+            h1,h2,h3,h4 {
+                font-family: 'PT Sans', sans-serif;
+            }
+            h1 {
+                margin-top: 0;
+                font-size: 36px;
+            }
+            h2 {
+                margin: 25px 0 5px;
+            }
+            h3 {
+                margin: 20px 0 5px;
+            }
+            .container {
+                width: 650px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            /* block level */
+            blockquote {
+                border-left: 0.4em solid #ddd;
+                margin: 15px 0;
+                padding: 0 15px;
+                color: #777;
+            }
+            blockquote blockquote {
+                padding: 0 0 0 1em;
+                margin-left: 2em;
+                border-left: 0.4em solid #ddd;
+            }
+
+            p {
+                font-weight: normal;
+                line-height: 160%;
+                margin-bottom: 0.8em;
+            }
+            figure {margin:0; padding:0;}
+
+            hr {
+                border-top: 1px solid #dadada;
+                border-bottom: 1px solid #dadada;
+            }
+
+            ul, ol {
+                margin: 14px 0;
+                padding-left: 30px;
+            }
+            ul {
+                list-style: square;
+            }
+            li ul {
+                list-style: disc;
+                margin: 8px 0;
+            }
+
+            /* span level */
+            img {
+                max-width: 100%;
+            }
+            a {
+                color: #4183C4;
+                text-decoration: none;
+                overflow: hidden;
+                word-wrap: break-word;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            a img {
+                vertical-align: middle;
+            }
+            strong {
+                color: #424242;
+            }
+
+            /* code */
+            pre, code{
+                font: 12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
+            }
+            pre {
+                margin: 1em 0;
+                background-color: #f0f0f0;
+                border: 1px solid #ddd;
+                padding: 8px;
+                line-height: 1.5em;
+                color: #444;
+                overflow: auto;
+                box-shadow: rgba(0,0,0,0.07) 0 1px 2px inset;
+                border-radius: 3px;
+            }
+            pre code {
+                padding:0;
+                background-color: #eee;
+                border: none;
+            }
+            code {
+                font-size:12px;
+                background-color:#f8f8ff;
+                color:#444;
+                padding:0 .2em;
+                border:1px solid #dedede;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container wrapper">
+            {{text}}
+        </div>
+    </body>
+</html>
