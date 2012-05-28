@@ -48,7 +48,7 @@ define(function(require, exports, module) {
 详细源码可访问：[simple-tabview.html](http://aralejs.org/lib/widget/examples/simple-tabview.html)
 
 
-### initialize `new Widget([options])`
+### initialize `new Widget([config])`
 
 Widget 实例化时，会调用此方法。
 
@@ -63,43 +63,38 @@ var widget = new Widget({
 });
 ```
 
-`options` 参数用来传入选项，实例化后可以通过 `this.options` 来访问。`options`
+`config` 参数用来传入选项，实例化后可以通过 `get/set` 来访问。`config`
 参数如果包含 `element` 和 `model` 属性，实例化后会直接放到 `this` 上，即可通过
 `this.element`、`this.model` 来获取。
-
-`options` 参数中还可以通过 `parentNode` 属性来指定当前 widget 在 DOM 中的父节点。
 
 
 在 `initialize` 方法中，确定了组件构建的基本流程：
 
 ```js
-initialize: function(options) {
-    this.cid = uniqueId();
-    this.initOptions(options);
+    this.initAttrs(config);
     this.parseElement();
     this.parseDataAttrs();
     this.delegateEvents();
-    this.init();
-}
+    this.setup();
 ```
 
 下面逐一讲述。
 
 
-### initOptions `widget.initOptions(options)`
+### initAttrs `widget.initAttrs(config)`
 
-选项的初始化方法。通过该方法，会将传入的 `options` 参数与所继承的类中的默认 `options`
+选项的初始化方法。通过该方法，会将传入的 `config` 参数与所继承的类中的默认 `config`
 进行合并处理。
 
-子类如果想在 `initOptions` 执行之前或之后进行一些额外处理，可以覆盖该方法：
+子类如果想在 `initAttrs` 执行之前或之后进行一些额外处理，可以覆盖该方法：
 
 ```
 var MyWidget = Widget.extend({
-    initOptions: function(options) {
+    initAttrs: function(config) {
         // 提前做点处理
 
         // 调用父类的
-        MyWidget.superclass.initOptions.call(this, options);
+        MyWidget.superclass.initAttrs.call(this, config);
 
         // 之后做点处理
     }
@@ -107,14 +102,14 @@ var MyWidget = Widget.extend({
 
 ```
 
-**注意**：一般情况下不需要覆盖 `initOptions`。
+**注意**：一般情况下不需要覆盖 `initAttrs`。
 
 
 ### parseElement `widget.parseElement()`
 
 该方法只干一件事：根据选项信息，构建好 `this.element`。
 
-默认情况下，如果 `options` 参数中传入了 `element` 选项（取值可为 DOM element / selector），
+默认情况下，如果 `config` 参数中传入了 `element` 选项（取值可为 DOM element / selector），
 会直接根据该选项来获取 `this.element` 对象。
 
 `this.element` 是一个 jQuery / Zepto 对象。
@@ -122,7 +117,7 @@ var MyWidget = Widget.extend({
 
 ### parseElementFromTemplate `widget.parseElementFromTemplate()`
 
-如果 `options` 参数中未传入 `element` 选项，则会根据 `template` 选项来构建
+如果 `config` 参数中未传入 `element` 选项，则会根据 `template` 选项来构建
 `this.element`。 默认的 `template` 是 `<div></div>`。
 
 子类可覆盖该方法，以支持 Handlebars、Mustache 等模板引擎。
