@@ -80,38 +80,55 @@
         // 基于 Widget 定义 SimpleTabView 组件
         var SimpleTabView = Widget.extend({
 
+            attrs: {
+                triggers: {
+                    value: '.nav li',
+                    getter: function(val) {
+                        return this.$(val);
+                    }
+                },
+
+                panels: {
+                    value: '.content div',
+                    getter: function(val) {
+                        return this.$(val);
+                    }
+                },
+
+                activeIndex: {
+                    value: 0
+                }
+            },
+
             events: {
                 'click .nav li': 'switchTo'
             },
 
-            switchTo: function(index) {
-                var triggers = this.triggers;
-                var panels = this.panels;
-                var activeIndex = this.activeIndex;
+            _onChangeActiveIndex: function(val, prev) {
+                var triggers = this.get('triggers');
+                var panels = this.get('panels');
 
-                // 触发点击事件时，index 是 ev 对象
-                if (typeof index === 'object') {
-                    index = triggers.index(index.target);
-                }
+                triggers.eq(prev).removeClass('active');
+                triggers.eq(val).addClass('active');
 
-                triggers.eq(activeIndex).removeClass('active');
-                triggers.eq(index).addClass('active');
-
-                panels.eq(activeIndex).hide();
-                panels.eq(index).show();
-
-                this.activeIndex = index;
+                panels.eq(prev).hide();
+                panels.eq(val).show();
             },
 
-            init: function() {
-                this.triggers = this.$('.nav li');
-                this.panels = this.$('.content div');
-                this.panels.hide();
-                this.activeIndex = this.options.activeIndex || 0;
+            switchTo: function(index) {
+                // 触发点击事件时，index 是 ev 对象
+                if (typeof index === 'object') {
+                    index = this.get('triggers').index(index.target);
+                }
+                this.set('activeIndex', index);
+            },
+
+            setup: function() {
+                this.get('panels').hide();
+                this._onChangeActiveIndex(this.get('activeIndex'), 0);
             },
 
             render: function() {
-                this.switchTo(this.activeIndex);
                 return this;
             },
 
@@ -133,7 +150,7 @@
             },
 
             size: function() {
-                return this.triggers.length;
+                return this.get('triggers').length;
             }
         });
 
