@@ -21,21 +21,41 @@
 
     对话框触发点。
 
-* `confirmElement` : {element|array|$}
+* `confirmElement` : {element|$}
 
     确定或提交按钮。
 
-* `cancelElement` : {element|array|$}
+* `cancelElement` : {element|$}
 
     取消按钮。
 
-* `closeElement` : {element|array|$}
+* `closeElement` : {element|$}
 
     关闭按钮。
+
+* `titleElement` : {string}
+
+    指定标题元素。
+
+* `titleText` : {string}
+
+    指定标题内容。
+
+* `contentElement` : {string}
+
+    指定内容元素。
+
+* `content` : {string}
+
+    指定内容的html。
 
 * `onConfirm` : {function}
 
     确定时的操作，可在函数内使用this.activeTrigger得到触发节点，下同。
+
+* `onCancel` : {function}
+
+    取消时的操作。
 
 * `onClose` : {function}
 
@@ -44,6 +64,15 @@
 * `hasMask` : {boolean}
 
     是否有背景遮罩层。
+
+* `iframeUrl` : {string|function}
+
+    内嵌iframe的url。
+
+* `ajaxUrl` : {string|function}
+
+    内容是ajax取得时，指定其来源地址。
+
 
 其他API参照[overlay](overlay/README.md)。
 
