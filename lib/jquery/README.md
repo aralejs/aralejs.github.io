@@ -10,8 +10,6 @@ Ajax 操作。jQuery 的设计目的是：改变你编写 JavaScript 代码的�
 ## 模块依赖
 
  - [seajs](seajs/README.md)
- - [class](class/README.md)
- - [events](events/README.md)
 
 
 ## 使用说明
