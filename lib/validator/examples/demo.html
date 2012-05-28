@@ -12,8 +12,10 @@
 
             seajs.use(['validator', 'jquery'], function(Validator, $) {
                 $(function() {
-                    Validator.getForm('#test-form').on('itemValidated', function() {
+                    Validator.getForm('#test-form').on('itemValidated', function(err, msg, ele) {
                         console.log(arguments);
+                        var input = ele.get();
+                        console.log(input);
                     });
                 });
                 /*
