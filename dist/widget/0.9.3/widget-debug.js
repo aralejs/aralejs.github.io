@@ -182,7 +182,12 @@ define("#widget/0.9.3/widget-debug", ["base","$","./daparser"], function(require
 
         // 给 element 添加具有唯一性的 class，并返回由该 class 构成的 selector
         stamp: function(element) {
-            return '.' + DAParser.stamp($(element)[0]);
+            var node = $(element)[0];
+
+            if (!node || node.nodeType !== 1) {
+                throw 'This element is not a valid DOM element: ' + element;
+            }
+            return '.' + DAParser.stamp(node);
         },
 
         destroy: function() {
@@ -313,11 +318,7 @@ define("#widget/0.9.3/widget-debug", ["base","$","./daparser"], function(require
         var selector = match[2] || '';
 
         if (selector.indexOf('{{') > -1) {
-            try {
-                selector = parseObjectExpression(selector, widget);
-            } catch (ex) {
-                throw 'invalid selector: ' + selector;
-            }
+            selector = parseObjectExpression(selector, widget);
         }
 
         return {
@@ -342,6 +343,11 @@ define("#widget/0.9.3/widget-debug", ["base","$","./daparser"], function(require
                 } else {
                     point = point[part];
                 }
+            }
+
+            // 已经是 className，比如来自 dataset 的
+            if (isString(point) && point.indexOf('.') === 0) {
+                return point;
             }
 
             return widget.stamp(point);

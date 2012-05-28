@@ -226,6 +226,22 @@ var MyWidget = Widget.extend({
 });
 ```
 
+`events` 中，还支持 `{{name}}` 模板表达式，比如上面的代码，可以简化为：
+
+```js
+var MyWidget = Widget.extend({
+    events: {
+        "click": "open",
+        "click .close": "close",
+        "click {{dataset.role.title}}": "toggle",
+        "mouseover {{trigger}}": "open",
+        "mouseover {{attrs.panels}}": "hover"
+        "click {{header}},{{footer}}": "egg"
+    },
+    ...
+});
+```
+
 实例化后，还可以通过 `delegateEvents` 方法动态添加事件代理：
 
 ```js
