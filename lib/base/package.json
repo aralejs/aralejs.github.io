@@ -1,9 +1,8 @@
 {
-    "version": "0.9.2",
+    "version": "0.9.5",
     "dist": {
         "base.js": "default",
-        "attrs.js": "default",
-        "options.js": "default",
-        "util.js": "default"
+        "aspect.js": "default",
+        "attribute.js": "default"
     }
 }

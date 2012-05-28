@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#widget/0.9.1/templatable-debug", ["handlebars","$"], function(require, exports, module) {
 
     var Handlebars = require('handlebars');
     var $ = require('$');
@@ -22,7 +22,7 @@ define(function(require, exports, module) {
             }
 
             // 生成 html
-            var html = Handlebars.compile(this.get('template'))(this.model);
+            var html = Handlebars.compile(this.options.template)(this.model);
 
             // 卸载 helpers
             if (helpers) {

@@ -1,4 +1,4 @@
-define(function(require, exports) {
+define("#base/0.9.3/options-debug", ["./util"], function(require, exports) {
 
     // Options
     // -----------------

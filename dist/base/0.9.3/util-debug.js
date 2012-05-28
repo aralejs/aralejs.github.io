@@ -1,4 +1,4 @@
-define(function(require, exports) {
+define("#base/0.9.3/util-debug", [], function(require, exports) {
 
     var toString = Object.prototype.toString;
 

@@ -1,4 +1,4 @@
-define(function(require, exports) {
+define("#base/0.9.3/attrs-debug", ["./util"], function(require, exports) {
 
     // Attrs
     // -----------------
@@ -101,7 +101,7 @@ define(function(require, exports) {
             now[key].value = val;
 
             // invoke change event
-            if (!silent && this.trigger && prev !== val) {
+            if (!silent && this.trigger/* && prev !== val*/) {
                 this.trigger('change:' + key, val, prev, key);
             }
         }

@@ -9,7 +9,7 @@ Object 等便捷、强大的操作方法。可以与 jQuery, Backbone 等组件�
 
 ## 模块依赖
 
- - [seajs](../seajs/README.md)
+ - [seajs](seajs/README.md)
 
 
 ## 使用说明
