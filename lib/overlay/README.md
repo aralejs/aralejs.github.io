@@ -85,6 +85,14 @@
 
     判断浮层是否显示。
 
+* `get(key)` 
+
+    获得属性值。
+
+* `set(key, value)` 
+
+    非只读属性都可以通过set方法修改，并会立刻反映到浮层上。
+
 
 ## 最佳实践
 
@@ -95,6 +103,7 @@
             width: 500,
             height: 200,
             zIndex: 99,
+            style: 'border:1px solid red;color:green;',
             parentNode: '#c',
             position: {
                 selfXY: ['-100%', 0],
@@ -103,12 +112,14 @@
             }
         });
         overlay.render().show();
+        // 修改元素样式
         overlay.css({
             backgroundColor: 'red',
             border: '1px solid green'
         });
         // 非只读属性都可以通过 set 方法进行更新
         overlay.set('width', 500);
+        overlay.set('className', 'myclass');
 
 2. 继承使用：
 

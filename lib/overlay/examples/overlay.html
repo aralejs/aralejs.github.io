@@ -44,32 +44,28 @@ seajs.use('../src/overlay', function(Overlay) {
     var o = new Overlay({
         template: '<div class="overlay"></div>',
         height: 200,
-        pinOffset: {
-            x: '-100%',
-            y:0
-        },
         parentNode: '#c',
-        baseObject: {
-            element: '#a',
-            x: 0,
-            y: 0
+        position: {
+            selfXY: ['-100%', 0],
+            baseElement: '#a',
+            baseXY: [0, 0]
         }
     });
 
     o.render().show();
-    o.setStyles({
+    o.css({
         height: 100,
         backgroundColor: 'red'
     });
+    //o.set('width', 100);
 
 
     var o2 = new Overlay({
         element: '#b',
         width: 300,
         height: 200,
-        baseObject: {
-            x: 200,
-            y: 200
+        position: {
+            baseXY: [200, 200]
         }
     });
     o2.render().show();
