@@ -51,12 +51,11 @@ define(function(require) {
 
     var Class = require('class');
     var Events = require('events');
-    var Attrs = require('./attrs');
-    var Options = require('./options');
     var Aspect = require('./aspect');
+    var Attribute = require('./attribute');
 
-    return Class.create({
-        Implements: [Events, Attrs, Options, Aspect],
+    var Base = Class.create({
+        Implements: [Events, Aspect, Attribute],
 
         initialize: function(config) {
             ...
@@ -65,14 +64,14 @@ define(function(require) {
         ...
     });
 
+    ...
 });
 ```
 
 具体用法请参考：
 
 - [Events 使用文档](../events/README.md)
-- [Attrs 使用文档](docs/attrs.md)
-- [Options 使用文档](docs/options.md)
+- [Attribute 使用文档](docs/attribute.md)
 - [Aspect 使用文档](docs/aspect.md)
 
 
