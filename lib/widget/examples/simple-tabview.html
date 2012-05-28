@@ -130,7 +130,7 @@
             },
 
             render: function() {
-                this.set('activeIndex', this.options.startIndex);
+                this.set('activeIndex', this.get('activeIndex'));
                 return this;
             },
 
@@ -156,7 +156,7 @@
 
         var tabView = new SimpleTabView({
             element: '#demo',
-            startIndex: 1
+            activeIndex: 0
         }).render();
 
 
