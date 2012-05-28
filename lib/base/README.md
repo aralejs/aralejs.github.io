@@ -8,9 +8,9 @@ Base 是一个基础类，提供 Class、Events、Attrs、Options 和 Aspect 支
 
 ## 模块依赖
 
- - [seajs](../seajs/README.md)
- - [class](../class/README.md)
- - [events](../events/README.md)
+ - [seajs](seajs/README.md)
+ - [class](class/README.md)
+ - [events](events/README.md)
 
 
 ## 使用说明
@@ -70,9 +70,9 @@ define(function(require) {
 
 具体用法请参考：
 
-- [Events 使用文档](../events/README.md)
-- [Attribute 使用文档](docs/attribute.md)
-- [Aspect 使用文档](docs/aspect.md)
+- [Events 使用文档](events/README.md)
+- [Attribute 使用文档](base/docs/attribute.md)
+- [Aspect 使用文档](base/docs/aspect.md)
 
 
 ## 测试用例

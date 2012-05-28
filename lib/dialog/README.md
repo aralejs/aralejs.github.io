@@ -10,9 +10,9 @@
 
 ## 模块依赖
 
- - [seajs](../seajs/README.md)
- - [jquery](../jquery/README.md)
- - [overlay](../overlay/README.md)
+ - [seajs](seajs/README.md)
+ - [jquery](jquery/README.md)
+ - [overlay](overlay/README.md)
 
 
 ## API说明
