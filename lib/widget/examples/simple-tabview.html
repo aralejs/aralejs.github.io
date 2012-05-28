@@ -80,23 +80,21 @@
         // 基于 Widget 定义 SimpleTabView 组件
         var SimpleTabView = Widget.extend({
 
-            options: {
-                startIndex: 1
-            },
-
             attrs: {
                 triggers: {
                     value: '.nav li',
                     getter: function(val) {
                         return this.$(val);
-                    }
+                    },
+                    readOnly: true
                 },
 
                 panels: {
                     value: '.content div',
                     getter: function(val) {
                         return this.$(val);
-                    }
+                    },
+                    readOnly: true
                 },
 
                 activeIndex: {

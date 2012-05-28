@@ -6,9 +6,9 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
 
 ## 模块依赖
 
- - [seajs](../seajs/README.md)
- - [jquery](../jquery/README.md)
- - [widget](../widget/README.md)
+ - [seajs](seajs/README.md)
+ - [jquery](jquery/README.md)
+ - [widget](widget/README.md)
 
 
 ## 配置属性

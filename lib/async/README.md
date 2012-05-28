@@ -8,7 +8,7 @@ Async 是一个很棒的简化 JavaScript 异步编程的工具类。它不仅�
 
 ## 模块依赖
 
- - [seajs](../seajs/README.md)
+ - [seajs](seajs/README.md)
 
 
 ## 使用说明

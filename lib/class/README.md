@@ -8,7 +8,7 @@
 
 ## 模块依赖
 
- - [seajs](../seajs/README.md)
+ - [seajs](seajs/README.md)
 
 
 ## 使用说明
@@ -174,8 +174,8 @@ var Dog = Class(Animal).extend({
 
 ## 调研文档
 
-- [OO 模拟那些事儿](docs/competitors.md)
-- [类与模块](docs/meta.md)
+- [OO 模拟那些事儿](class/docs/competitors.md)
+- [类与模块](class/docs/meta.md)
 
 
 ## 交流讨论
