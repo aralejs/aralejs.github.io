@@ -74,6 +74,7 @@ var widget = new Widget({
     this.initAttrs(config);
     this.parseElement();
     this.parseDataAttrs();
+    this.initProps();
     this.delegateEvents();
     this.setup();
 ```
@@ -158,6 +159,17 @@ widget 实例对应的 DOM 根节点，是一个 jQuery / Zepto 对象。
 
 ```
 this.title = this.$(this.dataset.role.title);
+```
+
+
+### initProps `widget.initProps()`
+
+properties 的初始化方法，提供给子类覆盖，比如：
+
+```js
+initProps: function() {
+    this.targetElement = $(this.get('target'));
+}
 ```
 
 
