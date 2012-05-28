@@ -14,46 +14,42 @@
 /* panel.js */
 define(function(require, exports, module) {
     var Base = require('base');
+    var $ = require('$');
 
     var Panel = Base.extend({
         options: {
-            color: '#fff',
-            size: {
-                width: 100,
-                height: 100
-            }
+            classPrefix: 'ui-panel',
+            mask: true
         },
 
-        initialize: function(id, options) {
-            this.srcNode = document.getElementById(id);
-            this.setOptions(options);
+        initialize: function(config) {
+            Panel.superclass.initialize.call(this, config);
+            this.element = $(config.element).eq(0);
         },
 
         show: function() {
             this.trigger('show');
-            this.srcNode.style.display = 'block';
+            this.element.show();
             this.trigger('shown');
         }
     });
 });
 ```
 
-在 `initialize` 方法中，调用 `setOptions` 方法，就可以自动设置好实例的 `options` 属性。
+在 `initialize` 方法中，调用 `superclass.initialize` 方法，就可以自动设置好实例的 `options` 属性。
 
 ```js
 /* test.js */
 define(function(require, exports, module) {
     var Panel = require('./panel');
 
-    var panel = new Panel('test', {
-        color: '#f00',
-        size: {
-            width: 200
-        }
+    var panel = new Panel({
+        element: '#test',
+        classPrefix: 'alice-panel'
     });
 
-    console.log(panel.options.color); // '#f00'
-    console.log(panel.options.size);  // { width: 200, height: 100 }
+    console.log(panel.options.classPrefix); // ==> 'alice-panel'
+    console.log(panel.options.mask);  // ==> true
 });
 ```
 
@@ -65,11 +61,9 @@ define(function(require, exports, module) {
 define(function(require, exports, module) {
     var Panel = require('./panel');
 
-    var panel = new Panel('test', {
-        color: '#f00',
-        size: {
-            width: 200
-        },
+    var panel = new Panel({
+        element: '#test',
+        classPrefix: 'alice-panel',
         onShow: function() {
             alert('准备显示');
         },

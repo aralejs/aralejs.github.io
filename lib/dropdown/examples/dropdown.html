@@ -62,7 +62,7 @@
             </ul>
         </div>
         <div class="tips tips-grey">
-            <h4>说明: 暂不支持 data-api。</h4> 
+            <h4>说明: 暂不支持 data-api。data-api 将由另外的组件支持。</h4> 
             <ul>
                 <li><del>data-trigger='click', 不指定则采用 hover 为默认值。可选有：click|hover</del></li>
                 <li><del>可以在 href 或者 data-target='#dropdown1' 指定你要展示的元素id。不指定则默认采用兄弟元素('.ui-dropdown')。</del></li>
@@ -100,9 +100,9 @@
     </div>
 
     <div class="example">
-        <h3>范例4: 定制动画效果</h3>
+        <h3>范例4: 定制动画效果以及延迟触发</h3>
         <div class="dropdown">
-            <a href="#dropdown4" id="triggerId4">下拉框<span class="icon">▼</span></a>
+            <a href="#dropdown4" id="triggerId4" title="0.4s 后出现, 请稍安勿躁">下拉框<span class="icon">▼</span></a> 
             <ul class="fn-hide ui-dropdown" id="dropdown4">
                 <li><a href="http://aralejs.org#1">内容1</a></li>
                 <li><a href="http://aralejs.org#2">内容2</a></li>
@@ -119,16 +119,6 @@
         </div>
     </div>
 
-    <div class="example">
-        <h3>范例6: 定制 Overlay</h3>
-        <div class="dropdown">
-            <a href="#dropdown6" id="triggerId6">下拉框<span class="icon">▼</span></a>
-        </div>
-        <div class="tips tips-grey">
-            <h4>说明: 暂不支持传递 Overlay 作为参数。</h4> 
-        </div>
-    </div>
-
 </div>
 <script type="text/javascript">
 seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay){
@@ -139,7 +129,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     var example2 = new Dropdown({
         trigger: '#triggerId2',
         element: '#dropdown2',
-        y: $('#triggerId2').height()
+        offset: [0,$('#triggerId2').height()],
     });
     example2.render();
     // 订阅事件
@@ -149,56 +139,40 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         console.log('example2 is hidden');
     });
     // 触发事件
-    example2.trigger('shown');
+    // example2.trigger('shown');
 
     var example3 = new Dropdown({
         trigger: '#triggerId3',
         triggerType: 'click',
-        y: -80,
+        offset: [0,-80],
         element: '#dropdown3'
     });
     example3.render();
 
     var animDropdown = Dropdown.extend({
         show: function(){
-            this.overlay.setPosition(); //潜规则： 需调用 overlay 的计算位置方法
-            $(this.overlay.element).fadeIn();
+            //this.element.fadeIn(); //淡入效果
+            this.element.animate({'height': 'toggle', 'opacity':'show'}, 200);
         },
         hide: function(){
-            $(this.overlay.element).fadeOut();
+            //this.element.fadeOut(); //淡出效果
+            this.element.animate({'height': 'toggle', 'opacity':'hide'}, 200);
         }
     });
     var example4 = new animDropdown({
         trigger: '#triggerId4',
-        x: 5,
-        y: 20,
+        offset: [5,20],
+        delay: 0.4,
         element: '#dropdown4'
     });
     example4.render();
 
     var example5 = new Dropdown({
         trigger: '#triggerId5',
-        y: 20,
+        offset: [0,20],
         template: '<div class="ui-dropdown fn-hide"><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>'
     });
     example5.render();
-
-    /*
-    var overlay6 = new Overlay({
-        template: '<div class="ui-dropdown fn-hide"><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>',
-        baseObject: {
-            element: '#triggerId6',
-            x: 0,
-            y: 20
-        }
-    });
-    var example6 = new Dropdown({
-        trigger: '#triggerId6',
-        overlay: overlay6,
-        y: 20,
-    });
-    example6.render();
-    */
 
 });
 </script>

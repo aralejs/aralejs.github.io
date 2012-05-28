@@ -8,7 +8,7 @@
 
 ## 模块依赖
 
- - [seajs](seajs/README.md)
+ - [seajs](../seajs/README.md)
 
 
 ## 使用说明
@@ -136,7 +136,7 @@ Backbone 已合并 Arale 的代码：
 
 ## 调研文档
 
-- [Events 竞争对手分析](events/docs/competitors.md)
+- [Events 竞争对手分析](docs/competitors.md)
 
 
 ## 交流讨论
