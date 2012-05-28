@@ -3,7 +3,7 @@ define("#base/0.9.5/aspect-debug", [], function(require, exports) {
     // Aspect
     // ---------------------
     // Thanks to:
-    //  - http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-do.js.html
+    //  - http://yuilibrary.com/yui/docs/api/classes/Do.html
     //  - http://code.google.com/p/jquery-aop/
     //  - http://lazutkin.com/blog/2008/may/18/aop-aspect-javascript-dojo/
 
