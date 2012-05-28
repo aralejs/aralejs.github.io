@@ -1,7 +1,7 @@
 
 # Base
 
-Base 是一个基础类，提供 Class、Events、Attrs 和 Options 支持。
+Base 是一个基础类，提供 Class、Events、Attrs、Options 和 Aspect 支持。
 
 ---
 
@@ -53,9 +53,10 @@ define(function(require) {
     var Events = require('events');
     var Attrs = require('./attrs');
     var Options = require('./options');
+    var Aspect = require('./aspect');
 
     return Class.create({
-        Implements: [Events, Attrs, Options],
+        Implements: [Events, Attrs, Options, Aspect],
 
         initialize: function(config) {
             ...
@@ -72,6 +73,7 @@ define(function(require) {
 - [Events 使用文档](../events/README.md)
 - [Attrs 使用文档](docs/attrs.md)
 - [Options 使用文档](docs/options.md)
+- [Aspect 使用文档](docs/aspect.md)
 
 
 ## 测试用例
