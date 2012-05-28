@@ -12,57 +12,78 @@
  - [position](position/README.md)
 
 
-## API说明
+## 配置说明
 
 * `element` {element} 
 
-	页面dom节点。
+    页面dom节点，只读。
 
 * `template` {string}
 
-	浮层容器的模板，如'\<div class="myoverlay">\</div>'。
+    浮层容器的模板，如'\<div class="myoverlay">\</div>'，只读。
 
 * `zIndex` {string|number}
 
-	浮层的z-index属性。
+    浮层的z-index属性。
 
 * `width` {string|number}
 
-	浮层宽度(px)。
+    浮层宽度(px)。
 
 * `height` {string|number}
 
-	浮层高度(px)。
+    浮层高度(px)。
+
+* `id` {string}
+
+    浮层的初始化 id 。
+
+* `className` {string}
+
+    浮层的初始化 className 。
+
+* `style` {string}
+
+    浮层的初始化 style 字符串。
 
 * `parentNode` {element}
 
-	浮层的父元素，默认为document.body。
+    浮层的父元素，默认为document.body，只读。
 
-* `pinOffset` {object}
+* `position` {object}
 
-	当前节点的定位点对象，如：{x:0, y:0}。
+    定位对象，形似：
 
-* `relativeObj` {object}
+        {
+            selfXY: [0, 0],     // element 的定位点，默认为左上角
+            baseElement: Position.VIEWPORT,     // 基准定位元素，默认为当前可视区域
+            baseXY: [0, 0]      // 基准定位元素的定位点，默认为左上角
+        }
 
-	基准元素及其定位点对象，如{elem:b, x:10, y:10}。
+    这块的定位原理可参照arale.position组件的pin方法。
 
-	这块的定位原理可参照arale.position组件的pin方法。
+
+## 方法说明
 
 * `render()` 
 
-	生成浮层的dom结构和样式并插入文档流。
+    生成浮层的dom结构和样式并插入文档流。
 
-* `setStyles(styles)` 
+* `css(styles)` 
 
-	设定浮层元素的样式值。
+    设定浮层元素的样式值。
 
 * `show()` 
 
-	显示浮层。
+    显示浮层。
 
 * `hide()` 
 
-	隐藏浮层。
+    隐藏浮层。
+
+* `isVisible()` 
+
+    判断浮层是否显示。
 
 
 ## 最佳实践
@@ -73,28 +94,27 @@
             template: '<div class="overlay"></div>',
             width: 500,
             height: 200,
-            pinOffset: {
-                x: '-100%',
-                y:0
-            },
+            zIndex: 99,
             parentNode: '#c',
-            baseObject: {
-                element: '#a',
-                x: 0,
-                y: 0
+            position: {
+                selfXY: ['-100%', 0],
+                baseElement: '#a',
+                baseXY: [0, 0]
             }
         });
         overlay.render().show();
-        overlay.setStyles({
-            height: 100,
-            backgroundColor: 'red'
+        overlay.css({
+            backgroundColor: 'red',
+            border: '1px solid green'
         });
+        // 非只读属性都可以通过 set 方法进行更新
+        overlay.set('width', 500);
 
 2. 继承使用：
 
         var Overlay = require('overlay');
         var Dialog = Overlay.extend({
-            options: {
+            attrs: {
                 trigger: null,
                 triggerType: 'click',
                 comfirmElement: null,
@@ -104,7 +124,7 @@
                 onComfirm: function() {},
                 onClose: function() {}
             },
-            init: function() {
+            setup: function() {
                 
             },
             parseElement: function() {

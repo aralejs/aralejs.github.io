@@ -3,7 +3,7 @@
 
 对话框组件，提供对话框显示隐藏、dom结构自定义、定位、select遮挡、确定取消关闭等功能特性。
 
-继承了arale.overlay组件。
+继承自arale.overlay组件。
 
 ---
 
@@ -15,7 +15,7 @@
  - [overlay](overlay/README.md)
 
 
-## API说明
+## 配置说明
 
 * `trigger` : {element}
 
@@ -73,9 +73,21 @@
 
     内容是ajax取得时，指定其来源地址。
 
+* `showEffect` : {object}
 
-其他API参照[overlay](overlay/README.md)。
+    显示的动画效果，形式 { type: 'fade', duration: '200', easing: 'easeOut' } , 目前只支持淡入效果。 
 
+* `hideEffect` : {object}
+
+    隐藏时的动画效果，形式 { type: 'fade', duration: '200', easing: 'easeOut' } 
+
+
+其他配置参照[overlay](overlay/README.md)。
+
+
+## 实例方法
+
+参照[overlay](overlay/README.md)。
 
 ## 最佳实践
 
@@ -85,9 +97,8 @@
         width: 300,
         height: 200,
         closeElement: '#close',
-        baseObject: {
-            x: 200,
-            y: 100
+        position: {
+            baseXY: [100, 100]
         },
         hasMask: true
     });
