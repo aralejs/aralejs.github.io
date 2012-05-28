@@ -47,6 +47,7 @@ define("#widget/0.9.3/widget-debug", ["base","$","./daparser"], function(require
             // 由 Widget 提供
             this.parseElement();
             this.parseDataAttrs();
+
             this.initProps();
             this.delegateEvents();
 
@@ -159,6 +160,7 @@ define("#widget/0.9.3/widget-debug", ["base","$","./daparser"], function(require
         },
 
         // 提供给子类覆盖的初始化方法
+        // 该方法执行后，子类的状态一般与默认配置一致
         setup: function() {
         },
 
@@ -166,12 +168,17 @@ define("#widget/0.9.3/widget-debug", ["base","$","./daparser"], function(require
         // 渲染不仅仅包括插入到 DOM 树中，还包括样式渲染等
         // 约定：子类覆盖时，需保持 `return this`
         render: function() {
+
+            // 让用户传入的 config 生效
+            this.change();
+
+            // 插入到文档流中
             // parentNode maybe a document fragment.
             var parentNode = this.element[0].parentNode || { nodeType: 11 };
-
             if (parentNode.nodeType === 11 && this.get('parentNode')) {
                 this.element.appendTo(this.get('parentNode'));
             }
+
             return this;
         },
 
