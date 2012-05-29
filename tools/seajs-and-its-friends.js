@@ -18,9 +18,9 @@ seajs.config({
     alias: {
         'events': 'events/0.9.1/events',
         'class': 'class/0.9.1/class',
-        'base': 'base/0.9.7/base',
-        'widget': 'widget/0.9.4/widget',
-        'widget-templatable': 'widget/0.9.4/templatable',
+        'base': 'base/0.9.8/base',
+        'widget': 'widget/0.9.5/widget',
+        'widget-templatable': 'widget/0.9.5/templatable',
 
         '$': 'jquery/1.7.2/jquery',
         'jquery': 'jquery/1.7.2/jquery',
