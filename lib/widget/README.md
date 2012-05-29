@@ -74,6 +74,7 @@ var widget = new Widget({
     this.initAttrs(config);
     this.parseElement();
     this.parseDataAttrs();
+    this.initProps();
     this.delegateEvents();
     this.setup();
 ```
@@ -161,6 +162,17 @@ this.title = this.$(this.dataset.role.title);
 ```
 
 
+### initProps `widget.initProps()`
+
+properties 的初始化方法，提供给子类覆盖，比如：
+
+```js
+initProps: function() {
+    this.targetElement = $(this.get('target'));
+}
+```
+
+
 ### delegateEvents `widget.delegateEvents([events])`
 
 ### delegateEvents `widget.delegateEvents(eventType, handler)`
@@ -209,6 +221,22 @@ var MyWidget = Widget.extend({
         hash["mouseover " + this.stamp(this.trigger)] = "open";
 
         return hash;
+    },
+    ...
+});
+```
+
+`events` 中，还支持 `{{name}}` 模板表达式，比如上面的代码，可以简化为：
+
+```js
+var MyWidget = Widget.extend({
+    events: {
+        "click": "open",
+        "click .close": "close",
+        "click {{dataset.role.title}}": "toggle",
+        "mouseover {{trigger}}": "open",
+        "mouseover {{attrs.panels}}": "hover"
+        "click {{header}},{{footer}}": "egg"
     },
     ...
 });

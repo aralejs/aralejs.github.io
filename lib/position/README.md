@@ -39,7 +39,7 @@
     
     当 element 缺省时，表示 pinObject 相对屏幕可见区域的左上角定位。比如可以写成
         
-        Position.pin(a, { x: 10, y: 10 });    //这样后一个参数可简单理解为偏移量
+        Position.pin(a, { x: 10, y: 10 });    // 这样后一个参数可简单理解为偏移量
         
     或写成
         
@@ -75,7 +75,7 @@
 
 1. 定位元素到可视区域左上角
 
-        Position.pin(a, { x: 0, y: 0 });    //后一个参数可理解为偏移量
+        Position.pin(a, { x: 0, y: 0 });    // 后一个参数可理解为偏移量
 
 2. 定位元素到基准元素位置向右偏移 20px
     
@@ -105,6 +105,11 @@
 ## 演示页面
 
  - <http://aralejs.org/lib/position/examples/position.html>
+
+
+## 测试用例
+
+- <http://aralejs.org/lib/position/tests/runner.html>
 
 
 ## 交流讨论

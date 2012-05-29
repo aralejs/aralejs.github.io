@@ -128,7 +128,7 @@
 
             Implements: Templatable,
 
-            options: {
+            attrs: {
                 template: '<div id="b" class="widget"><h3>{{title}}</h3><p>{{content}}</p></div>'
             },
 
@@ -145,7 +145,7 @@
                 this.$('p').slideToggle('slow');
             },
 
-            init: function() {
+            setup: function() {
                 this.$('p').css({
                     'height': 100,
                     'padding': 20,
@@ -172,7 +172,7 @@
                 'click li .remove': 'remove'
             },
 
-            helpers: {
+            templateHelpers: {
                 'list': function(items) {
                     var out = '';
 
@@ -192,15 +192,13 @@
                 $(event.target).parent().remove();
             },
 
-            init: function() {
-                var options = this.options;
-
-                if (options.style) {
-                    this.element.attr('style', options.style);
+            setup: function() {
+                if (this.get('style')) {
+                    this.element.attr('style', this.get('style'));
                 }
 
-                if (options.className) {
-                    this.element.addClass(options.className);
+                if (this.get('className')) {
+                    this.element.addClass(this.get('className'));
                 }
             }
 

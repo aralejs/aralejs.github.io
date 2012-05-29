@@ -1,4 +1,4 @@
-define("#base/0.9.5/attribute-debug", [], function(require, exports) {
+define("#base/0.9.7/attribute-debug", [], function(require, exports) {
 
     // Attribute
     // -----------------
@@ -64,6 +64,7 @@ define("#base/0.9.5/attribute-debug", [], function(require, exports) {
         options || (options = {});
         var now = this.attrs;
         var silent = options.silent;
+        var pending = now.__pending || (now.__pending = {});
 
         for (key in attrs) {
             var attr = now[key] || (now[key] = {});
@@ -97,9 +98,29 @@ define("#base/0.9.5/attribute-debug", [], function(require, exports) {
             now[key].value = val;
 
             // invoke change event
-            if (!silent && this.trigger/* && prev !== val*/) {
-                this.trigger('change:' + key, val, prev, key);
+            if (!isEqual(prev, val)) {
+                if (silent) {
+                    pending[key] = [val, prev];
+                } else {
+                    this.trigger('change:' + key, val, prev, key);
+                }
             }
+        }
+    };
+
+
+    // Call this method to manually fire a `"change"` event for triggering
+    // a `"change:attribute"` event for each changed attribute.
+    exports.change = function() {
+        var pending = this.attrs.__pending;
+
+        if (pending) {
+            for (var key in pending) {
+                var args = pending[key];
+                this.trigger('change:' + key, args[0], args[1], key);
+            }
+
+            delete this.attrs.__pending;
         }
     };
 
@@ -212,6 +233,70 @@ define("#base/0.9.5/attribute-debug", [], function(require, exports) {
         }
 
         return result;
+    }
+
+
+    function isEqual(a, b) {
+        if (a === b) return true;
+
+        // A strict comparison is necessary because `null == undefined`.
+        if (a == null || b == null) return a === b;
+
+        // Compare `[[Class]]` names.
+        var className = toString.call(a);
+        if (className != toString.call(b)) return false;
+
+        switch (className) {
+
+            // Strings, numbers, dates, and booleans are compared by value.
+            case '[object String]':
+                // Primitives and their corresponding object wrappers are
+                // equivalent; thus, `"5"` is equivalent to `new String("5")`.
+                return a == String(b);
+
+            case '[object Number]':
+                // `NaN`s are equivalent, but non-reflexive. An `equal`
+                // comparison is performed for other numeric values.
+                return a != +a ? b != +b : (a == 0 ? 1 / a == 1 / b : a == +b);
+
+            case '[object Date]':
+            case '[object Boolean]':
+                // Coerce dates and booleans to numeric primitive values.
+                // Dates are compared by their millisecond representations.
+                // Note that invalid dates with millisecond representations
+                // of `NaN` are not equivalent.
+                return +a == +b;
+
+            // RegExps are compared by their source patterns and flags.
+            case '[object RegExp]':
+                return a.source == b.source &&
+                        a.global == b.global &&
+                        a.multiline == b.multiline &&
+                        a.ignoreCase == b.ignoreCase;
+
+            // 简单判断数组包含的 primitive 值是否相等
+            case '[object Array]':
+                var aString = a.toString();
+                var bString = b.toString();
+
+                // 只要包含非 primitive 值，为了稳妥起见，都返回 false
+                return aString.indexOf('[object') === -1 &&
+                        bString.indexOf('[object') === -1 &&
+                        aString === bString;
+        }
+
+        if (typeof a != 'object' || typeof b != 'object') return false;
+
+        // 简单判断两个对象是否相等，只判断第一层
+        if (isPlainObject(a) && isPlainObject(b)) {
+            for (var p in a) {
+                if (a[p] !== b[p]) return false;
+            }
+            return true;
+        }
+
+        // 其他情况返回 false, 以避免误判导致 change 事件没发生
+        return false;
     }
 
 });

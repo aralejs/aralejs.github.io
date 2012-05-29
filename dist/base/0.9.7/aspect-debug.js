@@ -1,4 +1,4 @@
-define("#base/0.9.5/aspect-debug", [], function(require, exports) {
+define("#base/0.9.7/aspect-debug", [], function(require, exports) {
 
     // Aspect
     // ---------------------
@@ -23,12 +23,21 @@ define("#base/0.9.5/aspect-debug", [], function(require, exports) {
     // Helpers
     // -------
 
+    var eventSplitter = /\s+/;
+
     function weave(when, methodName, callback, context) {
-        var method = getMethod(this, methodName);
-        if (!method.__isAspected) {
-            wrap.call(this, methodName);
+        var names = methodName.split(eventSplitter);
+        var name, method;
+
+        while (name = names.shift()) {
+            method = getMethod(this, name);
+            if (!method.__isAspected) {
+                wrap.call(this, name);
+            }
+            this.on(when + ':' + name, callback, context);
         }
-        return this.on(when + ':' + methodName, callback, context);
+
+        return this;
     }
 
 

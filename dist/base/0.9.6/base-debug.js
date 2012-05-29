@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#base/0.9.6/base-debug", ["class","events","./aspect","./attribute"], function(require, exports, module) {
 
     var Class = require('class');
     var Events = require('events');
@@ -10,12 +10,8 @@ define(function(require, exports, module) {
         Implements: [Events, Aspect, Attribute],
 
         initialize: function(config) {
-            this._parseEventsFromConfig(config);
-            this.initAttrs(config);
-        },
 
-        // Convert `on/before/afterXxx` config to event handler.
-        _parseEventsFromConfig: function(config) {
+            // Convert `on/before/afterXxx` config to event handler.
             for (var key in config) {
                 var value = config[key], m;
 
@@ -25,6 +21,9 @@ define(function(require, exports, module) {
                     delete config[key];
                 }
             }
+
+            // Initialize attrs.
+            this.initAttrs(config);
         },
 
         destroy: function() {
