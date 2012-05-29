@@ -66,7 +66,7 @@ define("#base/0.9.5/attribute-debug", [], function(require, exports) {
         var silent = options.silent;
 
         for (key in attrs) {
-            var attr = now[key] || ( now[key] = {} );
+            var attr = now[key] || (now[key] = {});
             val = attrs[key];
 
             if (attr.readOnly) {
