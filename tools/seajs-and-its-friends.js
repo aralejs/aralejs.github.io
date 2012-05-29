@@ -18,7 +18,7 @@ seajs.config({
     alias: {
         'events': 'events/0.9.1/events',
         'class': 'class/0.9.1/class',
-        'base': 'base/0.9.6/base',
+        'base': 'base/0.9.7/base',
         'widget': 'widget/0.9.3/widget',
         'widget-templatable': 'widget/0.9.3/templatable',
 

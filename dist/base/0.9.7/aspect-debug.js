@@ -1,4 +1,4 @@
-define(function(require, exports) {
+define("#base/0.9.7/aspect-debug", [], function(require, exports) {
 
     // Aspect
     // ---------------------
