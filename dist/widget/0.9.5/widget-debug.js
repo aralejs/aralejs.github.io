@@ -112,7 +112,9 @@ define("#widget/0.9.5/widget-debug", ["base","$","./daparser"], function(require
                 var args = parseEventKey(key, this);
                 handler = bind(events[key], this);
 
-                this.element.on(args.type, args.selector, handler);
+                if (args.selector !== INVALID_SELECTOR) {
+                    this.element.on(args.type, args.selector, handler);
+                }
             }
 
             return this;
@@ -296,6 +298,7 @@ define("#widget/0.9.5/widget-debug", ["base","$","./daparser"], function(require
 
 
     var OBJECT_FLAG = /\{\{([^\}]+)\}\}/g;
+    var INVALID_SELECTOR = {};
 
     // 将 {{xx}},{{yy}} 转换成 .daparser-n, .daparser-m
     function parseObjectExpression(selector, widget) {
@@ -310,6 +313,11 @@ define("#widget/0.9.5/widget-debug", ["base","$","./daparser"], function(require
                 } else {
                     point = point[part];
                 }
+            }
+
+            // 由于事件代理中，某些属性是选择性出现的，这种情况下，静默忽略会比较合理
+            if (!point) {
+                return INVALID_SELECTOR;
             }
 
             // 已经是 className，比如来自 dataset 的
@@ -329,6 +337,7 @@ define("#widget/0.9.5/widget-debug", ["base","$","./daparser"], function(require
         if (!node || node.nodeType !== 1) {
             throw 'This element is not a valid DOM element: ' + element;
         }
+
         return '.' + DAParser.stamp(node);
     }
 
