@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#overlay/0.9.2/overlay-debug", ["$","position","iframe-shim","widget"], function(require, exports, module) {
 
     var $ = require('$'),
         Position = require('position'),
@@ -40,8 +40,6 @@ define(function(require, exports, module) {
             var shim = new Shim(this.element);
             this.before('show', shim.sync, shim);
             this.after('hide', shim.sync, shim);
-            this.after('setPosition', shim.sync, shim);
-            this.after('css', shim.sync, shim);            
             this.on('change:width change:height change:zIndex', shim.sync, shim);
         },
 
