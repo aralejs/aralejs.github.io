@@ -23,7 +23,7 @@
 <script>
 seajs.use('../src/dialog', function(Dialog) {
 
-    var o = new Dialog({
+    var d = new Dialog({
         trigger: '#trigger',
         template: '<div class="overlay"><button id="confirm">确认按钮</button><button id="close">点击关闭</button></div>',
         width: 300,
@@ -36,12 +36,12 @@ seajs.use('../src/dialog', function(Dialog) {
         onClose: function() {
             alert('点击了关闭按钮');
         },
-        baseObject: {
-            x: 200,
-            y: 100
+        align: {
+            baseXY: [200, 200]
         },
         hasMask: true
     });
+    console.log(d);
 
 });
 </script>
