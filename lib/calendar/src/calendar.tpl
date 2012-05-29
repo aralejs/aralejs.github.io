@@ -1,3 +1,4 @@
+<div>
 <table class="ui-calendar">
     <thead>
         <tr class="ui-calendar-months">
@@ -8,13 +9,9 @@
             <td class="ui-calendar-next-year">&gt;&gt;</td>
         </tr>
         <tr class="ui-calendar-weeks">
-            <td>Su</td>
-            <td>Mo</td>
-            <td>Tu</td>
-            <td>We</td>
-            <td>Th</td>
-            <td>Fr</td>
-            <td>Sa</td>
+            {{#each weeks}}
+            <td>{{this}}</td>
+            {{/each}}
         </tr>
     </thead>
     <tbody>
@@ -71,3 +68,4 @@
         </tr>
     </tfoot>
 </table>
+</div>
