@@ -17,7 +17,7 @@
 </head>
 <body>
     
-    <button id="a" style="margin-top:400px;">显示默认遮罩层</button>
+    <button id="a" style="margin-top:100px;">显示默认遮罩层</button>
     <pre>mask.show()</pre>
     <button id="b" style="margin-top:100px;">显示修改的遮罩层</button>
     <pre>mask.set({backgroundColor:'green', opacity:0.2}).show()</pre>
@@ -29,7 +29,7 @@ seajs.use('../src/mask', function(mask) {
         mask.show();
     };
     document.getElementById('b').onclick = function() {
-        mask.set({backgroundColor:'green', opacity:0.2}).show();
+        mask.set('backgroundColor', 'green').set('opacity', '0.3').show();
     };
 
 });

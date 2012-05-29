@@ -21,6 +21,10 @@
 
     对话框触发点。
 
+* `triggerType` : {string}
+
+    对话框触发方式，可选 click|hover|focus ，默认为click。
+
 * `confirmElement` : {element|$}
 
     确定或提交按钮。
@@ -52,10 +56,6 @@
 * `onConfirm` : {function}
 
     确定时的操作，可在函数内使用this.activeTrigger得到触发节点，下同。
-
-* `onCancel` : {function}
-
-    取消时的操作。
 
 * `onClose` : {function}
 
