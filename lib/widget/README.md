@@ -74,6 +74,7 @@ var widget = new Widget({
     this.initAttrs(config);
     this.parseElement();
     this.parseDataAttrs();
+    this.initProps();
     this.delegateEvents();
     this.setup();
 ```
@@ -161,6 +162,17 @@ this.title = this.$(this.dataset.role.title);
 ```
 
 
+### initProps `widget.initProps()`
+
+properties 的初始化方法，提供给子类覆盖，比如：
+
+```js
+initProps: function() {
+    this.targetElement = $(this.get('target'));
+}
+```
+
+
 ### delegateEvents `widget.delegateEvents([events])`
 
 ### delegateEvents `widget.delegateEvents(eventType, handler)`
@@ -205,10 +217,23 @@ var MyWidget = Widget.extend({
         // 给 data-role="title" 的元素声明 toggle 事件代理
         hash["click " + this.dataset.role.title] = "toggle";
 
-        // 给 trigger DOM element 声明 open 事件代理
-        hash["mouseover " + this.stamp(this.trigger)] = "open";
-
         return hash;
+    },
+    ...
+});
+```
+
+`events` 中，还支持 `{{name}}` 模板表达式，比如上面的代码，可以简化为：
+
+```js
+var MyWidget = Widget.extend({
+    events: {
+        "click": "open",
+        "click .close": "close",
+        "click {{dataset.role.title}}": "toggle",
+        "mouseover {{trigger}}": "open",
+        "mouseover {{attrs.panels}}": "hover"
+        "click {{header}},{{footer}}": "egg"
     },
     ...
 });
@@ -255,26 +280,6 @@ var TabView = Widget.extend({
 ### $ `widget.$(selector)`
 
 在 `this.element` 内查找匹配节点。
-
-
-### stamp `widget.stamp(element)`
-
-给 element 添加具有唯一性的 class，并返回由该 class 构成的 selector。经常用在
-events 的声明函数中。
-
-```js
-var MyWidget = Widget.extend({
-    events: function() {
-        var hash = {
-            'click p': 'light'
-        };
-
-        hash['click ' + this.stamp(this.title)] = 'toggle';
-        return hash;
-    },
-    ...
-});
-```
 
 
 ### destroy `widget.destroy()`

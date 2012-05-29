@@ -107,31 +107,34 @@
             },
 
             _onChangeActiveIndex: function(val, prev) {
-                var triggers = this.get('triggers');
-                var panels = this.get('panels');
-
-                triggers.eq(prev).removeClass('active');
-                triggers.eq(val).addClass('active');
-
-                panels.eq(prev).hide();
-                panels.eq(val).show();
+                this.switchTo(val, prev);
             },
 
-            switchTo: function(index) {
+            switchTo: function(index, prevIndex) {
                 // 触发点击事件时，index 是 ev 对象
                 if (typeof index === 'object') {
                     index = this.get('triggers').index(index.target);
                 }
-                this.set('activeIndex', index);
+
+                if (prevIndex === undefined) {
+                    prevIndex = this.get('activeIndex');
+                }
+
+                var triggers = this.get('triggers');
+                var panels = this.get('panels');
+
+                triggers.eq(prevIndex).removeClass('active');
+                triggers.eq(index).addClass('active');
+
+                panels.eq(prevIndex).hide();
+                panels.eq(index).show();
+
+                return this;
             },
 
             setup: function() {
                 this.get('panels').hide();
-            },
-
-            render: function() {
-                this.set('activeIndex', this.options.startIndex);
-                return this;
+                this.switchTo(this.get('activeIndex'))
             },
 
             add: function(title, content) {
@@ -156,7 +159,7 @@
 
         var tabView = new SimpleTabView({
             element: '#demo',
-            startIndex: 1
+            activeIndex: 0
         }).render();
 
 
