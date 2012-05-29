@@ -217,9 +217,6 @@ var MyWidget = Widget.extend({
         // 给 data-role="title" 的元素声明 toggle 事件代理
         hash["click " + this.dataset.role.title] = "toggle";
 
-        // 给 trigger DOM element 声明 open 事件代理
-        hash["mouseover " + this.stamp(this.trigger)] = "open";
-
         return hash;
     },
     ...
@@ -283,26 +280,6 @@ var TabView = Widget.extend({
 ### $ `widget.$(selector)`
 
 在 `this.element` 内查找匹配节点。
-
-
-### stamp `widget.stamp(element)`
-
-给 element 添加具有唯一性的 class，并返回由该 class 构成的 selector。经常用在
-events 的声明函数中。
-
-```js
-var MyWidget = Widget.extend({
-    events: function() {
-        var hash = {
-            'click p': 'light'
-        };
-
-        hash['click ' + this.stamp(this.title)] = 'toggle';
-        return hash;
-    },
-    ...
-});
-```
 
 
 ### destroy `widget.destroy()`
