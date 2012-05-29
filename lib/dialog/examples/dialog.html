@@ -19,8 +19,15 @@
 </head>
 <body>
     <input type="button" id="trigger" value="点我打开对话框" />
-
 <script>
+
+// for debug
+seajs.config({
+    map: [
+        //[/^(.+)\/widget\.js.*$/, '$1/../../../lib/widget/src/widget.js']
+    ]
+});
+
 seajs.use('../src/dialog', function(Dialog) {
 
     var d = new Dialog({
@@ -28,19 +35,25 @@ seajs.use('../src/dialog', function(Dialog) {
         template: '<div class="overlay"><button id="confirm">确认按钮</button><button id="close">点击关闭</button></div>',
         width: 300,
         height: 200,
+
         confirmElement: '#confirm',
         closeElement: '#close',
+
         onConfirm: function() {
             alert('点击了确定按钮');
         },
+
         onClose: function() {
             alert('点击了关闭按钮');
         },
+
         align: {
             baseXY: [200, 200]
         },
+
         hasMask: true
     });
+
     console.log(d);
 
 });

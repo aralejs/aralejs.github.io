@@ -21,7 +21,7 @@ define("#overlay/0.9.2/overlay-debug", ["$","position","iframe-shim","widget"], 
             parentNode: document.body,
 
             // 基准定位对象，指定了基准定位元素及其定位点
-            align: {
+            position: {
                 // element 的定位点，默认为左上角
                 selfXY: [0, 0],
                 // 基准定位元素，默认为当前可视区域
