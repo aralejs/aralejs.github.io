@@ -50,7 +50,7 @@
 
     浮层的父元素，默认为document.body，只读。
 
-* `position` {object}
+* `align` {object}
 
     定位对象，形似：
 
@@ -97,7 +97,7 @@
             zIndex: 99,
             style: 'border:1px solid red;color:green;',
             parentNode: '#c',
-            position: {
+            align: {
                 selfXY: ['-100%', 0],
                 baseElement: '#a',
                 baseXY: [0, 0]

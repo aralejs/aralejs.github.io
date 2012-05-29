@@ -50,7 +50,7 @@ seajs.use('../src/overlay', function(Overlay) {
         style: {
             color: '#e80'
         },
-        position: {
+        align: {
             selfXY: ['-100%', 0],
             baseElement: '#a',
             baseXY: [0, 0]
@@ -63,14 +63,13 @@ seajs.use('../src/overlay', function(Overlay) {
         backgroundColor: 'red'
     });
     o.set('width', 100);
-    console.log(o);
 
 
     var o2 = new Overlay({
         element: '#b',
         width: 300,
         height: 200,
-        position: {
+        align: {
             baseXY: [200, 200]
         }
     });
