@@ -42,18 +42,23 @@
 seajs.use('../src/overlay', function(Overlay) {
 
     var o = new Overlay({
-        template: '<div class="overlay"></div>',
+        template: '<div class="overlay">overlay</div>',
         height: 200,
         parentNode: '#c',
-        position: {
+        id: 'overlay',
+        className: 'ui-overlay',
+        style: {
+            color: '#e80'
+        },
+        align: {
             selfXY: ['-100%', 0],
             baseElement: '#a',
             baseXY: [0, 0]
         }
     });
-
     o.render().show();
-    o.css({
+
+    o.set('style', {
         height: 100,
         backgroundColor: 'red'
     });
@@ -64,7 +69,7 @@ seajs.use('../src/overlay', function(Overlay) {
         element: '#b',
         width: 300,
         height: 200,
-        position: {
+        align: {
             baseXY: [200, 200]
         }
     });
