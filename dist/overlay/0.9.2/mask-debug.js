@@ -1,7 +1,7 @@
-define("#overlay/0.9.2/mask-debug", ["$","../src/overlay"], function(require, exports, module) {
+define("#overlay/0.9.2/mask-debug", ["$","./overlay"], function(require, exports, module) {
 
     var $ = require('$'),
-        Overlay = require('../src/overlay'),
+        Overlay = require('./overlay'),
         isIE6 = $.browser && $.browser.msie && $.browser.version == 6.0;
 
     var Mask = Overlay.extend({
