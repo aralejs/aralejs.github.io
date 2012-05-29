@@ -64,7 +64,7 @@
     <tfoot>
         <tr>
             <td colspan="5">Today</td>
-            <td colspan="2"><span class="ui-calendar-hour">12</span> : 22</td>
+            <td colspan="2"><span class="ui-calendar-hour">{{active.hour}}</span> : {{active.minute}}</td>
         </tr>
     </tfoot>
 </table>
