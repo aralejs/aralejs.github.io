@@ -1,10 +1,9 @@
 // May the Source be with you
 // 愿源码与你同在
 
-define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], function(require, exports, module) {
+define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay"], function(require, exports, module) {
     var $ = require('jquery');
     var Overlay = require('overlay');
-    var Position = require('position');
 
     var Dropdown = Overlay.extend({
         attrs: {
@@ -17,25 +16,19 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], functi
             },
             // 触发事件类型
             triggerType: {
-                value: 'mouseenter', // 支持：click|hover|mouseover|mouseleave
+                value: 'mouseenter', // 支持：click|hover|mouseover|mouseenter
                 getter: function(val) {
                     // 将 hover|mouseenter 转换为 mouseenter 事件
                     return val.replace(/hover|mouseover/i,'mouseenter');
                 }
             },
-            // 延迟触发时间, 单位:秒
+            // 延迟触发时间
             delay: {
-                value: 0.1,
-                getter: function(val){
-                    return val * 1000;
-                }
+                value: 100
             },
-            // 鼠标移出浮层后自动隐藏的时间, 单位:秒
+            // 鼠标移出浮层后自动隐藏的时间
             timeout: {
-                value: 0.1,
-                getter: function(val){
-                    return val * 1000;
-                }
+                value: 100
             },
             // 相对于 trigger 元素的坐标
             offset: [], // [x,y]
@@ -94,13 +87,11 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], functi
         },
 
         _onChangeOffset: function(val) {
+            var align = this.get('align');
             var trigger = this.get('trigger');
-            this.set('position', {
-                // element 的定位点，默认为左上角
-                selfXY: [0, 0],
-                // 基准定位元素，默认为当前可视区域
-                baseElement: trigger.selector,
-                // 基准定位元素的定位点，默认为左上角
+            this.set('align', {
+                selfXY: align.selfXY,
+                baseElement: trigger[0],
                 baseXY: val
             });
         },

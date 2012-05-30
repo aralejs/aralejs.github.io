@@ -106,6 +106,15 @@
                 <li><a href="http://aralejs.org#4">内容4</a></li>
             </ul>
         </div>
+        <div class="selectbox">
+            <!-- 测试IE6 iframe-shim 遮罩是否可以遮住选择框 -->
+            <select>
+                <option>我有仙心一颗</option>
+                <option>久被尘劳封锁</option>
+                <option>何日尘尽光生</option>
+                <option>照破山河万朵</option>
+            </select>
+        </div>
         <div class="tips">
             <h4>说明: 默认行为通过 hover 触发，可以不用传递参数 triggerType</h4> 
         </div>
@@ -127,7 +136,7 @@
     <div class="example">
         <h3>范例4: 自定义动画效果以及延时触发效果</h3>
         <div class="dropdown">
-            <a href="#dropdown4" id="triggerId4" title="0.4s 后出现, 请稍安勿躁">下拉框<span class="icon">▼</span></a> 
+            <a href="#dropdown4" id="triggerId4" title="400ms 后出现, 请稍安勿躁">下拉框<span class="icon">▼</span></a> 
             <ul class="fn-hide ui-dropdown" id="dropdown4">
                 <li><a href="http://aralejs.org#1">内容1</a></li>
                 <li><a href="http://aralejs.org#2">内容2</a></li>
@@ -164,7 +173,15 @@
 </div>
 <script type="text/javascript">
 seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay){
-    window.$ = window.jQuery = $; // for debuging only;
+    // for debuging only;
+    window.$ = window.jQuery = $;
+    if (!window.console) {
+        var helper = ['log','dir','error', 'warn','info'];
+        window.console = {};
+        $.map(helper, function(val, i){
+            window.console[val] = $.noop;
+        });
+    }
 
     var example1; // data-api 暂无例子。
 
@@ -172,7 +189,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     var example2 = new Dropdown({
         trigger: '#triggerId2',
         element: '#dropdown2',
-        offset: [0,$('#triggerId2').height()],
+        offset: [0,$('#triggerId2').height()]
     });
     example2.render();
     // 订阅事件
@@ -207,7 +224,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     var example4 = new animDropdown({
         trigger: '#triggerId4',
         offset: [5,20],
-        delay: 0.4,
+        delay: 400,
         element: '#dropdown4'
     });
     example4.render();
@@ -222,7 +239,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     example5.after('show', function(){
         $('#triggerId5').text('三秒后改变浮层位置')
         window.setTimeout(function() {
-            example4.set('offset', [0, 60]);
+            example5.set('offset', [0, -80]);
         }, 3000);
     });
 
@@ -231,7 +248,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         trigger: '#triggerId6',
         triggerType: 'focus',
         element: '#dropdown6',
-        offset: [0,$('#triggerId6').height() + 5],
+        offset: [0,$('#triggerId6').height() + 5]
     });
     example6.render();
     example6.element.find('a').click(function(e) {
@@ -239,6 +256,9 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         example6.get('trigger').val($(this).text());
         example6.set('visible', false);
     });
+
+    // 枚举 Dropdown
+    console.dir(Dropdown);
 
 
 });

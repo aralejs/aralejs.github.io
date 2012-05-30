@@ -7,7 +7,7 @@
 组件类，用于生成下拉浮层。
 
 ## 依赖
-* 继承 Overlay
+ - [Overlay](overlay/README.md)
 
 ## 使用说明
 

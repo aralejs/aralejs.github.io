@@ -51,7 +51,10 @@ define("#base/0.9.9/attribute-debug", [], function(require, exports) {
                 // 情况下的属性，一般并不需要初始化。
                 try {
                     this.set(key, val, options);
-                } catch (ex) {
+                }
+                catch (ex) {
+                    // value 值还是得设置过去
+                    now[key].value = val;
                 }
             }
         }
