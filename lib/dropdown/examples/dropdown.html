@@ -200,6 +200,11 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         offset: [0,$('#triggerId6').height() + 5],
     });
     example6.render();
+    example6.element.find('a').click(function(e) {
+        e.preventDefault()
+        example6.get('trigger').val($(this).text());
+        example6.set('visible', false);
+    });
 
 });
 </script>
