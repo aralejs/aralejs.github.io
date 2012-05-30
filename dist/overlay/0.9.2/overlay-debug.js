@@ -40,7 +40,9 @@ define("#overlay/0.9.2/overlay-debug", ["$","position","iframe-shim","widget"], 
             var shim = new Shim(this.element);
             this.before('show', shim.sync, shim);
             this.after('hide', shim.sync, shim);
-            this.on('change:width change:height change:zIndex', shim.sync, shim);
+            this.on('change:width change:height' +
+                    'change:zIndex change:id change:position' +
+                    'change:className change:style', shim.sync, shim);
         },
 
         render: function() {
@@ -48,24 +50,18 @@ define("#overlay/0.9.2/overlay-debug", ["$","position","iframe-shim","widget"], 
             Overlay.superclass.render.call(this);
 
             // 在插入到文档流后，重新定位一次
-            this.setPosition();
+            this._setPosition();
 
-            return this;
-        },
-
-        // 修改 overlay 元素的样式
-        css: function(styles) {
-            this.element.css(styles);
             return this;
         },
 
         // 进行定位
-        setPosition: function(position) {
+        _setPosition: function(align) {
             // 不在文档流中，定位无效
             if (!isInDocument(this.element[0])) return;
 
-            position || (position = this.get('position'));
-            var isHidden = this.isHidden();
+            align || (align = this.get('position'));
+            var isHidden = this.element.is(':hidden');
 
             // 在定位时，为避免元素高度不定，先显示出来
             if (isHidden) {
@@ -74,12 +70,12 @@ define("#overlay/0.9.2/overlay-debug", ["$","position","iframe-shim","widget"], 
 
             Position.pin({
                 element: this.element,
-                x: position.selfXY[0],
-                y: position.selfXY[1]
+                x: align.selfXY[0],
+                y: align.selfXY[1]
             }, {
-                element: position.baseElement,
-                x: position.baseXY[0],
-                y: position.baseXY[1]
+                element: align.baseElement,
+                x: align.baseXY[0],
+                y: align.baseXY[1]
             });
 
             // 定位完成后，还原
@@ -88,12 +84,6 @@ define("#overlay/0.9.2/overlay-debug", ["$","position","iframe-shim","widget"], 
             }
 
             return this;
-        },
-
-
-        // 判断元素是否显示
-        isHidden: function() {
-            return this.element.is(':hidden');
         },
 
         show: function() {
@@ -105,6 +95,9 @@ define("#overlay/0.9.2/overlay-debug", ["$","position","iframe-shim","widget"], 
             this.element.hide();
             return this;
         },
+
+
+        // 用于 set 属性后的界面更新
 
         _onChangeWidth: function(val) {
             this.element.css('width', val);
@@ -127,11 +120,11 @@ define("#overlay/0.9.2/overlay-debug", ["$","position","iframe-shim","widget"], 
         },
 
         _onChangeStyle: function(val) {
-            this.element.css('csstext', val);
+            this.element.css(val);
         },
 
         _onChangePosition: function(val) {
-            this.setPosition(val);
+            this._setPosition(val);
         }
 
     });

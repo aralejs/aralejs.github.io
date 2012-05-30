@@ -8,12 +8,10 @@
     <body>
         <script>
             seajs.use(['../src/calendar'], function(Calendar) {
-                var cal = new Calendar({width: 900});
+                var cal = new Calendar({available: ['2012-5-12', '2012-5-29']});
                 cal.render();
-                console.log(cal.width());
-                console.log(cal.width(100));
-                console.log(cal.width());
-                console.log(cal.options.template);
+                console.log(cal._current.toString());
+                console.log(cal._current.toString());
             });
         </script>
     </body>

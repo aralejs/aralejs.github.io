@@ -1,7 +1,7 @@
 // May the Source be with you
 // 愿源码与你同在
 
-define(function(require, exports, module) {
+define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], function(require, exports, module) {
     var $ = require('jquery');
     var Overlay = require('overlay');
     var Position = require('position');

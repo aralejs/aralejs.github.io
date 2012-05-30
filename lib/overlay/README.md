@@ -42,15 +42,15 @@
 
     浮层的初始化 className 。
 
-* `style` {string}
+* `style` {object}
 
-    浮层的初始化 style 字符串。
+    浮层的初始化 style 对象。
 
 * `parentNode` {element}
 
     浮层的父元素，默认为document.body，只读。
 
-* `position` {object}
+* `align` {object}
 
     定位对象，形似：
 
@@ -69,10 +69,6 @@
 
     生成浮层的dom结构和样式并插入文档流。
 
-* `css(styles)` 
-
-    设定浮层元素的样式值。
-
 * `show()` 
 
     显示浮层。
@@ -80,10 +76,6 @@
 * `hide()` 
 
     隐藏浮层。
-
-* `isVisible()` 
-
-    判断浮层是否显示。
 
 * `get(key)` 
 
@@ -105,7 +97,7 @@
             zIndex: 99,
             style: 'border:1px solid red;color:green;',
             parentNode: '#c',
-            position: {
+            align: {
                 selfXY: ['-100%', 0],
                 baseElement: '#a',
                 baseXY: [0, 0]
@@ -113,7 +105,7 @@
         });
         overlay.render().show();
         // 修改元素样式
-        overlay.css({
+        overlay.set('style', {
             backgroundColor: 'red',
             border: '1px solid green'
         });

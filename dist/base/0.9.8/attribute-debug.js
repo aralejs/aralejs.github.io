@@ -1,4 +1,4 @@
-define("#base/0.9.7/attribute-debug", [], function(require, exports) {
+define("#base/0.9.8/attribute-debug", [], function(require, exports) {
 
     // Attribute
     // -----------------
@@ -16,9 +16,10 @@ define("#base/0.9.7/attribute-debug", [], function(require, exports) {
             this.attrs = {};
         }
         var attrs = this.attrs;
+        var specialProps = this.propertiesInConfig || [];
 
         // Merge all inherited attributes.
-        merge(attrs, getInheritedValues(this, 'attrs'));
+        merge(attrs, getInheritedAttrs(this, specialProps));
 
         // Merge config attributes.
         var options = { silent: true };
@@ -35,6 +36,9 @@ define("#base/0.9.7/attribute-debug", [], function(require, exports) {
                 this.on('change:' + key, this[eventKey]);
             }
         }
+
+        // 将 attrs 上的 properties 放回 this 上
+        copySpecialProps(specialProps, this, attrs, true);
     };
 
 
@@ -106,6 +110,8 @@ define("#base/0.9.7/attribute-debug", [], function(require, exports) {
                 }
             }
         }
+
+        return this;
     };
 
 
@@ -122,6 +128,8 @@ define("#base/0.9.7/attribute-debug", [], function(require, exports) {
 
             delete this.attrs.__pending;
         }
+
+        return this;
     };
 
 
@@ -232,19 +240,41 @@ define("#base/0.9.7/attribute-debug", [], function(require, exports) {
     }
 
 
-    function getInheritedValues(instance, key) {
-        var defaults = [];
+    function copySpecialProps(specialProps, receiver, supplier, isAttr) {
+        for (var i = 0, len = specialProps.length; i < len; i++) {
+            var key = specialProps[i];
+
+            if (key in supplier) {
+                if (supplier.hasOwnProperty(key)) {
+                    var val = supplier[key];
+                    receiver[key] = isAttr ? val.value : val;
+                }
+            }
+        }
+    }
+
+
+    function getInheritedAttrs(instance, specialProps) {
+        var inherited = [];
         var proto = instance.constructor.prototype;
 
         while (proto) {
-            proto[key] && defaults.unshift(proto[key]);
+            // 不要拿到 prototype 上的
+            if (!proto.hasOwnProperty('attrs')) {
+                proto.attrs = {};
+            }
+
+            // 将 proto 上的特殊 properties 放到 proto.attrs 上，以便合并
+            copySpecialProps(specialProps, proto.attrs, proto);
+
+            inherited.unshift(proto.attrs);
             proto = proto.constructor.superclass;
         }
 
         // Merge and clone default values to instance.
         var result = {};
-        for (var i = 0, len = defaults.length; i < len; i++) {
-            result = merge(result, normalize(defaults[i]));
+        for (var i = 0, len = inherited.length; i < len; i++) {
+            result = merge(result, normalize(inherited[i]));
         }
 
         return result;
