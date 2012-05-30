@@ -20,21 +20,11 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], functi
             delay: 0.1, // 延迟触发时间, 单位:秒
             timeout: 0.1, // 鼠标移出浮层后自动隐藏的时间。
             offset: [0, 0], // [x,y]
-            width: '',
-            height: '',
-            zIndex: 10,
-            id: '',
-            className: '',
-            style: {},
-            parentNode: document.body,
-            position: {
-                selfXY: [0, 0],
-                baseElement: Position.VIEWPORT,
-                baseXY: [0, 0]
-            }
+            visible: false
+            // 其余参数请参考 Overlay 文档
         },
 
-        initProps: function() {
+        _setupAttr: function() {
             var triggerNode = this.get('trigger');
             var offset = this.get('offset');
             if (!offset) {
@@ -42,16 +32,15 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], functi
             }
             this.set('position', {
                 // element 的定位点，默认为左上角
-                selfXY: offset,
+                selfXY: [0, 0],
                 // 基准定位元素，默认为当前可视区域
                 baseElement: triggerNode.selector,
                 // 基准定位元素的定位点，默认为左上角
-                baseXY: [0, 0]
+                baseXY: offset
             });
         },
 
-        setup: function() {
-            Dropdown.superclass.init.call(this);
+        _bindTrigger: function() {
             var that = this;
             var enterTimeout;
             var leaveTimeout;
@@ -75,20 +64,25 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], functi
                 }, that.get('delay') * 1000);
                 if (triggerType === 'click') {
                     window.clearTimeout(enterTimeout);
-                    var status = that.get('status');
-                    if (!status || status === 'hidden') {
-                        that.show();
-                        that.set('status','shown');
-                    } else {
-                        that.hide();
-                        that.set('status','hidden');
-                    }
+                    that.set('visible', !that.get('visible'));
                 }
             });
 
             triggerNode.add(this.element).hover(enterHandler, leaveHandler);
+        },
 
-            console.log(this.get('position'));
+        _onChangeVisible: function(val) {
+            if (val) {
+                this.show();
+            } else {
+                this.hide();
+            }
+        },
+
+        setup: function() {
+            Dropdown.superclass.setup.call(this);
+            this._setupAttr();
+            this._bindTrigger();
         }
 
     });
