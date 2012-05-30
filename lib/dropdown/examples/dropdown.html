@@ -106,6 +106,15 @@
                 <li><a href="http://aralejs.org#4">内容4</a></li>
             </ul>
         </div>
+        <div class="selectbox">
+            <!-- 测试IE6 iframe-shim 遮罩是否可以遮住选择框 -->
+            <select>
+                <option>我有仙心一颗</option>
+                <option>久被尘劳封锁</option>
+                <option>何日尘尽光生</option>
+                <option>照破山河万朵</option>
+            </select>
+        </div>
         <div class="tips">
             <h4>说明: 默认行为通过 hover 触发，可以不用传递参数 triggerType</h4> 
         </div>
@@ -164,7 +173,10 @@
 </div>
 <script type="text/javascript">
 seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay){
-    window.$ = window.jQuery = $; // for debuging only;
+    // for debuging only;
+    window.$ = window.jQuery = $;
+    $.map(['log','dir'], {
+    });
 
     var example1; // data-api 暂无例子。
 
@@ -172,7 +184,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     var example2 = new Dropdown({
         trigger: '#triggerId2',
         element: '#dropdown2',
-        offset: [0,$('#triggerId2').height()],
+        offset: [0,$('#triggerId2').height()]
     });
     example2.render();
     // 订阅事件
@@ -231,7 +243,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         trigger: '#triggerId6',
         triggerType: 'focus',
         element: '#dropdown6',
-        offset: [0,$('#triggerId6').height() + 5],
+        offset: [0,$('#triggerId6').height() + 5]
     });
     example6.render();
     example6.element.find('a').click(function(e) {

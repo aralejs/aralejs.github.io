@@ -91,7 +91,7 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay"], function(require,
             var trigger = this.get('trigger');
             this.set('align', {
                 selfXY: align.selfXY,
-                baseElement: trigger.selector,
+                baseElement: trigger[0],
                 baseXY: val
             });
         },
