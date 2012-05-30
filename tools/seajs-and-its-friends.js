@@ -37,10 +37,10 @@ seajs.config({
         'backbone': 'backbone/0.9.2/backbone',
 
         'iframe-shim': 'iframe-shim/0.9.0/iframe-shim',
-        'overlay': 'overlay/0.9.1/overlay',
+        'overlay': 'overlay/0.9.2/overlay',
         'mask': 'overlay/0.9.1/mask',
         'position': 'position/0.9.1/position',
-        'dropdown': 'dropdown/0.9.0/dropdown'
+        'dropdown': 'dropdown/0.9.1/dropdown'
 
     },
     preload: [this.JSON ? '' : 'json', 'plugin-text']
