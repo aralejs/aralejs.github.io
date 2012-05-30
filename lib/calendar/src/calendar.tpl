@@ -14,7 +14,7 @@
             {{/each}}
         </tr>
     </thead>
-    <tbody>
+    <tbody class="ui-calendar-dates">
         {{#table dates}}
         <td class="{{label}}{{#unless available}} disable{{/unless}}">{{value}}</td>
         {{/table}}
