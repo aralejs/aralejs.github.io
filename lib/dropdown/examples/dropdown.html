@@ -10,10 +10,28 @@
         width: 960px;
         margin: 50px auto;
     }
-    #container h1 {
-        font-size: 18px;
+    .header {
         border-bottom: 1px solid #CCC;
         padding: 3px 5px;
+    }
+    .header h1 {
+        width: 600px;
+        font-size: 22px;
+    }
+    .menu {
+        width: 330px;
+        float: right;
+        text-align: right;
+    }
+    .footer {
+        text-align: center;
+        color: #999;
+        clear: both;
+        padding: 10px 0;
+        margin: 0 auto;
+    }
+    .footer a {
+        color: #999;
     }
     #container h3 {
         font-size: 14px;
@@ -48,7 +66,14 @@
 </head>
 <body>
 <div id="container">
-    <h1>Arale Dropdown</h1>
+    <div class="header">
+        <div class="menu">
+            <a href="https://github.com/alipay/arale/tree/master/lib/dropdown">文档</a> |
+            <a href="https://github.com/alipay/arale/blob/master/lib/dropdown/src/dropdown.js">代码</a> | 
+            <a href="http://aralejs.org/lib/dropdown/tests/runner.html">单元测试</a>
+        </div>
+        <h1>Arale Dropdown</h1>
+    </div>
 
     <div class="example">
         <h3>范例1: data-api</h3>
@@ -113,14 +138,14 @@
     </div>
 
     <div class="example">
-        <h3>范例5: 自定义Template</h3>
+        <h3>范例5: 自定义Template并设置回调函数</h3>
         <div class="dropdown">
             <a href="#dropdown5" id="triggerId5">下拉框<span class="icon">▼</span></a>
         </div>
     </div>
 
     <div class="example">
-        <h3>范例6: 通过输入框进行触发</h3>
+        <h3>范例6: 简单的自动完成组件</h3>
         <div class="dropdown">
             <input id="triggerId6" type="" placeholder="请输入..." />
             <ul class="fn-hide ui-dropdown" id="dropdown6">
@@ -132,12 +157,17 @@
         </div>
     </div>
 
+    <div class="footer">
+        <a href="http://aralejs.org">AraleJS</a> 2012
+    </div>
+
 </div>
 <script type="text/javascript">
 seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay){
     window.$ = window.jQuery = $; // for debuging only;
 
     var example1; // data-api 暂无例子。
+
 
     var example2 = new Dropdown({
         trigger: '#triggerId2',
@@ -154,6 +184,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     // 触发事件
     // example2.trigger('shown');
 
+
     var example3 = new Dropdown({
         trigger: '#triggerId3',
         triggerType: 'click',
@@ -161,6 +192,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         element: '#dropdown3'
     });
     example3.render();
+
 
     var animDropdown = Dropdown.extend({
         show: function(){
@@ -180,6 +212,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     });
     example4.render();
 
+
     var example5 = new Dropdown({
         trigger: '#triggerId5',
         offset: [0,20],
@@ -187,11 +220,12 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     });
     example5.render();
     example5.after('show', function(){
-        $('#triggerId5').text('三秒后浮层改变位置')
-        window.setTimeout(function(){
-            example4.set('offset', [0,60]);
+        $('#triggerId5').text('三秒后改变浮层位置')
+        window.setTimeout(function() {
+            example4.set('offset', [0, 60]);
         }, 3000);
     });
+
 
     var example6 = new Dropdown({
         trigger: '#triggerId6',
@@ -205,6 +239,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         example6.get('trigger').val($(this).text());
         example6.set('visible', false);
     });
+
 
 });
 </script>
