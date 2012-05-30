@@ -175,8 +175,13 @@
 seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay){
     // for debuging only;
     window.$ = window.jQuery = $;
-    $.map(['log','dir'], {
-    });
+    if (!window.console) {
+        var helper = ['log','dir','error', 'warn','info'];
+        window.console = {};
+        $.map(helper, function(val, i){
+            window.console[val] = $.noop;
+        });
+    }
 
     var example1; // data-api 暂无例子。
 
