@@ -63,7 +63,7 @@
         </div>
         <div class="tips tips-grey">
             <h4>说明: 暂不支持 data-api。data-api 将由另外的组件支持。</h4> 
-            <ul>
+            <ul class="fn-hide">
                 <li><del>data-trigger='click', 不指定则采用 hover 为默认值。可选有：click|hover</del></li>
                 <li><del>可以在 href 或者 data-target='#dropdown1' 指定你要展示的元素id。不指定则默认采用兄弟元素('.ui-dropdown')。</del></li>
             </ul>
@@ -71,7 +71,7 @@
     </div>
 
     <div class="example">
-        <h3>范例2: 定制行为(hover)</h3>
+        <h3>范例2: 默认行为(hover)</h3>
         <div class="dropdown">
             <a href="#dropdown2" id="triggerId2">下拉框<span class="icon">▼</span></a>
             <ul class="fn-hide ui-dropdown" id="dropdown2">
@@ -82,12 +82,12 @@
             </ul>
         </div>
         <div class="tips">
-            <h4>说明: 默认行为通过 hover 触发，无需传递参数 triggerType</h4> 
+            <h4>说明: 默认行为通过 hover 触发，可以不用传递参数 triggerType</h4> 
         </div>
     </div>
 
     <div class="example">
-        <h3>范例3: 定制行为(click)</h3>
+        <h3>范例3: 自定义行为(click)</h3>
         <div class="dropdown">
             <a href="#dropdown3" id="triggerId3">下拉框<span class="icon">▼</span></a>
             <ul class="fn-hide ui-dropdown" id="dropdown3">
@@ -100,7 +100,7 @@
     </div>
 
     <div class="example">
-        <h3>范例4: 定制动画效果以及延迟触发</h3>
+        <h3>范例4: 自定义动画效果以及延时触发效果</h3>
         <div class="dropdown">
             <a href="#dropdown4" id="triggerId4" title="0.4s 后出现, 请稍安勿躁">下拉框<span class="icon">▼</span></a> 
             <ul class="fn-hide ui-dropdown" id="dropdown4">
@@ -113,9 +113,22 @@
     </div>
 
     <div class="example">
-        <h3>范例5: 定制Template</h3>
+        <h3>范例5: 自定义Template</h3>
         <div class="dropdown">
             <a href="#dropdown5" id="triggerId5">下拉框<span class="icon">▼</span></a>
+        </div>
+    </div>
+
+    <div class="example">
+        <h3>范例6: 通过输入框进行触发</h3>
+        <div class="dropdown">
+            <input id="triggerId6" type="" placeholder="请输入..." />
+            <ul class="fn-hide ui-dropdown" id="dropdown6">
+                <li><a href="http://aralejs.org#1">内容1</a></li>
+                <li><a href="http://aralejs.org#2">内容2</a></li>
+                <li><a href="http://aralejs.org#3">内容3</a></li>
+                <li><a href="http://aralejs.org#4">内容4</a></li>
+            </ul>
         </div>
     </div>
 
@@ -124,7 +137,7 @@
 seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay){
     window.$ = window.jQuery = $; // for debuging only;
 
-    //var example1;
+    var example1; // data-api 暂无例子。
 
     var example2 = new Dropdown({
         trigger: '#triggerId2',
@@ -133,9 +146,9 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     });
     example2.render();
     // 订阅事件
-    example2.on('shown', function(){
+    example2.after('show', function(){
         console.log('example2 is shown');
-    }).on('hidden', function(){
+    }).after('hide', function(){
         console.log('example2 is hidden');
     });
     // 触发事件
@@ -173,6 +186,25 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         template: '<div class="ui-dropdown fn-hide"><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>'
     });
     example5.render();
+    example5.after('show', function(){
+        $('#triggerId5').text('三秒后浮层改变位置')
+        window.setTimeout(function(){
+            example4.set('offset', [0,60]);
+        }, 3000);
+    });
+
+    var example6 = new Dropdown({
+        trigger: '#triggerId6',
+        triggerType: 'focus',
+        element: '#dropdown6',
+        offset: [0,$('#triggerId6').height() + 5],
+    });
+    example6.render();
+    example6.element.find('a').click(function(e) {
+        e.preventDefault()
+        example6.get('trigger').val($(this).text());
+        example6.set('visible', false);
+    });
 
 });
 </script>

@@ -8,67 +8,81 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], functi
 
     var Dropdown = Overlay.extend({
         attrs: {
+            // 触发事件元素
             trigger: {
                 value: null, // required
                 getter: function(val) {
                     return $(val);
                 }
-            }, 
+            },
+            // 触发事件类型
             triggerType: {
-                value: 'hover' // click|hover
-            }, 
-            delay: 0.1, // 延迟触发时间, 单位:秒
-            timeout: 0.1, // 鼠标移出浮层后自动隐藏的时间。
-            offset: [0, 0], // [x,y]
+                value: 'mouseenter', // 支持：click|hover|mouseover|mouseleave
+                getter: function(val) {
+                    // 将 hover|mouseenter 转换为 mouseenter 事件
+                    return val.replace(/hover|mouseover/i,'mouseenter');
+                }
+            },
+            // 延迟触发时间, 单位:秒
+            delay: {
+                value: 0.1,
+                getter: function(val){
+                    return val * 1000;
+                }
+            },
+            // 鼠标移出浮层后自动隐藏的时间, 单位:秒
+            timeout: {
+                value: 0.1,
+                getter: function(val){
+                    return val * 1000;
+                }
+            },
+            // 相对于 trigger 元素的坐标
+            offset: [], // [x,y]
+            // 是否可见
             visible: false
             // 其余参数请参考 Overlay 文档
         },
 
         _setupAttr: function() {
-            var triggerNode = this.get('trigger');
+            var trigger = this.get('trigger');
             var offset = this.get('offset');
-            if (!offset) {
-                offset = [0, triggerNode.height()];
+            if (!offset.length) {
+                // 默认值为浮层在当前元素下面。
+                this.set('offset', [0, trigger.height()]);
             }
-            this.set('position', {
-                // element 的定位点，默认为左上角
-                selfXY: [0, 0],
-                // 基准定位元素，默认为当前可视区域
-                baseElement: triggerNode.selector,
-                // 基准定位元素的定位点，默认为左上角
-                baseXY: offset
-            });
         },
 
         _bindTrigger: function() {
             var that = this;
+            var trigger = this.get('trigger');
+            var triggerType = this.get('triggerType');
             var enterTimeout;
             var leaveTimeout;
             var leaveHandler = function() {
                 window.clearTimeout(enterTimeout);
                 leaveTimeout = window.setTimeout(function() {
-                    that.hide();
-                }, that.get('timeout') * 1000);
+                    that.set('visible', false);
+                }, that.get('timeout'));
             };
             var enterHandler = function() {
                 window.clearTimeout(leaveTimeout);
             };
-            var triggerNode = this.get('trigger');
-            var triggerType = this.get('triggerType');
 
-            triggerNode.on(triggerType, function(e) {
+            trigger.on(triggerType, function(e) {
                 e.preventDefault();
                 window.clearTimeout(leaveTimeout);
-                enterTimeout = window.setTimeout(function() {
-                    that.show();
-                }, that.get('delay') * 1000);
                 if (triggerType === 'click') {
-                    window.clearTimeout(enterTimeout);
                     that.set('visible', !that.get('visible'));
+                } else {
+                    enterTimeout = window.setTimeout(function() {
+                        that.set('visible', true);
+                    }, that.get('delay'));
                 }
             });
 
-            triggerNode.add(this.element).hover(enterHandler, leaveHandler);
+            // 处理鼠标与浮层的联动
+            trigger.add(this.element).hover(enterHandler, leaveHandler);
         },
 
         _onChangeVisible: function(val) {
@@ -77,6 +91,18 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], functi
             } else {
                 this.hide();
             }
+        },
+
+        _onChangeOffset: function(val) {
+            var trigger = this.get('trigger');
+            this.set('position', {
+                // element 的定位点，默认为左上角
+                selfXY: [0, 0],
+                // 基准定位元素，默认为当前可视区域
+                baseElement: trigger.selector,
+                // 基准定位元素的定位点，默认为左上角
+                baseXY: val
+            });
         },
 
         setup: function() {
