@@ -36,7 +36,7 @@ define("#base/0.9.9/attribute-debug", [], function(require, exports) {
         this.attrs = {};
 
         // Set attributes.
-        var options = { silent: true, _initializing: true };
+        var options = { silent: true };
         var now = this.attrs;
         for (var key in attrs) {
             if (attrs.hasOwnProperty(key)) {
@@ -46,7 +46,13 @@ define("#base/0.9.9/attribute-debug", [], function(require, exports) {
                 var val = now[key].value;
                 delete now[key].value;
 
-                this.set(key, val, options);
+                // 在 set 里，有可能调用到 getter / setter 方法，在这两个方法里，很可能
+                // 会引用尚未初始化的变量，比如 this.element. 这时采取忽略就好。因为这种
+                // 情况下的属性，一般并不需要初始化。
+                try {
+                    this.set(key, val, options);
+                } catch (ex) {
+                }
             }
         }
 
@@ -105,9 +111,7 @@ define("#base/0.9.9/attribute-debug", [], function(require, exports) {
             }
 
             // invoke setter
-            // 注：初始化时，不能调用 setter 方法，因为 setter 方法里很可能有
-            // this.element 等尚未初始化的属性
-            if (attr.setter && !options._initializing) {
+            if (attr.setter) {
                 val = attr.setter.call(this, val, key);
             }
 
