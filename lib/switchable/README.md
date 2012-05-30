@@ -76,7 +76,7 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
    
 * `delay` {Number}
 
-   默认为1， 触发器延迟时间，单位为秒。
+   默认为100， 触发器延迟时间，单位为毫秒。
 
 * `switchTo` {Number}
 
@@ -98,7 +98,7 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
 
 *  `interval` {Number}
 
-  自动播放间隔时间, 以 s 为单位, 默认为 5.
+  自动播放间隔时间, 以 毫秒 为单位, 默认为 5000.
 
 * `pauseOnHover` {Boolean}
 
@@ -114,7 +114,7 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
 
 * `duration` {Number}
 
-  默认为 .5, 动画的时长.
+  默认为 500, 以毫秒为单位， 动画的时长.
 
 * `easing` {String|Function}
 

@@ -18,8 +18,8 @@ define("#overlay/0.9.3/overlay-debug", ["$","position","iframe-shim","widget"], 
             width: '',
             height: '',
             zIndex: 99,
-            id: null,
-            className: null,
+            id: undefined,
+            className: undefined,
             style: {},
 
             // 定位配置
@@ -34,10 +34,6 @@ define("#overlay/0.9.3/overlay-debug", ["$","position","iframe-shim","widget"], 
 
             // 父元素
             parentNode: document.body
-        },
-
-        setup: function() {
-            this._setupShim();
         },
 
         // 加载 iframe 遮罩层并与 overlay 保持同步
@@ -97,6 +93,10 @@ define("#overlay/0.9.3/overlay-debug", ["$","position","iframe-shim","widget"], 
         },
 
         show: function() {
+            if(this._shimInited) {
+                this._setupShim();
+                this._shimInited = true;
+            }
             this.element.show();
             return this;
         },
