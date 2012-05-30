@@ -7,6 +7,7 @@
 }
 .ui-calendar td {
     text-align: center;
+    cursor: pointer;
 }
 .ui-calendar-months {
     border-bottom: 1px solid #dadada;
@@ -31,5 +32,10 @@
 }
 .ui-calendar tbody td:hover {
     background: #dadada;
-    cursor: pointer;
+}
+.ui-calendar td.previous, .ui-calendar td.next {
+    background: #ccc;
+}
+.ui-calendar td.disable {
+    background: #999;
 }

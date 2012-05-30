@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#overlay/0.9.3/mask-debug", ["$","./overlay"], function(require, exports, module) {
 
     var $ = require('$'),
         Overlay = require('./overlay'),

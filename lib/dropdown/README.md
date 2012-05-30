@@ -7,7 +7,7 @@
 组件类，用于生成下拉浮层。
 
 ## 依赖
-* 继承 Overlay
+ - [Overlay](overlay/README.md)
 
 ## 使用说明
 
@@ -23,7 +23,7 @@ seajs.use(['jquery','dropdown'], function($, Dropdown){
 ```
 
 ## Demo
-
+更多用法，请看 Demo 中的例子：
 * [http://aralejs.org/lib/dropdown/examples/dropdown.html](http://aralejs.org/lib/dropdown/examples/dropdown.html)
 
 ## 单元测试

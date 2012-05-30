@@ -8,7 +8,10 @@
     <body>
         <script>
             seajs.use(['../src/calendar'], function(Calendar) {
-                var cal = new Calendar({available: ['2012-5-12', '2012-5-29']});
+                var available = function(time) {
+                    return time.day() != 3;
+                }
+                var cal = new Calendar({available: available});
                 cal.render();
                 console.log(cal._current.toString());
                 console.log(cal._current.toString());
