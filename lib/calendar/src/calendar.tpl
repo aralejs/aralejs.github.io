@@ -4,7 +4,7 @@
         <tr class="ui-calendar-months">
             <td class="ui-calendar-previous-year">&lt;&lt;</td>
             <td class="ui-calendar-previous-month">&lt;</td>
-            <td colspan="3"><span class="month">May</span> <span class="year">2012</span></td>
+            <td colspan="3"><span class="month">{{active.month}}</span> <span class="year">{{active.year}}</span></td>
             <td class="ui-calendar-next-month">&gt;</td>
             <td class="ui-calendar-next-year">&gt;&gt;</td>
         </tr>
