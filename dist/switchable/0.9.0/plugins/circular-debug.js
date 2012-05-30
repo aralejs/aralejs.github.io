@@ -1,6 +1,6 @@
 //Switchable circular plugin module.
 
-define(function(require, exports, module) {
+define("#switchable/0.9.0/plugins/circular-debug", ["../extra/easing"], function(require, exports, module) {
 
     var POSITION = 'position',
         RELATIVE = 'relative',

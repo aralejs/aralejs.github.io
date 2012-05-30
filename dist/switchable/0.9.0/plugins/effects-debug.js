@@ -1,6 +1,6 @@
 //Switchable Effect module.
 
-define(function(require, exports, module) {
+define("#switchable/0.9.0/plugins/effects-debug", ["jquery","../extra/easing"], function(require, exports, module) {
 
     var $ = require('jquery');
     var Easing = require('../extra/easing');
