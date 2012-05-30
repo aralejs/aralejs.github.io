@@ -61,6 +61,9 @@
     .tips-grey {
         background: #DDD;
     }
+    .grey {
+        color: #999;
+    }
 </style>
 <script src="../../../tools/seajs-and-its-friends.js"></script>
 </head>
@@ -107,13 +110,13 @@
             </ul>
         </div>
         <div class="selectbox">
-            <!-- 测试IE6 iframe-shim 遮罩是否可以遮住选择框 -->
             <select>
                 <option>我有仙心一颗</option>
                 <option>久被尘劳封锁</option>
                 <option>何日尘尽光生</option>
                 <option>照破山河万朵</option>
             </select>
+            <span class="grey">选择框用于测试 IE6 遮罩</span>
         </div>
         <div class="tips">
             <h4>说明: 默认行为通过 hover 触发，可以不用传递参数 triggerType</h4> 
@@ -192,72 +195,72 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         offset: [0,$('#triggerId2').height()]
     });
     example2.render();
-    //// 订阅事件
-    //example2.after('show', function(){
-    //    console.log('example2 is shown');
-    //}).after('hide', function(){
-    //    console.log('example2 is hidden');
-    //});
-    //// 触发事件
-    //// example2.trigger('shown');
+    // 订阅事件
+    example2.after('show', function(){
+        console.log('example2 is shown');
+    }).after('hide', function(){
+        console.log('example2 is hidden');
+    });
+    // 触发事件
+    // example2.trigger('shown');
 
 
-    //var example3 = new Dropdown({
-    //    trigger: '#triggerId3',
-    //    triggerType: 'click',
-    //    offset: [0,-80],
-    //    element: '#dropdown3'
-    //});
-    //example3.render();
+    var example3 = new Dropdown({
+        trigger: '#triggerId3',
+        triggerType: 'click',
+        offset: [0,-80],
+        element: '#dropdown3'
+    });
+    example3.render();
 
 
-    //var animDropdown = Dropdown.extend({
-    //    show: function(){
-    //        //this.element.fadeIn(); //淡入效果
-    //        this.element.animate({'height': 'toggle', 'opacity':'show'}, 200);
-    //    },
-    //    hide: function(){
-    //        //this.element.fadeOut(); //淡出效果
-    //        this.element.animate({'height': 'toggle', 'opacity':'hide'}, 200);
-    //    }
-    //});
-    //var example4 = new animDropdown({
-    //    trigger: '#triggerId4',
-    //    offset: [5,20],
-    //    delay: 400,
-    //    element: '#dropdown4'
-    //});
-    //example4.render();
+    var animDropdown = Dropdown.extend({
+        show: function(){
+            //this.element.fadeIn(); //淡入效果
+            this.element.animate({'height': 'toggle', 'opacity':'show'}, 200);
+        },
+        hide: function(){
+            //this.element.fadeOut(); //淡出效果
+            this.element.animate({'height': 'toggle', 'opacity':'hide'}, 200);
+        }
+    });
+    var example4 = new animDropdown({
+        trigger: '#triggerId4',
+        offset: [5,20],
+        delay: 400,
+        element: '#dropdown4'
+    });
+    example4.render();
 
 
-    //var example5 = new Dropdown({
-    //    trigger: '#triggerId5',
-    //    offset: [0,20],
-    //    template: '<div class="ui-dropdown fn-hide"><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>'
-    //});
-    //example5.render();
-    //example5.after('show', function(){
-    //    $('#triggerId5').text('三秒后改变浮层位置')
-    //    window.setTimeout(function() {
-    //        example5.set('offset', [0, -80]);
-    //    }, 3000);
-    //});
+    var example5 = new Dropdown({
+        trigger: '#triggerId5',
+        offset: [0,20],
+        template: '<div class="ui-dropdown fn-hide"><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>'
+    });
+    example5.render();
+    example5.after('show', function(){
+        $('#triggerId5').text('三秒后改变浮层位置')
+        window.setTimeout(function() {
+            example5.set('offset', [0, -80]);
+        }, 3000);
+    });
 
 
-    //var example6 = new Dropdown({
-    //    trigger: '#triggerId6',
-    //    triggerType: 'focus',
-    //    element: '#dropdown6',
-    //    offset: [0,$('#triggerId6').height() + 5]
-    //});
-    //example6.render();
-    //example6.element.find('a').click(function(e) {
-    //    e.preventDefault()
-    //    example6.get('trigger').val($(this).text());
-    //    example6.set('visible', false);
-    //});
+    var example6 = new Dropdown({
+        trigger: '#triggerId6',
+        triggerType: 'focus',
+        element: '#dropdown6',
+        offset: [0,$('#triggerId6').height() + 5]
+    });
+    example6.render();
+    example6.element.find('a').click(function(e) {
+        e.preventDefault()
+        example6.get('trigger').val($(this).text());
+        example6.set('visible', false);
+    });
 
-    //// 枚举 Dropdown
+    // 枚举 Dropdown
     //console.dir(Dropdown);
 
 
