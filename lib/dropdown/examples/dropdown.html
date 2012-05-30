@@ -222,7 +222,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     example5.after('show', function(){
         $('#triggerId5').text('三秒后改变浮层位置')
         window.setTimeout(function() {
-            example4.set('offset', [0, 60]);
+            example5.set('offset', [0, -80]);
         }, 3000);
     });
 
@@ -239,6 +239,8 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         example6.get('trigger').val($(this).text());
         example6.set('visible', false);
     });
+
+    console.dir(Dropdown);
 
 
 });
