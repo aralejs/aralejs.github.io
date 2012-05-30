@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#base/0.9.11/base-debug", ["class","events","./aspect","./attribute"], function(require, exports, module) {
 
     var Class = require('class');
     var Events = require('events');
