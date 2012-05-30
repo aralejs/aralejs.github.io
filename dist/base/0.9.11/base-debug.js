@@ -1,5 +1,10 @@
 define("#base/0.9.11/base-debug", ["class","events","./aspect","./attribute"], function(require, exports, module) {
 
+    // Base
+    // ---------
+    // Base 是一个基础类，提供 Class、Events、Attrs 和 Aspect 支持。
+
+
     var Class = require('class');
     var Events = require('events');
     var Aspect = require('./aspect');

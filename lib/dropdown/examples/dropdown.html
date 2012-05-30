@@ -174,7 +174,17 @@
     </div>
 
 </div>
-<script type="text/javascript">
+<script>
+
+// for debug
+seajs.config({
+    map: [
+        [/^(.+)\/widget\.js.*$/, '$1/../../../lib/widget/src/widget.js'],
+        [/^(.+)\/base\.js.*$/, '$1/../../../lib/base/src/base.js'],
+        [/^(.+)\/attribute\.js.*$/, '$1/../../../lib/base/src/attribute.js']
+    ]
+});
+
 seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay){
     // for debuging only;
     window.$ = window.jQuery = $;
@@ -194,13 +204,16 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         element: '#dropdown2',
         offset: [0,$('#triggerId2').height()]
     });
+
     example2.render();
+
     // 订阅事件
     example2.after('show', function(){
         console.log('example2 is shown');
     }).after('hide', function(){
         console.log('example2 is hidden');
     });
+
     // 触发事件
     // example2.trigger('shown');
 
