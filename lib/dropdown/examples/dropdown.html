@@ -127,7 +127,7 @@
     <div class="example">
         <h3>范例4: 自定义动画效果以及延时触发效果</h3>
         <div class="dropdown">
-            <a href="#dropdown4" id="triggerId4" title="0.4s 后出现, 请稍安勿躁">下拉框<span class="icon">▼</span></a> 
+            <a href="#dropdown4" id="triggerId4" title="400ms 后出现, 请稍安勿躁">下拉框<span class="icon">▼</span></a> 
             <ul class="fn-hide ui-dropdown" id="dropdown4">
                 <li><a href="http://aralejs.org#1">内容1</a></li>
                 <li><a href="http://aralejs.org#2">内容2</a></li>
@@ -207,7 +207,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     var example4 = new animDropdown({
         trigger: '#triggerId4',
         offset: [5,20],
-        delay: 0.4,
+        delay: 400,
         element: '#dropdown4'
     });
     example4.render();
@@ -240,6 +240,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         example6.set('visible', false);
     });
 
+    // 枚举 Dropdown
     console.dir(Dropdown);
 
 
