@@ -1,10 +1,9 @@
 // May the Source be with you
 // 愿源码与你同在
 
-define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], function(require, exports, module) {
+define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay"], function(require, exports, module) {
     var $ = require('jquery');
     var Overlay = require('overlay');
-    var Position = require('position');
 
     var Dropdown = Overlay.extend({
         attrs: {
@@ -17,7 +16,7 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], functi
             },
             // 触发事件类型
             triggerType: {
-                value: 'mouseenter', // 支持：click|hover|mouseover|mouseleave
+                value: 'mouseenter', // 支持：click|hover|mouseover|mouseenter
                 getter: function(val) {
                     // 将 hover|mouseenter 转换为 mouseenter 事件
                     return val.replace(/hover|mouseover/i,'mouseenter');
@@ -94,13 +93,12 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], functi
         },
 
         _onChangeOffset: function(val) {
+            var align = this.get('align');
             var trigger = this.get('trigger');
-            this.set('position', {
-                // element 的定位点，默认为左上角
-                selfXY: [0, 0],
-                // 基准定位元素，默认为当前可视区域
+            console.log('vvvv');
+            this.set('align', {
+                selfXY: align.selfXY,
                 baseElement: trigger.selector,
-                // 基准定位元素的定位点，默认为左上角
                 baseXY: val
             });
         },

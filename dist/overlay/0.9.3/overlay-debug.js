@@ -18,12 +18,12 @@ define("#overlay/0.9.3/overlay-debug", ["$","position","iframe-shim","widget"], 
             width: '',
             height: '',
             zIndex: 99,
-            id: '',
-            className: '',
+            id: null,
+            className: null,
             style: {},
 
             // 定位配置
-            position: {
+            align: {
                 // element 的定位点，默认为左上角
                 selfXY: [0, 0],
                 // 基准定位元素，默认为当前可视区域
@@ -70,7 +70,7 @@ define("#overlay/0.9.3/overlay-debug", ["$","position","iframe-shim","widget"], 
             // 不在文档流中，定位无效
             if (!isInDocument(this.element[0])) return;
 
-            align || (align = this.get('position'));
+            align || (align = this.get('align'));
             var isHidden = this.element.is(':hidden');
 
             // 在定位时，为避免元素高度不定，先显示出来
@@ -133,7 +133,7 @@ define("#overlay/0.9.3/overlay-debug", ["$","position","iframe-shim","widget"], 
             this.element.css(val);
         },
 
-        _onChangePosition: function(val) {
+        _onChangeAlign: function(val) {
             this._setPosition(val);
         }
 
