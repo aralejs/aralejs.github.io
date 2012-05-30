@@ -15,7 +15,9 @@
         </tr>
     </thead>
     <tbody>
-        {{#table dates}}{{value}}{{/table}}
+        {{#table dates}}
+        <td class="{{label}}{{#unless available}} disable{{/unless}}">{{value}}</td>
+        {{/table}}
     </tbody>
     <tfoot>
         <tr>

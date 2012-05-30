@@ -33,3 +33,9 @@
     background: #dadada;
     cursor: pointer;
 }
+.ui-calendar td.previous, .ui-calendar td.next {
+    background: #ccc;
+}
+.ui-calendar td.disable {
+    background: #999;
+}
