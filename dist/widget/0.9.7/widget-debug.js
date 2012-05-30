@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#widget/0.9.7/widget-debug", ["base","$","./daparser"], function(require, exports, module) {
 
     // Widget
     // ---------
@@ -293,7 +293,7 @@ define(function(require, exports, module) {
         var selector = match[2] || '';
 
         if (selector.indexOf('{{') > -1) {
-            selector = parseEventExpression(selector, widget);
+            selector = parseObjectExpression(selector, widget);
         }
 
         return {
@@ -303,7 +303,7 @@ define(function(require, exports, module) {
     }
 
     // 将 {{xx}}, {{yy}} 转换成 .daparser-n, .daparser-m
-    function parseEventExpression(selector, widget) {
+    function parseObjectExpression(selector, widget) {
 
         return selector.replace(EXPRESSION_FLAG, function(m, name) {
             var parts = name.split('.');
