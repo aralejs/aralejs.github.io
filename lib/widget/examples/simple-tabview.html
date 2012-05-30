@@ -107,29 +107,23 @@
             },
 
             _onChangeActiveIndex: function(val, prev) {
-                this.switchTo(val, prev);
+                var triggers = this.get('triggers');
+                var panels = this.get('panels');
+
+                triggers.eq(prev).removeClass('active');
+                triggers.eq(val).addClass('active');
+
+                panels.eq(prev).hide();
+                panels.eq(val).show();
             },
 
-            switchTo: function(index, prevIndex) {
+            switchTo: function(index) {
                 // 触发点击事件时，index 是 ev 对象
                 if (typeof index === 'object') {
                     index = this.get('triggers').index(index.target);
                 }
 
-                if (prevIndex === undefined) {
-                    prevIndex = this.get('activeIndex');
-                }
-
-                var triggers = this.get('triggers');
-                var panels = this.get('panels');
-
-                triggers.eq(prevIndex).removeClass('active');
-                triggers.eq(index).addClass('active');
-
-                panels.eq(prevIndex).hide();
-                panels.eq(index).show();
-
-                return this;
+                return this.set('activeIndex', index);
             },
 
             setup: function() {
