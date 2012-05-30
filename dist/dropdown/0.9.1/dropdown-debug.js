@@ -1,7 +1,7 @@
 // May the Source be with you
 // 愿源码与你同在
 
-define(function(require, exports, module) {
+define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay","position"], function(require, exports, module) {
     var $ = require('jquery');
     var Overlay = require('overlay');
     var Position = require('position');
@@ -94,11 +94,13 @@ define(function(require, exports, module) {
         },
 
         _onChangeOffset: function(val) {
-            var position = this.get('position');
             var trigger = this.get('trigger');
             this.set('position', {
-                selfXY: position.selfXY,
+                // element 的定位点，默认为左上角
+                selfXY: [0, 0],
+                // 基准定位元素，默认为当前可视区域
                 baseElement: trigger.selector,
+                // 基准定位元素的定位点，默认为左上角
                 baseXY: val
             });
         },
