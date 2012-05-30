@@ -1,4 +1,4 @@
-define(function(require, exports) {
+define("#widget/0.9.6/daparser-debug", [], function(require, exports) {
 
     var ATTR_DA_CID = 'data-daparser-cid';
     var DAParser = exports;

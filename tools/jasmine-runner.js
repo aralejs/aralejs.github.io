@@ -2,7 +2,7 @@
 
     var HAS_PACKAGE = !this.NO_PACKAGE;
 
-    var modules = ['jasmine/1.1.0/jasmine-html'];
+    var modules = ['jasmine'];
     HAS_PACKAGE && modules.unshift('text!../package.json');
 
     // no cache
