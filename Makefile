@@ -5,6 +5,9 @@
 
 all: widget overlay
 
+base:
+	node tools/dist.js base
+
 widget:
 	node tools/dist.js widget
 
