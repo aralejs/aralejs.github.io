@@ -304,7 +304,7 @@ define("#widget/0.9.6/widget-debug", ["base","$","./daparser"], function(require
 
 
     var OBJECT_FLAG = /\{\{([^\}]+)\}\}/g;
-    var INVALID_SELECTOR = {};
+    var INVALID_SELECTOR = 'INVALID_SELECTOR';
 
     // 将 {{xx}}, {{yy}} 转换成 .daparser-n, .daparser-m
     function parseObjectExpression(selector, widget) {

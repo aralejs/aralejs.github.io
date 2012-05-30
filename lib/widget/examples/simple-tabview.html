@@ -133,44 +133,10 @@
             },
 
             setup: function() {
-                this.testBindEvent();
                 this.get('panels').hide();
                 this.switchTo(this.get('activeIndex'))
             },
 
-            testBindEvent: function() {
-                var events = {};
-                events['click li'] = function(e) {
-                    var index = this.getTriggerIndexByEvt(e, this.triggers);
-                    this._onFocusTrigger(index, e);
-                    e.stopPropagation();
-                };
-
-                if (true) {
-                    events['mouseenter li'] = function(e) {
-                        var index = this.getTriggerIndexByEvt(e, this.triggers);
-                        this._onMouseEnterTrigger(index, e);
-                        e.stopPropagation();
-                    };
-                    events['mouseleave li'] = function(e) {
-                        this._onMouseLeaveTrigger();
-                        e.stopPropagation();
-                    };
-                }
-                this.delegateEvents(events);
-            },
-            getTriggerIndexByEvt: function() {
-                return 3;
-            },
-            _onFocusTrigger: function() {
-                console.log('_onFocusTrigger');
-            },
-            _onMouseLeaveTrigger: function() {
-               // console.log('_onMouseLeaveTrigger');
-            },
-            _onMouseEnterTrigger: function() {
-                console.log('_onMouseEnterTrigger-->');
-            },
             add: function(title, content) {
                 var li = $('<li>' + title + '</li>');
                 var div = $('<div>' + content + '</div>');
