@@ -93,7 +93,7 @@ define("#base/0.9.11/attribute-debug", [], function(require, exports) {
         options || (options = {});
         var now = this.attrs;
         var silent = options.silent;
-        var pending = now.__pending || (now.__pending = {});
+        var changed = this.__changedAttrs || (this.__changedAttrs = {});
 
         for (key in attrs) {
             if (!attrs.hasOwnProperty(key)) continue;
@@ -131,7 +131,7 @@ define("#base/0.9.11/attribute-debug", [], function(require, exports) {
             // invoke change event
             if (!isEqual(prev, val)) {
                 if (silent) {
-                    pending[key] = [val, prev];
+                    changed[key] = [val, prev];
                 } else {
                     this.trigger('change:' + key, val, prev, key);
                 }
@@ -145,17 +145,17 @@ define("#base/0.9.11/attribute-debug", [], function(require, exports) {
     // Call this method to manually fire a `"change"` event for triggering
     // a `"change:attribute"` event for each changed attribute.
     exports.change = function() {
-        var pending = this.attrs.__pending;
+        var changed = this.__changedAttrs;
 
-        if (pending) {
-            for (var key in pending) {
-                if (pending.hasOwnProperty(key)) {
-                    var args = pending[key];
+        if (changed) {
+            for (var key in changed) {
+                if (changed.hasOwnProperty(key)) {
+                    var args = changed[key];
                     this.trigger('change:' + key, args[0], args[1], key);
                 }
             }
 
-            delete this.attrs.__pending;
+            delete this.__changedAttrs;
         }
 
         return this;

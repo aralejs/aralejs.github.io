@@ -45,7 +45,7 @@
 
                     validator.addItem({
                         element: '[name=username]',
-                        rule: 'required emailOrMobile lengthConstraint{"min": 15, "max": 8}',
+                        rule: 'required emailOrMobile lengthConstraint{min: 15, max: 8}',
                         display: '用户名',
                         message: '用户名的格式必须是正确的哦',
                         triggerType: 'keyup blur',
@@ -70,7 +70,7 @@
 
                     validator.addItem({
                         element: '[name=password-confirmation]',
-                        rule: 'required confirmation{"target": "#password"}',
+                        rule: 'required confirmation{target: "#password"}',
                         onItemValidate: function() {
                         },
                         onItemValidated: function(err, msg, ele) {
