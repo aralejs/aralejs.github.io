@@ -1,7 +1,7 @@
 
 # Base
 
-Base 是一个基础类，提供 Class、Events、Attrs、Options 和 Aspect 支持。
+Base 是一个基础类，提供 Class、Events、Attrs 和 Aspect 支持。
 
 ---
 

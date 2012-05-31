@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#widget/0.9.7/templatable-debug", ["handlebars","$"], function(require, exports, module) {
 
     var Handlebars = require('handlebars');
     var $ = require('$');
@@ -16,17 +16,16 @@ define(function(require, exports, module) {
             this.element = $(html);
         },
 
-        compile: function(template, model) {
-            template || (template = this.get('template'));
-            model || (model = this.model);
+        renderTemplate: function(template, model) {
+            if (!template) template = this.get('template');
+            if (!model) model = this.model;
+
             var helpers = this.templateHelpers;
 
             // 注册 helpers
             if (helpers) {
                 for (var name in helpers) {
-                    if (helpers.hasOwnProperty(name)) {
-                        Handlebars.registerHelper(name, helpers[name]);
-                    }
+                    Handlebars.registerHelper(name, helpers[name]);
                 }
             }
 
@@ -36,12 +35,9 @@ define(function(require, exports, module) {
             // 卸载 helpers
             if (helpers) {
                 for (name in helpers) {
-                    if (helpers.hasOwnProperty(name)) {
-                        delete Handlebars.helpers[name];
-                    }
+                    delete Handlebars.helpers[name];
                 }
             }
-
             return html;
         }
     };

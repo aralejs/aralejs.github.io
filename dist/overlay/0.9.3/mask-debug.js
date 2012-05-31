@@ -28,6 +28,14 @@ define("#overlay/0.9.3/mask-debug", ["$","./overlay"], function(require, exports
             return this;
         },
 
+        show: function() {
+            if(!this._rendered) {
+                this.render();
+                this._rendered = true;
+            }
+            Mask.superclass.show.call(this);
+        },
+
         _onChangeBackgroundColor: function(val) {
             this.element.css('backgroundColor', val);
         },
@@ -46,7 +54,6 @@ define("#overlay/0.9.3/mask-debug", ["$","./overlay"], function(require, exports
                 width: (isIE6 ? $(document.body).outerWidth(true) : '100%'),
                 height: (isIE6 ? $(document.body).outerHeight(true) : '100%')
             });
-            maskInstance.render();
         }
         return maskInstance;
     })();
