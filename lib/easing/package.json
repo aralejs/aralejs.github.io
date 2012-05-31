@@ -1,0 +1,7 @@
+{
+    "version": "0.9.1",
+    "dist": {
+        "easing.js": "default"
+    },
+    "tests": ["easing"]
+}

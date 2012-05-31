@@ -1,7 +1,4 @@
-define(function(require, exports, module) {
-
-    var $ = require('jquery');
-    var _ = require('underscore');
+define("#easing/0.9.1/easing-debug", ["jquery"], function(require, exports, module) {
 
     var easing = module.exports = {
         //Uniform speed between points.
@@ -18,14 +15,14 @@ define(function(require, exports, module) {
         /**
          * Begins quickly and decelerates towards end.  (quadratic)
          */
-        easeOut: function(t) {
+        'easeOut': function(t) {
             return (2 - t) * t;
         },
 
         /**
          * Begins slowly and decelerates towards end. (quadratic)
          */
-        easeBoth: function(t) {
+        'easeBoth': function(t) {
             return (t *= 2) < 1 ?
                 .5 * t * t :
                 .5 * (1 - (--t) * (t - 2));
@@ -37,14 +34,12 @@ define(function(require, exports, module) {
         'easeInStrong': function(t) {
             return t * t * t * t;
         },
-
         /**
          * Begins quickly and decelerates towards end.  (quartic)
          */
-        easeOutStrong: function(t) {
+        'easeOutStrong': function(t) {
             return 1 - (--t) * t * t * t;
         },
-
         /**
          * Begins slowly and decelerates towards end. (quartic)
          */
@@ -67,7 +62,7 @@ define(function(require, exports, module) {
         /**
          * Snap out elastic effect.
          */
-        elasticOut: function(t) {
+        'elasticOut': function(t) {
             var p = .3, s = p / 4;
             if (t === 0 || t === 1) return t;
             return pow(2, -10 * t) * sin((t - s) * (2 * PI) / p) + 1;
@@ -99,7 +94,7 @@ define(function(require, exports, module) {
         /**
          * Overshoots end, then reverses and comes back to end.
          */
-        backOut: function(t) {
+        'backOut': function(t) {
             return (t -= 1) * t * ((BACK_CONST + 1) * t + BACK_CONST) + 1;
         },
 
@@ -118,14 +113,14 @@ define(function(require, exports, module) {
         /**
          * Bounce off of start.
          */
-        bounceIn: function(t) {
+        'bounceIn': function(t) {
             return 1 - Easing.bounceOut(1 - t);
         },
 
         /**
          * Bounces off end.
          */
-        bounceOut: function(t) {
+        'bounceOut': function(t) {
             var s = 7.5625, r;
 
             if (t < (1 / 2.75)) {
@@ -152,15 +147,16 @@ define(function(require, exports, module) {
                 return Easing.bounceIn(t * 2) * .5;
             }
             return Easing.bounceOut(t * 2 - 1) * .5 + .5;
-        },
-        get: function(easing) {
-            return $easing['linear'];
-            if ($.isFunction(easing)) return easing;
-            var _easing = this[easing];
-            return _easing || 'linear';
         }
     };
-    //扩展easing
-    var $easing = $.easing;
-    _.defaults($easing, easing);
+
+    var $ = require('jquery');
+    function defaults(obj, source) {
+        for (var prop in source) {
+            if (source.hasOwnProperty(prop)) {
+                if (obj[prop] == null) obj[prop] = source[prop];
+            }
+        }
+    }
+    defaults($.easing, easing);
 });
