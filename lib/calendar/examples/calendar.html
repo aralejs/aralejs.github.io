@@ -7,11 +7,12 @@
     </head>
     <body>
         <script>
-            seajs.use(['../src/calendar'], function(Calendar) {
+            seajs.use(['../src/calendar', '../src/i18n/zh_CN'], function(Calendar, lang) {
                 var available = function(time) {
                     return time.day() != 3;
                 }
-                var cal = new Calendar({available: available});
+                console.log(lang);
+                var cal = new Calendar({available: available, lang: lang});
                 cal.render();
                 console.log(cal._current.toString());
                 console.log(cal._current.toString());
