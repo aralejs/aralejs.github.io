@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>validator demo</title>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8" />
         <script type="text/javascript" charset="utf-8" src="../../../tools/seajs-and-its-friends.js"></script>
         <script type="text/javascript" charset="utf-8">
             seajs.config({
@@ -26,7 +26,7 @@
                     Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'));
                     Validator.setMessage('emailOrMobile', '{{display}}必须是Email或者手机号码');
 
-                    Validator.addRule('lengthConstraint', Validator.getRule('maxLength', {max: 8}).or('minLength', {min: 15}));
+                    Validator.addRule('lengthConstraint', Validator.getRule('maxlength', {max: 8}).or('minlength', {min: 15}));
                     Validator.setMessage('lengthConstraint', '{{display}}的长度必须小于{{max}}或者大于{{min}}');
 
                     validator = new Validator({
@@ -70,7 +70,7 @@
 
                     validator.addItem({
                         element: '[name=password-confirmation]',
-                        rule: 'required confirmation{"id": "password"}',
+                        rule: 'required confirmation{"target": "#password"}',
                         onItemValidate: function() {
                         },
                         onItemValidated: function(err, msg, ele) {
