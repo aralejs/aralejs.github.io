@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#easing/0.9.1/easing-debug", ["jquery"], function(require, exports, module) {
 
     var easing = module.exports = {
         //Uniform speed between points.
