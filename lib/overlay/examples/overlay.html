@@ -63,7 +63,7 @@ seajs.use('../src/overlay', function(Overlay) {
             baseXY: [0, 0]
         }
     });
-    o.render().show();
+    o.show();
 
     o.set('style', {
         height: 100,
@@ -80,7 +80,7 @@ seajs.use('../src/overlay', function(Overlay) {
             baseXY: [200, 200]
         }
     });
-    o2.render().show();
+    o2.show();
 
     var o3 = new Overlay({
         template: '<div class="overlay">o3</div>',
@@ -93,7 +93,7 @@ seajs.use('../src/overlay', function(Overlay) {
             baseElement: document.getElementById('d')
         }
     });
-    o3.render().show();
+    o3.show();
 
 });
 </script>

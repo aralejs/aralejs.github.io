@@ -35,14 +35,20 @@ seajs.config({
 });
 
 seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
+    
+    var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
 
     var d1 = new Dialog({
         trigger: '#trigger1',
-        template: '<div class="overlay"><button id="confirm">确认按钮</button><button id="close">点击关闭</button></div>',
+        template: '<div class="overlay"><div id="dialog-title"></div><div id="dialog-content"></div><button id="confirm">确认按钮</button><button id="close">点击关闭</button></div>',
         width: 300,
         height: 200,
         confirmElement: '#confirm',
         closeElement: '#close',
+        titleElement: '#dialog-title',
+        title: '我是标题',
+        contentElement: '#dialog-content',
+        content: '我是内容',
         onConfirm: function() {
             alert('点击了确定按钮');
         },
@@ -54,10 +60,12 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
         },
         hasMask: true
     });
+    d1.set('content', '改变的内容');
+    d1.set('width', 500);
 
     var d2 = new animDialog({
         trigger: '#trigger2',
-        template: '<div class="overlay"><button id="close">点击关闭</button></div>',
+        template: closeDialogTpl,
         width: 300,
         height: 200,
         closeElement: '#close',
@@ -70,7 +78,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
     });
     var d3 = new animDialog({
         trigger: '#trigger3',
-        template: '<div class="overlay"><button id="close">点击关闭</button></div>',
+        template: closeDialogTpl,
         width: 300,
         height: 200,
         closeElement: '#close',
@@ -84,7 +92,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
     });
     var d4 = new animDialog({
         trigger: '#trigger4',
-        template: '<div class="overlay"><button id="close">点击关闭</button></div>',
+        template: closeDialogTpl,
         width: 300,
         height: 200,
         closeElement: '#close',
@@ -98,7 +106,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
     });
     var d5 = new animDialog({
         trigger: '#trigger5',
-        template: '<div class="overlay"><button id="close">点击关闭</button></div>',
+        template: closeDialogTpl,
         width: 300,
         height: 200,
         closeElement: '#close',
@@ -112,7 +120,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
     });
     var d6 = new animDialog({
         trigger: '#trigger6',
-        template: '<div class="overlay"><button id="close">点击关闭</button></div>',
+        template: closeDialogTpl,
         width: 300,
         height: 200,
         closeElement: '#close',
@@ -126,7 +134,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
     });
     var d7 = new animDialog({
         trigger: '#trigger7',
-        template: '<div class="overlay"><button id="close">点击关闭</button></div>',
+        template: closeDialogTpl,
         width: 300,
         height: 200,
         closeElement: '#close',
@@ -140,7 +148,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
     });
     var d8 = new animDialog({
         trigger: '#trigger8',
-        template: '<div class="overlay"><button id="close">点击关闭</button></div>',
+        template: closeDialogTpl,
         width: 300,
         height: 200,
         closeElement: '#close',
