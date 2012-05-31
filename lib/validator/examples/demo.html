@@ -12,26 +12,31 @@
             });
 
             seajs.use(['validator', 'jquery'], function(Validator, $) {
-                    /*
+
+                Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'), '{{display}}必须是Email或者手机号码');
+                Validator.addRule('lengthConstraint', Validator.getRule('maxlength', {max: 8}).or('minlength', {min: 15}));
+
                 $(function() {
+                    Validator.autoRun();
                     Validator.getForm('#test-form').on('itemValidated', function(err, msg, ele) {
-                        console.log(arguments);
-                        var input = ele.get();
-                        console.log(input);
+                        console.log(err, msg);
+                        //var input = ele.get();
+                        //console.log(input);
                     });
+
+                    /*
+                    Validator.Item('#test-form [name=username]').on('itemValidated', function(err, msg, ele) {
+                        console.log('item', err, msg);
+                    });
+                    */
                 });
-                */
+                /*
                 $(function() {
 
-                    Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'));
-                    Validator.setMessage('emailOrMobile', '{{display}}必须是Email或者手机号码');
-
-                    Validator.addRule('lengthConstraint', Validator.getRule('maxlength', {max: 8}).or('minlength', {min: 15}));
                     Validator.setMessage('lengthConstraint', '{{display}}的长度必须小于{{max}}或者大于{{min}}');
 
                     validator = new Validator({
                         element: '#test-form',
-                        triggerType: 'blur',
                         onFormValidate: function() {
                             //console.log('onFormValidate', arguments);
                         },
@@ -105,6 +110,7 @@
 
                     //validator.removeItem('username');
                 });
+                */
             });
         </script>
     </head>
@@ -113,17 +119,17 @@
 
             <p>
                 <label for="username">Username:</label>
-                <input id="username" required name="username" type="email" data-rule='lengthBetween{"max":12, "min":1}' data-onItemValidate="sddgas" value="add" />
+                <input id="username" required name="username" data-rule='emailOrMobile lengthConstraint{min: 15, max: 8}' data-onItemValidate="sddgas" value="add" />
             </p>
 
             <p>
                 <label for="password">Password:</label>
-                <input id="password" required name="password" type="password" pattern=".*" />
+                <input id="password" required name="password" type="password" />
             </p>
 
             <p>
                 <label for="password-confirmation">Password Confirmation</label>
-                <input id="password-confirmation" name="password-confirmation" type="password" />
+                <input id="password-confirmation" required name="password-confirmation" type="password" data-rule="confirmation{target: '#password'}" />
             </p>
 
             <p>
