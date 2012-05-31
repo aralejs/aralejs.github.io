@@ -6,21 +6,32 @@
 <script src="../../../tools/seajs-and-its-friends.js"></script>
 
 <style>
-    * {
-        margin:0;
-        padding:0;
-    }
     body {
         height:1000px;
+    }
+    .example {
+        border:3px dashed #ccc;
+        margin:30px 50px;
+        color:#777;
+        font-size:16px;
+    }
+    h2 {
+        color:#2296CC;
+        font-size:16px;
+        margin-left:10px;
+        font-family: consolas;
     }
 </style>
 </head>
 <body>
-    
-    <button id="a" style="margin-top:100px;">显示默认遮罩层</button>
-    <pre>mask.show()</pre>
-    <button id="b" style="margin-top:100px;">显示修改的遮罩层</button>
-    <pre>mask.set('backgroundColor', 'green').set('opacity', '0.3').show();</pre>
+    <div class="example">
+        <h2>1. 显示默认遮罩层：mask.show();</h2>
+        <button id="a" style="margin-top:100px;">点击显示默认遮罩层</button>
+    </div>
+    <div class="example">
+        <h2>2. 显示修改的遮罩层：mask.set('backgroundColor', 'green').set('opacity', '0.3').show();;</h2>
+        <button id="b" style="margin-top:100px;">点击显示修改的遮罩层</button>
+    </div>
 
 <script>
 seajs.use('../src/mask', function(mask) {

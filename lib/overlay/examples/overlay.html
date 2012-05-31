@@ -9,6 +9,19 @@
         margin:0;
         padding:0;
     }
+    .example {
+        border:3px dashed #ccc;
+        margin:30px 50px;
+        color:#777;
+        font-size:16px;
+    }
+    h2 {
+        color:#2296CC;
+        font-size:16px;
+        margin-left:10px;
+        font-family: consolas;
+        padding:10px 0;
+    }
     #a {
         width: 500px;
         height: 300px;
@@ -40,18 +53,22 @@
 </style>
 </head>
 <body>
-
-    <div id="a">a</div>
-    <div id="c" style="position:relative;margin:300px;">c</div>
-    <div id="b">b</div>
-    <div id="d">d</div>    
+<div class="example">
+    <h2>1. 目标元素1定位在基准元素1的右边，高宽分别为100，底色红色。</h2>
+    <div id="a">基准元素1</div>
+    <div id="c" style="position:relative;margin:300px;">目标元素1的父节点</div>
+</div>
+<div class="example">
+    <h2>2. 目标元素2，宽300高200，位置为可视区域top:200 left:200。</h2>
+    <div id="b">目标元素2</div>
+</div> 
 
 <script>
 seajs.use('../src/overlay', function(Overlay) {
 
     var o = new Overlay({
-        template: '<div class="overlay">overlay</div>',
-        height: 200,
+        template: '<div class="overlay">目标元素1</div>',
+        height: 100,
         parentNode: '#c',
         id: 'overlay',
         style: {
@@ -64,9 +81,7 @@ seajs.use('../src/overlay', function(Overlay) {
         }
     });
     o.show();
-
     o.set('style', {
-        height: 100,
         backgroundColor: 'red'
     });
     o.set('width', 100);
@@ -81,20 +96,6 @@ seajs.use('../src/overlay', function(Overlay) {
         }
     });
     o2.show();
-
-    var o3 = new Overlay({
-        template: '<div class="overlay">o3</div>',
-        width: 100,
-        height: 100,
-        style: {
-            backgroundColor: '#08e'
-        },
-        align: {
-            baseElement: document.getElementById('d')
-        }
-    });
-    o3.show();
-
 });
 </script>
 </body>
