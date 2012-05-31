@@ -14,6 +14,10 @@
         height: 300px;
         background: green;
     }
+    input {
+        display:block;
+        margin:10px;
+    }
 </style>
 </head>
 <body>
@@ -25,6 +29,12 @@
     <input type="button" id="trigger6" value="从右移入对话框" />
     <input type="button" id="trigger7" value="从上移入对话框" />
     <input type="button" id="trigger8" value="从下移入对话框" />
+    <input type="button" id="trigger8-1" value="混合动画对话框一" />
+    <input type="button" id="trigger8-2" value="混合动画对话框二" />        
+    
+    <input type="button" id="trigger9" value="ajax对话框" />
+    <input type="button" id="trigger10" value="iframe对话框" />    
+    
 <script>
 
 // for debug
@@ -34,13 +44,14 @@ seajs.config({
     ]
 });
 
-seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
+seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, AnimDialog) {
     
     var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
+    var dialogTpl = '<div class="overlay"><div id="dialog-title"></div><div id="dialog-content"></div><button id="confirm">确认按钮</button><button id="close">点击关闭</button></div>';
 
     var d1 = new Dialog({
         trigger: '#trigger1',
-        template: '<div class="overlay"><div id="dialog-title"></div><div id="dialog-content"></div><button id="confirm">确认按钮</button><button id="close">点击关闭</button></div>',
+        template: dialogTpl,
         width: 300,
         height: 200,
         confirmElement: '#confirm',
@@ -63,7 +74,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
     d1.set('content', '改变的内容');
     d1.set('width', 500);
 
-    var d2 = new animDialog({
+    var d2 = new AnimDialog({
         trigger: '#trigger2',
         template: closeDialogTpl,
         width: 300,
@@ -76,7 +87,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
             type: 'fade'
         }
     });
-    var d3 = new animDialog({
+    var d3 = new AnimDialog({
         trigger: '#trigger3',
         template: closeDialogTpl,
         width: 300,
@@ -90,7 +101,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
             from: 'left'
         }
     });
-    var d4 = new animDialog({
+    var d4 = new AnimDialog({
         trigger: '#trigger4',
         template: closeDialogTpl,
         width: 300,
@@ -104,7 +115,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
             from: 'up'
         }
     });
-    var d5 = new animDialog({
+    var d5 = new AnimDialog({
         trigger: '#trigger5',
         template: closeDialogTpl,
         width: 300,
@@ -118,7 +129,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
             from: 'left'
         }
     });
-    var d6 = new animDialog({
+    var d6 = new AnimDialog({
         trigger: '#trigger6',
         template: closeDialogTpl,
         width: 300,
@@ -132,7 +143,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
             from: 'right'
         }
     });
-    var d7 = new animDialog({
+    var d7 = new AnimDialog({
         trigger: '#trigger7',
         template: closeDialogTpl,
         width: 300,
@@ -146,7 +157,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
             from: 'up'
         }
     });
-    var d8 = new animDialog({
+    var d8 = new AnimDialog({
         trigger: '#trigger8',
         template: closeDialogTpl,
         width: 300,
@@ -159,6 +170,72 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, animDialog) {
             type: 'move',
             from: 'down'
         }
+    });
+    var d8_1 = new AnimDialog({
+        trigger: '#trigger8-1',
+        template: closeDialogTpl,
+        width: 300,
+        height: 200,
+        closeElement: '#close',
+        align: {
+            baseXY: [400, 200]
+        },
+        showEffect: {
+            type: 'move',
+            from: 'down'
+        },
+        hideEffect: {
+            type: 'fade'
+        }
+    });
+    var d8_2 = new AnimDialog({
+        trigger: '#trigger8-2',
+        template: closeDialogTpl,
+        width: 300,
+        height: 200,
+        closeElement: '#close',
+        align: {
+            baseXY: [400, 200]
+        },
+        showEffect: {
+            type: 'none',
+        },
+        hideEffect: {
+            type: 'move',
+            from: 'left'
+        }
+    });
+
+    var d9 = new Dialog({
+        trigger: '#trigger9',
+        template: dialogTpl,
+        width: 300,
+        height: 200,
+        closeElement: '#close',
+        titleElement: '#dialog-title',
+        title: function() {
+            return '我真是标题';
+        },
+        contentElement: '#dialog-content',
+        ajaxUrl: 'https://www.alipay.com/',        
+        align: {
+            baseXY: [400, 200]
+        }
+    });
+    var d10 = new Dialog({
+        trigger: '#trigger10',
+        template: '<div class="overlay"><div id="dialog-title"></div><iframe src=""></iframe><button id="close">点击关闭</button></div>',
+        width: 300,
+        height: 200,
+        closeElement: '#close',
+        titleElement: '#dialog-title',
+        title: function() {
+            return '我真是标题啊';
+        },
+        align: {
+            baseXY: [400, 200]
+        },
+        iframeUrl: 'https://www.alipay.com/'
     });
 });
 </script>
