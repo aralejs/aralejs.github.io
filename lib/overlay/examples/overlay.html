@@ -25,6 +25,14 @@
     #c {
         border:5px solid blue;
     }
+    #d {
+        position:absolute;
+        top:500px;
+        left:100px;
+        width:400px;
+        height:200px;
+        border:1px solid purple;
+    }
     .overlay {
         background: #FFC;
         width:500px;
@@ -36,7 +44,7 @@
     <div id="a">a</div>
     <div id="c" style="position:relative;margin:300px;">c</div>
     <div id="b">b</div>
-    
+    <div id="d">d</div>    
 
 <script>
 seajs.use('../src/overlay', function(Overlay) {
@@ -73,6 +81,19 @@ seajs.use('../src/overlay', function(Overlay) {
         }
     });
     o2.render().show();
+
+    var o3 = new Overlay({
+        template: '<div class="overlay">o3</div>',
+        width: 100,
+        height: 100,
+        style: {
+            backgroundColor: '#08e'
+        },
+        align: {
+            baseElement: document.getElementById('d')
+        }
+    });
+    o3.render().show();
 
 });
 </script>

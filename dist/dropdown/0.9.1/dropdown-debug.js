@@ -23,27 +23,22 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay"], function(require,
                 }
             },
             // 延迟触发时间
-            delay: {
-                value: 100
-            },
+            delay: 100,
             // 鼠标移出浮层后自动隐藏的时间
-            timeout: {
-                value: 100
-            },
+            timeout: 100,
             // 相对于 trigger 元素的坐标
-            offset: [], // [x,y]
+            offset: {
+                value: [], // [x,y]
+                getter: function(val) {
+                    if (val && val.length === 0) {
+                        val = [0, this.get('trigger').height()];
+                    }
+                    return val;
+                }
+            }, 
             // 是否可见
             visible: false
             // 其余参数请参考 Overlay 文档
-        },
-
-        _setupAttr: function() {
-            var trigger = this.get('trigger');
-            var offset = this.get('offset');
-            if (!offset.length) {
-                // 默认值为浮层在当前元素下面。
-                this.set('offset', [0, trigger.height()]);
-            }
         },
 
         _bindTrigger: function() {
@@ -91,14 +86,13 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay"], function(require,
             var trigger = this.get('trigger');
             this.set('align', {
                 selfXY: align.selfXY,
-                baseElement: trigger.selector,
+                baseElement: trigger[0],
                 baseXY: val
             });
         },
 
         setup: function() {
             Dropdown.superclass.setup.call(this);
-            this._setupAttr();
             this._bindTrigger();
         }
 

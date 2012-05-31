@@ -61,6 +61,9 @@
     .tips-grey {
         background: #DDD;
     }
+    .grey {
+        color: #999;
+    }
 </style>
 <script src="../../../tools/seajs-and-its-friends.js"></script>
 </head>
@@ -105,6 +108,15 @@
                 <li><a href="http://aralejs.org#3">内容3</a></li>
                 <li><a href="http://aralejs.org#4">内容4</a></li>
             </ul>
+        </div>
+        <div class="selectbox">
+            <select>
+                <option>我有仙心一颗</option>
+                <option>久被尘劳封锁</option>
+                <option>何日尘尽光生</option>
+                <option>照破山河万朵</option>
+            </select>
+            <span class="grey">选择框用于测试 IE6 遮罩</span>
         </div>
         <div class="tips">
             <h4>说明: 默认行为通过 hover 触发，可以不用传递参数 triggerType</h4> 
@@ -162,9 +174,27 @@
     </div>
 
 </div>
-<script type="text/javascript">
+<script>
+
+// for debug
+seajs.config({
+    map: [
+        [/^(.+)\/widget\.js.*$/, '$1/../../../lib/widget/src/widget.js'],
+        [/^(.+)\/base\.js.*$/, '$1/../../../lib/base/src/base.js'],
+        [/^(.+)\/attribute\.js.*$/, '$1/../../../lib/base/src/attribute.js']
+    ]
+});
+
 seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay){
-    window.$ = window.jQuery = $; // for debuging only;
+    // for debuging only;
+    window.$ = window.jQuery = $;
+    if (!window.console) {
+        var helper = ['log','dir','error', 'warn','info'];
+        window.console = {};
+        $.map(helper, function(val, i){
+            window.console[val] = $.noop;
+        });
+    }
 
     var example1; // data-api 暂无例子。
 
@@ -172,15 +202,18 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     var example2 = new Dropdown({
         trigger: '#triggerId2',
         element: '#dropdown2',
-        offset: [0,$('#triggerId2').height()],
+        offset: [0,$('#triggerId2').height()]
     });
+
     example2.render();
+
     // 订阅事件
     example2.after('show', function(){
         console.log('example2 is shown');
     }).after('hide', function(){
         console.log('example2 is hidden');
     });
+
     // 触发事件
     // example2.trigger('shown');
 
@@ -231,7 +264,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         trigger: '#triggerId6',
         triggerType: 'focus',
         element: '#dropdown6',
-        offset: [0,$('#triggerId6').height() + 5],
+        offset: [0,$('#triggerId6').height() + 5]
     });
     example6.render();
     example6.element.find('a').click(function(e) {
@@ -241,7 +274,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     });
 
     // 枚举 Dropdown
-    console.dir(Dropdown);
+    //console.dir(Dropdown);
 
 
 });

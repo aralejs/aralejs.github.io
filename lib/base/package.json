@@ -1,5 +1,5 @@
 {
-    "version": "0.9.9",
+    "version": "0.9.11",
     "dist": {
         "base.js": "default",
         "aspect.js": "default",
