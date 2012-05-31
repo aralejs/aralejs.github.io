@@ -10,7 +10,7 @@
         </tr>
         <tr class="ui-calendar-weeks">
             {{#each weeks.weeks}}
-            <td>{{label}}</td>
+            <td data-value="{{value}}">{{label}}</td>
             {{/each}}
         </tr>
     </thead>
