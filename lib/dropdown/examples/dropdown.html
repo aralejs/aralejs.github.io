@@ -99,7 +99,7 @@
     </div>
 
     <div class="example">
-        <h3>范例2: 默认行为(hover)</h3>
+        <h3>范例2: 默认行为与表现</h3>
         <div class="dropdown">
             <a href="#dropdown2" id="triggerId2">下拉框<span class="icon">▼</span></a>
             <ul class="fn-hide ui-dropdown" id="dropdown2">
@@ -119,7 +119,7 @@
             <span class="grey">选择框用于测试 IE6 遮罩</span>
         </div>
         <div class="tips">
-            <h4>说明: 默认行为通过 hover 触发，可以不用传递参数 triggerType</h4> 
+            <p>说明: 默认行为通过 hover 触发，可以不用传递参数 triggerType</p> 
         </div>
     </div>
 
@@ -196,13 +196,13 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         });
     }
 
+
     var example1; // data-api 暂无例子。
 
 
     var example2 = new Dropdown({
         trigger: '#triggerId2',
-        element: '#dropdown2',
-        offset: [0,$('#triggerId2').height()]
+        element: '#dropdown2'
     });
 
     example2.render();

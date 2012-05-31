@@ -30,7 +30,7 @@ define("#dropdown/0.9.1/dropdown-debug", ["jquery","overlay"], function(require,
             offset: {
                 value: [], // [x,y]
                 getter: function(val) {
-                    if (val && val.length === 0) {
+                    if (val.length === 0) {
                         val = [0, this.get('trigger').height()];
                     }
                     return val;
