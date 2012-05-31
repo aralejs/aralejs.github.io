@@ -2,21 +2,21 @@
 <table class="ui-calendar">
     <thead>
         <tr class="ui-calendar-months">
-            <td class="ui-calendar-previous-year">&lt;&lt;</td>
-            <td class="ui-calendar-previous-month">&lt;</td>
+            <td class="ui-calendar-previous-year" data-role="prev-year">&lt;&lt;</td>
+            <td class="ui-calendar-previous-month" data-role="prev-month">&lt;</td>
             <td colspan="3"><span class="month">{{current.month}}</span> <span class="year">{{current.year}}</span></td>
-            <td class="ui-calendar-next-month">&gt;</td>
-            <td class="ui-calendar-next-year">&gt;&gt;</td>
+            <td class="ui-calendar-next-month" data-role="next-month">&gt;</td>
+            <td class="ui-calendar-next-year" data-role="next-year">&gt;&gt;</td>
         </tr>
         <tr class="ui-calendar-weeks">
             {{#each weeks.weeks}}
-            <td data-value="{{value}}">{{label}}</td>
+            <td data-role="week" data-value="{{value}}">{{label}}</td>
             {{/each}}
         </tr>
     </thead>
     <tbody class="ui-calendar-dates">
         {{#table dates}}
-        <td class="{{label}}{{#unless available}} disable{{/unless}}">{{date}}</td>
+        <td class="{{label}}{{#unless available}} disable{{/unless}}" data-role="date" data-value="{{data}}">{{date}}</td>
         {{/table}}
     </tbody>
     <tfoot>
