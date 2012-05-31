@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>validator demo</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <script type="text/javascript" charset="utf-8" src="../../../tools/seajs-and-its-friends.js"></script>
         <script type="text/javascript" charset="utf-8">
             seajs.config({
@@ -37,8 +38,8 @@
                         onFormValidated: function() {
                             //console.log('onFormValidated', arguments);
                         },
-                        onItemValidated: function() {
-                            //console.log('validator.onItemValidated', arguments);
+                        onItemValidated: function(err, msg, ele) {
+                            //console.log('validator.onItemValidated', err, msg, ele);
                         }
                     });
 
@@ -47,12 +48,12 @@
                         rule: 'required emailOrMobile lengthConstraint{"min": 15, "max": 8}',
                         display: '用户名',
                         message: '用户名的格式必须是正确的哦',
-                        triggerType: 'keyup',
+                        triggerType: 'keyup blur',
                         onItemValidate: function() {
                             //console.log('onItemValidate', arguments);
                         },
                         onItemValidated: function(err, msg, ele) {
-                            console.log('onItemValidated', err, msg);
+                            console.log('onItemValidated', arguments);
                         }
                     });
 
