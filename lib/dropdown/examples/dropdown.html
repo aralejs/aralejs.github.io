@@ -204,16 +204,13 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         trigger: '#triggerId2',
         element: '#dropdown2'
     });
-
     example2.render();
-
     // 订阅事件
     example2.after('show', function(){
         console.log('example2 is shown');
     }).after('hide', function(){
         console.log('example2 is hidden');
     });
-
     // 触发事件
     // example2.trigger('shown');
 
@@ -221,7 +218,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     var example3 = new Dropdown({
         trigger: '#triggerId3',
         triggerType: 'click',
-        offset: [0,-80],
+        offset: [0, -80],
         element: '#dropdown3'
     });
     example3.render();

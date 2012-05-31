@@ -7,11 +7,18 @@
     </head>
     <body>
         <script>
+// for debug
+seajs.config({
+    map: [
+        [/^(.+)\/widget\.js.*$/, '$1/../../../lib/widget/src/widget.js'],
+        [/^(.+)\/templatable\.js.*$/, '$1/../../../lib/widget/src/templatable.js']
+    ]
+});
+
             seajs.use(['../src/calendar', '../src/i18n/zh_CN'], function(Calendar, lang) {
                 var available = function(time) {
                     return time.day() != 3;
                 }
-                console.log(lang);
                 var cal = new Calendar({available: available, lang: lang});
                 cal.render();
                 console.log(cal._current.toString());
