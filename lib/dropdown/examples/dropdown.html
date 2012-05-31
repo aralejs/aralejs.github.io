@@ -175,16 +175,6 @@
 
 </div>
 <script>
-
-// for debug
-seajs.config({
-    map: [
-        [/^(.+)\/widget\.js.*$/, '$1/../../../lib/widget/src/widget.js'],
-        [/^(.+)\/base\.js.*$/, '$1/../../../lib/base/src/base.js'],
-        [/^(.+)\/attribute\.js.*$/, '$1/../../../lib/base/src/attribute.js']
-    ]
-});
-
 seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay){
     // for debuging only;
     window.$ = window.jQuery = $;
