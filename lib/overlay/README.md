@@ -71,7 +71,7 @@
 
 * `show()` 
 
-    显示浮层。
+    显示浮层，第一次调用时会进行render()操作。
 
 * `hide()` 
 
@@ -103,7 +103,7 @@
                 baseXY: [0, 0]
             }
         });
-        overlay.render().show();
+        overlay.show();
         // 修改元素样式
         overlay.set('style', {
             backgroundColor: 'red',
