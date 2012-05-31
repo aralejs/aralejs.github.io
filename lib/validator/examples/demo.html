@@ -11,6 +11,7 @@
             });
 
             seajs.use(['validator', 'jquery'], function(Validator, $) {
+                    /*
                 $(function() {
                     Validator.getForm('#test-form').on('itemValidated', function(err, msg, ele) {
                         console.log(arguments);
@@ -18,7 +19,7 @@
                         console.log(input);
                     });
                 });
-                /*
+                */
                 $(function() {
 
                     Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'));
@@ -27,7 +28,8 @@
                     Validator.addRule('lengthConstraint', Validator.getRule('maxLength', {max: 8}).or('minLength', {min: 15}));
                     Validator.setMessage('lengthConstraint', '{{display}}的长度必须小于{{max}}或者大于{{min}}');
 
-                    validator = new Validator('#test-form', {
+                    validator = new Validator({
+                        element: '#test-form',
                         triggerType: 'blur',
                         onFormValidate: function() {
                             //console.log('onFormValidate', arguments);
@@ -40,7 +42,8 @@
                         }
                     });
 
-                    validator.addItem('[name=username]', {
+                    validator.addItem({
+                        element: '[name=username]',
                         rule: 'required emailOrMobile lengthConstraint{"min": 15, "max": 8}',
                         display: '用户名',
                         message: '用户名的格式必须是正确的哦',
@@ -53,7 +56,8 @@
                         }
                     });
 
-                    validator.addItem('[name=password]', {
+                    validator.addItem({
+                        element: '[name=password]',
                         rule: 'required',
                         display: '密码',
                         onItemValidate: function() {
@@ -63,7 +67,8 @@
                         }
                     });
 
-                    validator.addItem('[name=password-confirmation]', {
+                    validator.addItem({
+                        element: '[name=password-confirmation]',
                         rule: 'required confirmation{"id": "password"}',
                         onItemValidate: function() {
                         },
@@ -72,7 +77,8 @@
                         }
                     });
 
-                    validator.addItem('[name=sex]', {
+                    validator.addItem({
+                        element: '[name=sex]',
                         rule: 'required',
                         triggerType: 'change',
                         onItemValidated: function() {
@@ -80,14 +86,16 @@
                         }
                     });
 
-                    validator.addItem('[name=vehicle]', {
+                    validator.addItem({
+                        element: '[name=vehicle]',
                         rule: 'required',
                         onItemValidated: function() {
                             console.log('onItemValidated', arguments);
                         }
                     });
 
-                    validator.addItem('[name=country]', {
+                    validator.addItem({
+                        element: '[name=country]',
                         rule: 'required',
                         onItemValidated: function() {
                             console.log('onItemValidated', arguments);
@@ -96,7 +104,6 @@
 
                     //validator.removeItem('username');
                 });
-                */
             });
         </script>
     </head>
