@@ -36,6 +36,9 @@
 .ui-calendar td.previous, .ui-calendar td.next {
     background: #ccc;
 }
-.ui-calendar td.disable {
+.ui-calendar td.focus {
+    background: #d64;
+}
+.ui-calendar td.disabled {
     background: #999;
 }

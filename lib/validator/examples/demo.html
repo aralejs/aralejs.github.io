@@ -16,6 +16,10 @@
                 Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'), '{{display}}必须是Email或者手机号码');
                 Validator.addRule('lengthConstraint', Validator.getRule('maxlength', {max: 8}).or('minlength', {min: 15}));
 
+                Validator.helper('usernameHandler', function(err, msg, ele) {
+                    console.log('helper', err, msg);
+                });
+
                 $(function() {
                     Validator.autoRun();
                     Validator.query('#test-form').on('itemValidated', function(err, msg, ele) {
@@ -115,7 +119,7 @@
 
             <p>
                 <label for="username">Username:</label>
-                <input id="username" required name="username" data-rule='emailOrMobile lengthConstraint{min: 15, max: 8}' data-onItemValidate="sddgas" value="add" />
+                <input id="username" required name="username" data-rule='emailOrMobile lengthConstraint{min: 15, max: 8}' data-on-item-validated="usernameHandler" value="add" />
             </p>
 
             <p>

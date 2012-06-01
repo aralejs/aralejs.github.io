@@ -31,11 +31,11 @@ define("#overlay/0.9.4/mask-debug", ["$","./overlay"], function(require, exports
             });
         },
 
-        _onChangeBackgroundColor: function(val) {
+        _onRenderBackgroundColor: function(val) {
             this.element.css('backgroundColor', val);
         },
 
-        _onChangeOpacity: function(val) {
+        _onRenderOpacity: function(val) {
             this.element.css('opacity', val);
         }
 
