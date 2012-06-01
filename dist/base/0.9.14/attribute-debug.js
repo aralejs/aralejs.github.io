@@ -1,4 +1,4 @@
-define(function(require, exports) {
+define("#base/0.9.14/attribute-debug", [], function(require, exports) {
 
     // Attribute
     // -----------------
