@@ -1,4 +1,4 @@
-define(function(require, exports) {
+define("#base/0.9.12/attribute-debug", [], function(require, exports) {
 
     // Attribute
     // -----------------
@@ -144,7 +144,16 @@ define(function(require, exports) {
             // invoke change event
             if (!isEqual(prev, val)) {
                 if (silent) {
-                    changed[key] = [val, prev];
+                    // 如果已经有了，说明是对同一属性的多次静默设置。后续在调用 change
+                    // 方法时，只触发一次 change:attr 事件。因此只要更新 val
+                    // 值，prev 应该是第一次静默 set 时的值
+                    if (changed[key]) {
+                        changed[key][0] = val;
+                    }
+                    // 没有时，将当前环境保存起来
+                    else {
+                        changed[key] = [val, prev];
+                    }
                 }
                 else {
                     this.trigger('change:' + key, val, prev, key);
