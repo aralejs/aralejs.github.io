@@ -250,7 +250,7 @@ myWidget.delegateEvents('click .move', function() {
 ```
 
 
-### undelegateEvents `widget.undelegateEvents([eventType], [handler])`
+### undelegateEvents `widget.undelegateEvents([eventType])`
 
 卸载事件代理。不带参数时，表示卸载所有事件。
 
