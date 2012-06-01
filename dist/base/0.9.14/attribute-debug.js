@@ -26,7 +26,7 @@ define("#base/0.9.14/attribute-debug", [], function(require, exports) {
 
         // Automatically register `this._onChangeAttr` method as
         // a `change:attr` event handler.
-        parseEventsFromInstance(this);
+        parseEventsFromInstance(this, attrs);
 
         // Convert `on/before/afterXxx` config to event handler.
         parseEventsFromAttrs(this, attrs);
@@ -222,6 +222,10 @@ define("#base/0.9.14/attribute-debug", [], function(require, exports) {
         }
     }
 
+    function ucfirst(str) {
+        return str.charAt(0).toUpperCase() + str.substring(1);
+    }
+
 
     function getInheritedAttrs(instance, specialProps) {
         var inherited = [];
@@ -269,12 +273,13 @@ define("#base/0.9.14/attribute-debug", [], function(require, exports) {
     var EVENT_PATTERN = /^(on|before|after)([A-Z].*)$/;
     var EVENT_NAME_PATTERN = /^(Change)?([A-Z])(.*)/;
 
-    function parseEventsFromInstance(host) {
-        // 遍历 host 上的所有属性，包括继承下来的
-        for (var p in host) {
-            if (p.length > 9 && p.indexOf('_onChange' === 0)) {
-                var attrName = p.charAt(9).toLowerCase() + p.substring(10);
-                host.on('change:' + attrName, host[p]);
+    function parseEventsFromInstance(host, attrs) {
+        for (var attr in attrs) {
+            if (attrs.hasOwnProperty(attr)) {
+                var m = '_onChange' + ucfirst(attr);
+                if (host[m]) {
+                    host.on('change:' + attr, host[m]);
+                }
             }
         }
     }
