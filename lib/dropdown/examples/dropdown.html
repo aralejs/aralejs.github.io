@@ -79,7 +79,7 @@
     </div>
 
     <div class="example">
-        <h3>范例1: data-api</h3>
+        <h3><del>范例1: data-api</del></h3>
         <div class="dropdown">
             <a href="#dropdown1" id="triggerId1" data-toggle="dropdown" data-trigger="click" data-target="#dropdown1">下拉框<span class="icon">▼</span></a>
             <ul class="ui-dropdown" id="dropdown1">
@@ -218,13 +218,15 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
 
 
     var animDropdown = Dropdown.extend({
-        show: function(){
-            //this.element.fadeIn(); //淡入效果
-            this.element.animate({'height': 'toggle', 'opacity':'show'}, 200);
-        },
-        hide: function(){
-            //this.element.fadeOut(); //淡出效果
-            this.element.animate({'height': 'toggle', 'opacity':'hide'}, 200);
+        // 此处定义动画效果存疑; 是否应该覆盖私有方法？
+        _onChangeVisible: function(val){
+            if (val) {
+                //this.element.fadeIn(); //淡入效果
+                this.element.animate({'height': 'toggle', 'opacity':'show'}, 200);
+            } else {
+                //this.element.fadeOut(); //淡出效果
+                this.element.animate({'height': 'toggle', 'opacity':'hide'}, 200);
+            }
         }
     });
     var example4 = new animDropdown({
