@@ -11,6 +11,9 @@ define("#widget/0.9.10/widget-debug", ["base","$","./daparser"], function(requir
     var $ = require('$');
     var DAParser = require('./daparser');
 
+    var DELEGATE_EVENT_NS = '.delegate-events-';
+    var ON_RENDER = '_onRender';
+
 
     var Widget = Base.extend({
 
@@ -44,22 +47,43 @@ define("#widget/0.9.10/widget-debug", ["base","$","./daparser"], function(requir
         },
 
         // 初始化方法，确定组件创建时的基本流程：
-        // 初始化 attrs --》 初始化 properties --》 初始化 events --》 子类的初始化
+        // 初始化 attrs --》 初始化 props --》 初始化 events --》 子类的初始化
         initialize: function(config) {
             this.cid = uniqueCid();
 
-            // 由 Base 提供
+            // 初始化 attrs
             this.initAttrs(config);
+            this._bindOnRender2OnChange();
 
-            // 由 Widget 提供
+            // 初始化 props
             this.parseElement();
             this._parseDataAttrs();
             this.initProps();
 
+            // 初始化 events
             this.delegateEvents();
 
-            // 由子类提供
+            // 子类自定义的初始化
             this.setup();
+        },
+
+        // 将 _onRenderXx 自动绑定到 change:xx 事件上
+        _bindOnRender2OnChange: function() {
+            var widget = this;
+            var attrs = widget.attrs;
+
+            for (var attr in attrs) {
+                if (!attrs.hasOwnProperty(attr)) continue;
+                var m = ON_RENDER + ucfirst(attr);
+
+                if (widget[m]) {
+                    (function(m) {
+                        widget.on('change:' + attr, function(val, prev, key) {
+                            widget[m](val, prev, key);
+                        });
+                    })(m);
+                }
+            }
         },
 
         // 构建 this.element
@@ -156,10 +180,8 @@ define("#widget/0.9.10/widget-debug", ["base","$","./daparser"], function(requir
         // 渲染不仅仅包括插入到 DOM 树中，还包括样式渲染等
         // 约定：子类覆盖时，需保持 `return this`
         render: function() {
-
-            // 触发所有 change:attr 事件，并将状态标识为 ready
-            this.change();
-            this.__ready = true;
+            // 让渲染相关属性的初始值生效
+            this._renderInitialAttrs();
 
             // 插入到文档流中
             var parentNode = this.get('parentNode');
@@ -168,6 +190,24 @@ define("#widget/0.9.10/widget-debug", ["base","$","./daparser"], function(requir
             }
 
             return this;
+        },
+
+        _renderInitialAttrs: function() {
+            var attrs = this.attrs;
+
+            for (var attr in attrs) {
+                if (attrs.hasOwnProperty(attr)) {
+                    var m = ON_RENDER + ucfirst(attr);
+                    if (this[m]) {
+                        var val = this.get(attr);
+
+                        // 默认空值不触发
+                        if (!isEmptyAttrValue(val)) {
+                            this[m](this.get(attr), undefined, attr);
+                        }
+                    }
+                }
+            }
         },
 
         // 在 this.element 内寻找匹配节点
@@ -202,12 +242,30 @@ define("#widget/0.9.10/widget-debug", ["base","$","./daparser"], function(requir
         return toString.call(val) === '[object Function]';
     }
 
+    function isEmptyObject(o) {
+        for (var p in o) {
+            if (o.hasOwnProperty(p)) return false;
+        }
+        return true;
+    }
+
     function trim(s) {
         return s.replace(/^\s*/, '').replace(/\s*$/, '');
     }
 
     function isInDocument(element) {
         return $.contains(document.documentElement, element);
+    }
+
+    function ucfirst(str) {
+        return str.charAt(0).toUpperCase() + str.substring(1);
+    }
+
+    // 对于 attrs 的 value 来说，以下值都认为是空值： null, undefined, '', [], {}
+    function isEmptyAttrValue(o) {
+        return o == null || // null, undefined
+                (isString(o) || $.isArray(o)) && o.length === 0 || // '', []
+                $.isPlainObject(o) && isEmptyObject(o); // {}
     }
 
 
@@ -280,7 +338,6 @@ define("#widget/0.9.10/widget-debug", ["base","$","./daparser"], function(requir
 
 
     var EVENT_KEY_SPLITTER = /^(\S+)\s*(.*)$/;
-    var DELEGATE_EVENT_NS = '.delegate-events-';
     var EXPRESSION_FLAG = /{{([^}]+)}}/g;
     var INVALID_SELECTOR = 'INVALID_SELECTOR';
 
