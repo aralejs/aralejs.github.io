@@ -18,17 +18,13 @@
 
                 $(function() {
                     Validator.autoRun();
-                    Validator.getForm('#test-form').on('itemValidated', function(err, msg, ele) {
+                    Validator.query('#test-form').on('itemValidated', function(err, msg, ele) {
                         console.log(err, msg);
-                        //var input = ele.get();
-                        //console.log(input);
                     });
 
-                    /*
-                    Validator.Item('#test-form [name=username]').on('itemValidated', function(err, msg, ele) {
+                    Validator.query('#test-form [name=username]').on('itemValidated', function(err, msg, ele) {
                         console.log('item', err, msg);
                     });
-                    */
                 });
                 /*
                 $(function() {
