@@ -141,16 +141,31 @@ define("#widget/0.9.10/widget-debug", ["base","$","./daparser"], function(requir
             // key 为 'event selector'
             for (var key in events) {
                 if (!events.hasOwnProperty(key)) continue;
+
                 var args = parseEventKey(key, this);
+                var eventType = args.type;
+                var selector = args.selector;
 
                 (function(handler, widget) {
-                    widget.element.on(args.type, args.selector, function(ev) {
+
+                    var callback = function(ev) {
                         if (isFunction(handler)) {
                             handler.call(widget, ev);
                         } else {
                             widget[handler](ev);
                         }
-                    });
+                    };
+
+                    // delegate
+                    if (selector) {
+                        widget.element.on(eventType, selector, callback);
+                    }
+                    // normal bind
+                    // 分开写是为了兼容 zepto，zepto 的判断不如 jquery 强劲有力
+                    else {
+                        widget.element.on(eventType, callback);
+                    }
+
                 })(events[key], this);
             }
 
@@ -255,8 +270,13 @@ define("#widget/0.9.10/widget-debug", ["base","$","./daparser"], function(requir
         return s.replace(/^\s*/, '').replace(/\s*$/, '');
     }
 
+    // Zepto 上没有 contains 方法
+    var contains = $.contains || function(a, b) {
+        return !!(a.compareDocumentPosition(b) & 16);
+    };
+
     function isInDocument(element) {
-        return $.contains(document.documentElement, element);
+        return contains(document.documentElement, element);
     }
 
     function ucfirst(str) {
@@ -310,11 +330,12 @@ define("#widget/0.9.10/widget-debug", ["base","$","./daparser"], function(requir
 
     function parseEventKey(eventKey, widget) {
         var match = eventKey.match(EVENT_KEY_SPLITTER);
-
         var eventType = match[1] + DELEGATE_EVENT_NS + widget.cid;
-        var selector = match[2] || '';
 
-        if (selector.indexOf('{{') > -1) {
+        // 当没有 selector 时，需要设置为 undefined，以使得 zepto 能正确转换为 bind
+        var selector = match[2] || undefined;
+
+        if (selector && selector.indexOf('{{') > -1) {
             selector = parseEventExpression(selector, widget);
         }
 
