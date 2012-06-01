@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#overlay/0.9.4/overlay-debug", ["$","position","iframe-shim","widget"], function(require, exports, module) {
 
     var $ = require('$'),
         Position = require('position'),
