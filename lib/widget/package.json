@@ -1,5 +1,5 @@
 {
-    "version": "0.9.9",
+    "version": "0.9.10",
     "dist": {
         "widget.js": "default",
         "daparser.js": "default",
