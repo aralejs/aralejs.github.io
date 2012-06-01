@@ -21,7 +21,7 @@ define("#overlay/0.9.4/overlay-debug", ["$","position","iframe-shim","widget"], 
             id: '',
             className: '',
             style: {},
-            visible: true,
+            visible: false,
 
             // 定位配置
             align: {
