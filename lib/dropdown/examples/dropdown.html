@@ -150,8 +150,9 @@
     </div>
 
     <div class="example">
-        <h3>范例5: 自定义Template并设置回调函数</h3>
+        <h3>范例5: 自定义Template、Align并设置回调函数</h3>
         <div class="dropdown">
+            <a href="#" id='releated5' class="fn-right">我是无辜的被定位元素</a>
             <a href="#dropdown5" id="triggerId5">下拉框<span class="icon">▼</span></a>
         </div>
     </div>
@@ -208,7 +209,9 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     var example3 = new Dropdown({
         trigger: '#triggerId3',
         triggerType: 'click',
-        offset: [0, -80],
+        align: {
+            baseXY: [0, -80]
+        },
         element: '#dropdown3'
     });
     example3.render();
@@ -226,7 +229,9 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     });
     var example4 = new animDropdown({
         trigger: '#triggerId4',
-        offset: [5,20],
+        align: {
+            baseXY: [5,20]
+        },
         delay: 400,
         element: '#dropdown4'
     });
@@ -235,14 +240,18 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
 
     var example5 = new Dropdown({
         trigger: '#triggerId5',
-        offset: [0,20],
+        align: {
+            baseElement: $('#releated5')[0],
+            selfXY: [-10,-10],
+            baseXY: [0,20]
+        },
         template: '<div class="ui-dropdown fn-hide"><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>'
     });
     example5.render();
     example5.after('show', function(){
         $('#triggerId5').text('三秒后改变浮层位置')
         window.setTimeout(function() {
-            example5.set('offset', [0, -80]);
+            example5.set('align', { baseXY: [0, -80] });
         }, 3000);
     });
 
@@ -251,7 +260,9 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         trigger: '#triggerId6',
         triggerType: 'focus',
         element: '#dropdown6',
-        offset: [0,$('#triggerId6').height() + 5]
+        align: {
+            baseXY: [0,$('#triggerId6').height() + 5]
+        },
     });
     example6.render();
     example6.element.find('a').click(function(e) {
