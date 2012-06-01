@@ -68,8 +68,8 @@ define("#dropdown/0.9.2/dropdown-debug", ["jquery","position","overlay"], functi
                 // 重设默认坐标在目标元素左下角
                 align.baseXY = [0, '100%'];
             }
-            if (align.baseElement === Position.VIEWPORT) {
-                // 设置基准定位元素为 trigger
+            if (align.baseElement._id === 'VIEWPORT') {
+                // 重设置基准定位元素为 trigger
                 align.baseElement = this.get('trigger')[0];
             }
             this.set('align', align);
