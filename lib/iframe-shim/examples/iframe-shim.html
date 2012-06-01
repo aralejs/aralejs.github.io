@@ -183,6 +183,43 @@
         </select>
         </p>
     </div>
+    <div id="example4" class="example">
+        <h2>实例化不会生成 iframe，调用 sync 后才会创建 <a href="#" id="example4-create">点我遮罩</a></h2>
+        <code>
+            <pre>
+            var shim4 = new Shim('#example4 .overlay');
+            $('#example4-create').click(function(e){
+                e.preventDefault();
+                shim4.sync();
+            })
+            </pre>
+        </code>
+        <div class="overlay">
+            #example4 .overlay
+        </div>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+        <select>
+            <option value="option"></option>
+        </select>
+
+    </div>
 <script>
 seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
 
@@ -208,6 +245,12 @@ seajs.use(['jquery','../src/iframe-shim'], function($, Shim){
     // example3
     new Shim('#example3 .overlay').sync();
 
+    // example4
+    var shim4 = new Shim('#example4 .overlay');
+    $('#example4-create').click(function(e){
+        e.preventDefault();
+        shim4.sync();
+    });
 });
 </script>
 </body>
