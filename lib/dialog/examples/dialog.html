@@ -39,9 +39,11 @@
 
 // for debug
 seajs.config({
+    /*
     map: [
         [/^(.+)\/widget\.js.*$/, '$1/../../../lib/widget/src/widget.js']
-    ]
+        ]
+    */
 });
 
 seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, AnimDialog) {
@@ -198,7 +200,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, AnimDialog) {
             baseXY: [400, 200]
         },
         showEffect: {
-            type: 'none',
+            type: 'none'
         },
         hideEffect: {
             type: 'move',

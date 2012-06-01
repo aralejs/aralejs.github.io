@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#iframe-shim/0.9.1/iframe-shim-debug", ["jquery","position"], function(require, exports, module) {
 
     var $ = require('jquery');
     var Position = require('position');

@@ -249,13 +249,13 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         },
         template: '<div class="ui-dropdown fn-hide"><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>'
     });
-    example5.render();
     example5.after('show', function(){
         $('#triggerId5').text('三秒后改变浮层位置')
         window.setTimeout(function() {
-            example5.set('align', { baseXY: [0, -80] });
+            example5.set('align', { baseXY: [0, -90] });
         }, 3000);
     });
+    example5.render();
 
 
     var example6 = new Dropdown({
@@ -263,8 +263,8 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         triggerType: 'focus',
         element: '#dropdown6',
         align: {
-            baseXY: [0,$('#triggerId6').height() + 5]
-        },
+            baseXY: [0, $('#triggerId6').height() + 5]
+        }
     });
     example6.render();
     example6.element.find('a').click(function(e) {
