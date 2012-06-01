@@ -16,7 +16,7 @@
     </thead>
     <tbody class="ui-calendar-dates">
         {{#table dates}}
-        <td class="{{label}}{{#unless available}} disable{{/unless}}" data-role="date" data-value="{{data}}">{{date}}</td>
+        <td class="{{label}}{{#unless available}} disabled{{/unless}}" data-role="date" data-value="{{date}}">{{date}}</td>
         {{/table}}
     </tbody>
     <tfoot>
