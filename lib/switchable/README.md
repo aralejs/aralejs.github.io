@@ -12,6 +12,7 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
  - [underscore](underscore/README.md)
 
 ## 配置属性
+
 下面的配置属性适用与全部相关属性
 
 * `contentClass` {String}
@@ -163,8 +164,6 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
 
   只读, 触发器或面板的个数。
 
-## 配置属性
-  
 ## 方法详情
 * `switchTo`(toIndex, fromIndex, direction)
   切换到某个视图。
