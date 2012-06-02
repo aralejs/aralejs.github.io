@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#widget/0.9.11/templatable-debug", ["$","handlebars","./ast-printer"], function(require, exports, module) {
 
     var $ = require('$');
     var Handlebars = require('handlebars');
