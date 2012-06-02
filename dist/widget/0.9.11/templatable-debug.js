@@ -53,13 +53,13 @@ define("#widget/0.9.11/templatable-debug", ["$","handlebars","./ast-printer"], f
 
         // 刷新 selector 指定的局部区域
         renderPartial: function(selector) {
-            var template = this.getTemplatePartial(selector);
+            var template = this._getTemplatePartial(selector);
             this.$(selector).html(this.compile(template));
             return this;
         },
 
         // 得到模板片段
-        getTemplatePartial: function(selector) {
+        _getTemplatePartial: function(selector) {
             var template;
 
             // 获取模板片段
