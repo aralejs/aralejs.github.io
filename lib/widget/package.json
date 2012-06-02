@@ -3,7 +3,8 @@
     "dist": {
         "widget.js": "default",
         "daparser.js": "default",
-        "templatable.js": "default"
+        "templatable.js": "default",
+        "ast-printer.js": "default"
     },
     "tests": ["daparser", "widget", "templatable"]
 }
