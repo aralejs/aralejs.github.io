@@ -36,14 +36,14 @@ seajs.config({
         /* seajs 1.2 尚未开始 */
         'events': 'events/0.9.1/events',                     // 100%
         'class': 'class/0.9.1/class',                        // 100%
-        'base': 'base/0.9.14/base',                          // 90%  完善阶段
+        'base': 'base/0.9.14/base',                          // 95%  完善阶段
         'widget': 'widget/0.9.10/widget',                    // 90%  完善阶段
         'widget-templatable': 'widget/0.9.10/templatable',   // 90%  完善阶段
 
         // Utilities
         'cookie': 'cookie/1.0.2/cookie',                     // 100%
-        'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 100%
-        'position': 'position/0.9.1/position',               // 100%
+        'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 95%
+        'position': 'position/0.9.1/position',               // 95%
         'easing': 'easing/0.9.1/easing',                     // 90%
         /* validator 开发中 */
         /* querystring 待迁移 */
