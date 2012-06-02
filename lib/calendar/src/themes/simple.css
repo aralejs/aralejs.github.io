@@ -1,4 +1,5 @@
 .ui-calendar {
+    font: 16px 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background: #f9f9f9;
     border-collapse: collapse;
     border-spacing: 0;
@@ -34,11 +35,18 @@
     background: #dadada;
 }
 .ui-calendar td.previous, .ui-calendar td.next {
-    background: #ccc;
+    background: #eee;
+    color: #ccc;
 }
 .ui-calendar td.focus {
     background: #d64;
 }
 .ui-calendar td.disabled {
-    background: #999;
+    background: #eee;
+    color: #ccc;
 }
+
+.ui-calendar tfoot {
+    color: #999;
+}
+
