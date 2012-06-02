@@ -220,7 +220,7 @@ seajs.use(['tabs'], function(Tabs) {
 
 ```
 
-2. 也可以适用自动渲染。详情可以参考[autorender](examples/autorender.html)
+2. 也可以适用自动渲染。详情可以参考`examples/autorender.html`
 
       
 
