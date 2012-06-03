@@ -13,5 +13,5 @@
         "plugins/circular.js": "default",
         "plugins/effects.js": "default"
     },
-    "tests": ["base"]
+    "tests": ["switchable"]
 }
