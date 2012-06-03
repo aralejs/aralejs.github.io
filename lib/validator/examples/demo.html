@@ -7,11 +7,10 @@
         <script type="text/javascript" charset="utf-8">
             seajs.config({
                 alias: {
-                    validator: '../src/core'
                 }
             });
 
-            seajs.use(['validator', 'jquery'], function(Validator, $) {
+            seajs.use(['../src/core.js', 'jquery'], function(Validator, $) {
 
                 Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'), '{{display}}必须是Email或者手机号码');
                 Validator.addRule('lengthConstraint', Validator.getRule('maxlength', {max: 8}).or('minlength', {min: 15}));
