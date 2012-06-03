@@ -119,7 +119,7 @@
 
             <p>
                 <label for="username">Username:</label>
-                <input id="username" required name="username" data-rule="emailOrMobile lengthConstraint{min: 15, max: 8}" data-on-item-validated="usernameHandler" value="add" data-errormessage="this will display" />
+                <input id="username" required name="username" data-rule="emailOrMobile lengthConstraint{min: 15, max: 8}" data-on-item-validated="usernameHandler" value="add" data-errormessage-required="Please fullfill {{display}}" />
             </p>
 
             <p>
@@ -135,7 +135,7 @@
             <p>
                 <span>Sex:</span>
                 <label for="male">Male</label>
-                <input id="male" type="radio" name="sex" value="male" required />
+                <input id="male" type="radio" name="sex" value="male" required data-errormessage-required="你到底什么性别？!" />
                 <label for="female">Female</label>
                 <input id="female" type="radio" name="sex" value="female" />
             </p>
