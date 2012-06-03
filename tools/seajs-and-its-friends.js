@@ -38,13 +38,13 @@ seajs.config({
         'class': 'class/0.9.1/class',                        // 100%
         'base': 'base/0.9.14/base',                          // 95%
         'widget': 'widget/0.9.11/widget',                    // 95%
-        'widget-templatable': 'widget/0.9.11/templatable',   // 95%
+        'templatable': 'widget/0.9.11/templatable',          // 95%
 
         // Utilities
         'cookie': 'cookie/1.0.2/cookie',                     // 100%
-        'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 95%
-        'position': 'position/0.9.1/position',               // 95%
-        'easing': 'easing/0.9.1/easing',                     // 90%
+        'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 100%
+        'position': 'position/0.9.1/position',               // 100%
+        'easing': 'easing/0.9.2/easing',                     // 100%
         /* validator 开发中 */
         /* querystring 待迁移 */
         /* placeholder 尚未开始开发 */
