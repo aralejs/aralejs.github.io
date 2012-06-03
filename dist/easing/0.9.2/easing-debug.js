@@ -184,12 +184,7 @@ define("#easing/0.9.2/easing-debug", ["jquery"], function(require, exports, modu
 
 
     // 也可以直接通过 jQuery.easing 来使用
-    exports = require('jquery').easing;
-
-    for (var prop in Easing) {
-        if (Easing.hasOwnProperty(prop)) {
-            exports[prop] = Easing[prop];
-        }
-    }
+    var $ = require('jquery');
+    $.extend($.easing, Easing);
 
 });
