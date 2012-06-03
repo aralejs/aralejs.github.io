@@ -45,17 +45,17 @@ seajs.config({
         'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 100%
         'position': 'position/0.9.1/position',               // 100%
         'easing': 'easing/0.9.2/easing',                     // 100%
-        /* validator 开发中 */
+        'validator': 'validator/0.8.0/validator',            // 50%
         /* querystring 待迁移 */
         /* placeholder 尚未开始开发 */
 
         // Widgets
-        'overlay': 'overlay/0.9.4/overlay',                  // 90%  完善阶段
-        'mask': 'overlay/0.9.4/mask',                        // 90%  完善阶段
-        'dropdown': 'dropdown/0.9.2/dropdown',               // 90%  讨论阶段
-        'dialog': 'dialog/0.9.0/dialog',                     // 60%  讨论阶段
-        'switchable': 'switchable/0.8.1/switchable'          // 80%  讨论阶段
-        /* calendar 开发中 */
+        'overlay': 'overlay/0.9.4/overlay',                  // 90%
+        'mask': 'overlay/0.9.4/mask',                        // 90%
+        'dropdown': 'dropdown/0.9.2/dropdown',               // 90%
+        'dialog': 'dialog/0.9.0/dialog',                     // 80%
+        'switchable': 'switchable/0.8.1/switchable',         // 80%
+        'calendar': 'calendar/0.8.1/calendar'                // 50%
         /* tip 尚未开始开发 */
 
         // Others
