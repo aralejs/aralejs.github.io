@@ -15,7 +15,7 @@
 ## 模块依赖
 
  - [seajs](seajs/README.md)
- - [jquery](jquery/README.md) / [zepto](zepto/README.md)
+ - [jquery](jquery/README.md)
 
 
 ## 使用说明
