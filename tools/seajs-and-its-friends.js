@@ -36,9 +36,9 @@ seajs.config({
         /* seajs 1.2 尚未开始 */
         'events': 'events/0.9.1/events',                     // 100%
         'class': 'class/0.9.1/class',                        // 100%
-        'base': 'base/0.9.14/base',                          // 95%  完善阶段
-        'widget': 'widget/0.9.11/widget',                    // 90%  完善阶段
-        'widget-templatable': 'widget/0.9.11/templatable',   // 90%  完善阶段
+        'base': 'base/0.9.14/base',                          // 95%
+        'widget': 'widget/0.9.11/widget',                    // 95%
+        'widget-templatable': 'widget/0.9.11/templatable',   // 95%
 
         // Utilities
         'cookie': 'cookie/1.0.2/cookie',                     // 100%
