@@ -52,7 +52,7 @@
                         element: '[name=username]',
                         rule: 'required emailOrMobile lengthConstraint{min: 15, max: 8}',
                         display: '用户名',
-                        message: '用户名的格式必须是正确的哦',
+                        errormessage: '用户名的格式必须是正确的哦',
                         triggerType: 'keyup blur',
                         onItemValidate: function() {
                             //console.log('onItemValidate', arguments);
@@ -119,7 +119,7 @@
 
             <p>
                 <label for="username">Username:</label>
-                <input id="username" required name="username" data-rule="emailOrMobile lengthConstraint{min: 15, max: 8}" data-on-item-validated="usernameHandler" value="add" data-message="this will display" />
+                <input id="username" required name="username" data-rule="emailOrMobile lengthConstraint{min: 15, max: 8}" data-on-item-validated="usernameHandler" value="add" data-errormessage="this will display" />
             </p>
 
             <p>
