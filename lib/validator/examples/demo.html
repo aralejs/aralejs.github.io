@@ -119,7 +119,7 @@
 
             <p>
                 <label for="username">Username:</label>
-                <input id="username" required name="username" data-rule='emailOrMobile lengthConstraint{min: 15, max: 8}' data-on-item-validated="usernameHandler" value="add" />
+                <input id="username" required name="username" data-rule="emailOrMobile lengthConstraint{min: 15, max: 8}" data-on-item-validated="usernameHandler" value="add" data-message="this will display" />
             </p>
 
             <p>
@@ -129,7 +129,7 @@
 
             <p>
                 <label for="password-confirmation">Password Confirmation</label>
-                <input id="password-confirmation" required name="password-confirmation" type="password" data-rule="confirmation{target: '#password'}" />
+                <input id="password-confirmation" required name="password-confirmation" type="password" data-rule="confirmation{target: '#password', name: '第一遍输入'}" data-display="密码确认" />
             </p>
 
             <p>
