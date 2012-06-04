@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS Easing Calibration Tests</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        font: 16px/1.62 Georgia, Helvetica, Arial, sans-serif;
+        background: #000;
+        color: #eee;
+    }
+
+    body {
+        width: 500px;
+        margin: 10px auto;
+    }
+
+    .graph-holder {
+        margin-top: 25px;
+        width: 499px;
+        border: 1px solid #555;
+        position: relative;;
+    }
+
+    .graph-holder h2 {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-weight: normal;;
+    }
+
+    .graph-holder p {
+        position: absolute;
+        bottom: 120px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: #aaa;
+    }
+</style>
+</head>
+<body>
+<div id="container"></div>
+<script src="raphael.js"></script>
+<script src="../../../tools/seajs-and-its-friends.js"></script>
+<script src="calibrate.js"></script>
+</body>
+</html>

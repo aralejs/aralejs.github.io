@@ -3,7 +3,7 @@
 
 # dist
 
-all: events class base widget cookie iframe-shim position validator querystring overlay dropdown dialog switchable calendar
+all: events class base widget cookie iframe-shim position easing validator querystring overlay dropdown dialog switchable calendar
 
 events:
 	node tools/dist.js events
@@ -25,6 +25,9 @@ iframe-shim:
 
 position:
 	node tools/dist.js position
+
+easing:
+	node tools/dist.js easing
 
 validator:
 	node tools/dist.js validator

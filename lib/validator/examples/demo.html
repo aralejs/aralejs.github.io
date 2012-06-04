@@ -7,11 +7,10 @@
         <script type="text/javascript" charset="utf-8">
             seajs.config({
                 alias: {
-                    validator: '../src/core'
                 }
             });
 
-            seajs.use(['validator', 'jquery'], function(Validator, $) {
+            seajs.use(['../src/core.js', 'jquery'], function(Validator, $) {
 
                 Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'), '{{display}}必须是Email或者手机号码');
                 Validator.addRule('lengthConstraint', Validator.getRule('maxlength', {max: 8}).or('minlength', {min: 15}));
@@ -52,7 +51,7 @@
                         element: '[name=username]',
                         rule: 'required emailOrMobile lengthConstraint{min: 15, max: 8}',
                         display: '用户名',
-                        message: '用户名的格式必须是正确的哦',
+                        errormessage: '用户名的格式必须是正确的哦',
                         triggerType: 'keyup blur',
                         onItemValidate: function() {
                             //console.log('onItemValidate', arguments);
@@ -117,9 +116,9 @@
     <body>
         <form id="test-form" data-enable-validate="true">
 
-            <p>
+           
                 <label for="username">Username:</label>
-                <input id="username" required name="username" data-rule='emailOrMobile lengthConstraint{min: 15, max: 8}' data-on-item-validated="usernameHandler" value="add" />
+                <input id="username" required name="username" data-rule="emailOrMobile lengthConstraint{min: 15, max: 8}" data-on-item-validated="usernameHandler" data-errormessage-required="Please fullfill {{display}}" />
             </p>
 
             <p>
@@ -129,13 +128,13 @@
 
             <p>
                 <label for="password-confirmation">Password Confirmation</label>
-                <input id="password-confirmation" required name="password-confirmation" type="password" data-rule="confirmation{target: '#password'}" />
+                <input id="password-confirmation" required name="password-confirmation" type="password" data-rule="confirmation{target: '#password', name: '第一遍输入'}" data-display="密码确认" />
             </p>
 
             <p>
                 <span>Sex:</span>
                 <label for="male">Male</label>
-                <input id="male" type="radio" name="sex" value="male" required />
+                <input id="male" type="radio" name="sex" value="male" required data-errormessage-required="你到底什么性别？!" />
                 <label for="female">Female</label>
                 <input id="female" type="radio" name="sex" value="female" />
             </p>

@@ -1,4 +1,4 @@
-define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
+define("#position/0.9.1/position-debug", ["jquery"], function(require, exports) {
 
     // Position
     // --------
@@ -7,7 +7,7 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
 
     var Position = exports,
         VIEWPORT = { _id: 'VIEWPORT', nodeType: 1 },
-        $ = require('$'),
+        $ = require('jquery'),
         isPinFixed = false,
         isIE6 = $.browser.msie && $.browser.version == 6.0;
 
@@ -95,7 +95,7 @@ define("#position/0.9.1/position-debug", ["$"], function(require, exports) {
             y: pinObject.y || 0
         };
 
-        // config 的深度克隆貌似会替换掉 Position.VIEWPORT, 导致直接比较为 false
+        // config 的深度克隆会替换掉 Position.VIEWPORT, 导致直接比较为 false
         var isVIEWPORT = (element === VIEWPORT || element._id === 'VIEWPORT');
 
         // 归一化 offset

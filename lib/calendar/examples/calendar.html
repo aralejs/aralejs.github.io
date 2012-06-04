@@ -1,31 +1,38 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Calendar Example</title>
-        <script src="../../../tools/seajs-and-its-friends.js"></script>
-    </head>
-    <body>
-        <script>
-            // for debug
-            seajs.config({
-                map: [
-                [/^(.+)\/widget\.js.*$/, '$1/../../../lib/widget/src/widget.js'],
-                [/^(.+)\/templatable\.js.*$/, '$1/../../../lib/widget/src/templatable.js']
-                ]
-            });
+<head>
+<meta charset="utf-8" />
+<title>Calendar Example</title>
+<script src="../../../tools/seajs-and-its-friends.js"></script>
+</head>
+<body>
+<script>
+// for debug
+seajs.config({
+    map: [
+    [/^(.+)\/widget\.js.*$/, '$1/../../../lib/widget/src/widget.js'],
+    [/^(.+)\/templatable\.js.*$/, '$1/../../../lib/widget/src/templatable.js']
+    ]
+});
 
-            seajs.use(['../src/calendar', '../src/i18n/zh_CN'], function(Calendar, lang) {
-                var available = function(time) {
-                    return time.day() != 3;
-                }
-                var cal = new Calendar({available: available, lang: lang});
-                cal.render();
-                cal.on('disabled', function(date) {
-                    console.log('disabled');
-                    console.log(date);
-                });
-            });
-        </script>
-    </body>
+seajs.use(['jquery', '../src/calendar', '../src/i18n/zh_CN'], function($, Calendar, lang) {
+
+    // for debug
+    this.$ = $;
+
+    var available = function(time) {
+        var day = time.day();
+        return day != 0 && day != 6;
+    };
+
+    var cal = new Calendar({available: available, lang: lang});
+    cal.render();
+
+    cal.on('disabled', function(date) {
+        console.log('disabled');
+        console.log(date);
+    });
+});
+</script>
+</body>
 </html>
