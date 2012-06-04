@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#overlay/0.9.5/overlay-debug", ["$","position","iframe-shim","widget"], function(require, exports, module) {
 
     var $ = require('$'),
         Position = require('position'),
@@ -76,8 +76,7 @@ define(function(require, exports, module) {
 
             // 在定位时，为避免元素高度不定，先显示出来
             if (isHidden) {
-                this.element.css({ visibility: 'hidden'});
-                this.set('visible', true);
+                this.element.css({ visibility: 'hidden', display: 'block' });
             }
 
             Position.pin({
@@ -92,8 +91,7 @@ define(function(require, exports, module) {
 
             // 定位完成后，还原
             if (isHidden) {
-                this.element.css({ visibility: ''});
-                this.set('visible', false);
+                this.element.css({ visibility: '', display: '' });
             }
 
             return this;
