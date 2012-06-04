@@ -1,5 +1,5 @@
 //Carousel Widget
-define(function(require, exports, module) {
+define("#switchable/0.9.2/carousel-debug", ["./switchable","jquery"], function(require, exports, module) {
     var Switchable = require('./switchable');
 
     var $ = require('jquery');

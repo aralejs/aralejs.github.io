@@ -42,9 +42,9 @@ seajs.config({
 
         // Utilities
         'cookie': 'cookie/1.0.2/cookie',                     // 100%
-        'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 100%
-        'position': 'position/0.9.1/position',               // 100%
         'easing': 'easing/0.9.2/easing',                     // 100%
+        'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 95%
+        'position': 'position/0.9.1/position',               // 95%
         'validator': 'validator/0.8.0/validator',            // 50%
         /* querystring 待迁移 */
         /* placeholder 尚未开始开发 */
