@@ -5,7 +5,7 @@
             <td class="ui-calendar-previous-year" data-role="prev-year">&lt;&lt;</td>
             <td class="ui-calendar-previous-month" data-role="prev-month">&lt;</td>
             <td colspan="3" data-role="current-month-year">
-                <span class="month" data-role="current-month">{{current.month}}</span>
+                <span class="month" data-role="current-month">{{months.current}}</span>
                 <span class="year" data-role="current-year">{{current.year}}</span>
             </td>
             <td class="ui-calendar-next-month" data-role="next-month">&gt;</td>
@@ -18,7 +18,7 @@
         </tr>
     </thead>
     <tbody class="ui-calendar-dates" data-role="dates">
-        {{#each dates}}
+        {{#each dates.items}}
         <tr>
         {{#each this}}
         <td class="{{label}} week-{{day}}{{#unless available}} disabled{{/unless}}" data-role="date" data-value="{{date}}">{{date}}</td>
