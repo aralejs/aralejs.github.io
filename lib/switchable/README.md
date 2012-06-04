@@ -192,11 +192,11 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
 ## 组件触发事件
 在组件运行中，会触发相关事件，使用者可以根据自己的需要去监听对应的事件
 
-* `before:switchTo`
+* `beforeSwitch`
   
   面板切换前触发。
 
-* `after:switchTo`
+* `switch`
 
   面板切换后触发。
 
