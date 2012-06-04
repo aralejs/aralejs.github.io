@@ -10,44 +10,41 @@
     }
 
     html {
-        font: 16px/1.62 Georgia, Helvetica, Arial, sans-serif;
+        font: 12px/1.62 Georgia, Helvetica, Arial, sans-serif;
         background: #000;
-        color: #eee;
+        color: #666;
     }
 
-    body {
-        width: 500px;
-        margin: 10px auto;
+    #content {
+        width: 499px;
+        margin: 0 auto;
     }
 
     .graph-holder {
-        margin-top: 25px;
-        width: 499px;
-        border: 1px solid #555;
-        position: relative;;
+        width: 100%;
+        position: relative;
+        border: 1px solid #333;
+        margin: 20px 0;
+        padding: 80px 0 20px;
+    }
+
+    .graph-holder svg {
+        border-bottom: 1px solid #333;
+        margin-left: -1px;
     }
 
     .graph-holder h2 {
         position: absolute;
-        top: 20px;
+        top: 10px;
         left: 0;
         width: 100%;
         text-align: center;
-        font-weight: normal;;
-    }
-
-    .graph-holder p {
-        position: absolute;
-        bottom: 120px;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        color: #aaa;
+        font-weight: normal;
     }
 </style>
 </head>
 <body>
-<div id="container"></div>
+<div id="content"></div>
 <script src="raphael.js"></script>
 <script src="../../../tools/seajs-and-its-friends.js"></script>
 <script src="calibrate.js"></script>
