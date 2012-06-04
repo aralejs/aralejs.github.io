@@ -4,7 +4,14 @@
         <tr class="ui-calendar-months">
             <td class="ui-calendar-previous-year" data-role="prev-year">&lt;&lt;</td>
             <td class="ui-calendar-previous-month" data-role="prev-month">&lt;</td>
-            <td colspan="3" data-role="current-month"><span class="month">{{current.month}}</span> <span class="year">{{current.year}}</span></td>
+            <td colspan="3" data-role="current-month">
+                <select class="month">
+                    {{#each current.months}}
+                    <option {{#if selected}}selected{{/if}} data-value="{{value}}">{{label}}</option>
+                    {{/each}}
+                </select>
+                <span class="year">{{current.year}}</span>
+            </td>
             <td class="ui-calendar-next-month" data-role="next-month">&gt;</td>
             <td class="ui-calendar-next-year" data-role="next-year">&gt;&gt;</td>
         </tr>
