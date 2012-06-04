@@ -10,7 +10,7 @@
         </tr>
         <tr class="ui-calendar-weeks" data-role="weeks">
             {{#each weeks.items }}
-            <td data-role="week" data-value="{{value}}">{{label}}</td>
+            <td class="week-{{value}}" data-role="week" data-value="{{value}}">{{label}}</td>
             {{/each}}
         </tr>
     </thead>
@@ -25,7 +25,8 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5" data-role='today'>{{today}}</td>
+            <td colspan="2" data-role="today">{{today}}</td>
+            <td colspan="3"></td>
             <td colspan="2"><span class="ui-calendar-hour">{{current.hour}}</span> : {{current.minute}}</td>
         </tr>
     </tfoot>
