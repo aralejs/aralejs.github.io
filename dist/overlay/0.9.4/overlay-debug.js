@@ -79,8 +79,7 @@ define("#overlay/0.9.4/overlay-debug", ["$","position","iframe-shim","widget"], 
 
             // 在定位时，为避免元素高度不定，先显示出来
             if (isHidden) {
-                this.element.css({ visibility: 'hidden'});
-                this.set('visible', true);
+                this.element.css({ visibility: 'hidden', display: 'block' });
             }
 
             Position.pin({
@@ -95,8 +94,7 @@ define("#overlay/0.9.4/overlay-debug", ["$","position","iframe-shim","widget"], 
 
             // 定位完成后，还原
             if (isHidden) {
-                this.element.css({ visibility: ''});
-                this.set('visible', false);
+                this.element.css({ visibility: '', display: '' });
             }
 
             return this;
