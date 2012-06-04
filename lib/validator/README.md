@@ -14,7 +14,7 @@ Validator 是表单校验组件。
 
 *   校验规则的 dynamic binding，和 unbinding。 
 
-*   关联性校验/级联校验。例如当满足一个条件时校验某种规则，满足另外的条件校验其他规则。应用场景举例：密码再输入一遍。
+*   (TODO)关联性校验/级联校验。例如当满足一个条件时校验某种规则，满足另外的条件校验其他规则。
 
 ##Quick Example
 
@@ -37,23 +37,30 @@ HTML
 
 ###检验规则
 
-*   [Validator::addRule](#Validator-addRule)
-*   [Validator::setMessage](#Validator-setMessage)
-*   [Validator::getRule](#Validator-getRule)
-*   [Rule#and](#Rule-and)
-*   [Rule#or](#Rule-or)
-*   [Rule#not](#Rule-not)
+*   [Validator::addRule](#Validator-addRule) 自定义校验规则
+*   [Validator::setMessage](#Validator-setMessage) 设置校验规则的消息提示
+*   [Validator::getRule](#Validator-getRule) 获取校验规则对象
+*   [Rule#and](#Rule-and) “AND”(与)组合校验规则
+*   [Rule#or](#Rule-or) "OR"(或)组合校验规则
+*   [Rule#not](#Rule-not) "NOT"(非)组合校验规则
 
 ###校验核心
 
-*   [Validator#addItem](#Validator-addItem)
-*   [Validator#removeItem](#Validator-removeItem)
-*   [Validator#execute](#Validator-execute)
-*   [Validator#getItem](#Validator-getItem)
-*   [Validator#destroy](#Validator-destroy)
+*   [Validator#constructor](#Validator-constructor) Validator构造函数
 
-*   [Validator::parsePage](#Validator-parsePage)
-*   [Validator::getForm](#Validator-getForm)
+*   [Validator#addItem](#Validator-addItem) 添加校验项
+*   [Validator#removeItem](#Validator-removeItem) 移除校验项
+*   [Validator#execute](#Validator-execute) 手动触发表单校验
+*   [Validator#destroy](#Validator-destroy) 销毁 Validator 实例对象
+
+*   [Validator::autoRun](#Validator-autoRun) 从 DOM 中实例化 Validator 对象
+*   [Validator::query](#Validator-query) 获取 Validator 或 Item 实例对象
+*   [Validator::helper](#Validator-helper) 注册 helper 函数，以便在 DOM 中引用
+
+*   [Rule#execute](#Rule-execute) 手动触发单个表单项校验
+
+
+
 
 
 ##校验规则
@@ -117,6 +124,10 @@ __Example__
         });
         //出错校验信息为"USERNAME不能为空"或者“用户名的长度必须在1和5之间”，请注意两者的区别。
 
+
+
+
+
 <a name="Validator-setMessage"></a>
 ### Validator::setMessage(name, message)
 
@@ -132,80 +143,284 @@ __Example__
     Validator.setMessage('email', '{{display}}的格式不正确');
 
 
+
+
+
 <a name="Validator-getRule"></a>
-### Validator::getRule(name, opt_options)
+### Validator::getRule(name)
 
 获取校验规则对象。
 
 __Arguments__
 
 *   name - 校验规则名称。
-*   opt_options - 可选参数。如果传入一个对象，那么这个校验规则执行的时候，这个对象都会 merge 到 options 对象中。
+
+__Example__
+
+    Validator.getRule('ruleName');
+
+
+
+
 
 <a name="Rule-and"></a>
-### Rule#and(name)
+### Rule#and(name, opt_options)
 
 将两个校验规则合并成一个逻辑“与”校验，即当两个校验规则都校验正确的时候合并后的规则才算校验通过。
 
 __Arguments__
 
 *   name - 校验规则名称。
+*   opt_options - 可选参数。如果传入一个对象，那么这个校验规则执行的时候，这个对象都会 merge 到 options 对象中。
+
+__Example__
+
+    var newrule = Validator.getRule('email').and('minlength', {min:5});
+    Validator.addRule('newrule', newrule);
+
+
+
+
+
+<a name="Rule-or"></a>
+### Rule#or(name)
+
+将两个校验规则合并成一个逻辑“或”校验，即当两个校验规则有一个校验正确的时候合并后的规则就算校验通过。
+
+__Arguments__
+
+*   name - 校验规则名称。
+*   opt_options - 可选参数。如果传入一个对象，那么这个校验规则执行的时候，这个对象都会 merge 到 options 对象中。
+
+__Example__
+
+    var username = Validator.getRule('email').or('mobile');
+    Validator.addRule('username', username);
+
+
+
+
+
+<a name="Rule-or"></a>
+### Rule#not(opt_options)
+
+将两个校验规则合并成一个逻辑“或”校验，即当两个校验规则有一个校验正确的时候合并后的规则就算校验通过。
+
+__Arguments__
+
+*   opt_options - 可选参数。如果传入一个对象，那么这个校验规则执行的时候，这个对象都会 merge 到 options 对象中。
+
+__Example__
+
+    var notemail = Validator.getRule('email').not;
+    Validator.addRule('notemail', notemail);
+
+
+
+
+
+<a name="Rule-not"></a>
+### Rule#not(name)
+
+将两个校验规则合并成一个逻辑“或”校验，即当两个校验规则有一个校验正确的时候合并后的规则就算校验通过。
+
+__Arguments__
+
+*   name - 校验规则名称。
+
+__Example__
+
+    var username = Validator.getRule('email').or('mobile');
+    Validator.addRule('username', username);
+
+
+
+
 
 ##检验核心
 
-*   添加校验规则集合：
+<a name="Validator-constructor"></a>
+### Validator#constructor(options)
+
+__Arguments__
+
+*   options - 配置项。包含以下：
+
+    *   element - 要校验的表单，可以是选择器、原生FORM Element，或者 jQuery 对象。
+    *   triggerType - 默认值'blur'。触发表单项校验的事件类型。
+    *   checkOnSubmit - 默认值 true。是否在表单提交前进行校验，默认进行校验。
+    *   stopOnError - 默认值 false。提交前校验整个表单时，遇到错误时是否停止校验其他表单项。
+    *   autoSubmit - 默认值true。When all validation passed, submit the form automatically.
+    *   checkNull - 默认值true。除提交前的校验外，input的值为空时是否校验。
+
+__Example__
+
+    validator = new Validator({
+        element: '#test-form'
+    });
+
+
+
+
+
+<a name="Validator-addItem"></a>
+### Validator#addItem(options)
+
+添加校验项。
+
+__Arguments__
+
+*   options - 配置项。包含以下：
     
-        .registerRules(rules);
+    *   element - 要校验的表单项(input, radio, select等)。
+    *   rule - 校验规则。
+    *   display - 表单项的别名，将用于消息提示。如果不配置，则它是表单项的 name 值。
+    *   triggerType - 触发校验的事件。如果配置此项会覆盖 Validator 对象的全局 triggerType 配置。
+    *   required - 默认 false。
 
-    *   `rules` - 必须是规则工厂ruleFactory。
+__Examples__
 
-    Example
-
-        var rules = require('validator.ruleFactory'),
-            vCore = require('validator').Core;
-
-        vCore.registerRules(rules);
-
-*   校验表单
-
-        .validateForm(formElem, items, callback);
-
-    Example
-
-        vCore.validateForm(formElem, {
-            email: {
-                rule: ['required', 'lengthBetween']
-            },
-            password: {
-                rule: ['required', 'somerule']
-            }
-        }, function(b) {
-
-        });
-
-*   添加检验项
-
-        .addItem(name, cfg)
-
-    Example
-
-        vCore.addItem('email', {
-            rules: ['required', 'lengthBetween{"min": 12, "max": 13}'],
-            name: '电子邮箱',
-            msg-success: '您的用户名校验通过！',
-            msg-failure: '用户名校验失败！',
-            triggerType: ['blur', 'submit'],
-            before: function() {},
-            after: function() {}
-        });
+    validator.addItem({
+        element: '[name=password]',
+        rule: 'required',
+        display: '密码',
+        onItemValidate: function() {
+        },
+        onItemValidated: function(err, msg, ele) {
+            console.log('onItemValidated', arguments);
+        }
+    });
 
 
-data-attribute API支持
-==================
 
-HTML
 
-    <form>
-        <input id="username" name="username" type="text" placeholder="请输入邮箱或手机号" data-rules="required emailOrPhone maxLength{min:20} ajax" data-notice-required="用户名不能为空" data-notice-emailOrPhone="用户名必须为email或者电话号码" data-notice-default="这条信息会显示" />
-    </form>
 
+<a name="Validator-removeItem"></a>
+### Validator#removeItem(element)
+
+移除校验项。
+
+__Arguments__
+
+*   element - 指定要移除此 element 上的校验。
+
+__Example__
+
+    validator.removeItem('#username');
+
+
+
+
+
+
+<a name="Validator-execute"></a>
+### Validator#execute(callback)
+
+手动触发整个表单的校验。可监听 `formValidate` 和 `formValidated` 两个事件。
+
+__Arguments__
+
+*   callback - 回调函数。
+
+__Example__
+
+    validator.execute(function() {
+        console.log(arguments);
+    });
+
+
+
+
+
+
+<a name="Validator-destroy"></a>
+### Validator#destroy(callback)
+
+销毁 Validator 实例。
+
+__Example__
+
+    validator.destroy();
+
+
+
+
+
+<a name="Validator-autoRun"></a>
+### Validator::autoRun()
+
+如果在 DOM 中使用标签属性指定校验规则，那么在 DOMReady 后调用这个函数进行初始化。
+
+__Example__
+
+    $(function() {
+        Validator.autoRun();
+    });
+
+
+
+
+
+
+<a name="Validator-query"></a>
+### Validator::query(element)
+
+如果在 DOM 中使用标签属性指定校验规则，那么调用此函数获取 Validator 和 Item 的实例对象。
+如果传入 form 对象，那么获取到的是 Validator 实例对象。如果传入的是 input radio select 等表单域，获取到的是 Item 实例对象。
+
+__Arguments__
+
+*   element - 可以是原生 DOM 对象、jquery 对象或者选择器。
+
+__Example__
+
+    Validator.autoRun();
+    Validator.query('#test-form').on('formValidated', function(err, msg, ele) {
+        console.log(err, msg);
+    });
+
+    Validator.query('#test-form [name=username]').on('itemValidated', function(err, msg, ele) {
+        console.log('item', err, msg);
+    });
+
+
+
+
+
+
+<a name="Validator-helper"></a>
+### Validator::helper(name, fn)
+
+注册 helper 函数，以便在 DOM 中通过 data-on-item-validated 等 DATA API 注册回调函数。
+
+__Arguments__
+
+*   name - helper 名称。
+*   fn - helper 函数。
+
+__Example__
+
+
+    Validator.helper('usernameHandler', function(err, msg, ele) {
+        console.log('helper', err, msg);
+    });
+
+    <input required name="username" type="username" data-on-item-validated="usernameHandler" data-errormessage-required="Please fullfill {{display}}" />
+
+
+
+
+<a name="Rule-execute"></a>
+### Rule#execute(callback)
+
+手动触发整个表单的校验。可监听 `itemValidate` 和 `itemValidated` 两个事件。
+
+__Arguments__
+
+*   callback - 回调函数。
+
+__Example__
+
+    Validator.query('#form [name=usernmae]').execute(function() {
+        console.log(arguments);
+    });
