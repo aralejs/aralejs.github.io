@@ -22,7 +22,7 @@ seajs.use(['jquery', '../src/calendar', '../src/i18n/zh_CN'], function($, Calend
 
     var available = function(time) {
         var day = time.day();
-        return day != 0 && day != 6;
+        return day != 4;
     };
 
     var cal = new Calendar({available: available, lang: lang});

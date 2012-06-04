@@ -31,6 +31,9 @@
     width: 1.8em;
     border: 1px solid #dadada;
 }
+.ui-calendar .week-0, .ui-calendar .week-6 {
+    color: #d64;
+}
 .ui-calendar tbody td:hover {
     background: #dadada;
 }
@@ -40,10 +43,11 @@
 }
 .ui-calendar td.focus {
     background: #d64;
+    color: #fff;
 }
 .ui-calendar td.disabled {
     background: #eee;
-    color: #ccc;
+    color: #bbb;
 }
 
 .ui-calendar tfoot {
