@@ -15,6 +15,7 @@
                 Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'), '{{display}}必须是Email或者手机号码');
                 Validator.addRule('lengthConstraint', Validator.getRule('maxlength', {max: 8}).or('minlength', {min: 15}));
 
+                /*
                 Validator.helper('usernameHandler', function(err, msg, ele) {
                     console.log('helper', err, msg);
                 });
@@ -29,13 +30,14 @@
                         console.log('item', err, msg);
                     });
                 });
-                /*
+                */
                 $(function() {
 
                     Validator.setMessage('lengthConstraint', '{{display}}的长度必须小于{{max}}或者大于{{min}}');
 
                     validator = new Validator({
                         element: '#test-form',
+                        stopOnError: true,
                         onFormValidate: function() {
                             //console.log('onFormValidate', arguments);
                         },
@@ -109,7 +111,6 @@
 
                     //validator.removeItem('username');
                 });
-                */
             });
         </script>
     </head>
