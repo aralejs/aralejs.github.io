@@ -40,10 +40,11 @@
 }
 .ui-calendar td.focus {
     background: #d64;
+    color: #fff;
 }
 .ui-calendar td.disabled {
     background: #eee;
-    color: #ccc;
+    color: #bbb;
 }
 
 .ui-calendar tfoot {

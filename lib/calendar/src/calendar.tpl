@@ -9,15 +9,19 @@
             <td class="ui-calendar-next-year" data-role="next-year">&gt;&gt;</td>
         </tr>
         <tr class="ui-calendar-weeks" data-role="weeks">
-            {{#each weeks.list }}
+            {{#each weeks.items }}
             <td data-role="week" data-value="{{value}}">{{label}}</td>
             {{/each}}
         </tr>
     </thead>
     <tbody class="ui-calendar-dates">
-        {{#table dates}}
-        <td class="{{label}}{{#unless available}} disabled{{/unless}}" data-role="date" data-value="{{date}}">{{date}}</td>
-        {{/table}}
+        {{#each dates}}
+        <tr>
+        {{#each this}}
+        <td class="{{label}} week-{{day}}{{#unless available}} disabled{{/unless}}" data-role="date" data-value="{{date}}">{{date}}</td>
+        {{/each}}
+        </tr>
+        {{/each}}
     </tbody>
     <tfoot>
         <tr>
