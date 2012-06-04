@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser","./item","./rule"], function(require, exports, module) {
 
     var $ = require('jquery'),
         async = require('./async'),
