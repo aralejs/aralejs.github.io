@@ -5,6 +5,7 @@
 
 ---
 
+
 ## 模块依赖
 
  - [seajs](seajs/README.md)
@@ -146,6 +147,22 @@
 
     改变默认配置：
 
-        mask.set({backgroundColor:'red', opacity:0.5}).show();
+        mask.set({ backgroundColor:'red', opacity:0.5 }).show();
 
 
+## 演示页面
+
+ - [examples/overlay.html](http://aralejs.org/lib/overlay/examples/overlay.html)
+ - [examples/mask.html](http://aralejs.org/lib/mask/examples/mask.html)
+
+
+## 测试用例
+
+* <http://aralejs.org/lib/overlay/tests/runner.html>
+
+
+## 交流讨论
+
+欢迎创建
+[GitHub Issue](https://github.com/alipay/arale/issues/new)
+来提交反馈。
