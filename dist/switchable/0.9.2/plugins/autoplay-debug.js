@@ -1,5 +1,5 @@
  //Switchable autoplay Plugin
-define(function(require, exports, module) {
+define("#switchable/0.9.2/plugins/autoplay-debug", ["../extra/utils","jquery"], function(require, exports, module) {
     var utils = require('../extra/utils');
 
     var SCROLL = 'scroll';
