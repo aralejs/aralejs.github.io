@@ -46,7 +46,8 @@ seajs.config({
         'easing': 'easing/0.9.2/easing',                     // 100%
         'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 95%
         'position': 'position/0.9.1/position',               // 95%
-        'validator': 'validator/0.8.0/validator',            // 50%
+        'validator-core': 'validator/0.8.0/core.js',         // 50%
+        'validator': 'validator/0.8.0/validator.js',         // 50%
         /* ua 待定 */
         /* querystring 待迁移 */
         /* placeholder 尚未开始开发 */
