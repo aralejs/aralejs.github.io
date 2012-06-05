@@ -294,6 +294,11 @@ var TabView = Widget.extend({
 具体使用请参考 [events 使用文档](events/README.md)。
 
 
+### autoRenderAll `Widget.autoRenderAll(root)`
+
+根据 data-widget 属性，自动渲染找到的所有 Widget 类组件。
+
+
 ### Templatable
 
 可混入的功能类，提供 Handlebars 模板支持。
@@ -319,6 +324,26 @@ var myWidget = new MyWidget({
 
 myWidget.render();
 ```
+
+
+### DAParser
+
+data-api 解析工具，功能如下：
+
+
+### parseBlock `DAParser.parseBlock(root)`
+
+得到 root 元素及其子元素的 dataset 结构数据。
+
+
+### parseElement `DAParser.parseElement(element)`
+
+得到单个 DOM 元素的 dataset 数据。
+
+
+### stamp `DAParser.stamp(element)`
+
+给 DOM 元素添加具有唯一性质的 className 。
 
 
 ## 演示页面
