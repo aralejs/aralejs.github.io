@@ -38,8 +38,8 @@ querystring:
 overlay:
 	node tools/dist.js overlay
 
-dropdown:
-	node tools/dist.js dropdown
+triggerable:
+	node tools/dist.js triggerable
 
 dialog:
 	node tools/dist.js dialog

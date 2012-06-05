@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#triggerable/0.9.3/dropdown-debug", ["./triggerable"], function(require, exports, module) {
 
     var Triggerable = require('./triggerable');
 

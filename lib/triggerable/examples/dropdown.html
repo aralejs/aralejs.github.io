@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8" />
+<meta charset="utf-8">
 <title>Dropdown Example</title>
-<link media="all" rel="stylesheet" href="https://assets.alipay.com/al/alice.base-1.0.css" type="text/css" />
-<style type="text/css">
+<link rel="stylesheet" href="https://assets.alipay.com/al/alice.base-1.0.css">
+<style>
     a { color: #0090F0; }
     #container {
         width: 960px;
@@ -71,18 +71,18 @@
 <div id="container">
     <div class="header">
         <div class="menu">
-            <a href="https://github.com/alipay/arale/tree/master/lib/dropdown">文档</a> |
-            <a href="https://github.com/alipay/arale/blob/master/lib/dropdown/src/dropdown.js">代码</a> | 
-            <a href="http://aralejs.org/lib/dropdown/tests/runner.html">单元测试</a>
+            <a href="https://github.com/alipay/arale/tree/master/lib/triggerable">文档</a> |
+            <a href="https://github.com/alipay/arale/blob/master/lib/triggerable/src/triggerable.js">代码</a> |
+            <a href="http://aralejs.org/lib/triggerable/tests/runner.html">单元测试</a>
         </div>
-        <h1>Arale Dropdown</h1>
+        <h1>Arale Triggerable</h1>
     </div>
 
     <div class="example">
-        <h3><del>范例1: data-api</del></h3>
+        <h3>范例1: data-api</h3>
         <div class="dropdown">
-            <a href="#dropdown1" id="triggerId1" data-toggle="dropdown" data-trigger="click" data-target="#dropdown1">下拉框<span class="icon">▼</span></a>
-            <ul class="ui-dropdown" id="dropdown1">
+            <a href="#dropdown1" id="triggerId1">下拉框<span class="icon">▼</span></a>
+            <ul class="ui-dropdown" id="dropdown1" data-widget="dropdown" data-trigger="#triggerId1" data-trigger-type="click">
                 <li><a href="http://aralejs.org#1">内容1</a></li>
                 <li><a href="http://aralejs.org#2">内容2</a></li>
                 <li><a href="http://aralejs.org#3">内容3</a></li>
@@ -90,7 +90,7 @@
             </ul>
         </div>
         <div class="tips tips-grey">
-            <h4>说明: 暂不支持 data-api。data-api 将由另外的组件支持。</h4> 
+            点击下上面的链接
             <ul class="fn-hide">
                 <li><del>data-trigger='click', 不指定则采用 hover 为默认值。可选有：click|hover</del></li>
                 <li><del>可以在 href 或者 data-target='#dropdown1' 指定你要展示的元素id。不指定则默认采用兄弟元素('.ui-dropdown')。</del></li>
@@ -152,7 +152,7 @@
     <div class="example">
         <h3>范例5: 自定义Template、Align并设置回调函数</h3>
         <div class="dropdown">
-            <a href="#dropdown5" id="triggerId5">下拉框<span class="icon">▼</span></a>
+            <a href="#" id="triggerId5">下拉框<span class="icon">▼</span></a>
             <a href="#" id='releated5' class="fn-right">我是无辜的被定位元素</a>
         </div>
     </div>
@@ -160,7 +160,7 @@
     <div class="example">
         <h3>范例6: 简单的自动完成组件</h3>
         <div class="dropdown">
-            <input id="triggerId6" type="" placeholder="请输入..." />
+            <input id="triggerId6" placeholder="请输入..." />
             <ul class="fn-hide ui-dropdown" id="dropdown6">
                 <li><a href="http://aralejs.org#1">内容1</a></li>
                 <li><a href="http://aralejs.org#2">内容2</a></li>
@@ -171,13 +171,14 @@
     </div>
 
     <div class="footer">
-        <a href="http://aralejs.org">AraleJS</a> 2012
+        <a href="http://aralejs.org">aralejs.org</a> 2012
     </div>
 
 </div>
 <script>
-seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay){
-    // for debuging only;
+seajs.use(['jquery','../src/dropdown', 'widget'], function($, Dropdown, Widget){
+
+    // for debugging only;
     window.$ = window.jQuery = $;
     if (!window.console) {
         var helper = ['log','dir','error', 'warn','info'];
@@ -188,7 +189,9 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     }
 
 
-    var example1; // data-api 暂无例子。
+    // example1
+    // data-api 自动渲染
+    Widget.autoRenderAll();
 
 
     var example2 = new Dropdown({
@@ -250,7 +253,7 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
         template: '<div class="ui-dropdown fn-hide"><ul><li>1</li><li>2</li><li>3</li><li>4</li></ul></div>'
     });
     example5.after('show', function(){
-        $('#triggerId5').text('三秒后改变浮层位置')
+        $('#triggerId5').text('三秒后改变浮层位置');
         window.setTimeout(function() {
             example5.set('align', { baseXY: [0, -90] });
         }, 3000);
@@ -268,14 +271,10 @@ seajs.use(['jquery','../src/dropdown', 'overlay'], function($, Dropdown, Overlay
     });
     example6.render();
     example6.element.find('a').click(function(e) {
-        e.preventDefault()
+        e.preventDefault();
         example6.get('trigger').val($(this).text());
         example6.set('visible', false);
     });
-
-    // 枚举 Dropdown
-    //console.dir(Dropdown);
-
 
 });
 </script>

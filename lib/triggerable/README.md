@@ -1,18 +1,22 @@
->Use the Source, Luke!
 
->看源码，少年!
+# Triggerable
 
-# Dropdown
+Triggerable 是可触发 Overlay 型 UI 组件。
 
-组件类，用于生成下拉浮层。
+---
+
 
 ## 依赖
- - [Overlay](overlay/README.md)
- - [Position](position/README.md)
+
+ - [seajs](seajs/README.md)
+ - [position](position/README.md)
+ - [overlay](overlay/README.md)
+
 
 ## 使用说明
 
-### 一般用法
+
+### Dropdown
 
 ```
 seajs.use(['jquery','dropdown'], function($, Dropdown){
@@ -23,13 +27,18 @@ seajs.use(['jquery','dropdown'], function($, Dropdown){
 });
 ```
 
-## Demo
+
+## 演示页面
+
 更多用法，请看 Demo 中的例子：
 * [http://aralejs.org/lib/dropdown/examples/dropdown.html](http://aralejs.org/lib/dropdown/examples/dropdown.html)
 
+
 ## 单元测试
 
-* [http://aralejs.org/lib/dropdown/tests/runner.html](http://aralejs.org/lib/dropdown/tests/runner.html)
+* [tests/runner.html](http://aralejs.org/lib/dropdown/tests/runner.html)
+
 
 ## 感谢
+
 * Bootstrap Dropdown
