@@ -246,11 +246,13 @@ define("#widget/0.9.12/widget-debug", ["base","$","./daparser"], function(requir
 
 
     // 自动渲染接口，子类可根据自己的初始化逻辑进行覆盖
-    Widget.autoRender = function(element, dataset) {
-        return new this({
-            element: element,
-            dataset: dataset
-        }).render();
+    Widget.autoRender = function(element, elementData, blockData) {
+        delete elementData.widget;
+
+        var config = $.extend({ element: element, dataset: blockData },
+                elementData);
+
+        new this(config).render();
     };
 
 
@@ -272,8 +274,11 @@ define("#widget/0.9.12/widget-debug", ["base","$","./daparser"], function(requir
                     var element = elements[i];
 
                     if (isFunction(widget.autoRender)) {
-                        widget.autoRender(element,
-                                DAParser.parseBlock(element));
+                        widget.autoRender(
+                                element,
+                                DAParser.parseElement(element),
+                                DAParser.parseBlock(element)
+                        );
                     }
                 }
             });
