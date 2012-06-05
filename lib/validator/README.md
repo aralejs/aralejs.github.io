@@ -53,7 +53,7 @@ HTML
 *   [Validator#execute](#Validator-execute) 手动触发表单校验
 *   [Validator#destroy](#Validator-destroy) 销毁 Validator 实例对象
 
-*   [Validator::autoRun](#Validator-autoRun) 从 DOM 中实例化 Validator 对象
+*   [Validator::autoRender](#Validator-autoRender) 从 DOM 中实例化 Validator 对象
 *   [Validator::query](#Validator-query) 获取 Validator 或 Item 实例对象
 *   [Validator::helper](#Validator-helper) 注册 helper 函数，以便在 DOM 中引用
 
@@ -346,15 +346,15 @@ __Example__
 
 
 
-<a name="Validator-autoRun"></a>
-### Validator::autoRun()
+<a name="Validator-autoRender"></a>
+### Validator::autoRender()
 
-如果在 DOM 中使用标签属性指定校验规则，那么在 DOMReady 后调用这个函数进行初始化。
+给 Widget 自动渲染预留的接口。在 FORM 的 DOM 中使用标签属性 `data-widget="validator"` ，那么在 DOMReady 后调用 `Widget.autoRenderAll()` 方法会自动调用此方法进行初始化页面上所有的 Validator。
 
 __Example__
 
     $(function() {
-        Validator.autoRun();
+        Widget.autoRenderAll();
     });
 
 
@@ -374,13 +374,16 @@ __Arguments__
 
 __Example__
 
-    Validator.autoRun();
-    Validator.query('#test-form').on('formValidated', function(err, msg, ele) {
-        console.log(err, msg);
-    });
+    seajs.use('validator', 'widget', function(Validator, Widget) {
+        Widget.autoRenderAll(); //调用此方法初始化会从所有包含 `data-widget="widget-name"` 属性的 DOM 中初始化对应的组件。
 
-    Validator.query('#test-form [name=username]').on('itemValidated', function(err, msg, ele) {
-        console.log('item', err, msg);
+        Validator.query('#test-form').on('formValidated', function(err, msg, ele) {
+            console.log(err, msg);
+        });
+
+        Validator.query('#test-form [name=username]').on('itemValidated', function(err, msg, ele) {
+            console.log('item', err, msg);
+        });
     });
 
 
