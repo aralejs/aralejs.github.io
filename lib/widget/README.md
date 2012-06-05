@@ -129,39 +129,6 @@ var MyWidget = Widget.extend({
 widget 实例对应的 DOM 根节点，是一个 jQuery / Zepto 对象。
 
 
-### parseDataAttrs `widget.parseDataAttrs()`
-
-解析对应 DOM 结构中的 DATA-ATTRIBUTE API。假设 `this.element` 的 html 为：
-
-```
-<div data-widget="dialog">
-    <div data-role="title">{{title}}</div>
-    <div data-role="content">{{content}}</div>
-    <span data-action="click close">X</span>
-</div>
-```
-
-通过 `parseDataAttrs` 方法，可以得到 `this.dataset` 属性：
-
-```
-{
-    "widget": { "dialog": ".daparser-0" },
-    "role": {
-              "title": ".daparser-1"
-              "content": ".daparser-2"
-            },
-    "action": { "click close": ".daparser-3" }
-}
-```
-
-`daparser-n` 是自动添加到对应 DOM 元素上具有唯一性质的 className。通过 `this.dataset`
-属性，可以快速找到具有特定 data 属性的元素。比如
-
-```
-this.title = this.$(this.dataset.role.title);
-```
-
-
 ### initProps `widget.initProps()`
 
 properties 的初始化方法，提供给子类覆盖，比如：
@@ -333,7 +300,31 @@ data-api 解析工具，功能如下：
 
 ### parseBlock `DAParser.parseBlock(root)`
 
-得到 root 元素及其子元素的 dataset 结构数据。
+
+解析对应 DOM 结构中的 DATA-ATTRIBUTE API。假设 `root` 元素的 html 为：
+
+```
+<div data-widget="dialog">
+    <div data-role="title">{{title}}</div>
+    <div data-role="content">{{content}}</div>
+    <span data-action="click close">X</span>
+</div>
+```
+
+通过 `parseBlock` 方法，可以得到 `dataset` 对象：
+
+```
+{
+    "widget": { "dialog": ".daparser-0" },
+    "role": {
+              "title": ".daparser-1"
+              "content": ".daparser-2"
+            },
+    "action": { "click close": ".daparser-3" }
+}
+```
+
+`daparser-n` 是自动添加到对应 DOM 元素上具有唯一性质的 className 。
 
 
 ### parseElement `DAParser.parseElement(element)`
