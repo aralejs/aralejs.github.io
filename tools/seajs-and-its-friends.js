@@ -55,7 +55,8 @@ seajs.config({
         // Widgets
         'overlay': 'overlay/0.9.5/overlay',                  // 95%
         'mask': 'overlay/0.9.5/mask',                        // 95%
-        'dropdown': 'dropdown/0.9.2/dropdown',               // 90%
+        'triggerable': 'triggerable/0.9.3/triggerable',      // 95%
+        'dropdown': 'triggerable/0.9.3/dropdown',            // 95%
         'dialog': 'dialog/0.9.0/dialog',                     // 80%
         'switchable': 'switchable/0.8.1/switchable',         // 80%
         'calendar': 'calendar/0.8.1/calendar'                // 50%

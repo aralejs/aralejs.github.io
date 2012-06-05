@@ -39,6 +39,11 @@
     iframe{
         background:red;
     }
+    .opacity0{
+        filter:alpha(opacity=50);
+        -moz-opacity:0.5;
+        opacity: 0.5;
+    }
 </style>
 </head>
 <body>
@@ -50,7 +55,7 @@
             new Shim('#example1 .overlay').sync();
             </pre>
         </code>
-        <div class="overlay">
+        <div class="overlay opacity0">
             #example1 .overlay
         </div>
         <p>
@@ -71,21 +76,7 @@
         </select>
         </p>
         <p>
-        <select>
-            <option value="option"></option>
-        </select>
-        <select>
-            <option value="option"></option>
-        </select>
-        <select>
-            <option value="option"></option>
-        </select>
-        <select>
-            <option value="option"></option>
-        </select>
-        <select>
-            <option value="option"></option>
-        </select>
+            <input type="text" />
         </p>
     </div>
     <div id="example2" class="example">

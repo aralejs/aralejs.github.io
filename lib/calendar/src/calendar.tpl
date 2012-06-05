@@ -23,7 +23,7 @@
         {{#each date.items}}
         <tr>
         {{#each this}}
-        <td class="{{status}} week-{{day}}{{#unless available}} disabled{{/unless}}" data-role="date" data-value="{{date}}">{{date}}</td>
+        <td class="{{status}} week-{{day}}{{#unless available}} disabled{{/unless}}" data-role="date" data-date="{{date}}" data-month="{{month}}">{{date}}</td>
         {{/each}}
         </tr>
         {{/each}}

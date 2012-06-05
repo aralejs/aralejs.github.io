@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#triggerable/0.9.3/triggerable-debug", ["jquery","overlay"], function(require, exports, module) {
 
     var $ = require('jquery');
     var Overlay = require('overlay');

@@ -9,8 +9,7 @@ define("#position/0.9.1/position-debug", ["jquery"], function(require, exports) 
         VIEWPORT = { _id: 'VIEWPORT', nodeType: 1 },
         $ = require('jquery'),
         isPinFixed = false,
-        isIE6 = $.browser.msie && $.browser.version == 6.0,
-        isIE8 = $.browser.msie && $.browser.version == 8.0;
+        isIE6 = $.browser.msie && $.browser.version == 6.0;
 
 
     // 将目标元素相对于基准元素进行定位
@@ -26,14 +25,13 @@ define("#position/0.9.1/position-debug", ["jquery"], function(require, exports) 
         var pinElement = $(pinObject.element);
 
         if (pinElement.css('position') !== 'fixed' || isIE6) {
-            // for ie8 hack
             pinElement.css('position', 'absolute');
             isPinFixed = false;
         }
         else {
             // 定位 fixed 元素的标志位，下面有特殊处理
             isPinFixed = true;
-        } 
+        }
 
         // 将位置属性归一化为数值
         // 注：必须放在上面这句 `css('position', 'absolute')` 之后，
@@ -43,6 +41,7 @@ define("#position/0.9.1/position-debug", ["jquery"], function(require, exports) 
 
         var parentOffset = getParentOffset(pinElement);
         var baseOffset = baseObject.offset();
+
         // 计算目标元素的位置
         var top = baseOffset.top + baseObject.y -
                 pinObject.y - parentOffset.top;
@@ -51,15 +50,12 @@ define("#position/0.9.1/position-debug", ["jquery"], function(require, exports) 
                 pinObject.x - parentOffset.left;
 
         // 定位目标元素
-        // 在 ie8 下，若定位元素在基准元素的前面
-        // 则基准元素会出现未 reflow 而导致 margin-top 失效的问题
-        // 所以尽量避免定位元素在基准元素相邻并在之前的情况
         pinElement.css({ left: left, top: top });
     };
 
 
     // 将目标元素相对于基准元素进行居中定位
-    // 接受两个参数，分别为目标元素和定位的基准元素，都是 dom 节点类型
+    // 接受两个参数，分别为目标元素和定位的基准元素，都是 DOM 节点类型
     Position.center = function(pinElement, baseElement) {
         Position.pin({
             element: pinElement,
@@ -73,7 +69,7 @@ define("#position/0.9.1/position-debug", ["jquery"], function(require, exports) 
     };
 
 
-    // 这是当前可视区域的伪 dom 节点
+    // 这是当前可视区域的伪 DOM 节点
     // 需要相对于当前可视区域定位时，可传入此对象作为 element 参数
     Position.VIEWPORT = VIEWPORT;
 
@@ -82,22 +78,22 @@ define("#position/0.9.1/position-debug", ["jquery"], function(require, exports) 
     // -------
 
     // 将参数包装成标准的定位对象，形似 { element: a, x: 0, y: 0 }
-    function normalize(pinObject) {
-        pinObject = toElement(pinObject) || {};
+    function normalize(posObject) {
+        posObject = toElement(posObject) || {};
 
-        if (pinObject.nodeType) {
-            pinObject = { element: pinObject };
+        if (posObject.nodeType) {
+            posObject = { element: posObject };
         }
 
-        var element = toElement(pinObject.element) || VIEWPORT;
+        var element = toElement(posObject.element) || VIEWPORT;
         if (element.nodeType !== 1) {
-            throw 'pinObject.element is invalid.';
+            throw 'posObject.element is invalid.';
         }
 
         var result = {
             element: element,
-            x: pinObject.x || 0,
-            y: pinObject.y || 0
+            x: posObject.x || 0,
+            y: posObject.y || 0
         };
 
         // config 的深度克隆会替换掉 Position.VIEWPORT, 导致直接比较为 false
@@ -152,8 +148,8 @@ define("#position/0.9.1/position-debug", ["jquery"], function(require, exports) 
         // 处理 alias
         if (/\D/.test(x)) {
             x = x.replace(/(?:top|left)/gi, '0%')
-                    .replace(/center/gi, '50%')
-                    .replace(/(?:bottom|right)/gi, '100%');
+                 .replace(/center/gi, '50%')
+                 .replace(/(?:bottom|right)/gi, '100%');
         }
 
         // 将百分比转为像素值
@@ -193,13 +189,14 @@ define("#position/0.9.1/position-debug", ["jquery"], function(require, exports) 
             parent.css('zoom', 1);
         }
 
-        // offsetParent 的 offset
-        // document.body 会默认带8像素的偏差
-
-        // IE7 下，body 子节点的 offsetParent 为 html 元素，其 offset 为 { top: 2, left: 2 }
-        // 会导致定位差 2 像素，所以这里将 parent 转为 document.body
-
-        // 所以这两种情况直接赋为0
+        // 获取 offsetParent 的 offset
+        // 注1：document.body 会默认带 8 像素的偏差
+        //
+        // 注2：IE7 下，body 子节点的 offsetParent 为 html 元素，其 offset 为
+        // { top: 2, left: 2 }，会导致定位差 2 像素，所以这里将 parent
+        // 转为 document.body
+        //
+        // 以上两种情况直接赋为 0
         var offset = (parent[0] === document.body) ?
             { left: 0, top: 0 } : parent.offset();
 
@@ -215,14 +212,7 @@ define("#position/0.9.1/position-debug", ["jquery"], function(require, exports) 
     }
 
     function toElement(element) {
-        if (typeof element === 'string') {
-            element = $(element)[0];
-        }
-        else if (element instanceof $) {
-            element = element[0];
-        }
-
-        return element;
+        return $(element)[0];
     }
 
 });
