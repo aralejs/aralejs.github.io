@@ -266,7 +266,7 @@ var TabView = Widget.extend({
 根据 data-widget 属性，自动渲染找到的所有 Widget 类组件。
 
 
-### Templatable
+## Templatable
 
 可混入的功能类，提供 Handlebars 模板支持。
 
@@ -293,7 +293,7 @@ myWidget.render();
 ```
 
 
-### DAParser
+## DAParser
 
 data-api 解析工具，功能如下：
 
