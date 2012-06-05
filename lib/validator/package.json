@@ -1,6 +1,7 @@
 {
     "version": "0.8.0",
     "dist": {
-        "core.js": "default"
+        "core.js": "default",
+        "validator.js": "validator.js"
     }
 }

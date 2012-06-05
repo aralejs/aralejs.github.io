@@ -39,6 +39,7 @@ seajs.config({
         'base': 'base/0.9.14/base',                          // 95%
         'widget': 'widget/0.9.12/widget',                    // 95%
         'templatable': 'widget/0.9.12/templatable',          // 95%
+        'daparser': 'widget/0.9.12/daparser',                // 95%
 
         // Utilities
         'cookie': 'cookie/1.0.2/cookie',                     // 100%

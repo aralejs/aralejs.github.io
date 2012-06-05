@@ -220,7 +220,22 @@ seajs.use(['tabs'], function(Tabs) {
 
 ```
 
-2. 也可以适用自动渲染。详情可以参考`examples/autorender.html`
+2. 也可以适用自动渲染。详情可以参考[examples/autorender.html](https://github.com/alipay/arale/blob/master/lib/switchable/examples/autorender.html)
 
       
+
+## 演示页面
+
+ - [examples/overlay.html](http://aralejs.org/lib/switchable/examples/autorender.html)
+ - [examples/mask.html](http://aralejs.org/lib/switchable/examples/tabs.html)
+
+## 测试用例
+
+* <http://aralejs.org/lib/switchable/tests/runner.html>
+
+## 交流讨论
+
+欢迎创建
+[GitHub Issue](https://github.com/alipay/arale/issues/new)
+来提交反馈。
 

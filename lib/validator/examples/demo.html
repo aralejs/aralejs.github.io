@@ -15,22 +15,25 @@
                 Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'), '{{display}}必须是Email或者手机号码');
                 Validator.addRule('lengthConstraint', Validator.getRule('maxlength', {max: 8}).or('minlength', {min: 15}));
 
-                /*
                 Validator.helper('usernameHandler', function(err, msg, ele) {
-                    console.log('helper', err, msg);
+                    console.log('usernameValidated', err, msg);
+                });
+
+                Validator.helper('formValidatedHandler', function() {
+                    console.log('formValidated', arguments);
                 });
 
                 $(function() {
                     Validator.autoRun();
                     Validator.query('#test-form').on('itemValidated', function(err, msg, ele) {
-                        console.log(err, msg);
+                        console.log('itemValidated', err, msg);
                     });
 
                     Validator.query('#test-form [name=username]').on('itemValidated', function(err, msg, ele) {
-                        console.log('item', err, msg);
+                        console.log('usernameValidated', err, msg);
                     });
                 });
-                */
+                /*
                 $(function() {
 
                     Validator.setMessage('lengthConstraint', '{{display}}的长度必须小于{{max}}或者大于{{min}}');
@@ -111,11 +114,12 @@
 
                     //validator.removeItem('username');
                 });
+                */
             });
         </script>
     </head>
     <body>
-        <form id="test-form" data-enable-validate="true">
+        <form id="test-form" data-enable-validate="true" data-trigger-type="blur" data-stop-on-error="false" data-on-form-validated="formValidatedHandler">
 
            
                 <label for="username">Username:</label>

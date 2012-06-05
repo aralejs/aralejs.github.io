@@ -1,10 +1,11 @@
-define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser","./item","./rule"], function(require, exports, module) {
+define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser","./item","daparser","./rule"], function(require, exports, module) {
 
     var $ = require('jquery'),
         async = require('./async'),
         Widget = require('widget'),
         parser = require('./parser'),
-        Item = require('./item');
+        Item = require('./item'),
+        DAParser = require('daparser');
 
     var validators = [];
 
@@ -47,7 +48,13 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
 
                 forms.each(function(i, form) {
 
-                    var validator = new Validator({element: form});
+                    var dataset = DAParser.parse(form);
+                    var attrs = getAttrsFromDataset(dataset, form);
+                    attrs.element = form;
+                    findHelpers(attrs, ['onItemValidate', 'onItemValidated', 'onFormValidate', 'onFormValidated']);
+                    console.log(attrs);
+
+                    var validator = new Validator(attrs);
                     validators.push(validator);
 
                     $(':input', form).each(function(i, input) {
@@ -68,8 +75,7 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
                             var attrs = getAttrsFromDataset(validator.dataset, input);
                             $.extend(options, attrs, obj);
 
-                            options.onItemValidate = Validator.helper(obj.onItemValidate);
-                            options.onItemValidated = Validator.helper(obj.onItemValidated);
+                            findHelpers(options, ['onItemValidate', 'onItemValidated']);
                             validator.addItem(options);
                         }
                     });
@@ -209,6 +215,7 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
     }
 
     function getAttrsFromDataset(dataset, input) {
+        input = $(input);
         var result = {};
 
         $.each(dataset, function(key, obj) {
@@ -220,7 +227,20 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
             });
         });
 
+        $.each(result, function(i, v) {
+            if (v == 'true')
+                result[i] = true;
+            else if (v == 'false')
+                result[i] = false;
+        });
+
         return result;
+    }
+
+    function findHelpers(obj, keys) {
+        $.each(keys, function(i, key) {
+            obj[key] = Validator.helper(obj[key]);
+        });
     }
 
     module.exports = Validator;
