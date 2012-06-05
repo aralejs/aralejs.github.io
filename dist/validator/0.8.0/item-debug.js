@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#validator/0.8.0/item-debug", ["jquery","./parser","widget","./async","./rule"], function(require, exports, module) {
     var $ = require('jquery'),
         parser = require('./parser'),
         Widget = require('widget'),
