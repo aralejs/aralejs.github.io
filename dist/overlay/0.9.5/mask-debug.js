@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#overlay/0.9.5/mask-debug", ["$","./overlay"], function(require, exports, module) {
 
     var $ = require('$'),
         Overlay = require('./overlay'),
@@ -8,7 +8,7 @@ define(function(require, exports, module) {
 
     // Mask
     // ----------
-    // 全屏遮罩层组件
+    // 遮罩层组件
 
     var Mask = Overlay.extend({
 
@@ -16,7 +16,6 @@ define(function(require, exports, module) {
             width: isIE6 ? body.outerWidth(true) : '100%',
             height: isIE6 ? body.outerHeight(true) : '100%',
 
-            className: 'ui-mask',
             style: {
                 opacity: .2,
                 backgroundColor: '#000',

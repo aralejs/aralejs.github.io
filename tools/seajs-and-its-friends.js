@@ -51,8 +51,8 @@ seajs.config({
         /* placeholder 尚未开始开发 */
 
         // Widgets
-        'overlay': 'overlay/0.9.4/overlay',                  // 90%
-        'mask': 'overlay/0.9.4/mask',                        // 90%
+        'overlay': 'overlay/0.9.5/overlay',                  // 90%
+        'mask': 'overlay/0.9.5/mask',                        // 90%
         'dropdown': 'dropdown/0.9.2/dropdown',               // 90%
         'dialog': 'dialog/0.9.0/dialog',                     // 80%
         'switchable': 'switchable/0.8.1/switchable',         // 80%
