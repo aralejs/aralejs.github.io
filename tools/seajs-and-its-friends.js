@@ -38,6 +38,7 @@ seajs.config({
         'class': 'class/0.9.1/class',                        // 100%
         'base': 'base/0.9.14/base',                          // 95%
         'widget': 'widget/0.9.11/widget',                    // 95%
+        'daparser': 'widget/0.9.11/daparser',                // 95%
         'templatable': 'widget/0.9.11/templatable',          // 95%
 
         // Utilities
