@@ -6,6 +6,7 @@
         <script src="../../../tools/seajs-and-its-friends.js"></script>
     </head>
     <body>
+        <input id="date-picker" type="date" />
         <script>
             // for debug
         seajs.config({
@@ -25,7 +26,7 @@
                 return day != 4;
             };
 
-            var cal = new Calendar({available: available, lang: lang});
+            var cal = new Calendar({available: available, lang: lang, trigger: '#date-picker'});
             cal.render();
 
             cal.on('disabled', function(date) {
