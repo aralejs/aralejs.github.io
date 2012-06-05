@@ -1,42 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>validator demo</title>
         <meta charset="utf-8" />
+        <title>validator demo</title>
+        <link charset="utf-8" rel="stylesheet" href="http://dev.assets.alipay.net/al/alice.style.account-1.1-src.css" />
         <script type="text/javascript" charset="utf-8" src="../../../tools/seajs-and-its-friends.js"></script>
         <script type="text/javascript" charset="utf-8">
-            seajs.config({
-                alias: {
-                }
-            });
-
-            seajs.use(['../src/core.js', 'jquery'], function(Validator, $) {
-
-                Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'), '{{display}}必须是Email或者手机号码');
-                Validator.addRule('lengthConstraint', Validator.getRule('maxlength', {max: 8}).or('minlength', {min: 15}));
-
-                Validator.helper('usernameHandler', function(err, msg, ele) {
-                    console.log('usernameValidated', err, msg);
-                });
-
-                Validator.helper('formValidatedHandler', function() {
-                    console.log('formValidated', arguments);
-                });
+            seajs.use(['../src/validator.js', 'jquery'], function(Validator, $) {
 
                 $(function() {
-                    Validator.autoRun();
-                    Validator.query('#test-form').on('itemValidated', function(err, msg, ele) {
-                        console.log('itemValidated', err, msg);
-                    });
-
-                    Validator.query('#test-form [name=username]').on('itemValidated', function(err, msg, ele) {
-                        console.log('usernameValidated', err, msg);
-                    });
-                });
-                /*
-                $(function() {
-
-                    Validator.setMessage('lengthConstraint', '{{display}}的长度必须小于{{max}}或者大于{{min}}');
+                    Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'), '{{display}}必须是Email或者手机号码');
+                    Validator.addRule('lengthConstraint', Validator.getRule('maxlength', {max: 8}).or('minlength', {min: 15}), '{{display}}的长度必须小于{{max}}或者大于{{min}}');
 
                     validator = new Validator({
                         element: '#test-form',
@@ -54,7 +28,8 @@
 
                     validator.addItem({
                         element: '[name=username]',
-                        rule: 'required emailOrMobile lengthConstraint{min: 15, max: 8}',
+                        rule: 'emailOrMobile lengthConstraint{min: 15, max: 8}',
+                        required: true,
                         display: '用户名',
                         errormessage: '用户名的格式必须是正确的哦',
                         triggerType: 'keyup blur',
@@ -68,7 +43,8 @@
 
                     validator.addItem({
                         element: '[name=password]',
-                        rule: 'required',
+                        rule: 'minlength{min: 5} maxlength{max:20}',
+                        required: true,
                         display: '密码',
                         onItemValidate: function() {
                         },
@@ -79,7 +55,8 @@
 
                     validator.addItem({
                         element: '[name=password-confirmation]',
-                        rule: 'required confirmation{target: "#password"}',
+                        rule: 'confirmation{target: "#password"}',
+                        required: true,
                         onItemValidate: function() {
                         },
                         onItemValidated: function(err, msg, ele) {
@@ -89,7 +66,7 @@
 
                     validator.addItem({
                         element: '[name=sex]',
-                        rule: 'required',
+                        required: true,
                         triggerType: 'change',
                         onItemValidated: function() {
                             console.log('onItemValidated', arguments);
@@ -98,7 +75,7 @@
 
                     validator.addItem({
                         element: '[name=vehicle]',
-                        rule: 'required',
+                        required: true,
                         onItemValidated: function() {
                             console.log('onItemValidated', arguments);
                         }
@@ -106,7 +83,7 @@
 
                     validator.addItem({
                         element: '[name=country]',
-                        rule: 'required',
+                        required: true,
                         onItemValidated: function() {
                             console.log('onItemValidated', arguments);
                         }
@@ -114,51 +91,60 @@
 
                     //validator.removeItem('username');
                 });
-                */
             });
         </script>
     </head>
     <body>
-        <form id="test-form" data-enable-validate="true" data-trigger-type="blur" data-stop-on-error="false" data-on-form-validated="formValidatedHandler">
+        <form id="test-form" class="ui-form">
 
            
-                <label for="username">Username:</label>
-                <input id="username" required name="username" data-rule="emailOrMobile lengthConstraint{min: 15, max: 8}" data-on-item-validated="usernameHandler" data-errormessage-required="Please fullfill {{display}}" />
-            </p>
+            <div class="ui-form-item">
+                <label for="username" class="ui-label"><span class="ui-form-required">*</span>用户名：</label>
+                <input id="username" name="username" class="ui-input" />
+                <div class="ui-form-explain">用户名为电子邮箱或者手机号码。</div>
+            </div>
 
-            <p>
-                <label for="password">Password:</label>
-                <input id="password" required minlength="5" maxlength="20" name="password" type="password" />
-            </p>
+            <div class="ui-form-item">
+                <label for="password" class="ui-label">密码：</label>
+                <input id="password" name="password" type="password" class="ui-input" />
+                <div class="ui-form-explain">请输入5-20位的密码。</div>
+            </div>
 
-            <p>
-                <label for="password-confirmation">Password Confirmation</label>
-                <input id="password-confirmation" required name="password-confirmation" type="password" data-rule="confirmation{target: '#password', name: '第一遍输入'}" data-display="密码确认" />
-            </p>
+            <div class="ui-form-item">
+                <label for="password-confirmation" class="ui-label">重复输入密码：</label>
+                <input id="password-confirmation" name="password-confirmation" type="password" class="ui-input" />
+                <div class="ui-form-explain"></div>
+            </div>
 
-            <p>
-                <span>Sex:</span>
-                <label for="male">Male</label>
-                <input id="male" type="radio" name="sex" value="male" required data-errormessage-required="你到底什么性别？!" />
-                <label for="female">Female</label>
-                <input id="female" type="radio" name="sex" value="female" />
-            </p>
+            <div class="ui-form-item">
+                <label class="ui-label">性别：</label>
 
-            <p>
-                <input type="checkbox" name="vehicle" value="Bike" required /> I have a bike<br />
-                <input type="checkbox" name="vehicle" value="Car" checked /> I have a car
-            </p>
+                <ul class="ui-form-list">
+					<li><input id="male" value="male" name="sex" type="radio"> <label for="male">Male</label></li>
+					<li><input id="female" value="female" name="sex" type="radio"> <label for="female">Female</label></li>
+                </ul>
 
-            <p>
-                <span>Country:</span>
-                <select name="country" required>
+            </div>
+
+            <div class="ui-form-item">
+                <label class="ui-label">交通工具：</label>
+				<label for="Bike"><input class="ui-hidden" name="vehicle" id="Bike" type="checkbox">自行车</label>
+				<label for="Car"><input class="ui-hidden" name="vehicle" id="Car" type="checkbox">汽车</label>
+			</div>
+            </div>
+
+            <div class="ui-form-item">
+                <label class="ui-label">国籍：</label>
+                <select name="country">
                   <option value="">请选择</option>
                   <option value="china">China</option>
                   <option value="usa">USA</option>
                 </select>
-            </p>
+            </div>
+            <div class="ui-form-item">
+                <span class="ui-button-morange ui-button"><input class="ui-button-text" value="确定" type="submit"></span>
+            </div>
 
-            <input type="submit" value="submit" />
         </form>
     </body>
 </html>
