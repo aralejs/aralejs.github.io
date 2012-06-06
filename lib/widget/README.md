@@ -73,7 +73,6 @@ var widget = new Widget({
 ```js
     this.initAttrs(config);
     this.parseElement();
-    this.parseDataAttrs();
     this.initProps();
     this.delegateEvents();
     this.setup();
