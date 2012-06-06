@@ -1,4 +1,6 @@
 
+ - Arale Widget 设计思路总结
+
  - 基于模板片段的自动化局部刷新技术方案总结
 
  - Ember.js 有但 Arale Widget 没有的功能：
