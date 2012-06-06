@@ -5,12 +5,7 @@ define("#widget/0.9.12/auto-render-debug", ["$","./daparser"], function(require,
 
 
     // 自动渲染接口，子类可根据自己的初始化逻辑进行覆盖
-    exports.autoRender = function(element, elementData, blockData) {
-        delete elementData.widget;
-
-        var config = $.extend({ element: element, dataset: blockData },
-                elementData);
-
+    exports.autoRender = function(config) {
         new this(config).render();
     };
 
@@ -33,11 +28,14 @@ define("#widget/0.9.12/auto-render-debug", ["$","./daparser"], function(require,
                     var element = elements[i];
 
                     if (SubWidget.autoRender) {
-                        SubWidget.autoRender(
-                                element,
-                                DAParser.parseElement(element),
-                                DAParser.parseBlock(element)
-                        );
+                        var config = DAParser.parseElement(element);
+                        var dataset = DAParser.parseBlock(element);
+
+                        delete config.widget;
+                        config.element = element;
+                        config.dataset = dataset;
+
+                        SubWidget.autoRender(config);
                     }
                 }
             });
