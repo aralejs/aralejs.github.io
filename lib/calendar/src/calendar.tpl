@@ -1,7 +1,7 @@
 <div>
 <table class="ui-calendar">
     <thead>
-        <tr class="ui-calendar-months">
+        <tr class="ui-calendar-navigation">
             <td class="ui-calendar-previous-year" data-role="prev-year">&lt;&lt;</td>
             <td class="ui-calendar-previous-month" data-role="prev-month">&lt;</td>
             <td colspan="3" data-role="month-year">
@@ -34,10 +34,12 @@
     {{/if}}
 
     {{#if mode.month}}
-    <tbody class="ui-calendar-dates" data-role="months">
+    <tbody class="ui-calendar-months" data-role="months">
         {{#each month.items}}
         <tr>
-            <td>month</td>
+            {{#each this}}
+            <td colspan="2">{{value}}</td>
+            {{/each}}
         </tr>
         {{/each}}
     </tbody>
