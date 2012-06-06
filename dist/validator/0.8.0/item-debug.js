@@ -1,5 +1,5 @@
-define("#validator/0.8.0/item-debug", ["jquery","./parser","widget","./async","./rule"], function(require, exports, module) {
-    var $ = require('jquery'),
+define("#validator/0.8.0/item-debug", ["$","./parser","widget","./async","./rule"], function(require, exports, module) {
+    var $ = require('$'),
         parser = require('./parser'),
         Widget = require('widget'),
         async = require('./async'),
