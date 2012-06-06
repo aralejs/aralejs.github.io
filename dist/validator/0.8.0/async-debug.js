@@ -1,7 +1,5 @@
 // Thanks to Caolan McMahon. These codes blow come from his project Async(https://github.com/caolan/async).
-define("#validator/0.8.0/async-debug", ["jquery"], function(require, exports, module) {
-
-    var $ = require('jquery');
+define("#validator/0.8.0/async-debug", [], function(require, exports, module) {
 
     var async = {};
 

@@ -1,6 +1,6 @@
-define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser","./item","daparser","./rule"], function(require, exports, module) {
+define("#validator/0.8.0/core-debug", ["$","./async","widget","./parser","./item","daparser","./rule"], function(require, exports, module) {
 
-    var $ = require('jquery'),
+    var $ = require('$'),
         async = require('./async'),
         Widget = require('widget'),
         parser = require('./parser'),
@@ -53,7 +53,7 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
 
                 var validator = new Validator(attrs);
 
-                $(':input', element).each(function(i, input) {
+                $('input, textarea, select', element).each(function(i, input) {
 
                     if (!validator.query(input)) {
                         input = $(input);
@@ -62,7 +62,7 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
 
                         var type = input.attr('type');
                         if (type == 'radio' || type == 'checkbox') {
-                            options.element = $(':' + input.attr('type') + '[name=' + input.attr('name') + ']', validator.element);
+                            options.element = $('[type=' + type + '][name=' + input.attr('name') + ']', validator.element);
                         } else {
                             options.element = input;
                         }
@@ -81,9 +81,8 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
                 var target = $(selector);
                 var result = null;
 
-
                 $.each(validators, function(i, validator) {
-                    if (target.is(validator.element)) {
+                    if (target.get(0) == validator.element.get(0)) {
                         result = validator;
                         return false;
                     } else {
@@ -134,7 +133,7 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
 
             var j;
             $.each(this.items, function(i, item) {
-                if (target.is(item.element)) {
+                if (target.get(0) == item.element.get(0)) {
                     j = i;
                     that.element.off(item.get('triggerType'), '[' + DATA_ATTR_NAME + '=' + stampItem(item) + ']', item.get('_handler'));
                     item.destroy();
@@ -193,12 +192,12 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
 
         query: function(selector) {
             var target = $(selector);
-            if (target.length == 0 || !this.element.find(target)) {
+            if (target.length == 0 || $(target, this.element).length == 0) {
                 return null;
             } else {
                 var result = null;
                 $.each(this.items, function(i, item) {
-                    if (target.is(item.element)) {
+                    if (target.get(0) == item.element.get(0)) {
                         result = item;
                         return false;
                     }
