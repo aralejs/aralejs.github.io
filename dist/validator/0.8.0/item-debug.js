@@ -1,5 +1,5 @@
-define("#validator/0.8.0/item-debug", ["jquery","./parser","widget","./async","./rule"], function(require, exports, module) {
-    var $ = require('jquery'),
+define("#validator/0.8.0/item-debug", ["$","./parser","widget","./async","./rule"], function(require, exports, module) {
+    var $ = require('$'),
         parser = require('./parser'),
         Widget = require('widget'),
         async = require('./async'),
@@ -7,7 +7,7 @@ define("#validator/0.8.0/item-debug", ["jquery","./parser","widget","./async",".
 
     var Item = Widget.extend({
         attrs: {
-            rule: null,
+            rule: '',
             display: null,
             triggerType: null,
             required: false,
@@ -16,7 +16,7 @@ define("#validator/0.8.0/item-debug", ["jquery","./parser","widget","./async",".
 
         setup: function() {
             if (this.get('required')) {
-                if (!this.get('rule') || this.get('rule').indexOf('required')) {
+                if (!this.get('rule') || this.get('rule').indexOf('required') < 0) {
                     this.set('rule', 'required ' + this.get('rule'));
                 }
             }

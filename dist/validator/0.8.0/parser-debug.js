@@ -1,5 +1,5 @@
-define("#validator/0.8.0/parser-debug", ["jquery","./rule"], function(require, exports, module) {
-    var $ = require('jquery'),
+define("#validator/0.8.0/parser-debug", ["$","./rule"], function(require, exports, module) {
+    var $ = require('$'),
         Rule = require('./rule');
 
     var u_count = 0;

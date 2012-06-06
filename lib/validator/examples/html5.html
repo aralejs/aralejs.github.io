@@ -6,7 +6,7 @@
         <script type="text/javascript" charset="utf-8" src="../../../tools/seajs-and-its-friends.js"></script>
         <script type="text/javascript" charset="utf-8">
 
-            seajs.use(['validator-core', 'jquery', 'widget'], function(Validator, $, Widget) {
+            seajs.use(['validator-core', '$', 'widget'], function(Validator, $, Widget) {
 
                 Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'), '{{display}}必须是Email或者手机号码');
                 Validator.addRule('lengthConstraint', Validator.getRule('maxlength', {max: 8}).or('minlength', {min: 15}));
@@ -30,7 +30,7 @@
         </script>
     </head>
     <body>
-        <form id="test-form" data-widget="validator-core" data-enable-validate="true" data-trigger-type="blur" data-stop-on-error="false" data-on-item-validated="itemValidatedHandler" data-on-form-validated="formValidatedHandler" data-check-null="true">
+        <form id="test-form" data-widget="validator-core" data-trigger-type="blur" data-stop-on-error="false" data-on-item-validated="itemValidatedHandler" data-on-form-validated="formValidatedHandler" data-check-null="true">
 
             <p>
                 <label for="username">Username:</label>

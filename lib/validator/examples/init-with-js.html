@@ -6,7 +6,7 @@
         <link charset="utf-8" rel="stylesheet" href="http://dev.assets.alipay.net/al/alice.style.account-1.1-src.css" />
         <script type="text/javascript" charset="utf-8" src="../../../tools/seajs-and-its-friends.js"></script>
         <script type="text/javascript" charset="utf-8">
-            seajs.use(['../src/validator.js', 'jquery'], function(Validator, $) {
+            seajs.use(['../src/validator.js', '$'], function(Validator, $) {
 
                 $(function() {
                     Validator.addRule('emailOrMobile', Validator.getRule('email').or('mobile'), '{{display}}必须是Email或者手机号码');

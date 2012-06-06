@@ -1,7 +1,7 @@
-define("#validator/0.8.0/rule-debug", ["jquery","async","widget"], function(require, exports, module) {
+define("#validator/0.8.0/rule-debug", ["$","async","widget"], function(require, exports, module) {
     var rules = {},
         messages = {},
-		$ = require('jquery'),
+		$ = require('$'),
         async = require('async'),
         Widget = require('widget');
 
@@ -10,23 +10,19 @@ define("#validator/0.8.0/rule-debug", ["jquery","async","widget"], function(requ
         initialize: function(name, operator) {
             this.name = name;
 
-            switch($.type(operator)) {
-                case 'regexp':
+                if (operator instanceof RegExp) {
                     this.operator =  function(opts, commit) {
                         var result = operator.test($(opts.element).val());
                         commit(result ? null : opts.rule, _getMsg(opts, result));
                     };
-                    break;
-                case 'function':
+                } else if (typeof operator == 'function') {
                     this.operator = function(opts, commit) {
                         var result = operator(opts, commit);
                         if (result !== undefined)
                             commit(result ? null : opts.rule, _getMsg(opts, result));
                     };
-                    break;
-                default:
+                } else
                     throw 'The second argument must be a regexp or a function.';
-            }
         },
 
         and: function(name, options) {
