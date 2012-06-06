@@ -26,8 +26,9 @@
                 return day != 4;
             };
 
-            var cal = new Calendar({available: available, lang: lang, trigger: '#date-picker'});
-            //cal.render();
+            //var cal = new Calendar({available: available, lang: lang, trigger: '#date-picker'});
+            var cal = new Calendar({available: available, lang: lang});
+            cal.render();
 
             cal.on('disabled', function(date) {
                 console.log('disabled');

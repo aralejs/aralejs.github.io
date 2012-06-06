@@ -13,14 +13,16 @@
             <td class="ui-calendar-next-month" data-role="next-month">&gt;</td>
             <td class="ui-calendar-next-year" data-role="next-year">&gt;&gt;</td>
         </tr>
-    </thead>
-    <tbody class="ui-calendar-dates" data-role="dates">
+        {{#if mode.date}}
         <tr class="ui-calendar-weeks" data-role="weeks">
             {{#each week.items }}
             <td class="week-{{value}}" data-role="week" data-value="{{value}}">{{label}}</td>
             {{/each}}
         </tr>
-
+        {{/if}}
+    </thead>
+    {{#if mode.date}}
+    <tbody class="ui-calendar-dates" data-role="dates">
         {{#each date.items}}
         <tr>
         {{#each this}}
@@ -29,6 +31,18 @@
         </tr>
         {{/each}}
     </tbody>
+    {{/if}}
+
+    {{#if mode.month}}
+    <tbody class="ui-calendar-dates" data-role="months">
+        {{#each month.items}}
+        <tr>
+            <td>month</td>
+        </tr>
+        {{/each}}
+    </tbody>
+    {{/if}}
+
     <tfoot>
         <tr>
             <td colspan="2" data-role="today">{{today}}</td>
