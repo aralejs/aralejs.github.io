@@ -7,7 +7,7 @@ define("#validator/0.8.0/item-debug", ["jquery","./parser","widget","./async",".
 
     var Item = Widget.extend({
         attrs: {
-            rule: null,
+            rule: '',
             display: null,
             triggerType: null,
             required: false,
@@ -16,7 +16,7 @@ define("#validator/0.8.0/item-debug", ["jquery","./parser","widget","./async",".
 
         setup: function() {
             if (this.get('required')) {
-                if (!this.get('rule') || this.get('rule').indexOf('required')) {
+                if (!this.get('rule') || this.get('rule').indexOf('required') < 0) {
                     this.set('rule', 'required ' + this.get('rule'));
                 }
             }

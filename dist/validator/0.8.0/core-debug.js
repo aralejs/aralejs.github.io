@@ -40,17 +40,18 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
                     });
                 });
             }
+
+            validators.push(this);
         },
 
         Statics: $.extend({}, require('./rule'), {
-            autoRender: function(element, dataset) {
-                var attrs = processAttr(DAParser.parseElement(element));
+            autoRender: function(element, elementData, blockData) {
+                var attrs = processAttr(elementData);
                 attrs.element = element;
-                attrs.dataset = dataset;
+                attrs.dataset = blockData;
                 findHelpers(attrs, ['onItemValidate', 'onItemValidated', 'onFormValidate', 'onFormValidated']);
 
                 var validator = new Validator(attrs);
-                validators.push(validator);
 
                 $(':input', element).each(function(i, input) {
 
@@ -79,6 +80,7 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
             query: function(selector) {
                 var target = $(selector);
                 var result = null;
+
 
                 $.each(validators, function(i, validator) {
                     if (target.is(validator.element)) {
@@ -139,7 +141,7 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
                     return false;
                 }
             });
-            j !== undefined && this.items.splice(j, 0);
+            j !== undefined && this.items.splice(j, 1);
 
             return this;
         },
@@ -177,6 +179,14 @@ define("#validator/0.8.0/core-debug", ["jquery","./async","widget","./parser",".
             $.each(this.items, function(i, item) {
                 that.removeItem(item);
             });
+            var j;
+            $.each(validators, function(i, validator) {
+                if (validator == this) {
+                    j = i;
+                    return false;
+                }
+            });
+            validators.splice(j, 1);
 
             Validator.superclass.destroy.call(this);
         },
