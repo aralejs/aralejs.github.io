@@ -13,13 +13,14 @@
             <td class="ui-calendar-next-month" data-role="next-month">&gt;</td>
             <td class="ui-calendar-next-year" data-role="next-year">&gt;&gt;</td>
         </tr>
+    </thead>
+    <tbody class="ui-calendar-dates" data-role="dates">
         <tr class="ui-calendar-weeks" data-role="weeks">
             {{#each week.items }}
             <td class="week-{{value}}" data-role="week" data-value="{{value}}">{{label}}</td>
             {{/each}}
         </tr>
-    </thead>
-    <tbody class="ui-calendar-dates" data-role="dates">
+
         {{#each date.items}}
         <tr>
         {{#each this}}
