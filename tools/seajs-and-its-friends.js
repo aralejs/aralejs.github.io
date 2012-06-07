@@ -35,11 +35,11 @@ seajs.config({
         // Infrastructure
         /* seajs 1.2 尚未开始 */
         'events': 'events/0.9.1/events',                     // 100%
-        'class': 'class/0.9.1/class',                        // 100%
+        'class': 'class/0.9.2/class',                        // 100%
         'base': 'base/0.9.14/base',                          // 95%
-        'widget': 'widget/0.9.12/widget',                    // 95%
-        'templatable': 'widget/0.9.12/templatable',          // 95%
-        'daparser': 'widget/0.9.12/daparser',                // 95%
+        'widget': 'widget/0.9.13/widget',                    // 95%
+        'templatable': 'widget/0.9.13/templatable',          // 95%
+        'daparser': 'widget/0.9.13/daparser',                // 95%
 
         // Utilities
         'cookie': 'cookie/1.0.2/cookie',                     // 100%
