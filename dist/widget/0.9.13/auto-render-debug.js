@@ -1,4 +1,4 @@
-define(function(require, exports) {
+define("#widget/0.9.13/auto-render-debug", ["$"], function(require, exports) {
 
     var $ = require('$');
 
