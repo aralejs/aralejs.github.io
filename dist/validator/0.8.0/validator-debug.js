@@ -24,10 +24,14 @@ define("#validator/0.8.0/validator-debug", ["./core","widget","$"], function(req
         },
 
         setup: function() {
-            console.log(this);
             Validator.superclass.setup.call(this);
-
             var that = this;
+
+            $('input, textarea, select', this.element).each(function(i, ele) {
+                ele = $(ele);
+                ele.data('explain', that.getExplain(ele).html());
+            });
+
 
             this.on('itemValidate', function() {
                 console.log('itemValidate');
