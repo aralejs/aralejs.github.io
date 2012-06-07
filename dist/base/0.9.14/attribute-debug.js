@@ -10,7 +10,12 @@ define("#base/0.9.14/attribute-debug", [], function(require, exports) {
 
     // 负责 attributes 的初始化
     // attributes 是与实例相关的状态信息，可读可写，发生变化时，会自动触发相关事件
-    exports.initAttrs = function(config) {
+    exports.initAttrs = function(config, attrConfig) {
+        // 合并来自 data-attr 的配置
+        if (attrConfig) {
+            config = merge(attrConfig, config);
+        }
+
         var specialProps = this.propsInAttrs || [];
         var attrs, inheritedAttrs, userValues;
 
