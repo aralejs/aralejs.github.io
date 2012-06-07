@@ -226,8 +226,9 @@ seajs.use(['tabs'], function(Tabs) {
 
 ## 演示页面
 
- - [examples/overlay.html](http://aralejs.org/lib/switchable/examples/autorender.html)
- - [examples/mask.html](http://aralejs.org/lib/switchable/examples/tabs.html)
+ - [examples/autorender.html](http://aralejs.org/lib/switchable/examples/autorender.html)
+ - [examples/tabs.html](http://aralejs.org/lib/switchable/examples/tabs.html)
+ - [examples/switchable-data-api.html](http://aralejs.org/lib/switchable/examples/switchable-data-api.html)
 
 ## 测试用例
 
