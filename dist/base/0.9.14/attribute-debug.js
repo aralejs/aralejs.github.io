@@ -13,7 +13,7 @@ define("#base/0.9.14/attribute-debug", [], function(require, exports) {
     exports.initAttrs = function(config, dataAttrsConfig) {
         // 合并来自 data-attr 的配置
         if (dataAttrsConfig) {
-            config = merge(dataAttrsConfig, config);
+            config = config ? merge(dataAttrsConfig, config) : dataAttrsConfig;
         }
 
         var specialProps = this.propsInAttrs || [];
