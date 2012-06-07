@@ -3,6 +3,8 @@
     <head>
         <title>validator demo</title>
         <meta charset="utf-8" />
+        <style type="text/css">@import 'fauxconsole.css';</style>
+        <script type="text/javascript" src="fauxconsole.js"></script>
         <script type="text/javascript" charset="utf-8" src="../../../tools/seajs-and-its-friends.js"></script>
         <script type="text/javascript" charset="utf-8">
 
@@ -34,7 +36,7 @@
 
             <p>
                 <label for="username">Username:</label>
-                <input id="username" required name="username" data-display="用户名" data-rule="emailOrMobile lengthConstraint{min: 15, max: 8}" data-on-item-validated="usernameHandler" data-errormessage-required="Please fullfill {{display}}" />
+                <input id="username" required name="username" data-display="用户名" data-rule="emailOrMobile lengthConstraint{min: 15, max: 8}" data-on-item-validated="usernameHandler" data-errormessage-required="Please fullfill username." />
             </p>
 
             <p>

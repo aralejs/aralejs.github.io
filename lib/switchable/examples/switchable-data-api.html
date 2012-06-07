@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Switchable Autorender Demo</title>
+
+<script src="../../../tools/seajs-and-its-friends.js"></script>
+<link href="./assets/reset.css" rel="stylesheet"/>
+
+<script>
+    seajs.config({
+        alias: {
+            'tabs': '/lib/switchable/src/tabs',
+            'slide': '/lib/switchable/src/slide',
+            'accordion': '/lib/switchable/src/accordion',
+            'carousel': '/lib/switchable/src/carousel'
+        },
+        debug: 0 
+    });
+</script>
+<style>
+    body { padding: 20px 50px 50px; }
+    h2 { margin: 30px 0 10px; font-size: 17px; }
+    .loading { background: #EBF5FA url(assets/loading.gif) no-repeat 50% 50%; }
+
+    p.code-switch { color: #09f; cursor: pointer; margin-top: 10px; }
+    pre.code {
+        color: #444;
+        cursor: auto;
+        border-left: 2px solid #7F96AA;
+        margin-top: 5px;
+        padding: 0 10px 20px 10px;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+<h2>Tabs - 普通标签页</h2>
+<style>
+    #demo1 { position: relative; width: 750px; padding-top: 29px; }
+    #demo1 .ui-switchable-nav-test { position: absolute; left: 20px; margin-top: -29px; z-index: 99; }
+    #demo1 .ui-switchable-nav-test li {
+        float: left;
+        width: 130px;
+        height: 27px;
+        line-height: 21px;
+        text-align: center;
+        background: url(assets/tabs-sprite.gif) no-repeat 0 6px;
+        margin-right: 3px;
+        padding-top: 8px;
+        cursor: pointer;
+    }
+    #demo1 .ui-switchable-nav-test li.ui-switchable-active { background-position: 0 -40px; cursor: default; }
+    #demo1 .ui-switchable-content-test {
+        position: relative;
+        height: 120px;
+        padding: 20px;
+        border: 1px solid #AEC7E5;
+    }
+</style>
+<div id="demo1" class="AR_Widget section">
+    <ul class="ui-switchable-nav-test" data-role="nav">
+        <li data-role="trigger">标题 A</li>
+        <li data-role="trigger">标题 B</li>
+        <li data-role="trigger">标题 C</li>
+        <li data-role="trigger">标题 D</li>
+        <li data-role="trigger">标题 E</li>
+    </ul>
+    <div class="ui-switchable-content-test" data-role="content">
+        <div>内容 A</div>
+        <div style="display: none">内容 B</div>
+        <div style="display: none">内容 C</div>
+        <div style="display: none">内容 D</div>
+        <div style="display: none">内容 E</div>
+    </div>
+</div>
+
+<h2>Slide - 支付宝首页卡盘</h2>
+<style>
+    #demo2 { position: relative; width: 710px; height: 176px; border: 1px solid #B6D1E6; overflow: hidden; }
+    #demo2 .ui-switchable-nav { position: absolute; bottom: 5px; right: 5px; z-index: 99; }
+    #demo2 .ui-switchable-nav li {
+        float: left;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+        margin-left: -1px;
+        background-color: #FCF2CF;
+        border: 1px solid #F47500;
+        color: #D94B01;
+        text-align: center;
+        cursor: pointer;
+    }
+    #demo2 .ui-switchable-nav li.ui-switchable-active {
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
+        margin-top: -1px;
+        color: #FFF;
+        background-color: #FFB442;
+        font-weight: bold;
+    }
+    #demo2 .ui-switchable-content-test li { height: 176px; width: 710px; overflow: hidden; }
+    /* for countdown plugin */
+    #demo2 .ui-switchable-nav li,
+    #demo2 .ui-switchable-trigger-content {
+        position: relative;
+    }
+    #demo2 .ui-switchable-trigger-mask {
+        position: absolute;
+        right: 0;
+        width: 18px;
+        height: 18px;
+        background-color: #FF9415;
+        visibility: hidden
+    }
+    #demo2 .ui-switchable-active .ui-switchable-trigger-mask {
+        visibility: visible
+    }
+</style>
+<div id="demo2" class="AR_Widget section loading" data-effect="fade" data-easing="easeOutStrong" data-nav-class="ui-switchable-nav">
+    <ol class="ui-switchable-content-test" data-role="content">
+        <li><a href="http://fun.alipay.com/buy/index.htm?src=5buy03" target="_blank"><img alt="" src="https://i.alipayobjects.com/e/201205/2lOsygtTn7.jpg"/></a></li>
+        <li class="hidden"><a target="_blank" href="http://fun.alipay.com/hkwhb/index.htm?_adType=aedacbacdeajaefcehdg"><img alt="" width="710" height="175" border="0" src="https://i.alipayobjects.com/e/201205/3H1Kii949r.jpg"/></a></li>
+        <li class="hidden"><a target="_blank" href="http://fun.alipay.com/lvmama/index.htm"><img alt="" width="710" height="175" border="0" src="https://i.alipayobjects.com/e/201206/2muugwqegL.png"/></a></li>
+        <li class="hidden"><a href="http://fun.alipay.com/sj/index.htm" target="_blank"><img alt="" src="https://i.alipayobjects.com/e/201205/37t81c9HYx.jpg"/></a></li>
+        <li class="hidden">
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="710" height="175" class="holiday-logo">
+                <param name="movie" value="http://img04.taobaocdn.com/tps/i4/T1bblrXfBrXXXXXXXX.swf"/>
+                <param name="quality" value="high"/>
+                <param name="swfversion" value="8.0.0"/>
+                <param name="wmode" value="opaque"/>
+                <!--[if !IE]>-->
+                <object type="application/x-shockwave-flash" data="http://img04.taobaocdn.com/tps/i4/T1bblrXfBrXXXXXXXX.swf" width="470" height="150" name="holiday-logo" class="holiday-logo">
+                    <param name="wmode" value="opaque"/>
+                </object>
+                <!--<![endif]-->
+            </object>
+        </li>
+    </ol>
+</div>
+
+<script>
+    var T, $, tabs, slide;
+    seajs.use(['jquery', 'tabs', 'slide'], function(jquery, Tabs, Slide) {
+        T = Tabs;
+        $ = jquery;
+        tabs = new Tabs({
+            element: '#demo1',
+            activeIndex: 2,
+            effect: 'fade'
+        });
+
+        slide = new Slide({
+            element: '#demo2'
+        });
+
+    });
+</script>
+</body>
+</html>

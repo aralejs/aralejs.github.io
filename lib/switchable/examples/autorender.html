@@ -51,7 +51,7 @@
         padding-top: 8px;
         cursor: pointer;
     }
-    #demo1 .ui-switchable-nav li.ui-active { background-position: 0 -40px; cursor: default; }
+    #demo1 .ui-switchable-nav li.ui-switchable-active { background-position: 0 -40px; cursor: default; }
     #demo1 .ui-switchable-content {
         position: relative;
         height: 120px;
@@ -92,7 +92,7 @@
         text-align: center;
         cursor: pointer;
     }
-    #demo2 .ui-switchable-nav li.ui-active {
+    #demo2 .ui-switchable-nav li.ui-switchable-active {
         width: 18px;
         height: 18px;
         line-height: 18px;
@@ -115,11 +115,11 @@
         background-color: #FF9415;
         visibility: hidden
     }
-    #demo2 .ui-active .ui-switchable-trigger-mask {
+    #demo2 .ui-switchable-active .ui-switchable-trigger-mask {
         visibility: visible
     }
 </style>
-<div id="demo2" class="AR_Widget section loading" data-widget="slide" data-widget-config="{'effect':'fade', 'easing':'easeOutStrong', 'navClass': 'ui-switchable-nav'}">
+<div id="demo2" class="AR_Widget section loading" data-widget="slide" data-effect="fade" data-easing="easeOutStrong" data-nav-class="ui-switchable-nav">
     <ol class="ui-switchable-content" data-role="content">
         <li><a href="http://fun.alipay.com/buy/index.htm?src=5buy03" target="_blank"><img alt="" src="https://i.alipayobjects.com/e/201205/2lOsygtTn7.jpg"/></a></li>
         <li class="hidden"><a target="_blank" href="http://fun.alipay.com/hkwhb/index.htm?_adType=aedacbacdeajaefcehdg"><img alt="" width="710" height="175" border="0" src="https://i.alipayobjects.com/e/201205/3H1Kii949r.jpg"/></a></li>
@@ -183,7 +183,7 @@
     }
 </style>
 
-<div id="demo3" class="AR_Widget section" data-widget="slide" data-widget-config="{'activeTriggerClass':'selected','delay':200,'effect':'fade','easing':'easeBoth','duration':1000,'autoplay':false}">
+<div id="demo3" class="AR_Widget section" data-widget="slide" data-active-trigger-class="selected" data-delay="200" data-effect="fade" data-easing="easeBoth" data-duration="200" data-autoplay="false">
     <div class="yslider-stage" data-role="content">
         <p><a href="http://co.youa.baidu.com/content/promo/zhongjimiaoshazong/index.html" target="_blank"><img width="405" height="220" alt="终极秒杀场" src="http://co.youa.baidu.com/picture/r/image/2009-12-25/236d430f443d05925ad7291d9ad6b560.jpg"/></a></p>
         <p><a href="http://youa.baidu.com/zc" target="_blank"><img width="405" height="220" alt="9折话费" src="http://co.youa.baidu.com/picture/r/image/2009-12-25/4b2e801b6d174648ec77678d4a9f32e8.jpg"/></a></p>
@@ -229,7 +229,7 @@
         font-size: 18px;
         cursor: pointer;
     }
-    .scrollable .ui-switchable-nav li.ui-active {
+    .scrollable .ui-switchable-nav li.ui-switchable-active {
         color: #C8282B;
     }
 
@@ -253,7 +253,7 @@
         display: inline !important; /* fix ie6 双边距 bug */
     }
 </style>
-<div id="demo4" class="AR_Widget section scrollable" data-widget="carousel" data-widget-config="{'effect':'scrollx','easing':'easeOutStrong','step':5,'viewSize':[680], 'disableButtonClass':'disable'}">
+<div id="demo4" class="AR_Widget section scrollable" data-widget="carousel" data-effect="scrollx" data-easing="easeOutStrong" data-step="5" data-viewSize="[680]" data-disable-button-class="disable" data-circular="false">
     <span id="scroller-prev" class="prev" data-role="prevButton">&lsaquo; 上一页</span>
     <span id="scroller-next" class="next" data-role="nextButton">下一页 &rsaquo;</span>
     <div class="scroller">
@@ -278,7 +278,7 @@
             <img alt="" src="http://farm4.static.flickr.com/3624/3323893148_8318838fbd_t.jpg"/>
         </div>
         <ul class="ui-switchable-nav" data-role="nav">
-            <li class="ui-active">&bull;</li>
+            <li class="ui-switchable-active">&bull;</li>
             <li>&bull;</li>
             <li>&bull;</li>
         </ul>
@@ -290,7 +290,7 @@
     .scroll-news { height: 20px; overflow: hidden; }
     .scroll-news a { color: #FF7E00; }
 </style>
-<div id="demo5" class="AR_Widget scroll-news" data-widget="slide" data-widget-config="{'effect':'scrolly','easing':'easeOutStrong','interval':3000,'duration':2000}">
+<div id="demo5" class="AR_Widget scroll-news" data-widget="slide" data-effect="scrolly" data-easing="easeOutStrong" data-interval="3000" data-duration="2000">
     <ul class="news-items" data-role="content">
         <li><a target="_blank" href="http://youa.baidu.com/shop/72e01b38fb26b4ebc5db0136">“一分钱”轻松体验有啊网购流程</a></li>
         <li><a target="_blank" href="http://co.youa.baidu.com/content/payhelp/b12/zhaoshang/">开通网银，百付宝为您一路护航</a></li>
@@ -308,13 +308,13 @@
     #accordion1 .ui-switchable-trigger h3{float: left; width: 100px; margin-left: 5px; }
     #accordion1 .ui-switchable-panel{height:150px;padding:3px 10px;border-bottom:1px solid #ddd;}
     #accordion1 .ui-icon{float:left;width:12px;height:12px;overflow:hidden;margin-top:2px;font-size:0;vertical-align:middle;background:url(assets/accordion-sprite.png) no-repeat 0 0;}
-    #accordion1 .ui-active .ui-icon{background-position:-20px 0;}
+    #accordion1 .ui-switchable-active .ui-icon{background-position:-20px 0;}
     #accordion1 .last-trigger { border-bottom-width: 0 }
-    #accordion1 .ui-active { border-bottom-width: 1px }
+    #accordion1 .ui-switchable-active { border-bottom-width: 1px }
     #accordion1 .last-panel { border-bottom: none }
 </style>
 <div id="accordion1" class="AR_Widget section" data-widget="accordion">
-    <div class="ui-switchable-trigger ui-active" data-role="trigger"><i class="ui-icon"></i><h3>标题A</h3></div>
+    <div class="ui-switchable-trigger ui-switchable-active" data-role="trigger"><i class="ui-icon"></i><h3>标题A</h3></div>
     <div class="ui-switchable-panel" data-role="panel">
         1、支持鼠标滑过和点击触点两种方式<br/>
         2、支持同时展开多个面板
@@ -342,7 +342,7 @@
         text-align: center;
         cursor: pointer;
     }
-    #big .ui-switchable-nav li.ui-active {
+    #big .ui-switchable-nav li.ui-switchable-active {
         width: 18px;
         height: 18px;
         line-height: 18px;
@@ -353,7 +353,7 @@
     }
 </style>
 
-<div id="big" class="AR_Widget section" data-widget="slide" style="height:450px;" data-widget-config="{'navClass':'ui-switchable-nav','effect':'fade'}">
+<div id="big" class="AR_Widget section" data-widget="slide" style="height:450px;" data-nav-class="ui-switchable-nav" data-effect="fade">
     <ul class="ui-switchable-content">
         <li><a href="http://item.taobao.com/item.htm?id=7002076261" style="height:450px;" target="_blank"><img src="http://img02.taobaocdn.com/imgextra/i2/438942225/T27Z0bXeRdXXXXXXXX_!!438942225.jpg" alt=""/></a></li>
         <li><a href="http://gearband.tmall.com/view_page-74632436.htm" style="height:450px;" target="_blank"><img src="http://img03.taobaocdn.com/imgextra/i3/438942225/T2eMBHXkFaXXXXXXXX_!!438942225.jpg" alt=""/></a></li>

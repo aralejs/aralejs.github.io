@@ -42,7 +42,7 @@ define("#validator/0.8.0/item-debug", ["$","./parser","widget","./async","./rule
             });
 
             function upperFirstLetter(str) {
-                return str[0].charAt(0).toUpperCase() + str.slice(1);
+                return str.charAt(0).toUpperCase() + str.slice(1);
             }
 
             return this;
