@@ -56,7 +56,7 @@ define("#class/0.9.2/class-debug", [], function() {
 
         // Inherit class (static) properties from parent.
         if (parent !== Class) {
-            mix(SubClass, parent);
+            mix(SubClass, parent, parent.StaticsWhiteList);
         }
 
         // Add instance properties to the subclass.
@@ -128,21 +128,7 @@ define("#class/0.9.2/class-debug", [], function() {
         },
 
         'Statics': function(staticProperties) {
-            var statics = staticProperties;
-            var filter = statics.StaticsFilter;
-
-            // 可以通过 filter 指定需要混入的静态方法
-            if (filter) {
-                statics = {};
-                for (var i = 0; i < filter.length; i++) {
-                    var key = filter[i];
-                    if (staticProperties.hasOwnProperty(key)) {
-                        statics[key] = staticProperties[key];
-                    }
-                }
-            }
-
-            mix(this, statics);
+            mix(this, staticProperties);
         }
     };
 
@@ -165,12 +151,17 @@ define("#class/0.9.2/class-debug", [], function() {
     // Helpers
     // ------------
 
-    function mix(r, s) {
+    function mix(r, s, wl) {
         // Copy "all" properties including inherited ones.
         for (var p in s) {
-            // 在 iPhone 1 代等设备的 Safari 中，prototype 也会被枚举出来，需排除掉。
-            if (p === 'prototype') continue;
-            r[p] = s[p];
+            if (s.hasOwnProperty(p)) {
+                if(wl && indexOf(wl, p) === -1) continue;
+
+                // 在 iPhone 1 代等设备的 Safari 中，prototype 也会被枚举出来，需排除
+                if (p !== 'prototype') {
+                    r[p] = s[p];
+                }
+            }
         }
     }
 
@@ -187,6 +178,19 @@ define("#class/0.9.2/class-debug", [], function() {
     var isFunction = function(val) {
         return toString.call(val) === '[object Function]';
     };
+
+    var indexOf = Array.prototype.indexOf ?
+            function(arr, item) {
+                return arr.indexOf(item);
+            } :
+            function(arr, item) {
+                for (var i = 0, len = arr.length; i < len; i++) {
+                    if (arr[i] === item) {
+                        return i;
+                    }
+                }
+                return -1;
+            };
 
 
     return Class;
