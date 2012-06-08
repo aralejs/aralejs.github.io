@@ -18,11 +18,6 @@
         <li class="ui-calendar-day ui-calendar-day-{{value}}" data-role="day" data-value="{{value}}">{{label}}</li>
         {{/each}}
         {{/if}}
-
-        {{#if mode.year}}
-        <li class="ui-calendar-previous-12-year" data-role="prev-12-year">&lt;&lt;&lt;</li>
-        <li class="ui-calendar-next-12-year" data-role="next-12-year">&gt;&gt;&gt;</li>
-        {{/if}}
     </ul>
 
     <div class="ui-calendar-datalist" data-role="datalist">
@@ -30,7 +25,7 @@
         {{#each date.items}}
         <ul class="ui-calendar-date-column">
             {{#each this}}
-            <li class="{{status}} ui-calendar-day-{{day}}{{#unless available}} disabled{{/unless}}" data-role="date" data-date="{{date}}" data-month="{{month}}">{{date}}</li>
+            <li class="{{status}} ui-calendar-day-{{day}}{{#unless available}} disabled{{/unless}}" data-role="date" data-date="{{date}}" data-month="{{month}}" data-year="{{year}}">{{date}}</li>
             {{/each}}
         </ul>
         {{/each}}
