@@ -41,12 +41,12 @@
     border-top: 1px solid #dadada;
     border-bottom: 1px solid #dadada;
 }
-.ui-calendar-date-column .previous,
-.ui-calendar-date-column .next {
+.ui-calendar-date-column .ui-calendar-date-previous,
+.ui-calendar-date-column .ui-calendar-date-next {
     background: #eee;
     color: #ccc;
 }
-.ui-calendar-date-column .disabled {
+.ui-calendar-date-column .ui-calendar-date-disabled {
     background: #eee;
     color: #bbb;
 }
@@ -61,7 +61,7 @@
 .ui-calendar li.ui-calendar-day-6 {
     color: #d64;
 }
-.ui-calendar li.focus {
+.ui-calendar li.ui-calendar-focus {
     color: #fff;
     background: #d64;
 }
