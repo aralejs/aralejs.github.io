@@ -6,9 +6,9 @@
                 <td class="ui-calendar-previous-month" data-role="prev-month">&lt;</td>
                 <td colspan="3" data-role="month-year">
                     {{#with month.current}}
-                    <span class="month" data-role="month" data-value="{{value}}">{{label}}</span>
+                    <span class="month" data-role="mode-month" data-value="{{value}}">{{label}}</span>
                     {{/with}}
-                    <span class="year" data-role="year">{{year.current}}</span>
+                    <span class="year" data-role="mode-year">{{year.current}}</span>
                 </td>
                 <td class="ui-calendar-next-month" data-role="next-month">&gt;</td>
                 <td class="ui-calendar-next-year" data-role="next-year">&gt;&gt;</td>
@@ -34,11 +34,11 @@
 
                     {{#if mode.month}}
                     {{#each month.items}}
-                    <div class="ui-calendar-month-column">
+                    <ul class="ui-calendar-month-column">
                         {{#each this}}
-                        <a>{{value}}</a>
+                        <li {{#if selected}}class="focus"{{/if}} data-role="month" data-value="{{value}}">{{label}}</li>
                         {{/each}}
-                    </div>
+                    </ul>
                     {{/each}}
                     {{/if}}
                 </td>

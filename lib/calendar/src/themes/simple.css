@@ -33,13 +33,15 @@
     clear: both;
     zoom: 1;
 }
+.ui-calendar li {
+    float: left;
+    text-align: center;
+}
 .ui-calendar-weeks td {
     width: 1.8em;
     border: 0 none;
 }
 .ui-calendar-date-column li {
-    float: left;
-    text-align: center;
     width: 1.8em;
     padding: 1px;
 }
@@ -55,6 +57,18 @@
     color: #bbb;
 }
 .ui-calendar-date-column li.focus {
+    background: #d64;
+    color: #fff;
+}
+.ui-calendar-month-column li {
+    width: 33%;
+    padding: 2px 0;
+    border-radius: 4px;
+}
+.ui-calendar-month-column li:hover {
+    background: #dadada;
+}
+.ui-calendar-month-column li.focus {
     background: #d64;
     color: #fff;
 }
