@@ -1,30 +1,12 @@
 .ui-calendar {
+    position: absolute;
     font: 16px 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background: #f9f9f9;
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #dadada;
     box-shadow: 1px 1px 9px #ccc;
-}
-.ui-calendar td {
     text-align: center;
-    cursor: pointer;
-}
-.ui-calendar-navigation {
-    border-bottom: 1px solid #dadada;
-}
-.ui-calendar-previous-year,
-.ui-calendar-previous-month,
-.ui-calendar-next-month,
-.ui-calendar-next-year {
-    width: 1.8em;
-    font-size: 90%;
-}
-.ui-calendar .week-0, .ui-calendar .week-6 {
-    color: #d64;
-}
-.ui-calendar tbody {
-    border: 1px solid #dadada;
 }
 .ui-calendar ul {
     list-style-type: none;
@@ -33,17 +15,34 @@
     clear: both;
     zoom: 1;
 }
+.ui-calendar ul:after {
+    display: block;
+    content: "";
+    visibility: hidden;
+    font-size: 0;
+    clear: both;
+    height: 0;
+}
 .ui-calendar li {
     float: left;
     text-align: center;
+    width: 30px;
+    padding: 3px 0;
+    cursor: pointer;
 }
-.ui-calendar-weeks td {
-    width: 1.8em;
-    border: 0 none;
+.ui-calendar .ui-calendar-navigation {
+    font-size: 14px;
+    border-bottom: 1px solid #dadada;
 }
-.ui-calendar-date-column li {
-    width: 1.8em;
-    padding: 1px;
+.ui-calendar .ui-calendar-month-year {
+    width: 90px;
+}
+.ui-calendar .week-0, .ui-calendar .week-6 {
+    color: #d64;
+}
+.ui-calendar-datalist {
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
 }
 .ui-calendar-date-column li:hover {
     background: #dadada;
@@ -63,6 +62,7 @@
 .ui-calendar-month-column li {
     width: 33%;
     padding: 2px 0;
+    margin: 2px 0;
     border-radius: 4px;
 }
 .ui-calendar-month-column li:hover {
@@ -72,7 +72,13 @@
     background: #d64;
     color: #fff;
 }
-.ui-calendar tfoot {
+.ui-calendar .ui-calendar-footer {
     color: #999;
 }
-
+.ui-calendar .ui-calendar-today, .ui-calendar .ui-calendar-time {
+    width: auto;
+    padding: 3px 4px;
+}
+.ui-calendar .ui-calendar-time {
+    float: right;
+}
