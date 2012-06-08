@@ -18,6 +18,11 @@
         <li class="week week-{{value}}" data-role="week" data-value="{{value}}">{{label}}</li>
         {{/each}}
         {{/if}}
+
+        {{#if mode.year}}
+        <li class="ui-calendar-previous-12-year" data-role="prev-12-year">&lt;&lt;&lt;</li>
+        <li class="ui-calendar-next-12-year" data-role="next-12-year">&gt;&gt;&gt;</li>
+        {{/if}}
     </ul>
 
     <div class="ui-calendar-datalist" data-role="datalist">
@@ -43,7 +48,7 @@
     </div>
 
     <ul class="ui-calendar-footer">
-        <li class="ui-calendar-today" data-role="today">{{today}}</li>
+        <li class="ui-calendar-today" data-role="today">{{i18n.today.value}}</li>
         <li class="ui-calendar-time" colspan="2" data-role="time"><span class="ui-calendar-hour">{{time.hour}}</span> : {{time.minute}}</li>
     </ul>
 </div>
