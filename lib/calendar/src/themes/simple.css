@@ -37,7 +37,7 @@
 .ui-calendar .ui-calendar-month-year {
     width: 90px;
 }
-.ui-calendar-datalist {
+.ui-calendar-data-container {
     border-top: 1px solid #dadada;
     border-bottom: 1px solid #dadada;
 }

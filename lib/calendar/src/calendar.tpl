@@ -20,7 +20,7 @@
         {{/if}}
     </ul>
 
-    <div class="ui-calendar-datalist" data-role="datalist">
+    <div class="ui-calendar-data-container" data-role="data-container">
         {{#if mode.date}}
         {{#each date.items}}
         <ul class="ui-calendar-date-column">
@@ -45,7 +45,7 @@
         {{#each year.items}}
         <ul class="ui-calendar-year-column">
             {{#each this}}
-            <li {{#if current}}class="focus"{{/if}} data-role="year" data-value="{{value}}">{{value}}</li>
+            <li {{#if current}}class="focus"{{/if}} data-role="{{role}}" data-value="{{value}}">{{label}}</li>
             {{/each}}
         </ul>
         {{/each}}
