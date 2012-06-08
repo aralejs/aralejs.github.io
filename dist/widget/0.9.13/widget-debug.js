@@ -298,7 +298,7 @@ define("#widget/0.9.13/widget-debug", ["base","$","./daparser","./auto-render"],
     }
 
 
-    var JSON_LITERAL_PATTERN = /^\s*{.*}\s*$/;
+    var JSON_LITERAL_PATTERN = /^\s*[\[{].*[\]}]\s*$/;
     var parseJSON = this.JSON ? JSON.parse : $.parseJSON;
 
     // 解析并归一化配置中的值
