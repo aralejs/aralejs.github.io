@@ -31,7 +31,9 @@
             {{#if next}}ui-calendar-date-next{{/if}}
             {{#unless available}}ui-calendar-date-disabled{{/unless}}
             "
-            data-role="date" data-date="{{date}}" data-month="{{month}}" data-year="{{year}}">{{date}}</li>
+            data-role="date" data-date="{{date}}" data-month="{{month}}" data-year="{{year}}"
+            {{#unless available}}data-disabled="true"{{/unless}}
+            >{{date}}</li>
             {{/each}}
         </ul>
         {{/each}}
