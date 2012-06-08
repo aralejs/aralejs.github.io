@@ -3,59 +3,58 @@
 <head>
 <meta charset="utf-8"/>
 <title>Tabs - 标签页</title>
+<style>
+    #demo1 {
+        position: relative;
+        width: 750px;
+        padding-top: 29px;
+    }
 
+    #demo1 .ui-switchable-nav {
+        position: absolute;
+        left: 20px;
+        margin-top: -29px;
+        z-index: 99;
+    }
+
+    #demo1 .ui-switchable-nav li {
+        float: left;
+        width: 130px;
+        height: 27px;
+        line-height: 21px;
+        text-align: center;
+        background: url(assets/tabs-sprite.gif) no-repeat 0 6px;
+        margin-right: 3px;
+        padding-top: 8px;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    #demo1 .ui-switchable-nav li.ui-switchable-active {
+        background-position: 0 -40px;
+        cursor: default;
+    }
+
+    #demo1 .ui-switchable-content {
+        position: relative;
+        height: 120px;
+        padding: 20px;
+        border: 1px solid #AEC7E5;
+    }
+</style>
 <script src="../../../tools/seajs-and-its-friends.js"></script>
-
 <script>
     seajs.config({
         alias: {
             'tabs': '../src/tabs'
         }
     });
-
 </script>
 </head>
 <body>
 
     <div class="s-section">
-        <style>
-            #demo1 {
-                position: relative;
-                width: 750px;
-                padding-top: 29px;
-            }
 
-            #demo1 .ui-switchable-nav {
-                position: absolute;
-                left: 20px;
-                margin-top: -29px;
-                z-index: 99;
-            }
-
-            #demo1 .ui-switchable-nav li {
-                float: left;
-                width: 130px;
-                height: 27px;
-                line-height: 21px;
-                text-align: center;
-                background: url(assets/tabs-sprite.gif) no-repeat 0 6px;
-                margin-right: 3px;
-                padding-top: 8px;
-                cursor: pointer;
-            }
-
-            #demo1 .ui-switchable-nav li.ui-switchable-active {
-                background-position: 0 -40px;
-                cursor: default;
-            }
-
-            #demo1 .ui-switchable-content {
-                position: relative;
-                height: 120px;
-                padding: 20px;
-                border: 1px solid #AEC7E5;
-            }
-        </style>
 
         <div id="demo1" class="s-demo">
             <ul class="ui-switchable-nav">
@@ -87,23 +86,23 @@
                     内容E
                 </div>
             </div>
-            <script>
-                var T, $, s;
-                seajs.use(['jquery', 'tabs'], function(jquery, Tabs) {
-                    T = Tabs;
-                    $ = jquery;
-                    s = new Tabs({
-                        element: '#demo1',
-                        triggers: '.ui-switchable-nav li',
-                        panels: '.ui-switchable-content div',
-                        activeIndex: 2,
-                        effect: 'fade'
-                    });
 
-                });
-            </script>
         </div>
     </div>
-</div>
+<script>
+    var T, $, s;
+    seajs.use(['jquery', 'tabs'], function(jquery, Tabs) {
+        T = Tabs;
+        $ = jquery;
+
+        s = new Tabs({
+            element: '#demo1',
+            triggers: '.ui-switchable-nav li',
+            panels: '.ui-switchable-content div',
+            activeIndex: 2,
+            effect: 'fade'
+        }).render();
+    });
+</script>
 </body>
 </html>
