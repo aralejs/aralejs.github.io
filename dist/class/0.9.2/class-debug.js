@@ -1,4 +1,4 @@
-define(function() {
+define("#class/0.9.2/class-debug", [], function() {
 
     // Class
     // -----------------

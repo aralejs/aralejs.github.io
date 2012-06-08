@@ -1,4 +1,4 @@
-define("#base/0.9.14/attribute-debug", [], function(require, exports) {
+define("#base/0.9.15/attribute-debug", [], function(require, exports) {
 
     // Attribute
     // -----------------
@@ -258,13 +258,13 @@ define("#base/0.9.14/attribute-debug", [], function(require, exports) {
         return result;
     }
 
-    function copySpecialProps(specialProps, receiver, supplier, isAttr) {
+    function copySpecialProps(specialProps, receiver, supplier, isAttr2Prop) {
         for (var i = 0, len = specialProps.length; i < len; i++) {
             var key = specialProps[i];
 
-            if (key in supplier && supplier.hasOwnProperty(key)) {
+            if (supplier.hasOwnProperty(key)) {
                 var val = supplier[key];
-                receiver[key] = isAttr ? val.value : val;
+                receiver[key] = isAttr2Prop ? receiver.get(key) : val;
             }
         }
     }

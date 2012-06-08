@@ -17,7 +17,7 @@ define("#triggerable/0.9.3/triggerable-debug", ["jquery","overlay"], function(re
             },
             // 触发类型
             triggerType: {
-                value: 'mouseenter', // or click|hover|mouseover
+                value: 'mouseenter', // or click|hover|mouseover|focus|...
                 getter: function(val) {
                     return val.replace(/^(?:hover|mouseover)$/i, 'mouseenter');
                 }
@@ -49,6 +49,12 @@ define("#triggerable/0.9.3/triggerable-debug", ["jquery","overlay"], function(re
                     that.toggle();
                 });
             }
+            else if (triggerType === 'focus') {
+                trigger.on('focus blur', function() {
+                    that.toggle();
+                });
+            }
+            // 默认是 hover
             else {
                 trigger.hover(function() {
                     clearTimeout(hideTimer);

@@ -71,7 +71,7 @@ var widget = new Widget({
 在 `initialize` 方法中，确定了组件构建的基本流程：
 
 ```js
-    this.initAttrs(config);
+    this.initAttrs(...);
     this.parseElement();
     this.initProps();
     this.delegateEvents();
@@ -81,7 +81,7 @@ var widget = new Widget({
 下面逐一讲述。
 
 
-### initAttrs `widget.initAttrs(config)`
+### initAttrs `widget.initAttrs(config, [dataAttrsConfig])`
 
 选项的初始化方法。通过该方法，会将传入的 `config` 参数与所继承的类中的默认 `config`
 进行合并处理。

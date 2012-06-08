@@ -72,12 +72,11 @@ define("#overlay/0.9.5/overlay-debug", ["$","position","iframe-shim","widget"], 
             if (!isInDocument(this.element[0])) return;
 
             align || (align = this.get('align'));
-            var isHidden = !this.get('visible') || this.element.is(':hidden');
+            var isHidden = this.element.css('display') === 'none';
 
             // 在定位时，为避免元素高度不定，先显示出来
             if (isHidden) {
-                this.element.css({ visibility: 'hidden'});
-                this.set('visible', true);
+                this.element.css({ visibility: 'hidden', display: 'block' });
             }
 
             Position.pin({
@@ -92,8 +91,7 @@ define("#overlay/0.9.5/overlay-debug", ["$","position","iframe-shim","widget"], 
 
             // 定位完成后，还原
             if (isHidden) {
-                this.element.css({ visibility: ''});
-                this.set('visible', false);
+                this.element.css({ visibility: '', display: 'none' });
             }
 
             return this;
@@ -147,7 +145,7 @@ define("#overlay/0.9.5/overlay-debug", ["$","position","iframe-shim","widget"], 
         },
 
         _onRenderVisible: function(val) {
-            this.element[val === true ? 'show' : 'hide']();
+            this.element[val ? 'show' : 'hide']();
         }
 
     });
