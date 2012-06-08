@@ -37,27 +37,17 @@
 .ui-calendar .ui-calendar-month-year {
     width: 90px;
 }
-.ui-calendar .ui-calendar-day-0, .ui-calendar .ui-calendar-day-6 {
-    color: #d64;
-}
 .ui-calendar-datalist {
     border-top: 1px solid #dadada;
     border-bottom: 1px solid #dadada;
 }
-.ui-calendar-date-column li:hover {
-    background: #dadada;
-}
-.ui-calendar-date-column li.previous, .ui-calendar-date-column li.next {
+.ui-calendar-date-column .previous, .ui-calendar-date-column .next {
     background: #eee;
     color: #ccc;
 }
-.ui-calendar-date-column li.disabled {
+.ui-calendar-date-column .disabled {
     background: #eee;
     color: #bbb;
-}
-.ui-calendar-date-column li.focus {
-    background: #d64;
-    color: #fff;
 }
 .ui-calendar-month-column li {
     width: 33%;
@@ -65,12 +55,16 @@
     margin: 2px 0;
     border-radius: 4px;
 }
-.ui-calendar-month-column li:hover {
-    background: #dadada;
+.ui-calendar li.ui-calendar-day-0, .ui-calendar li.ui-calendar-day-6 {
+    color: #d64;
 }
-.ui-calendar-month-column li.focus {
-    background: #d64;
+.ui-calendar li.focus {
     color: #fff;
+    background: #d64;
+}
+.ui-calendar-month-column li:hover , .ui-calendar-date-column li:hover {
+    color: #333;
+    background: #dadada;
 }
 .ui-calendar .ui-calendar-footer {
     color: #999;
