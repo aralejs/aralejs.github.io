@@ -26,31 +26,38 @@
 .ui-calendar tbody {
     border: 1px solid #dadada;
 }
-.ui-calendar-dates td {
-    text-align: center;
-    width: 1.8em;
-    border: 1px solid #dadada;
+.ui-calendar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    clear: both;
+    zoom: 1;
 }
 .ui-calendar-weeks td {
     width: 1.8em;
     border: 0 none;
 }
-.ui-calendar-dates td:hover {
+.ui-calendar-date-column li {
+    float: left;
+    text-align: center;
+    width: 1.8em;
+    padding: 1px;
+}
+.ui-calendar-date-column li:hover {
     background: #dadada;
 }
-.ui-calendar-dates td.previous, .ui-calendar td.next {
+.ui-calendar-date-column li.previous, .ui-calendar-date-column li.next {
     background: #eee;
     color: #ccc;
 }
-.ui-calendar-dates td.focus {
-    background: #d64;
-    color: #fff;
-}
-.ui-calendar-dates td.disabled {
+.ui-calendar-date-column li.disabled {
     background: #eee;
     color: #bbb;
 }
-
+.ui-calendar-date-column li.focus {
+    background: #d64;
+    color: #fff;
+}
 .ui-calendar tfoot {
     color: #999;
 }
