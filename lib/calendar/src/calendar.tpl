@@ -45,6 +45,16 @@
         </ul>
         {{/each}}
         {{/if}}
+
+        {{#if mode.year}}
+        {{#each year.items}}
+        <ul class="ui-calendar-year-column">
+            {{#each this}}
+            <li {{#if current}}class="focus"{{/if}} data-role="year" data-value="{{value}}">{{value}}</li>
+            {{/each}}
+        </ul>
+        {{/each}}
+        {{/if}}
     </div>
 
     <ul class="ui-calendar-footer">

@@ -41,7 +41,8 @@
     border-top: 1px solid #dadada;
     border-bottom: 1px solid #dadada;
 }
-.ui-calendar-date-column .previous, .ui-calendar-date-column .next {
+.ui-calendar-date-column .previous,
+.ui-calendar-date-column .next {
     background: #eee;
     color: #ccc;
 }
@@ -49,27 +50,32 @@
     background: #eee;
     color: #bbb;
 }
+.ui-calendar-year-column li,
 .ui-calendar-month-column li {
     width: 33%;
     padding: 2px 0;
     margin: 2px 0;
     border-radius: 4px;
 }
-.ui-calendar li.ui-calendar-day-0, .ui-calendar li.ui-calendar-day-6 {
+.ui-calendar li.ui-calendar-day-0,
+.ui-calendar li.ui-calendar-day-6 {
     color: #d64;
 }
 .ui-calendar li.focus {
     color: #fff;
     background: #d64;
 }
-.ui-calendar-month-column li:hover , .ui-calendar-date-column li:hover {
+.ui-calendar-year-column li:hover,
+.ui-calendar-month-column li:hover,
+.ui-calendar-date-column li:hover {
     color: #333;
     background: #dadada;
 }
 .ui-calendar .ui-calendar-footer {
     color: #999;
 }
-.ui-calendar .ui-calendar-today, .ui-calendar .ui-calendar-time {
+.ui-calendar .ui-calendar-today,
+.ui-calendar .ui-calendar-time {
     width: auto;
     padding: 3px 4px;
 }
