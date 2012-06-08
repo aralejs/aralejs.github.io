@@ -23,7 +23,11 @@ define("#widget/0.9.13/templatable-debug", ["$","handlebars","./ast-printer"], f
         // 编译模板，混入数据，返回 html 结果
         compile: function(template, model) {
             template || (template = this.template);
+
             model || (model = this.model);
+            if (model.toJSON) {
+                model = model.toJSON();
+            }
 
             var helpers = this.templateHelpers;
 
