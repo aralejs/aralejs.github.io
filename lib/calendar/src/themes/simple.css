@@ -37,7 +37,7 @@
 .ui-calendar .ui-calendar-month-year {
     width: 90px;
 }
-.ui-calendar .week-0, .ui-calendar .week-6 {
+.ui-calendar .ui-calendar-day-0, .ui-calendar .ui-calendar-day-6 {
     color: #d64;
 }
 .ui-calendar-datalist {

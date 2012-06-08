@@ -14,8 +14,8 @@
 
     <ul class="ui-calendar-control" data-role="control">
         {{#if mode.date}}
-        {{#each week.items}}
-        <li class="week week-{{value}}" data-role="week" data-value="{{value}}">{{label}}</li>
+        {{#each day.items}}
+        <li class="ui-calendar-day ui-calendar-day-{{value}}" data-role="day" data-value="{{value}}">{{label}}</li>
         {{/each}}
         {{/if}}
 
@@ -30,7 +30,7 @@
         {{#each date.items}}
         <ul class="ui-calendar-date-column">
             {{#each this}}
-            <li class="{{status}} week-{{day}}{{#unless available}} disabled{{/unless}}" data-role="date" data-date="{{date}}" data-month="{{month}}">{{date}}</li>
+            <li class="{{status}} ui-calendar-day-{{day}}{{#unless available}} disabled{{/unless}}" data-role="date" data-date="{{date}}" data-month="{{month}}">{{date}}</li>
             {{/each}}
         </ul>
         {{/each}}
