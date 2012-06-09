@@ -19,6 +19,8 @@ define("#base/0.9.15/base-debug", ["class","events","./aspect","./attribute"], f
         },
 
         destroy: function() {
+            this.off();
+
             for (var p in this) {
                 if (this.hasOwnProperty(p)) {
                     delete this[p];
