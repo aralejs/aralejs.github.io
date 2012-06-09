@@ -2,12 +2,17 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>Tabs - 标签页</title>
+<title>Tabs Example</title>
 <style>
     #demo1 {
+        font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         position: relative;
         width: 750px;
         padding-top: 29px;
+    }
+
+    #demo1 a {
+        text-decoration: none;
     }
 
     #demo1 .ui-switchable-nav {
@@ -37,16 +42,17 @@
 
     #demo1 .ui-switchable-content {
         position: relative;
-        height: 120px;
+        height: 150px;
         padding: 20px;
         border: 1px solid #AEC7E5;
     }
 </style>
+
 <script src="../../../tools/seajs-and-its-friends.js"></script>
 <script>
     seajs.config({
         alias: {
-            'tabs': '../src/tabs'
+            'tabs-src': '../src/tabs'
         }
     });
 </script>
@@ -55,54 +61,50 @@
 
     <div class="s-section">
 
-
         <div id="demo1" class="s-demo">
             <ul class="ui-switchable-nav">
-                <!-- title 争渡读屏器不读-->
-                <li aria-labelledby='a_tip' title="读屏器读不出来">
-                    <span style="display:none" id="a_tip">标题 A，可左右键切换操作</span>
-                    <a href="http://www.taobao.com">标题 A</a></li>
-                <li><a href="http://www.taobao.com">标题 B</a></li>
-
+                <li>标题 A</li>
+                <li>标题 B</li>
+                <li>标题 C</li>
                 <li>标题 D</li>
-                <li>标题 E</li>
             </ul>
             <div class="ui-switchable-content">
                 <div style="display: none">
-
+内容 A
 <pre>
   - 在当前 trigger 中 mouseover/mouseout, click, focus, 不触发
   - 鼠标快速滑过非当前 trigger, 不触发
   - mouseover 到非当前 trigger, 停留时间到达延迟时，触发
   - click 或 Tab 切换到 trigger, 立即触发
   - beforeSwitch/switch 事件的触发
-  - 延迟的内容能正确加载 <a href="#"> 内容 a</a>
+  - 延迟的内容能正确加载
 </pre>
                 </div>
-                <div style="display: none"><a href="#">内容 B</a></div>
-
-                <div style="display: none"><a href="#">内容 D</a></div>
-                <div style="display: none">
-                    内容E
-                </div>
+                <div style="display: none">内容 B</div>
+                <div style="display: none">内容 C</div>
+                <div style="display: none">内容 D</div>
             </div>
 
         </div>
     </div>
-<script>
-    var T, $, s;
-    seajs.use(['jquery', 'tabs'], function(jquery, Tabs) {
-        T = Tabs;
-        $ = jquery;
 
-        s = new Tabs({
+<script>
+    var T, $, tabs;
+
+    seajs.use(['jquery', 'tabs-src'], function(jQuery, Tabs) {
+        T = Tabs;
+        $ = jQuery;
+
+        tabs = new Tabs({
             element: '#demo1',
             triggers: '.ui-switchable-nav li',
             panels: '.ui-switchable-content div',
             activeIndex: 2,
             effect: 'fade'
         });
+
     });
 </script>
+
 </body>
 </html>
