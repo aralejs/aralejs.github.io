@@ -1,18 +1,16 @@
 <div class="ui-calendar">
-    <ul class="ui-calendar-navigation" data-role="navigation">
+    <ul class="ui-calendar-navigation" data-role="navigation-container">
         <li class="ui-calendar-previous-year" data-role="prev-year">&lt;&lt;</li>
         <li class="ui-calendar-previous-month" data-role="prev-month">&lt;</li>
-        <li class="ui-calendar-month-year" data-role="month-year">
-        {{#with month.current}}
-        <span class="month" data-role="mode-month" data-value="{{value}}">{{label}}</span>
-        {{/with}}
+        <li class="ui-calendar-month-year" data-role="month-year-container">
+        <span class="month" data-role="mode-month" data-value="{{month.current.value}}">{{month.current.label}}</span>
         <span class="year" data-role="mode-year">{{year.current}}</span>
         </li>
         <li class="ui-calendar-next-month" data-role="next-month">&gt;</li>
         <li class="ui-calendar-next-year" data-role="next-year">&gt;&gt;</li>
     </ul>
 
-    <ul class="ui-calendar-control" data-role="control">
+    <ul class="ui-calendar-control" data-role="pannel-container">
         {{#if mode.date}}
         {{#each day.items}}
         <li class="ui-calendar-day ui-calendar-day-{{value}}" data-role="day" data-value="{{value}}">{{label}}</li>
