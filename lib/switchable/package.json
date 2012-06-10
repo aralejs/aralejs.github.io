@@ -1,16 +1,13 @@
 {
-    "version": "0.9.2",
+    "version": "0.9.3",
     "dist": {
         "switchable.js": "default",
-        "accordion.js": "default",
-        "autorender.js": "default",
-        "carousel.js": "default",
-        "slide.js": "default",
         "tabs.js": "default",
-        "extra/utils.js": "default",
+        "slide.js": "default",
+        "accordion.js": "default",
+        "carousel.js": "default",
         "plugins/autoplay.js": "default",
         "plugins/circular.js": "default",
         "plugins/effects.js": "default"
-    },
-    "tests": ["switchable"]
+    }
 }
