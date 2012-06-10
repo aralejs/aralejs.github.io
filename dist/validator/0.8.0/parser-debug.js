@@ -81,7 +81,7 @@ define("#validator/0.8.0/parser-debug", ["$","./rule"], function(require, export
         if (type && type != 'submit' && type != 'cancel' && type != 'checkbox' && type != 'radio' && type != 'select' && type != 'select-one') {
 
             if (!Rule.getRule(type)) {
-                throw 'Form field with type "' + type + '" not supported!';
+                throw new Error('Form field with type "' + type + '" not supported!');
             }
 
             arr.push(type);
