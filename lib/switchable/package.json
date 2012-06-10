@@ -7,7 +7,7 @@
         "accordion.js": "default",
         "carousel.js": "default",
         "plugins/autoplay.js": "default",
-        "plugins/circular.js": "default",
-        "plugins/effects.js": "default"
+        "plugins/effects.js": "default",
+        "plugins/circular.js": "default"
     }
 }

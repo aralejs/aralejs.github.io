@@ -1,25 +1,27 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8"/>
-<title>Switchable Autorender Demo</title>
-
-<script src="../../../tools/seajs-and-its-friends.js"></script>
-<link href="./assets/reset.css" rel="stylesheet"/>
-
-<script>
-    seajs.config({
-        alias: {
-            'tabs': '/lib/switchable/src/tabs',
-            'slide': '/lib/switchable/src/slide',
-            'accordion': '/lib/switchable/src/accordion',
-            'carousel': '/lib/switchable/src/carousel'
-        },
-        debug: 0 
-    });
-</script>
+<meta charset="utf-8">
+<title>Switchable Examples</title>
 <style>
-    body { padding: 20px 50px 50px; }
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 20px 50px 50px;
+        font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    li a {
+        text-decoration: none;
+    }
+
     h2 { margin: 30px 0 10px; font-size: 17px; }
     .loading { background: #EBF5FA url(assets/loading.gif) no-repeat 50% 50%; }
 
@@ -34,8 +36,8 @@
     }
 </style>
 </head>
-
 <body>
+
 <h2>Tabs - 普通标签页</h2>
 <style>
     #demo1 { position: relative; width: 750px; padding-top: 29px; }
@@ -59,7 +61,7 @@
         border: 1px solid #AEC7E5;
     }
 </style>
-<div id="demo1" class="AR_Widget section">
+<div id="demo1" class="section">
     <ul class="ui-switchable-nav-test" data-role="nav">
         <li data-role="trigger">标题 A</li>
         <li data-role="trigger">标题 B</li>
@@ -76,7 +78,7 @@
     </div>
 </div>
 
-<h2>Slide - 支付宝首页卡盘</h2>
+<h2>Slide - 卡盘轮播</h2>
 <style>
     #demo2 { position: relative; width: 710px; height: 176px; border: 1px solid #B6D1E6; overflow: hidden; }
     #demo2 .ui-switchable-nav { position: absolute; bottom: 5px; right: 5px; z-index: 99; }
@@ -118,45 +120,55 @@
     #demo2 .ui-switchable-active .ui-switchable-trigger-mask {
         visibility: visible
     }
+
+    .hidden {
+        display: none
+    }
+
 </style>
-<div id="demo2" class="AR_Widget section loading" data-effect="fade" data-easing="easeOutStrong">
+<div id="demo2" class="section loading" data-effect="fade" data-easing="easeOutStrong">
     <ol class="ui-switchable-content-test" data-role="content">
         <li><a href="http://fun.alipay.com/buy/index.htm?src=5buy03" target="_blank"><img alt="" src="https://i.alipayobjects.com/e/201205/2lOsygtTn7.jpg"/></a></li>
         <li class="hidden"><a target="_blank" href="http://fun.alipay.com/hkwhb/index.htm?_adType=aedacbacdeajaefcehdg"><img alt="" width="710" height="175" border="0" src="https://i.alipayobjects.com/e/201205/3H1Kii949r.jpg"/></a></li>
         <li class="hidden"><a target="_blank" href="http://fun.alipay.com/lvmama/index.htm"><img alt="" width="710" height="175" border="0" src="https://i.alipayobjects.com/e/201206/2muugwqegL.png"/></a></li>
         <li class="hidden"><a href="http://fun.alipay.com/sj/index.htm" target="_blank"><img alt="" src="https://i.alipayobjects.com/e/201205/37t81c9HYx.jpg"/></a></li>
-        <li class="hidden">
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="710" height="175" class="holiday-logo">
-                <param name="movie" value="http://img04.taobaocdn.com/tps/i4/T1bblrXfBrXXXXXXXX.swf"/>
-                <param name="quality" value="high"/>
-                <param name="swfversion" value="8.0.0"/>
-                <param name="wmode" value="opaque"/>
-                <!--[if !IE]>-->
-                <object type="application/x-shockwave-flash" data="http://img04.taobaocdn.com/tps/i4/T1bblrXfBrXXXXXXXX.swf" width="470" height="150" name="holiday-logo" class="holiday-logo">
-                    <param name="wmode" value="opaque"/>
-                </object>
-                <!--<![endif]-->
-            </object>
-        </li>
     </ol>
 </div>
 
+<script src="../../../tools/seajs-and-its-friends.js"></script>
+<script>
+    seajs.config({
+        alias: {
+            'tabs-src': '../src/tabs',
+            'slide-src': '../src/slide',
+            'accordion-src': '../src/accordion',
+            'carousel-src': '../src/carousel'
+        },
+        debug: 0
+    });
+</script>
+
 <script>
     var T, $, tabs, slide;
-    seajs.use(['jquery', 'tabs', 'slide'], function(jquery, Tabs, Slide) {
+
+    seajs.use(['jquery', 'tabs-src', 'slide-src', 'easing'], function(jQuery, Tabs, Slide) {
         T = Tabs;
-        $ = jquery;
+        $ = jQuery;
+
         tabs = new Tabs({
             element: '#demo1',
-            activeIndex: 2,
+            activeIndex: 1,
             effect: 'fade'
         });
 
         slide = new Slide({
-            element: '#demo2'
+            element: '#demo2',
+            effect: 'scrolly',
+            interval: 2000
         });
 
     });
+
 </script>
 </body>
 </html>
