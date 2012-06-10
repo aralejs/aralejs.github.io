@@ -46,11 +46,9 @@ seajs.config({
         'easing': 'easing/0.9.2/easing',                     // 100%
         'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 95%
         'position': 'position/0.9.1/position',               // 95%
-        'validator-core': 'validator/0.8.0/core.js',         // 50%
-        'validator': 'validator/0.8.0/validator.js',         // 50%
-        /* ua 待定 */
+        'validator-core': 'validator/0.8.0/core.js',         // 60%
+        'validator': 'validator/0.8.0/validator.js',         // 60%
         /* querystring 待迁移 */
-        /* placeholder 尚未开始开发 */
 
         // Widgets
         'overlay': 'overlay/0.9.5/overlay',                  // 95%
@@ -58,13 +56,22 @@ seajs.config({
         'triggerable': 'triggerable/0.9.3/triggerable',      // 95%
         'dropdown': 'triggerable/0.9.3/dropdown',            // 95%
         'dialog': 'dialog/0.9.0/dialog',                     // 80%
-        'switchable': 'switchable/0.8.1/switchable',         // 80%
+        'switchable': 'switchable/0.9.3/switchable',         // 90%
+        'tabs': 'switchable/0.9.3/tabs',                     // 90%
+        'slide': 'switchable/0.9.3/slide',                   // 90%
+        'accordion': 'switchable/0.9.3/accordion',           // 90%
+        'carousel': 'switchable/0.9.3/carousel',             // 90%
         'calendar': 'calendar/0.8.1/calendar'                // 50%
-        /* tip 尚未开始开发 */
 
         // Others
         /* spm 尚未开始 */
         /* araledoc 尚未开始 */
+
+        // 二期组件
+        // ua
+        // placeholder
+        // popup
+        // tooltip
     },
 
     preload: [this.JSON ? '' : 'json', 'plugin-text']

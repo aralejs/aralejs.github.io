@@ -1,24 +1,27 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8"/>
-<title>Switchable Autorender Demo</title>
-
-<script src="../../../tools/seajs-and-its-friends.js"></script>
-<link href="./assets/reset.css" rel="stylesheet"/>
-
-<script>
-    seajs.config({
-        alias: {
-            'tabs': '/lib/switchable/src/tabs',
-            'slide': '/lib/switchable/src/slide',
-            'accordion': '/lib/switchable/src/accordion',
-            'carousel': '/lib/switchable/src/carousel'
-        },
-        debug: 0 
-    });
-</script>
+<meta charset="utf-8">
+<title>Switchable Auto-render Examples</title>
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 20px 50px 50px;
+        font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    li a {
+        text-decoration: none;
+    }
+
     body { padding: 20px 50px 50px; }
     h2 { margin: 30px 0 10px; font-size: 17px; }
     .loading { background: #EBF5FA url(assets/loading.gif) no-repeat 50% 50%; }
@@ -59,13 +62,13 @@
         border: 1px solid #AEC7E5;
     }
 </style>
-<div id="demo1" class="AR_Widget section" data-widget="tabs">
+<div id="demo1" class="section" data-widget="tabs">
     <ul class="ui-switchable-nav" data-role="nav">
-        <li data-role="trigger">标题 A</li>
-        <li data-role="trigger">标题 B</li>
-        <li data-role="trigger">标题 C</li>
-        <li data-role="trigger">标题 D</li>
-        <li data-role="trigger">标题 E</li>
+        <li>标题 A</li>
+        <li>标题 B</li>
+        <li>标题 C</li>
+        <li>标题 D</li>
+        <li>标题 E</li>
     </ul>
     <div class="ui-switchable-content" data-role="content">
         <div>内容 A</div>
@@ -76,7 +79,7 @@
     </div>
 </div>
 
-<h2>Slide - 支付宝首页卡盘</h2>
+<h2>Slide - 卡盘</h2>
 <style>
     #demo2 { position: relative; width: 710px; height: 176px; border: 1px solid #B6D1E6; overflow: hidden; }
     #demo2 .ui-switchable-nav { position: absolute; bottom: 5px; right: 5px; z-index: 99; }
@@ -119,7 +122,7 @@
         visibility: visible
     }
 </style>
-<div id="demo2" class="AR_Widget section loading" data-widget="slide" data-effect="fade" data-easing="easeOutStrong">
+<div id="demo2" class="section loading" data-widget="slide" data-effect="fade" data-interval="2000" data-easing="easeOutStrong">
     <ol class="ui-switchable-content" data-role="content">
         <li><a href="http://fun.alipay.com/buy/index.htm?src=5buy03" target="_blank"><img alt="" src="https://i.alipayobjects.com/e/201205/2lOsygtTn7.jpg"/></a></li>
         <li class="hidden"><a target="_blank" href="http://fun.alipay.com/hkwhb/index.htm?_adType=aedacbacdeajaefcehdg"><img alt="" width="710" height="175" border="0" src="https://i.alipayobjects.com/e/201205/3H1Kii949r.jpg"/></a></li>
@@ -170,10 +173,10 @@
         padding: 8px 5px;
         color: #666;
     }
-    #demo3 .yslider-stick li.selected {
+    #demo3 .yslider-stick li.ui-switchable-active {
         background-color: #C8282B;
     }
-    #demo3 .yslider-stick li.selected a {
+    #demo3 .yslider-stick li.ui-switchable-active a {
         color: #fff;
         border-left: 3px solid #B30024;
     }
@@ -183,7 +186,7 @@
     }
 </style>
 
-<div id="demo3" class="AR_Widget section" data-widget="slide" data-active-trigger-class="selected" data-delay="200" data-effect="fade" data-easing="easeBoth" data-duration="200" data-autoplay="false">
+<div id="demo3" class="section" data-widget="slide" data-delay="200" data-effect="fade" data-easing="easeBoth" data-duration="200" data-autoplay="false">
     <div class="yslider-stage" data-role="content">
         <p><a href="http://co.youa.baidu.com/content/promo/zhongjimiaoshazong/index.html" target="_blank"><img width="405" height="220" alt="终极秒杀场" src="http://co.youa.baidu.com/picture/r/image/2009-12-25/236d430f443d05925ad7291d9ad6b560.jpg"/></a></p>
         <p><a href="http://youa.baidu.com/zc" target="_blank"><img width="405" height="220" alt="9折话费" src="http://co.youa.baidu.com/picture/r/image/2009-12-25/4b2e801b6d174648ec77678d4a9f32e8.jpg"/></a></p>
@@ -253,7 +256,7 @@
         display: inline !important; /* fix ie6 双边距 bug */
     }
 </style>
-<div id="demo4" class="AR_Widget section scrollable" data-widget="carousel" data-effect="scrollx" data-easing="easeOutStrong" data-step="5" data-view-size="[680]" data-disable-button-class="disable" data-circular="true">
+<div id="demo4" class="section scrollable" data-widget="carousel" data-effect="scrollx" data-easing="easeOutStrong" data-step="5" data-view-size="[680]" data-circular="true">
     <span id="scroller-prev" class="prev" data-role="prevButton">&lsaquo; 上一页</span>
     <span id="scroller-next" class="next" data-role="nextButton">下一页 &rsaquo;</span>
     <div class="scroller">
@@ -290,7 +293,7 @@
     .scroll-news { height: 20px; overflow: hidden; }
     .scroll-news a { color: #FF7E00; }
 </style>
-<div id="demo5" class="AR_Widget scroll-news" data-widget="slide" data-effect="scrolly" data-easing="easeOutStrong" data-interval="3000" data-duration="2000" data-has-triggers="false">
+<div id="demo5" class="scroll-news" data-widget="slide" data-effect="scrolly" data-easing="easeOutStrong" data-interval="3000" data-duration="2000" data-has-triggers="false">
     <ul class="news-items" data-role="content">
         <li><a target="_blank" href="http://youa.baidu.com/shop/72e01b38fb26b4ebc5db0136">“一分钱”轻松体验有啊网购流程</a></li>
         <li><a target="_blank" href="http://co.youa.baidu.com/content/payhelp/b12/zhaoshang/">开通网银，百付宝为您一路护航</a></li>
@@ -313,7 +316,7 @@
     #accordion1 .ui-switchable-active { border-bottom-width: 1px }
     #accordion1 .last-panel { border-bottom: none }
 </style>
-<div id="accordion1" class="AR_Widget section" data-widget="accordion">
+<div id="accordion1" class="section" data-widget="accordion">
     <div class="ui-switchable-trigger ui-switchable-active" data-role="trigger"><i class="ui-icon"></i><h3>标题A</h3></div>
     <div class="ui-switchable-panel" data-role="panel">
         1、支持鼠标滑过和点击触点两种方式<br/>
@@ -327,6 +330,7 @@
     <div class="ui-switchable-panel last-panel" style="display:none;" data-role="panel">内容D<br/>内容D<br/>内容D</div>
 </div>
 
+<h2>超大轮播</h2>
 <style>
     #big { position: relative; border: 1px solid #B6D1E6; overflow: hidden; }
     #big .ui-switchable-nav { position: absolute; bottom: 5px; right: 5px; z-index: 99; }
@@ -352,20 +356,22 @@
         font-weight: bold;
     }
 </style>
-
-<div id="big" class="AR_Widget section" data-widget="slide" style="height:450px;" data-effect="fade">
+<div id="big" class="section" data-widget="slide" style="height:450px;" data-effect="fade">
     <ul class="ui-switchable-content" data-role="content">
         <li><a href="http://item.taobao.com/item.htm?id=7002076261" style="height:450px;" target="_blank"><img src="http://img02.taobaocdn.com/imgextra/i2/438942225/T27Z0bXeRdXXXXXXXX_!!438942225.jpg" alt=""/></a></li>
         <li><a href="http://gearband.tmall.com/view_page-74632436.htm" style="height:450px;" target="_blank"><img src="http://img03.taobaocdn.com/imgextra/i3/438942225/T2eMBHXkFaXXXXXXXX_!!438942225.jpg" alt=""/></a></li>
     </ul>
 </div>
-   <script>
-    var $, _;
-    seajs.use(['jquery', 'widget', 'underscore'], function(jquery, Widget, u) {
-        _ = u;
-        $ = jquery;
-        Widget.autoRenderAll();
-    });
+
+<script src="../../../tools/seajs-and-its-friends.js"></script>
+<script>
+seajs.use(['jquery', 'widget', 'easing'], function($, Widget) {
+
+    // for debug
+    this.$ = $;
+
+    Widget.autoRenderAll();
+});
 </script>
 </body>
 </html>
