@@ -17,6 +17,7 @@
 seajs.config({
 
     alias: {
+
         // 外来模块
         '$': 'jquery/1.7.2/jquery',
         //'$': 'zepto/1.0.0/zepto',
@@ -32,6 +33,7 @@ seajs.config({
         'backbone': 'backbone/0.9.2/backbone',
         'jasmine': 'jasmine/1.1.0/jasmine-html',
 
+
         // Infrastructure
         /* seajs 1.2 尚未开始 */
         'events': 'events/0.9.1/events',                     // 100%
@@ -41,37 +43,46 @@ seajs.config({
         'templatable': 'widget/0.9.13/templatable',          // 95%
         'daparser': 'widget/0.9.13/daparser',                // 95%
 
+
         // Utilities
         'cookie': 'cookie/1.0.2/cookie',                     // 100%
         'easing': 'easing/0.9.2/easing',                     // 100%
         'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 95%
         'position': 'position/0.9.1/position',               // 95%
+
         'validator-core': 'validator/0.8.0/core.js',         // 60%
         'validator': 'validator/0.8.0/validator.js',         // 60%
         /* querystring 待迁移 */
 
+
         // Widgets
         'overlay': 'overlay/0.9.5/overlay',                  // 95%
         'mask': 'overlay/0.9.5/mask',                        // 95%
+        'dialog': 'dialog/0.9.0/dialog',                     // 70%
+
         'triggerable': 'triggerable/0.9.3/triggerable',      // 95%
         'dropdown': 'triggerable/0.9.3/dropdown',            // 95%
-        'dialog': 'dialog/0.9.0/dialog',                     // 80%
+
         'switchable': 'switchable/0.9.3/switchable',         // 90%
         'tabs': 'switchable/0.9.3/tabs',                     // 90%
         'slide': 'switchable/0.9.3/slide',                   // 90%
         'accordion': 'switchable/0.9.3/accordion',           // 90%
         'carousel': 'switchable/0.9.3/carousel',             // 90%
-        'calendar': 'calendar/0.8.1/calendar'                // 50%
+
+        'calendar': 'calendar/0.8.1/calendar'                // 80%
+
 
         // Others
-        /* spm 尚未开始 */
-        /* araledoc 尚未开始 */
+        /* spm */
+        /* araledoc */
+
 
         // 二期组件
         // ua
         // placeholder
         // popup
         // tooltip
+        // 等待详细规划和讨论
     },
 
     preload: [this.JSON ? '' : 'json', 'plugin-text']
