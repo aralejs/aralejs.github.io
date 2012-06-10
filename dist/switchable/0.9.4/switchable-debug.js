@@ -1,4 +1,4 @@
-define("#switchable/0.9.3/switchable-debug", ["jquery","widget","./plugins/effects","./plugins/autoplay","./plugins/circular","./plugins/multiple"], function(require, exports, module) {
+define("#switchable/0.9.4/switchable-debug", ["jquery","widget","./plugins/effects","./plugins/autoplay","./plugins/circular","./plugins/multiple"], function(require, exports, module) {
 
     // Switchable
     // -----------

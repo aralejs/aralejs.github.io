@@ -1,4 +1,4 @@
-define("#switchable/0.9.3/carousel-debug", ["./switchable","jquery"], function(require, exports, module) {
+define("#switchable/0.9.4/carousel-debug", ["./switchable","jquery"], function(require, exports, module) {
 
     var Switchable = require('./switchable');
     var $ = require('jquery');

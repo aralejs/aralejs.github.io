@@ -1,0 +1,1 @@
+define("#switchable/0.9.4/accordion",["./switchable"],function(require,exports,module){var Switchable=require("./switchable"),Accordion=Switchable.extend({attrs:{triggerType:"click",multiple:!1}});module.exports=Accordion});
