@@ -1,4 +1,4 @@
-define("#switchable/0.9.3/switchable-debug", ["jquery","widget","./plugins/effects","./plugins/autoplay","./plugins/circular"], function(require, exports, module) {
+define("#switchable/0.9.3/switchable-debug", ["jquery","widget","./plugins/effects","./plugins/autoplay","./plugins/circular","./plugins/multiple"], function(require, exports, module) {
 
     // Switchable
     // -----------
@@ -13,6 +13,7 @@ define("#switchable/0.9.3/switchable-debug", ["jquery","widget","./plugins/effec
     var Effects = require('./plugins/effects');
     var Autoplay = require('./plugins/autoplay');
     var Circular = require('./plugins/circular');
+    var Multiple = require('./plugins/multiple');
 
     // 内部默认的 className
     var UI_SWITCHABLE = 'ui-switchable';
@@ -140,7 +141,6 @@ define("#switchable/0.9.3/switchable-debug", ["jquery","widget","./plugins/effec
             this.triggers.each(function(i, trigger) {
                 $(trigger).data('value', i);
             });
-
             this._bindTriggers();
         },
 
@@ -150,6 +150,7 @@ define("#switchable/0.9.3/switchable-debug", ["jquery","widget","./plugins/effec
             this._plug(Effects);
             this._plug(Autoplay);
             this._plug(Circular);
+            this._plug(Multiple);
         },
 
 
@@ -165,7 +166,7 @@ define("#switchable/0.9.3/switchable-debug", ["jquery","widget","./plugins/effec
             }
 
             function focus(ev) {
-                that._onFocusTrigger(ev);
+                that._onFocusTrigger(ev.type, $(this).data('value'));
             }
 
             function leave() {
@@ -173,15 +174,14 @@ define("#switchable/0.9.3/switchable-debug", ["jquery","widget","./plugins/effec
             }
         },
 
-        _onFocusTrigger: function(ev) {
-            var type = ev.type;
-            var index = $(ev.target).data('value');
+        _onFocusTrigger: function(type, index) {
             var that = this;
 
             // click or tab 键激活时
             if (type === 'click') {
                 this.switchTo(index);
             }
+
             // hover
             else {
                 this._switchTimer = setTimeout(function() {
@@ -198,13 +198,16 @@ define("#switchable/0.9.3/switchable-debug", ["jquery","widget","./plugins/effec
         },
 
         _onRenderActiveIndex: function(toIndex, fromIndex) {
-            this.trigger('switch', toIndex, fromIndex);
-
             if (this._triggerIsValid(toIndex, fromIndex)) {
-                this._switchTrigger(toIndex, fromIndex);
-                this._switchPanel(this._getPanelInfo(toIndex, fromIndex));
-                this.trigger('switched', toIndex, fromIndex);
+                this._switchTo(toIndex, fromIndex);
             }
+        },
+
+        _switchTo: function(toIndex, fromIndex) {
+            this.trigger('switch', toIndex, fromIndex);
+            this._switchTrigger(toIndex, fromIndex);
+            this._switchPanel(this._getPanelInfo(toIndex, fromIndex));
+            this.trigger('switched', toIndex, fromIndex);
         },
 
         // 触发是否有效
@@ -266,6 +269,7 @@ define("#switchable/0.9.3/switchable-debug", ["jquery","widget","./plugins/effec
             if (!plugin.isNeeded.call(this)) return;
 
             var pluginAttrs = plugin.attrs;
+            var methods = plugin.methods;
 
             if (pluginAttrs) {
                 for (var key in pluginAttrs) {
@@ -273,6 +277,15 @@ define("#switchable/0.9.3/switchable-debug", ["jquery","widget","./plugins/effec
                             // 不覆盖用户传入的配置
                             !(key in this.attrs)) {
                         this.set(key, pluginAttrs[key]);
+                    }
+                }
+            }
+
+            if (methods) {
+                for (var method in methods) {
+                    if (methods.hasOwnProperty(method)) {
+                        // 覆盖实例方法。
+                        this[method] = methods[method];
                     }
                 }
             }

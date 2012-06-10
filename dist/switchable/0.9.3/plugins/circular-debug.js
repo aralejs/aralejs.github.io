@@ -23,7 +23,7 @@ define("#switchable/0.9.3/plugins/circular-debug", ["jquery","./effects"], funct
         }
     };
 
-    Effects.scrollCircular = function (panelInfo) {
+    Effects.scrollCircular = function(panelInfo) {
         var toIndex = panelInfo.toIndex;
         var fromIndex = panelInfo.fromIndex;
         var len = this.get('length');
