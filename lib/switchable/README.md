@@ -4,12 +4,13 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
 
 ---
 
+
 ## 模块依赖
 
  - [seajs](seajs/README.md)
  - [jquery](jquery/README.md)
  - [widget](widget/README.md)
- - [underscore](underscore/README.md)
+
 
 ## 配置属性
 
@@ -109,8 +110,12 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
   动画效果，目前支持,`easeNode`默认, `easeIn`, `easeOut`, `easeBoth`, `easeInStrong`, `easeOutStrong`, `easeBothStrong`, `elasticIn`, `elasticOut`, `elasticBoth`, `backIn`, `backOut`, `backBoth`, `bounceIn`, `bounceOut`, `bounceBoth`。
   
 ========
+
+
 ## 具体组件配置属性
+
 有些属性在对应类型的模块可能有不同的默认值，还有一些特有的配置属性。
+
 ### Accordion (手风琴)
 * `triggerType` {String}
 
@@ -163,6 +168,7 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
 * `length` {Number}
 
   只读, 触发器或面板的个数。
+
 
 ## 方法详情
 * `switchTo`(toIndex, fromIndex, direction)
@@ -230,9 +236,11 @@ seajs.use(['tabs'], function(Tabs) {
  - [examples/tabs.html](http://aralejs.org/lib/switchable/examples/tabs.html)
  - [examples/switchable-data-api.html](http://aralejs.org/lib/switchable/examples/switchable-data-api.html)
 
+
 ## 测试用例
 
 * <http://aralejs.org/lib/switchable/tests/runner.html>
+
 
 ## 交流讨论
 
