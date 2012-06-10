@@ -22,7 +22,7 @@ define("#validator/0.8.0/rule-debug", ["$","async","widget"], function(require, 
                             commit(result ? null : opts.rule, _getMsg(opts, result));
                     };
                 } else
-                    throw 'The second argument must be a regexp or a function.';
+                    throw new Error('The second argument must be a regexp or a function.');
         },
 
         and: function(name, options) {
@@ -33,7 +33,7 @@ define("#validator/0.8.0/rule-debug", ["$","async","widget"], function(require, 
             }
 
             if (!target) {
-                throw 'No rule with name "' + name + '" found.';
+                throw new Error('No rule with name "' + name + '" found.');
             }
 
             var that = this;
@@ -58,7 +58,7 @@ define("#validator/0.8.0/rule-debug", ["$","async","widget"], function(require, 
             }
 
             if (!target) {
-                throw 'No rule with name "' + name + '" found.';
+                throw new Error('No rule with name "' + name + '" found.');
             }
 
             var that = this;
@@ -93,7 +93,7 @@ define("#validator/0.8.0/rule-debug", ["$","async","widget"], function(require, 
 
     function addRule(name, operator, message) {
         if (rules[name]) {
-            throw 'The rule with the same name has existed and overriding a rule is not allowed!';
+            throw new Error('The rule with the same name has existed and overriding a rule is not allowed!');
         }
 
         if (operator instanceof Rule) {

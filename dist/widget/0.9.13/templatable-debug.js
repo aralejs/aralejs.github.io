@@ -117,7 +117,7 @@ define("#widget/0.9.13/templatable-debug", ["$","handlebars","./ast-printer"], f
     function convertObjectToTemplate(templateObject, selector) {
         var element = templateObject.find(selector);
         if (element.length === 0) {
-            throw 'Invalid template selector: ' + selector;
+            throw new Error('Invalid template selector: ' + selector);
         }
 
         var html = decode(element.html());

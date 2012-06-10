@@ -53,7 +53,7 @@ define("#validator/0.8.0/item-debug", ["$","./parser","widget","./async","./rule
     function _metaValidate(ele, rules, display, callback) {
 
         if (!$.isArray(rules))
-            throw 'No validation rule specified or not specified as an array.'
+            throw new Error('No validation rule specified or not specified as an array.');
         
         var tasks = [];
 
@@ -65,7 +65,7 @@ define("#validator/0.8.0/item-debug", ["$","./parser","widget","./async","./rule
 
             var rule = Rule.getOperator(ruleName);
             if (!rule)
-                throw 'Validation rule with name "' + ruleName + '" cannot be found.';
+                throw new Error('Validation rule with name "' + ruleName + '" cannot be found.');
 
             var options = $.extend({}, param, {
                 element: ele,

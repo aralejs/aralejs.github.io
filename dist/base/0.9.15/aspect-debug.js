@@ -44,7 +44,7 @@ define("#base/0.9.15/aspect-debug", [], function(require, exports) {
     function getMethod(host, methodName) {
         var method = host[methodName];
         if (!method) {
-            throw 'Invalid method name: ' + methodName;
+            throw new Error('Invalid method name: ' + methodName);
         }
         return method;
     }

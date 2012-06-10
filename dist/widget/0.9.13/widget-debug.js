@@ -96,7 +96,7 @@ define("#widget/0.9.13/widget-debug", ["base","$","./daparser","./auto-render"],
 
             // 如果对应的 DOM 元素不存在，则报错
             if (!this.element || !this.element[0]) {
-                throw 'element is invalid';
+                throw new Error('element is invalid');
             }
         },
 

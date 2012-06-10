@@ -85,7 +85,7 @@ define("#base/0.9.15/attribute-debug", [], function(require, exports) {
             val = attrs[key];
 
             if (attr.readOnly) {
-                throw 'This attribute is readOnly: ' + key;
+                throw new Error('This attribute is readOnly: ' + key);
             }
 
             // invoke validator
