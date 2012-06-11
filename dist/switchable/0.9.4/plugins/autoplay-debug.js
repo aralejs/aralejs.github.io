@@ -74,6 +74,7 @@ define("#switchable/0.9.4/plugins/autoplay-debug", ["jquery"], function(require,
         },
 
         destroy: function() {
+            var EVENT_NS = '.' + this.cid;
             this.stop();
 
             if (this._scrollDetect) {
