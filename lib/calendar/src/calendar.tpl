@@ -1,4 +1,4 @@
-<div class="ui-calendar">
+<div class="ui-calendar" tabindex="-1">
     <ul class="ui-calendar-navigation" data-role="navigation-container">
         <li class="ui-calendar-previous-year" data-role="prev-year">&lt;&lt;</li>
         <li class="ui-calendar-previous-month" data-role="prev-month">&lt;</li>
