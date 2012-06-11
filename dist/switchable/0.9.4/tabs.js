@@ -1,1 +1,1 @@
-define("#switchable/0.9.4/tabs",["./switchable"],function(require,exports,module){var Switchable=require("./switchable");module.exports=Switchable.extend({})});
+define("#switchable/0.9.4/tabs",["./switchable"],function(a,b,c){var d=a("./switchable");c.exports=d.extend({})});

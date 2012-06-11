@@ -1,12 +1,8 @@
-define("#switchable/0.9.4/carousel-debug", ["./switchable","jquery"], function(require, exports, module) {
+define("#switchable/0.9.4/carousel-debug", ["./switchable","jquery","./const"], function(require, exports, module) {
 
     var Switchable = require('./switchable');
     var $ = require('jquery');
-
-    var UI_SWITCHABLE = 'ui-switchable';
-    var PREV_BUTTON_CLASS = UI_SWITCHABLE + '-prev-button';
-    var NEXT_BUTTON_CLASS = UI_SWITCHABLE + '-next-button';
-    var DISABLED_BUTTON_CLASS = UI_SWITCHABLE + '-disabled-button';
+    var CONST = require('./const');;
 
 
     // 旋转木马组件
@@ -15,13 +11,13 @@ define("#switchable/0.9.4/carousel-debug", ["./switchable","jquery"], function(r
         attrs: {
             circular: true,
 
-            prevButton: {
+            prevBtn: {
                 getter: function(val) {
                     return $(val).eq(0);
                 }
             },
 
-            nextButton: {
+            nextBtn: {
                 getter: function(val) {
                     return $(val).eq(0);
                 }
@@ -35,21 +31,21 @@ define("#switchable/0.9.4/carousel-debug", ["./switchable","jquery"], function(r
             if (!role) return;
 
             // attr 里没找到时，才根据 data-role 来解析
-            var prevButton = this.get('prevButton');
-            var nextButton = this.get('nextButton');
+            var prevBtn = this.get('prevBtn');
+            var nextBtn = this.get('nextBtn');
 
-            if (!prevButton[0] && role.prev) {
-                prevButton = this.$(role.prev);
-                this.set('prevButton', prevButton);
+            if (!prevBtn[0] && role.prev) {
+                prevBtn = this.$(role.prev);
+                this.set('prevBtn', prevBtn);
             }
 
-            if (!nextButton[0] && role.next) {
-                nextButton = this.$(role.next);
-                this.set('nextButton', nextButton);
+            if (!nextBtn[0] && role.next) {
+                nextBtn = this.$(role.next);
+                this.set('nextBtn', nextBtn);
             }
 
-            prevButton.addClass(PREV_BUTTON_CLASS);
-            nextButton.addClass(NEXT_BUTTON_CLASS);
+            prevBtn.addClass(CONST.PREV_BTN_CLASS);
+            nextBtn.addClass(CONST.NEXT_BTN_CLASS);
         },
 
         _initTriggers: function() {
@@ -58,14 +54,14 @@ define("#switchable/0.9.4/carousel-debug", ["./switchable","jquery"], function(r
             var that = this;
             var circular = this.get('circular');
 
-            this.get('prevButton').click(function(ev) {
+            this.get('prevBtn').click(function(ev) {
                 ev.preventDefault();
                 if (circular || that.get('activeIndex') > 0) {
                     that.prev();
                 }
             });
 
-            this.get('nextButton').click(function(ev) {
+            this.get('nextBtn').click(function(ev) {
                 ev.preventDefault();
                 var len = that.get('length') - 1;
                 if (circular || that.get('activeIndex') < len) {
@@ -83,17 +79,17 @@ define("#switchable/0.9.4/carousel-debug", ["./switchable","jquery"], function(r
         },
 
         _updateButtonStatus: function(toIndex) {
-            var prevButton = this.get('prevButton');
-            var nextButton = this.get('nextButton');
+            var prevBtn = this.get('prevBtn');
+            var nextBtn = this.get('nextBtn');
 
-            prevButton.removeClass(DISABLED_BUTTON_CLASS);
-            nextButton.removeClass(DISABLED_BUTTON_CLASS);
+            prevBtn.removeClass(CONST.DISABLED_BTN_CLASS);
+            nextBtn.removeClass(CONST.DISABLED_BTN_CLASS);
 
             if (toIndex === 0) {
-                prevButton.addClass(DISABLED_BUTTON_CLASS);
+                prevBtn.addClass(CONST.DISABLED_BTN_CLASS);
             }
             else if (toIndex === this.get('length') - 1) {
-                nextButton.addClass(DISABLED_BUTTON_CLASS);
+                nextBtn.addClass(CONST.DISABLED_BTN_CLASS);
             }
         }
 

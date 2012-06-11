@@ -9,6 +9,7 @@
         "plugins/autoplay.js": "default",
         "plugins/effects.js": "default",
         "plugins/circular.js": "default",
-        "plugins/multiple.js": "default"
+        "plugins/multiple.js": "default",
+        "const.js": "default"
     }
 }

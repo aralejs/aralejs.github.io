@@ -1,4 +1,4 @@
-define("#switchable/0.9.4/switchable-debug", ["jquery","widget","./plugins/effects","./plugins/autoplay","./plugins/circular","./plugins/multiple"], function(require, exports, module) {
+define("#switchable/0.9.4/switchable-debug", ["jquery","widget","./const","./plugins/effects","./plugins/autoplay","./plugins/circular","./plugins/multiple"], function(require, exports, module) {
 
     // Switchable
     // -----------
@@ -10,18 +10,11 @@ define("#switchable/0.9.4/switchable-debug", ["jquery","widget","./plugins/effec
     var $ = require('jquery');
     var Widget = require('widget');
 
+    var CONST = require('./const');
     var Effects = require('./plugins/effects');
     var Autoplay = require('./plugins/autoplay');
     var Circular = require('./plugins/circular');
     var Multiple = require('./plugins/multiple');
-
-    // 内部默认的 className
-    var UI_SWITCHABLE = 'ui-switchable';
-    var NAV_CLASS = UI_SWITCHABLE + '-nav';
-    var CONTENT_CLASS = UI_SWITCHABLE + '-content';
-    var TRIGGER_CLASS = UI_SWITCHABLE + '-trigger';
-    var PANEL_CLASS = UI_SWITCHABLE + '-panel';
-    var ACTIVE_CLASS = UI_SWITCHABLE + '-active';
 
 
     var Switchable = Widget.extend({
@@ -104,7 +97,7 @@ define("#switchable/0.9.4/switchable-debug", ["jquery","widget","./plugins/effec
         },
 
         _initElement: function() {
-            this.element.addClass(UI_SWITCHABLE);
+            this.element.addClass(CONST.UI_SWITCHABLE);
         },
 
         _initPanels: function() {
@@ -113,8 +106,8 @@ define("#switchable/0.9.4/switchable-debug", ["jquery","widget","./plugins/effec
                 throw new Error('panels.length is ZERO');
             }
 
-            this.content = panels.parent().addClass(CONTENT_CLASS);
-            panels.addClass(PANEL_CLASS);
+            this.content = panels.parent().addClass(CONST.CONTENT_CLASS);
+            panels.addClass(CONST.PANEL_CLASS);
         },
 
         _initTriggers: function() {
@@ -135,8 +128,8 @@ define("#switchable/0.9.4/switchable-debug", ["jquery","widget","./plugins/effec
                 this.nav = triggers.parent();
             }
 
-            this.triggers.addClass(TRIGGER_CLASS);
-            this.nav.addClass(NAV_CLASS);
+            this.triggers.addClass(CONST.TRIGGER_CLASS);
+            this.nav.addClass(CONST.NAV_CLASS);
 
             this.triggers.each(function(i, trigger) {
                 $(trigger).data('value', i);
@@ -219,8 +212,8 @@ define("#switchable/0.9.4/switchable-debug", ["jquery","widget","./plugins/effec
             var triggers = this.triggers;
             if (triggers.length < 1) return;
 
-            triggers.eq(fromIndex).removeClass(ACTIVE_CLASS);
-            triggers.eq(toIndex).addClass(ACTIVE_CLASS);
+            triggers.eq(fromIndex).removeClass(CONST.ACTIVE_CLASS);
+            triggers.eq(toIndex).addClass(CONST.ACTIVE_CLASS);
         },
 
         _switchPanel: function(panelInfo) {
@@ -321,7 +314,7 @@ define("#switchable/0.9.4/switchable-debug", ["jquery","widget","./plugins/effec
         var nav = $('<ul>');
 
         for (var i = 0; i < length; i++) {
-            var className = i === activeIndex ? ACTIVE_CLASS : '';
+            var className = i === activeIndex ? CONST.ACTIVE_CLASS : '';
 
             $('<li>', {
                 'class': className,

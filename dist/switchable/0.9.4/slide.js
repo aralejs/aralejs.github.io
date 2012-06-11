@@ -1,1 +1,1 @@
-define("#switchable/0.9.4/slide",["./switchable"],function(require,exports,module){var Switchable=require("./switchable");module.exports=Switchable.extend({attrs:{autoplay:!0,circular:!0}})});
+define("#switchable/0.9.4/slide",["./switchable"],function(a,b,c){var d=a("./switchable");c.exports=d.extend({attrs:{autoplay:!0,circular:!0}})});
