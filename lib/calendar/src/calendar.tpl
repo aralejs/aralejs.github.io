@@ -1,4 +1,4 @@
-<div class="ui-calendar">
+<div class="ui-calendar" tabindex="-1">
     <ul class="ui-calendar-navigation" data-role="navigation-container">
         <li class="ui-calendar-previous-year" data-role="prev-year">&lt;&lt;</li>
         <li class="ui-calendar-previous-month" data-role="prev-month">&lt;</li>
@@ -30,7 +30,6 @@
             {{#unless available}}ui-calendar-date-disabled{{/unless}}
             "
             data-role="date" data-date="{{date}}" data-month="{{month}}" data-year="{{year}}"
-            {{#unless available}}data-disabled="true"{{/unless}}
             >{{date}}</li>
             {{/each}}
         </ul>
