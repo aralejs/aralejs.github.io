@@ -16,12 +16,8 @@ define("#triggerable/0.9.3/triggerable-debug", ["jquery","overlay"], function(re
                 }
             },
             // 触发类型
-            triggerType: {
-                value: 'mouseenter', // or click|hover|mouseover|focus|...
-                getter: function(val) {
-                    return val.replace(/^(?:hover|mouseover)$/i, 'mouseenter');
-                }
-            },
+            triggerType: 'hover', // or click
+
             // 延迟触发和隐藏时间
             delay: 100
         },
