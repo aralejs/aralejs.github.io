@@ -1,4 +1,4 @@
-define("#validator/0.8.0/parser-debug", ["$","./rule"], function(require, exports, module) {
+define("#validator/0.8.0/utils-debug", ["$","./rule"], function(require, exports, module) {
     var $ = require('$'),
         Rule = require('./rule');
 
@@ -131,10 +131,21 @@ define("#validator/0.8.0/parser-debug", ["$","./rule"], function(require, export
         return result;
     };
 
+    var helpers = {};
+    function helper(name, fn) {
+        if (fn) {
+            helpers[name] = fn;
+            return this;
+        }
+
+        return helpers[name];
+    }
+
     module.exports = {
         parseRule: parseRule,
         parseRules: parseRules,
-        parseDom: parseDom
+        parseDom: parseDom,
+        helper: helper
     };
 
 });

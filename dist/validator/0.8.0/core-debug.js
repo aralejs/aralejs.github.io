@@ -1,23 +1,32 @@
-define("#validator/0.8.0/core-debug", ["$","./async","widget","./parser","./item","daparser","./rule"], function(require, exports, module) {
+define("#validator/0.8.0/core-debug", ["$","./async","widget","./utils","./item","daparser","./rule"], function(require, exports, module) {
 
     var $ = require('$'),
         async = require('./async'),
         Widget = require('widget'),
-        parser = require('./parser'),
+        utils = require('./utils'),
         Item = require('./item'),
         DAParser = require('daparser');
 
     var validators = [];
 
-    var helpers = {};
+    var setterConfig = {
+        setter: function(val) {
+            return typeof val != 'function' ? utils.helper(val) : val;
+        }
+    };
 
     var Validator = Widget.extend({
+
         attrs: {
             triggerType: 'blur',
             checkOnSubmit: true,    //是否在表单提交前进行校验，默认进行校验。
             stopOnError: false,     //校验整个表单时，遇到错误时是否停止校验其他表单项。
             autoSubmit: true,       //When all validation passed, submit the form automatically.
-            checkNull: true         //除提交前的校验外，input的值为空时是否校验。
+            checkNull: true,         //除提交前的校验外，input的值为空时是否校验。
+            onItemValidate: setterConfig,
+            onItemValidated: setterConfig,
+            onFormValidate: setterConfig,
+            onFormValidated: setterConfig
         },
 
         setup: function() {
@@ -44,32 +53,34 @@ define("#validator/0.8.0/core-debug", ["$","./async","widget","./parser","./item
             validators.push(this);
         },
 
-        Statics: $.extend({}, require('./rule'), {
+        Statics: $.extend({helper: utils.helper}, require('./rule'), {
             autoRender: function(cfg) {
-                var attrs = processAttr(cfg);
-                findHelpers(attrs, ['onItemValidate', 'onItemValidated', 'onFormValidate', 'onFormValidated']);
 
-                var validator = new Validator(attrs);
+                var validator = new Validator(cfg);
 
                 $('input, textarea, select', validator.element).each(function(i, input) {
 
-                    if (!validator.query(input)) {
-                        input = $(input);
+                    input = $(input);
+                    var type = input.attr('type');
 
-                        var options = {};
+                    if (type == 'button' || type == 'submit' || type == 'reset') {
+                        return true;
+                    }
 
-                        var type = input.attr('type');
-                        if (type == 'radio' || type == 'checkbox') {
-                            options.element = $('[type=' + type + '][name=' + input.attr('name') + ']', validator.element);
-                        } else {
-                            options.element = input;
-                        }
+                    var options = {};
 
-                        var obj = parser.parseDom(input);
-                        var attrs = processAttr(DAParser.parseElement(input));
-                        $.extend(options, attrs, obj);
+                    if (type == 'radio' || type == 'checkbox') {
+                        options.element = $('[type=' + type + '][name=' + input.attr('name') + ']', validator.element);
+                    } else {
+                        options.element = input;
+                    }
 
-                        findHelpers(options, ['onItemValidate', 'onItemValidated']);
+
+                    if (!validator.query(options.element)) {
+
+                        var obj = utils.parseDom(input);
+                        $.extend(options, obj);
+
                         validator.addItem(options);
                     }
                 });
@@ -93,16 +104,8 @@ define("#validator/0.8.0/core-debug", ["$","./async","widget","./parser","./item
                 });
 
                 return result;
-            },
-
-            helper: function(name, fn) {
-                if (fn) {
-                    helpers[name] = fn;
-                    return this;
-                }
-
-                return helpers[name];
             }
+
         }),
 
 
@@ -215,6 +218,7 @@ define("#validator/0.8.0/core-debug", ["$","./async","widget","./parser","./item
         return set;
     }
 
+    /*
     function processAttr(obj) {
 
         $.each(obj, function(i, v) {
@@ -226,12 +230,17 @@ define("#validator/0.8.0/core-debug", ["$","./async","widget","./parser","./item
 
         return obj;
     }
+    */
 
+    /*
     function findHelpers(obj, keys) {
         $.each(keys, function(i, key) {
-            obj[key] = Validator.helper(obj[key]);
+            if (typeof obj.get(key) != 'function') {
+                obj.set(key, utils.helper(obj[key]));
+            }
         });
     }
+    */
 
     module.exports = Validator;
 });
