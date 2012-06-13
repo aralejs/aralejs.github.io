@@ -64,10 +64,10 @@ function build(filename) {
     fs.writeFileSync(minfile, compress(minCode), 'utf8');
 }
 
+
 function copy(filename) {
     var code = fs.readFileSync(path.join(SRC_DIR, filename), 'utf8');
-    var file = path.join(DIST_DIR, filename);
-    fs.writeFileSync(file, code, 'utf8');
+    fs.writeFileSync(path.join(DIST_DIR, filename), code, 'utf8');
 }
 
 
