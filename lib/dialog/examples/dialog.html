@@ -46,12 +46,12 @@ seajs.config({
     */
 });
 
-seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, AnimDialog) {
+seajs.use(['../src/baseDialog', '../src/animDialog'], function(BaseDialog, AnimDialog) {
     
     var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
     var dialogTpl = '<div class="overlay"><div id="dialog-title"></div><div id="dialog-content"></div><button id="confirm">确认按钮</button><button id="close">点击关闭</button></div>';
 
-    var d1 = new Dialog({
+    var d1 = new BaseDialog({
         trigger: '#trigger1',
         template: dialogTpl,
         width: 300,
@@ -208,7 +208,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, AnimDialog) {
         }
     });
 
-    var d9 = new Dialog({
+    var d9 = new BaseDialog({
         trigger: '#trigger9',
         template: dialogTpl,
         width: 300,
@@ -224,7 +224,7 @@ seajs.use(['../src/dialog', '../src/animDialog'], function(Dialog, AnimDialog) {
             baseXY: [400, 200]
         }
     });
-    var d10 = new Dialog({
+    var d10 = new BaseDialog({
         trigger: '#trigger10',
         template: '<div class="overlay"><div id="dialog-title"></div><iframe src=""></iframe><button id="close">点击关闭</button></div>',
         width: 300,
