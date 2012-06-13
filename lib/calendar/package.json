@@ -1,6 +1,7 @@
 {
     "version": "0.8.0",
     "dist": {
-        "calendar.js": "default"
+        "calendar.js": "default",
+        "model.js": "default"
     }
 }

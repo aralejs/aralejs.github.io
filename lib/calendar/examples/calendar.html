@@ -3,11 +3,43 @@
     <head>
         <meta charset="utf-8" />
         <title>Calendar Example</title>
+        <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="../src/themes/simple.css" />
         <script src="../../../tools/seajs-and-its-friends.js"></script>
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
     </head>
     <body>
-        <input id="date-picker" type="date" />
+        <div class="container">
+            <h1>Calendar</h1>
+            <p>Calendar for <a href="http://aralejs.org">Arale</a> Project.</p>
+
+            <h2>Example</h2>
+            <input type="text" data-widget="calendar" />
+            <div class="section">
+                <h2>Normal Mode</h2>
+                <div>
+                    <input id="date-1" type="text" />
+                </div>
+                <textarea>var cal1 = new Calendar({trigger: '#date-1'});</textarea>
+            </div>
+            <div class="section">
+                <h2>Disable on Tuesday</h2>
+                <div>
+                    <input id="date-2" type="text" />
+                </div>
+            </div>
+            <div class="section">
+                <h2>i18n Support</h2>
+                <input id="date-3" type="text" />
+            </div>
+            <div class="section">
+                <h2>Related Calendars</h2>
+                <input id="date-4" type="text" />
+                <input id="date-5" type="text" />
+            </div>
+        </div>
         <script>
             // for debug
         seajs.config({
@@ -17,28 +49,40 @@
             ]
         });
 
-        seajs.use(['jquery', '../src/calendar', '../src/i18n/zh_CN'], function($, Calendar, lang) {
+        seajs.use(['jquery', '../src/calendar', '../src/i18n/zh_CN', 'widget'],
+        function($, Calendar, lang, Widget) {
 
             // for debug
             this.$ = $;
 
             var available = function(time) {
                 var day = time.day();
-                return day != 4;
+                return day != 2;
             };
 
-            var cal = new Calendar({range: available, lang: lang, trigger: '#date-picker'});
-            //var cal = new Calendar({range: available, lang: lang, showTime: true});
-            //var cal = new Calendar({range: available, lang: lang});
-            //cal.render().show();
+            var cal1 = new Calendar({trigger: '#date-1'});
 
-            cal.on('select-date', function(date) {
-                console.log(date);
+            var cal2 = new Calendar({range: available, trigger: '#date-2'});
+            cal2.on('select-disabled-date', function(date) {
+                alert('disabled date ' + date.toString());
             });
-            cal.on('select-disabled-date', function(date) {
-                console.log('disabled');
-                console.log(date);
+
+            var cal3 = new Calendar({lang: lang, trigger: '#date-3', hideOnSelect: false});
+
+            var cal4 = new Calendar({trigger: '#date-4'});
+            var cal5 = new Calendar({trigger: '#date-5'});
+            cal4.on('select-date', function(date) {
+                cal5.range([date, null]);
+            }).on('select-disabled-date', function(date) {
+                alert('not available');
             });
+            cal5.on('select-date', function(date) {
+                cal4.range([null, date]);
+            }).on('select-disabled-date', function(date) {
+                alert('not available');
+            });;
+
+            Widget.autoRenderAll();
         });
         </script>
     </body>

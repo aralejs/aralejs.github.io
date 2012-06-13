@@ -16,7 +16,7 @@
 // Need more complex task? Head over to Options section.
 //
 
-define(function(require, exports, module) {
+define("#calendar/0.8.0/calendar-debug", ["calendar","jquery","moment","overlay","templatable","./calendar.tpl","./model"], function(require, exports, module) {
 
     // ## Required Library
     // This calendar is a part of arale project,
