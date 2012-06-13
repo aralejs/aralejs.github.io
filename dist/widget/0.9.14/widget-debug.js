@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#widget/0.9.14/widget-debug", ["base","$","./daparser","./auto-render"], function(require, exports, module) {
 
     // Widget
     // ---------

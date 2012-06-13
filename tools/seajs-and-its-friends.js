@@ -39,9 +39,9 @@ seajs.config({
         'events': 'events/0.9.1/events',                     // 100%
         'class': 'class/0.9.2/class',                        // 100%
         'base': 'base/0.9.15/base',                          // 95%
-        'widget': 'widget/0.9.13/widget',                    // 95%
-        'templatable': 'widget/0.9.13/templatable',          // 95%
-        'daparser': 'widget/0.9.13/daparser',                // 95%
+        'widget': 'widget/0.9.14/widget',                    // 95%
+        'templatable': 'widget/0.9.14/templatable',          // 95%
+        'daparser': 'widget/0.9.14/daparser',                // 95%
 
 
         // Utilities
@@ -56,8 +56,8 @@ seajs.config({
 
 
         // Widgets
-        'overlay': 'overlay/0.9.5/overlay',                  // 95%
-        'mask': 'overlay/0.9.5/mask',                        // 95%
+        'overlay': 'overlay/0.9.6/overlay',                  // 95%
+        'mask': 'overlay/0.9.6/mask',                        // 95%
         'dialog': 'dialog/0.9.0/dialog',                     // 70%
 
         'triggerable': 'triggerable/0.9.3/triggerable',      // 95%
