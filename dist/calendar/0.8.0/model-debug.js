@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#calendar/0.8.0/model-debug", ["jquery","base","moment"], function(require, exports, module) {
 
     var $ = require('jquery');
     var Base = require('base');

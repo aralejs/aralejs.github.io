@@ -69,7 +69,7 @@ seajs.config({
         'accordion': 'switchable/0.9.4/accordion',           // 90%
         'carousel': 'switchable/0.9.4/carousel',             // 90%
 
-        'calendar': 'calendar/0.8.1/calendar'                // 80%
+        'calendar': 'calendar/0.8.0/calendar'                // 80%
 
 
         // Others
