@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>BatchPaste Example</title>
+<script src="../../../tools/seajs-and-its-friends.js"></script>
+</head>
+<body>
+
+<div>
+    <ol id="links">
+        <li>
+            Link Text: <input name="text" type="text" />
+            Link Url: <input name="url" type="text" />
+            Link Title: <input name="title" type="text" />
+            Link Seed: <input name="seed" type="text" />
+        </li>
+    </ol>
+    <a style="margin-left:2em;" href="javascript:addLinkLine()">+Add</a>
+</div>
+
+<p>
+请从 Excel 或　Numbers 等工具拷贝部分内容，然后粘贴到第一个输入框。
+</p>
+
+<script>
+
+// for debug
+seajs.config({
+    /*
+    map: [
+        [/^(.+)\/widget\.js.*$/, '$1/../../../lib/widget/src/widget.js']
+        ]
+    */
+});
+
+seajs.use(['../src/batchpaste'], function(BatchPaste){
+    var links = document.getElementById("links");
+
+    BatchPaste.paste(function(text, evt){
+        var elem = evt.srcElement || evt.target;
+        if("text"!=elem.getAttribute("name")){
+            return alert("请将光标焦点放在 'Link Text' 输入框内。");
+        }
+        var list = text.split("\n");
+        links.removeChild(elem.parentNode);
+        for(var i=0,line,l=list.length; i<l; i++){
+            if(/^\s*$/.test(list[i])){continue;}
+            line = list[i].split("\t");
+            addLinkLine(line[0], line[1], line[2], line[3]);
+        }
+    });
+
+});
+
+    function addLinkLine(text, url, title, seed){
+        var li = document.createElement("li");
+        li.innerHTML =
+            'Link Text: <input type="text" name="text" value="'+(text||'')+'" /> '+
+            'Link Url: <input type="url" name="url" value="'+(url||'')+'" /> '+
+            'Link Title: <input type="text" name="title" value="'+(title||'')+'" /> '+
+            'Link Seed: <input type="text" name="seed" value="'+(seed||'')+'" /> '+
+            '<a onclick="delLinkLine(this)" href="javascript:void(0);">(X)Del</a>';
+        links.appendChild(li);
+    }
+    function delLinkLine(a){
+        links.removeChild(a.parentNode);
+    }
+</script>
+</body>
+</html>
