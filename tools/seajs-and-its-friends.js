@@ -39,9 +39,9 @@ seajs.config({
         'events': 'events/0.9.1/events',                     // 100%
         'class': 'class/0.9.2/class',                        // 100%
         'base': 'base/0.9.15/base',                          // 95%
-        'widget': 'widget/0.9.14/widget',                    // 95%
-        'templatable': 'widget/0.9.14/templatable',          // 95%
-        'daparser': 'widget/0.9.14/daparser',                // 95%
+        'widget': 'widget/0.9.15/widget',                    // 95%
+        'templatable': 'widget/0.9.15/templatable',          // 95%
+        'daparser': 'widget/0.9.15/daparser',                // 95%
 
 
         // Utilities
