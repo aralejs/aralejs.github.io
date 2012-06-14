@@ -20,7 +20,7 @@ Attached to a field with i18n support.
 </div>
 
 ```javascript
-seajs.use([''../src/calendar', '../src/i18n/zh_CN'], function(Calendar, lang) {
+seajs.use(['../src/calendar', '../src/i18n/zh_CN'], function(Calendar, lang) {
     var cal2 = new Calendar({trigger: '#date-2', lang: lang});
 });
 ```
@@ -57,11 +57,13 @@ Related calendars, set range dynamicly.
 var cal4 = new Calendar({trigger: '#date-4'});
 var cal5 = new Calendar({trigger: '#date-5'});
 cal4.on('select-date', function(date) {
+    $('#date-4-explain').text('');
     cal5.range([date, null]);
 }).on('select-disabled-date', function(date) {
     $('#date-4-explain').text('not available');
 });
 cal5.on('select-date', function(date) {
+    $('#date-5-explain').text('');
     cal4.range([null, date]);
 }).on('select-disabled-date', function(date) {
     $('#date-5-explain').text('not available');
