@@ -12,42 +12,10 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
  - [widget](widget/README.md)
 
 
+
+
 ## 配置属性
 
-下面的配置属性适用与全部相关属性
-
-* `contentClass` {String}
-    
-    panels 所在容器的 class, 默认为 `ui-switchable-content`, 配置这个元素的孩子元素会被作为面板列表。比如下面的例子。
-    
-    ```
-    <div id="J_Slide">  <!-- 容器元素 -->
-         <div class="ui-switchable-content">  <!-- 面板列表 -->
-            <div>内容 A</div>
-            <div style="display: none">内容 B</div>
-            <div style="display: none">内容 C</div>
-            <div style="display: none">内容 D</div>
-        </div>
-    </div>
-    ```
-    
-* `navClass` {String}
-    
-    默认为`null`，用来指定触发器的父元素，如果配置此值会把对应元素的孩子元素作为触发器列表。如果此元素配置了，但是在当前页面并没有发现此元素，程序会自动创建触发器列表，触发器中的内容为数字，数量和面板数量相同。
-   
-    ```  
-     <ul class="ui-switchable-nav">
-         <!-- title 争渡读屏器不读-->
-         <li aria-labelledby='a_tip' title="读屏器读不出来">
-             <span style="display:none" id="a_tip">标题 A，可左右键切换操作</span>
-             <a href="http://www.taobao.com">标题 A</a></li>
-         <li><a href="http://www.taobao.com">标题 B</a></li>
-         <li>标题 D</li>
-         <li>标题 E</li>
-     </ul>
-     
-    ```
-      
 * `triggers` {String|Array}
     
     触发器列表, 支持直接传入选择器，也可以是元素数组。
@@ -111,6 +79,48 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
   
 ========
 
+## DATA API 配置属性
+目前项目支持data-api的形式配置相关属性，并以role的形式配置到项目中，主要有下面6个role.
+前面4个是所有组件均有效，后面2个，只在 Carousel 组件中生效.
+
+其中前面4个仅在在属性配置中没有发现对应的`panels` 和 `triggers` 相关配置时，才会生效。
+并且如果同时配置了下面的role， panel的优先级高于content. trigger高于nav.
+ 
+
+* `panel` 单个面板
+
+* `content` 面板列表元素
+
+* `trigger` 触发器
+
+* `nav` 触发器容器
+
+
+
+```
+    <div>
+        <span data-role="prev">上一页</span>
+        <ul class="ui-switchable-nav-test" data-role="nav">
+            <li data-role="trigger">标题 A</li>
+            <li data-role="trigger">标题 B</li>
+            <li data-role="trigger">标题 C</li>
+            <li data-role="trigger">标题 D</li>
+            <li data-role="trigger">标题 E</li>
+        </ul>
+        <div id="J_Slide">  <!-- 容器元素 -->
+            <div class="ui-switchable-content" data-role="content">  <!-- 面板列表 -->
+            <div data-role="panel">内容 A</div>
+            <div style="display: none" data-role="panel">内容 B</div>
+            <div style="display: none" data-role="panel">内容 C</div>
+            <div style="display: none" data-role="panel">内容 D</div>
+        </div>
+        <span data-role="next">下一页</span>
+    </div>
+```
+* `prev` 上一页 (仅在Carousel组件生效)
+
+* `next` 下一页 (仅在Carousle组件中生效)
+
 
 ## 具体组件配置属性
 
@@ -171,12 +181,11 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
 
 
 ## 方法详情
-* `switchTo`(toIndex, fromIndex, direction)
+* `switchTo`(toIndex, fromIndex)
   切换到某个视图。
       toIndex {Number} 要切换到的项。
       fromInex {Number} 当前项.
-      direction {String}(可选)方向, 用于 effect, 可取 ‘forward’, ‘backward’, 或者不设置。
-  
+      
 * prev
 
   切换到上一视图。
@@ -198,11 +207,11 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
 ## 组件触发事件
 在组件运行中，会触发相关事件，使用者可以根据自己的需要去监听对应的事件
 
-* `beforeSwitch`
+* `switch`
   
   面板切换前触发。
 
-* `switch`
+* `switched`
 
   面板切换后触发。
 
