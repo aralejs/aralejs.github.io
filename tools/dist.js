@@ -28,7 +28,11 @@ DIST_DIR = path.join(DIST_DIR, meta.version);
 
 // main
 Object.keys(meta['dist']).forEach(function(filename) {
-   build(filename);
+    if (/\.js$/.test(filename)) {
+        build(filename);
+    } else {
+        copy(filename);
+    }
 });
 
 console.log('');
@@ -58,6 +62,12 @@ function build(filename) {
     mkdirS(path.dirname(minfile));
     fs.writeFileSync(debugfile, debugCode, 'utf8');
     fs.writeFileSync(minfile, compress(minCode), 'utf8');
+}
+
+
+function copy(filename) {
+    var code = fs.readFileSync(path.join(SRC_DIR, filename), 'utf8');
+    fs.writeFileSync(path.join(DIST_DIR, filename), code, 'utf8');
 }
 
 

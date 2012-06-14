@@ -35,14 +35,15 @@ define("#base/0.9.15/attribute-debug", [], function(require, exports) {
         // a `change:attr` event handler.
         parseEventsFromInstance(this, attrs);
 
-        // Convert `on/before/afterXxx` config to event handler.
-        parseEventsFromAttrs(this, attrs);
-
         // initAttrs 是在初始化时调用的，默认情况下实例上肯定没有 attrs，不存在覆盖问题
         this.attrs = attrs;
 
         // 对于有 setter 的属性，要用初始值 set 一下，以保证关联属性也一同初始化
+        // 这样还可以让 onXx 通过 setter 的方式支持更多形式
         setSetterAttrs(this, attrs, userValues);
+
+        // Convert `on/before/afterXxx` config to event handler.
+        parseEventsFromAttrs(this, attrs);
 
         // 将 this.attrs 上的 special properties 放回 this 上
         copySpecialProps(specialProps, this, this.attrs, true);
@@ -312,8 +313,7 @@ define("#base/0.9.15/attribute-debug", [], function(require, exports) {
 
         for (var key in userValues) {
             if (userValues.hasOwnProperty(key)) {
-                // 当 key 为 `on/before/afterXx` 时，attrs[key] 已不存在
-                if (attrs[key] && attrs[key].setter) {
+                if (attrs[key].setter) {
                     host.set(key, userValues[key].value, options);
                 }
             }

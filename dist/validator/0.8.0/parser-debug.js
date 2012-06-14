@@ -33,7 +33,7 @@ define("#validator/0.8.0/parser-debug", ["$","./rule"], function(require, export
         $.each(arr, function(i, v) {
             arr[i] = $.trim(v);
             if (!arr[i])
-                throw NOTICE;
+                throw new Error(NOTICE);
 
             var arr2 = arr[i].split(':');
 
@@ -41,7 +41,7 @@ define("#validator/0.8.0/parser-debug", ["$","./rule"], function(require, export
                 value = $.trim(arr2[1]);
 
             if (!key || !value)
-                throw NOTICE;
+                throw new Error(NOTICE);
 
             result[getValue(key)] = $.trim(getValue(value));
         });

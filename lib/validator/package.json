@@ -4,7 +4,7 @@
         "core.js": "default",
         "async.js": "default",
         "item.js": "default",
-        "parser.js": "default",
+        "utils.js": "default",
         "rule.js": "default",
         "validator.js": "default"
     }

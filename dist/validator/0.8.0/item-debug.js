@@ -1,17 +1,24 @@
-define("#validator/0.8.0/item-debug", ["$","./parser","widget","./async","./rule"], function(require, exports, module) {
+define("#validator/0.8.0/item-debug", ["$","./utils","widget","./async","./rule"], function(require, exports, module) {
     var $ = require('$'),
-        parser = require('./parser'),
+        utils = require('./utils'),
         Widget = require('widget'),
         async = require('./async'),
         Rule = require('./rule');
 
+    var setterConfig = {
+        setter: function(val) {
+            return typeof val != 'function' ? utils.helper(val) : val;
+        }
+    };
     var Item = Widget.extend({
         attrs: {
             rule: '',
             display: null,
             triggerType: null,
             required: false,
-            checkNull: true
+            checkNull: true,
+            onItemValidate: setterConfig,
+            onItemValidated: setterConfig
         },
 
         setup: function() {
@@ -26,7 +33,7 @@ define("#validator/0.8.0/item-debug", ["$","./parser","widget","./async","./rule
 
             this.trigger('itemValidate', this.element);
 
-            var rules = parser.parseRules(this.get('rule')),
+            var rules = utils.parseRules(this.get('rule')),
                 that = this;
 
             if (!rules) return this;
@@ -59,7 +66,7 @@ define("#validator/0.8.0/item-debug", ["$","./parser","widget","./async","./rule
 
         $.each(rules, function(i, item) {
 
-            var obj = parser.parseRule(item),
+            var obj = utils.parseRule(item),
                 ruleName = obj.name,
                 param = obj.param;
 

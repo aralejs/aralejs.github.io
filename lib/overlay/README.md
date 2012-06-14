@@ -153,7 +153,7 @@
 ## 演示页面
 
  - [examples/overlay.html](http://aralejs.org/lib/overlay/examples/overlay.html)
- - [examples/mask.html](http://aralejs.org/lib/mask/examples/mask.html)
+ - [examples/mask.html](http://aralejs.org/lib/overlay/examples/mask.html)
 
 
 ## 测试用例
