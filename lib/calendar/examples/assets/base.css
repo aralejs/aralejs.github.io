@@ -118,15 +118,33 @@ code {
 }
 
 /* form */
-textarea {
+textarea, input {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
     padding: 5px 8px;
 }
-textarea:focus {
+textarea:focus, input:focus {
     border-color: #999;
     outline: 0 none;
+}
+
+/* extra */
+hr.end {
+    display: block;
+    margin: 30px 0;
+    clear: both;
+    border: 0 none;
+    height: 10px;
+    text-align: center;
+    background: url("end.png") no-repeat 50% 50%;
+}
+#footer {
+    margin-bottom: 30px;
+    text-align: center;
+}
+#footer a {
+    margin: 0 30px;
 }
 .container {
     max-width: 560px;
