@@ -10,6 +10,9 @@
         <link rel="stylesheet" href="../src/themes/simple.css" />
         <script src="../../../tools/seajs-and-its-friends.js"></script>
         <script type="text/javascript" src="assets/example.js"></script>
+        <!-- [if lt IE 9]>
+        <script type="text/javascript" src="https://raw.github.com/aFarkas/html5shiv/master/dist/html5shiv.js"></script>
+        <![endif]-->
     </head>
     <body>
         <header id="header">
@@ -71,11 +74,13 @@
 <div class="highlight"><pre><span class="kd">var</span> <span class="nx">cal4</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Calendar</span><span class="p">({</span><span class="nx">trigger</span><span class="o">:</span> <span class="s1">&#39;#date-4&#39;</span><span class="p">});</span>
 <span class="kd">var</span> <span class="nx">cal5</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Calendar</span><span class="p">({</span><span class="nx">trigger</span><span class="o">:</span> <span class="s1">&#39;#date-5&#39;</span><span class="p">});</span>
 <span class="nx">cal4</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;select-date&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#date-4-explain&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
     <span class="nx">cal5</span><span class="p">.</span><span class="nx">range</span><span class="p">([</span><span class="nx">date</span><span class="p">,</span> <span class="kc">null</span><span class="p">]);</span>
 <span class="p">}).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;select-disabled-date&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#date-4-explain&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;not available&#39;</span><span class="p">);</span>
 <span class="p">});</span>
 <span class="nx">cal5</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;select-date&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#date-5-explain&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
     <span class="nx">cal4</span><span class="p">.</span><span class="nx">range</span><span class="p">([</span><span class="kc">null</span><span class="p">,</span> <span class="nx">date</span><span class="p">]);</span>
 <span class="p">}).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;select-disabled-date&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#date-5-explain&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;not available&#39;</span><span class="p">);</span>
