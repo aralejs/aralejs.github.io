@@ -111,23 +111,26 @@ def _emoji(text):
 
 
 class JuneRender(m.HtmlRenderer, m.SmartyPants):
-    def set_pygments_options(self, noclasses=False, lang=None):
-        self._pygments_noclasses = noclasses
-        self._pygments_lang = lang
-
-    def set_defaults(self, options):
+    def set_options(self, options):
         self._options = options
 
     def block_code(self, text, lang):
+        default_lang = self._options.get('lang', None)
+        inject = self._options.get('inject', False)
+
         if lang:
             lexer = get_lexer_by_name(lang, stripall=True)
-        elif self._pygments_lang:
-            lexer = get_lexer_by_name(self._pygments_lang, stripall=True)
+        elif default_lang:
+            lexer = get_lexer_by_name(default_lang, stripall=True)
         else:
             return '\n<pre><code>%s</code></pre>\n' %\
                     escape.xhtml_escape(text.strip())
         formatter = HtmlFormatter(noclasses=self._pygments_noclasses)
-        return highlight(text, lexer, formatter)
+        html = highlight(text, lexer, formatter)
+        if lang == 'javascript' and inject:
+            html += '<script type="text/javascript">%s</script>' % text
+
+        return html
 
     def autolink(self, link, is_email):
         title = link.replace('http://', '').replace('https://', '')
@@ -174,11 +177,13 @@ class JuneRender(m.HtmlRenderer, m.SmartyPants):
         return '<a href="%s">%s</a>' % (link, title)
 
 
-def markdown(text, noclasses=False, lang=None):
+def markdown(text, lang=None, inject=False):
     if not isinstance(text, (unicode, type(None))):
         text = text.decode('utf-8')
+
     render = JuneRender(flags=m.HTML_USE_XHTML)
-    render.set_pygments_options(noclasses=noclasses, lang=lang)
+    render.set_options({'lang': lang, 'inject': inject})
+
     md = m.Markdown(
         render,
         extensions=m.EXT_FENCED_CODE | m.EXT_AUTOLINK,
@@ -191,8 +196,7 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(prog='doki')
     parser.add_argument('file', nargs='*', type=str)
-    parser.add_argument('-i', '--inline', dest='inline', action='store_true',
-                        help='inline style for code')
+    parser.add_argument('-i', '--inject', dest='inject', action='store_true')
     parser.add_argument('-t', '--template', dest='template')
     parser.add_argument('-l', '--language', dest='language')
 
@@ -205,13 +209,9 @@ if __name__ == '__main__':
     else:
         template = "{{text}}"
 
-    if args.inline:
-        noclasses = True
-    else:
-        noclasses = False
     text = ''
     for f in args.file:
-        text += markdown(open(f).read(), noclasses, args.language)
+        text += markdown(open(f).read(), args.language, args.inject)
 
     text = template.replace('{{text}}', text)
     print(text.encode('utf-8'))
