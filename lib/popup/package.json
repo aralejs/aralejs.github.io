@@ -1,7 +1,7 @@
 {
-    "version": "0.9.3",
+    "version": "0.9.4",
     "dist": {
-        "triggerable.js": "default",
+        "popup.js": "default",
         "dropdown.js": "default"
     },
     "tests": ["dropdown"]

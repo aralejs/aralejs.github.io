@@ -1,6 +1,8 @@
 
-# Triggerable
+# Popup
 
+### 0.9.4 2012-06-16
+    * Triggerable 改名为 Popup
 
 ### 0.9.3 2012-06-05
     * 调整为 Triggerable 继承体系
