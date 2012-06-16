@@ -1,9 +1,9 @@
-define(function(require, exports, module) {
+define("#popup/0.9.4/dropdown-debug", ["./popup"], function(require, exports, module) {
 
-    var Triggerable = require('./triggerable');
+    var Popup = require('./popup');
 
 
-    var Dropdown = Triggerable.extend({
+    var Dropdown = Popup.extend({
 
         setup: function() {
             Dropdown.superclass.setup.call(this);
