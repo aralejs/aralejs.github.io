@@ -21,7 +21,7 @@ __Arguments__
 
 *   options - 配置项。包含以下：
 
-    *   element - 要校验的表单，可以是选择器、原生FORM Element，或者 jQuery 对象。
+    *   element - 要校验的表单，可以是选择器、原生FORM Element，或者 $ 对象。
     *   triggerType - 默认值'blur'。触发表单项校验的事件类型。
     *   checkOnSubmit - 默认值 true。是否在表单提交前进行校验，默认进行校验。
     *   stopOnError - 默认值 false。提交前校验整个表单时，遇到错误时是否停止校验其他表单项。
