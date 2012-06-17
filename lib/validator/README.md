@@ -119,9 +119,12 @@ JS
         });
     });
 
-##More
+##Documentation
 
 *   [校验规则](validator/docs/rules.md)
 *   [JS API](validator/docs/api.md)
 *   [基于 validator-core 自定义 UI 反馈](validator/docs/how-to-extend-validator-core.md)
 
+##Demos
+
+//TODO
