@@ -259,6 +259,18 @@ __Arguments__
 
 *   options - 配置项。请参考[Item配置项](#Item-constructor)。
 
+__Example__
+
+    Core.validate({
+        element: '[name=username]',
+        required: true,
+        rule: 'minlength{min:8}',
+        onItemValidated: function() {
+            console.log(arguments);
+        }
+    });
+
+
 
 
 
