@@ -57,6 +57,9 @@ JS
         });
     });
 
+##More
+
+###[校验规则](docs/rules.md)
 
 ##Documentation
 
@@ -74,12 +77,6 @@ JS
 *   [Validator::helper](#Validator-helper) 注册 helper 函数，以便在 DOM 中引用
 
 *   [Rule#execute](#Rule-execute) 手动触发单个表单项校验
-
-
-
-
-
-##校验规则
 
 
 ##检验核心
