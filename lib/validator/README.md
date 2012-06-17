@@ -59,7 +59,7 @@ JS
 
 ##More
 
-*   [校验规则](./docs/rules.md)
+*   [校验规则](validator/docs/rules.md)
 
 ##Documentation
 
