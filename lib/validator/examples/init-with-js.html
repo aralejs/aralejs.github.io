@@ -94,6 +94,25 @@
                     });
 
                     //validator.removeItem('username');
+
+                    /*
+                    $('#validate').click(function() {
+                        Validator.validate({
+                            element: '[name=username]',
+                            rule: 'emailOrMobile lengthConstraint{min: 15, max: 8}',
+                            required: true,
+                            display: '用户名',
+                            errormessage: '用户名的格式必须是正确的哦',
+                            triggerType: 'keyup blur',
+                            onItemValidate: function() {
+                                console.log('onItemValidate', arguments);
+                            },
+                            onItemValidated: function(err, msg, ele) {
+                                console.log('onItemValidated', arguments);
+                            }
+                        });
+                    });
+                    */
                 });
             });
         </script>
@@ -149,5 +168,7 @@
             </div>
 
         </form>
+
+        <!--<button id="validate">validate</button>-->
     </body>
 </html>
