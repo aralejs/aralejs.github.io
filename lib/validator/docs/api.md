@@ -19,6 +19,7 @@ Class Methods
 *   [Core::autoRender](#Core-autoRender) 从 DOM 中实例对象化 Core 对象
 *   [Core::query](#Core-query2) 获取 Core 或 Item 实例对象对象
 *   [Core::helper](#Core-helper) 注册 helper 函数，以便在 DOM 中引用
+*   [Core::validate](#Core-validate) 不初始化 validator 实例，执行一次性校验表单域。
 
 ##[Item](#Item)
 
@@ -243,6 +244,21 @@ __Example__
     });
 
     <input required name="username" type="username" data-on-item-validated="usernameHandler" data-errormessage-required="Please fullfill {{display}}" />
+
+
+
+
+
+
+<a name="Core-validate"></a>
+### Core::validate(options)
+
+不初始化 Validator 实例，执行一次性校验表单域。(要求表单域必须在一个 form 中。)
+
+__Arguments__
+
+*   options - 配置项。请参考[Item配置项](#Item-constructor)。
+
 
 
 
