@@ -10,12 +10,11 @@
 
 1.  基于 validator-core 扩展。
 
-    var Core = require('validator-core');
+        var Core = require('validator-core');
 
 2.  继承Core。
 
-    var customValidator = Core.extend({
-    });
+        var customValidator = Core.extend({});
 
 3.  定制如何展示校验消息。
 
@@ -34,4 +33,4 @@
 
 这样，我们就实现了一个简单的交互行为。实际的情况要比此复杂，我们可以继续在 customValidator 中绑定事件和封装更多的行为和方法来实现理想中的交互形式。
 
-请参考[validator.js](../src/validator.js)。
+更多请参考[validator.js](../src/validator.js)源码。
