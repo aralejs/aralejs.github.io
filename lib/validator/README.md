@@ -20,17 +20,37 @@ Validator 是表单校验组件。
 
 HTML
 
-    <form id="test-form" data-enable-validate="true">
-        <p>
-            <label for="username">Username:</label>
-            <input id="username" required name="username" type="email" data-rule='lengthBetween{"max":12, "min":1}' data-onItemValidate="handler" />
-        </p>
+    <form data-widget="validator" class="ui-form">
+        <div class="ui-form-item">
+            <label for="username" class="ui-label"><span class="ui-form-required">*</span>用户名：</label>
+            <input id="username" name="username" class="ui-input" required type="email" minlength="1" maxlength="20" />
+            <div class="ui-form-explain">用户名为电子邮箱。</div>
+        </div>
 
-        <p>
-            <label for="password">Password:</label>
-            <input id="password" required name="password" type="password" pattern="[^\#\$\%]*" />
-        </p>
+        <div class="ui-form-item ui-form-item-error">
+            <label for="password" class="ui-label"><span class="ui-form-required">*</span>密码：</label>
+            <input id="password" name="password" type="password" class="ui-input" minlength="5" />
+            <div class="ui-form-explain">密码的长度必须大于或等于5。</div>
+        </div>
+
+        <div class="ui-form-item">
+            <label for="password-confirmation" class="ui-label"><span class="ui-form-required">*</span>重复输入密码：</label>
+            <input id="password-confirmation" name="password-confirmation" type="password" class="ui-input" data-rule="confirmation{target: '#password'}" />
+        </div>
+
+        <div class="ui-form-item">
+            <span class="ui-button-morange ui-button"><input class="ui-button-text" value="确定" type="submit"></span>
+        </div>
     </form>
+
+JS
+
+    seajs.use(['widget', '$'] function(Widget, $) {
+        $(function() {
+            // 初始化所有使用`data-widget`指定的组件。
+            Widget.autoRenderAll();
+        });
+    });
 
 
 ##Documentation
