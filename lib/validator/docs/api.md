@@ -1,14 +1,14 @@
 #API Documentation
 
 *   [Validator#constructor](#Validator-constructor) Validator构造函数
-
 *   [Validator#addItem](#Validator-addItem) 添加校验项
 *   [Validator#removeItem](#Validator-removeItem) 移除校验项
+*   [Validator#query](#Validator-query1) 获取 Item 实例对象
 *   [Validator#execute](#Validator-execute) 手动触发表单校验
 *   [Validator#destroy](#Validator-destroy) 销毁 Validator 实例对象
 
 *   [Validator::autoRender](#Validator-autoRender) 从 DOM 中实例化 Validator 对象
-*   [Validator::query](#Validator-query) 获取 Validator 或 Item 实例对象
+*   [Validator::query](#Validator-query2) 获取 Validator 或 Item 实例对象
 *   [Validator::helper](#Validator-helper) 注册 helper 函数，以便在 DOM 中引用
 
 *   [Rule#execute](#Rule-execute) 手动触发单个表单项校验
@@ -107,6 +107,26 @@ __Example__
 
 
 
+<a name="Validator-query1"></a>
+### Validator#query(element)
+
+根据 DOM 获取 Item 实例对象。
+
+__Arguments__
+
+*   element - 校验对象的原生 DOM element 或 $ 对象或者选择器。
+
+__Example__
+
+    var usernameItem = validator.query('[name=username]');
+    usernameItem.on('itemValidated', function() {
+        // do something
+    });
+
+
+
+
+
 
 <a name="Validator-destroy"></a>
 ### Validator#destroy(callback)
@@ -137,7 +157,7 @@ __Example__
 
 
 
-<a name="Validator-query"></a>
+<a name="Validator-query2"></a>
 ### Validator::query(element)
 
 如果在 DOM 中使用标签属性指定校验规则，那么调用此函数获取 Validator 和 Item 的实例对象。
