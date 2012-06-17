@@ -48,31 +48,25 @@ Instance Methods
 *   autoSubmit - 默认值true。When all validation passed, submit the form automatically.
 *   checkNull - 默认值true。除提交前的校验外，表单域的值为空时是否校验。
 *   onItemValidate - 函数类型。监听 itemValidate 事件，任何表单域校验前都会触发此函数。接收到的参数：
-    
     1.  element - 被校验的元素，$ 类型。
 
 *   onItemValidated - 函数类型。监听 itemValidated 事件，任何表单校验结束都会触发此函数。接受到的参数：
-
     1.  element - 被校验的元素，$ 类型。
     2.  error - 如果校验通过，则为 null，否则为出错的校验规则名称。
     3.  message - 提示消息。
 
 *   onFormValidate - 函数类型。监听 formValidate 事件，当针对整个表单的校验开始钱触发此函数。接受到的参数：
-
     1.  element - 校验的表单元素，$ 类型。
 
 *   onFormValidated - 函数类型。监听 formValidated 事件，当针对整个表单的校验结束后触发此函数。接受到的参数：
-
     1.  element - 被校验的元素，$ 类型。
     2.  error - 如果校验通过，则为 null，否则为 true。
 
 *   showMessage - 函数类型。用来定制错误信息提示，当任何表单项校验出错时都触发此函数。Item 实例对象中的这个属性优先生效。this 指向 Core 实例对象，接受到的参数：
-
     1.  element - 被校验的元素，$ 类型。
     2.  message - 提示消息。
 
 *   hideMessage - 函数类型。用来定制怎样隐藏错误信息提示，当任何表单项校验通过时都触发此函数。Item 实例对象中的这个属性优先生效。this 指向 Core 实例对象，接受到的参数：
-
     1.  element - 被校验的元素，$ 类型。
     2.  message - 提示消息。
 
