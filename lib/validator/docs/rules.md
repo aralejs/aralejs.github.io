@@ -173,6 +173,9 @@ Example
     var username = email.or('mobile');          // #2
     Validator.addRule('username', username);    // #3
 
+
+API
+
 *   [Validator::getRule](#Validator-getRule) 获取校验规则对象
 *   [Rule#and](#Rule-and) “AND”(与)组合校验规则
 *   [Rule#or](#Rule-or) "OR"(或)组合校验规则
