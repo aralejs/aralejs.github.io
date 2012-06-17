@@ -2,6 +2,11 @@
 
 Validator 是表单校验组件。
 
+##模块依赖
+
+*   [widget](widget/README.md)
+*   [jquery](jquery/README.md) | [zepto](zepto/README.md)
+
 ##Feature List
 
 *   HTML5 form API。
