@@ -312,4 +312,4 @@ __Example__
 想根据需求自定制一种表单交互？
 
 1.  首先阅读源码 [validator.js](../src/validator.js)。
-2.  阅读[基于 validator-core 拓展自定义 UI 反馈](validator/docs/how-to-extend-validator-core.md)。
+2.  阅读[基于 validator-core 拓展自定义 UI 反馈](how-to-extend-validator-core.md)。
