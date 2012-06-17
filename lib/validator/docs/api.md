@@ -307,9 +307,9 @@ __Example__
 <a name="Validator"></a>
 ##Validator
 
-继承 Core，封装了包括错误信息处理的支付宝默认表单交互规则。拥有 Core 所有的实例方法和类方法。
+继承 Core，封装了包括错误信息处理在内的支付宝默认表单交互规则。拥有 Core 所有的实例方法和类方法。
 
 想根据需求自定制一种表单交互？
 
-1.  首先阅读源码[validator.js](../src/validator.js)。
+1.  首先阅读源码 [validator.js](../src/validator.js)。
 2.  阅读[基于 validator-core 拓展自定义 UI 反馈](validator/docs/how-to-extend-validator-core.md)。
