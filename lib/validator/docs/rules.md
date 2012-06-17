@@ -4,7 +4,7 @@
 
 ##内置校验规则
 
-对于每种校验规则如何做校验，read the fucking source :) -> [rule.js](../src/rule.js)。
+对于每种校验规则如何做校验，read the fucking source : ) -> [rule.js](../src/rule.js)。
 
 ###type
 
