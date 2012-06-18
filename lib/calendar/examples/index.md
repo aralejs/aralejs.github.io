@@ -2,6 +2,8 @@
 
 ## Example
 
+<link rel="stylesheet" href="/lib/calendar/src/themes/simple.css" />
+
 Attached to a field with default options.
 
 <div class="cell">
