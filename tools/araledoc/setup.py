@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import sys
-kwargs = {}
+
+use_2to3 = False
 major, minor = sys.version_info[:2]
 if major >= 3:
-    kwargs['use_2to3'] = True
+    use_2to3 = True
 
 from setuptools import setup
 install_requires = ['Jinja2', 'Pygments', 'misaka']
@@ -43,5 +44,5 @@ setup(
         'Programming Language :: Python :: Implementation :: CPython',
         'Topic :: Text Processing :: Markup',
     ],
-    **kwargs
+    use_2to3=use_2to3,
 )

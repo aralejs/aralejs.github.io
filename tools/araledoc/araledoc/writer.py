@@ -20,25 +20,13 @@ from .options import g
 class BaseWriter(object):
     """BaseWriter
     """
-    def start(self):
-        raise NotImplementedError
-
-    def run(self):
-        try:
-            self.start()
-        except Exception as e:
-            logging.error(e)
-
-        name = self.__class__.__name__
-        logging.info('%s Finished' % name)
-
     def write(self, content, destination):
         destination = destination.lower()
         destination = destination.replace(' ', '-')
         folder = os.path.split(destination)[0]
         # on Mac OSX, `folder` == `FOLDER`
         # then make sure destination is lowercase
-        if not os.path.isdir(folder):
+        if folder and not os.path.isdir(folder):
             os.makedirs(folder)
 
         f = open(destination, 'w')
@@ -71,10 +59,10 @@ class AraleWriter(BaseWriter):
             content = self.package.render_example(name)
             params = {'content': content, 'package': self.package}
             dest = os.path.join('docs', self.package.name, 'examples', name)
-            dest = '%s.html'
+            dest = '%s.html' % dest
             self.render(params, 'example.html', dest)
 
-    def start(self):
+    def run(self):
         self.write_homepage()
         self.write_examples()
 
@@ -83,7 +71,8 @@ def load_jinja():
     #: prepare loaders
     #: loaders = ['_templates', theme]
     loaders = []
-    tpl = os.path.abspath('_templates')
+    root = os.path.abspath(os.path.dirname(__file__))
+    tpl = os.path.join(root, '_templates')
     if os.path.exists(tpl):
         loaders.append(tpl)
 

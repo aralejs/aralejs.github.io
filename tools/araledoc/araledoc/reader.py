@@ -2,6 +2,7 @@
 
 import os
 import re
+import logging
 import misaka as m
 try:
     import json
@@ -21,6 +22,7 @@ __all__ = ['markdown']
 class Package(object):
     def __init__(self, path):
         self.path = path
+        logging.info('Loading %s' % path)
 
         f = open(os.path.join(path, 'package.json'))
         self._package = _json_decode(f.read())
@@ -49,13 +51,13 @@ class Package(object):
         return map(lambda p: p[:-3], files)
 
     def render_homepage(self):
-        f = os.path.join(self.path, 'README.md')
+        f = open(os.path.join(self.path, 'README.md'))
         content = markdown(f.read())
         f.close()
         return content
 
     def render_example(self, name):
-        f = '%s.md' % os.path.join(self.path, 'examples', name)
+        f = open('%s.md' % os.path.join(self.path, 'examples', name))
         content = markdown(f.read(), inject=True)
         f.close()
         return content
@@ -181,10 +183,10 @@ class JuneRender(m.HtmlRenderer, m.SmartyPants):
         else:
             return '\n<pre><code>%s</code></pre>\n' %\
                     escape.xhtml_escape(text.strip())
-        formatter = HtmlFormatter(noclasses=self._pygments_noclasses)
+        formatter = HtmlFormatter()
         html = highlight(text, lexer, formatter)
         if lang == 'javascript' and inject:
-            html += '<script type="text/javascript">%s</script>' % text
+            html += '\n<script type="text/javascript">\n%s</script>\n' % text
 
         return html
 

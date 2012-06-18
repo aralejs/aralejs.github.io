@@ -1,8 +1,13 @@
 #!/usr/bin/env python
 
 import argparse
-from reader import Package
-from writer import AraleWriter
+from .options import enable_pretty_logging
+from .reader import Package
+from .writer import AraleWriter, load_jinja
+
+
+def load_settings():
+    load_jinja()
 
 
 def build_one(name):
@@ -17,6 +22,9 @@ def main():
     parser.add_argument('name', nargs='*', type=str)
 
     args = parser.parse_args()
+    enable_pretty_logging()
+    #TODO
+    load_settings()
     for name in args.name:
         build_one(name)
 
