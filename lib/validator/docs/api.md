@@ -33,6 +33,10 @@ Instance Methods
 
 ##[Validator](#Validator)
 
+Constructor
+
+*   [配置项](#Validator-constructor)
+
 
 <a name="Core"></a>
 ##Core
@@ -43,7 +47,7 @@ Instance Methods
 ### 配置项
 
 *   element - 要校验的表单，可以是选择器、原生FORM Element，或者 $ 对象。
-*   triggerType - 默认值'blur'。触发表单项校验的事件类型。
+*   triggerType - 默认值'blur'。触发表单项校验的事件类型。支持多个事件，以空格隔开。
 *   checkOnSubmit - 默认值 true。是否在表单提交前进行校验，默认进行校验。
 *   stopOnError - 默认值 false。提交前校验整个表单时，遇到错误时是否停止校验其他表单项。
 *   autoSubmit - 默认值true。When all validation passed, submit the form automatically.
@@ -343,3 +347,18 @@ __Example__
 
 1.  首先阅读源码 [validator.js](../src/validator.js)。
 2.  阅读[基于 validator-core 拓展自定义 UI 反馈](how-to-extend-validator-core.md)。
+
+
+
+<a name="Validator-constructor"></a>
+### 配置项
+
+*   explainClass: 'ui-form-explain'
+*   itemClass: 'ui-form-item'
+*   itemHoverClass: 'ui-form-item-hover'
+*   itemFocusClass: 'ui-form-item-focus'
+*   itemErrorClass: 'ui-form-item-error'
+*   inputClass: 'ui-input'
+*   textareaClass: 'ui-textarea'
+
+这些都是为了处理表单 UI 响应。具体请参考 DEMO。
