@@ -19,6 +19,8 @@
         margin:10px;
     }
 </style>
+<link rel="stylesheet" href="https://a.alipayobjects.com/u/css/201206/3MWeKLlAp9.css" type="text/css" charset="utf-8">
+
 </head>
 <body>
     <input type="button" id="trigger1" value="基本对话框" />
@@ -33,7 +35,9 @@
     <input type="button" id="trigger8-2" value="混合动画对话框二" />        
     
     <input type="button" id="trigger9" value="ajax对话框" />
-    <input type="button" id="trigger10" value="iframe对话框" />    
+    <input type="button" id="trigger10" value="iframe对话框" />
+
+    <input type="button" id="trigger11" value="带基本样式的对话框" />    
     
 <script>
 
@@ -46,7 +50,7 @@ seajs.config({
     */
 });
 
-seajs.use(['../src/baseDialog', '../src/animDialog'], function(BaseDialog, AnimDialog) {
+seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox'], function(BaseDialog, AnimDialog, ConfirmBox) {
     
     var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
     var dialogTpl = '<div class="overlay"><div id="dialog-title"></div><div id="dialog-content"></div><button id="confirm">确认按钮</button><button id="close">点击关闭</button></div>';
@@ -238,6 +242,25 @@ seajs.use(['../src/baseDialog', '../src/animDialog'], function(BaseDialog, AnimD
             baseXY: [400, 200]
         },
         iframeUrl: 'https://www.alipay.com/'
+    });
+    var d11 = new ConfirmBox({
+        trigger: '#trigger11',
+        title: function() {
+            return '我真是标题啊';
+        },
+        content: '我是内容 我是内容',
+        effect: {
+            type: 'move',
+            from: 'up'
+        },
+        onConfirm: function() {
+            var that = this;
+            this.set('title', '三秒后关闭对话框');
+            this.set('content', '不要啊！！');            
+            setTimeout(function() {
+                that.hide();
+            }, 3000);
+        }
     });
 });
 </script>
