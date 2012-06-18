@@ -1,9 +1,11 @@
 # Makefile for arale project
 
+server:
+	python -m SimpleHTTPServer
 
 # dist
 
-all: events class base widget cookie iframe-shim position easing validator querystring overlay dropdown dialog switchable calendar
+dist: events class base widget cookie iframe-shim position easing validator querystring overlay dropdown dialog switchable calendar
 
 events:
 	node tools/dist.js events

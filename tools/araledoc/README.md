@@ -56,3 +56,13 @@ arale/
 ```
 
 ### 整站文档
+
+## Server
+
+在 arale 根目录调用：
+
+```
+$ make server
+```
+
+访问 http://127.0.0.1:8000/docs/calendar/
