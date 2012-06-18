@@ -37,7 +37,6 @@
 2.  校验规则。
 
     支持按照 html5 标准中校验相关标签属性配置校验规则。包括：
-
     *   required
 
             <input name="username" required />
