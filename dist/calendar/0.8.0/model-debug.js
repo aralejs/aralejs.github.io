@@ -106,16 +106,11 @@ define("#calendar/0.8.0/model-debug", ["jquery","base","moment"], function(requi
             this.renderData();
         },
 
-        selectDate: function(obj) {
-            obj || (obj = {});
-            if (obj.year) this._current.year(obj.year);
-            if ('month' in obj) {
-                this._current.month(obj.month);
+        selectDate: function(time) {
+            if (time) {
+                this._current = moment(time);
+                this.renderData();
             }
-            if ('date' in obj) {
-                this._current.date(obj.date);
-            }
-            this.renderData();
             return this._current.clone();
         },
 
@@ -255,8 +250,7 @@ define("#calendar/0.8.0/model-debug", ["jquery","base","moment"], function(requi
 
         var pushData = function(d, previous, current, next) {
             items.push({
-                year: d.year(),
-                month: d.month(),
+                datetime: d.format('YYYY-MM-DD'),
                 date: d.date(),
                 day: d.day(),
                 previous: previous,

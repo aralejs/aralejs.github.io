@@ -1,13 +1,67 @@
 #!/usr/bin/env python
 
+import os
 import re
+import logging
 import misaka as m
+try:
+    import json
+    _json_decode = json.loads
+except ImportError:
+    import simplejson
+    _json_decode = simplejson.loads
 from tornado import escape
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
+from .utils import cjk_nowrap
 
 __all__ = ['markdown']
+
+
+class Package(object):
+    def __init__(self, path):
+        self.path = path
+        logging.info('Loading %s' % path)
+
+        f = open(os.path.join(path, 'package.json'))
+        self._package = _json_decode(f.read())
+        f.close()
+
+    @property
+    def name(self):
+        return self._package['name']
+
+    @property
+    def version(self):
+        return self._package['version']
+
+    @property
+    def description(self):
+        return self._package.get('description', '')
+
+    @property
+    def homepage(self):
+        return '/docs/%s/' % self.name
+
+    @property
+    def examples(self):
+        files = os.listdir(os.path.join(self.path, 'examples'))
+        files = filter(lambda p: p.endswith('.md'), files)
+        return map(lambda p: p[:-3], files)
+
+    def render_homepage(self):
+        f = open(os.path.join(self.path, 'README.md'))
+        content = markdown(f.read())
+        f.close()
+        return content
+
+    def render_example(self, name):
+        f = open('%s.md' % os.path.join(self.path, 'examples', name))
+        content = markdown(f.read(), inject=True)
+        f.close()
+        return content
+
 
 _emoji_list = [
     "-1", "0", "1", "109", "2", "3", "4", "5", "6", "7", "8", "8ball", "9",
@@ -114,6 +168,10 @@ class JuneRender(m.HtmlRenderer, m.SmartyPants):
     def set_options(self, options):
         self._options = options
 
+    def paragraph(self, text):
+        text = cjk_nowrap(text)
+        return '<p>%s</p>\n' % text
+
     def block_code(self, text, lang):
         default_lang = self._options.get('lang', None)
         inject = self._options.get('inject', False)
@@ -125,10 +183,10 @@ class JuneRender(m.HtmlRenderer, m.SmartyPants):
         else:
             return '\n<pre><code>%s</code></pre>\n' %\
                     escape.xhtml_escape(text.strip())
-        formatter = HtmlFormatter(noclasses=self._pygments_noclasses)
+        formatter = HtmlFormatter()
         html = highlight(text, lexer, formatter)
         if lang == 'javascript' and inject:
-            html += '<script type="text/javascript">%s</script>' % text
+            html += '\n<script type="text/javascript">\n%s</script>\n' % text
 
         return html
 
@@ -189,29 +247,3 @@ def markdown(text, lang=None, inject=False):
         extensions=m.EXT_FENCED_CODE | m.EXT_AUTOLINK,
     )
     return md.render(text)
-
-
-if __name__ == '__main__':
-    import os
-    import argparse
-    parser = argparse.ArgumentParser(prog='doki')
-    parser.add_argument('file', nargs='*', type=str)
-    parser.add_argument('-i', '--inject', dest='inject', action='store_true')
-    parser.add_argument('-t', '--template', dest='template')
-    parser.add_argument('-l', '--language', dest='language')
-
-    args = parser.parse_args()
-    if args.template and args.template == 'default':
-        path = os.path.join(os.path.dirname(__file__), 'template.html')
-        template = open(os.path.abspath(path)).read()
-    elif args.template:
-        template = open(args.template).read()
-    else:
-        template = "{{text}}"
-
-    text = ''
-    for f in args.file:
-        text += markdown(open(f).read(), args.language, args.inject)
-
-    text = template.replace('{{text}}', text)
-    print(text.encode('utf-8'))
