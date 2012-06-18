@@ -28,6 +28,7 @@ define("#validator/0.8.1/item-debug", ["$","./utils","widget","./async","./rule"
             },
             required: false,
             checkNull: true,
+            errormessage: null,
             onItemValidate: setterConfig,
             onItemValidated: setterConfig,
             showMessage: setterConfig,

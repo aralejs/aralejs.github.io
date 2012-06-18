@@ -17,3 +17,5 @@ Thumbs.db
 *.pyo
 node_modules
 build
+tools/araledoc/araledoc.egg-info/
+tools/araledoc/dist/

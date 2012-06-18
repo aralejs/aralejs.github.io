@@ -39,7 +39,7 @@ a:hover {
 }
 #nav {
     position: relative;
-    max-width: 560px;
+    max-width: 800px;
     *width: 560px;
     margin: 0 auto;
     padding: 10px 20px;

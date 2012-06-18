@@ -121,8 +121,18 @@ define("#validator/0.8.1/core-debug", ["$","./async","widget","./utils","./item"
                 });
 
                 return result;
-            }
+            },
 
+            validate: function(options) {
+                var element = $(options.element);
+                var validator = new Core({
+                    element: element.parents('form')
+                });
+
+                validator.addItem(options);
+                validator.query(element).execute();
+                validator.destroy();
+            }
         }),
 
 
@@ -138,7 +148,12 @@ define("#validator/0.8.1/core-debug", ["$","./async","widget","./utils","./item"
             this.items.push(item);
 
             item.set('_handler', function() {
-                if (!item.get('required') && !item.element.val()) return;
+                if (!item.get('required') && !item.element.val()) {
+                    //TODO 不够完美，这种方式用户无法在 itemValidate 事件发生的时候改变input 的 value
+                    item.trigger('itemValidate', item.element);
+                    item.trigger('itemValidated', item.element, null, null);
+                    return;
+                }
                 if (!item.get('checkNull') && !item.element.val()) return;
                 item.execute();
             });
@@ -157,7 +172,6 @@ define("#validator/0.8.1/core-debug", ["$","./async","widget","./utils","./item"
                 that = this;
 
             var j;
-            //TODO: use mechanisms supplied by widget
             $.each(this.items, function(i, item) {
                 if (target.get(0) == item.element.get(0)) {
                     j = i;

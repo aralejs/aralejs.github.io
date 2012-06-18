@@ -10,8 +10,8 @@ define("#validator/0.8.1/validator-debug", ["./core","widget","$"], function(req
             'mouseleave .{{attrs.inputClass}}': 'mouseleave',
             'mouseenter .{{attrs.textareaClass}}': 'mouseenter',
             'mouseleave .{{attrs.textareaClass}}': 'mouseleave',
-            'focus .{{itemClass}}': 'focus',
-            'blur .{{itemClass}}': 'blur'
+            'focus .{{attrs.itemClass}}': 'focus',
+            'blur .{{attrs.itemClass}}': 'blur'
         },
 
         attrs: {
@@ -81,6 +81,7 @@ define("#validator/0.8.1/validator-debug", ["./core","widget","$"], function(req
         },
 
         focus: function(e) {
+            console.log(e);
             var target = e.target;
             this.getItem(target).removeClass(this.get('itemErrorClass'));
             this.getItem(target).addClass(this.get('itemFocusClass'));

@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>validator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/validator/">Validator</a>
+                <a href="/docs/validator/examples/">Examples</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            <div class="container">
+                <h1>Validator</h1>
+<p>Validator 是表单校验组件。</p>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li>  <a href="widget/README.md">widget</a></li>
+<li>  <a href="jquery/README.md">jquery</a> | <a href="zepto/README.md">zepto</a></li>
+</ul>
+
+<h2>Feature List</h2>
+
+<ul>
+<li><p>  HTML5 form API。</p></li>
+<li><p>  data-attribute API。</p></li>
+<li><p>  异步校验。</p></li>
+<li><p>  校验规则的组合，与、或、非。</p></li>
+<li><p>  校验规则的 dynamic binding，和 unbinding。 </p></li>
+<li><p>  (TODO)关联性校验/级联校验。例如当满足一个条件时校验某种规则，满足另外的条件校验其他规则。</p></li>
+</ul>
+
+<h2>How to Use</h2>
+<p>提供两种方式调用：</p>
+
+<ul>
+<li>  DOM。利用 html5 form API 和 data-attribute 在 DOM 中完成调用。</li>
+<li>  JS API。在 javascript 代码中完成 validator 配置和调用。</li>
+</ul>
+
+<h3>DOM调用</h3>
+<p>HTML</p>
+
+<pre><code>&lt;form data-widget=&quot;validator&quot; class=&quot;ui-form&quot;&gt;
+    &lt;div class=&quot;ui-form-item&quot;&gt;
+        &lt;label for=&quot;username&quot; class=&quot;ui-label&quot;&gt;&lt;span class=&quot;ui-form-required&quot;&gt;*&lt;/span&gt;用户名：&lt;/label&gt;
+        &lt;input id=&quot;username&quot; name=&quot;username&quot; class=&quot;ui-input&quot; required type=&quot;email&quot; minlength=&quot;1&quot; maxlength=&quot;20&quot; /&gt;
+        &lt;div class=&quot;ui-form-explain&quot;&gt;用户名为电子邮箱。&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;ui-form-item ui-form-item-error&quot;&gt;
+        &lt;label for=&quot;password&quot; class=&quot;ui-label&quot;&gt;&lt;span class=&quot;ui-form-required&quot;&gt;*&lt;/span&gt;密码：&lt;/label&gt;
+        &lt;input id=&quot;password&quot; name=&quot;password&quot; type=&quot;password&quot; class=&quot;ui-input&quot; minlength=&quot;5&quot; /&gt;
+        &lt;div class=&quot;ui-form-explain&quot;&gt;密码的长度必须大于或等于5。&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;ui-form-item&quot;&gt;
+        &lt;label for=&quot;password-confirmation&quot; class=&quot;ui-label&quot;&gt;&lt;span class=&quot;ui-form-required&quot;&gt;*&lt;/span&gt;重复输入密码：&lt;/label&gt;
+        &lt;input id=&quot;password-confirmation&quot; name=&quot;password-confirmation&quot; type=&quot;password&quot; class=&quot;ui-input&quot; data-rule=&quot;confirmation{target: '#password'}&quot; /&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;ui-form-item&quot;&gt;
+        &lt;span class=&quot;ui-button-morange ui-button&quot;&gt;&lt;input class=&quot;ui-button-text&quot; value=&quot;确定&quot; type=&quot;submit&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+<p>JS</p>
+
+<pre><code>seajs.use(['widget', '$'], function(Widget, $) {
+    $(function() {
+        // 初始化所有使用`data-widget`指定的组件。
+        Widget.autoRenderAll();
+    });
+});</code></pre>
+
+<h3>JS API</h3>
+<p>HTML</p>
+
+<pre><code>&lt;form class=&quot;ui-form&quot;&gt;
+    &lt;div class=&quot;ui-form-item&quot;&gt;
+        &lt;label for=&quot;username&quot; class=&quot;ui-label&quot;&gt;&lt;span class=&quot;ui-form-required&quot;&gt;*&lt;/span&gt;用户名：&lt;/label&gt;
+        &lt;input id=&quot;username&quot; name=&quot;username&quot; class=&quot;ui-input&quot; /&gt;
+        &lt;div class=&quot;ui-form-explain&quot;&gt;用户名为电子邮箱。&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;ui-form-item ui-form-item-error&quot;&gt;
+        &lt;label for=&quot;password&quot; class=&quot;ui-label&quot;&gt;&lt;span class=&quot;ui-form-required&quot;&gt;*&lt;/span&gt;密码：&lt;/label&gt;
+        &lt;input id=&quot;password&quot; name=&quot;password&quot; type=&quot;password&quot; class=&quot;ui-input&quot; /&gt;
+        &lt;div class=&quot;ui-form-explain&quot;&gt;密码的长度必须大于或等于5。&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;ui-form-item&quot;&gt;
+        &lt;label for=&quot;password-confirmation&quot; class=&quot;ui-label&quot;&gt;&lt;span class=&quot;ui-form-required&quot;&gt;*&lt;/span&gt;重复输入密码：&lt;/label&gt;
+        &lt;input id=&quot;password-confirmation&quot; name=&quot;password-confirmation&quot; type=&quot;password&quot; class=&quot;ui-input&quot; /&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;ui-form-item&quot;&gt;
+        &lt;span class=&quot;ui-button-morange ui-button&quot;&gt;&lt;input class=&quot;ui-button-text&quot; value=&quot;确定&quot; type=&quot;submit&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+<p>JS</p>
+
+<pre><code>seajs.use(['validator', '$'], function(Validator, $) {
+    $(function() {
+        var validator = new Validator({
+            element: 'form'
+        });
+
+        validator.addItem({
+            element: '[name=username]',
+            required: true,
+            rule: 'email minlength{min:1} maxlength{max:20}'
+        })
+
+        .addItem({
+            element: '[name=password]',
+            required: true,
+            rule: 'minlength{min:5}'
+        })
+
+        .addItem({
+            element: '[name=password-confirmation]',
+            required: true,
+            rule: 'confirmation{target: &quot;#password&quot;}'
+        });
+    });
+});</code></pre>
+
+<h2>Documentation</h2>
+
+<ul>
+<li>  <a href="validator/docs/rules.md">校验规则</a></li>
+<li>  <a href="validator/docs/api.md">JS API</a></li>
+<li>  <a href="validator/docs/validate-with-html.md">Validate with HTML</a></li>
+<li>  <a href="validator/docs/how-to-extend-validator-core.md">基于 validator-core 自定义 UI 反馈</a></li>
+</ul>
+
+<h2>Demos</h2>
+<p>//TODO</p>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+    </body>
+</html>
