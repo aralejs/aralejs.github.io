@@ -1,9 +1,9 @@
 
-# Dialog
+# baseDialog
 
-对话框组件，提供对话框显示隐藏、dom结构自定义、定位、select遮挡、确定取消关闭等功能特性。
+基础对话框组件，提供对话框显示隐藏、dom 结构自定义、定位、select 遮挡、确定取消关闭等功能特性。
 
-继承自arale.overlay组件。
+继承自 arale.overlay 组件。
 
 ---
 
@@ -13,6 +13,7 @@
  - [seajs](seajs/README.md)
  - [jquery](jquery/README.md)
  - [overlay](overlay/README.md)
+ - [easing](easing/README.md)
 
 
 ## 配置说明
@@ -103,4 +104,77 @@
         hasMask: true
     });
 
+
+## animDialog 动画对话框
+
+animDialog 对话框组件，提供了对话框弹出的动画效果。目前支持的动画效果有四种：无动画，渐隐，滑动，移动。
+
+继承自 arale.baseDialog 组件。
+
+* `effect` : {object}
+
+    显隐效果配置，形似
+
+        {
+            type: 'move',       // 动画种类，可选 none|fade|slide|move
+            duration: 400,      // 动画时长
+            from: 'up',         // 动画方向，当 type 为 slide|move 时有效
+            easing: 'easeOut'   // 支持常用的平滑函数
+        }
+
+* `showEffect` : {object}
+
+    显示时的动画效果，若设为 null，则表示动画种类为 none。
+
+* `hideHffect` : {object}
+
+    隐藏时的动画效果，若设为 null，则表示动画种类为 none。
+
+
+## confirmBox 对话框
+
+confirmBox 是具有默认样式和完善功能的对话框，可直接使用。
+
+继承自 arale.animDialog 组件。
+
+* `hasTitle` : {boolean}
+
+    是否显示标题栏，默认为 true。
+
+* `hasOk` : {boolean}
+
+    是否显示确定按钮，默认为 true。
+
+* `hasCancel` : {boolean}
+
+    是否显示取消按钮，默认为 true。
+
+* `hasCloseX` : {boolean}
+
+    是否显示关闭 X 按钮，默认为 true。
+
+进行如下调用即可在页面中央显示一个对话框。
+
+    new ConfirmBox({
+        trigger: '#trigger',
+        title: '我是标题',
+        content: '我是内容',
+        onConfirm: function() {            
+            this.hide();
+        }
+    }).show();
+
+组件还提供下面三个静态方法，方便调用。
+
+* `ConfirmBox.alert`
+
+    弹出信息确认框。
+
+* `ConfirmBox.confirm(msg, title, confirmCallback, cancelCallback)`
+
+    弹出信息确认取消框。
+
+* `ConfirmBox.message(msg, time)`
+
+    在页面顶部弹出提示条，默认四秒后自动消失。
 
