@@ -37,7 +37,9 @@
     <input type="button" id="trigger9" value="ajax对话框" />
     <input type="button" id="trigger10" value="iframe对话框" />
 
-    <input type="button" id="trigger11" value="带基本样式的对话框" />    
+    <input type="button" id="trigger11" value="带基本样式的对话框" />
+    <input type="button" id="trigger12" value="Confirm.alert()" />    
+    <input type="button" id="trigger13" value="Confirm.confirm()" />
     
 <script>
 
@@ -50,7 +52,7 @@ seajs.config({
     */
 });
 
-seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox'], function(BaseDialog, AnimDialog, ConfirmBox) {
+seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox', 'jquery'], function(BaseDialog, AnimDialog, ConfirmBox, $) {
     
     var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
     var dialogTpl = '<div class="overlay"><div id="dialog-title"></div><div id="dialog-content"></div><button id="confirm">确认按钮</button><button id="close">点击关闭</button></div>';
@@ -262,6 +264,20 @@ seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox'], funct
             }, 3000);
         }
     });
+
+
+    $('#trigger12').click(function() {
+        ConfirmBox.alert('静态方法ConfirmBox.alert');
+    });
+
+    $('#trigger13').click(function() {
+        ConfirmBox.confirm('静态方法ConfirmBox.confirm', '自定义标题', function() {
+            alert('点击了确定按钮');
+        }, function() {
+            alert('点击了取消按钮');            
+        });
+    });
+
 });
 </script>
 </body>
