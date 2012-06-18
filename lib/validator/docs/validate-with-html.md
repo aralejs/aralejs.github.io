@@ -38,19 +38,27 @@
 
     支持按照 html5 标准中校验相关标签属性配置校验规则。包括：
     *   required
+
             <input name="username" required />
     *   type
+
+        请阅读[校验规则文档](./rules.md)了解支持的所有 type 类型。
+
             <input name="username" type="email" />
-        阅读[校验规则文档](./rules.md)了解支持的所有 type 类型。
     *   min
+
             <input name="age" min="18" />
     *   max
+
             <input name="age" max="30" />
     *   minlength
+
             <input type="password" minlength="5" />
     *   maxlength
+
             <input type="password" maxlength="20" />
     *   pattern
+
             <input type="text" name="country_code" pattern="[A-Za-z]{3}" />
 
     对于除了以上内容之外的校验规则(包括自定义规则)，使用 `data-rule` 指定，多个校验规则以空格隔开。
