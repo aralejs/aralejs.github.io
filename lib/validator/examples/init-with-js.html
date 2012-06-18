@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>validator demo</title>
-        <link charset="utf-8" rel="stylesheet" href="http://dev.assets.alipay.net/al/alice.style.account-1.1-src.css" />
+        <link charset="utf-8" rel="stylesheet" href="http://assets.alipay.com/al/alice.style.account-1.1-src.css" />
         <script type="text/javascript" charset="utf-8" src="../../../tools/seajs-and-its-friends.js"></script>
         <script type="text/javascript" charset="utf-8">
             seajs.use(['../src/validator.js', '$'], function(Validator, $) {
@@ -21,7 +21,7 @@
                         onFormValidated: function() {
                             //console.log('onFormValidated', arguments);
                         },
-                        onItemValidated: function(err, msg, ele) {
+                        onItemValidated: function(ele, err, msg) {
                             //console.log('validator.onItemValidated', err, msg, ele);
                         }
                     });
@@ -37,7 +37,11 @@
                             //console.log('onItemValidate', arguments);
                         },
                         onItemValidated: function(err, msg, ele) {
-                            console.log('onItemValidated', arguments);
+                            //console.log('onItemValidated', arguments);
+                        },
+                        showMessage: function(element, message) {
+                            this.getItem(element).addClass(this.get('itemErrorClass'));
+                            this.getExplain(element).html('This is custom message diplay: ' + message);
                         }
                     });
 
@@ -49,7 +53,7 @@
                         onItemValidate: function() {
                         },
                         onItemValidated: function(err, msg, ele) {
-                            console.log('onItemValidated', arguments);
+                            //console.log('onItemValidated', arguments);
                         }
                     });
 
@@ -60,7 +64,7 @@
                         onItemValidate: function() {
                         },
                         onItemValidated: function(err, msg, ele) {
-                            console.log('onItemValidated', arguments);
+                            //console.log('onItemValidated', arguments);
                         }
                     });
 
@@ -69,7 +73,7 @@
                         required: true,
                         triggerType: 'change',
                         onItemValidated: function() {
-                            console.log('onItemValidated', arguments);
+                            //console.log('onItemValidated', arguments);
                         }
                     });
 
@@ -77,7 +81,7 @@
                         element: '[name=vehicle]',
                         required: true,
                         onItemValidated: function() {
-                            console.log('onItemValidated', arguments);
+                            //console.log('onItemValidated', arguments);
                         }
                     });
 
@@ -85,18 +89,36 @@
                         element: '[name=country]',
                         required: true,
                         onItemValidated: function() {
-                            console.log('onItemValidated', arguments);
+                            //console.log('onItemValidated', arguments);
                         }
                     });
 
                     //validator.removeItem('username');
+
+                    /*
+                    $('#validate').click(function() {
+                        Validator.validate({
+                            element: '[name=username]',
+                            rule: 'emailOrMobile lengthConstraint{min: 15, max: 8}',
+                            required: true,
+                            display: '用户名',
+                            errormessage: '用户名的格式必须是正确的哦',
+                            triggerType: 'keyup blur',
+                            onItemValidate: function() {
+                                console.log('onItemValidate', arguments);
+                            },
+                            onItemValidated: function(err, msg, ele) {
+                                console.log('onItemValidated', arguments);
+                            }
+                        });
+                    });
+                    */
                 });
             });
         </script>
     </head>
     <body>
         <form id="test-form" class="ui-form">
-
            
             <div class="ui-form-item">
                 <label for="username" class="ui-label"><span class="ui-form-required">*</span>用户名：</label>
@@ -104,10 +126,10 @@
                 <div class="ui-form-explain">用户名为电子邮箱或者手机号码。</div>
             </div>
 
-            <div class="ui-form-item">
+            <div class="ui-form-item ui-form-item-error">
                 <label for="password" class="ui-label"><span class="ui-form-required">*</span>密码：</label>
-                <input id="password" name="password" type="password" class="ui-input" />
-                <div class="ui-form-explain">请输入5-20位的密码。</div>
+                <input id="password" name="password" type="password" class="ui-input" data-explain="请输入5-20位的密码。" value="123" />
+                <div class="ui-form-explain">密码的长度必须大于或等于5。</div>
             </div>
 
             <div class="ui-form-item">
@@ -146,5 +168,7 @@
             </div>
 
         </form>
+
+        <!--<button id="validate">validate</button>-->
     </body>
 </html>

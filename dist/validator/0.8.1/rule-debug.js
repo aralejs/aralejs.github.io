@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#validator/0.8.1/rule-debug", ["$","./async","widget"], function(require, exports, module) {
     var rules = {},
         messages = {},
 		$ = require('$'),

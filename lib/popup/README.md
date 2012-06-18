@@ -1,7 +1,7 @@
 
-# Triggerable
+# Popup
 
-Triggerable 是可触发 Overlay 型 UI 组件。
+Popup 是可触发 Overlay 型 UI 组件。
 
 ---
 

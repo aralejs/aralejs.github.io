@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#validator/0.8.1/validator-debug", ["./core","widget","$"], function(require, exports, module) {
     var Core = require('./core'),
         Widget = require('widget'),
         $ = require('$');
@@ -10,8 +10,8 @@ define(function(require, exports, module) {
             'mouseleave .{{attrs.inputClass}}': 'mouseleave',
             'mouseenter .{{attrs.textareaClass}}': 'mouseenter',
             'mouseleave .{{attrs.textareaClass}}': 'mouseleave',
-            'focus .{{attrs.itemClass}}': 'focus',
-            'blur .{{attrs.itemClass}}': 'blur'
+            'focus .{{itemClass}}': 'focus',
+            'blur .{{itemClass}}': 'blur'
         },
 
         attrs: {
@@ -81,7 +81,6 @@ define(function(require, exports, module) {
         },
 
         focus: function(e) {
-            console.log(e);
             var target = e.target;
             this.getItem(target).removeClass(this.get('itemErrorClass'));
             this.getItem(target).addClass(this.get('itemFocusClass'));

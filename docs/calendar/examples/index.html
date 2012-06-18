@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>calendar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/calendar/">Calendar</a>
+                <a href="/docs/calendar/examples/">Examples</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            <div class="container">
+                <h1>Calendar</h1>
+
+<h2>Example</h2>
+<p>Attached to a field with default options.</p>
+
+<div class="cell">
+<input id="date-1" type="text" />
+</div>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;calendar&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Calendar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cal1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Calendar</span><span class="p">({</span><span class="nx">trigger</span><span class="o">:</span> <span class="s1">&#39;#date-1&#39;</span><span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<script type="text/javascript">
+seajs.use(['calendar'], function(Calendar) {
+    var cal1 = new Calendar({trigger: '#date-1'});
+});
+</script>
+<p>Attached to a field with i18n support.</p>
+
+<div class="cell">
+<input id="date-2" type="text" />
+</div>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;calendar&#39;</span><span class="p">,</span> <span class="s1">&#39;calendar/../i18n/zh-CN&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Calendar</span><span class="p">,</span> <span class="nx">lang</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cal2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Calendar</span><span class="p">({</span><span class="nx">trigger</span><span class="o">:</span> <span class="s1">&#39;#date-2&#39;</span><span class="p">,</span> <span class="nx">lang</span><span class="o">:</span> <span class="nx">lang</span><span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<script type="text/javascript">
+seajs.use(['calendar', 'calendar/../i18n/zh-CN'], function(Calendar, lang) {
+    var cal2 = new Calendar({trigger: '#date-2', lang: lang});
+});
+</script>
+<p>Attached to a field with Tuesday unavailable.</p>
+
+<div class="cell">
+<input id="date-3" type="text" />
+<span id="date-3-explain"></span>
+</div>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span> <span class="s1">&#39;calendar&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">Calendar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">range</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">day</span> <span class="o">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">day</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nx">day</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="kd">var</span> <span class="nx">cal3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Calendar</span><span class="p">({</span><span class="nx">trigger</span><span class="o">:</span> <span class="s1">&#39;#date-3&#39;</span><span class="p">,</span> <span class="nx">range</span><span class="o">:</span> <span class="nx">range</span><span class="p">});</span>
+    <span class="nx">cal3</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;select-disabled-date&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#date-3-explain&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;you select a disabled date&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<script type="text/javascript">
+seajs.use(['jquery', 'calendar'], function($, Calendar) {
+    var range = function(time) {
+        var day = time.day();
+        return day != 2;
+    };
+    var cal3 = new Calendar({trigger: '#date-3', range: range});
+    cal3.on('select-disabled-date', function(date) {
+        $('#date-3-explain').text('you select a disabled date');
+    });
+});
+</script>
+<p>Related calendars, set range dynamicly.</p>
+
+<div class="cell">
+<input id="date-4" type="text" />
+<span id="date-4-explain"></span>
+<input id="date-5" type="text" />
+<span id="date-5-explain"></span>
+</div>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span> <span class="s1">&#39;calendar&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">Calendar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cal4</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Calendar</span><span class="p">({</span><span class="nx">trigger</span><span class="o">:</span> <span class="s1">&#39;#date-4&#39;</span><span class="p">});</span>
+    <span class="kd">var</span> <span class="nx">cal5</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Calendar</span><span class="p">({</span><span class="nx">trigger</span><span class="o">:</span> <span class="s1">&#39;#date-5&#39;</span><span class="p">});</span>
+    <span class="nx">cal4</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;select-date&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#date-4-explain&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+        <span class="nx">cal5</span><span class="p">.</span><span class="nx">range</span><span class="p">([</span><span class="nx">date</span><span class="p">,</span> <span class="kc">null</span><span class="p">]);</span>
+    <span class="p">}).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;select-disabled-date&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#date-4-explain&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;not available&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">cal5</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;select-date&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#date-5-explain&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+        <span class="nx">cal4</span><span class="p">.</span><span class="nx">range</span><span class="p">([</span><span class="kc">null</span><span class="p">,</span> <span class="nx">date</span><span class="p">]);</span>
+    <span class="p">}).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;select-disabled-date&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">date</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#date-5-explain&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">&#39;not available&#39;</span><span class="p">);</span>
+    <span class="p">});;</span>
+<span class="p">});</span>
+</pre></div>
+
+<script type="text/javascript">
+seajs.use(['jquery', 'calendar'], function($, Calendar) {
+    var cal4 = new Calendar({trigger: '#date-4'});
+    var cal5 = new Calendar({trigger: '#date-5'});
+    cal4.on('select-date', function(date) {
+        $('#date-4-explain').text('');
+        cal5.range([date, null]);
+    }).on('select-disabled-date', function(date) {
+        $('#date-4-explain').text('not available');
+    });
+    cal5.on('select-date', function(date) {
+        $('#date-5-explain').text('');
+        cal4.range([null, date]);
+    }).on('select-disabled-date', function(date) {
+        $('#date-5-explain').text('not available');
+    });;
+});
+</script>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+    </body>
+</html>

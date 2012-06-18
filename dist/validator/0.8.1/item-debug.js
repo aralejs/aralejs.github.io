@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#validator/0.8.1/item-debug", ["$","./utils","widget","./async","./rule"], function(require, exports, module) {
     var $ = require('$'),
         utils = require('./utils'),
         Widget = require('widget'),
@@ -28,7 +28,6 @@ define(function(require, exports, module) {
             },
             required: false,
             checkNull: true,
-            errormessage: null,
             onItemValidate: setterConfig,
             onItemValidated: setterConfig,
             showMessage: setterConfig,

@@ -49,7 +49,7 @@ define("#calendar/0.8.0/calendar-debug", ["calendar","jquery","moment","overlay"
         // element, usually input[type=date], or date icon
         trigger: null,
 
-        triggerType: 'focus',
+        triggerType: 'click',
 
         // output format
         format: 'YYYY-MM-DD',
@@ -71,7 +71,6 @@ define("#calendar/0.8.0/calendar-debug", ["calendar","jquery","moment","overlay"
                 };
             }
         },
-        hideOnSelect: true,
 
         // ### display
         // start of a week, default is Sunday.
@@ -152,27 +151,32 @@ define("#calendar/0.8.0/calendar-debug", ["calendar","jquery","moment","overlay"
             'click [data-role=month]': '_selectMonth',
             'click [data-role=day]': '_selectDay',
             'click [data-role=date]': '_selectDate',
-            'click [data-role=today]': '_selectToday',
-
-            'keydown': '_keyControl'
+            'click [data-role=today]': '_selectToday'
         },
 
         setup: function() {
             var that = this;
 
             // bind trigger
-            var trigger = this.get('trigger');
-            $(trigger).on(this.get('triggerType'), function() {
+            var $trigger = $(this.get('trigger'));
+            $trigger.on(this.get('triggerType'), function() {
                 that.render().show();
             });
-            $(trigger).on('keydown', function(ev) {
-                if (ev.keyCode === 38) {
-                    that.element.focus();
-                    that.model.changeTime('days', -7);
-                } else if (ev.keyCode === 40) {
-                    that.element.focus();
-                    that.model.changeTime('days', 7);
+            $trigger.on('keydown', function(ev) {
+                that._keyControl(ev);
+            });
+            $trigger.on('blur', function() {
+                that.hide();
+            });
+            that.element.on('mousedown', function(ev) {
+                if ($.browser.msie && parseInt($.browser.version) < 9) {
+                    var trigger = $trigger[0];
+                    trigger.onbeforedeactivate = function() {
+                        window.event.returnValue = false;
+                        trigger.onbeforedeactivate = null;
+                    };
                 }
+                ev.preventDefault();
             });
 
             // bind model change event
@@ -249,21 +253,13 @@ define("#calendar/0.8.0/calendar-debug", ["calendar","jquery","moment","overlay"
 
         _selectDate: function(ev) {
             var el = $(ev.target);
-            var date = this.model.selectDate({
-                year: el.data('year'),
-                month: el.data('month'),
-                date: el.data('date')
-            });
+            var date = this.model.selectDate(el.data('datetime'));
             this._fillDate(date);
         },
 
         _selectToday: function() {
             var today = moment();
-            this.model.selectDate({
-                year: today.year(),
-                month: today.month(),
-                date: today.date()
-            });
+            this.model.selectDate(today);
         },
 
         _changeMode: function(ev) {
@@ -278,6 +274,7 @@ define("#calendar/0.8.0/calendar-debug", ["calendar","jquery","moment","overlay"
                 89: 'year'
             };
             if (ev.keyCode in modeMap) {
+                ev.preventDefault();
                 this.model.changeMode(modeMap[ev.keyCode]);
                 return false;
             }
@@ -381,10 +378,6 @@ define("#calendar/0.8.0/calendar-debug", ["calendar","jquery","moment","overlay"
             }
             var value = date.format(this.get('format'));
             $trigger.val(value);
-            var hideOnSelect = this.get('hideOnSelect');
-            if (hideOnSelect) {
-                this.hide();
-            }
         }
     });
 
@@ -395,6 +388,4 @@ define("#calendar/0.8.0/calendar-debug", ["calendar","jquery","moment","overlay"
     }
     
     module.exports = Calendar;
-
-
 });
