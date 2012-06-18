@@ -40,7 +40,6 @@
     *   required
 
             <input name="username" required />
-
     *   type
 
         阅读[校验规则文档](./rules.md)了解支持的所有 type 类型。
