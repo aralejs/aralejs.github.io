@@ -147,7 +147,7 @@ hr.end {
     margin: 0 30px;
 }
 .container {
-    max-width: 560px;
+    max-width: 800px;
     *width: 560px;
     margin: 0 auto;
     padding: 20px;

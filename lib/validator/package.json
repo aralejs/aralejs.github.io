@@ -1,5 +1,8 @@
 {
+    "name": "validator",
     "version": "0.8.1",
+    "author": "Shawn <shaoshuai0102@gmail.com>",
+    "description": "form validation widget",
     "dist": {
         "core.js": "default",
         "async.js": "default",
@@ -7,5 +10,6 @@
         "utils.js": "default",
         "rule.js": "default",
         "validator.js": "default"
-    }
+    },
+    "license": "MIT"
 }
