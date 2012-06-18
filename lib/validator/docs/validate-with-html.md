@@ -46,11 +46,9 @@
         阅读[校验规则文档](./rules.md)了解支持的所有 type 类型。
 
             <input name="username" type="email" />
-
     *   min
 
             <input name="age" min="18" />
-
     *   max
 
             <input name="age" max="30" />
