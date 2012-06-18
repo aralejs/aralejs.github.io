@@ -37,7 +37,6 @@
 2.  校验规则。
 
     支持按照 html5 标准中校验相关标签属性配置校验规则。包括：
-
     *   required
 
             <input name="username" required />
@@ -73,12 +72,12 @@
 
 ##自定义错误提示消息。
 
-    *   data-errormessage
+*   data-errormessage
 
-        若配置此项，无论哪个校验规则出错都会强制显示这个错误信息。
+    若配置此项，无论哪个校验规则出错都会强制显示这个错误信息。
 
-    *   data-errormessage-{rulename}
+*   data-errormessage-{rulename}
 
-        单独配置某一个校验规则的出错信息。
+    单独配置某一个校验规则的出错信息。
 
-            <input name="uername" required minlength="5" maxlength="20" data-errormessage-required="用户名不能为空" data-errormessage-minlength="密码长度必须大于等于5" data-errormessage-maxlength="密码长度必须小于20" />
+        <input name="uername" required minlength="5" maxlength="20" data-errormessage-required="用户名不能为空" data-errormessage-minlength="密码长度必须大于等于5" data-errormessage-maxlength="密码长度必须小于20" />
