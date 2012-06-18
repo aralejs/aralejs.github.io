@@ -22,7 +22,7 @@
 
     这样会初始化页面中所有以 `data-widget=""` 这种形式指定的组件。
 
-##配置 Validator。
+##配置 Validator
 
 1.  了解配置项，请参考 [Core 配置项](./api.md#Core-constructor) 和 [Validator 配置项](./api.md#Validator-constructor)。
 
@@ -30,13 +30,14 @@
 
     例如，配置 `triggerType: 'blur'`，需要这样 `<form data-widget="validator" data-trigger-type="blur">`。
 
-##给表单域添加校验规则等配置项。
+##给表单域添加校验规则等配置项
 
 1.  配置项。了解有哪些配置项请参考 [Item 配置项](./api.md#Item-constructor)，配置方式同上。
 
 2.  校验规则。
 
     支持按照 html5 标准中校验相关标签属性配置校验规则。包括：
+
     *   required
 
             <input name="username" required />
@@ -70,7 +71,7 @@
     对于除了以上内容之外的校验规则(包括自定义规则)，使用 `data-rule` 指定，多个校验规则以空格隔开。
 
 
-##自定义错误提示消息。
+##自定义错误提示消息
 
 *   data-errormessage
 
