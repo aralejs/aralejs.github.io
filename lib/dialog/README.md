@@ -166,7 +166,7 @@ confirmBox 是具有默认样式和完善功能的对话框，可直接使用。
 
 组件还提供下面三个静态方法，方便调用。
 
-* `ConfirmBox.alert`
+* `ConfirmBox.alert(msg, callback)`
 
     弹出信息确认框。
 
