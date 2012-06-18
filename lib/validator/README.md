@@ -123,6 +123,7 @@ JS
 
 *   [校验规则](validator/docs/rules.md)
 *   [JS API](validator/docs/api.md)
+*   [Validate with HTML](validator/docs/validate-with-html.md)
 *   [基于 validator-core 自定义 UI 反馈](validator/docs/how-to-extend-validator-core.md)
 
 ##Demos
