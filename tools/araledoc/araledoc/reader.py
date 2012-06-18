@@ -44,8 +44,21 @@ class Package(object):
 
     @property
     def examples(self):
-        files = os.listdir(os.path.json(self.path, 'examples'))
-        return filter(lambda p: p.endswith('.md'), files)
+        files = os.listdir(os.path.join(self.path, 'examples'))
+        files = filter(lambda p: p.endswith('.md'), files)
+        return map(lambda p: p[:-3], files)
+
+    def render_homepage(self):
+        f = os.path.join(self.path, 'README.md')
+        content = markdown(f.read())
+        f.close()
+        return content
+
+    def render_example(self, name):
+        f = '%s.md' % os.path.join(self.path, 'examples', name)
+        content = markdown(f.read(), inject=True)
+        f.close()
+        return content
 
 
 _emoji_list = [
