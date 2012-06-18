@@ -22,7 +22,9 @@
 
         这样会初始化页面中所有以 `data-widget=""` 这种形式指定的组件。
 
-2.  配置 Validator
+2.  配置 Validator。
+
+    请参考 [Validator 配置](./api.md#Validator-constructor)。
 
 3.  给表单域添加校验规则等配置项。
 
