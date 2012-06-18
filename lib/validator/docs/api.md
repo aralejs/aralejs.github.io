@@ -290,6 +290,8 @@ __Example__
 *   triggerType - 触发校验的事件。项会覆盖 Core 对象的全局 triggerType 配置。
 *   required - 默认 false。
 *   checkNull - 默认值true。除提交前的校验外，表单域的值为空时是否校验。会覆盖 Core 对象的全局配置。
+*   errormessage - 配置错误提示消息，若配置此项，无论哪一项出错都提示此消息。
+*   errormessage{RuleName} - 配置某一校验规则的消息提示。例如 errormessageRequired。
 *   onItemValidate  - 同 Core 对象同名配置。
 *   onItemValidated - 同 Core 对象同名配置。
 *   showMessage - 同 Core 对象同名配置。会覆盖 Core 对象的全局配置。
