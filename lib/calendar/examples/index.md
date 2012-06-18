@@ -9,7 +9,9 @@ Attached to a field with default options.
 </div>
 
 ```javascript
-var cal1 = new Calendar({trigger: '#date-1'});
+seajs.use(['calendar'], function(Calendar) {
+    var cal1 = new Calendar({trigger: '#date-1'});
+});
 ```
 
 
@@ -20,7 +22,7 @@ Attached to a field with i18n support.
 </div>
 
 ```javascript
-seajs.use(['../src/calendar', '../src/i18n/zh_CN'], function(Calendar, lang) {
+seajs.use(['calendar', 'calendar/../i18n/zh-CN'], function(Calendar, lang) {
     var cal2 = new Calendar({trigger: '#date-2', lang: lang});
 });
 ```
@@ -33,13 +35,15 @@ Attached to a field with Tuesday unavailable.
 </div>
 
 ```javascript
-var range = function(time) {
-    var day = time.day();
-    return day != 2;
-};
-var cal3 = new Calendar({trigger: '#date-3', range: range});
-cal3.on('select-disabled-date', function(date) {
-    $('#date-3-explain').text('you select a disabled date');
+seajs.use(['jquery', 'calendar'], function($, Calendar) {
+    var range = function(time) {
+        var day = time.day();
+        return day != 2;
+    };
+    var cal3 = new Calendar({trigger: '#date-3', range: range});
+    cal3.on('select-disabled-date', function(date) {
+        $('#date-3-explain').text('you select a disabled date');
+    });
 });
 ```
 
@@ -54,18 +58,20 @@ Related calendars, set range dynamicly.
 </div>
 
 ```javascript
-var cal4 = new Calendar({trigger: '#date-4'});
-var cal5 = new Calendar({trigger: '#date-5'});
-cal4.on('select-date', function(date) {
-    $('#date-4-explain').text('');
-    cal5.range([date, null]);
-}).on('select-disabled-date', function(date) {
-    $('#date-4-explain').text('not available');
+seajs.use(['jquery', 'calendar'], function($, Calendar) {
+    var cal4 = new Calendar({trigger: '#date-4'});
+    var cal5 = new Calendar({trigger: '#date-5'});
+    cal4.on('select-date', function(date) {
+        $('#date-4-explain').text('');
+        cal5.range([date, null]);
+    }).on('select-disabled-date', function(date) {
+        $('#date-4-explain').text('not available');
+    });
+    cal5.on('select-date', function(date) {
+        $('#date-5-explain').text('');
+        cal4.range([null, date]);
+    }).on('select-disabled-date', function(date) {
+        $('#date-5-explain').text('not available');
+    });;
 });
-cal5.on('select-date', function(date) {
-    $('#date-5-explain').text('');
-    cal4.range([null, date]);
-}).on('select-disabled-date', function(date) {
-    $('#date-5-explain').text('not available');
-});;
 ```

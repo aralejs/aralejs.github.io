@@ -4,6 +4,7 @@
     "dist": {
         "calendar.js": "default",
         "calendar.tpl": "default",
+        "i18n/zh-CN.js": "default",
         "model.js": "default"
     }
 }
