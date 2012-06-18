@@ -10,7 +10,6 @@ try:
 except ImportError:
     import simplejson
     _json_decode = simplejson.loads
-from tornado import escape
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
@@ -247,3 +246,14 @@ def markdown(text, lang=None, inject=False):
         extensions=m.EXT_FENCED_CODE | m.EXT_AUTOLINK,
     )
     return md.render(text)
+
+_XHTML_ESCAPE_RE = re.compile('[&<>"]')
+_XHTML_ESCAPE_DICT = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}
+
+
+def escape(value):
+    """Escapes a string so it is valid within XML or XHTML."""
+    if not isinstance(value, (basestring, type(None))):
+        value = value.decode('utf-8')
+    return _XHTML_ESCAPE_RE.sub(
+        lambda match: _XHTML_ESCAPE_DICT[match.group(0)], value)
