@@ -12,7 +12,6 @@ import os
 import datetime
 import logging
 from jinja2 import Environment, FileSystemLoader
-import liquidluck
 from .utils import utf8
 
 from .options import g
@@ -57,6 +56,29 @@ class BaseWriter(object):
         return
 
 
+class AraleWriter(BaseWriter):
+    def __init__(self, package):
+        self.package = package
+
+    def write_homepage(self):
+        content = self.package.render_homepage()
+        params = {'content': content, 'package': self.package}
+        dest = os.path.join('docs', self.package.name, 'index.html')
+        self.render(params, 'homepage.html', dest)
+
+    def write_examples(self):
+        for name in self.package.examples:
+            content = self.package.render_example(name)
+            params = {'content': content, 'package': self.package}
+            dest = os.path.join('docs', self.package.name, 'examples', name)
+            dest = '%s.html'
+            self.render(params, 'example.html', dest)
+
+    def start(self):
+        self.write_homepage()
+        self.write_examples()
+
+
 def load_jinja():
     #: prepare loaders
     #: loaders = ['_templates', theme]
@@ -76,9 +98,7 @@ def load_jinja():
     #: default variables
     jinja.globals.update({
         'system': {
-            'name': 'Felix Felicis',
-            'version': liquidluck.__version__,
-            'homepage': liquidluck.__homepage__,
+            'name': 'Araledoc',
             'time': datetime.datetime.utcnow(),
         }
     })

@@ -40,7 +40,7 @@ class Package(object):
 
     @property
     def homepage(self):
-        return '/doc/%s/' % self.name
+        return '/docs/%s/' % self.name
 
     @property
     def examples(self):
