@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>validator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/validator/">Validator</a>
+                <a href="/docs/validator/examples/">Examples</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            <div class="container">
+                <h1>Validate with HTML</h1>
+
+<div class="cell">
+<form id="test-form" class="ui-form">
+   
+    <div class="ui-form-item">
+        <label for="username" class="ui-label"><span class="ui-form-required">*</span>用户名：</label>
+        <input id="username" name="username" class="ui-input" />
+        <div class="ui-form-explain">用户名为电子邮箱或者手机号码。</div>
+    </div>
+
+    <div class="ui-form-item ui-form-item-error">
+        <label for="password" class="ui-label"><span class="ui-form-required">*</span>密码：</label>
+        <input id="password" name="password" type="password" class="ui-input" data-explain="请输入5-20位的密码。" value="123" />
+        <div class="ui-form-explain">密码的长度必须大于或等于5。</div>
+    </div>
+
+    <div class="ui-form-item">
+        <label for="password-confirmation" class="ui-label"><span class="ui-form-required">*</span>重复输入密码：</label>
+        <input id="password-confirmation" name="password-confirmation" type="password" class="ui-input" />
+        <div class="ui-form-explain"></div>
+    </div>
+
+    <div class="ui-form-item">
+        <label class="ui-label"><span class="ui-form-required">*</span>性别：</label>
+
+        <ul class="ui-form-list">
+            <li><input id="male" value="male" name="sex" type="radio"> <label for="male">Male</label></li>
+            <li><input id="female" value="female" name="sex" type="radio"> <label for="female">Female</label></li>
+        </ul>
+
+    </div>
+
+    <div class="ui-form-item">
+        <label class="ui-label"><span class="ui-form-required">*</span>交通工具：</label>
+        <label for="Bike"><input class="ui-hidden" name="vehicle" id="Bike" type="checkbox">自行车</label>
+        <label for="Car"><input class="ui-hidden" name="vehicle" id="Car" type="checkbox">汽车</label>
+    </div>
+    </div>
+
+    <div class="ui-form-item">
+        <label class="ui-label"><span class="ui-form-required">*</span>国籍：</label>
+        <select name="country">
+          <option value="">请选择</option>
+          <option value="china">China</option>
+          <option value="usa">USA</option>
+        </select>
+    </div>
+    <div class="ui-form-item">
+        <span class="ui-button-morange ui-button"><input class="ui-button-text" value="确定" type="submit"></span>
+    </div>
+
+</form>
+</div>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+    </body>
+</html>

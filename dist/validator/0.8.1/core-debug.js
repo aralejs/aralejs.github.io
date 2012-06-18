@@ -73,7 +73,7 @@ define("#validator/0.8.1/core-debug", ["$","./async","widget","./utils","./item"
         Statics: $.extend({helper: utils.helper}, require('./rule'), {
             autoRender: function(cfg) {
 
-                var validator = new Core(cfg);
+                var validator = new this(cfg);
 
                 $('input, textarea, select', validator.element).each(function(i, input) {
 
