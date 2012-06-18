@@ -181,7 +181,7 @@ class JuneRender(m.HtmlRenderer, m.SmartyPants):
             lexer = get_lexer_by_name(default_lang, stripall=True)
         else:
             return '\n<pre><code>%s</code></pre>\n' %\
-                    escape.xhtml_escape(text.strip())
+                    escape(text.strip())
         formatter = HtmlFormatter()
         html = highlight(text, lexer, formatter)
         if lang == 'javascript' and inject:
