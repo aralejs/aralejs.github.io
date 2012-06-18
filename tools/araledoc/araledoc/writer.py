@@ -84,6 +84,10 @@ def load_jinja():
     #: initialize globals
     jinja.globals = {}
 
+    jinja.globals.update({
+        'debug': g.debug,
+    })
+
     #: default variables
     jinja.globals.update({
         'system': {

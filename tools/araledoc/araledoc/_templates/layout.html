@@ -4,6 +4,12 @@
         <meta charset="UTF-8">
         <title>{{package.name}}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "{{debug}}";
+        </script>
+        {% if debug %}
+        <script type="text/javascript" src="http://127.0.0.1:35729/livereload.js"></script>
+        {% endif %}
         <link rel="stylesheet" href="/docs/assets/base.css" />
         <link rel="stylesheet" href="/docs/assets/style.css" />
         <link rel="stylesheet" href="/docs/assets/pygments.css" />

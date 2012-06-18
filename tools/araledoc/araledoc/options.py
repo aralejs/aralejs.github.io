@@ -107,4 +107,4 @@ settings = _Options()
 
 #: settings for liquidluck
 g = _Options()
-g.detail_logging = False
+g.debug = False
