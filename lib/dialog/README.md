@@ -42,7 +42,7 @@
 
     指定标题元素。
 
-* `titleText` : {string}
+* `title` : {string|function}
 
     指定标题内容。
 
@@ -50,7 +50,7 @@
 
     指定内容元素。
 
-* `content` : {string}
+* `content` : {string|function}
 
     指定内容的html。
 
@@ -65,23 +65,6 @@
 * `hasMask` : {boolean}
 
     是否有背景遮罩层。
-
-* `iframeUrl` : {string|function}
-
-    内嵌iframe的url。
-
-* `ajaxUrl` : {string|function}
-
-    内容是ajax取得时，指定其来源地址。
-
-* `showEffect` : {object}
-
-    显示的动画效果，形式 { type: 'fade', duration: '200', easing: 'easeOut' } , 目前只支持淡入效果。 
-
-* `hideEffect` : {object}
-
-    隐藏时的动画效果，形式 { type: 'fade', duration: '200', easing: 'easeOut' } 
-
 
 其他配置参照[overlay](overlay/README.md)。
 

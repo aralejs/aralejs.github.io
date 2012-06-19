@@ -30,9 +30,6 @@
     <input type="button" id="trigger8" value="从下移入对话框" />
     <input type="button" id="trigger8-1" value="混合动画对话框一" />
     <input type="button" id="trigger8-2" value="混合动画对话框二" />        
-    
-    <input type="button" id="trigger9" value="ajax对话框" />
-    <input type="button" id="trigger10" value="iframe对话框" />
 
     <input type="button" id="trigger11" value="带基本样式的对话框" />
     <input type="button" id="trigger12" value="Confirm.alert()" />    
@@ -210,38 +207,6 @@ seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox', 'jquer
             type: 'move',
             from: 'left'
         }
-    });
-
-    var d9 = new BaseDialog({
-        trigger: '#trigger9',
-        template: dialogTpl,
-        width: 300,
-        height: 200,
-        closeElement: '#close',
-        titleElement: '#dialog-title',
-        title: function() {
-            return '我真是标题';
-        },
-        contentElement: '#dialog-content',
-        ajaxUrl: 'https://www.alipay.com/',        
-        align: {
-            baseXY: [400, 200]
-        }
-    });
-    var d10 = new BaseDialog({
-        trigger: '#trigger10',
-        template: '<div class="overlay"><div id="dialog-title"></div><iframe src=""></iframe><button id="close">点击关闭</button></div>',
-        width: 300,
-        height: 200,
-        closeElement: '#close',
-        titleElement: '#dialog-title',
-        title: function() {
-            return '我真是标题啊';
-        },
-        align: {
-            baseXY: [400, 200]
-        },
-        iframeUrl: 'https://www.alipay.com/'
     });
 
     var d11 = new ConfirmBox({
