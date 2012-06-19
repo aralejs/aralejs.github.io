@@ -42,6 +42,10 @@ arale/
 
 ```
 $ araledoc calendar
+
+# 开发时使用
+
+$ araledoc calendar --debug
 ```
 
 将会生成 calendar 的文档与 exmaples ，生成结果位于：
@@ -57,12 +61,25 @@ arale/
 
 ### 整站文档
 
-## Server
 
-在 arale 根目录调用：
+## 开发时
+
+工具介绍:
+[LiveReload](http://project.lepture.com/python-livereload/)
+[Documentation](http://livereload.readthedocs.org).
+
+安装 livereload:
 
 ```
-$ make server
+$ sudo easy_install livereload
 ```
 
-访问 http://127.0.0.1:8000/docs/calendar/
+启动服务器:
+
+```
+make server
+```
+
+访问 http://127.0.0.1:35729/docs/calendar/
+
+当修改 calendar 里的文件时，文档会自动生成，浏览器会自动刷新

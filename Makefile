@@ -1,7 +1,7 @@
 # Makefile for arale project
 
 server:
-	python -m SimpleHTTPServer
+	livereload
 
 # dist
 
