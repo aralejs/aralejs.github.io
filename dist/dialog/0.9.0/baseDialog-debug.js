@@ -88,7 +88,8 @@ define("#dialog/0.9.0/baseDialog-debug", ["$","overlay","mask","events"], functi
                 e.preventDefault();
                 that.activeTrigger = this;
                 that.show();
-                that.element.focus();
+                // 在ie下依然有bug，解决不了，先注释掉
+                //that.element.focus();
             });
 
             // 绑定确定和关闭事件到 dom 元素上，以供全局调用

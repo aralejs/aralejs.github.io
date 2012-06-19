@@ -1,9 +1,9 @@
-define("#dialog/0.9.0/animDialog-debug", ["$","overlay","easing","baseDialog"], function(require, exports, module) {
+define("#dialog/0.9.0/animDialog-debug", ["$","overlay","easing","../src/baseDialog"], function(require, exports, module) {
 
     var $ = require('$'),
         Overlay = require('overlay'),
         easing = require('easing'),
-        BaseDialog = require('baseDialog');
+        BaseDialog = require('../src/baseDialog');
 
     // AnimDialog
     // -------
@@ -60,7 +60,7 @@ define("#dialog/0.9.0/animDialog-debug", ["$","overlay","easing","baseDialog"], 
             else if (ef.type === 'move') {
                 // 避免当 elem.focus() 时的一个诡异的定位 bug
                 // http://jsfiddle.net/ukKfH/1/
-                elem.attr('tabindex', null);
+                elem.removeAttr('tabindex');
                 
                 // 确保目标元素为 block 对象，以便创建窗口层
                 elem.css({ display:'block' });
@@ -80,19 +80,19 @@ define("#dialog/0.9.0/animDialog-debug", ["$","overlay","easing","baseDialog"], 
                 });
                 
                 if (ef.from == 'left') {
-                    elem.css('left', parseInt(elem.css('left')) - width);
+                    elem.css('left', -width);
                     properties = { left: '+=' + width };
                 }
                 else if (ef.from == 'right') {
-                    elem.css('left', parseInt(elem.css('left')) + width);    
+                    elem.css('left', width);    
                     properties = { left: '-=' + width };                    
                 }
                 else if (ef.from == 'up') {
-                    elem.css('top', parseInt(elem.css('top')) - height);
+                    elem.css('top', -height);
                     properties = { top: '+=' + height };                    
                 }
                 else if (ef.from == 'down') {
-                    elem.css('top', parseInt(elem.css('top')) + height);
+                    elem.css('top', height);
                     properties = { top: '-=' + height };                    
                 }
 
