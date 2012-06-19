@@ -1,7 +1,7 @@
 #异步校验
 
 <link charset="utf-8" rel="stylesheet" href="http://assets.alipay.com/al/alice.components.ui-form-1.0-src.css" />
-<link charset="utf-8" rel="stylesheet" href="http://dev.assets.alipay.net/al/alice.components.ui-button-orange-1.0-full.css" />
+<link charset="utf-8" rel="stylesheet" href="http://assets.alipay.com/al/alice.components.ui-button-orange-1.1-full.css" />
 <script type="text/javascript" charset="utf-8" src="../../../tools/seajs-and-its-friends.js"></script>
 
 
