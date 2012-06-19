@@ -67,6 +67,7 @@ define("#validator/0.8.1/item-debug", ["$","./utils","widget","./async","./rule"
     });
 
     function upperFirstLetter(str) {
+        str = String(str);
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
