@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>dialog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "True";
+        </script>
+        
+        <script type="text/javascript" src="http://127.0.0.1:35729/livereload.js"></script>
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/dialog/">Dialog</a>
+                <a href="/docs/dialog/examples/">Examples</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            <div class="container">
+                <h1>baseDialog</h1>
+<p>基础对话框组件，提供对话框显示隐藏、dom 结构自定义、定位、select 遮挡、确定取消关闭等功能特性。</p>
+<p>继承自 arale.overlay 组件。</p>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="seajs/README.md">seajs</a></li>
+<li><a href="jquery/README.md">jquery</a></li>
+<li><a href="overlay/README.md">overlay</a></li>
+<li><a href="easing/README.md">easing</a></li>
+</ul>
+
+<h2>配置说明</h2>
+
+<ul>
+<li><p><code>trigger</code> : {element}</p>
+<p>对话框触发点。</p></li>
+<li><p><code>triggerType</code> : {string}</p>
+<p>对话框触发方式，可选 click|hover|focus ，默认为click。</p></li>
+<li><p><code>confirmElement</code> : {element|$}</p>
+<p>确定或提交按钮。</p></li>
+<li><p><code>cancelElement</code> : {element|$}</p>
+<p>取消按钮。</p></li>
+<li><p><code>closeElement</code> : {element|$}</p>
+<p>关闭按钮。</p></li>
+<li><p><code>titleElement</code> : {string}</p>
+<p>指定标题元素。</p></li>
+<li><p><code>title</code> : {string|function}</p>
+<p>指定标题内容。</p></li>
+<li><p><code>contentElement</code> : {string}</p>
+<p>指定内容元素。</p></li>
+<li><p><code>content</code> : {string|function}</p>
+<p>指定内容的html。</p></li>
+<li><p><code>onConfirm</code> : {function}</p>
+<p>确定时的操作，可在函数内使用this.activeTrigger得到触发节点，下同。</p></li>
+<li><p><code>onClose</code> : {function}</p>
+<p>关闭时的操作。</p></li>
+<li><p><code>hasMask</code> : {boolean}</p>
+<p>是否有背景遮罩层。</p></li>
+</ul>
+<p>其他配置参照<a href="overlay/README.md">overlay</a>。</p>
+
+<h2>实例方法</h2>
+<p>参照<a href="overlay/README.md">overlay</a>。</p>
+
+<h2>最佳实践</h2>
+
+<pre><code>var o = new Dialog({
+    trigger: '#trigger',
+    template: '&lt;div class=&quot;overlay&quot;&gt;&lt;button id=&quot;close&quot;&gt;点击关闭&lt;/button&gt;&lt;/div&gt;',
+    width: 300,
+    height: 200,
+    closeElement: '#close',
+    position: {
+        baseXY: [100, 100]
+    },
+    hasMask: true
+});</code></pre>
+
+<h2>animDialog 动画对话框</h2>
+<p>animDialog 对话框组件，提供了对话框弹出的动画效果。目前支持的动画效果有四种：无动画，渐隐，滑动，移动。</p>
+<p>继承自 arale.baseDialog 组件。</p>
+
+<ul>
+<li><p><code>effect</code> : {object}</p>
+<p>显隐效果配置，形似</p>
+
+<pre><code>{
+    type: 'move',       // 动画种类，可选 none|fade|slide|move
+    duration: 400,      // 动画时长
+    from: 'up',         // 动画方向，当 type 为 slide|move 时有效
+    easing: 'easeOut'   // 支持常用的平滑函数
+}</code></pre></li>
+<li><p><code>showEffect</code> : {object}</p>
+<p>显示时的动画效果，若设为 null，则表示动画种类为 none。</p></li>
+<li><p><code>hideHffect</code> : {object}</p>
+<p>隐藏时的动画效果，若设为 null，则表示动画种类为 none。</p></li>
+</ul>
+
+<h2>confirmBox 对话框</h2>
+<p>confirmBox 是具有默认样式和完善功能的对话框，可直接使用。</p>
+<p>继承自 arale.animDialog 组件。</p>
+
+<ul>
+<li><p><code>hasTitle</code> : {boolean}</p>
+<p>是否显示标题栏，默认为 true。</p></li>
+<li><p><code>hasOk</code> : {boolean}</p>
+<p>是否显示确定按钮，默认为 true。</p></li>
+<li><p><code>hasCancel</code> : {boolean}</p>
+<p>是否显示取消按钮，默认为 true。</p></li>
+<li><p><code>hasCloseX</code> : {boolean}</p>
+<p>是否显示关闭 X 按钮，默认为 true。</p></li>
+</ul>
+<p>进行如下调用即可在页面中央显示一个对话框。</p>
+
+<pre><code>new ConfirmBox({
+    trigger: '#trigger',
+    title: '我是标题',
+    content: '我是内容',
+    onConfirm: function() {            
+        this.hide();
+    }
+}).show();</code></pre>
+<p>组件还提供下面三个静态方法，方便调用。</p>
+
+<ul>
+<li><p><code>ConfirmBox.alert(msg, callback)</code></p>
+<p>弹出信息确认框。</p></li>
+<li><p><code>ConfirmBox.confirm(msg, title, confirmCallback, cancelCallback)</code></p>
+<p>弹出信息确认取消框。</p></li>
+<li><p><code>ConfirmBox.message(msg, time)</code></p>
+<p>在页面顶部弹出提示条，默认四秒后自动消失。</p></li>
+</ul>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+    </body>
+</html>

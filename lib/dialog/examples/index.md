@@ -1,10 +1,7 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Dialog Example</title>
-<script src="../../../tools/seajs-and-its-friends.js"></script>
-<link rel="stylesheet" href="https://a.alipayobjects.com/al/alice.base-1.1.css" type="text/css" charset="utf-8">
+# Dialog
+
+## Example
+
 <link rel="stylesheet" href="https://a.alipayobjects.com/u/css/201206/3O4jnR2mjb.css" type="text/css" charset="utf-8">
 <style>
     .overlay {
@@ -18,36 +15,14 @@
     }
 </style>
 
-</head>
-<body>
-    <input type="button" id="trigger1" value="基本对话框" />
-    <input type="button" id="trigger2" value="淡入淡出对话框" />
-    <input type="button" id="trigger3" value="水平展开对话框" />
-    <input type="button" id="trigger4" value="垂直展开对话框" />
-    <input type="button" id="trigger5" value="从左移入对话框" />
-    <input type="button" id="trigger6" value="从右移入对话框" />
-    <input type="button" id="trigger7" value="从上移入对话框" />
-    <input type="button" id="trigger8" value="从下移入对话框" />
-    <input type="button" id="trigger9" value="混合动画对话框一" />
-    <input type="button" id="trigger10" value="混合动画对话框二" />        
-    <input type="button" id="trigger11" value="带基本样式的对话框" />
-    <input type="button" id="trigger12" value="ConfirmBox.alert()" />    
-    <input type="button" id="trigger13" value="ConfirmBox.confirm()" />
-    <input type="button" id="trigger14" value="ConfirmBox.message()" />    
-    
-<script>
+### BaseDialog: 无样式的抽象对话框组件
 
-// for debug
-seajs.config({
-    /*
-    map: [
-        [/^(.+)\/widget\.js.*$/, '$1/../../../lib/widget/src/widget.js']
-        ]
-    */
-});
+<div class="cell">
+    <input type="button" id="trigger1" value="点击打开对话框" />
+</div>
 
-seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox', 'jquery'], function(BaseDialog, AnimDialog, ConfirmBox, $) {
-    
+```javascript
+seajs.use(['baseDialog'], function(BaseDialog) {
     var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
     var dialogTpl = '<div class="overlay"><div id="dialog-title"></div><div id="dialog-content"></div><button id="confirm">确认按钮</button><button id="close">点击关闭</button></div>';
 
@@ -75,6 +50,20 @@ seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox', 'jquer
     });
     d1.set('content', '改变的内容');
     d1.set('width', 500);
+});
+```
+
+### AnimDialog: 动画对话框组件
+
+* 淡入淡出对话框: fade
+
+<div class="cell">
+    <input type="button" id="trigger2" value="点击打开对话框" />
+</div>
+
+```javascript
+seajs.use(['animDialog'], function(AnimDialog) {
+    var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
 
     var d2 = new AnimDialog({
         trigger: '#trigger2',
@@ -89,6 +78,19 @@ seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox', 'jquer
             type: 'fade'
         }
     });
+});
+```
+
+* 展开对话框: slide
+
+<div class="cell">
+    <input type="button" id="trigger3" value="水平展开对话框" />
+    <input type="button" id="trigger4" value="垂直展开对话框" />    
+</div>
+
+```javascript
+seajs.use(['animDialog'], function(AnimDialog) {
+    var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
     var d3 = new AnimDialog({
         trigger: '#trigger3',
         template: closeDialogTpl,
@@ -117,6 +119,21 @@ seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox', 'jquer
             from: 'up'
         }
     });
+});
+```
+
+* 移入移出对话框: move
+
+<div class="cell">
+    <input type="button" id="trigger5" value="从左移入对话框" />
+    <input type="button" id="trigger6" value="从右移入对话框" />
+    <input type="button" id="trigger7" value="从上移入对话框" />
+    <input type="button" id="trigger8" value="从下移入对话框" />
+</div>
+
+```javascript
+seajs.use(['animDialog'], function(AnimDialog) {
+    var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
     var d5 = new AnimDialog({
         trigger: '#trigger5',
         template: closeDialogTpl,
@@ -173,6 +190,19 @@ seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox', 'jquer
             from: 'down'
         }
     });
+});
+```
+
+* 混合动画对话框
+
+<div class="cell">
+    <input type="button" id="trigger9" value="混合动画对话框一" />
+    <input type="button" id="trigger10" value="混合动画对话框二" />
+</div>
+
+```javascript
+seajs.use(['animDialog'], function(AnimDialog) {
+    var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
     var d9 = new AnimDialog({
         trigger: '#trigger9',
         template: closeDialogTpl,
@@ -207,7 +237,17 @@ seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox', 'jquer
             from: 'left'
         }
     });
+});
+```
 
+### ConfirmBox: 带有默认样式的对话框
+
+<div class="cell">
+    <input type="button" id="trigger11" value="默认样式对话框" />
+</div>
+
+```javascript
+seajs.use(['confirmBox'], function(ConfirmBox) {
     var d11 = new ConfirmBox({
         trigger: '#trigger11',
         title: function() {
@@ -227,8 +267,19 @@ seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox', 'jquer
             }, 3000);
         }
     });
+});
+```
 
+* ConfirmBox 的静态方法
 
+<div class="cell">
+    <input type="button" id="trigger12" value="ConfirmBox.alert()" />    
+    <input type="button" id="trigger13" value="ConfirmBox.confirm()" />
+    <input type="button" id="trigger14" value="ConfirmBox.message()" />    
+</div>
+
+```javascript
+seajs.use(['confirmBox', 'jquery'], function(ConfirmBox, $) {
     $('#trigger12').click(function() {
         ConfirmBox.alert('静态方法ConfirmBox.alert');
     });
@@ -244,10 +295,5 @@ seajs.use(['../src/baseDialog', '../src/animDialog', '../src/confirmBox', 'jquer
     $('#trigger14').click(function() {
         ConfirmBox.message('此消息将在四秒后消失');
     });
-
 });
-</script>
-</body>
-</html>
-
-
+```
