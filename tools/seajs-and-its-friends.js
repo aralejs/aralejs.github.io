@@ -19,8 +19,8 @@ seajs.config({
     alias: {
 
         // 外来模块
-        //'$': 'jquery/1.7.2/jquery',
-        '$': 'zepto/1.0.0/zepto',
+        '$': 'jquery/1.7.2/jquery',
+        //'$': 'zepto/1.0.0/zepto',
         'jquery': 'jquery/1.7.2/jquery',
         'zepto': 'zepto/1.0.0/zepto',
         'underscore': 'underscore/1.3.3/underscore',
