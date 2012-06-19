@@ -10,7 +10,9 @@ define("#dialog/0.9.0/confirmBox-debug", ["$","animDialog"], function(require, e
     var ConfirmBox = AnimDialog.extend({
 
         template: '<div class="ui-confirmBox">\
-                    <div class="ui-confirmBox-action"><a title="关闭" class="ui-confirmBox-close" href="#">×</a></div>\
+                    <div class="ui-confirmBox-action">\
+                        <a title="关闭" class="ui-confirmBox-close" href="javascript:;">×</a>\
+                    </div>\
                     <div class="ui-confirmBox-box">\
                         <div class="ui-confirmBox-title sl-linear-light"><h2></h2></div>\
                         <div class="ui-confirmBox-container">\
