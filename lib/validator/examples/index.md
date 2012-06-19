@@ -21,7 +21,7 @@
 
         <div class="ui-form-item">
             <label for="password-confirmation" class="ui-label"><span class="ui-form-required">*</span>重复输入密码：</label>
-            <input id="password-confirmation" name="password-confirmation" type="password" class="ui-input" required data-rule="confirmation{target:'#password'}" data-errormessage-required="请再重复输入一遍密码，不能留空。" />
+            <input id="password-confirmation" name="password-confirmation" type="password" class="ui-input" required data-rule="confirmation{target:'#password', name: '第二遍'}" data-errormessage-required="请再重复输入一遍密码，不能留空。" data-display="第一遍" />
             <div class="ui-form-explain">请再输入一遍。</div>
         </div>
 
