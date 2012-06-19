@@ -218,7 +218,7 @@ define("#dialog/0.9.0/animDialog-debug", ["$","overlay","easing","baseDialog"], 
                 }
             });
         }
-        this._layer.show();
+        this._layer.set('align', this._layer.get('align')).show();
     }
 
 });
