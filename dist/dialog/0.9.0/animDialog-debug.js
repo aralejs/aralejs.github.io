@@ -60,7 +60,7 @@ define("#dialog/0.9.0/animDialog-debug", ["$","overlay","easing","baseDialog"], 
             else if (ef.type === 'move') {
                 // 避免当 elem.focus() 时的一个诡异的定位 bug
                 // http://jsfiddle.net/ukKfH/1/
-                elem.attr('tabindex', null);
+                elem.removeAttr('tabindex');
                 
                 // 确保目标元素为 block 对象，以便创建窗口层
                 elem.css({ display:'block' });
@@ -79,20 +79,20 @@ define("#dialog/0.9.0/animDialog-debug", ["$","overlay","easing","baseDialog"], 
                     display: 'block'
                 });
                 
-                if (ef.from == 'left') {
-                    elem.css('left', parseInt(elem.css('left')) - width);
+                if (ef.from === 'left') {
+                    elem.css('left', 0-width);
                     properties = { left: '+=' + width };
                 }
-                else if (ef.from == 'right') {
-                    elem.css('left', parseInt(elem.css('left')) + width);    
+                else if (ef.from === 'right') {
+                    elem.css('left', width);    
                     properties = { left: '-=' + width };                    
                 }
-                else if (ef.from == 'up') {
-                    elem.css('top', parseInt(elem.css('top')) - height);
+                else if (ef.from === 'up') {
+                    elem.css('top', 0-height);
                     properties = { top: '+=' + height };                    
                 }
-                else if (ef.from == 'down') {
-                    elem.css('top', parseInt(elem.css('top')) + height);
+                else if (ef.from === 'down') {
+                    elem.css('top', height);
                     properties = { top: '-=' + height };                    
                 }
 
@@ -166,16 +166,16 @@ define("#dialog/0.9.0/animDialog-debug", ["$","overlay","easing","baseDialog"], 
                     display: 'block'
                 });
 
-                if (ef.from == 'left') {
+                if (ef.from === 'left') {
                     properties = { left: '-=' + width };
                 }
-                else if (ef.from == 'right') {
+                else if (ef.from === 'right') {
                     properties = { left: '+=' + width };
                 }
-                else if (ef.from == 'up') {
+                else if (ef.from === 'up') {
                     properties = { top: '-=' + height };
                 }
-                else if (ef.from == 'down') {
+                else if (ef.from === 'down') {
                     properties = { top: '+=' + height };
                 }
 

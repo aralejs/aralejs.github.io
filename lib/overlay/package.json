@@ -1,5 +1,5 @@
 {
-    "version": "0.9.6",
+    "version": "0.9.7",
     "dist": {
         "overlay.js": "default",
         "mask.js": "default"

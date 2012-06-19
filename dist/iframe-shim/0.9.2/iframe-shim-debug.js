@@ -1,7 +1,7 @@
-define(function(require, exports, module) {
+define("#iframe-shim/0.9.2/iframe-shim-debug", ["#jquery/1.7.2/jquery-debug", "#position/0.9.2/position-debug"], function(require, exports, module) {
 
-    var $ = require('$');
-    var Position = require('position');
+    var $ = require("#jquery/1.7.2/jquery-debug");
+    var Position = require("#position/0.9.2/position-debug");
 
 
     // target 是需要添加垫片的目标元素，可以传 `DOM Element` 或 `Selector`
