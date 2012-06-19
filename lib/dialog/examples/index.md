@@ -2,7 +2,7 @@
 
 ## Example
 
-<link rel="stylesheet" href="https://a.alipayobjects.com/u/css/201206/3O4jnR2mjb.css" type="text/css" charset="utf-8">
+<link rel="stylesheet" href="https://a.alipayobjects.com/u/css/201206/3OW4k7WsaR.css" type="text/css" charset="utf-8">
 <style>
     .overlay {
         width: 500px;
