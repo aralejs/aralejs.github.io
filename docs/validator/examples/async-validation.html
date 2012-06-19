@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>validator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "True";
+        </script>
+        
+        <script type="text/javascript" src="http://127.0.0.1:35729/livereload.js"></script>
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/validator/">Validator</a>
+                <a href="/docs/validator/examples/">Examples</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            <div class="container">
+                <h1>异步校验</h1>
+<p><link charset="utf-8" rel="stylesheet" href="http://assets.alipay.com/al/alice.components.ui-form-1.0-src.css" />
+<link charset="utf-8" rel="stylesheet" href="http://dev.assets.alipay.net/al/alice.components.ui-button-orange-1.0-full.css" />
+<script type="text/javascript" charset="utf-8" src="../../../tools/seajs-and-its-friends.js"></script></p>
+
+<div class="cell">
+
+    <form id="test-form" class="ui-form" data-widget="validator">
+        <div class="ui-form-item">
+            <label for="username" class="ui-label"><span class="ui-form-required">*</span>用户名：</label>
+            <input id="username" name="username" class="ui-input" required data-display="用户名" data-rule="email checkUsername" />
+            <div class="ui-form-explain">用户名为电子邮箱。</div>
+        </div>
+
+        <div class="ui-form-item">
+            <span class="ui-button-morange ui-button"><input class="ui-button-text" value="确定" type="submit"></span>
+        </div>
+    </form>
+
+</div>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;widget&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;validator&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Widget</span><span class="p">,</span> <span class="nx">$</span><span class="p">,</span> <span class="nx">Validator</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">Validator</span><span class="p">.</span><span class="nx">addRule</span><span class="p">(</span><span class="s1">&#39;checkUsername&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="nx">commit</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">element</span><span class="p">,</span>
+                <span class="nx">item</span> <span class="o">=</span> <span class="nx">Validator</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;form&#39;</span><span class="p">).</span><span class="nx">getItem</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+
+            <span class="nx">item</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;ui-form-item-loading&#39;</span><span class="p">);</span>
+
+            <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/lib/validator/examples/username.json&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">username</span><span class="o">:</span> <span class="nx">element</span><span class="p">.</span><span class="nx">val</span><span class="p">()},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">item</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;ui-form-item-loading&#39;</span><span class="p">);</span>
+                <span class="nx">commit</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">error</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+        <span class="nx">Widget</span><span class="p">.</span><span class="nx">autoRenderAll</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<script type="text/javascript">
+
+seajs.use(['widget', '$', 'validator'], function(Widget, $, Validator) {
+    $(function() {
+        Validator.addRule('checkUsername', function(options, commit) {
+            var element = options.element,
+                item = Validator.query('form').getItem(element);
+
+            item.addClass('ui-form-item-loading');
+
+            $.get('/lib/validator/examples/username.json', {username: element.val()}, function(data) {
+                item.removeClass('ui-form-item-loading');
+                commit(data.error, data.message);
+            });
+        });
+        Widget.autoRenderAll();
+    });
+});
+
+</script>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+    </body>
+</html>
