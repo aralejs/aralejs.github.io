@@ -1,9 +1,9 @@
-define("#dialog/0.9.0/animDialog-debug", ["$","overlay","easing","../src/baseDialog"], function(require, exports, module) {
+define("#dialog/0.9.0/animDialog-debug", ["$","overlay","easing","baseDialog"], function(require, exports, module) {
 
     var $ = require('$'),
         Overlay = require('overlay'),
         easing = require('easing'),
-        BaseDialog = require('../src/baseDialog');
+        BaseDialog = require('baseDialog');
 
     // AnimDialog
     // -------
@@ -79,19 +79,19 @@ define("#dialog/0.9.0/animDialog-debug", ["$","overlay","easing","../src/baseDia
                     display: 'block'
                 });
                 
-                if (ef.from == 'left') {
-                    elem.css('left', -width);
+                if (ef.from === 'left') {
+                    elem.css('left', 0-width);
                     properties = { left: '+=' + width };
                 }
-                else if (ef.from == 'right') {
+                else if (ef.from === 'right') {
                     elem.css('left', width);    
                     properties = { left: '-=' + width };                    
                 }
-                else if (ef.from == 'up') {
-                    elem.css('top', -height);
+                else if (ef.from === 'up') {
+                    elem.css('top', 0-height);
                     properties = { top: '+=' + height };                    
                 }
-                else if (ef.from == 'down') {
+                else if (ef.from === 'down') {
                     elem.css('top', height);
                     properties = { top: '-=' + height };                    
                 }
@@ -166,16 +166,16 @@ define("#dialog/0.9.0/animDialog-debug", ["$","overlay","easing","../src/baseDia
                     display: 'block'
                 });
 
-                if (ef.from == 'left') {
+                if (ef.from === 'left') {
                     properties = { left: '-=' + width };
                 }
-                else if (ef.from == 'right') {
+                else if (ef.from === 'right') {
                     properties = { left: '+=' + width };
                 }
-                else if (ef.from == 'up') {
+                else if (ef.from === 'up') {
                     properties = { top: '-=' + height };
                 }
-                else if (ef.from == 'down') {
+                else if (ef.from === 'down') {
                     properties = { top: '+=' + height };
                 }
 
