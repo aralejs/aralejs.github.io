@@ -31,7 +31,7 @@ seajs.use(['widget', '$', 'validator'], function(Widget, $, Validator) {
 
             item.addClass('ui-form-item-loading');
 
-            $.get('/lib/validator/examples/username.json', {username: element.val()}, function(data) {
+            $.get('/lib/validator/examples/username.json', function(data) {
                 item.removeClass('ui-form-item-loading');
                 commit(data.error, data.message);
             });
