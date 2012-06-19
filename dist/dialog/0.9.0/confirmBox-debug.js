@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define("#dialog/0.9.0/confirmBox-debug", ["$","animDialog"], function(require, exports, module) {
 
     var $ = require('$'),
         AnimDialog = require('animDialog');
