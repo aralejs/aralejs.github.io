@@ -11,6 +11,8 @@ Writer, write your content to html.
 import os
 import datetime
 import logging
+import shutil
+
 from jinja2 import Environment, FileSystemLoader
 from .utils import utf8
 
@@ -43,6 +45,15 @@ class BaseWriter(object):
         #: logging
         return
 
+class StaticWriter(BaseWriter):
+    def run(self):
+        root = os.path.abspath(os.path.dirname(__file__))
+        assets_path = os.path.join(root, 'assets')
+        dest = os.path.join('docs', 'assets')
+        for r, dirs, files in os.walk(assets_path):
+            for f in files:
+                path = os.path.join(r, f)
+                shutil.copy(path, dest)
 
 class AraleWriter(BaseWriter):
     def __init__(self, package):

@@ -1,0 +1,154 @@
+html, body {
+    background: #f4f4f4;
+    color: #333;
+    padding: 0;
+    margin: 0;
+    font: 16px/1.62 "Lucida Grande", 'Xin Gothic', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4, h5, strong {
+    font-family: 'PT Sans';
+}
+h1 {
+    margin-top: 0;
+    font-size: 36px;
+}
+h2 {
+    margin: 25px 0 5px;
+}
+h3 {
+    margin: 20px 0 5px;
+}
+
+/* block level */
+blockquote {
+    border-left: 0.4em solid #ddd;
+    margin: 15px 0;
+    padding: 0 15px;
+    color: #777;
+}
+blockquote blockquote {
+    padding: 0 0 0 1em;
+    margin-left: 2em;
+    border-left: 0.4em solid #ddd;
+}
+
+p {
+    font-weight: normal;
+    line-height: 160%;
+    margin-bottom: 0.8em;
+}
+figure {margin:0; padding:0;}
+
+hr {
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+}
+
+ul, ol {
+    margin: 14px 0;
+    padding-left: 30px;
+}
+ul {
+    list-style: square;
+}
+li ul {
+    list-style: disc;
+    margin: 8px 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-color: #bbb;
+}
+table tr:nth-child(2n) {
+    background: #eee;
+}
+table th, table td {
+    text-align: left;
+    padding: 4px 6px;
+}
+/* span level */
+img {
+    max-width: 100%;
+}
+a {
+    color: #556270;
+    text-decoration: none;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+a:hover {
+    color: #4183C4;
+    text-decoration: underline;
+}
+a img {
+    vertical-align: middle;
+}
+strong {
+    color: #424242;
+}
+
+/* code */
+pre, code{
+    font: 12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
+}
+pre {
+    margin: 1em 0;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 8px;
+    line-height: 1.5em;
+    color: #444;
+    overflow: auto;
+    box-shadow: rgba(0,0,0,0.07) 0 1px 2px inset;
+    border-radius: 3px;
+}
+pre code {
+    padding:0;
+    background-color: #eee;
+    border: none;
+}
+code {
+    font-size:12px;
+    background-color:#f8f8ff;
+    color:#444;
+    padding:0 .2em;
+    border:1px solid #dedede;
+}
+
+/* form */
+textarea, input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 5px 8px;
+}
+textarea:focus, input:focus {
+    border-color: #999;
+    outline: 0 none;
+}
+
+/* extra */
+hr.end {
+    display: block;
+    margin: 30px 0;
+    clear: both;
+    border: 0 none;
+    height: 10px;
+    text-align: center;
+    background: url("end.png") no-repeat 50% 50%;
+}
+#footer {
+    margin-bottom: 30px;
+    text-align: center;
+}
+#footer a {
+    margin: 0 30px;
+}
+.container {
+    max-width: 800px;
+    *width: 560px;
+    margin: 0 auto;
+    padding: 20px;
+}
