@@ -2,13 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>calendar</title>
+        <title>popup</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
         <script type="text/javascript">
-            var debug = "True";
+            var debug = "False";
         </script>
-        
-        <script type="text/javascript" src="http://127.0.0.1:35729/livereload.js"></script>
         
         
         <link rel="stylesheet" href="/docs/assets/base.css" />
@@ -24,12 +22,10 @@
         <header id="header">
             <h1 id="brand"><a href="/">Arale</a></h1>
             <nav id="nav" role="navigation">
-                <a href="/docs/calendar/">Calendar</a>
-                
-                <a href="/docs/calendar/examples/">Examples</a>
+                <a href="/docs/popup/">Popup</a>
                 
                 
-                <a id="nav-test" href="/lib/calendar/tests/runner.html">Test</a>
+                <a id="nav-test" href="/lib/popup/tests/runner.html">Test</a>
                 
             </nav>
         </header>
@@ -38,25 +34,45 @@
             
             
             <div class="container">
-                <h1>Calendar</h1>
-<p>日历控件。</p>
+                <h1>Popup</h1>
+<p>Popup 是可触发 Overlay 型 UI 组件。</p>
 
-<h2>模块依赖</h2>
+<hr/>
+
+<h2>依赖</h2>
 
 <ul>
-<li>seajs</li>
-<li>jquery</li>
-<li>overlay</li>
-<li>events</li>
-<li>moment</li>
+<li><a href="seajs/README.md">seajs</a></li>
+<li><a href="position/README.md">position</a></li>
+<li><a href="overlay/README.md">overlay</a></li>
 </ul>
 
 <h2>使用说明</h2>
 
-<pre><code>define(function(require){
-    var Calendar = require('calendar');
-    var cal = Calendar();
-})</code></pre>
+<h3>Dropdown</h3>
+
+<pre><code>seajs.use(['jquery','dropdown'], function($, Dropdown){
+    var example = new Dropdown({
+        trigger: '#triggerId',
+        element: '#targetId'
+    });
+});</code></pre>
+
+<h2>演示页面</h2>
+<p>更多用法，请看 Demo 中的例子：
+* <a href="http://aralejs.org/lib/dropdown/examples/dropdown.html">http://aralejs.org/lib/dropdown/examples/dropdown.html</a></p>
+
+<h2>单元测试</h2>
+
+<ul>
+<li><a href="http://aralejs.org/lib/dropdown/tests/runner.html">tests/runner.html</a></li>
+</ul>
+
+<h2>感谢</h2>
+
+<ul>
+<li>Bootstrap Dropdown</li>
+</ul>
 
             </div>
             

@@ -1,3 +1,16 @@
 {
-    "version": "0.9.5"
+    "version": "0.9.5",
+    "name": "switchable",
+    "dist": {
+        "switchable.js": "default",
+        "tabs.js": "default",
+        "slide.js": "default",
+        "accordion.js": "default",
+        "carousel.js": "default",
+        "plugins/autoplay.js": "default",
+        "plugins/effects.js": "default",
+        "plugins/circular.js": "default",
+        "plugins/multiple.js": "default",
+        "const.js": "default"
+    }
 }

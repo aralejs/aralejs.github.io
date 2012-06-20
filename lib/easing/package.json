@@ -1,4 +1,5 @@
 {
+    "name": "easing",
     "version": "0.9.3",
     "dist": {
         "easing.js": "default"

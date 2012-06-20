@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>easing</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/easing/">Easing</a>
+                
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            
+            <div class="container">
+                <h1>Easing</h1>
+<p>Easing 是动画的平滑函数扩展包。由于 jQuery 自带的比较少，通过这个包可以增加更多平滑函数。</p>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="jquery/README.md">jquery</a></li>
+</ul>
+
+<h2>使用说明</h2>
+<p>直接 require 就行，默认会把平滑函数混入到 jQuery 中。</p>
+<div class="highlight"><pre><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;easing&#39;</span><span class="p">);</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#demo&#39;</span><span class="p">).</span><span class="nx">animate</span><span class="p">({</span>
+        <span class="nx">width</span><span class="o">:</span> <span class="s1">&#39;toggle&#39;</span><span class="p">,</span>
+        <span class="nx">height</span><span class="o">:</span> <span class="s1">&#39;toggle&#39;</span>
+    <span class="p">},</span> <span class="p">{</span>
+    <span class="nx">duration</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span>
+    <span class="nx">specialEasing</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">width</span><span class="o">:</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span>
+        <span class="nx">height</span><span class="o">:</span> <span class="s1">&#39;elasticBoth&#39;</span> <span class="c1">// 直接使用扩展的平滑函数名就好</span>
+    <span class="p">},</span>
+    <span class="nx">complete</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">after</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;Animation complete.&lt;/div&gt;&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+<h2>平滑函数曲线图</h2>
+
+<ul>
+<li><a href="http://aralejs.org/lib/easing/examples/easing.html">examples/easing.html</a></li>
+</ul>
+
+<h2>交流讨论</h2>
+<p>欢迎创建
+<a href="https://github.com/alipay/arale/issues/new">GitHub Issue</a>
+来提交反馈。</p>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+        <script type="text/javascript">
+            seajs.use('jquery', function($) {
+                $('#nav-test').click(function() {
+                    var href = $(this).attr('href');
+                    var iframe = '<div class="container"><iframe src="' +
+                        href + '" frameborder="0" width="100%" height="640">' +
+                        '</iframe></div>';
+                    $('#main').html(iframe);
+                    !!history.pushState && history.pushState(null, 'Test', href);
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>

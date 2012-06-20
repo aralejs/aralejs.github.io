@@ -2,13 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>calendar</title>
+        <title>zepto</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
         <script type="text/javascript">
-            var debug = "True";
+            var debug = "False";
         </script>
-        
-        <script type="text/javascript" src="http://127.0.0.1:35729/livereload.js"></script>
         
         
         <link rel="stylesheet" href="/docs/assets/base.css" />
@@ -24,12 +22,8 @@
         <header id="header">
             <h1 id="brand"><a href="/">Arale</a></h1>
             <nav id="nav" role="navigation">
-                <a href="/docs/calendar/">Calendar</a>
+                <a href="/docs/zepto/">Zepto</a>
                 
-                <a href="/docs/calendar/examples/">Examples</a>
-                
-                
-                <a id="nav-test" href="/lib/calendar/tests/runner.html">Test</a>
                 
             </nav>
         </header>
@@ -38,25 +32,34 @@
             
             
             <div class="container">
-                <h1>Calendar</h1>
-<p>日历控件。</p>
+                <h1>Zepto</h1>
+<p>Zepto 是一个非常小巧的适用于现代浏览器的 JavaScript 类库。Zepto 的 API 绝大部分与 jQuery
+兼容。如果你会使用 jQuery，你也就会用 Zepto.</p>
+
+<hr/>
 
 <h2>模块依赖</h2>
 
 <ul>
-<li>seajs</li>
-<li>jquery</li>
-<li>overlay</li>
-<li>events</li>
-<li>moment</li>
+<li><a href="seajs/README.md">seajs</a></li>
 </ul>
 
 <h2>使用说明</h2>
+<div class="highlight"><pre><span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">)</span> <span class="p">{</span>
 
-<pre><code>define(function(require){
-    var Calendar = require('calendar');
-    var cal = Calendar();
-})</code></pre>
+    <span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;zepto&#39;</span><span class="p">);</span>
+
+    <span class="c1">// 快乐使用 $ 吧</span>
+
+<span class="p">});</span>
+</pre></div>
+<p>详细 API, 请阅读精心编写的 Zepto 官方文档：<a href="http://zeptojs.com/">zeptojs.com/</a></p>
+
+<h2>更新</h2>
+<p>当 Zepto 发布新版本，需要更新时，只要运行：</p>
+
+<pre><code>$ cd arale/dist
+$ spm install zepto</code></pre>
 
             </div>
             

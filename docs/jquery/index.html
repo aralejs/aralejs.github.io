@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>jquery</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/jquery/">Jquery</a>
+                
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            
+            <div class="container">
+                <h1>jQuery</h1>
+<p>jQuery 是一个简洁高效的 JavaScript 类库，可用来简化 HTML 文档的遍历、事件处理、动画和
+Ajax 操作。jQuery 的设计目的是：改变你编写 JavaScript 代码的方式。</p>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="seajs/README.md">seajs</a></li>
+</ul>
+
+<h2>使用说明</h2>
+<div class="highlight"><pre><span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">$</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">);</span>
+
+    <span class="c1">// 快乐使用 $ 吧</span>
+
+<span class="p">});</span>
+</pre></div>
+<p>jQuery 官方文档：<a href="http://api.jquery.com/">api.jquery.com/</a></p>
+
+<h2>最佳实践</h2>
+
+<ol>
+<li>推荐只把 jQuery 当成工具类库来用，用来简化 DOM、Event、Anim、Ajax 等操作。</li>
+<li>禁止直接使用 jQuery 插件，必须提交 Arale 开发团队审核并封装后才能使用。</li>
+<li>如果一个组件里，有原生 DOM 元素，也有 jQuery 对象时，推荐 jQuery 对象的变量命名加上 $ 前缀，比如：</li>
+</ol>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">$srcNode</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">srcNode</span><span class="p">);</span>
+    <span class="c1">// 前缀 $ 可以让大家清晰识别出这是一个 jQuery 对象。</span>
+</pre></div>
+
+<h2>更新</h2>
+<p>当 jQuery 发布新版本，需要更新时，只要运行：</p>
+
+<pre><code>$ cd arale/dist
+$ spm install jquery</code></pre>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+        <script type="text/javascript">
+            seajs.use('jquery', function($) {
+                $('#nav-test').click(function() {
+                    var href = $(this).attr('href');
+                    var iframe = '<div class="container"><iframe src="' +
+                        href + '" frameborder="0" width="100%" height="640">' +
+                        '</iframe></div>';
+                    $('#main').html(iframe);
+                    !!history.pushState && history.pushState(null, 'Test', href);
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>

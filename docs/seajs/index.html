@@ -2,13 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>calendar</title>
+        <title>seajs</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
         <script type="text/javascript">
-            var debug = "True";
+            var debug = "False";
         </script>
-        
-        <script type="text/javascript" src="http://127.0.0.1:35729/livereload.js"></script>
         
         
         <link rel="stylesheet" href="/docs/assets/base.css" />
@@ -24,12 +22,8 @@
         <header id="header">
             <h1 id="brand"><a href="/">Arale</a></h1>
             <nav id="nav" role="navigation">
-                <a href="/docs/calendar/">Calendar</a>
+                <a href="/docs/seajs/">Seajs</a>
                 
-                <a href="/docs/calendar/examples/">Examples</a>
-                
-                
-                <a id="nav-test" href="/lib/calendar/tests/runner.html">Test</a>
                 
             </nav>
         </header>
@@ -38,25 +32,20 @@
             
             
             <div class="container">
-                <h1>Calendar</h1>
-<p>日历控件。</p>
+                <h1>SeaJS</h1>
+<p>SeaJS 是一个适用于浏览器端的模块加载器。通过 SeaJS，可以简化模块加载、依赖分析和开发调试等工作。</p>
+<p>SeaJS 的设计目的是：改变你组织 JavaScript 代码的方式。</p>
 
-<h2>模块依赖</h2>
-
-<ul>
-<li>seajs</li>
-<li>jquery</li>
-<li>overlay</li>
-<li>events</li>
-<li>moment</li>
-</ul>
+<hr/>
 
 <h2>使用说明</h2>
+<p>请访问质朴的 SeaJS 官方文档：<a href="http://seajs.org/">seajs.org/</a></p>
 
-<pre><code>define(function(require){
-    var Calendar = require('calendar');
-    var cal = Calendar();
-})</code></pre>
+<h2>更新</h2>
+<p>当 SeaJS 发布新版本，需要更新时，只要运行：</p>
+
+<pre><code>$ cd arale/dist
+$ spm install seajs</code></pre>
 
             </div>
             
