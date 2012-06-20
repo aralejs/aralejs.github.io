@@ -10,11 +10,12 @@
         {% if debug %}
         <script type="text/javascript" src="http://127.0.0.1:35729/livereload.js"></script>
         {% endif %}
+        {% block assets %}
         <link rel="stylesheet" href="/docs/assets/base.css" />
         <link rel="stylesheet" href="/docs/assets/style.css" />
         <link rel="stylesheet" href="/docs/assets/pygments.css" />
-
         <script src="/tools/seajs-and-its-friends.js"></script>
+        {% endblock %}
         <!--[if lt IE 9]>
         <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
         <![endif]-->
