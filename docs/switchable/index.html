@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>switchable</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/switchable/">Switchable</a>
+                
+                
+                <a id="nav-test" href="/lib/switchable/tests/runner.html">Test</a>
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            
+            <div class="container">
+                <h1>Switchable</h1>
+<p>Switchable提供了切换的基本操作，并通过参数配置实现了自动播放，循环，切换等操作，并提供不同的特点封装成了Tabs, Slide, Carousel, Accordion模块。用户可以根据自己的需求引用不同的模块。</p>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="seajs/README.md">seajs</a></li>
+<li><a href="jquery/README.md">jquery</a></li>
+<li><a href="widget/README.md">widget</a></li>
+</ul>
+
+<h2>配置属性</h2>
+
+<ul>
+<li><p><code>triggers</code> {String|Array}</p>
+<p>触发器列表, 支持直接传入选择器，也可以是元素数组。</p></li>
+<li><p><code>panels</code> {String|Array}</p>
+<p>面板列表，支持直接传入选择器，也可以是元素数组。</p></li>
+<li><p><code>triggerType</code> {String}</p>
+<p>触发类型，默认<code>hover</code>.还可以选择<code>click</code></p></li>
+<li><p><code>delay</code> {Number}</p></li>
+</ul>
+<p>   默认为<code>100</code>， 触发器延迟时间，单位为毫秒。</p>
+
+<ul>
+<li><p><code>activeTriggerClass</code> {String}
+触发器被选中时的class,默认<code>ui-active</code>。</p></li>
+<li><p><code>activeIndex</code> {Number}</p></li>
+</ul>
+<p>  初始化时，自动切换到指定面板，默认为<code>0</code>，也就是第一个。</p>
+
+<ul>
+<li><code>steps</code> {Number}</li>
+</ul>
+<p>  步长，表示每次切换时需要间隔多少个panels, 默认为<code>1</code>。</p>
+
+<ul>
+<li><code>viewSize</code> {Array}</li>
+</ul>
+<p>  可见视图区域的大小. 如果 css 中不设置 panel 的高宽或初始没有 panel , 则需要这里手工指定大小, 默认为 [].</p>
+<p>  <code>当 panel 的高宽 css 中不指定时，需要设置 viewSize 为单个 panel 的高宽.</code></p>
+
+<ul>
+<li><code>autoplay</code> {Boolean}</li>
+</ul>
+<p>  是否自动切换，默认为<code>false</code>, 开启后，不需要触发触发器，可以实现自动播放。</p>
+
+<ul>
+<li> <code>interval</code> {Number}</li>
+</ul>
+<p>  自动播放间隔时间, 以毫秒为单位, 默认为 <code>3000</code>。</p>
+
+<ul>
+<li><code>pauseOnHover</code> {Boolean}</li>
+</ul>
+<p>  triggerType 为 <code>hover</code> 时, 鼠标悬停在 slide 上是否暂停自动播放, 默认为 <code>true</code>。</p>
+
+<ul>
+<li><code>circular</code> {Boolean}</li>
+</ul>
+<p>  否循环切换, 默认为 <code>true</code>, 是否循环播放, 当切换到最初/最后一个时, 是否切换到最后/最初一个。</p>
+
+<ul>
+<li><code>effect</code> {String}</li>
+</ul>
+<p>  动画效果函数, 默认没有特效, 可取 <code>scrollx</code>, <code>scrolly</code>, <code>fade</code> 或者直接传入自定义效果函数.</p>
+
+<ul>
+<li><code>duration</code> {Number}</li>
+</ul>
+<p>  默认为 <code>500</code>, 以毫秒为单位， 动画的时长.</p>
+
+<ul>
+<li><code>easing</code> {String|Function}</li>
+</ul>
+<p>  动画效果，目前支持,<code>easeNode</code>默认, <code>easeIn</code>, <code>easeOut</code>, <code>easeBoth</code>, <code>easeInStrong</code>, <code>easeOutStrong</code>, <code>easeBothStrong</code>, <code>elasticIn</code>, <code>elasticOut</code>, <code>elasticBoth</code>, <code>backIn</code>, <code>backOut</code>, <code>backBoth</code>, <code>bounceIn</code>, <code>bounceOut</code>, <code>bounceBoth</code>。</p>
+
+<h1></h1>
+
+<h2>DATA API 配置属性</h2>
+<p>目前项目支持data-api的形式配置相关属性，并以role的形式配置到项目中，主要有下面6个role.
+前面4个是所有组件均有效，后面2个，只在 Carousel 组件中生效.</p>
+<p>其中前面4个仅在在属性配置中没有发现对应的<code>panels</code> 和 <code>triggers</code> 相关配置时，才会生效。
+并且如果同时配置了下面的role， panel的优先级高于content. trigger高于nav.</p>
+
+<ul>
+<li><p><code>panel</code> 单个面板</p></li>
+<li><p><code>content</code> 面板列表元素</p></li>
+<li><p><code>trigger</code> 触发器</p></li>
+<li><p><code>nav</code> 触发器容器</p></li>
+</ul>
+
+<pre><code>&lt;div&gt;
+        &lt;span data-role=&quot;prev&quot;&gt;上一页&lt;/span&gt;
+        &lt;ul class=&quot;ui-switchable-nav-test&quot; data-role=&quot;nav&quot;&gt;
+            &lt;li data-role=&quot;trigger&quot;&gt;标题 A&lt;/li&gt;
+            &lt;li data-role=&quot;trigger&quot;&gt;标题 B&lt;/li&gt;
+            &lt;li data-role=&quot;trigger&quot;&gt;标题 C&lt;/li&gt;
+            &lt;li data-role=&quot;trigger&quot;&gt;标题 D&lt;/li&gt;
+            &lt;li data-role=&quot;trigger&quot;&gt;标题 E&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div id=&quot;J_Slide&quot;&gt;  &lt;!-- 容器元素 --&gt;
+            &lt;div class=&quot;ui-switchable-content&quot; data-role=&quot;content&quot;&gt;  &lt;!-- 面板列表 --&gt;
+            &lt;div data-role=&quot;panel&quot;&gt;内容 A&lt;/div&gt;
+            &lt;div style=&quot;display: none&quot; data-role=&quot;panel&quot;&gt;内容 B&lt;/div&gt;
+            &lt;div style=&quot;display: none&quot; data-role=&quot;panel&quot;&gt;内容 C&lt;/div&gt;
+            &lt;div style=&quot;display: none&quot; data-role=&quot;panel&quot;&gt;内容 D&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;span data-role=&quot;next&quot;&gt;下一页&lt;/span&gt;
+    &lt;/div&gt;</code></pre>
+
+<ul>
+<li><p><code>prev</code> 上一页 (仅在Carousel组件生效)</p></li>
+<li><p><code>next</code> 下一页 (仅在Carousle组件中生效)</p></li>
+</ul>
+
+<h2>具体组件配置属性</h2>
+<p>有些属性在对应类型的模块可能有不同的默认值，还有一些特有的配置属性。</p>
+
+<h3>Accordion (手风琴)</h3>
+
+<ul>
+<li><code>triggerType</code> {String}</li>
+</ul>
+<p>  在此模块中，默认值为<code>click</code></p>
+
+<ul>
+<li><code>multiple</code> {Boolean}</li>
+</ul>
+<p>  是否支持多个面板展开，默认为<code>false</code>。</p>
+
+<h3>Carousel (旋转木马)</h3>
+
+<ul>
+<li><code>circular</code> {Boolean}</li>
+</ul>
+<p>  是否支持循环切换。默认<code>true</code>
+* <code>prevButtonClass</code> {String}</p>
+<p>  <code>前一个</code>触发器class. 默认为<code>ui-switchable-prev-btn</code>。
+* <code>nextButtonClass</code> {String}</p>
+<p>  <code>后一个</code>触发器class. 默认为<code>ui-switchable-next-btn</code>。
+* <code>disableButtonClass</code> {String}
+   触发器不可用时的class. 默认为<code>ui-switchable-disable-btn</code>。</p>
+
+<h3>Slide</h3>
+
+<ul>
+<li>autoplay {Boolean}</li>
+</ul>
+<p>  是否自动切换，默认为<code>true</code>。</p>
+
+<ul>
+<li>circular {Boolean}</li>
+</ul>
+<p>  是否循环切换，默认为<code>true</code>。</p>
+
+<h3>Tabs (卡盘)</h3>
+<p>配置和基础类相同</p>
+
+<h2>实例属性</h2>
+
+<ul>
+<li><code>element</code> {HTMLElement}</li>
+</ul>
+<p>  容器元素。
+* <code>triggers</code> {Array}</p>
+<p>  触发器集合， 可能为空。
+* <code>panels</code> {Array}</p>
+<p>  切换面板结合，可以为空值。
+* <code>content</code> {HTMLElement}</p>
+<p>  存放面板的容器元素。
+* <code>length</code> {Number}</p>
+<p>  只读, 触发器或面板的个数。</p>
+
+<h2>方法详情</h2>
+
+<ul>
+<li><p><code>switchTo</code>(toIndex, fromIndex)
+切换到某个视图。
+  toIndex {Number} 要切换到的项。
+  fromInex {Number} 当前项.</p></li>
+<li><p>prev</p></li>
+</ul>
+<p>  切换到上一视图。
+* next</p>
+<p>  切换到下一视图。</p>
+
+<ul>
+<li>stop</li>
+</ul>
+<p>  停止自动切换。只有设置了 autoplay true 时有效。</p>
+
+<ul>
+<li>start</li>
+</ul>
+<p>  开始自动切换
+* destroy</p>
+<p>  组件销毁</p>
+
+<h2>组件触发事件</h2>
+<p>在组件运行中，会触发相关事件，使用者可以根据自己的需要去监听对应的事件</p>
+
+<ul>
+<li><code>switch</code></li>
+</ul>
+<p>  面板切换前触发。</p>
+
+<ul>
+<li><code>switched</code></li>
+</ul>
+<p>  面板切换后触发。</p>
+
+<ul>
+<li><code>change:activeIndex</code></li>
+</ul>
+<p>  面板改变时触发</p>
+
+<h2>最佳实践</h2>
+
+<ol>
+<li>直接使用：</li>
+</ol>
+
+<pre><code>seajs.use(['tabs'], function(Tabs) {
+    var t = new Tabs({
+        element: '#demo1',
+        switchTo: 1,
+        effect: 'fade'
+    });
+});</code></pre>
+
+<ol>
+<li>也可以适用自动渲染。详情可以参考<a href="https://github.com/alipay/arale/blob/master/lib/switchable/examples/autorender.html">examples/autorender.html</a></li>
+</ol>
+
+<h2>演示页面</h2>
+
+<ul>
+<li><a href="http://aralejs.org/lib/switchable/examples/autorender.html">examples/autorender.html</a></li>
+<li><a href="http://aralejs.org/lib/switchable/examples/tabs.html">examples/tabs.html</a></li>
+<li><a href="http://aralejs.org/lib/switchable/examples/switchable-data-api.html">examples/switchable-data-api.html</a></li>
+</ul>
+
+<h2>测试用例</h2>
+
+<ul>
+<li><a href="http://aralejs.org/lib/switchable/tests/runner.html">aralejs.org/lib/switchable/tests/runner.html</a></li>
+</ul>
+
+<h2>交流讨论</h2>
+<p>欢迎创建
+<a href="https://github.com/alipay/arale/issues/new">GitHub Issue</a>
+来提交反馈。</p>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+        <script type="text/javascript">
+            seajs.use('jquery', function($) {
+                $('#nav-test').click(function() {
+                    var href = $(this).attr('href');
+                    var iframe = '<div class="container"><iframe src="' +
+                        href + '" frameborder="0" width="100%" height="640">' +
+                        '</iframe></div>';
+                    $('#main').html(iframe);
+                    !!history.pushState && history.pushState(null, 'Test', href);
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>

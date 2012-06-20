@@ -1,4 +1,5 @@
 {
+    "name": "popup",
     "version": "0.9.5",
     "dist": {
         "popup.js": "default",

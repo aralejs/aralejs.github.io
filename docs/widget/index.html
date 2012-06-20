@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>widget</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/widget/">Widget</a>
+                
+                
+                <a id="nav-test" href="/lib/widget/tests/runner.html">Test</a>
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            
+            <div class="container">
+                <h1>Widget</h1>
+<p>Widget 是 UI 组件的基础类，约定了组件的基本生命周期，实现了一些通用功能。基于 Widget
+可以构建出任何你想要的 Web 组件。</p>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="seajs/README.md">seajs</a></li>
+<li><a href="base/README.md">base</a></li>
+<li><a href="jquery/README.md">jquery</a> / <a href="zepto/README.md">zepto</a></li>
+<li><a href="handlebars/README.md">handlebars</a></li>
+</ul>
+<p><strong>注</strong>：handlebars 依赖仅在混入 <code>Templatable</code> 后才产生。</p>
+
+<h2>使用说明</h2>
+
+<h3>extend <code>Widget.extend(properties)</code></h3>
+<p>使用 <code>extend</code> 方法，可以基于 <code>Widget</code> 来创建子类。</p>
+<div class="highlight"><pre><span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Widget</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;widget&#39;</span><span class="p">);</span>
+
+    <span class="c1">// 定义 SimpleTabView 类</span>
+    <span class="kd">var</span> <span class="nx">SimpleTabView</span> <span class="o">=</span> <span class="nx">Widget</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+        <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s1">&#39;click .nav li&#39;</span><span class="o">:</span> <span class="s1">&#39;switchTo&#39;</span>
+        <span class="p">},</span>
+        <span class="nx">switchTo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">...</span>
+        <span class="p">},</span>
+        <span class="p">...</span>
+    <span class="p">});</span>
+
+    <span class="c1">// 实例化</span>
+    <span class="kd">var</span> <span class="nx">demo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleTabView</span><span class="p">({</span> <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo&#39;</span> <span class="p">}).</span><span class="nx">render</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+<p>详细源码可访问：<a href="http://aralejs.org/lib/widget/examples/simple-tabview.html">simple-tabview.html</a></p>
+
+<h3>initialize <code>new Widget([config])</code></h3>
+<p>Widget 实例化时，会调用此方法。</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">widget</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Widget</span><span class="p">({</span>
+   <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo&#39;</span><span class="p">,</span>
+   <span class="nx">className</span><span class="o">:</span> <span class="s1">&#39;widget&#39;</span><span class="p">,</span>
+   <span class="nx">model</span><span class="o">:</span> <span class="p">{</span>
+       <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;设计原则&#39;</span><span class="p">,</span>
+       <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;开放、简单、易用&#39;</span>
+   <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+<p><code>config</code> 参数用来传入选项，实例化后可以通过 <code>get/set</code> 来访问。<code>config</code>
+参数如果包含 <code>element</code> 和 <code>model</code> 属性，实例化后会直接放到 <code>this</code> 上，即可通过
+<code>this.element</code>、<code>this.model</code> 来获取。</p>
+<p>在 <code>initialize</code> 方法中，确定了组件构建的基本流程：</p>
+<div class="highlight"><pre><span class="k">this</span><span class="p">.</span><span class="nx">initAttrs</span><span class="p">(...);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">parseElement</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">initProps</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">delegateEvents</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setup</span><span class="p">();</span>
+</pre></div>
+<p>下面逐一讲述。</p>
+
+<h3>initAttrs <code>widget.initAttrs(config, [dataAttrsConfig])</code></h3>
+<p>选项的初始化方法。通过该方法，会将传入的 <code>config</code> 参数与所继承的类中的默认 <code>config</code>
+进行合并处理。</p>
+<p>子类如果想在 <code>initAttrs</code> 执行之前或之后进行一些额外处理，可以覆盖该方法：</p>
+
+<pre><code>var MyWidget = Widget.extend({
+    initAttrs: function(config) {
+        // 提前做点处理
+
+        // 调用父类的
+        MyWidget.superclass.initAttrs.call(this, config);
+
+        // 之后做点处理
+    }
+});</code></pre>
+<p><strong>注意</strong>：一般情况下不需要覆盖 <code>initAttrs</code>。</p>
+
+<h3>parseElement <code>widget.parseElement()</code></h3>
+<p>该方法只干一件事：根据选项信息，构建好 <code>this.element</code>。</p>
+<p>默认情况下，如果 <code>config</code> 参数中传入了 <code>element</code> 选项（取值可为 DOM element / selector），
+会直接根据该选项来获取 <code>this.element</code> 对象。</p>
+<p><code>this.element</code> 是一个 jQuery / Zepto 对象。</p>
+
+<h3>parseElementFromTemplate <code>widget.parseElementFromTemplate()</code></h3>
+<p>如果 <code>config</code> 参数中未传入 <code>element</code> 选项，则会根据 <code>template</code> 选项来构建
+<code>this.element</code>。 默认的 <code>template</code> 是 <code>&lt;div&gt;&lt;/div&gt;</code>。</p>
+<p>子类可覆盖该方法，以支持 Handlebars、Mustache 等模板引擎。</p>
+
+<h3>element <code>widget.element</code></h3>
+<p>widget 实例对应的 DOM 根节点，是一个 jQuery / Zepto 对象。</p>
+
+<h3>initProps <code>widget.initProps()</code></h3>
+<p>properties 的初始化方法，提供给子类覆盖，比如：</p>
+<div class="highlight"><pre><span class="nx">initProps</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">targetElement</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>delegateEvents <code>widget.delegateEvents([events])</code></h3>
+
+<h3>delegateEvents <code>widget.delegateEvents(eventType, handler)</code></h3>
+<p>注册事件代理。在 Widget 组件的设计里，推荐使用代理的方式来注册事件。这样可以使得对应的
+DOM 内容有修改时，无需重新绑定。</p>
+<p><code>widget.delegateEvents()</code> 会在实例初始化时自动调用，这时会从 <code>this.events</code>
+中取得声明的代理事件，比如</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">MyWidget</span> <span class="o">=</span> <span class="nx">Widget</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dblclick&quot;</span><span class="o">:</span> <span class="s2">&quot;open&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;click .icon.doc&quot;</span><span class="o">:</span> <span class="s2">&quot;select&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mouseover .date&quot;</span><span class="o">:</span> <span class="s2">&quot;showTooltip&quot;</span>
+    <span class="p">},</span>
+    <span class="nx">open</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">},</span>
+    <span class="nx">select</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">});</span>
+</pre></div>
+<p><code>events</code> 中每一项的格式是：<code>&quot;event selector&quot;: &quot;callback&quot;</code>，当省略 <code>selector</code>
+时，默认会将事件绑定到 <code>this.element</code> 上。<code>callback</code> 可以是字符串，表示当前实例上的方法名；
+也可以直接传入函数。</p>
+<p><code>events</code> 还可以是方法，返回一个 events hash 对象即可。比如</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">MyWidget</span> <span class="o">=</span> <span class="nx">Widget</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">events</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">hash</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;click&quot;</span><span class="o">:</span> <span class="s2">&quot;open&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;click .close&quot;</span><span class="o">:</span> <span class="s2">&quot;close&quot;</span>
+        <span class="p">};</span>
+
+        <span class="c1">// 给 data-role=&quot;title&quot; 的元素声明 toggle 事件代理</span>
+        <span class="nx">hash</span><span class="p">[</span><span class="s2">&quot;click &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">role</span><span class="p">.</span><span class="nx">title</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;toggle&quot;</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="nx">hash</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">});</span>
+</pre></div>
+<p><code>events</code> 中，还支持 <code>{{name}}</code> 模板表达式，比如上面的代码，可以简化为：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">MyWidget</span> <span class="o">=</span> <span class="nx">Widget</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;click&quot;</span><span class="o">:</span> <span class="s2">&quot;open&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;click .close&quot;</span><span class="o">:</span> <span class="s2">&quot;close&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;click {{dataset.role.title}}&quot;</span><span class="o">:</span> <span class="s2">&quot;toggle&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mouseover {{trigger}}&quot;</span><span class="o">:</span> <span class="s2">&quot;open&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mouseover {{attrs.panels}}&quot;</span><span class="o">:</span> <span class="s2">&quot;hover&quot;</span>
+        <span class="s2">&quot;click {{header}},{{footer}}&quot;</span><span class="o">:</span> <span class="s2">&quot;egg&quot;</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">});</span>
+</pre></div>
+<p>实例化后，还可以通过 <code>delegateEvents</code> 方法动态添加事件代理：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">myWidget</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Widget</span><span class="p">();</span>
+
+<span class="nx">myWidget</span><span class="p">.</span><span class="nx">delegateEvents</span><span class="p">(</span><span class="s1">&#39;click .move&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>undelegateEvents <code>widget.undelegateEvents([eventType])</code></h3>
+<p>卸载事件代理。不带参数时，表示卸载所有事件。</p>
+
+<h3>setup <code>widget.setup()</code></h3>
+<p>提供给子类覆盖的初始化方法。可以在此处理更多初始化信息，比如</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">TabView</span> <span class="o">=</span> <span class="nx">Widget</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="p">...</span>
+    <span class="nx">setup</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">activeIndex</span> <span class="o">=</span> <span class="nx">getActiveIndex</span><span class="p">();</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>render <code>widget.render()</code></h3>
+<p>提供给子类覆盖的初始化方法。render 方法只干一件事件：将 <code>this.element</code> 渲染到页面上。</p>
+<p>默认无需覆盖。需要覆盖时，请使用 <code>return this</code> 来保持该方法的链式约定。</p>
+
+<h3>$ <code>widget.$(selector)</code></h3>
+<p>在 <code>this.element</code> 内查找匹配节点。</p>
+
+<h3>destroy <code>widget.destroy()</code></h3>
+<p>销毁实例。</p>
+
+<h3>on <code>widget.on(event, callback, [context])</code></h3>
+<p>这是从 Events 中自动混入进来的方法。还包括 <code>off</code> 和 <code>trigger</code>。</p>
+<p>具体使用请参考 <a href="events/README.md">events 使用文档</a>。</p>
+
+<h3>autoRenderAll <code>Widget.autoRenderAll(root)</code></h3>
+<p>根据 data-widget 属性，自动渲染找到的所有 Widget 类组件。</p>
+
+<h2>Templatable</h2>
+<p>可混入的功能类，提供 Handlebars 模板支持。</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">Templatable</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;widget-templatable&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">MyWidget</span> <span class="o">=</span> <span class="nx">Widget</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">Implements</span><span class="o">:</span> <span class="nx">Templatable</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">myWidget</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyWidget</span><span class="p">({</span>
+    <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;&lt;h3&gt;{{title}}&lt;/h3&gt;&lt;ol&gt;{{#each list}}&lt;li&gt;{{item}}&lt;/li&gt;{{/each}}&#39;</span><span class="p">,</span>
+    <span class="nx">model</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;title&#39;</span><span class="o">:</span> <span class="s1">&#39;标题&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;list&#39;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s1">&#39;item&#39;</span><span class="o">:</span> <span class="s1">&#39;文章一&#39;</span> <span class="p">},</span>
+            <span class="p">{</span> <span class="s1">&#39;item&#39;</span><span class="o">:</span> <span class="s1">&#39;文章二&#39;</span> <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nx">parentNode</span><span class="o">:</span> <span class="s1">&#39;#demo&#39;</span>
+<span class="p">});</span>
+
+<span class="nx">myWidget</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+</pre></div>
+
+<h2>DAParser</h2>
+<p>data-api 解析工具，功能如下：</p>
+
+<h3>parseBlock <code>DAParser.parseBlock(root)</code></h3>
+<p>解析对应 DOM 结构中的 DATA-ATTRIBUTE API。假设 <code>root</code> 元素的 html 为：</p>
+
+<pre><code>&lt;div data-widget=&quot;dialog&quot;&gt;
+    &lt;div data-role=&quot;title&quot;&gt;{{title}}&lt;/div&gt;
+    &lt;div data-role=&quot;content&quot;&gt;{{content}}&lt;/div&gt;
+    &lt;span data-action=&quot;click close&quot;&gt;X&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+<p>通过 <code>parseBlock</code> 方法，可以得到 <code>dataset</code> 对象：</p>
+
+<pre><code>{
+    &quot;widget&quot;: { &quot;dialog&quot;: &quot;.daparser-0&quot; },
+    &quot;role&quot;: {
+              &quot;title&quot;: &quot;.daparser-1&quot;
+              &quot;content&quot;: &quot;.daparser-2&quot;
+            },
+    &quot;action&quot;: { &quot;click close&quot;: &quot;.daparser-3&quot; }
+}</code></pre>
+<p><code>daparser-n</code> 是自动添加到对应 DOM 元素上具有唯一性质的 className 。</p>
+
+<h3>parseElement <code>DAParser.parseElement(element)</code></h3>
+<p>得到单个 DOM 元素的 dataset 数据。</p>
+
+<h3>stamp <code>DAParser.stamp(element)</code></h3>
+<p>给 DOM 元素添加具有唯一性质的 className 。</p>
+
+<h2>演示页面</h2>
+
+<ul>
+<li><a href="http://aralejs.org/lib/widget/examples/widget.html">aralejs.org/lib/widget/examples/widget.html</a></li>
+<li><a href="http://aralejs.org/lib/widget/examples/simple-tabview.html">aralejs.org/lib/widget/examples/simple-tabview.html</a></li>
+</ul>
+
+<h2>测试用例</h2>
+
+<ul>
+<li><a href="http://aralejs.org/lib/widget/tests/runner.html">aralejs.org/lib/widget/tests/runner.html</a></li>
+</ul>
+
+<h2>交流讨论</h2>
+<p>欢迎创建
+<a href="https://github.com/alipay/arale/issues/new">GitHub Issue</a>
+来提交反馈。</p>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+        <script type="text/javascript">
+            seajs.use('jquery', function($) {
+                $('#nav-test').click(function() {
+                    var href = $(this).attr('href');
+                    var iframe = '<div class="container"><iframe src="' +
+                        href + '" frameborder="0" width="100%" height="640">' +
+                        '</iframe></div>';
+                    $('#main').html(iframe);
+                    !!history.pushState && history.pushState(null, 'Test', href);
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>

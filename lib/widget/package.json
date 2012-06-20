@@ -1,4 +1,5 @@
 {
+    "name": "widget",
     "version": "0.9.16",
     "dist": {
         "widget.js": "default",
