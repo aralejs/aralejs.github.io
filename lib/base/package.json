@@ -1,4 +1,5 @@
 {
+    "name": "base",
     "version": "0.9.16",
     "dist": {
         "base.js": "default",

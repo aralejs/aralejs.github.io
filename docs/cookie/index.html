@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>cookie</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/cookie/">Cookie</a>
+                
+                
+                <a id="nav-test" href="/lib/cookie/tests/runner.html">Test</a>
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            
+            <div class="container">
+                <h1>Cookie</h1>
+<p>提供 Cookie 操作方法。</p>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="seajs/README.md">seajs</a></li>
+</ul>
+
+<h2>使用说明</h2>
+
+<h3>get <code>Cookie.get(name, [options])</code></h3>
+<p>获取 cookie 值。<code>options</code> 参数可选，取值如下：</p>
+
+<ol>
+<li><code>converter</code> 转换函数。如果所获取的 cookie 有值，会在返回前传给 <code>converter</code>
+函数进行转换。</li>
+<li>选项对象。对象中可以有两个属性：<code>converter</code> 和 <code>raw</code>. <code>raw</code> 是布尔值，为真时，不会对获取到的
+cookie 值进行 URI 解码。</li>
+</ol>
+<p><strong>注</strong>：如果要获取的 cookie 键值不存在，则返回 <code>undefined</code>.</p>
+<p>例子：</p>
+<div class="highlight"><pre><span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Cookie</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;cookie&#39;</span><span class="p">);</span>
+
+    <span class="c1">// setup</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="s1">&#39;foo=1&#39;</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="s1">&#39;bar=2&#39;</span><span class="p">;</span>
+
+    <span class="nx">Cookie</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+    <span class="c1">// returns &#39;1&#39;</span>
+
+    <span class="nx">Cookie</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span> <span class="p">}</span> <span class="p">);</span>
+    <span class="c1">// returns 2</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>set <code>Cookie.set(name, value, [options])</code></h3>
+<p>设置 cookie 值。参数 <code>options</code> 可选，可以有以下属性：<code>path</code>（字符串）、<code>domain</code>（字符串）、
+<code>expires</code>（数值或日期对象）、<code>raw</code>（布尔值）。当 <code>raw</code> 为真值时，在设置 cookie 值时，不会进行
+URI 编码。</p>
+<p>例子：</p>
+<div class="highlight"><pre><span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Cookie</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;cookie&#39;</span><span class="p">);</span>
+
+    <span class="nx">Cookie</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+    <span class="nx">Cookie</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">domain</span><span class="o">:</span> <span class="s1">&#39;example.com&#39;</span><span class="p">,</span>
+        <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+        <span class="nx">expires</span><span class="o">:</span> <span class="mi">30</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>remove <code>Cookie.remove(name, [options])</code></h3>
+<p>移除指定的 cookie.</p>
+<p>例子：</p>
+<div class="highlight"><pre><span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Cookie</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;cookie&#39;</span><span class="p">);</span>
+
+    <span class="nx">Cookie</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
+
+    <span class="nx">Cookie</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="p">{</span>
+        <span class="nx">domain</span><span class="o">:</span> <span class="s1">&#39;example.com&#39;</span><span class="p">,</span>
+        <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;/&#39;</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<h2>测试用例</h2>
+
+<ul>
+<li><a href="http://aralejs.org/lib/cookie/tests/runner.html">aralejs.org/lib/cookie/tests/runner.html</a></li>
+</ul>
+
+<h2>交流讨论</h2>
+<p>欢迎创建
+<a href="https://github.com/alipay/arale/issues/new">GitHub Issue</a>
+来提交反馈。</p>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+        <script type="text/javascript">
+            seajs.use('jquery', function($) {
+                $('#nav-test').click(function() {
+                    var href = $(this).attr('href');
+                    var iframe = '<div class="container"><iframe src="' +
+                        href + '" frameborder="0" width="100%" height="640">' +
+                        '</iframe></div>';
+                    $('#main').html(iframe);
+                    !!history.pushState && history.pushState(null, 'Test', href);
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>class</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/class/">Class</a>
+                
+                
+                <a id="nav-test" href="/lib/class/tests/runner.html">Test</a>
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            
+            <div class="container">
+                <h1>Class</h1>
+<p>提供简洁的 OO 实现。</p>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="seajs/README.md">seajs</a></li>
+</ul>
+
+<h2>使用说明</h2>
+
+<h3>create <code>Class.create([parent], [properties])</code></h3>
+<p>创建一个新类。参数 <code>parent</code> 是继承的父类，<code>properties</code> 是要混入的实例属性。</p>
+<p>来看一个简单的例子：</p>
+<div class="highlight"><pre><span class="cm">/* pig.js */</span>
+<span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Class</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;class&#39;</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">Pig</span> <span class="o">=</span> <span class="nx">Class</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="p">},</span>
+
+        <span class="nx">talk</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;我是&#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Pig</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+<p><code>initialize</code> 属性，标明初始化方法，会在构建实例时调用。</p>
+<p>使用 <code>create</code> 方法创建的类，拥有 <code>extend</code> 方法，可以继续创建子类：</p>
+<div class="highlight"><pre><span class="cm">/* red-pig.js */</span>
+<span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Pig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./pig&#39;</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">RedPig</span> <span class="o">=</span> <span class="nx">Pig</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">RedPig</span><span class="p">.</span><span class="nx">superclass</span><span class="p">.</span><span class="nx">initialize</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+        <span class="p">},</span>
+
+        <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;红色&#39;</span>
+    <span class="p">});</span>
+
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">RedPig</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+<p><strong>注意</strong>：需要在子类方法中，调用父类中的同名方法时，JavaScript 语言自身并没有提供类似 <code>super</code>
+的方式来轻松实现。用 <code>create</code> 或 <code>extend</code> 方法创建类时，可以使用 <code>superclass.methodName</code>
+来显式调用父类方法。之所以不提供 <code>super</code> 方法，原因有二：</p>
+
+<ol>
+<li>实现起来较麻烦。现有类库的实现方案，都不完美。</li>
+<li>在 JavaScript 编程中，调用 <code>super</code> 的需求并不多。简单通过 <code>superclass.methodName</code>
+来调用已经能够满足需求，并很灵活、清晰。</li>
+</ol>
+<p><code>properties</code> 参数中，除了支持用 <code>initialize</code> 来标明初始化方法，还可以用 <code>Implements</code>
+来标明所创建的类需要从哪些类中混入属性：</p>
+<div class="highlight"><pre><span class="cm">/* flyable.js */</span>
+<span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">fly</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;我飞起来了&#39;</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+</pre></div>
+<div class="highlight"><pre><span class="cm">/* flyable-red-pig.js */</span>
+<span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">RedPig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./red-pig&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">Flyable</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./flyable&#39;</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">FlyableRedPig</span> <span class="o">=</span> <span class="nx">RedPig</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+        <span class="nx">Implements</span><span class="o">:</span> <span class="nx">Flyable</span><span class="p">,</span>
+
+        <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">FlyableRedPig</span><span class="p">.</span><span class="nx">superclass</span><span class="p">.</span><span class="nx">initialize</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">FlyableRedPig</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+<p><strong>注意</strong>：<code>Implements</code> 采用首字母大写，是因为小写的 <code>implements</code> 是 JavaScript
+保留字。大写也表示其特殊性，与 MooTools 的方式一致。</p>
+<p>除了 <code>Implements</code>, 还有一个特殊属性：</p>
+
+<ul>
+<li><code>Extends</code> - 用来指定继承的父类，注意只能有一个父类，不支持多继承。</li>
+</ul>
+
+<h3>implement <code>SomeClass.implement(properties)</code></h3>
+<p>该方法与 <code>Implements</code> 属性的功能类似。当某个类已存在，需要动态修改时，用 <code>implement</code>
+方法更便捷。</p>
+<div class="highlight"><pre><span class="cm">/* flyable-red-pig-extension.js */</span>
+<span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">FlyableRedPig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./flyable-red-pig&#39;</span><span class="p">);</span>
+
+    <span class="nx">FlyableRedPig</span><span class="p">.</span><span class="nx">implement</span><span class="p">({</span>
+       <span class="nx">swim</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+           <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;我还会游泳&#39;</span><span class="p">);</span>
+       <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+<p>这样，我们得到了会说话、会飞、还会游泳的飞天红猪侠：</p>
+<div class="highlight"><pre><span class="cm">/* test.js */</span>
+<span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">FlyableRedPig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./flyable-red-pig&#39;</span><span class="p">);</span>
+    <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./flyable-red-pig-extension&#39;</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">pig</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FlyableRedPig</span><span class="p">(</span><span class="s1">&#39;飞天红猪侠&#39;</span><span class="p">);</span>
+    <span class="nx">pig</span><span class="p">.</span><span class="nx">talk</span><span class="p">();</span> <span class="c1">// alerts &#39;我是飞天红猪侠&#39;</span>
+    <span class="nx">pig</span><span class="p">.</span><span class="nx">fly</span><span class="p">();</span>  <span class="c1">// alerts &#39;我飞起来了&#39;</span>
+    <span class="nx">pig</span><span class="p">.</span><span class="nx">swim</span><span class="p">();</span> <span class="c1">// alerts &#39;我还会游泳&#39;</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>extend <code>SomeClass.extend(properties)</code></h3>
+<p>由 <code>Class.create</code> 创建的类，自动具有 <code>extend</code> 方法，功能与 <code>Class.create</code>
+完全一样，只是继承的父类是 <code>SomeClass</code> 自身，前面的例子中已说明，不赘述。</p>
+
+<h3>Class <code>Class(fn)</code></h3>
+<p>将已经存在的 function 函数转换为 Class 类：</p>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">Animal</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">talk</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
+
+<span class="kd">var</span> <span class="nx">Dog</span> <span class="o">=</span> <span class="nx">Class</span><span class="p">(</span><span class="nx">Animal</span><span class="p">).</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">swim</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">});</span>
+</pre></div>
+
+<h2>测试用例</h2>
+
+<ul>
+<li><a href="http://aralejs.org/lib/class/tests/runner.html">aralejs.org/lib/class/tests/runner.html</a></li>
+</ul>
+
+<h2>性能对比</h2>
+
+<ul>
+<li><a href="http://jsperf.com/class-perfs">jsperf.com/class-perfs</a></li>
+</ul>
+
+<h2>调研文档</h2>
+
+<ul>
+<li><a href="class/docs/competitors.md">OO 模拟那些事儿</a></li>
+<li><a href="class/docs/meta.md">类与模块</a></li>
+</ul>
+
+<h2>交流讨论</h2>
+<p>欢迎创建
+<a href="https://github.com/alipay/arale/issues/new">GitHub Issue</a>
+来提交反馈。</p>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+        <script type="text/javascript">
+            seajs.use('jquery', function($) {
+                $('#nav-test').click(function() {
+                    var href = $(this).attr('href');
+                    var iframe = '<div class="container"><iframe src="' +
+                        href + '" frameborder="0" width="100%" height="640">' +
+                        '</iframe></div>';
+                    $('#main').html(iframe);
+                    !!history.pushState && history.pushState(null, 'Test', href);
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>

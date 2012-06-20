@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>json</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/json/">Json</a>
+                
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            
+            <div class="container">
+                <h1>JSON</h1>
+<p>为运行环境提供 <code>JSON</code> 支持。</p>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="seajs/README.md">seajs</a></li>
+</ul>
+
+<h2>使用说明</h2>
+<p>在 IE6 等浏览器中，未提供 <code>JSON</code> 全局对象。通过该组件，可以补足：</p>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+    <span class="nx">alias</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;json&#39;</span><span class="o">:</span> <span class="s1">&#39;json/1.0.2/json&#39;</span>
+    <span class="p">},</span>
+    <span class="c1">// 只在需要时进行预加载</span>
+    <span class="nx">preload</span><span class="o">:</span> <span class="p">[</span> <span class="k">this</span><span class="p">.</span><span class="nx">JSON</span> <span class="o">?</span> <span class="s1">&#39;&#39;</span> <span class="o">:</span> <span class="s1">&#39;json&#39;</span> <span class="p">]</span>
+<span class="p">});</span>
+
+
+<span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;{ &quot;name&quot;: &quot;Frank Wang&quot; }&#39;</span><span class="p">);</span>
+    <span class="nx">data</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="c1">// ==&gt; &#39;{&quot;name&quot;:&quot;Frank Wang&quot;,&quot;age&quot;:80}&#39;</span>
+<span class="p">});</span>
+</pre></div>
+<p>具体用法，请参考 Douglas Crockford 的源码：</p>
+
+<ul>
+<li><a href="https://github.com/douglascrockford/JSON-js/blob/master/json2.js">github.com/douglascrockford/JSON-js/blob/master/json2.js</a></li>
+</ul>
+
+<h2>更新</h2>
+<p>当 JSON 发布新版本，需要更新时，只要运行：</p>
+
+<pre><code>$ cd arale/dist
+$ spm install json</code></pre>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+        <script type="text/javascript">
+            seajs.use('jquery', function($) {
+                $('#nav-test').click(function() {
+                    var href = $(this).attr('href');
+                    var iframe = '<div class="container"><iframe src="' +
+                        href + '" frameborder="0" width="100%" height="640">' +
+                        '</iframe></div>';
+                    $('#main').html(iframe);
+                    !!history.pushState && history.pushState(null, 'Test', href);
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>
