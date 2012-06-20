@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>iframe-shim</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "True";
+        </script>
+        
+        <script type="text/javascript" src="http://127.0.0.1:35729/livereload.js"></script>
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/iframe-shim/">Iframe-Shim</a>
+                <a href="/docs/iframe-shim/examples/">Examples</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            <div class="container">
+                <h1>Iframe-shim</h1>
+
+<style>
+    .cell {
+        position:relative;
+    }
+
+    .overlay{
+        position:absolute;
+        width:200px;
+        height:50px;
+        border:1px solid green;
+        background:#fff;
+        z-index:10;
+    }
+
+    .opacity0{
+        filter:alpha(opacity=70);
+        -moz-opacity:0.7;
+        opacity: 0.7;
+    }
+</style>
+
+<h2>Example</h2>
+<p>正常情况，创建一个遮罩</p>
+
+<div id="example1" class="cell">
+    <div class="overlay opacity0" style="height:100px;">
+        .overlay
+    </div>
+    <p>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    </p>
+    <p>
+        <input type="text" />
+    </p>
+</div>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="s1">&#39;#iframe-shim/0.9.2/iframe-shim&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">Shim</span><span class="p">){</span>
+    <span class="c1">// example1</span>
+    <span class="k">new</span> <span class="nx">Shim</span><span class="p">(</span><span class="s1">&#39;#example1 .overlay&#39;</span><span class="p">).</span><span class="nx">sync</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+
+<script type="text/javascript">
+seajs.use(['jquery','#iframe-shim/0.9.2/iframe-shim'], function($, Shim){
+    // example1
+    new Shim('#example1 .overlay').sync();
+});
+</script>
+<p>遮罩会根据 DOM 的宽高进行调节</p>
+
+<div id="example2" class="cell">
+    <div class="overlay" style="top:100px;">
+        .overlay
+    </div>
+    <p>
+        <input type="text" value="" />
+        输入宽高，blur 输入框
+    </p>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+
+</div>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="s1">&#39;#iframe-shim/0.9.2/iframe-shim&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">Shim</span><span class="p">){</span>
+    <span class="c1">//example2</span>
+    <span class="kd">var</span> <span class="nx">shim2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shim</span><span class="p">(</span><span class="s1">&#39;#example2 .overlay&#39;</span><span class="p">).</span><span class="nx">sync</span><span class="p">();</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#example2 input&#39;</span><span class="p">).</span><span class="nx">blur</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#example2 .overlay&#39;</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span>
+            <span class="s1">&#39;height&#39;</span><span class="o">:</span> <span class="nx">value</span><span class="p">,</span>
+            <span class="s1">&#39;width&#39;</span><span class="o">:</span> <span class="nx">value</span>
+        <span class="p">});</span>
+
+        <span class="nx">shim2</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<script type="text/javascript">
+seajs.use(['jquery','#iframe-shim/0.9.2/iframe-shim'], function($, Shim){
+    //example2
+    var shim2 = new Shim('#example2 .overlay').sync();
+
+    $('#example2 input').blur(function(e){
+        var value = e.currentTarget.value;
+
+        $('#example2 .overlay').css({
+            'height': value,
+            'width': value
+        });
+
+        shim2.sync();
+    });
+});
+</script>
+<p>遮罩只会遮盖 border 以及内容部分，margin 则不算</p>
+
+<div id="example3" class="cell">
+    <div class="overlay" style="border-width:20px;margin:20px;">
+        border-width:20px;<br>
+        margin:20px;
+    </div>
+    <p>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    </p>
+    <p>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    </p>
+</div>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="s1">&#39;#iframe-shim/0.9.2/iframe-shim&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">Shim</span><span class="p">){</span>
+    <span class="c1">// example3</span>
+    <span class="k">new</span> <span class="nx">Shim</span><span class="p">(</span><span class="s1">&#39;#example3 .overlay&#39;</span><span class="p">).</span><span class="nx">sync</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+
+<script type="text/javascript">
+seajs.use(['jquery','#iframe-shim/0.9.2/iframe-shim'], function($, Shim){
+    // example3
+    new Shim('#example3 .overlay').sync();
+});
+</script>
+<p>实例化不会生成 iframe，调用 sync 后才会创建 <a href="#" id="example4-create">点我遮罩</a></p>
+
+<div id="example4" class="cell">
+    <div class="overlay">
+        .overlay
+    </div>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+    <select>
+        <option value="option"></option>
+    </select>
+
+</div>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span><span class="s1">&#39;#iframe-shim/0.9.2/iframe-shim&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">Shim</span><span class="p">){</span>
+    <span class="c1">// example4</span>
+    <span class="kd">var</span> <span class="nx">shim4</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shim</span><span class="p">(</span><span class="s1">&#39;#example4 .overlay&#39;</span><span class="p">);</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#example4-create&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+        <span class="nx">shim4</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<script type="text/javascript">
+seajs.use(['jquery','#iframe-shim/0.9.2/iframe-shim'], function($, Shim){
+    // example4
+    var shim4 = new Shim('#example4 .overlay');
+    $('#example4-create').click(function(e){
+        e.preventDefault();
+        shim4.sync();
+    });
+});
+</script>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+    </body>
+</html>

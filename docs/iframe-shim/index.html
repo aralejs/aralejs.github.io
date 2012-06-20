@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>iframe-shim</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "True";
+        </script>
+        
+        <script type="text/javascript" src="http://127.0.0.1:35729/livereload.js"></script>
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/iframe-shim/">Iframe-Shim</a>
+                <a href="/docs/iframe-shim/examples/">Examples</a>
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            <div class="container">
+                <h1>iframe-shim</h1>
+<p>工具类，在 IE6 下生成 iframe 遮挡 select 和 object。此组件对开发者透明，开发者无需再判断浏览器版本。</p>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="seajs/README.md">seajs</a></li>
+<li><a href="jquery/README.md">jquery</a></li>
+<li><a href="position/README.md">position</a></li>
+</ul>
+
+<h2>使用说明</h2>
+
+<h3><code>new Shim(target)</code></h3>
+<p>实例化对象，实例化后会生成一个 iframe 插入到 body 中。需要手动调用 <code>sync</code> 方法同步。</p>
+<p>如果是 ie6 以外的浏览器只会返回一个空实例，什么都不执行。</p>
+<p>参数 <code>target</code> 是需要被遮挡的目标元素，可以传 <code>DOM Element</code> 或 <code>Selector</code>。</p>
+<div class="highlight"><pre><span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">Shim</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;iframe-shim&#39;</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">shim</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shim</span><span class="p">(</span><span class="s1">&#39;#target&#39;</span><span class="p">);</span>
+    <span class="nx">shim</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+<p><strong>注意：</strong></p>
+
+<ul>
+<li>目标元素需要设置 z-index，不然无法保证 iframe 的层级。</li>
+<li>iframe 计算的宽高包括 border，例如 width 为 100px，border 为 1px，iframe 的 width 为 102px。</li>
+<li>iframe 会自动插入到 body 中，建议在 domready 后使用。</li>
+</ul>
+
+<h3>sync <code>shim.sync()</code></h3>
+<p>实例方法，此方法会根据目标元素的变化而改变 iframe 的样式。</p>
+<p>有以下几种情况 iframe 会改变：</p>
+
+<ol>
+<li>目标元素的宽高及 border 改变后 iframe 的宽高也会相应改变。</li>
+<li>目标元素或父级元素 <code>display: none</code>，iframe 会隐藏。</li>
+<li>目标元素宽和高等于 0 （包括 border ），iframe 会隐藏。</li>
+<li>目标元素移动后 iframe 定位会改变。</li>
+</ol>
+<p>sync 可进行链式操作，上面的例子可直接一行完成：</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">shim</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shim</span><span class="p">(</span><span class="s1">&#39;#target&#39;</span><span class="p">).</span><span class="nx">sync</span><span class="p">();</span>
+</pre></div>
+<p><strong>注意：</strong></p>
+
+<ul>
+<li>如果目标元素有变化，需要同步 shim 时，需要在目标元素变化之后，再调用 <code>sync</code> 方法：</li>
+</ul>
+<div class="highlight"><pre><span class="nx">target</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+<span class="nx">shim</span><span class="p">.</span><span class="nx">sync</span><span class="p">();</span> <span class="c1">// 在 target 显示之后，再同步 shim 的显示。</span>
+</pre></div>
+
+<h3>destroy <code>shim.destroy()</code></h3>
+<p>实例方法，销毁 iframe 等。</p>
+
+<h2>演示页面</h2>
+<p>在 ie6 下访问 <a href="http://aralejs.org/lib/iframe-shim/examples/iframe-shim.html">examples/iframe-shim.html</a></p>
+
+<h2>测试用例</h2>
+
+<ul>
+<li><a href="http://aralejs.org/lib/iframe-shim/tests/runner.html">aralejs.org/lib/iframe-shim/tests/runner.html</a></li>
+</ul>
+
+<h2>交流讨论</h2>
+<p>欢迎创建
+<a href="https://github.com/alipay/arale/issues/new">GitHub Issue</a>
+来提交反馈。</p>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+    </body>
+</html>

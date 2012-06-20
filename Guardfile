@@ -14,5 +14,5 @@ def build(name):
     return func
 
 
-for name in ['calendar', 'validator']:
+for name in ['calendar', 'validator', 'iframe-shim']:
     Task.add('lib/%s' % name, build(name))
