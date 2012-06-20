@@ -6,3 +6,13 @@
 <link rel="stylesheet" href="../../assets/pygments.css" />
 <script src="../../../tools/seajs-and-its-friends.js"></script>
 {% endblock %}
+
+{% block subnav %}
+<div class="container">
+    <nav id="subnav">
+        {% for name in package.examples %}
+        <a href="{{name}}.html">{{name}}</a>
+        {% endfor %}
+    </nav>
+</div>
+{% endblock %}

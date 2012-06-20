@@ -25,11 +25,14 @@
             <h1 id="brand"><a href="/">Arale</a></h1>
             <nav id="nav" role="navigation">
                 <a href="{{package.homepage}}">{{package.name|title}}</a>
+                {% if package.examples %}
                 <a href="{{package.homepage}}examples/">Examples</a>
+                {% endif %}
             </nav>
         </header>
 
         <div id="main">
+            {% block subnav %}{% endblock %}
             {% block main %}
             <div class="container">
                 {{content}}
