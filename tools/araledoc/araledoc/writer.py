@@ -50,6 +50,8 @@ class StaticWriter(BaseWriter):
         root = os.path.abspath(os.path.dirname(__file__))
         assets_path = os.path.join(root, 'assets')
         dest = os.path.join('docs', 'assets')
+        if not os.path.exists(dest):
+            os.makedirs(dest)
         for r, dirs, files in os.walk(assets_path):
             for f in files:
                 path = os.path.join(r, f)
