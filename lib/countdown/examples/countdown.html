@@ -34,83 +34,74 @@
         height: 94px;
         overflow: hidden;
         text-align: center;
-        font: bold 55pt/94px "Times";
+        font: bold 55pt / 94px "Times";
         color: #555;
       }
     </style>
   </head>
   <body>
     <div id="timer1">
-      <div class="year">
-        <div class="digit ">
-        </div>
-        <div class="digit ">
-        </div>
-        <div class="dash-title">
-          year
-        </div>
-      </div>
-      <div class="month">
-        <div class="digit ">
-        </div>
-        <div class="digit ">
-        </div>
-        <div class="dash-title">
-          month
-        </div>
-      </div>
-      <div class="day">
-        <div class="digit ">
-        </div>
-        <div class="digit ">
-        </div>
-        <div class="dash-title">
-          day
-        </div>
-      </div>
-      <div class="hour">
-        <div class="digit ">
-        </div>
-        <div class="digit ">
-        </div>
-        <div class="dash-title">
-          hour
-        </div>
-      </div>
-      <div class="minute">
-        <div class="digit ">
-        </div>
-        <div class="digit ">
-        </div>
-        <div class="dash-title">
-          minute
-        </div>
-      </div>
-      <div class="second">
-        <div class="digit ">
-        </div>
-        <div class="digit ">
-        </div>
-        <div class="dash-title">
-          second
-        </div>
-      </div>
-      <div class="millisecond">
-        <div class="digit ">
-        </div>
-        <div class="digit ">
-        </div>
-        <div class="digit ">
-        </div>
-        <div class="dash-title">
-          millisecond
-        </div>
-      </div>
     </div>
     <script>
       seajs.use(['jquery', '../src/countdown'], function(jquery, Countdown){
         var $ = jquery;
         var countdown = new Countdown({
+          template: '<div class="month">\
+              <div class="digit ">\
+              </div>\
+              <div class="digit ">\
+              </div>\
+              <div class="dash-title">\
+                month\
+              </div>\
+            </div>\
+            <div class="day">\
+              <div class="digit ">\
+              </div>\
+              <div class="digit ">\
+              </div>\
+              <div class="dash-title">\
+                day\
+              </div>\
+            </div>\
+            <div class="hour">\
+              <div class="digit ">\
+              </div>\
+              <div class="digit ">\
+              </div>\
+              <div class="dash-title">\
+                hour\
+              </div>\
+            </div>\
+            <div class="minute">\
+              <div class="digit ">\
+              </div>\
+              <div class="digit ">\
+              </div>\
+              <div class="dash-title">\
+                minute\
+              </div>\
+            </div>\
+            <div class="second">\
+              <div class="digit ">\
+              </div>\
+              <div class="digit ">\
+              </div>\
+              <div class="dash-title">\
+                second\
+              </div>\
+            </div>\
+            <div class="millisecond">\
+              <div class="digit ">\
+              </div>\
+              <div class="digit ">\
+              </div>\
+              <div class="digit ">\
+              </div>\
+              <div class="dash-title">\
+                millisecond\
+              </div>\
+            </div>',
           element: $('#timer1'),
           to: new Date((new Date()).getTime() + 50000000000),
           //from: new Date(2012, 5, 19, 12, 32, 0),
