@@ -55,6 +55,8 @@ class AraleWriter(BaseWriter):
         self.render(params, 'homepage.html', dest)
 
     def write_examples(self):
+        if not self.package.examples:
+            return
         for name in self.package.examples:
             content = self.package.render_example(name)
             params = {'content': content, 'package': self.package}

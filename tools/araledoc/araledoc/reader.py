@@ -45,7 +45,10 @@ class Package(object):
 
     @property
     def examples(self):
-        files = os.listdir(os.path.join(self.path, 'examples'))
+        path = os.path.join(self.path, 'examples')
+        if not os.path.exists(path):
+            return None
+        files = os.listdir(path)
         files = filter(lambda p: p.endswith('.md'), files)
         return map(lambda p: p[:-3], files)
 
