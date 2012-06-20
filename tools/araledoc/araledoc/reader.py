@@ -49,6 +49,11 @@ class Package(object):
         files = filter(lambda p: p.endswith('.md'), files)
         return map(lambda p: p[:-3], files)
 
+    @property
+    def has_test(self):
+        path = os.path.join(self.path, 'tests/runner.html')
+        return os.path.exists(path)
+
     def render_homepage(self):
         f = open(os.path.join(self.path, 'README.md'))
         content = markdown(f.read())

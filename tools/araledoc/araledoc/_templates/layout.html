@@ -28,6 +28,9 @@
                 {% if package.examples %}
                 <a href="{{package.homepage}}examples/">Examples</a>
                 {% endif %}
+                {% if package.has_test %}
+                <a id="nav-test" href="/lib/{{package.name}}/tests/runner.html">Test</a>
+                {% endif %}
             </nav>
         </header>
 
@@ -40,5 +43,18 @@
             {% endblock %}
         </div>
         <hr class="end" />
+        <script type="text/javascript">
+            seajs.use('jquery', function($) {
+                $('#nav-test').click(function() {
+                    var href = $(this).attr('href');
+                    var iframe = '<div class="container"><iframe src="' +
+                        href + '" frameborder="0" width="100%" height="640">' +
+                        '</iframe></div>';
+                    $('#main').html(iframe);
+                    !!history.pushState && history.pushState(null, 'Test', href);
+                    return false;
+                });
+            });
+        </script>
     </body>
 </html>
