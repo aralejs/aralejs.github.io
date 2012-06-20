@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block subnav %}
+{% if package.examples != ['index'] %}
 <div class="container">
     <nav id="subnav">
         {% for name in package.examples %}
@@ -15,4 +16,5 @@
         {% endfor %}
     </nav>
 </div>
+{% endif %}
 {% endblock %}
