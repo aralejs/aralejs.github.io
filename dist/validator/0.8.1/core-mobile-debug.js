@@ -1,6 +1,6 @@
-define("#validator/0.8.1/core-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.9.15/widget-debug", "base-debug", "$-debug", "./daparser-debug", "./auto-render-debug", "#validator/0.8.1/async-debug", "#validator/0.8.1/utils-debug", "#validator/0.8.1/rule-debug", "#validator/0.8.1/item-debug"], function(require, exports, module) {
+define("#validator/0.8.1/core-mobile-debug", ["#zepto/0.8.0/zepto-debug", "#widget/0.9.15/widget-debug", "base-debug", "$-debug", "./daparser-debug", "./auto-render-debug", "#validator/0.8.1/async-debug", "#validator/0.8.1/utils-debug", "#validator/0.8.1/rule-debug", "#validator/0.8.1/item-debug"], function(require, exports, module) {
 
-    var $ = require("#jquery/1.7.2/jquery-debug"),
+    var $ = require("#zepto/0.8.0/zepto-debug"),
         async = require("#validator/0.8.1/async-debug"),
         Widget = require("#widget/0.9.15/widget-debug"),
         utils = require("#validator/0.8.1/utils-debug"),

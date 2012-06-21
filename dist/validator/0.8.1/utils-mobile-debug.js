@@ -1,5 +1,5 @@
-define("#validator/0.8.1/utils-debug", ["#jquery/1.7.2/jquery-debug", "#validator/0.8.1/rule-debug", "#widget/0.9.15/widget-debug", "base-debug", "$-debug", "./daparser-debug", "./auto-render-debug", "#validator/0.8.1/async-debug"], function(require, exports, module) {
-    var $ = require("#jquery/1.7.2/jquery-debug"),
+define("#validator/0.8.1/utils-mobile-debug", ["#zepto/0.8.0/zepto-debug", "#validator/0.8.1/rule-debug", "#widget/0.9.15/widget-debug", "base-debug", "$-debug", "./daparser-debug", "./auto-render-debug", "#validator/0.8.1/async-debug"], function(require, exports, module) {
+    var $ = require("#zepto/0.8.0/zepto-debug"),
         Rule = require("#validator/0.8.1/rule-debug");
 
     var u_count = 0;
