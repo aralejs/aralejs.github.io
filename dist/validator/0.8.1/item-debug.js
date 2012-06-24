@@ -1,9 +1,9 @@
-define("#validator/0.8.1/item-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.9.15/widget-debug", "base-debug", "$-debug", "./daparser-debug", "./auto-render-debug", "#validator/0.8.1/utils-debug", "#validator/0.8.1/rule-debug", "#validator/0.8.1/async-debug"], function(require, exports, module) {
-    var $ = require("#jquery/1.7.2/jquery-debug"),
-        utils = require("#validator/0.8.1/utils-debug"),
-        Widget = require("#widget/0.9.15/widget-debug"),
-        async = require("#validator/0.8.1/async-debug"),
-        Rule = require("#validator/0.8.1/rule-debug");
+define("#validator/0.8.1/item-debug", ["$","./utils","widget","./async","./rule"], function(require, exports, module) {
+    var $ = require('$'),
+        utils = require('./utils'),
+        Widget = require('widget'),
+        async = require('./async'),
+        Rule = require('./rule');
 
     var setterConfig = {
         value: function() {},
@@ -58,7 +58,7 @@ define("#validator/0.8.1/item-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.
                 } else {
                     var message = msg;
                 }
-                that.trigger('itemValidated', that.element, err, message);
+                that.trigger('itemValidated', err, message, that.element);
                 callback && callback(err, message, that.element);
             });
 

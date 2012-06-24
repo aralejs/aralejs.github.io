@@ -1,9 +1,9 @@
-define("#validator/0.8.1/rule-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.9.15/widget-debug", "base-debug", "$-debug", "./daparser-debug", "./auto-render-debug", "#validator/0.8.1/async-debug"], function(require, exports, module) {
+define("#validator/0.8.1/rule-debug", ["$","./async","widget"], function(require, exports, module) {
     var rules = {},
         messages = {},
-		$ = require("#jquery/1.7.2/jquery-debug"),
-        async = require("#validator/0.8.1/async-debug"),
-        Widget = require("#widget/0.9.15/widget-debug");
+		$ = require('$'),
+        async = require('./async'),
+        Widget = require('widget');
 
     var Rule = Widget.extend({
 

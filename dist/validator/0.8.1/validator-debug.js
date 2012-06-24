@@ -1,7 +1,7 @@
-define("#validator/0.8.1/validator-debug", ["#widget/0.9.15/widget-debug", "base-debug", "$-debug", "./daparser-debug", "./auto-render-debug", "#jquery/1.7.2/jquery-debug", "#validator/0.8.1/core-debug", "#validator/0.8.1/async-debug", "#validator/0.8.1/utils-debug", "#validator/0.8.1/rule-debug", "#validator/0.8.1/item-debug"], function(require, exports, module) {
-    var Core = require("#validator/0.8.1/core-debug"),
-        Widget = require("#widget/0.9.15/widget-debug"),
-        $ = require("#jquery/1.7.2/jquery-debug");
+define("#validator/0.8.1/validator-debug", ["./core","widget","$"], function(require, exports, module) {
+    var Core = require('./core'),
+        Widget = require('widget'),
+        $ = require('$');
 
     var Validator = Core.extend({
 
@@ -23,12 +23,12 @@ define("#validator/0.8.1/validator-debug", ["#widget/0.9.15/widget-debug", "base
             inputClass: 'ui-input',
             textareaClass: 'ui-textarea',
 
-            showMessage: function(element, message) {
+            showMessage: function(message, element) {
                 this.getExplain(element).html(message);
                 this.getItem(element).addClass(this.get('itemErrorClass'));
             },
 
-            hideMessage: function(element, message) {
+            hideMessage: function(message, element) {
                 this.getExplain(element).html(element.data('explain') || ' ');
                 this.getItem(element).removeClass(this.get('itemErrorClass'));
             }

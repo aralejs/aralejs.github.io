@@ -1,10 +1,10 @@
-define("#validator/0.8.1/core-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.9.15/widget-debug", "base-debug", "$-debug", "./daparser-debug", "./auto-render-debug", "#validator/0.8.1/async-debug", "#validator/0.8.1/utils-debug", "#validator/0.8.1/rule-debug", "#validator/0.8.1/item-debug"], function(require, exports, module) {
+define("#validator/0.8.1/core-debug", ["$","./async","widget","./utils","./item","./rule"], function(require, exports, module) {
 
-    var $ = require("#jquery/1.7.2/jquery-debug"),
-        async = require("#validator/0.8.1/async-debug"),
-        Widget = require("#widget/0.9.15/widget-debug"),
-        utils = require("#validator/0.8.1/utils-debug"),
-        Item = require("#validator/0.8.1/item-debug");
+    var $ = require('$'),
+        async = require('./async'),
+        Widget = require('widget'),
+        utils = require('./utils'),
+        Item = require('./item');
 
     var validators = [];
 
@@ -56,21 +56,21 @@ define("#validator/0.8.1/core-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.
             this.on('formValidate', function() {
                 var that = this;
                 $.each(this.items, function(i, item) {
-                    that.query(item.element).get('hideMessage').call(that, item.element);
+                    that.query(item.element).get('hideMessage').call(that, null, item.element);
                 });
             });
 
-            this.on('itemValidated', function(element, err, message) {
+            this.on('itemValidated', function(err, message, element) {
                 if (err)
-                    this.query(element).get('showMessage').call(this, element, message);
+                    this.query(element).get('showMessage').call(this, message, element);
                 else
-                    this.query(element).get('hideMessage').call(this, element, message);
+                    this.query(element).get('hideMessage').call(this, message, element);
             });
 
             validators.push(this);
         },
 
-        Statics: $.extend({helper: utils.helper}, require("#validator/0.8.1/rule-debug"), {
+        Statics: $.extend({helper: utils.helper}, require('./rule'), {
             autoRender: function(cfg) {
 
                 var validator = new this(cfg);
