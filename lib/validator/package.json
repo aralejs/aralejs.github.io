@@ -3,5 +3,6 @@
     "version": "0.8.1",
     "author": "Shawn <shaoshuai0102@gmail.com>",
     "description": "form validation widget",
-    "license": "MIT"
+    "license": "MIT",
+    "tests": ["validator-core", "validator"]
 }
