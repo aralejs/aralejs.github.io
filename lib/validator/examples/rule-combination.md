@@ -4,8 +4,6 @@
 <link charset="utf-8" rel="stylesheet" href="http://assets.alipay.com/al/alice.components.ui-form-1.0-src.css" />
 <link charset="utf-8" rel="stylesheet" href="http://assets.alipay.com/al/alice.components.ui-button-orange-1.1-full.css" />
 
-<script type="text/javascript" charset="utf-8" src="../../../tools/seajs-and-its-friends.js"></script>
-
 注册表单中有一个常见的场景是：用户名是电子邮箱或者密码。但是我们拥有的校验规则是电子邮箱和手机号码，应该怎么办？
 
 使用校验规则组合可以组合出新的规则完成这种校验。
