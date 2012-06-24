@@ -50,8 +50,8 @@ seajs.config({
         'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 95%
         'position': 'position/0.9.1/position',               // 95%
 
-        'validator-core': 'validator/0.8.1/core.js',         // 60%
-        'validator': 'validator/0.8.1/validator.js',         // 60%
+        'validator-core': 'validator/0.8.1/core-debug.js',         // 60%
+        'validator': 'validator/0.8.1/validator-debug.js',         // 60%
         /* querystring 待迁移 */
 
 
@@ -65,11 +65,11 @@ seajs.config({
         'triggerable': 'triggerable/0.9.3/triggerable',      // 95%
         'dropdown': 'triggerable/0.9.3/dropdown',            // 95%
 
-        'switchable': 'switchable/0.9.4/switchable',         // 90%
-        'tabs': 'switchable/0.9.4/tabs',                     // 90%
-        'slide': 'switchable/0.9.4/slide',                   // 90%
-        'accordion': 'switchable/0.9.4/accordion',           // 90%
-        'carousel': 'switchable/0.9.4/carousel',             // 90%
+        'switchable': 'switchable/0.9.5/switchable',         // 90%
+        'tabs': 'switchable/0.9.5/tabs',                     // 90%
+        'slide': 'switchable/0.9.5/slide',                   // 90%
+        'accordion': 'switchable/0.9.5/accordion',           // 90%
+        'carousel': 'switchable/0.9.5/carousel',             // 90%
 
         'calendar': 'calendar/0.8.0/calendar'                // 80%
 

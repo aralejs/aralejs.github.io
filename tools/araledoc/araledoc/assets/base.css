@@ -152,10 +152,3 @@ hr.end {
     margin: 0 auto;
     padding: 20px;
 }
-
-#subnav a {
-    border: 1px solid gray;
-    padding: 3px 10px;
-    background-color:white;
-    font-style: italic;
-}

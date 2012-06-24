@@ -2,7 +2,6 @@
 
 <link charset="utf-8" rel="stylesheet" href="http://assets.alipay.com/al/alice.components.ui-form-1.0-src.css" />
 <link charset="utf-8" rel="stylesheet" href="http://assets.alipay.com/al/alice.components.ui-button-orange-1.1-full.css" />
-<script type="text/javascript" charset="utf-8" src="../../../tools/seajs-and-its-friends.js"></script>
 
 <div class="cell">
     <form id="test-form" class="ui-form" data-widget="validator">

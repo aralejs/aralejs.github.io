@@ -3,8 +3,7 @@
 import argparse
 from .options import enable_pretty_logging, g
 from .reader import Package
-from .writer import AraleWriter, load_jinja
-
+from .writer import AraleWriter, StaticWriter, load_jinja
 
 def load_settings():
     load_jinja()
@@ -15,6 +14,7 @@ def build_one(name):
     package = Package(path)
     writer = AraleWriter(package)
     writer.run()
+    StaticWriter().run()
 
 
 def main():

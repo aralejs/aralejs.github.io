@@ -58,7 +58,7 @@ define("#validator/0.8.1/item-debug", ["$","./utils","widget","./async","./rule"
                 } else {
                     var message = msg;
                 }
-                that.trigger('itemValidated', that.element, err, message);
+                that.trigger('itemValidated', err, message, that.element);
                 callback && callback(err, message, that.element);
             });
 

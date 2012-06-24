@@ -56,15 +56,15 @@ define("#validator/0.8.1/core-debug", ["$","./async","widget","./utils","./item"
             this.on('formValidate', function() {
                 var that = this;
                 $.each(this.items, function(i, item) {
-                    that.query(item.element).get('hideMessage').call(that, item.element);
+                    that.query(item.element).get('hideMessage').call(that, null, item.element);
                 });
             });
 
-            this.on('itemValidated', function(element, err, message) {
+            this.on('itemValidated', function(err, message, element) {
                 if (err)
-                    this.query(element).get('showMessage').call(this, element, message);
+                    this.query(element).get('showMessage').call(this, message, element);
                 else
-                    this.query(element).get('hideMessage').call(this, element, message);
+                    this.query(element).get('hideMessage').call(this, message, element);
             });
 
             validators.push(this);

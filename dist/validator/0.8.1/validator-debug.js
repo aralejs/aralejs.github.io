@@ -23,12 +23,12 @@ define("#validator/0.8.1/validator-debug", ["./core","widget","$"], function(req
             inputClass: 'ui-input',
             textareaClass: 'ui-textarea',
 
-            showMessage: function(element, message) {
+            showMessage: function(message, element) {
                 this.getExplain(element).html(message);
                 this.getItem(element).addClass(this.get('itemErrorClass'));
             },
 
-            hideMessage: function(element, message) {
+            hideMessage: function(message, element) {
                 this.getExplain(element).html(element.data('explain') || ' ');
                 this.getItem(element).removeClass(this.get('itemErrorClass'));
             }

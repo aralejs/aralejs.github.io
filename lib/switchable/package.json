@@ -1,6 +1,6 @@
 {
+    "version": "0.9.5",
     "name": "switchable",
-    "version": "0.9.4",
     "dist": {
         "switchable.js": "default",
         "tabs.js": "default",
