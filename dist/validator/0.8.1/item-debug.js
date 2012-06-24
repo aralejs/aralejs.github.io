@@ -52,7 +52,7 @@ define("#validator/0.8.1/item-debug", ["$","./utils","widget","./async","./rule"
 
             if (!rules) return this;
 
-            _metaValidate(this.element, rules, this.get('display'), function(err, msg) {
+            _metaValidate(this.element, this.get('required'), rules, this.get('display'), function(err, msg) {
                 if (err) {
                     var message = that.get('errormessage') || that.get('errormessage' + upperFirstLetter(err)) || msg;
                 } else {
@@ -71,7 +71,32 @@ define("#validator/0.8.1/item-debug", ["$","./utils","widget","./async","./rule"
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
-    function _metaValidate(ele, rules, display, callback) {
+    function _metaValidate(ele, required, rules, display, callback) {
+
+        if (!required) {
+            var truly = false;
+            var t = ele.attr('type');
+            switch (t) {
+                case 'checkbox':
+                case 'radio':
+                    var checked = false;
+                    ele.each(function(i, item) {
+                        if ($(item).prop('checked')) {
+                            checked = true;
+                            return false;
+                        }
+                    });
+                    truly = checked;
+                    break;
+                default:
+                    truly = Boolean(ele.val());
+            }
+
+            if (!truly) {
+                callback && callback(null, null);
+                return;
+            }
+        }
 
         if (!$.isArray(rules))
             throw new Error('No validation rule specified or not specified as an array.');

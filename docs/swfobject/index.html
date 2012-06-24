@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>swfobject</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/swfobject/">Swfobject</a>
+                
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            
+            <div class="container">
+                <h1>SWFObject</h1>
+<p>使用 SWFObject, 可用来轻松插入 Flash 内容，并对其进行操作。</p>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="seajs/README.md">seajs</a></li>
+</ul>
+
+<h2>使用说明</h2>
+<p>官方文档：<a href="http://code.google.com/p/swfobject/wiki/documentation">code.google.com/p/swfobject/wiki/documentation</a></p>
+
+<h2>更新</h2>
+<p>当有新版本发布，需要更新时，请运行：</p>
+
+<pre><code>$ cd arale/dist
+$ spm install swfobject</code></pre>
+
+<h2>相关链接</h2>
+
+<ul>
+<li><a href="https://github.com/swfobject/swfobject">github.com/swfobject/swfobject</a></li>
+</ul>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+        <script type="text/javascript">
+            seajs.use('jquery', function($) {
+                $('#nav-test').click(function() {
+                    var href = $(this).attr('href');
+                    var iframe = '<div class="container"><iframe src="' +
+                        href + '" frameborder="0" width="100%" height="640">' +
+                        '</iframe></div>';
+                    $('#main').html(iframe);
+                    !!history.pushState && history.pushState(null, 'Test', href);
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>

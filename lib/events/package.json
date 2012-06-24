@@ -1,4 +1,5 @@
 {
+    "name": "events",
     "version": "0.9.1",
     "dist": {
         "events.js": "default"

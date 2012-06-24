@@ -5,10 +5,9 @@
         <title>validator</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
         <script type="text/javascript">
-            var debug = "True";
+            var debug = "False";
         </script>
         
-        <script type="text/javascript" src="http://127.0.0.1:35729/livereload.js"></script>
         
         
         <link rel="stylesheet" href="/docs/assets/base.css" />
@@ -132,7 +131,8 @@
         <span class="p">.</span><span class="nx">addItem</span><span class="p">({</span>
             <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#password-confirmation&#39;</span><span class="p">,</span>
             <span class="nx">required</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="nx">rule</span><span class="o">:</span> <span class="s1">&#39;confirmation{target: &quot;#password&quot;}&#39;</span><span class="p">,</span>
+            <span class="nx">rule</span><span class="o">:</span> <span class="s1">&#39;confirmation{target: &quot;#password&quot;, name: &quot;第一遍&quot;}&#39;</span><span class="p">,</span>
+            <span class="nx">display</span><span class="o">:</span> <span class="s1">&#39;第二遍&#39;</span><span class="p">,</span>
             <span class="nx">errormessageRequired</span><span class="o">:</span> <span class="s1">&#39;请再重复输入一遍密码，不能留空。&#39;</span>
         <span class="p">})</span>
 
@@ -183,7 +183,8 @@ seajs.use(['validator', '$'], function(Validator, $) {
         .addItem({
             element: '#password-confirmation',
             required: true,
-            rule: 'confirmation{target: "#password"}',
+            rule: 'confirmation{target: "#password", name: "第一遍"}',
+            display: '第二遍',
             errormessageRequired: '请再重复输入一遍密码，不能留空。'
         })
 

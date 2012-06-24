@@ -8,15 +8,15 @@
 
 ## 模块依赖
 
-* [seajs](seajs/README.md)
-* [jquery](jquery/README.md)
-* [position](position/README.md)
+* [seajs](https://github.com/alipay/arale/tree/master/lib/seajs)
+* [jquery](https://github.com/alipay/arale/tree/master/lib/jquery)
+* [position](https://github.com/alipay/arale/tree/master/lib/position)
 
 
 ## 使用说明
 
 
-### `new Shim(target)`
+### Instantialize `new Shim(target)`
 
 实例化对象，实例化后会生成一个 iframe 插入到 body 中。需要手动调用 `sync` 方法同步。
 
@@ -27,10 +27,10 @@
 
 ```js
 define(function(require, exports, module) {
-	var Shim = require('iframe-shim');
-	
-	var shim = new Shim('#target');
-	shim.sync();
+    var Shim = require('iframe-shim');
+
+    var shim = new Shim('#target');
+    shim.sync();
 });
 ```
 
@@ -75,7 +75,7 @@ shim.sync(); // 在 target 显示之后，再同步 shim 的显示。
 
 ## 演示页面
 
-在 ie6 下访问 [examples/iframe-shim.html](http://aralejs.org/lib/iframe-shim/examples/iframe-shim.html)
+在 ie6 下访问 [examples/iframe-shim.html](http://aralejs.org/docs/iframe-shim/examples/)
 
 
 ## 测试用例

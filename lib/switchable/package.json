@@ -1,4 +1,5 @@
 {
+    "name": "switchable",
     "version": "0.9.4",
     "dist": {
         "switchable.js": "default",

@@ -82,7 +82,8 @@ seajs.use(['validator', '$'], function(Validator, $) {
         .addItem({
             element: '#password-confirmation',
             required: true,
-            rule: 'confirmation{target: "#password"}',
+            rule: 'confirmation{target: "#password", name: "第一遍"}',
+            display: '第二遍',
             errormessageRequired: '请再重复输入一遍密码，不能留空。'
         })
 

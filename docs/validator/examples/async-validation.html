@@ -5,10 +5,9 @@
         <title>validator</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
         <script type="text/javascript">
-            var debug = "True";
+            var debug = "False";
         </script>
         
-        <script type="text/javascript" src="http://127.0.0.1:35729/livereload.js"></script>
         
         
         <link rel="stylesheet" href="/docs/assets/base.css" />
@@ -82,7 +81,7 @@
 
             <span class="nx">item</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;ui-form-item-loading&#39;</span><span class="p">);</span>
 
-            <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/lib/validator/examples/username.json&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">username</span><span class="o">:</span> <span class="nx">element</span><span class="p">.</span><span class="nx">val</span><span class="p">()},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/lib/validator/examples/username.json&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">item</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;ui-form-item-loading&#39;</span><span class="p">);</span>
                 <span class="nx">commit</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">error</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
             <span class="p">});</span>
@@ -102,7 +101,7 @@ seajs.use(['widget', '$', 'validator'], function(Widget, $, Validator) {
 
             item.addClass('ui-form-item-loading');
 
-            $.get('/lib/validator/examples/username.json', {username: element.val()}, function(data) {
+            $.get('/lib/validator/examples/username.json', function(data) {
                 item.removeClass('ui-form-item-loading');
                 commit(data.error, data.message);
             });

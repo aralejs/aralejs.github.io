@@ -1,1 +1,13 @@
 {% extends "layout.html" %}
+
+{% block subnav %}
+{% if package.examples != ['index'] %}
+<div class="container">
+    <nav id="subnav">
+        {% for name in package.examples %}
+        <a href="{{name}}.html">{{name}}</a>
+        {% endfor %}
+    </nav>
+</div>
+{% endif %}
+{% endblock %}

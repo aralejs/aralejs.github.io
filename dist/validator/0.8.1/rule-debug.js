@@ -225,8 +225,7 @@ define("#validator/0.8.1/rule-debug", ["$","./async","widget"], function(require
 
     addRule('confirmation', function(options) {
         var element = options.element,
-            target = $(options.target),
-            name = options.name;
+            target = $(options.target);
         return element.val() == target.val();
     }, '{{display}}的内容和{{name}}不同。');
 

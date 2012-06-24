@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>position</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/position/">Position</a>
+                
+                
+                <a id="nav-test" href="/lib/position/tests/runner.html">Test</a>
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            
+            <div class="container">
+                <h1>Position</h1>
+<p>定位工具组件，将一个 DOM 节点相对于另一个 DOM 节点进行定位操作。</p>
+<p>这个组件的定位原理是，通过两个对象分别描述定位元素及其定位点，然后将其定位点重合。</p>
+<p>比如有目标元素 a 和基准元素 b ，先设定 a 的定位点为左上角，b 的定位点为中央。则分别描述为
+<code>{ element: a, x: 0, y: 0 }</code> 和 <code>{ element: b, x: &#39;50%&#39;, y: &#39;50%&#39; }</code>，然后将 a
+的左上角定位到 b 的中央，就完成了定位。</p>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="seajs/README.md">seajs</a></li>
+<li><a href="jquery/README.md">jquery</a></li>
+</ul>
+
+<h2>使用说明</h2>
+
+<h3>pin <code>Position.pin(pinObject, [baseObject])</code></h3>
+<p>基础定位方法，接收两个参数。</p>
+
+<ol>
+<li><p><code>pinObject</code>：目标定位元素，必选。</p>
+<p>类型为字面量对象 <code>{ element: a, x: 10, y: 10 }</code>，element 为需定位元素， x 和 y 表示定位元素的定位点。</p>
+<p>也可简单写成 DOM 节点 a，相当于 <code>{ element: a, x: 0, y: 0 }</code>，表示定位点是节点左上角。</p></li>
+<li><p><code>baseObject</code>：基准定位元素，可选。</p>
+<p>类型为字面量对象 <code>{ element: b, x: 10, y: 10 }</code>，element 为基准定位元素，x 和 y 表示基准定位元素的定位点。</p>
+<p>也可简单写成 DOM 节点 a，相当于 <code>{ element: a, x: 0, y: 0 }</code>，表示定位点是节点左上角。</p>
+<p>当 element 缺省时，表示 pinObject 相对屏幕可见区域的左上角定位。比如可以写成</p>
+
+<pre><code>Position.pin(a, { x: 10, y: 10 });    // 这样后一个参数可简单理解为偏移量</code></pre>
+<p>或写成</p>
+
+<pre><code>Position.pin({ element: a, x: -10, y: -10 });</code></pre></li>
+</ol>
+
+<h3>center <code>Position.center(pinElement, [baseElement])</code></h3>
+<p>居中定位，接收两个参数，将 pinElement 定位在 baseElement 元素的中央位置。</p>
+
+<ol>
+<li><p><code>pinElement</code>：定位节点，必选。</p></li>
+<li><p><code>baseElement</code>：基准定位节点，可选。缺省时表示将 pinElement 定位在屏幕中央。</p></li>
+</ol>
+
+<h3>VIEWPORT <code>Position.VIEWPORT</code></h3>
+<p>当前可视区域的伪元素，当需要相对于当前可视区域定位时，上述参数的 element 可传入 Position.VIEWPORT。</p>
+<p>比如相对于屏幕中央定位：</p>
+
+<pre><code>Position.pin(
+    { element: a, x: 'center', y: 'center' }, 
+    { element: Position.VIEWPORT, x: 'center', y: 'center' }
+);</code></pre>
+<p>或写成</p>
+
+<pre><code>Position.center(a, Position.VIEWPORT);</code></pre>
+
+<h2>最佳实践</h2>
+
+<ol>
+<li><p>定位元素到可视区域左上角</p>
+
+<pre><code>Position.pin(a, { x: 0, y: 0 });    // 后一个参数可理解为偏移量</code></pre></li>
+<li><p>定位元素到基准元素位置向右偏移 20px</p>
+
+<pre><code>Position.pin(a, { element: b, x: '20px', y: 0 });</code></pre></li>
+<li><p>定位元素到基准元素下方 20px 的位置</p>
+
+<pre><code>Position.pin(a, { element: b, x: 0, y: '100%+20px' });</code></pre></li>
+<li><p>定位元素到基准元素正中央</p>
+
+<pre><code>Position.center(a, b);</code></pre></li>
+<li><p>定位元素到基准元素右方中间位置</p>
+
+<pre><code>Position.pin(a, { element: b, x: 'right', y: 'center' });</code></pre>
+<p>或者</p>
+
+<pre><code>Position.pin(a, { element: b, x: '100%', y: '50%' });</code></pre></li>
+<li><p>定位元素到可视区域中央</p>
+
+<pre><code>Position.center(a);</code></pre></li>
+</ol>
+
+<h2>注意事项</h2>
+
+<ul>
+<li>IE8 下，当文档流中定位元素在基准元素的相邻前方时，基准元素有可能会因为未 reflow
+而导致 margin-top 失效，所以要尽量避免定位元素与基准元素相邻并在其之前。</li>
+</ul>
+
+<h2>演示页面</h2>
+
+<ul>
+<li><a href="http://aralejs.org/lib/position/examples/position.html">aralejs.org/lib/position/examples/position.html</a></li>
+</ul>
+
+<h2>测试用例</h2>
+
+<ul>
+<li><a href="http://aralejs.org/lib/position/tests/runner.html">aralejs.org/lib/position/tests/runner.html</a></li>
+</ul>
+
+<h2>交流讨论</h2>
+<p>欢迎创建
+<a href="https://github.com/alipay/arale/issues/new">GitHub Issue</a>
+来提交反馈。</p>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+        <script type="text/javascript">
+            seajs.use('jquery', function($) {
+                $('#nav-test').click(function() {
+                    var href = $(this).attr('href');
+                    var iframe = '<div class="container"><iframe src="' +
+                        href + '" frameborder="0" width="100%" height="640">' +
+                        '</iframe></div>';
+                    $('#main').html(iframe);
+                    !!history.pushState && history.pushState(null, 'Test', href);
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>

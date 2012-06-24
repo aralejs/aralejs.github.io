@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>handlebars</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/handlebars/">Handlebars</a>
+                
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            
+            <div class="container">
+                <h1>Handlebars</h1>
+<p>Handlebars 是一个轻量级的模板引擎。它是 Mustache 的超集，支持更多特性，但保持了
+logicless 特质。</p>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="seajs/README.md">seajs</a></li>
+</ul>
+
+<h2>使用说明</h2>
+<p>精心书写的官方文档：<a href="http://handlebarsjs.com/">handlebarsjs.com/</a></p>
+<p>很棒的在线试用页面：<a href="http://tryhandlebarsjs.com/">tryhandlebarsjs.com/</a></p>
+
+<h2>更新</h2>
+<p>当有新版本发布，需要更新时，请运行：</p>
+
+<pre><code>$ cd arale/dist
+$ spm install handlebarsjs</code></pre>
+
+<h2>相关链接</h2>
+
+<ul>
+<li><a href="http://mustache.github.com/mustache.5.html">mustache.github.com/mustache.5.html</a></li>
+<li><a href="https://github.com/wycats/handlebars.js">github.com/wycats/handlebars.js</a></li>
+</ul>
+
+            </div>
+            
+        </div>
+        <hr class="end" />
+        <script type="text/javascript">
+            seajs.use('jquery', function($) {
+                $('#nav-test').click(function() {
+                    var href = $(this).attr('href');
+                    var iframe = '<div class="container"><iframe src="' +
+                        href + '" frameborder="0" width="100%" height="640">' +
+                        '</iframe></div>';
+                    $('#main').html(iframe);
+                    !!history.pushState && history.pushState(null, 'Test', href);
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>
