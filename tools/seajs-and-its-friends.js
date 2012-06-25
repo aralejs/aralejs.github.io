@@ -87,5 +87,5 @@ seajs.config({
         // 等待详细规划和讨论
     },
 
-    preload: [this.JSON ? '' : 'json', 'plugin-text']
+    preload: [this.JSON ? '' : 'json', 'seajs/plugin-text']
 });
