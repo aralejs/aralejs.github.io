@@ -1,2 +1,3 @@
-recursive-include araledoc/assets araledoc/_templates *.*
+recursive-include araledoc/_templates *.*
+recursive-include araledoc/assets *.*
 include README.rst
