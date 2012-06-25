@@ -6,5 +6,9 @@
         "calendar.tpl": "default",
         "i18n/zh-CN.js": "default",
         "model.js": "default"
-    }
+    },
+    "test": [
+        "calendar",
+        "model"
+    ]
 }
