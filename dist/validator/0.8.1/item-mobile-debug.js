@@ -1,5 +1,5 @@
-define("#validator/0.8.1/item-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.9.16/widget-debug", "#base/0.9.16/base-debug", "#class/0.9.2/class-debug", "#events/0.9.1/events-debug", "#base/0.9.16/aspect-debug", "#base/0.9.16/attribute-debug", "#widget/0.9.16/daparser-debug", "#widget/0.9.16/auto-render-debug", "#validator/0.8.1/utils-debug", "#validator/0.8.1/rule-debug", "#validator/0.8.1/async-debug"], function(require, exports, module) {
-    var $ = require("#jquery/1.7.2/jquery-debug"),
+define("#validator/0.8.1/item-mobile-debug", ["#zepto/0.8.0/zepto-debug", "#widget/0.9.16/widget-debug", "#base/0.9.16/base-debug", "#class/0.9.2/class-debug", "#events/0.9.1/events-debug", "#base/0.9.16/aspect-debug", "#base/0.9.16/attribute-debug", "#widget/0.9.16/daparser-debug", "#widget/0.9.16/auto-render-debug", "#validator/0.8.1/utils-debug", "#validator/0.8.1/rule-debug", "#validator/0.8.1/async-debug"], function(require, exports, module) {
+    var $ = require("#zepto/0.8.0/zepto-debug"),
         utils = require("#validator/0.8.1/utils-debug"),
         Widget = require("#widget/0.9.16/widget-debug"),
         async = require("#validator/0.8.1/async-debug"),
