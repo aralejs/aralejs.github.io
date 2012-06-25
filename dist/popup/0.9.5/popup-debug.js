@@ -66,15 +66,15 @@ define("#popup/0.9.5/popup-debug", ["#jquery/1.7.2/jquery-debug", "#overlay/0.9.
                 this.element.hover(function() {
                     clearTimeout(hideTimer);
                 }, leaveHandler);
+            }
 
-                function leaveHandler() {
-                    clearTimeout(showTimer);
+            function leaveHandler() {
+                clearTimeout(showTimer);
 
-                    if (that.get('visible')) {
-                        hideTimer = setTimeout(function() {
-                            that.hide();
-                        }, delay);
-                    }
+                if (that.get('visible')) {
+                    hideTimer = setTimeout(function() {
+                        that.hide();
+                    }, delay);
                 }
             }
         }
