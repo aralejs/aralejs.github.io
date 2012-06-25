@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple Countdown</title>
+    <script src="../../../tools/seajs-and-its-friends.js">
+    </script>
+  </head>
+  <body>
+    <div id="timer1">
+      <span class="year"><span class="digit">0</span></span>年
+      <span class="month"><span class="digit">0</span><span class="digit">0</span></span>月
+      <span class="day"><span class="digit">0</span><span class="digit">0</span></span>日
+      <span class="hour"><span class="digit">0</span><span class="digit">0</span></span>时
+      <span class="minute"><span class="digit">0</span><span class="digit">0</span></span>分
+      <span class="second"><span class="digit">0</span><span class="digit">0</span></span>秒
+    </div>
+    <button id="start">
+      开始
+    </button>
+    <button id="stop">
+      停止
+    </button>
+    <script>
+      seajs.use(['jquery', '../src/countdown'], function(jquery, Countdown) {
+        var $ = jquery;
+        var countdown = new Countdown({
+          element: $('#timer1'),
+          from: new Date(2012, 5, 19, 12, 32, 0),
+          to: new Date(2013, 5, 19, 12, 32, 3),
+          onStart: function() {
+            alert('start!');
+          },
+          onStop: function() {
+            alert('stop!');
+          }
+        });
+        $('#start').on('click', function(){
+          countdown.start();
+        });
+        $('#stop').on('click', function(){
+          countdown.stop();
+        });
+      });
+      
+    </script>
+  </body>
+</html>
