@@ -41,13 +41,13 @@
 <h2>模块依赖</h2>
 
 <ul>
-<li><a href="seajs/README.md">seajs</a></li>
-<li><a href="underscore/README.md">underscore</a></li>
-<li><a href="jquery/README.md">jquery</a> / <a href="zepto/README.md">zepto</a></li>
+<li><a href="../seajs/">seajs</a></li>
+<li><a href="../underscore/">underscore</a></li>
+<li><a href="../jquery/">jquery</a> / <a href="../zepto/">zepto</a></li>
 </ul>
 
 <h2>使用说明</h2>
-<p>花了很大心思的官方文档：<a href="http://documentcloud.github.com/backbone">documentcloud.github.com/backbone</a></p>
+<p>花了很大心思的官方文档：<a href="http://documentcloud.github.com/backbone">http://documentcloud.github.com/backbone</a></p>
 
 <h2>更新</h2>
 <p>当有新版本发布，需要更新时，请运行：</p>
@@ -60,7 +60,7 @@ $ spm install backbone</code></pre>
         </div>
         <hr class="end" />
         <script type="text/javascript">
-            seajs.use('jquery', function($) {
+            seajs.use('$', function($) {
                 $('#nav-test').click(function() {
                     var href = $(this).attr('href');
                     var iframe = '<div class="container"><iframe src="' +

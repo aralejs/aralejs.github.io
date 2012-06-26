@@ -5,10 +5,8 @@
         <title>calendar</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
         <script type="text/javascript">
-            var debug = "True";
+            var debug = "False";
         </script>
-        
-        <script type="text/javascript" src="http://127.0.0.1:35729/livereload.js"></script>
         
         
         <link rel="stylesheet" href="/docs/assets/base.css" />
@@ -63,7 +61,7 @@
         </div>
         <hr class="end" />
         <script type="text/javascript">
-            seajs.use('jquery', function($) {
+            seajs.use('$', function($) {
                 $('#nav-test').click(function() {
                     var href = $(this).attr('href');
                     var iframe = '<div class="container"><iframe src="' +
