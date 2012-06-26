@@ -26,13 +26,13 @@
         var $ = jquery;
         var countdown = new Countdown({
           element: $('#timer1'),
-          from: new Date(2012, 5, 19, 12, 32, 0),
-          to: new Date(2013, 5, 19, 12, 32, 3),
+          //from: new Date(2012, 5, 19, 12, 32, 0),
+          to: new Date(Date.now() + 31536003000),
           onStart: function() {
-            alert('start!');
+            //console.info('start!');
           },
           onStop: function() {
-            alert('stop!');
+            //console.info('stop!');
           }
         });
         $('#start').on('click', function(){

@@ -103,12 +103,14 @@
                         </div>\
                       </div>',
           element: $('#timer1'),
-          to: new Date((new Date()).getTime() + 50000000000),
+          to: new Date(Date.noww() + 50000000000),
           animate: true,
           autoStart: true,
           onStart: function() {
+            //console.info('start')
           },
           onStop: function() {
+            //console.info('stop')
           },
           step: 0
         });
