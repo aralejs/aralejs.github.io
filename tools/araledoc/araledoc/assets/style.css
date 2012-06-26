@@ -1,9 +1,12 @@
-a {
-    color: #D14;
-    font-weight: normal;
+::selection {
+    background: rgba(240,17,68,0.8);
+    color: #fff;
 }
-a:hover {
-    color: #D10;
+.container {
+    max-width: 800px;
+    *width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 #header {
     position: relative;
@@ -31,7 +34,7 @@ a:hover {
 #brand a {
     color: #dddfdf;
     color: rgba(0,0,0,0.1);
-    text-decoration: none;
+    border-bottom: 0 none;
 }
 #brand a:hover {
     color: #dadada;
@@ -40,26 +43,134 @@ a:hover {
 #nav {
     position: relative;
     max-width: 800px;
-    *width: 560px;
+    *width: 800px;
     margin: 0 auto;
-    padding: 10px 20px;
     background: #fff;
     z-index: 9;
 }
 #nav a {
+    color: #d14;
     font-weight: bold;
+    font-family: "Helvetica Neue", "Helvetica", arial, sans-serif;
     margin-right: 6px;
-    padding: 6px 10px;
-    text-decoration: none;
-    border-radius: 4px;
+    padding: 8px 10px;
+    line-height: 46px;
+    border-bottom: 0 none;
 }
 #nav a:hover {
-    background: rgba(0,0,0,0.1);
-    background: #eee;
+    color: #d00;
+    border-top: 6px solid #d14;
+    margin-top: -6px;
 }
-.cell {
+#main {
+    clear: both;
+}
+#footer {
+    text-align: center;
     padding: 20px;
-    background: #eee;
-    border: 1px solid #dfdfdf;
-    border-radius: 4px;
+    max-width: 560px;
+    *width: 560px;
+    margin: 0 auto 30px;
+    text-align: left;
+}
+#footer a {
+    margin: 0;
+}
+#footer .elsewhere {
+    text-align: center;
+    margin-bottom: 40px;
+}
+#footer .elsewhere a {
+    margin: 0 10px;
+}
+#footer .copyright, #footer .system-info {
+    margin: 0;
+    color: #ccc;
+    font-size: 12px;
+}
+#footer .copyright a {
+    color: #bbb;
+}
+#footer .copyright a:hover {
+    color: #d14;
+}
+/* article */
+.hentry {
+    overflow: hidden;
+    font-family: 'Signika', 'Xin Gothic', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+}
+.entry-title, .hentry h2, .hentry h3, .hentry h4 {
+    color: #222;
+}
+.entry-meta, .entry-meta a, .updated, .updated a {
+    color: #999;
+    font-size: 14px;
+}
+.entry-meta a:hover, .updated a:hover {
+    color: #d14;
+}
+.entry-tags {
+    margin: 20px 0;
+}
+.entry-tags a {
+    background: #dbdfe4;
+    color: #6f747d;
+    border-bottom: 0 none;
+    padding: 2px 10px;
+    border-radius: 14px;
+    margin-right: 10px;
+    box-shadow: inset 0 0 1px rgba(114, 125, 150, 0.4),inset 0 1px 0 rgba(114, 125, 150, 0.4),0 1px 0 rgba(255, 255, 255, 0.7);
+}
+.entry-tags a:hover {
+    color: #d14;
+}
+.entry-list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+.entry-item {
+    margin: 12px 0;
+    zoom: 1;
+}
+.entry-item a {
+    margin: 0.2em 1em;
+}
+.entry-item-title {
+    margin-top: 24px;
+}
+.entry-item-title a {
+    margin-left: 0;
+}
+.pagination {
+    position: relative;
+    margin-top: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    font: normal 12px "Helvetica", arial, sans-serif;
+    color: #9f9f99;
+}
+.pagination .prev {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.pagination .next {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.tagcloud a {
+    display: inline-block;
+    margin: .2em .4em;
+    opacity: 0.6;
+}
+.tagcloud a:hover {
+    opacity: 1;
+}
+.tagcloud .count {
+    font-size: 12px;
+}
+#disqus_thread {
+    margin-top: 50px;
 }
