@@ -4,8 +4,9 @@ Validator 是表单校验组件。
 
 ##模块依赖
 
-*   [widget](widget/README.md)
-*   [jquery](jquery/README.md) | [zepto](zepto/README.md)
+*   [seajs](seajs)
+*   [widget](widget)
+*   [jquery](jquery) | [zepto](zepto)
 
 ##Feature List
 
