@@ -1,1 +1,0 @@
-define("#switchable/0.9.4/const",[],function(a,b){var c="ui-switchable";b.UI_SWITCHABLE=c,b.NAV_CLASS=c+"-nav",b.CONTENT_CLASS=c+"-content",b.TRIGGER_CLASS=c+"-trigger",b.PANEL_CLASS=c+"-panel",b.ACTIVE_CLASS=c+"-active",b.PREV_BTN_CLASS=c+"-prev-btn",b.NEXT_BTN_CLASS=c+"-next-btn",b.DISABLED_BTN_CLASS=c+"-disabled-btn"});

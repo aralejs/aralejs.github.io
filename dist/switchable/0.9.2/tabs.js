@@ -1,1 +1,0 @@
-define("#switchable/0.9.2/tabs",["./switchable"],function(a,b,c){var d=a("./switchable"),e=c.exports=d.extend({})});

@@ -1,1 +1,0 @@
-define("#base/0.9.3/base",["class","events","./attrs","./options","./aspect"],function(a){var b=a("class"),c=a("events"),d=a("./attrs"),e=a("./options"),f=a("./aspect");return b.create({Implements:[c,d,e,f],initialize:function(a){this.initAttrs(a),this.initOptions(a)},destroy:function(){for(var a in this)this.hasOwnProperty(a)&&delete this[a]}})});
