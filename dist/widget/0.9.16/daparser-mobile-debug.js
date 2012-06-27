@@ -148,7 +148,7 @@ define("#widget/0.9.16/daparser-mobile-debug", ["#zepto/0.8.0/zepto-debug"], fun
         }
 
         // 判断自己是否有 data-*
-        var dataset = getDataset(element);
+        var dataset = DAParser.parseElement(element);
         //noinspection JSUnusedLocalSymbols
         for (var p in dataset) {
             return true;
