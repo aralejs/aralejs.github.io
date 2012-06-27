@@ -8,12 +8,10 @@
             var debug = "False";
         </script>
         
-        
         <link rel="stylesheet" href="/docs/assets/base.css" />
         <link rel="stylesheet" href="/docs/assets/style.css" />
         <link rel="stylesheet" href="/docs/assets/pygments.css" />
         <script src="/tools/seajs-and-its-friends.js"></script>
-        
         <!--[if lt IE 9]>
         <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
         <![endif]-->
@@ -30,7 +28,6 @@
 
         <div id="main">
             
-            
             <div class="container">
                 <h1>Underscore</h1>
 <p>Underscore 是一个小巧的 JavaScript 语言增强库，提供了 Collection, Array, Function,
@@ -45,7 +42,7 @@ Object 等便捷、强大的操作方法。可以与 jQuery, Backbone 等组件�
 </ul>
 
 <h2>使用说明</h2>
-<p>请访问淡雅的官方文档：<a href="http://documentcloud.github.com/underscore/">documentcloud.github.com/underscore/</a></p>
+<p>请访问淡雅的官方文档：<a href="http://documentcloud.github.com/underscore/">http://documentcloud.github.com/underscore/</a></p>
 
 <h2>更新</h2>
 <p>当 Underscore 发布新版本，需要更新时，只要运行：</p>
@@ -54,11 +51,10 @@ Object 等便捷、强大的操作方法。可以与 jQuery, Backbone 等组件�
 $ spm install underscore</code></pre>
 
             </div>
-            
         </div>
         <hr class="end" />
         <script type="text/javascript">
-            seajs.use('jquery', function($) {
+            seajs.use('$', function($) {
                 $('#nav-test').click(function() {
                     var href = $(this).attr('href');
                     var iframe = '<div class="container"><iframe src="' +

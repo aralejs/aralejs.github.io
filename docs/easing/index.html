@@ -8,12 +8,10 @@
             var debug = "False";
         </script>
         
-        
         <link rel="stylesheet" href="/docs/assets/base.css" />
         <link rel="stylesheet" href="/docs/assets/style.css" />
         <link rel="stylesheet" href="/docs/assets/pygments.css" />
         <script src="/tools/seajs-and-its-friends.js"></script>
-        
         <!--[if lt IE 9]>
         <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
         <![endif]-->
@@ -29,7 +27,6 @@
         </header>
 
         <div id="main">
-            
             
             <div class="container">
                 <h1>Easing</h1>
@@ -74,11 +71,10 @@
 来提交反馈。</p>
 
             </div>
-            
         </div>
         <hr class="end" />
         <script type="text/javascript">
-            seajs.use('jquery', function($) {
+            seajs.use('$', function($) {
                 $('#nav-test').click(function() {
                     var href = $(this).attr('href');
                     var iframe = '<div class="container"><iframe src="' +

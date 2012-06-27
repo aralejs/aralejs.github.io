@@ -8,12 +8,10 @@
             var debug = "False";
         </script>
         
-        
         <link rel="stylesheet" href="/docs/assets/base.css" />
         <link rel="stylesheet" href="/docs/assets/style.css" />
         <link rel="stylesheet" href="/docs/assets/pygments.css" />
         <script src="/tools/seajs-and-its-friends.js"></script>
-        
         <!--[if lt IE 9]>
         <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
         <![endif]-->
@@ -29,7 +27,6 @@
         </header>
 
         <div id="main">
-            
             
             <div class="container">
                 <h1>jQuery</h1>
@@ -53,7 +50,7 @@ Ajax 操作。jQuery 的设计目的是：改变你编写 JavaScript 代码的�
 
 <span class="p">});</span>
 </pre></div>
-<p>jQuery 官方文档：<a href="http://api.jquery.com/">api.jquery.com/</a></p>
+<p>jQuery 官方文档：<a href="http://api.jquery.com/">http://api.jquery.com/</a></p>
 
 <h2>最佳实践</h2>
 
@@ -73,11 +70,10 @@ Ajax 操作。jQuery 的设计目的是：改变你编写 JavaScript 代码的�
 $ spm install jquery</code></pre>
 
             </div>
-            
         </div>
         <hr class="end" />
         <script type="text/javascript">
-            seajs.use('jquery', function($) {
+            seajs.use('$', function($) {
                 $('#nav-test').click(function() {
                     var href = $(this).attr('href');
                     var iframe = '<div class="container"><iframe src="' +

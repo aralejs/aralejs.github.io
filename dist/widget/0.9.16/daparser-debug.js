@@ -148,7 +148,7 @@ define("#widget/0.9.16/daparser-debug", ["#jquery/1.7.2/jquery-debug"], function
         }
 
         // 判断自己是否有 data-*
-        var dataset = getDataset(element);
+        var dataset = DAParser.parseElement(element);
         //noinspection JSUnusedLocalSymbols
         for (var p in dataset) {
             return true;

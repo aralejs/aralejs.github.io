@@ -1,12 +1,5 @@
 {
     "name": "widget",
     "version": "0.9.16",
-    "dist": {
-        "widget.js": "default",
-        "daparser.js": "default",
-        "templatable.js": "default",
-        "ast-printer.js": "default",
-        "auto-render.js": "default"
-    },
     "tests": ["daparser", "widget", "templatable"]
 }
