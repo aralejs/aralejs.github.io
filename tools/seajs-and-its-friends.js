@@ -58,9 +58,9 @@ seajs.config({
         // Widgets
         'overlay': 'overlay/0.9.6/overlay',                  // 95%
         'mask': 'overlay/0.9.6/mask',                        // 95%
-        'baseDialog': 'dialog/0.9.0/baseDialog',             // 70%
-        'animDialog': 'dialog/0.9.0/animDialog',             // 70%
-        'confirmBox': 'dialog/0.9.0/confirmBox',             // 70%
+        'base-dialog': 'dialog/0.9.0/base-dialog',             // 70%
+        'anim-dialog': 'dialog/0.9.0/anim-dialog',             // 70%
+        'confirm-box': 'dialog/0.9.0/confirm-box',             // 70%
 
         'triggerable': 'triggerable/0.9.3/triggerable',      // 95%
         'dropdown': 'triggerable/0.9.3/dropdown',            // 95%
