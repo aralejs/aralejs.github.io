@@ -7,7 +7,7 @@
         "i18n/zh-CN.js": "default",
         "model.js": "default"
     },
-    "test": [
+    "tests": [
         "calendar",
         "model"
     ]
