@@ -1,9 +1,4 @@
 {
     "name": "base",
-    "version": "0.9.16",
-    "dist": {
-        "base.js": "default",
-        "aspect.js": "default",
-        "attribute.js": "default"
-    }
+    "version": "0.9.17"
 }
