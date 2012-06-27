@@ -163,7 +163,7 @@ define("#validator/0.8.1/rule-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.
 
     addRule('required', function(options) {
         var element = $(options.element);
-        
+
         var t = element.attr('type');
         switch (t) {
             case 'checkbox':
@@ -221,7 +221,7 @@ define("#validator/0.8.1/rule-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.
         return l <= Number(options.max);
     }, '{{display}}长度必须小于或等于{{max}}。');
 
-    addRule('mobile', /^1[3458]\d{9}$/, '请输入正确的{{display}}。');
+    addRule('mobile', /^1\d{10}$/, '请输入正确的{{display}}。');
 
     addRule('confirmation', function(options) {
         var element = options.element,
