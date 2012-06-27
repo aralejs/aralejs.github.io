@@ -1,1 +1,0 @@
-define("#switchable/0.9.4/accordion",["./switchable"],function(a,b,c){var d=a("./switchable"),e=d.extend({attrs:{triggerType:"click",multiple:!1}});c.exports=e});

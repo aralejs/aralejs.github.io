@@ -1,1 +1,0 @@
-define("#widget/0.5.0/daparser",["class"],function(a,b,c){var d=a("class"),e={parse:function(a){}};c.exports=e});

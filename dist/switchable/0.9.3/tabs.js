@@ -1,1 +1,0 @@
-define("#switchable/0.9.3/tabs",["./switchable"],function(require,exports,module){var Switchable=require("./switchable");module.exports=Switchable.extend({})});

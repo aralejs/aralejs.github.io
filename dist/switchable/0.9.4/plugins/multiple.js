@@ -1,1 +1,0 @@
-define("#switchable/0.9.4/plugins/multiple",["../const"],function(a,b,c){var d=a("../const");c.exports={isNeeded:function(){return this.get("multiple")},methods:{_switchTrigger:function(a){this.triggers.eq(a).toggleClass(d.ACTIVE_CLASS)},_triggerIsValid:function(){return!0},_switchPanel:function(a){a.toPanels.toggle()}}}});
