@@ -22,7 +22,7 @@
 </div>
 
 ```javascript
-seajs.use(['baseDialog'], function(BaseDialog) {
+seajs.use(['base-dialog'], function(BaseDialog) {
     var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
     var dialogTpl = '<div class="overlay"><div id="dialog-title"></div><div id="dialog-content"></div><button id="confirm">确认按钮</button><button id="close">点击关闭</button></div>';
 
@@ -62,7 +62,7 @@ seajs.use(['baseDialog'], function(BaseDialog) {
 </div>
 
 ```javascript
-seajs.use(['animDialog'], function(AnimDialog) {
+seajs.use(['anim-dialog'], function(AnimDialog) {
     var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
 
     var d2 = new AnimDialog({
@@ -89,7 +89,7 @@ seajs.use(['animDialog'], function(AnimDialog) {
 </div>
 
 ```javascript
-seajs.use(['animDialog'], function(AnimDialog) {
+seajs.use(['anim-dialog'], function(AnimDialog) {
     var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
     var d3 = new AnimDialog({
         trigger: '#trigger3',
@@ -132,7 +132,7 @@ seajs.use(['animDialog'], function(AnimDialog) {
 </div>
 
 ```javascript
-seajs.use(['animDialog'], function(AnimDialog) {
+seajs.use(['anim-dialog'], function(AnimDialog) {
     var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
     var d5 = new AnimDialog({
         trigger: '#trigger5',
@@ -201,7 +201,7 @@ seajs.use(['animDialog'], function(AnimDialog) {
 </div>
 
 ```javascript
-seajs.use(['animDialog'], function(AnimDialog) {
+seajs.use(['anim-dialog'], function(AnimDialog) {
     var closeDialogTpl = '<div class="overlay"><button id="close">点击关闭</button><p>肯定是房间里萨的看法金克拉束带结发</p></div>';
     var d9 = new AnimDialog({
         trigger: '#trigger9',
