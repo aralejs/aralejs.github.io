@@ -1,9 +1,9 @@
-define("#dialog/0.9.0/baseDialog-debug", ["$","overlay","mask","events"], function(require, exports, module) {
+define("#dialog/0.9.0/base-dialog-debug", ["#jquery/1.7.2/jquery-debug", "#overlay/0.9.7/overlay-debug", "#position/0.9.2/position-debug", "#iframe-shim/0.9.2/iframe-shim-debug", "#widget/0.9.16/widget-debug", "#base/0.9.16/base-debug", "#class/0.9.2/class-debug", "#events/0.9.1/events-debug", "#base/0.9.16/aspect-debug", "#base/0.9.16/attribute-debug", "#widget/0.9.16/daparser-debug", "#widget/0.9.16/auto-render-debug", "#overlay/0.9.7/mask-debug"], function(require, exports, module) {
 
-    var $ = require('$'),
-        Overlay = require('overlay'),
-        mask = require('mask'),
-        Events = require('events');
+    var $ = require("#jquery/1.7.2/jquery-debug"),
+        Overlay = require("#overlay/0.9.7/overlay-debug"),
+        mask = require("#overlay/0.9.7/mask-debug"),
+        Events = require("#events/0.9.1/events-debug");
 
 
     // BaseDialog

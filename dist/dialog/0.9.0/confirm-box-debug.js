@@ -1,7 +1,7 @@
-define("#dialog/0.9.0/confirmBox-debug", ["$","./animDialog"], function(require, exports, module) {
+define("#dialog/0.9.0/confirm-box-debug", ["#jquery/1.7.2/jquery-debug", "#dialog/0.9.0/anim-dialog-debug", "#overlay/0.9.7/overlay-debug", "#position/0.9.2/position-debug", "#iframe-shim/0.9.2/iframe-shim-debug", "#widget/0.9.16/widget-debug", "#base/0.9.16/base-debug", "#class/0.9.2/class-debug", "#events/0.9.1/events-debug", "#base/0.9.16/aspect-debug", "#base/0.9.16/attribute-debug", "#widget/0.9.16/daparser-debug", "#widget/0.9.16/auto-render-debug", "#easing/0.9.3/easing-debug", "#dialog/0.9.0/base-dialog-debug", "#overlay/0.9.7/mask-debug"], function(require, exports, module) {
 
-    var $ = require('$'),
-        AnimDialog = require('./animDialog');
+    var $ = require("#jquery/1.7.2/jquery-debug"),
+        AnimDialog = require("#dialog/0.9.0/anim-dialog-debug");
 
     // ConfirmBox
     // -------
