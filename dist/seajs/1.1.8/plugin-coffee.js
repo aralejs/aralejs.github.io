@@ -1,1 +1,21 @@
-define("seajs/plugin-coffee",["./plugin-base","coffee"],function(a){var b=a("./plugin-base"),c=a("coffee");b.add({name:"coffee",ext:[".coffee"],fetch:function(a,b){c.load(a,b)}})});
+/**
+ * The CoffeeScript plugin
+ */
+define('seajs/plugin-coffee', ['./plugin-base', 'coffee'], function(require) {
+
+  var plugin = require('./plugin-base')
+  var CoffeeScript = require('coffee')
+
+
+  plugin.add({
+    name: 'coffee',
+
+    ext: ['.coffee'],
+
+    fetch: function(url, callback) {
+      CoffeeScript.load(url, callback)
+    }
+  })
+
+});
+
