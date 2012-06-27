@@ -1,8 +1,4 @@
 {
     "name": "overlay",
-    "version": "0.9.7",
-    "dist": {
-        "overlay.js": "default",
-        "mask.js": "default"
-    }
+    "version": "0.9.7"
 }
