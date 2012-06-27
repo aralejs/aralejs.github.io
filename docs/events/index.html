@@ -8,12 +8,10 @@
             var debug = "False";
         </script>
         
-        
         <link rel="stylesheet" href="/docs/assets/base.css" />
         <link rel="stylesheet" href="/docs/assets/style.css" />
         <link rel="stylesheet" href="/docs/assets/pygments.css" />
         <script src="/tools/seajs-and-its-friends.js"></script>
-        
         <!--[if lt IE 9]>
         <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
         <![endif]-->
@@ -31,7 +29,6 @@
         </header>
 
         <div id="main">
-            
             
             <div class="container">
                 <h1>Events</h1>
@@ -127,20 +124,20 @@
 <h2>测试用例</h2>
 
 <ul>
-<li><a href="http://aralejs.org/lib/events/tests/runner.html">aralejs.org/lib/events/tests/runner.html</a></li>
+<li><a href="http://aralejs.org/lib/events/tests/runner.html">http://aralejs.org/lib/events/tests/runner.html</a></li>
 </ul>
 
 <h2>性能对比</h2>
 
 <ul>
-<li><a href="http://jsperf.com/events-perfs">jsperf.com/events-perfs</a></li>
+<li><a href="http://jsperf.com/events-perfs">http://jsperf.com/events-perfs</a></li>
 </ul>
 <p><strong>注</strong>：最开始，该模块的主要代码直接来自 Backbone.Events. 后来发现 Backbone
 的代码实现有较大的改进空间，因此将内部的数据结构从链表改成了数组，重构后大幅度提升了性能。目前
 Backbone 已合并 Arale 的代码：</p>
 
 <ul>
-<li><a href="https://github.com/documentcloud/backbone/pull/1284">github.com/documentcloud/backbone/pull/1284</a></li>
+<li><a href="https://github.com/documentcloud/backbone/pull/1284">https://github.com/documentcloud/backbone/pull/1284</a></li>
 </ul>
 
 <h2>调研文档</h2>
@@ -160,11 +157,10 @@ Backbone 已合并 Arale 的代码：</p>
 </ul>
 
             </div>
-            
         </div>
         <hr class="end" />
         <script type="text/javascript">
-            seajs.use('jquery', function($) {
+            seajs.use('$', function($) {
                 $('#nav-test').click(function() {
                     var href = $(this).attr('href');
                     var iframe = '<div class="container"><iframe src="' +

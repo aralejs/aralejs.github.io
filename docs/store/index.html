@@ -8,12 +8,10 @@
             var debug = "False";
         </script>
         
-        
         <link rel="stylesheet" href="/docs/assets/base.css" />
         <link rel="stylesheet" href="/docs/assets/style.css" />
         <link rel="stylesheet" href="/docs/assets/pygments.css" />
         <script src="/tools/seajs-and-its-friends.js"></script>
-        
         <!--[if lt IE 9]>
         <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
         <![endif]-->
@@ -30,7 +28,6 @@
 
         <div id="main">
             
-            
             <div class="container">
                 <h1>Store</h1>
 <p>一个轻量级的本地存储工具，支持所有主流浏览器。</p>
@@ -44,7 +41,7 @@
 </ul>
 
 <h2>使用说明</h2>
-<p>官方文档：<a href="https://github.com/marcuswestin/store.js#readme">github.com/marcuswestin/store.js#readme</a></p>
+<p>官方文档：<a href="https://github.com/marcuswestin/store.js#readme">https://github.com/marcuswestin/store.js#readme</a></p>
 
 <h2>更新</h2>
 <p>当有新版本发布，需要更新时，请运行：</p>
@@ -55,18 +52,17 @@ $ spm install store</code></pre>
 <h2>相关链接</h2>
 
 <ul>
-<li><a href="http://diveintohtml5.info/storage.html">diveintohtml5.info/storage.html</a></li>
-<li><a href="https://github.com/andris9/jStorage">github.com/andris9/jStorage</a></li>
-<li><a href="https://developer.mozilla.org/en/DOM/Storage">developer.mozilla.org/en/DOM/Storage</a></li>
-<li><a href="https://github.com/alipay/arale/issues/43">github.com/alipay/arale/issues/43</a></li>
+<li><a href="http://diveintohtml5.info/storage.html">http://diveintohtml5.info/storage.html</a></li>
+<li><a href="https://github.com/andris9/jStorage">https://github.com/andris9/jStorage</a></li>
+<li><a href="https://developer.mozilla.org/en/DOM/Storage">https://developer.mozilla.org/en/DOM/Storage</a></li>
+<li><a href="https://github.com/alipay/arale/issues/43">https://github.com/alipay/arale/issues/43</a></li>
 </ul>
 
             </div>
-            
         </div>
         <hr class="end" />
         <script type="text/javascript">
-            seajs.use('jquery', function($) {
+            seajs.use('$', function($) {
                 $('#nav-test').click(function() {
                     var href = $(this).attr('href');
                     var iframe = '<div class="container"><iframe src="' +
