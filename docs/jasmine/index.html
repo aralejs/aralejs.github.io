@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>jasmine</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="/docs/jasmine/">Jasmine</a>
+                
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            
+            <div class="container">
+                <h1>Jasmine</h1>
+<p>Jasmine 是一个优秀的 JavaScript 测试框架，核心理念是 BDD（行为驱动开发）。它不依赖其他
+JavaScript 类库，也不需要 DOM. 使用 Jasmine 可以很容易写出简洁、清晰的测试用例：</p>
+<div class="highlight"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Jasmine&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;makes testing JavaScript awesome!&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">yourCode</span><span class="p">).</span><span class="nx">toBeLotsBetter</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<hr/>
+
+<h2>模块依赖</h2>
+
+<ul>
+<li><a href="seajs/README.md">seajs</a></li>
+</ul>
+
+<h2>使用说明</h2>
+<p>Jasmine 官方文档：<a href="http://pivotal.github.com/jasmine/">http://pivotal.github.com/jasmine/</a></p>
+<p>在 Arale 项目中使用时，更简单：</p>
+
+<ol>
+<li>首先按照 <a href="https://github.com/alipay/arale/wiki/文件命名与目录结构">文件命名与目录结构</a> 规范组织好组件文件。</li>
+<li>然后创建 <code>tests/runner.html</code>, 文件内容可参考 <a href="events/test/runner.html">events/test/runner.html</a></li>
+</ol>
+<p>可以参考 <a href="../events/">events</a> 等模块的代码。</p>
+<p>赶快开始愉悦的 BDD 之旅吧。</p>
+
+<h2>更新</h2>
+<p>当 Jasmine 发布新版本，需要更新时，只要运行：</p>
+
+<pre><code>$ cd arale/dist
+$ spm install jasmine</code></pre>
+<p>然后更改 <code>tools/jasmine-runner.js</code> 中的版本号就好。</p>
+
+            </div>
+        </div>
+        <hr class="end" />
+        <script type="text/javascript">
+            seajs.use('$', function($) {
+                $('#nav-test').click(function() {
+                    var href = $(this).attr('href');
+                    var iframe = '<div class="container"><iframe src="' +
+                        href + '" frameborder="0" width="100%" height="640">' +
+                        '</iframe></div>';
+                    $('#main').html(iframe);
+                    !!history.pushState && history.pushState(null, 'Test', href);
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>
