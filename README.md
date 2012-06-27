@@ -23,39 +23,39 @@ Arale 是一个开放、简单、易用的前端基础类库。
 
 ### Infrastructure
 
-- seajs
-- events
-- class
-- base
-- widget
+- [seajs](http://aralejs.org/doc/seajs/)
+- [events](http://aralejs.org/doc/events/)
+- [class](http://aralejs.org/doc/class/)
+- [base](http://aralejs.org/doc/base/)
+- [widget](http://aralejs.org/doc/widget/)
 
 
 ### Utilities
 
-- jquery
-- zepto
-- cookie
-- json
-- underscore
-- handlebars
-- jasmine
-- moment
-- iframe-shim
-- swfobject
-- backbone
-- position
-- placeholder
-- store
-- validator
-- async
+- [jquery](http://aralejs.org/doc/jquery/) - [API](http://api.jquery.com)
+- [zepto](http://aralejs.org/doc/zepto/)
+- [cookie](http://aralejs.org/doc/cookie/)
+- [json](http://aralejs.org/doc/json/)
+- [underscore](http://aralejs.org/doc/underscore/)
+- [handlebars](http://aralejs.org/doc/handlebars/)
+- [jasmine](http://aralejs.org/doc/jasmine/)
+- [moment](http://aralejs.org/doc/moment/)
+- [iframe-shim](http://aralejs.org/doc/iframe-shim/)
+- [swfobject](http://aralejs.org/doc/swfobject/)
+- [backbone](http://aralejs.org/doc/backbone/)
+- [position](http://aralejs.org/doc/position/)
+- [placeholder](http://aralejs.org/doc/placeholder/)
+- [store](http://aralejs.org/doc/store/)
+- [validator](http://aralejs.org/doc/validator/)
+- [async](http://aralejs.org/doc/async/)
 
 ### Widgets
 
-- overlay
-- dialog
-- switchable
-- popup
-- calendar
+- [overlay](http://aralejs.org/doc/overlay/)
+- [dialog](http://aralejs.org/doc/dialog/)
+- [switchable](http://aralejs.org/doc/switchable/)
+- [popup](http://aralejs.org/doc/popup/)
+- [calendar](http://aralejs.org/doc/calendar/)
 
 
 
