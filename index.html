@@ -1,46 +1,114 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8"/>
-<title>Arale - 更好的前端基础类库</title>
-<link rel="stylesheet" href="docs/assets/comfortable.css"/>
-<style>
-    .content .date {
-        color: #999;
-    }
-</style>
-</head>
-<body>
-<div id="page" class="comfortable">
-<div class="article">
-    <div class="content">
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Arale</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <script type="text/javascript">
+            var debug = "False";
+        </script>
+        
+        <link rel="stylesheet" href="/docs/assets/base.css" />
+        <link rel="stylesheet" href="/docs/assets/style.css" />
+        <link rel="stylesheet" href="/docs/assets/pygments.css" />
+        <script src="/tools/seajs-and-its-friends.js"></script>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="/">Arale</a></h1>
+        </header>
 
-        <blockquote>
-            开源 = 兴趣 + 坚持 + 时机 + 成就感，其中最重要的是昨天 @淘宝正明 强调的坚持。这公式，好像是万能的。蘑菇街 @岳旭强 在 QCon 上提到的成长四要素，也是这四点。
-            <span class="date">（2012.04.28）</span>
-        </blockquote>
+        <div id="main">
+            
+            <div class="container">
+                <p><img src="/alipay/arale/raw/master/docs/assets/arale-logo.jpg" alt="arale logo"/></p>
+<p>Arale 是一个开放、简单、易用的前端基础类库。</p>
 
-        <blockquote>
-            开源的目的，是分享。将自己好的点子分享出去，将他人好的建议吸纳进来。开源不是自我展现，也不是企业形象。开源是通过彼此的奉献，把事情做得更好。
-            <span class="date">（2012.04.28）</span>
-        </blockquote>
+<hr/>
 
-        <blockquote>
-            预告：支付宝的前端基础类库 Arale 正在基于 SeaJS 和 jQuery 等社区全新构建 2.0 版本。这次将采取一条大胆、开放的路线：在刚开始做时，就开源开放出来，采取设计和文档先行，社区反馈与组件开发共进的方式来做。正式开发下周开始，预计第一期完成 6 月下旬。这种模式，你有兴趣参与不？
-            <span class="date">（2012.04.29）</span>
-        </blockquote>
+<h2>类库风格</h2>
 
-        <p class="large-image">
-            <img style="border: 1px solid #999" src="docs/assets/arale-logo.jpg">
-        </p>
+<ol>
+<li><strong>开放：开源开放，海纳百川。</strong>开源开放的目的是分享，更是引流，希望能利用社区的力量把事情做得更好。</li>
+<li><strong>简单：如无必要，勿增实体。</strong>保持简单，追求做一件事情只有一种方法。</li>
+<li><strong>易用：一目了然，容易学习。</strong>无论是 API 还是文档，都希望能具有很强的可读性、自学习性。</li>
+</ol>
+<p>还有两条适合内部构建组件时考虑：</p>
 
-        <p style="text-align: center">
-            对 Arale 有兴趣？欢迎访问：<a href="https://github.com/alipay/arale/wiki/开放式社区参与">开放式社区参与</a>
-        </p>
+<ol>
+<li><strong>合理抽象，最佳实践。</strong>组件要丰富，也要合理抽象，追求最佳实践。</li>
+<li><strong>适度灵活，适量重复。</strong>不过度设计，只预留必要的可扩展接口。不追求代码的零重复，更追求组件的合理解耦。</li>
+</ol>
 
-        <hr class="end">
-    </div>
-</div>
-</div>
-</body>
+<h2>模块列表</h2>
+
+<h3>Infrastructure</h3>
+
+<ul>
+<li><a href="http://aralejs.org/doc/seajs/">seajs</a></li>
+<li><a href="http://aralejs.org/doc/events/">events</a></li>
+<li><a href="http://aralejs.org/doc/class/">class</a></li>
+<li><a href="http://aralejs.org/doc/base/">base</a></li>
+<li><a href="http://aralejs.org/doc/widget/">widget</a></li>
+</ul>
+
+<h3>Utilities</h3>
+
+<ul>
+<li><a href="http://aralejs.org/doc/jquery/">jquery</a> - <a href="http://api.jquery.com">API</a></li>
+<li><a href="http://aralejs.org/doc/zepto/">zepto</a></li>
+<li><a href="http://aralejs.org/doc/cookie/">cookie</a></li>
+<li><a href="http://aralejs.org/doc/json/">json</a></li>
+<li><a href="http://aralejs.org/doc/underscore/">underscore</a></li>
+<li><a href="http://aralejs.org/doc/handlebars/">handlebars</a></li>
+<li><a href="http://aralejs.org/doc/jasmine/">jasmine</a></li>
+<li><a href="http://aralejs.org/doc/moment/">moment</a></li>
+<li><a href="http://aralejs.org/doc/iframe-shim/">iframe-shim</a></li>
+<li><a href="http://aralejs.org/doc/swfobject/">swfobject</a></li>
+<li><a href="http://aralejs.org/doc/backbone/">backbone</a></li>
+<li><a href="http://aralejs.org/doc/position/">position</a></li>
+<li><a href="http://aralejs.org/doc/placeholder/">placeholder</a></li>
+<li><a href="http://aralejs.org/doc/store/">store</a></li>
+<li><a href="http://aralejs.org/doc/validator/">validator</a></li>
+<li><a href="http://aralejs.org/doc/async/">async</a></li>
+</ul>
+
+<h3>Widgets</h3>
+
+<ul>
+<li><a href="http://aralejs.org/doc/overlay/">overlay</a></li>
+<li><a href="http://aralejs.org/doc/dialog/">dialog</a></li>
+<li><a href="http://aralejs.org/doc/switchable/">switchable</a></li>
+<li><a href="http://aralejs.org/doc/popup/">popup</a></li>
+<li><a href="http://aralejs.org/doc/calendar/">calendar</a></li>
+</ul>
+
+<h2>团队风貌</h2>
+<p>向 Facebook 学习：</p>
+
+<ol>
+<li>Done is better than perfect.</li>
+<li>Move fast and break things.</li>
+<li>Stay focused and keep shipping.</li>
+<li>Code wins arguments.</li>
+</ol>
+
+<h2>社区信息</h2>
+
+<ul>
+<li>Website：<a href="http://aralejs.org/">http://aralejs.org/</a></li>
+<li>Wiki：<a href="https://github.com/alipay/arale/wiki">https://github.com/alipay/arale/wiki</a></li>
+<li>Google Groups：<a href="https://groups.google.com/forum/#!forum/aralejs">https://groups.google.com/forum/#!forum/aralejs</a></li>
+<li>阿里旺旺群：66486486（加入密码：aralejs.org）</li>
+<li>QQ 群：59443088</li>
+</ul>
+
+            </div>
+        </div>
+        <hr class="end" />
+        
+    </body>
 </html>
