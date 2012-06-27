@@ -8,12 +8,10 @@
             var debug = "False";
         </script>
         
-        
         <link rel="stylesheet" href="/docs/assets/base.css" />
         <link rel="stylesheet" href="/docs/assets/style.css" />
         <link rel="stylesheet" href="/docs/assets/pygments.css" />
         <script src="/tools/seajs-and-its-friends.js"></script>
-        
         <!--[if lt IE 9]>
         <script type="text/javascript" src="/docs/assets/html5shiv.js"></script>
         <![endif]-->
@@ -31,7 +29,6 @@
         </header>
 
         <div id="main">
-            
             
             <div class="container">
                 <h1>Widget</h1>
@@ -283,14 +280,14 @@ DOM 内容有修改时，无需重新绑定。</p>
 <h2>演示页面</h2>
 
 <ul>
-<li><a href="http://aralejs.org/lib/widget/examples/widget.html">aralejs.org/lib/widget/examples/widget.html</a></li>
-<li><a href="http://aralejs.org/lib/widget/examples/simple-tabview.html">aralejs.org/lib/widget/examples/simple-tabview.html</a></li>
+<li><a href="http://aralejs.org/lib/widget/examples/widget.html">http://aralejs.org/lib/widget/examples/widget.html</a></li>
+<li><a href="http://aralejs.org/lib/widget/examples/simple-tabview.html">http://aralejs.org/lib/widget/examples/simple-tabview.html</a></li>
 </ul>
 
 <h2>测试用例</h2>
 
 <ul>
-<li><a href="http://aralejs.org/lib/widget/tests/runner.html">aralejs.org/lib/widget/tests/runner.html</a></li>
+<li><a href="http://aralejs.org/lib/widget/tests/runner.html">http://aralejs.org/lib/widget/tests/runner.html</a></li>
 </ul>
 
 <h2>交流讨论</h2>
@@ -299,11 +296,10 @@ DOM 内容有修改时，无需重新绑定。</p>
 来提交反馈。</p>
 
             </div>
-            
         </div>
         <hr class="end" />
         <script type="text/javascript">
-            seajs.use('jquery', function($) {
+            seajs.use('$', function($) {
                 $('#nav-test').click(function() {
                     var href = $(this).attr('href');
                     var iframe = '<div class="container"><iframe src="' +
