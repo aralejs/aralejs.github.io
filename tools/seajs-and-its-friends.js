@@ -46,7 +46,7 @@ seajs.config({
 
         // Utilities
         'cookie': 'cookie/1.0.2/cookie',                     // 100%
-        'easing': 'easing/0.9.2/easing',                     // 100%
+        'easing': 'easing/0.9.3/easing',                     // 100%
         'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 95%
         'position': 'position/0.9.1/position',               // 95%
 
@@ -56,8 +56,8 @@ seajs.config({
 
 
         // Widgets
-        'overlay': 'overlay/0.9.6/overlay',                  // 95%
-        'mask': 'overlay/0.9.6/mask',                        // 95%
+        'overlay': 'overlay/0.9.7/overlay',                  // 95%
+        'mask': 'overlay/0.9.7/mask',                        // 95%
         'base-dialog': 'dialog/0.9.0/base-dialog',             // 70%
         'anim-dialog': 'dialog/0.9.0/anim-dialog',             // 70%
         'confirm-box': 'dialog/0.9.0/confirm-box',             // 70%
