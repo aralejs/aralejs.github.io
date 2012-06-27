@@ -2,8 +2,8 @@
     "name": "dialog",
     "version": "0.9.0",
     "dist": {
-        "baseDialog.js": "default",
-        "animDialog.js": "default",
-        "confirmBox.js": "default"
+        "base-dialog.js": "default",
+        "anim-dialog.js": "default",
+        "confirm-box.js": "default"
     }
 }
