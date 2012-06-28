@@ -61,15 +61,15 @@
 .ui-calendar li.ui-calendar-day-6 {
     color: #d64;
 }
-.ui-calendar li.focused-element {
-    color: #fff;
-    background: #d64;
-}
 .ui-calendar .ui-calendar-year-column li:hover,
 .ui-calendar .ui-calendar-month-column li:hover,
 .ui-calendar .ui-calendar-date-column li:hover {
     color: #333;
     background: #dadada;
+}
+.ui-calendar .ui-calendar-date-column li.focused-element {
+    color: #fff;
+    background: #d64;
 }
 .ui-calendar .ui-calendar-footer {
     color: #999;
