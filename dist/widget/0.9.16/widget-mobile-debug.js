@@ -1,4 +1,4 @@
-define("#widget/0.9.16/widget-mobile-debug", ["#base/0.9.16/base-debug", "#class/0.9.2/class-debug", "#events/0.9.1/events-debug", "#base/0.9.16/aspect-debug", "#base/0.9.16/attribute-debug", "#zepto/0.8.0/zepto-debug", "#widget/0.9.16/daparser-debug", "#widget/0.9.16/auto-render-debug"], function(require, exports, module) {
+define("#widget/0.9.16/widget-mobile-debug", ["#base/0.9.16/base-debug", "#class/0.9.2/class-debug", "#events/0.9.1/events-debug", "#base/0.9.16/aspect-debug", "#base/0.9.16/attribute-debug", "#zepto/0.9.0/zepto-debug", "#widget/0.9.16/daparser-debug", "#widget/0.9.16/auto-render-debug"], function(require, exports, module) {
 
     // Widget
     // ---------
@@ -8,7 +8,7 @@ define("#widget/0.9.16/widget-mobile-debug", ["#base/0.9.16/base-debug", "#class
 
 
     var Base = require("#base/0.9.16/base-debug");
-    var $ = require("#zepto/0.8.0/zepto-debug");
+    var $ = require("#zepto/0.9.0/zepto-debug");
     var DAParser = require("#widget/0.9.16/daparser-debug");
     var AutoRender = require("#widget/0.9.16/auto-render-debug");
 

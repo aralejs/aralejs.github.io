@@ -1,6 +1,6 @@
-define("#widget/0.9.16/templatable-mobile-debug", ["#zepto/0.8.0/zepto-debug", "#handlebars/1.0.0/handlebars-debug", "#widget/0.9.16/ast-printer-debug"], function(require, exports, module) {
+define("#widget/0.9.16/templatable-mobile-debug", ["#zepto/0.9.0/zepto-debug", "#handlebars/1.0.0/handlebars-debug", "#widget/0.9.16/ast-printer-debug"], function(require, exports, module) {
 
-    var $ = require("#zepto/0.8.0/zepto-debug");
+    var $ = require("#zepto/0.9.0/zepto-debug");
     var Handlebars = require("#handlebars/1.0.0/handlebars-debug");
     Handlebars.print = require("#widget/0.9.16/ast-printer-debug").print;
 

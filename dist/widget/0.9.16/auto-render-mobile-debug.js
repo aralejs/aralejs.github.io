@@ -1,6 +1,6 @@
-define("#widget/0.9.16/auto-render-mobile-debug", ["#zepto/0.8.0/zepto-debug"], function(require, exports) {
+define("#widget/0.9.16/auto-render-mobile-debug", ["#zepto/0.9.0/zepto-debug"], function(require, exports) {
 
-    var $ = require("#zepto/0.8.0/zepto-debug");
+    var $ = require("#zepto/0.9.0/zepto-debug");
 
 
     // 自动渲染接口，子类可根据自己的初始化逻辑进行覆盖

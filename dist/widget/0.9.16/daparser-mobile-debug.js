@@ -1,4 +1,4 @@
-define("#widget/0.9.16/daparser-mobile-debug", ["#zepto/0.8.0/zepto-debug"], function(require, exports) {
+define("#widget/0.9.16/daparser-mobile-debug", ["#zepto/0.9.0/zepto-debug"], function(require, exports) {
 
     // DAParser
     // --------
@@ -6,7 +6,7 @@ define("#widget/0.9.16/daparser-mobile-debug", ["#zepto/0.8.0/zepto-debug"], fun
     // 的所有 Widget 组件。
 
 
-    var $ = require("#zepto/0.8.0/zepto-debug");
+    var $ = require("#zepto/0.9.0/zepto-debug");
     var ATTR_DA_CID = 'data-daparser-cid';
     var DAParser = exports;
 
