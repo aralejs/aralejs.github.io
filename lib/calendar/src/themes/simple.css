@@ -41,12 +41,12 @@
     border-top: 1px solid #dadada;
     border-bottom: 1px solid #dadada;
 }
-.ui-calendar .ui-calendar-date-column .ui-calendar-date-previous,
-.ui-calendar .ui-calendar-date-column .ui-calendar-date-next {
+.ui-calendar .ui-calendar-date-column .previous-month,
+.ui-calendar .ui-calendar-date-column .next-month {
     background: #eee;
     color: #ccc;
 }
-.ui-calendar .ui-calendar-date-column .ui-calendar-date-disabled {
+.ui-calendar .ui-calendar-date-column .disabled-date {
     background: #eee;
     color: #bbb;
 }
@@ -61,15 +61,15 @@
 .ui-calendar li.ui-calendar-day-6 {
     color: #d64;
 }
-.ui-calendar li.ui-calendar-focus {
-    color: #fff;
-    background: #d64;
-}
 .ui-calendar .ui-calendar-year-column li:hover,
 .ui-calendar .ui-calendar-month-column li:hover,
 .ui-calendar .ui-calendar-date-column li:hover {
     color: #333;
     background: #dadada;
+}
+.ui-calendar .ui-calendar-date-column li.focused-element {
+    color: #fff;
+    background: #d64;
 }
 .ui-calendar .ui-calendar-footer {
     color: #999;

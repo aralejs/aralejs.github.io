@@ -2,6 +2,13 @@
 
 ## Example
 
+<script type="text/javascript">
+seajs.config({
+    "map": [[/dist\/calendar\/0\.8\.0\/(.*)/i, "lib/calendar/src/$1"]]
+});
+</script>
+
+
 <link rel="stylesheet" href="/lib/calendar/src/themes/simple.css" />
 
 Attached to a field with default options.
@@ -9,6 +16,7 @@ Attached to a field with default options.
 <div class="cell">
 <input id="date-1" type="text" />
 </div>
+
 
 ```javascript
 seajs.use(['calendar'], function(Calendar) {

@@ -23,11 +23,8 @@
         {{#each date.items}}
         <ul class="ui-calendar-date-column">
             {{#each this}}
-            <li class="ui-calendar-day-{{day}}
-            {{#if previous}}ui-calendar-date-previous{{/if}}
-            {{#if current}}ui-calendar-focus{{/if}}
-            {{#if next}}ui-calendar-date-next{{/if}}
-            {{#unless available}}ui-calendar-date-disabled{{/unless}}
+            <li class="ui-calendar-day-{{day}} {{className}}
+            {{#unless available}}disabled-date{{/unless}}
             "
             data-role="date" data-datetime="{{datetime}}"
             >{{date}}</li>
@@ -40,7 +37,7 @@
         {{#each month.items}}
         <ul class="ui-calendar-month-column">
             {{#each this}}
-            <li {{#if current}}class="ui-calendar-focus"{{/if}} data-role="month" data-value="{{value}}">{{label}}</li>
+            <li {{#if current}}class="focused-element"{{/if}} data-role="month" data-value="{{value}}">{{label}}</li>
             {{/each}}
         </ul>
         {{/each}}
@@ -50,7 +47,7 @@
         {{#each year.items}}
         <ul class="ui-calendar-year-column">
             {{#each this}}
-            <li {{#if current}}class="ui-calendar-focus"{{/if}} data-role="{{role}}" data-value="{{value}}">{{label}}</li>
+            <li {{#if current}}class="focused-element"{{/if}} data-role="{{role}}" data-value="{{value}}">{{label}}</li>
             {{/each}}
         </ul>
         {{/each}}
