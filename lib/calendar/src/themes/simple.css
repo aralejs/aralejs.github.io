@@ -67,6 +67,8 @@
     color: #333;
     background: #dadada;
 }
+.ui-calendar .ui-calendar-year-column li.focused-element,
+.ui-calendar .ui-calendar-month-column li.focused-element,
 .ui-calendar .ui-calendar-date-column li.focused-element {
     color: #fff;
     background: #d64;
