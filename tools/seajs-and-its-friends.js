@@ -47,7 +47,7 @@ seajs.config({
         'cookie': 'cookie/1.0.2/cookie',                     // 100%
         'easing': 'easing/0.9.3/easing',                     // 100%
         'iframe-shim': 'iframe-shim/0.9.1/iframe-shim',      // 95%
-        'position': 'position/0.9.1/position',               // 95%
+        'position': 'position/0.9.2/position',               // 95%
 
         'validator-core': 'validator/0.8.1/core-debug.js',         // 60%
         'validator': 'validator/0.8.1/validator-debug.js',         // 60%

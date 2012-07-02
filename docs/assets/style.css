@@ -3,8 +3,8 @@
     color: #fff;
 }
 .container {
-    max-width: 560px;
-    *width: 560px;
+    max-width: 800px;
+    *width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -42,8 +42,8 @@
 }
 #nav {
     position: relative;
-    max-width: 560px;
-    *width: 560px;
+    max-width: 800px;
+    *width: 800px;
     margin: 0 auto;
     background: #fff;
     z-index: 9;
