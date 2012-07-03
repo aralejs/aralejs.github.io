@@ -18,4 +18,5 @@ W = *
 V = *
 zip: $(WIDGET)
 	rm -rf build/dist.zip
+	mkdir -p build
 	cd dist && zip -r dist $(W)/$(V) && mv dist.zip ../build/
