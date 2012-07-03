@@ -4,6 +4,7 @@
 
     var modules = ['jasmine'];
     HAS_PACKAGE && modules.unshift('text!../package.json');
+    HAS_PACKAGE && modules.unshift('../src/spm-config.js');
 
     // no cache
     seajs.config({
@@ -11,7 +12,9 @@
     });
 
 
-    seajs.use(modules, function(data) {
+    seajs.use(modules, function(config, data) {
+        seajs.config(config);
+
         var jasmineEnv = getJasmineEnv();
 
         // Make alias
