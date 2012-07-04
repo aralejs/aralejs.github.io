@@ -188,7 +188,7 @@ define("#validator/0.8.2/core-mobile-debug", ["#zepto/0.8.0/zepto-debug", "#widg
             this.trigger('formValidate', this.element);
 
             var complete = function(err) {
-                that.trigger('formValidated', this.element, Boolean(err));
+                that.trigger('formValidated', that.element, Boolean(err));
                 callback && callback(Boolean(err));
             };
 

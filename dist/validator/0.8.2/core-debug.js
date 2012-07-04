@@ -188,7 +188,7 @@ define("#validator/0.8.2/core-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.
             this.trigger('formValidate', this.element);
 
             var complete = function(err) {
-                that.trigger('formValidated', this.element, Boolean(err));
+                that.trigger('formValidated', that.element, Boolean(err));
                 callback && callback(Boolean(err));
             };
 
