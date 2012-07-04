@@ -49,8 +49,8 @@ seajs.config({
         'iframe-shim': 'iframe-shim/0.9.2/iframe-shim',      // 95%
         'position': 'position/0.9.2/position',               // 95%
 
-        'validator-core': 'validator/0.8.1/core-debug.js',         // 60%
-        'validator': 'validator/0.8.1/validator-debug.js',         // 60%
+        'validator-core': 'validator/0.8.2/core-debug.js',         // 60%
+        'validator': 'validator/0.8.2/validator-debug.js',         // 60%
         /* querystring 待迁移 */
 
 
