@@ -96,6 +96,9 @@ define("#validator/0.8.2/core-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.
                     if (!validator.query(options.element)) {
 
                         var obj = utils.parseDom(input);
+
+			if (!obj.rule) return true;
+
                         $.extend(options, obj);
 
                         validator.addItem(options);

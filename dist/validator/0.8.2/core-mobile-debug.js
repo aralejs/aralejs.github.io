@@ -96,6 +96,9 @@ define("#validator/0.8.2/core-mobile-debug", ["#zepto/0.8.0/zepto-debug", "#widg
                     if (!validator.query(options.element)) {
 
                         var obj = utils.parseDom(input);
+
+			if (!obj.rule) return true;
+
                         $.extend(options, obj);
 
                         validator.addItem(options);

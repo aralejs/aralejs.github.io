@@ -50,7 +50,10 @@ define("#validator/0.8.2/item-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.
             var rules = utils.parseRules(this.get('rule')),
                 that = this;
 
-            if (!rules) return this;
+            if (!rules) {
+                callback && callback(null, '', this.element);
+                return this;
+            }
 
             _metaValidate(this.element, this.get('required'), rules, this.get('display'), function(err, msg) {
                 if (err) {
