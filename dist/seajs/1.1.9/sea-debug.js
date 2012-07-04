@@ -707,10 +707,12 @@ seajs._config = {
   var compileStack = []
 
   var STATUS = {
-    'FETCHING': 1, // The module file is fetching now.
-    'SAVED': 2,    // The module file has been fetched and info has been saved.
-    'LOADED': 3,   // All dependencies are loaded.
-    'COMPILED': 4  // The module.exports is available.
+    'FETCHING': 1,  // The module file is fetching now.
+    'FETCHED': 2,   // The module file has been fetched.
+    'SAVED': 3,     // The module info has been saved.
+    'READY': 4,     // All dependencies and self are ready to compile.
+    'COMPILING': 5, // The module is in compiling now.
+    'COMPILED': 6   // The module is compiled and module.exports is available.
   }
 
 
@@ -732,8 +734,7 @@ seajs._config = {
 
     this._load(uris, function() {
       var args = util.map(uris, function(uri) {
-        var module = cachedModules[uri]
-        return module ? module._compile() : null
+        return cachedModules[uri]._compile()
       })
 
       if (callback) {
@@ -746,15 +747,15 @@ seajs._config = {
   Module.prototype._load = function(uris, callback) {
     var unLoadedUris = util.filter(uris, function(uri) {
       return uri && (!cachedModules[uri] ||
-          cachedModules[uri].status < STATUS.LOADED)
+          cachedModules[uri].status < STATUS.READY)
     })
 
-    if (unLoadedUris.length === 0) {
+    var length = unLoadedUris.length
+    if (length === 0) {
       callback()
       return
     }
 
-    var length = unLoadedUris.length
     var remain = length
 
     for (var i = 0; i < length; i++) {
@@ -762,9 +763,9 @@ seajs._config = {
         var module = cachedModules[uri] ||
             (cachedModules[uri] = new Module(uri, STATUS.FETCHING))
 
-        module.status === STATUS.SAVED ? onSaved() : fetch(uri, onSaved)
+        module.status >= STATUS.FETCHED ? onFetched() : fetch(uri, onFetched)
 
-        function onSaved() {
+        function onFetched() {
           // cachedModules[uri] is changed in un-correspondence case
           module = cachedModules[uri]
 
@@ -780,7 +781,8 @@ seajs._config = {
               cb(module)
             }
           }
-          // Maybe failed to fetch successfully, such as 404 error.
+          // Maybe failed to fetch successfully, such as 404 or non-module.
+          // In these cases, module.status stay at FETCHING or FETCHED.
           else {
             cb()
           }
@@ -790,7 +792,7 @@ seajs._config = {
     }
 
     function cb(module) {
-      module && (module.status = STATUS.LOADED)
+      module && (module.status = STATUS.READY)
       --remain === 0 && callback()
     }
   }
@@ -798,24 +800,32 @@ seajs._config = {
 
   Module.prototype._compile = function() {
     var module = this
-    if (module.exports) {
+    if (module.status === STATUS.COMPILED) {
       return module.exports
     }
+
+    // Just return null when:
+    //  1. the module file is 404.
+    //  2. the module file is not written with valid module format.
+    //  3. other error cases.
+    if (module.status < STATUS.READY) {
+      return null
+    }
+
+    module.status = STATUS.COMPILING
 
 
     function require(id) {
       var uri = resolve(id, module.uri)
       var child = cachedModules[uri]
 
-      // Just return null when:
-      //  1. the module file is 404.
-      //  2. the module file is not written with valid module format.
-      //  3. other error cases.
-      if (!child || child.status < STATUS.LOADED) {
+      // Just return null when uri is invalid.
+      if (!child) {
         return null
       }
 
-      if (isCircular(child)) {
+      // Avoids circular calls.
+      if (child.status === STATUS.COMPILING) {
         return child.exports
       }
 
@@ -1008,6 +1018,12 @@ seajs._config = {
         function() {
           fetchedList[requestUri] = true
 
+          // Updates module status
+          var module = cachedModules[uri]
+          if (module.status === STATUS.FETCHING) {
+            module.status = STATUS.FETCHED
+          }
+
           // Saves anonymous module meta data
           if (anonymousModuleMeta) {
             save(uri, anonymousModuleMeta)
@@ -1017,7 +1033,7 @@ seajs._config = {
           // Assigns the first module in package to cachedModules[uri]
           // See: test/issues/un-correspondence
           var firstModule = currentPackageModules[0]
-          if (firstModule && cachedModules[uri].status === STATUS.FETCHING) {
+          if (firstModule && module.status === STATUS.FETCHED) {
             cachedModules[uri] = firstModule
           }
           currentPackageModules = []
@@ -1083,7 +1099,6 @@ seajs._config = {
     }
   }
 
-
   function getPureDependencies(module) {
     var uri = module.uri
 
@@ -1123,24 +1138,6 @@ seajs._config = {
     }
 
     return false
-  }
-
-  function isCircular(module) {
-    var ret = false
-    var stack = [module.uri]
-    var parent = module
-
-    while (parent = parent.parent) {
-      stack.unshift(parent.uri)
-
-      if (parent === module) {
-        ret = true
-        break
-      }
-    }
-
-    ret && printCircularLog(stack, 'warn')
-    return ret
   }
 
   function printCircularLog(stack, type) {
