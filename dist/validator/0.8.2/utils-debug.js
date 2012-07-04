@@ -78,7 +78,7 @@ define("#validator/0.8.2/utils-debug", ["#jquery/1.7.2/jquery-debug", "#validato
 
         //parse type attribute
         var type = field.attr('type');
-        if (type && type != 'submit' && type != 'cancel' && type != 'checkbox' && type != 'radio' && type != 'select' && type != 'select-one') {
+        if (type && type != 'submit' && type != 'cancel' && type != 'checkbox' && type != 'radio' && type != 'select' && type != 'select-one' && type != 'file') {
 
             if (!Rule.getRule(type)) {
                 throw new Error('Form field with type "' + type + '" not supported!');

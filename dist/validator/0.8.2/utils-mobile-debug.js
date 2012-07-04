@@ -78,7 +78,7 @@ define("#validator/0.8.2/utils-mobile-debug", ["#zepto/0.8.0/zepto-debug", "#val
 
         //parse type attribute
         var type = field.attr('type');
-        if (type && type != 'submit' && type != 'cancel' && type != 'checkbox' && type != 'radio' && type != 'select' && type != 'select-one') {
+        if (type && type != 'submit' && type != 'cancel' && type != 'checkbox' && type != 'radio' && type != 'select' && type != 'select-one' && type != 'file') {
 
             if (!Rule.getRule(type)) {
                 throw new Error('Form field with type "' + type + '" not supported!');
