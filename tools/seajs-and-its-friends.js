@@ -64,11 +64,11 @@ seajs.config({
         'triggerable': 'triggerable/0.9.3/triggerable',      // 95%
         'dropdown': 'triggerable/0.9.3/dropdown',            // 95%
 
-        'switchable': 'switchable/0.9.5/switchable',         // 90%
-        'tabs': 'switchable/0.9.5/tabs',                     // 90%
-        'slide': 'switchable/0.9.5/slide',                   // 90%
-        'accordion': 'switchable/0.9.5/accordion',           // 90%
-        'carousel': 'switchable/0.9.5/carousel',             // 90%
+        'switchable': 'switchable/0.9.6/switchable',         // 90%
+        'tabs': 'switchable/0.9.6/tabs',                     // 90%
+        'slide': 'switchable/0.9.6/slide',                   // 90%
+        'accordion': 'switchable/0.9.6/accordion',           // 90%
+        'carousel': 'switchable/0.9.6/carousel',             // 90%
 
         'calendar': 'calendar/0.8.0/calendar'                // 80%
 
