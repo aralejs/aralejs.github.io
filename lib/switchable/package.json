@@ -2,15 +2,13 @@
     "version": "0.9.6",
     "name": "switchable",
     "dist": {
-        "switchable.js": "default",
+        "switchable.js": ["switchable.js", "plugins/autoplay.js", "plugins/effects.js", "plugins/circular.js", "plugins/multiple.js", "const.js"],
         "tabs.js": "default",
         "slide.js": "default",
         "accordion.js": "default",
-        "carousel.js": "default",
-        "plugins/autoplay.js": "default",
-        "plugins/effects.js": "default",
-        "plugins/circular.js": "default",
-        "plugins/multiple.js": "default",
-        "const.js": "default"
+        "carousel.js": "default"
+    },
+    "alias": {
+        "widget": "widget/0.9.16/widget"
     }
 }
