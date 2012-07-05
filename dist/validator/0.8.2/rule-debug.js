@@ -201,7 +201,7 @@ define("#validator/0.8.2/rule-debug", ["#jquery/1.7.2/jquery-debug", "#widget/0.
         var element = options.element,
             min = options.min;
         return Number(element.val()) >= Number(min);
-    }, '{{display}}必须大于或者等于{{min}}。');
+    }, '{{display}}必须小于或者等于{{min}}。');
 
     addRule('max', function(options) {
         var element = options.element,
