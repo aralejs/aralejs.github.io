@@ -1,5 +1,7 @@
 {
+    "name": "arale",
     "version": "1.0",
+    "type": "parent",
     "alias": {
         "$": "jquery/1.7.2/jquery",
         "jquery": "jquery/1.7.2/jquery",
