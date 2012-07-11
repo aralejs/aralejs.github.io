@@ -1,6 +1,6 @@
 {
     "name": "validator",
-    "version": "0.8.3",
+    "version": "0.8.4",
     "author": "Shawn <shaoshuai0102@gmail.com>",
     "description": "form validation widget",
     "license": "MIT",
@@ -14,6 +14,6 @@
         "validator.js": "default"
     },
     "alias": {
-        "widget": "#widget/0.9.16/widget"
+        "widget": "widget/0.9.16/widget"
     }
 }
