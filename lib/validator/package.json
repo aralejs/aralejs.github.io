@@ -14,6 +14,6 @@
         "validator.js": "default"
     },
     "alias": {
-        "widget": "#widget/0.9.16/widget"
+        "widget": "widget/0.9.16/widget"
     }
 }
