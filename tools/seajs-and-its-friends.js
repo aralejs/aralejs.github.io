@@ -61,8 +61,8 @@ seajs.config({
         'anim-dialog': 'dialog/0.9.0/anim-dialog',             // 70%
         'confirm-box': 'dialog/0.9.0/confirm-box',             // 70%
 
-        'triggerable': 'triggerable/0.9.3/triggerable',      // 95%
-        'dropdown': 'triggerable/0.9.3/dropdown',            // 95%
+        'popup': 'popup/0.9.5/dropdown',      // 95%
+        'dropdown': 'popup/0.9.5/dropdown',            // 95%
 
         'switchable': 'switchable/0.9.6/switchable',         // 90%
         'tabs': 'switchable/0.9.6/tabs',                     // 90%
