@@ -55,6 +55,7 @@ Arale 是一个开放、简单、易用的前端基础类库。
 - [dialog](http://aralejs.org/docs/dialog/)
 - [switchable](http://aralejs.org/docs/switchable/)
 - [popup](http://aralejs.org/docs/popup/)
+- [select](http://aralejs.github.com/select/)
 - [calendar](http://aralejs.org/docs/calendar/)
 
 
