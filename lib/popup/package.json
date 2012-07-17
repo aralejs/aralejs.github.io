@@ -1,9 +1,12 @@
 {
     "name": "popup",
-    "version": "0.9.5",
+    "version": "0.9.6",
     "dist": {
         "popup.js": "default",
         "dropdown.js": "default"
+    },
+    "alias": {
+        "overlay": "overlay/0.9.8/overlay"
     },
     "tests": ["dropdown"]
 }

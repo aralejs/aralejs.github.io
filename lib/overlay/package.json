@@ -1,4 +1,13 @@
 {
     "name": "overlay",
-    "version": "0.9.7"
+    "version": "0.9.8",
+    "dist": {
+        "overlay.js": "default",
+        "mask.js": "default"
+    },
+    "alias": {
+        "widget": "widget/0.9.16/widget",
+        "position": "position/0.9.2/position",
+        "iframe-shim": "iframe-shim/0.9.3/iframe-shim"
+    }    
 }
