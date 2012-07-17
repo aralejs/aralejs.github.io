@@ -1,6 +1,6 @@
 {
     "name": "validator",
-    "version": "0.8.4",
+    "version": "0.8.5",
     "author": "Shawn <shaoshuai0102@gmail.com>",
     "description": "form validation widget",
     "license": "MIT",
