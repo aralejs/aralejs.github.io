@@ -1,0 +1,579 @@
+/** begin ---ui-menu.css---*/
+/*
+	@name: 菜单
+	@base: ui-menu
+	@desc: 菜单
+	@required: null
+	@note: position坐标位置、width需JS指定
+	@example: 
+		<ul class="ui-menu">
+			<li class="ui-menu-item"><a href="#">a</a></li>
+			<li class="ui-menu-item"><a href="#">b</a></li>
+		</ul>
+
+*/
+
+.ui-menu {
+	display: block;/* reset */
+	width: 150px;/* default */
+	padding: 0px;/* overwrite */
+	margin: 0;/* reset */
+	border: 1px #CCCCCC solid;
+	background: #FFFFFF;/* overwrite */
+	list-style: none;/* reset */
+	zoom: 1;/* IE */
+}
+/* ui-menu clearfix */
+.ui-menu:after {
+  clear: both;
+  content: '.';
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+.ui-menu-item {
+	margin: 0;/* reset */
+	padding: 0;/* reset */
+	float: left;/* IE */
+	width: 100%;/* IE */
+	zoom: 1;/* IE */
+}
+.ui-menu-item a {
+	text-decoration: none;/* reset */
+	display: block;/* required */
+	padding: .2em .4em;/* overwrite */
+	line-height: 1.5;/* reset */
+	zoom: 1;/* IE */
+}
+.ui-menu-item a:hover,
+a.ui-state-hover {
+	background: #DFEDFD;/* overwrite */
+}
+.ui-menu-fix {/* IE6 */
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	zoom: 1;
+}
+
+.ui-menu-item-split {
+	padding: 0;/* overwrite */
+	border-bottom: 1px solid #C5C5C5;/* overwrite */
+}
+
+/* 可单选的菜单项 */
+.ui-menu-radios {
+	
+}
+.ui-menu-radios .ui-menu-item {
+	position: relative;/* required */
+}
+.ui-menu-radios .ui-menu-item .ui-menu-text {
+	padding-left: 15px/* overwrite */
+}
+.ui-menu-radios .ui-menu-icon {
+	display: none;/* required */
+	height: 100%;/* required */
+	position: absolute;/* required */
+	left: 5px;/* overwrite */
+	top: 2px;/* overwrite */
+	color: #0077FF;/* overwrite */
+}
+.ui-menu-radios .selected .ui-menu-icon {
+	display: block;/* required */
+}
+
+
+/** end ---ui-menu.css---*/
+/**Last Changed Author: xingmin.zhu--Last Changed Date: Mon Jun 11 16:11:12 CST 2012**/
+/**alice.components.ui-menu-1.0**/
+/** CurrentDeveloper: afc163**/
+/** DeployDate: Mon Jun 11 16:38:13 CST 2012**/
+/** begin ---ui-tab2.css---*/
+/*
+	@name: tab
+	@base: ui-tab2
+	@desc: 这是老版的视觉规范的tab组件，由于联系人组件需要使用 
+	@required: null
+	@example: 
+	
+		<!-- tab -->
+		<div class="ui-tab2">
+			<!-- tab 头 -->
+			<div class="ui-tab2-head"> 
+				<ul> 
+					<li><a href="#"><span>标题一</span></a></li>
+					<li class="current"><a href="#"><span>当前选中项</span></a></li>
+					<li><a href="#"><span>其他项</span></a></li>
+				</ul>
+			</div>
+			<!-- /tab 头 -->
+			
+			<!-- tab 内容 -->
+			<div class="ui-tab2-body">
+				基础 ui-tab2
+			</div>
+			<!-- /tab 内容 -->
+		</div>
+		<!-- /tab -->
+*/
+/* 基础Tab */
+.ui-tab2,
+.ui-tab2-head,
+.ui-tab2-head ul{
+	zoom:1;/* IE */
+}
+.ui-tab2-head:after,
+.ui-tab2-head ul:after{/* clearfix */
+	visibility:hidden;
+	display:block;
+	font-size:0;
+	content:" ";
+	clear:both;
+	height:0;
+}
+.ui-tab2-head li{
+	float:left;
+	_display:inline;/* IE6 */
+	margin-right:2px;/* overwrite */
+	cursor:pointer;/* default */
+	font-size:12px;/* overwrite */
+	height:24px;/* overwrite */
+	line-height:23px;/* overwrite */
+    *line-height:24px;/* overwrite */
+	cursor:pointer;/* default */
+}
+.ui-tab2-head li a{
+	display:block;/* required */
+	float:left;/* required */
+	height:100%;/* required */
+}
+.ui-tab2-head li span{
+	display:block;/* required */
+	height:100%;/* required */
+	float:left;/* required */
+	padding:0 14px 0 15px;/* overwrite */
+	white-space:nowrap;/* required */
+	cursor:pointer;/* IE6 */
+}
+.ui-tab2-head .current{
+	font-weight:700;/* overwrite */
+}
+.ui-tab2-head .current span{
+	padding:0 11px 0 13px;/* overwrite */
+}
+.ui-tab2-head a,.ui-tab2-head a:hover{
+	color:#4D4D4D;/* overwrite */
+	text-decoration:none;/* reset */
+}
+
+/*
+	@name: ui-tab2-1
+	@base: ui-tab2
+	@required: null
+	@example: 
+		<!-- tab -->
+		<div class="ui-tab2 ui-tab2-1">
+			<!-- tab 头 -->
+			<div class="ui-tab2-head"> 
+				<ul> 
+					<li><a href="#"><span>标题一</span></a></li>
+					<li class="current"><a href="#"><span>当前选中项</span></a></li>
+					<li><a href="#"><span>其他项</span></a></li>
+				</ul>
+			</div>
+			<!-- /tab 头 -->
+			
+			<!-- tab 内容 -->
+			<div class="ui-tab2-body">
+			</div>
+			<!-- /tab 内容 -->
+		</div>
+		<!-- /tab -->
+	
+*/
+.ui-tab2-1{
+	position:relative;/* required */
+}
+.ui-tab2-1 .ui-tab2-head{
+	border-bottom:1px #D2D2D2 solid;/* overwrite */
+}
+.ui-tab2-1 .ui-tab2-head ul{
+	position:relative;/* required */
+	top:1px;/* overwrite */
+	zoom:1;/* IE */
+}
+.ui-tab2-1 .ui-tab2-head li{
+}
+.ui-tab2-1 .ui-tab2-head a,.ui-tab2-1 .ui-tab2-head span{
+	background-image:url(https://img.alipay.com/pa/frame/v2/bg-tab.png);/* overwrite */
+	background-repeat:no-repeat;/* overwrite */
+}
+.ui-tab2-1 .ui-tab2-head a{
+	background-position:0 -181px;/* overwrite */
+}
+.ui-tab2-1 .ui-tab2-head span{
+	background-position:right -215px;/* overwrite */
+}
+/* 鼠标悬停 */
+.ui-tab2-1 .ui-tab2-head a:hover{
+	background-position:0 -249px;/* overwrite */
+}
+.ui-tab2-1 .ui-tab2-head a:hover span{
+	background-position:right -283px;/* overwrite */
+}
+/* 当前项 */
+.ui-tab2-1 .ui-tab2-head .current a,
+.ui-tab2-1 .ui-tab2-head .current a:hover{
+	background-position:0 -316px;/* overwrite */
+}
+.ui-tab2-1 .ui-tab2-head .current span,
+.ui-tab2-1 .ui-tab2-head .current a:hover span{
+	background-position:right -349px;/* overwrite */
+}
+
+
+/** end ---ui-tab2.css---*/
+/**Last Changed Author: xingmin.zhu--Last Changed Date: Mon Jun 11 16:06:41 CST 2012**/
+/**alice.components.ui-tab2-1.0**/
+/** CurrentDeveloper: afc163**/
+/** DeployDate: Mon Jun 11 16:09:11 CST 2012**/
+/** begin ---ui-popmenu.css---*/
+/*
+	@name: ui-popmenu
+	@base: ui-popmenu
+	@desc: 下拉菜单
+	@required: ui-menu
+	@note: 
+	@state: ui-popmenu-active
+	@example: 
+		<!-- ui-popmenu -->
+		<div class="ui-popmenu ui-popmenu-active">
+			<div class="ui-popmenu-title">
+				<a href="#">请选择xxx</a>
+			</div>
+			<!-- ui-menu -->
+			<div class="ui-popmenu-container">
+				<ul class="ui-menu ui-menu-radios" style="left:0;">
+					<li class="ui-menu-item">
+						<span class="ui-menu-icon">●</span>
+						<a class="ui-menu-text" href="#">Menu Item</a>
+					</li>
+					<li class="ui-menu-item">
+						<span class="ui-menu-icon">●</span>
+						<a class="ui-menu-text" href="#">Menu Item</a>
+					</li>
+					<li class="ui-menu-item">
+						<span class="ui-menu-icon">●</span>
+						<a class="ui-menu-text" href="#">Menu Item</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /ui-menu -->
+		</div>
+		<!-- /ui-popmenu -->
+		<!-- 将ui-menu的left设置为0，则菜单会左对齐 -->
+				
+ */
+.ui-popmenu {
+	display: inline-block;/* required */
+	*display: inline;/* IE6 */
+	zoom:1;/* IE6 */
+	position:relative;/* required */
+	z-index: 14;/* overwrite */
+}
+.ui-popmenu-title {
+	display: inline-block;/* required */
+    *display: inline;/* IE6 */
+	zoom:1;/* IE6 */
+	vertical-align:middle;/* overwrite */
+	padding: 3px 6px 2px;/* overwrite */
+	background:#FFFFFF;/* overwrite */
+	border: 1px solid #CCCCCC;/* overwrite */
+	position:relative;/* required */
+}
+
+.ui-popmenu-container {
+	display:none;/* required */
+}
+
+.ui-popmenu-active .ui-popmenu-container {
+	display: block;/* required */
+	position: absolute;/* required */
+	right: 0;/* optional left:0; */
+	top: 24px;/* overwrite */
+	z-index: -1;/* required */
+	zoom: 1;/* overwrite */
+}
+.ui-popmenu-active .ui-popmenu-title {
+	border-bottom: none;/* overwrite */
+	padding-bottom:3px;/* overwrite */
+}
+
+
+/** end ---ui-popmenu.css---*/
+/**Last Changed Author: xingmin.zhu--Last Changed Date: Mon Jun 11 16:12:34 CST 2012**/
+/**alice.components.ui-popmenu-1.0**/
+/** CurrentDeveloper: afc163**/
+/** DeployDate: Mon Jun 11 16:37:17 CST 2012**/
+
+/** begin ---ui-contacts.css---*/
+/*	@name: ui-contacts
+	@base: ui-contacts
+	@desc: 联系人
+	@required: ui-tab2,ui-tab2-1,ui-popmenu,ui-menu
+	@example: 
+	<div>
+		<!-- 联系人搜索模块 -->
+		<div class="ui-contacts-search">
+			<div class="ui-contacts-search-container">
+				<input type="text" value="在我的联系人中搜索" class="ui-contacts-search-text ui-fm-placeholder">
+				<input type="button" value="" class="ui-contacts-search-close">
+				
+				<a class="ui-contacts-close" href="#">x</a>
+
+			</div>
+		</div>
+		<!-- /联系人搜索模块 -->
+		<!-- 联系人模块 -->
+		<div class="ui-tab2 ui-tab2-1 ui-contacts">
+			<div class="ui-contacts-container">
+				<div class="ui-tab2-head">
+					<ul>
+						<li class="current"><a><span>最近交易的</span></a></li>
+						<li>
+							<a><span>我的联系人(1)<em>▼</em></span></a>
+							<a href="#" class="ui-contacts-arrow"><em>▼</em></a>
+						</li>
+					</ul>
+				</div>
+				<!-- 标签 操作 -->
+				<div class="ui-menu ui-popmenu" style="display:none;">
+					<ul>
+						<li class="ui-menu-item">
+							<a href="#">所有我的联系人(1)</a>
+						</li>
+						<li class="ui-menu-item">
+							<a href="#">未分组联系人(1)</a>
+						</li>
+						<li class="ui-menu-item">
+							<a href="#">搜索结果</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /标签 操作 -->
+				<div class="ui-contacts-group">
+					<div class="fn-hide">
+						<ul>
+							<li title="个人版" class="ui-contacts-item">
+								<label class="ui-contacts-detail">
+									<input type="checkbox" value="" class="ui-contacts-select">
+									"<span class="ui-contacts-nickname">1111</span>"
+									<span class="ui-contacts-account">(grb1@alitest.com)</span>
+								</label>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<ul>
+							<li title="春泥" class="ui-contacts-item">
+							<label class="ui-contacts-detail">
+								<input type="checkbox" value="" class="ui-contacts-select">
+								"<span class="ui-contacts-nickname">春泥</span>"
+								<span class="ui-contacts-account">(alipay0@qq.com)</span>
+							</label>
+							</li>
+							<li title="测试用户七" class="ui-contacts-item current">
+								<label class="ui-contacts-detail">
+									<input type="checkbox" value="" class="ui-contacts-select" />
+									"<span class="ui-contacts-nickname">测试用户七</span>"
+									<span class="ui-contacts-account">(test007@qq.com)</span>
+								</label>
+							</li>
+							<li title="个人版" class="ui-contacts-item">
+								<label class="ui-contacts-detail">
+									<input type="checkbox" value="" class="ui-contacts-select">
+									"<span class="ui-contacts-nickname">个人版</span>"
+									<span class="ui-contacts-account">(grb1@alitest.com)</span>
+								</label>
+							</li>
+							<li title="PER专用" class="ui-contacts-item">
+								<label class="ui-contacts-detail">
+									<input type="checkbox" value="" class="ui-contacts-select">
+									"<span class="ui-contacts-nickname">PER专用</span>"
+									<span class="ui-contacts-account">(per001@alitest.com)</span>
+								</label>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /联系人模块 -->
+	</div>
+*/
+/* 生活助手联系人组件 */
+.ui-contacts-search{
+	width:322px;/* overwrite */
+}
+.ui-contacts-close,
+.contacts-btn, .contacts-btn:hover, .contacts-link, 
+.ui-contacts-search,
+.ui-contacts-search-container,
+.ui-contacts-search-close,
+.ui-contacts-arrow {
+	background:url(https://img.alipay.com/alice/ui-contacts-search.png) no-repeat;
+}
+.ui-contacts-close{
+	position:absolute;/* required */
+	top:3px;/* overwrite */
+	right:5px;/* overwrite */
+	display:block;/* required */
+	width:20px;/* overwrite */
+	height:20px;/* overwrite */
+	overflow:hidden;/* overwrite */
+	text-indent:-999em;/* overwrite */
+	background-position: 0 -139px;/* overwrite */
+	background: url("https://img.alipay.com/alice/ui-icons.png") no-repeat scroll -17px -89px transparent;
+}
+
+.ui-contacts-search,
+.ui-contacts-search-container{
+	height:59px;/* overwrite */
+}
+.ui-contacts-search-close{
+	background-position: -372px -149px;
+}
+.ui-contacts-search{
+	background-position: 0 0;/* overwrite */
+}
+.ui-contacts-search-container{
+	background-position: right -61px;/* overwrite */
+	position:relative;/* overwrite */
+}
+.ui-contacts-search-container .ui-fm-placeholder {
+	color:#b2b2b2;
+}
+.ui-contacts-search-text{
+	border:none;/* overwrite */
+	position:absolute;/* overwrite */
+	top:28px;/* overwrite */
+	*top:28px;/* overwrite */
+	left:26px;/* overwrite */
+	height:19px;/* overwrite */
+	line-height:19px;/* overwrite */
+	width:224px;/* overwrite */
+	background:transparent;	/* overwrite */
+}
+.ui-contacts-search-btn,
+.ui-contacts-search-close{
+    background-color: #FFFFFF;
+    border: 0 none;
+    cursor: pointer;
+    display: block;
+    height: 13px;
+    position: absolute;
+    right: 27px;
+    text-indent: -999em;
+    top: 30px;
+    width: 13px;
+}
+.ui-contacts{
+	width:312px;/* overwrite */
+	padding:2px 4px 4px;/* overwrite */
+	border:1px solid #d2d2d2;/* overwrite */
+	background:#e8e8e8 url(https://img.alipay.com/alice/ui-contacts.png) 0 0 repeat-x;/* overwrite */
+}
+.ui-contacts .ui-tab2-head em{
+	visibility:hidden;/* overwrite */
+	margin-right:4px;
+}
+.ui-contacts .ui-tab2-head .ui-contacts-arrow,
+.ui-contacts .ui-tab2-head  .current .ui-contacts-arrow {
+    background: url("https://img.alipay.com/alice/ui-icons.png") no-repeat scroll right -70px transparent;
+    margin-left: -22px;
+    width: 18px;
+}
+.ui-contacts .ui-tab2-head .ui-contacts-arrow:hover,
+.ui-contacts .ui-tab2-head  .current .ui-contacts-arrow:hover {
+	background-position: right -35px;
+}
+/* 联系人组模板 */
+.ui-contacts-group{
+	height:344px;/* overwrite */
+	overflow:hidden;/* overwrite */
+	overflow-y:auto;/* overwrite */
+	padding-top:3px;/* overwrite */
+	background:#FFFFFF;/* overwrite */
+	border:1px #D2D2D2 solid;/* overwrite */
+	border-width:0 1px 1px 1px;/* overwrite */
+	position:relative;/* overwrite */
+}
+/* 联系人项模板 */
+.ui-contacts-item{
+	height:33px;/* overwrite */
+	overflow:hidden;/* overwrite */
+	border-bottom:1px #DEDEDE solid;/* overwrite */
+	word-break:break-all;/* overwrite */
+}
+/* 联系人特殊项 */
+.ui-contacts-group .first{
+	border-top:1px #DEDEDE solid;/* overwrite */
+}
+/* 联系人状态 */
+.ui-contacts-group .current{
+  background:#feffce;/* overwrite */
+}
+.ui-contacts-item:hover,
+.ui-contacts-item-hover{
+  background:#dbf0ff;/* overwrite */
+}
+/* 单条联系人 */
+.ui-contacts-detail{
+	display:block;/* overwrite */
+	height:25px;/* overwrite */
+	padding-top:7px;/* overwrite */
+	cursor:pointer;/* overwrite */
+	white-space:nowrap;/* overwrite */
+	*white-space:normal;/* overwrite */
+}
+.ui-contacts-select{
+	vertical-align:middle;/* overwrite */
+	float:left;/* overwrite */
+	height:20px;/* overwrite */
+	margin:0 6px 0 12px;/* overwrite */
+}
+.ui-contacts-nickname{
+	font-weight:600;/* overwrite */
+	margin-right: 0.5em;/* overwrite */
+}
+.ui-contacts-account{
+	font-weight:normal;/* overwrite */
+}
+/* 覆盖 */
+.ui-contacts .ui-popmenu{
+	position:absolute;/* overwrite */
+}
+
+/* 联系人触发按钮的样式，若无视觉要求，请使用contacts-btn */
+.contacts-btn, .contacts-link {
+	width:117px;
+	height:36px;
+	line-height:36px;
+	background-position:-183px -124px;
+	display: block;
+	padding:0 0 0 36px;
+	color:#4d4d4d;
+	font-weight: bold;
+}
+.contacts-btn, .contacts-btn:hover {
+	text-decoration:none;
+	color:#808080;
+}
+.contacts-btn:hover, .contacts-link {
+	background-position:-30px -124px;
+	color:#4d4d4d;
+}
