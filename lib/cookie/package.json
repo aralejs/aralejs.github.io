@@ -10,7 +10,7 @@
     "src": "http://aralejs.org/dist/cookie/{{version}}/cookie-debug.js",
     "min": "http://aralejs.org/dist/cookie/{{version}}/cookie.js",
 
-    "dist": {
+    "output": {
         "cookie.js": ["default"]
     }
 }

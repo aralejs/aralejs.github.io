@@ -1,12 +1,12 @@
 {
     "name": "base",
     "version": "0.9.16",
-    'dist': {
+    'output': {
         'base.js': 'default',
         'aspect.js': 'default',
         'attribute.js': 'default'
     },
-    'alias': {
+    'dependencies': {
         'events': 'events/0.9.1/events',
         'class': 'class/0.9.2/class'
     }
