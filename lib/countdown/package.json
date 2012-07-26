@@ -1,0 +1,7 @@
+{
+    "name": "countdown",
+    "version": "0.1.0",
+    "dist": {
+        "countdown.js": "default"
+    }
+}
