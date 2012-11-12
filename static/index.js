@@ -1,7 +1,12 @@
-seajs.use(['$', 'popup/0.9.8/popup'], function($, Popup) {
+seajs.config({
+    alias: {
+        '$': 'jquery/1.7.2/jquery'
+    }
+});
+
+seajs.use(['$', 'popup/0.9.7/popup'], function($, Popup) {
 
     $.get('http://aralejs.org/-update/package.json?callback=?', function(data) {
-        console.log(data);
         for(var i=0; i<data.length; i++) {
             var item = $('<a class="module" href="#"></a>');
             item.html(data[i].name)
