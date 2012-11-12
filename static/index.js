@@ -21,7 +21,7 @@ seajs.use(['$', 'popup/0.9.7/popup'], function($, Popup) {
 
     $('#search').on('keyup', function(e) {
         if (e.keyCode === 13 && $('.module:visible').attr('href')) {
-            window.open($('.module:visible').attr('href'));
+            location.href = $('.module:visible').attr('href');
         }
         var that = this;
         $('.module').each(function(i, item) {
