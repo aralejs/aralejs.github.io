@@ -1,0 +1,110 @@
+body {
+    color: #666;
+    font-family: Georgia,'Xin Gothic','PT Sans','Hiragino Sans GB','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+a {
+    color: #6C97C2;
+    text-decoration: none;
+}
+.inline {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+}
+#title-wrapper {
+    border-bottom: 1px solid #ccc;
+    text-align:center;
+    padding-bottom: 30px;
+}
+#main-wrapper {
+    padding: 20px 15px;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;    
+}
+.main-block {
+    float: left;
+    display: inline;
+}
+#document-wrapper {
+    width: 330px;
+}
+#module-wrapper {
+    width: 680px;
+}
+#title {
+    font-family: "Marcellus",sans-serif;
+    font-size: 36px;
+    text-shadow: 0 1px 0px #fff;
+    margin: 20px 0;
+}
+#description {
+    font-family: "Marcellus",sans-serif;
+    color: #999;
+    font-size: 20px;
+}
+#search {    
+    margin-left: 2em;
+    padding: 8px;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid #bbb;
+    color: #888;
+    width:180px;
+}
+
+#document-wrapper ol {
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.main-block h2 {
+    text-transform: uppercase;
+    font-style: normal;
+    font-size: 16px;
+    font-family: "Marcellus",sans-serif;
+    clear: both;
+}
+
+.module {
+    background: #fff;
+    margin-right: 0.6em;
+    margin-bottom: 0.6em;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    color: #888;
+    padding: 5px 12px;    
+    float: left;
+    display: inline;
+}
+.module:hover {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    color: #6C97C2;    
+}
+
+#card {
+    padding: 5px 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    width: 140px;
+    font-size: 12px;
+    display: none;
+}
+
+#card p {
+    margin: 0;
+}
+
+#card .card-name {
+    margin: 0;
+    font-size: 16px;
+}
+
+#card .card-description {
+    color: #999;
+    line-height: 1.4;
+    margin: 3px 0;
+}
