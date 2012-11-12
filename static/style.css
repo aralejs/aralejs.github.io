@@ -1,6 +1,7 @@
 body {
     color: #666;
     font-family: Georgia,'Xin Gothic','PT Sans','Hiragino Sans GB','Helvetica Neue',Helvetica,Arial,sans-serif;
+    background-image: url(bg.gif);
 }
 a {
     color: #6C97C2;
