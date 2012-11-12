@@ -25,6 +25,9 @@ a {
     float: left;
     display: inline;
 }
+.main-block h2 {
+    display: none;
+}
 #document-wrapper {
     width: 310px;
 }

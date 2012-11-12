@@ -4,24 +4,36 @@ seajs.config({
     }
 });
 
-seajs.use(['$', 'popup/0.9.7/popup'], function($, Popup) {
+seajs.use(['$', 'popup/0.9.8/popup'], function($, Popup) {
 
-    $.get('http://aralejs.org/-update/package.json?callback=?', function(data) {
+    seajs.use('http://aralejs.org/package.js', function(data) {
         for(var i=0; i<data.length; i++) {
             var item = $('<a class="module" href="#"></a>');
             item.html(data[i].name)
                 .attr('href', '/' + data[i].name + '/')
                 .data('description', data[i].description)
                 .data('version', data[i].version);
-
-            $('.modules-' + data[i]['tag']).append(item);
-            cardPopup(item);        
+            $('.modules-' + data[i]['tag']).append(item).prev().show();
+            cardPopup(item);
         }
-    }, 'jsonp');
+    });
 
     // alipay 组件
-    seajs.use('http://arale2.alipay.im/package.js', function() {
-        
+    seajs.use('http://aralejs.alipay.im/package.js', function(data) {
+        if (!data) {
+            return;
+        }
+        for(var i=0; i<data.length; i++) {
+            var item = $('<a class="module" href="#"></a>');
+            item.html(data[i].name)
+                .attr('href', '/' + data[i].name + '/')
+                .data('description', data[i].description || '暂无描述')
+                .data('version', data[i].version);
+
+            $('.modules-alipay').append(item);
+            $('.modules-alipay').prev().show();
+            cardPopup(item);
+        }
     });
 
     $('#search').on('keyup', function(e) {
