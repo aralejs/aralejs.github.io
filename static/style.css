@@ -68,6 +68,17 @@ a {
     clear: both;
 }
 
+.modules {
+    margin-bottom: 10px;
+    *zoom: 1;
+}
+.modules:after {
+    content: '';
+    font-size: 0;
+    height: 0;
+    clear: both;
+}
+
 .module {
     background: #fff;
     margin-right: 0.4em;
