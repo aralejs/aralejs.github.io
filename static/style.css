@@ -25,7 +25,7 @@ a {
     float: left;
     display: inline;
 }
-.main-block h2 {
+#module-wrapper h2 {
     display: none;
 }
 #document-wrapper {
