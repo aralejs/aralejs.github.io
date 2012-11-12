@@ -17,7 +17,7 @@ a {
     padding-bottom: 30px;
 }
 #main-wrapper {
-    padding: 20px 15px;
+    padding: 15px;
     overflow: hidden;
     border-bottom: 1px solid #ccc;    
 }
@@ -26,10 +26,10 @@ a {
     display: inline;
 }
 #document-wrapper {
-    width: 330px;
+    width: 320px;
 }
 #module-wrapper {
-    width: 680px;
+    width: 690px;
 }
 #title {
     font-family: "Marcellus",sans-serif;
