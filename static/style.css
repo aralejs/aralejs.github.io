@@ -103,7 +103,7 @@ a {
     padding: 5px 10px;
     background: #fff;
     border: 1px solid #ccc;
-    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
     position: absolute;
     width: 160px;
     font-size: 12px;
