@@ -1,0 +1,14 @@
+{
+  "name": "aralejs",
+  "version": "0.0.1",
+  "root": "#",
+  "description": "AraleJS official site.",
+  "homepage": "http://aralejs.org",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aralejs/aralejs.org"
+  },
+  "bugs": {
+    "url": "https://github.com/aralejs/aralejs.org/issues"
+  }
+}

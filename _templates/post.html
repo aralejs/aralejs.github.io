@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{%- block title -%}
+{{resource.package.name|title}} - {{post.title}}
+{%- endblock -%}
+
+{% block content %}
+<article class="hentry">
+  <h1 class="entry-title">{{post.title}}</h1>
+  <div class="meta">{{post.date.strftime('%Y-%m-%d')}}</div>
+  <div class="entry-content">
+    {{ post.content|iframe }}
+  </div>
+</article>
+{% endblock %}
+
+{% block subsidebar %}
+{%- set items = resource.posts|same_category(post.category) %}
+{%- if items|length > 1 %}
+<ol id="sidenav">
+  {%- for item in items %}
+  <li><a href="{{item|permalink}}">{{item.title}}</a></li>
+  {%- endfor %}
+</ol>
+{%- endif %}
+{% endblock %}
+
+{%- block sidebar %}
+<ul id="navigation" role="navigation">
+  <li{%if post.category == 'docs'%} class="active"{%endif%}><a href="{{content_url('index.html')}}">文档</a></li>
+  {%- set example = resource.posts|first_category('examples') %}
+  {%- if example %}
+  <li{%if post.category == 'examples'%} class="active"{%endif%}><a href="{{example|permalink}}">演示</a></li>
+  {%- endif %}
+  {%- if resource.history %}
+  <li{%if post.filename == 'history'%} class="active"{%endif%}><a href="{{content_url('history.html')}}">历史</a></li>
+  {%- endif %}
+  {%- if resource.tests %}
+  <li><a target="_blank" href="{{content_url('tests/runner.html')}}">用例</a></li>
+  {%- endif %}
+  {%- if resource.package.bugs %}
+  <li><a href="{{resource.package.bugs.url}}" target="_blank">讨论</a></li>
+  {%- endif %}
+</ul>
+{%- endblock %}
