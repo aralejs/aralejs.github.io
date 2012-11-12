@@ -70,13 +70,15 @@ a {
 
 .modules {
     margin-bottom: 10px;
-    *zoom: 1;
+    zoom: 1;
 }
 .modules:after {
-    content: '';
+    content: ' ';
     font-size: 0;
     height: 0;
     clear: both;
+    visibility: hidden;
+    display: block;
 }
 
 .module {
