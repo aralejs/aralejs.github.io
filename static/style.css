@@ -41,7 +41,6 @@ a {
     margin: 20px 0;
 }
 #description {
-    font-family: "Marcellus",sans-serif;
     color: #999;
     font-size: 20px;
 }
@@ -89,7 +88,7 @@ a {
     margin-right: 0.4em;
     margin-bottom: 0.5em;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-    color: #666;
+    color: #777;
     padding: 5px 12px;    
     float: left;
     display: inline;
