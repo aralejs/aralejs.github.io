@@ -19,6 +19,11 @@ seajs.use(['$', 'popup/0.9.7/popup'], function($, Popup) {
         }
     }, 'jsonp');
 
+    // alipay 组件
+    seajs.use('http://arale2.alipay.im/package.js', function() {
+        
+    });
+
     $('#search').on('keyup', function(e) {
         if (e.keyCode === 13 && $('.module:visible').attr('href')) {
             location.href = $('.module:visible').attr('href');
@@ -38,9 +43,13 @@ seajs.use(['$', 'popup/0.9.7/popup'], function($, Popup) {
         // 卡片
         var popup = new Popup({
             element: '#card',
-            trigger: item
+            trigger: item,
+            align: {
+                baseXY: [0, -2],
+                selfXY: [0, '100%']
+            }
         });
-        popup.on('after:show', function() {
+        popup.on('before:show', function() {
             $('#card .card-name').html(item.html());
             $('#card .card-description').html(item.data('description') || '');
             $('#card .card-version').html(item.data('version') || '');

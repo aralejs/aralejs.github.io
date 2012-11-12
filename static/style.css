@@ -26,10 +26,10 @@ a {
     display: inline;
 }
 #document-wrapper {
-    width: 320px;
+    width: 310px;
 }
 #module-wrapper {
-    width: 690px;
+    width: 700px;
 }
 #title {
     font-family: "Marcellus",sans-serif;
@@ -102,7 +102,7 @@ a {
     border: 1px solid #ccc;
     box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.15);
     position: absolute;
-    width: 140px;
+    width: 160px;
     font-size: 12px;
     display: none;
 }
