@@ -44,3 +44,5 @@ writer:
 #: theme variables
 theme:
     name: arale2
+    vars:
+        analytics: "UA-36247332-1"
