@@ -26,7 +26,7 @@ seajs.use(['$', 'popup/0.9.8/popup'], function($, Popup) {
         for(var i=0; i<data.length; i++) {
             var item = $('<a class="module" href="#"></a>');
             item.html(data[i].name)
-                .attr('href', '/' + data[i].name + '/')
+                .attr('href', 'http://aralejs.alipay.im/' + data[i].name + '/')
                 .data('description', data[i].description || '暂无描述')
                 .data('version', data[i].version);
 
