@@ -8,7 +8,7 @@ seajs.use(['$', 'popup/0.9.8/popup'], function($, Popup) {
 
     seajs.use('http://aralejs.org/package.js', function(data) {
         for(var i=0; i<data.length; i++) {
-            var item = $('<a class="module" href="#"></a>');
+            var item = $('<a class="module" target="_blank" href="#"></a>');
             item.html(data[i].name)
                 .attr('href', '/' + data[i].name + '/')
                 .data('description', data[i].description)
@@ -24,7 +24,7 @@ seajs.use(['$', 'popup/0.9.8/popup'], function($, Popup) {
             return;
         }
         for(var i=0; i<data.length; i++) {
-            var item = $('<a class="module" href="#"></a>');
+            var item = $('<a class="module" target="_blank" href="#"></a>');
             item.html(data[i].name)
                 .attr('href', 'http://aralejs.alipay.im/' + data[i].name + '/')
                 .data('description', data[i].description || '暂无描述')
