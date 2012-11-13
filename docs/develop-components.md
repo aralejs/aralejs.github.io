@@ -4,64 +4,21 @@
 
 ---
 
-这个教程会简单说明一个组件的开发流程，通过一个 [example](http://git.alipay.im/other_example/master/tree) 的示例让你有切身体会，你也可以跟着一起做哦。
+这个教程会简单说明一个组件的开发流程，通过一个 [example](https://github.com/aralejs/example) 的示例让你有切身体会，你也可以跟着一起做哦。
 
-## Installation
+## 安装
 
-为了更方便的写 arale2 的组件，我们提供了一些工具帮助我们打包部署，生成文档以及本地开发。
+先遵循 [Getting Started](getting-started.html) 完成安装。
 
-### 安装 node 和 npm
-
-进入 [http://nodejs.org/#download](http://nodejs.org/#download)下载并安装
-
-spm 使用的 `node >0.8.0`，如通过包管理工具安装需要注意。 
-
-### 安装 git
-
-代码是用 git 做版本控制工具的，下载地址如下
-
- -  [git for mac](http://code.google.com/p/git-osx-installer/)
- -  [git for windows ](http://code.google.com/p/msysgit/)
- 
-对 git 不熟的可以看下这个[简易指南](http://rogerdudler.github.com/git-guide/index.zh.html)
-
-### 安装 spm
-
-[spm](https://github.com/seajs/spm/wiki) 为 arale2 的打包部署工具，可通过以下两种方式安装
-
-1.  通过 npm 安装
-
-    ```
-    $ sudo npm install spm -g
-    ```
-
-2.  通过源码安装可获得最新的功能
-
-    ```
-    $ git clone https://github.com/seajs/spm.git
-    $ cd spm
-    $ sudo npm install -g
-    ```
- 
-配置成公司内部源，修改 ~/.spm/config.json 文件
+然后安装文档调试工具 liquidluck
 
 ```
-{"sources": ["arale.alipay.im:8000"]}
-```
-
-### 安装 nico
-
-[nico](https://github.com/alipay/liquidluck-theme-arale) 为 arale2 的文档生成工具，一键安装
-
-```
-sudo curl https://raw.github.com/alipay/liquidluck-theme-arale/master/nico -o /usr/bin/nico && sudo chmod +x /usr/bin/nico && nico upgrade
+$ pip install liquidluck
 ```
     
 ## 初始化项目
 
-先想好组件的命名，这里有[命名规范](naming-convention.html)，我们的示例就叫 `example`。然后在 gitlab 中创建一个库，这里有[教程](gitlab.html)。
-
-创建的地址为 `git@git.alipay.im:other_example.git`
+先想好组件的名字，这里有[命名规范](https://github.com/alipay/arale/wiki/%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84)，我们的示例就叫 `example`。
 
 那我们开始创建项目
 
@@ -88,7 +45,6 @@ $ spm init
 |- src
 |  `- example.js       <- 源文件
 |- tests
-|  |- runner.html      <- 单元测试页面
 |  `- example-spec.js  <- 单元测试文件
 |- examples            <- demo
 |  `- index.md       
@@ -103,7 +59,7 @@ $ spm init
 git init
 git add .
 git commit -m 'init'
-git remote add origin git@git.alipay.im:other_example.git
+git remote add origin git@github.com:aralejs/example.git
 git push origin master
 ```
 
@@ -140,27 +96,17 @@ git push origin master
     
     移动到某个位置，pos 为坐标
 
+## 进行开发
 
-修改 `package.json`，添加 description，业务组件要修改 root
+完善 `package.json` 的信息，添加 description 和 root。
 
     "name": "example",
     "version": "1.0.0",
-    "root": "alipay",
-    "description": "这是 arale2 的一个示例，点击某处浮层能滑到那个位置"
-
+    "root": "arale",
+    "description": "这是 Arale 的一个示例，点击某处浮层能滑到那个位置"
+    
 **注意：** `package.json` 为 json 文件，需要用双引号才合法，可以查看[详细配置](https://github.com/seajs/spm/wiki/package.json)。
-
-生成文档，详情可查看[文档教程](liquidluck-document.html)
-
-```
-$ nico build
-$ nico server
-```
-
-通过浏览器访问 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-
-## 进行开发
-
+    
 分析组件的依赖，`example` 组件需要 `jquery` 和 `overlay`，查看现有版本
 
 ```
@@ -170,33 +116,32 @@ overlay:
   0.9.9: [mask.js,overlay.js]
 ```
 
-配置 `package.json`
+`package.json` 中添加依赖
 
 ```
 "dependencies": {
     "$": "$",
-    "overlay": "0.9.10"
+    "overlay": "arale/overlay/0.9.10/overlay"
 },
 ```
 
-**注意：**
+安装依赖，会把 dependencies 配置的都下载下来
 
- -  `jquery` 是全局引用的，所以不需要指定版本，引用的时候写成 `require('$')`
- 
- -  组件配置版本有两种方式，如果前后命名相同可直接写版本号，**alipay 不可省略**
- 
-    ```
-    "overlay": "overlay/0.9.10/overlay",
-    "xbox": "alipay/xbox/0.9.10/xbox"
-    ```
+```
+$ spm install
+```
     
-修改 `src/example.js` 进行开发
+修改 `src/example.js` 进行开发，提服务进行调试
 
-TODO: 如何开发
+```
+$ make debug
+```
+
+通过浏览器访问 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ## 本地调试
 
-demo 也使用 md 编写，这样写起来非常方便，除了基本的 markdown 预发还支持[额外的特性](https://github.com/alipay/liquidluck-theme-arale#%E7%BC%96%E8%BE%91)。
+demo 也使用 md 编写，这样写起来非常方便，除了基本的 markdown 预发还支持[额外的特性](https://github.com/alipay/liquidluck-theme-arale2#%E7%BC%96%E8%BE%91)。
 
 在 `examples/index.md` 添加实例化代码，demo 引用的为源码，修改即展示。
 
@@ -209,15 +154,13 @@ demo 也使用 md 编写，这样写起来非常方便，除了基本的 markdow
     });
     ````
 
-执行 `nico build`，访问 [http://127.0.0.1:8000/examples/](http://127.0.0.1:8000/examples/)
-
-nico 支持 livereload，修改文件后会动态刷新浏览器。
+liquidluck 支持 livereload，修改文件后会动态刷新浏览器。
 
 详情可看[文档](liquidluck-example.html)。
 
 ## 编写测试用例
 
-arale2 提供 jasmine 作为测试框架，开发者只要关注如何写好测试用例，可以来读读[这篇文章]()。
+arale2 提供 jasmine 作为测试框架，开发者只要关注如何写好测试用例。
 
 修改 `package.json` 配置测试用例，通过 `命名 + '-spec.js'` 拼装去找文件。
 
@@ -257,37 +200,7 @@ arale2 提供 jasmine 作为测试框架，开发者只要关注如何写好测�
 $ spm build
 ```
 
-开始部署，deploy 会把文件发布到 assets.dev.alipay.net 上，deploy 时也会执行 build。
+查看 [build 参数](https://github.com/seajs/spm/wiki/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0)进行定制
 
-```
-$ spm deploy
-```
 
-这里要注意下 `package.json` 的 root 属性
-
- -  如果 root 为 # 或不存在，则会发布到 arale 目录下
- -  如果 root 为 alipay， 则会发布到 alipay 目录下
-
-## 发布文件
-
-发布文件需要生成 zip 包
-
-```
-$ spm build --zip
-```
-
-将这个文件上传到 udcenter 上，这里注意生成的包是没有 root 的，所以上传时要在 arale 或 alipay 目录下。
-
-上传完后需要手工切 tag，example 切的是 1.0.0 版本
-
-```
-$ git tag 1.0.0
-```
-
-如果需要在原来版本修改，可以先删除 tag，再重新切 tag，**不过不建议这样操作**。
-
-```
-$ git tag -d 1.0.0
-$ git tag 1.0.0
-```
 
