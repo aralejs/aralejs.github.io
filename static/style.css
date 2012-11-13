@@ -64,9 +64,6 @@ a {
     line-height: 1.6;
     font-size: 14px;
 }
-#document-wrapper a:hover {
-    text-decoration:underline;
-}
 
 .main-block h2 {
     text-transform: uppercase;
