@@ -30,10 +30,11 @@ a {
     display: none;
 }
 #document-wrapper {
-    width: 300px;
+    width: 290px;
 }
 #module-wrapper, #doc-wrapper {
-    width: 710px;
+    max-width: 720px;
+    *width: 720px;
 }
 #title {
     font-family: "Marcellus",sans-serif;
@@ -89,13 +90,18 @@ a {
 
 .module {
     background: #fff;
-    margin-right: 0.5em;
-    margin-bottom: 0.7em;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-    color: #777;
-    padding: 5px 12px;    
-    float: left;
+    color: #777777;
     display: inline;
+    float: left;
+    margin-bottom: 0.8em;
+    margin-right: 0.5em;
+    overflow: hidden;
+    padding: 5px 6px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100px;
 }
 .module:hover {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
