@@ -30,14 +30,15 @@
             <div id="main-wrapper">
                 <div class="main-block" id="document-wrapper">
                     <h2>Document</h2>
-                    <ol>
-                        <li><a href="#">Why Arale?</a></li>
-                        <li><a href="#">Getting Started</a></li>
-                        <li><a href="#">arale 的命名规范</a></li>
-                        <li><a href="#">使用 spm 和 liquidluck 开发组件</a></li>
-                        <li><a href="#">在 aralejs.org 上部署文档</a></li>
+                    <ol id="sidenav">
+                      {%- for item in resource.posts|same_category(post.category) %}
+                      {%- if item.filename != 'index' %}
+                      <li><a href="{{item|permalink}}">{{item.title}}</a></li>
+                      {%- endif %}
+                      {%- endfor %}
                     </ol>
                 </div>
+                {%- if post.filename == 'index' %}
                 <div class="main-block" id="module-wrapper">
                     <h2>infrastructure</h2>
                     <div class="modules modules-infrastructure">
@@ -54,13 +55,18 @@
                     <h2>alipay</h2>
                     <div class="modules modules-alipay">
                     </div>
-
                 </div>
                 <div id="card">
                     <h2 class="card-name"></h2>
                     <p class="card-version"></p>
                     <p class="card-description"></p>
                 </div>
+                {%- else %}
+                <div class="main-block" id="doc-wrapper">
+                    <h1>{{post.title}}</h1>
+                    <div id="content">{{post.content}}</div>
+                </div>
+                {%- endif %}
             </div>
         </div>
         <div id="footer-wrapper">

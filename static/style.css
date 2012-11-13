@@ -29,10 +29,10 @@ a {
     display: none;
 }
 #document-wrapper {
-    width: 310px;
+    width: 300px;
 }
-#module-wrapper {
-    width: 700px;
+#module-wrapper, #doc-wrapper {
+    width: 710px;
 }
 #title {
     font-family: "Marcellus",sans-serif;
@@ -49,9 +49,12 @@ a {
     padding: 8px;
     font-size: 16px;
     outline: none;
-    border: 1px solid #bbb;
+    border: 1px solid #ccc;
     color: #888;
     width:180px;
+}
+#search:focus {
+    border-color: #bbb;
 }
 
 #document-wrapper ol {
@@ -126,4 +129,8 @@ a {
     color: #999;
     line-height: 1.4;
     margin: 3px 0;
+}
+
+#content {
+    padding: 0;
 }
