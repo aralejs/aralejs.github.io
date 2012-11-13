@@ -33,7 +33,8 @@ a {
     width: 290px;
 }
 #module-wrapper, #doc-wrapper {
-    width: 720px;
+    max-width: 720px;
+    *width: 720px;
 }
 #title {
     font-family: "Marcellus",sans-serif;
