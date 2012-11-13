@@ -1,3 +1,7 @@
+if (location.href.indexOf('docs') !== -1) {
+    return;
+}
+
 seajs.config({
     alias: {
         '$': 'jquery/1.7.2/jquery'
