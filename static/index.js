@@ -1,3 +1,5 @@
+if (location.href.indexOf('docs') === -1) {
+
 seajs.config({
     alias: {
         '$': 'jquery/1.7.2/jquery'
@@ -69,3 +71,5 @@ seajs.use(['$', 'popup/0.9.8/popup'], function($, Popup) {
     }
     
 });
+
+}

@@ -66,7 +66,7 @@ a {
     font-size: 14px;
 }
 
-.main-block h2 {
+#document-wrapper h2, #module-wrapper h2 {
     text-transform: uppercase;
     font-style: normal;
     font-size: 16px;
