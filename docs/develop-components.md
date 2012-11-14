@@ -10,11 +10,14 @@
 
 先遵循 [Getting Started](getting-started.html) 完成安装。
 
-然后安装文档调试工具 liquidluck
+然后安装文档调试工具 liquidluck，更多可查看[文档](https://github.com/alipay/liquidluck-theme-arale2)
 
 ```
-$ pip install liquidluck
+$ sudo pip install -U liquidluck
+$ sudo pip install -U tornado
+$ liquidluck install alipay/arale2 -g
 ```
+
     
 ## 初始化项目
 
