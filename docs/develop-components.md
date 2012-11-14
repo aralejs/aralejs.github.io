@@ -10,7 +10,7 @@
 
 先遵循 [Getting Started](getting-started.html) 完成安装。
 
-然后安装文档调试工具 liquidluck，更多可查看[文档](https://github.com/aralejs/liquidluck-theme-arale2)
+然后安装文档调试工具 [liquidluck](https://github.com/lepture/liquidluck)，更多可查看[文档](https://github.com/aralejs/liquidluck-theme-arale2)
 
 ```
 $ sudo pip install -U liquidluck
