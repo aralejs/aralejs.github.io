@@ -73,3 +73,15 @@ server:
         // use it
     });
     ````
+    
+为了避免样式冲突，我们提供了 iframe 的语法，会将内容生成一个 iframe，这样可以隔离样式和脚本。
+
+    ````iframe
+    <link rel="stylesheet" href="css/some.css">
+    <button>click</button>
+    <script>
+        seajs.use('jquery', function($) {
+            $('button').click(function() { alert('hello'); })
+        });
+    </script>
+    ````
