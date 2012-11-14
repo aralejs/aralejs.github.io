@@ -39,7 +39,8 @@ seajs.use(['$', 'popup/0.9.8/popup'], function($, Popup) {
     });
 
     $('#search').focus().on('keyup', function(e) {
-        if (e.keyCode === 13 && $('.module:visible').attr('href')) {
+        if (e.keyCode === 13 && this.value.trim() !== ''
+            && $('.module:visible').attr('href')) {
             location.href = $('.module:visible').attr('href');
         }
         var that = this;
