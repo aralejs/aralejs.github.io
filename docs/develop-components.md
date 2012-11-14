@@ -10,7 +10,7 @@
 
 先遵循 [Getting Started](getting-started.html) 完成安装。
 
-然后安装文档调试工具 liquidluck，更多可查看[文档](https://github.com/alipay/liquidluck-theme-arale2)
+然后安装文档调试工具 liquidluck，更多可查看[文档](https://github.com/aralejs/liquidluck-theme-arale2)
 
 ```
 $ sudo pip install -U liquidluck
@@ -144,7 +144,7 @@ $ make debug
 
 ## 本地调试
 
-demo 也使用 md 编写，这样写起来非常方便，除了基本的 markdown 预发还支持[额外的特性](https://github.com/alipay/liquidluck-theme-arale2#%E7%BC%96%E8%BE%91)。
+demo 也使用 md 编写，这样写起来非常方便，除了基本的 markdown 预发还支持[额外的特性](https://github.com/aralejs/liquidluck-theme-arale2#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91)。
 
 在 `examples/index.md` 添加实例化代码，demo 引用的为源码，修改即展示。
 
@@ -159,7 +159,7 @@ demo 也使用 md 编写，这样写起来非常方便，除了基本的 markdow
 
 liquidluck 支持 livereload，修改文件后会动态刷新浏览器。
 
-详情可看[文档](liquidluck-example.html)。
+详情可看[文档](local-development.html)。
 
 ## 编写测试用例
 
@@ -187,7 +187,7 @@ arale2 提供 jasmine 作为测试框架，开发者只要关注如何写好测�
 
 `'.'` 意味着只打包组件内部的文件（包括依赖的文件），由于 example.js 没有依赖所以就相当于 `"example.js": ["examples.js"]`。
 
-最常用的是三种，具体配置的参数可查看[文档](https://github.com/seajs/spm/wiki/SPM-%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3%E4%B9%8Boutput%E7%AF%87)。
+最常用的是三种，具体配置的参数可查看[文档](https://github.com/seajs/spm/wiki/package.json-:-output)。
 
 ```
 {
