@@ -4,7 +4,7 @@
 
 ---
 
-Arale 可以很方便在本地的开发和调试组件，可以先看看[如何开发一个组件](develop-components.html)。
+Arale 可以很方便的在本地开发和调试组件，可以先看看[如何开发一个组件](develop-components.html)。
 
 ## Makefile
 
@@ -48,13 +48,13 @@ server:
  
  -  Arale 的模块会访问 [aralejs](http://aralejs.org/source/) 的源
  
- -  如果本地调试会访问 sea-modules 目录，这也是 `spm install` 默认生成的目录
+ -  如果本地调试会访问本地 sea-modules 目录，这也是 `spm install` 默认安装的目录
  
 ## 支持 livereload
 
 > 需要安装 tornado 才支持此功能
 
-启动本地站点后，只要修改文件就会重新生成站点，并通知浏览器刷新页面。
+启动本地站点后，每次修改文件都会重新生成站点，并通知浏览器刷新页面。
 
 ## 如何写 examples
 
