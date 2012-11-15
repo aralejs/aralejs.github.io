@@ -22,7 +22,6 @@ Arale 拥有 [popup](/popup/)、[validator](/validator/)、[position](/position/
 
 * 完善的解决方案
 
-
 > [@fool2fish](http://weibo.com/fool2fish): 喜欢 Arale，从设计到发布都体贴入微。通过简单、好用的包管理工具 SPM，能帮我轻松完成模块创建、依赖分析和打包压缩等工作。这是一套值得信赖的体系化解决方案。
 
 ## 了解更多
