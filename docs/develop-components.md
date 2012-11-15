@@ -15,7 +15,7 @@
 ```
 $ sudo pip install -U liquidluck
 $ sudo pip install -U tornado
-$ liquidluck install alipay/arale2 -g
+$ liquidluck install aralejs/arale2 -g
 ```
 
     
