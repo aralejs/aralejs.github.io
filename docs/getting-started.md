@@ -45,7 +45,7 @@ $ sudo npm install spm -g
 可直接使用支付宝的 CDN
 
     <script charset="utf-8" id="seajsnode" 
-       src="https://a.alipayobjects.com/seajs/1.2.1/??sea.js,plugin-combo.js"></script>
+       src="http://static.alipayobjects.com/seajs/1.2.1/??sea.js,plugin-combo.js"></script>
     <script>
       seajs.config({
         alias: {
