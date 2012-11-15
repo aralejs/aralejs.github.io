@@ -10,7 +10,7 @@ Arale 可以很方便的在本地开发和调试组件，可以先看看[如何�
 
 Arale 的一些本地部署命令通过 Makefile 设置，这个文件在 `spm init` 会生成。
 
- -  make build
+ -  make doc
 
     编译生成站点
 
@@ -28,7 +28,7 @@ Arale 的一些本地部署命令通过 Makefile 设置，这个文件在 `spm i
 Makefile 文件，如果是 Windows 用户可[安装 Cygwin](https://github.com/aralejs/liquidluck-theme-arale2#%E5%86%99%E7%BB%99-windows-%E7%94%A8%E6%88%B7)
 
 ```
-build:
+doc:
 	liquidluck build -v -s $(HOME)/.liquidluck-themes/arale2/settings.yml
 
 debug:
