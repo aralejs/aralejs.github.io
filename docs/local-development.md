@@ -28,14 +28,16 @@ Arale 的一些本地部署命令通过 Makefile 设置，这个文件在 `spm i
 Makefile 文件，如果是 Windows 用户可[安装 Cygwin](https://github.com/aralejs/liquidluck-theme-arale2#%E5%86%99%E7%BB%99-windows-%E7%94%A8%E6%88%B7)
 
 ```
+THEME = $(HOME)/.liquidluck-themes/arale2
+
 doc:
-	liquidluck build -v -s $(HOME)/.liquidluck-themes/arale2/settings.yml
+	liquidluck build -v -s $(THEME)/settings.yml
 
 debug:
-	liquidluck server -d -s $(HOME)/.liquidluck-themes/arale2/settings.yml
+	liquidluck server -d -s $(THEME)/settings.yml
 
 server:
-	liquidluck server -s $(HOME)/.liquidluck-themes/arale2/settings.yml
+	liquidluck server -s $(THEME)/settings.yml
 ```
 
 ## arale-helper
