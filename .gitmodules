@@ -1,0 +1,60 @@
+[submodule "placeholder"]
+	path = placeholder
+	url = git://github.com/aralejs/placeholder.git
+[submodule "messenger"]
+	path = messenger
+	url = git://github.com/aralejs/messenger.git
+[submodule "validator"]
+	path = validator
+	url = git://github.com/aralejs/validator.git
+[submodule "position"]
+	path = position
+	url = git://github.com/aralejs/position.git
+[submodule "overlay"]
+	path = overlay
+	url = git://github.com/aralejs/overlay.git
+[submodule "calendar"]
+	path = calendar
+	url = git://github.com/aralejs/calendar.git
+[submodule "class"]
+	path = class
+	url = git://github.com/aralejs/class.git
+[submodule "autocomplete"]
+	path = autocomplete
+	url = git://github.com/aralejs/autocomplete.git
+[submodule "events"]
+	path = events
+	url = git://github.com/aralejs/events.git
+[submodule "widget"]
+	path = widget
+	url = git://github.com/aralejs/widget.git
+[submodule "iframe-uploader"]
+	path = iframe-uploader
+	url = git://github.com/aralejs/iframe-uploader.git
+[submodule "base"]
+	path = base
+	url = git://github.com/aralejs/base.git
+[submodule "popup"]
+	path = popup
+	url = git://github.com/aralejs/popup.git
+[submodule "switchable"]
+	path = switchable
+	url = git://github.com/aralejs/switchable.git
+[submodule "tip"]
+	path = tip
+	url = git://github.com/aralejs/tip.git
+[submodule "iframe-shim"]
+	path = iframe-shim
+	url = git://github.com/aralejs/iframe-shim.git
+[submodule "select"]
+	path = select
+	url = git://github.com/aralejs/select.git
+[submodule "easing"]
+	path = easing
+	url = git://github.com/aralejs/easing.git
+[submodule "dialog"]
+	path = dialog
+	url = git://github.com/aralejs/dialog.git
+[submodule "cookie"]
+	path = cookie
+	url = git://github.com/aralejs/cookie.git
