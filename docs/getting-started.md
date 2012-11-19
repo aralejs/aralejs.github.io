@@ -58,7 +58,7 @@ $ spm install gallery.jquery@1.7.2
 $ spm install arale.popup@0.9.8
 ```
 
-如不加 `@` 会下载最新版本。所有的组件都会下载到 sea-modules 目录下，目录结构为
+如不加 `@版本号` 会下载最新版本。所有的组件都会下载到 sea-modules 目录下，目录结构为
 
 ```
 sea-modules
