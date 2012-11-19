@@ -4,16 +4,11 @@
 
 --------------
 
-这个页面提供现有组件的在线状态，可以查看某组件的所有版本，以及其具体版本是否上线。
+本页面提供了现有组件的发布状态，可以查看某组件的所有版本，以及其具体版本是否已上线。
 
-
-## 状态的区分
-
-  - <span class="assert" style="color:#1A9B20">✔</span> 组件所有文件均存在
-
-  - <span class="assert" style="color:#FF4C4C">✗</span> 组件所有文件均不存在
-
-  - <span class="assert" style="color: #FFB800;">✙</span> 组件部分文件存在，可能存在漏发或多余的文件
+- <span class="assert" style="color:#1A9B20">✔</span> 所有文件均存在。
+- <span class="assert" style="color:#FF4C4C">✗</span> 所有文件均不存在。 
+- <span class="assert" style="color: #FFB800;">✙</span> 部分文件存在，可能存在漏发或多余的文件。
 
 
 ## Arale
@@ -36,10 +31,16 @@
 <style>
 #doc-wrapper, table {width: 100%}
 table td, table th {text-align:left;padding: 5px 0;}
-table .status {width: 100px;}
+table .status {width: 80px; cursor: pointer; padding: 0px 10px;}
+table .status:hover {background-color: #fff;}
 table .status span{cursor:pointer;}
 table .version{width: 180px;}
 #card{width:auto;}
+.heart {
+    font-weight: bold;
+    margin-right: 6px;
+    color: red;
+}
 </style>
 
 <script>
@@ -94,7 +95,7 @@ seajs.use(['$', 'popup'], function($, Popup){
             s.push('</select>');
     
             var tr = $('<tr data-name="' +  key + '" data-root="' + root + '">' +
-                '<td class="name">' + key + '</td>' +
+                '<td class="name"><span class="heart">♡</span> ' + key + '</td>' +
                 '<td class="version">' + s.join('') + '</td>' +
                 '<td class="dev status" data-status="dev"></td>' +
                 '<td class="test status" data-status="test"></td>' +

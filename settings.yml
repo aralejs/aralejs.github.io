@@ -34,9 +34,7 @@ reader:
 #: active writers
 writer:
     active:
-        - chiang.IframeWriter
         - chiang.PackageWriter
-        - chiang.TestWriter
         - liquidluck.writers.core.PostWriter
         - liquidluck.writers.core.StaticWriter
         - liquidluck.writers.core.FileWriter

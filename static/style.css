@@ -138,3 +138,33 @@ a {
 #content {
     padding: 0;
 }
+
+
+/* autocomplete */
+.ui-autocomplete {
+    border: 1px solid #CCC;
+    background:#fff;
+    padding: 0;
+    width: 196px;
+    margin-top: -1px;
+    font-family: tahoma;
+}
+.ui-autocomplete-ctn {
+    margin:0;
+    padding:0;
+}
+.ui-autocomplete-item {
+    padding: 5px 10px;
+    list-style: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ui-autocomplete-item-hover {
+    background:#4B9A60;
+    color: #fff;
+    text-shadow: none;
+}
+.ui-autocomplete-item-hl {
+    background: #ff0;
+}
