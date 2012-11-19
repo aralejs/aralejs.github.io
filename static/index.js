@@ -46,6 +46,9 @@
         });
 
         seajs.use(['http://aralejs.alipay.im/package.js'], function(alipayModules) {
+            if (!alipayModules) {
+                return;
+            }
             insertAlipayModules(alipayModules);
             ac.set('dataSource', araleModules.concat(alipayModules));
         });
