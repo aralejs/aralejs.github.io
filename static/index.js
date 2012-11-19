@@ -9,20 +9,15 @@
     seajs.use(['$',
                'popup/0.9.8/popup',
                'autocomplete/0.8.0/autocomplete',
-               'http://aralejs.org/package.js',
-               'http://aralejs.alipay.im/package.js'],
-    function($, Popup, Autocomplete, araleModules, alipayModules) {
+               'http://aralejs.org/package.js'],
+    function($, Popup, Autocomplete, araleModules) {
 
         insertAraleModules(araleModules);
-
-        insertAlipayModules(alipayModules);
-
-        //console.log(araleModules.concat(alipayModules));
-        
+                
         // 搜索组件自动完成
         var ac = new Autocomplete({
             trigger: '#search',
-            dataSource: araleModules.concat(alipayModules),
+            dataSource: araleModules,
             filter: function(data, query) {
                 var result = [];
                 $.each(data, function(index, value) {
@@ -48,6 +43,11 @@
             if (e.keyCode !== 38 && e.keyCode !== 40) {
                 ac.set('selectedIndex', 0);
             }
+        });
+
+        seajs.use(['http://aralejs.alipay.im/package.js'], function(alipayModules) {
+            insertAlipayModules(alipayModules);
+            ac.set('dataSource', araleModules.concat(alipayModules));
         });
 
         function insertAraleModules(data) {
