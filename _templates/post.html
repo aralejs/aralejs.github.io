@@ -1,79 +1,83 @@
 <!DOCTYPE HTML>
 <html lang="{{theme.lang}}">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}{{resource.package.name|title}} - {{post.title}}{% endblock %}</title>
-        <meta name="HandheldFriendly" content="True">
-        <meta name="MobileOptimized" content="320">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
-        <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
-        <link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />
-        <link rel="stylesheet" href="{{static_url('style.css')}}" />
-        <script src="https://a.alipayobjects.com/static/arale/seajs/1.2.1/??sea.js,plugin-combo.js"></script>
-        {%- if theme.debug %}<script>seajs._nicodebug = true</script>{%- endif %}
-        <script src="{{static_url('index.js')}}"></script>
-        {%- include "snippet/head.html" %}
-        <!--[if lt IE 9]>
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{resource.package.name|title}} - {{post.title}}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="{{system.name}} {{system.version}}" />
+    <link type="image/x-icon" href="{{static_url('css/favicon.ico')}}" rel="icon">
+    <link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
+    <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
+    <link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />
+    <link rel="stylesheet" href="{{static_url('style.css')}}" />
+    <script src="https://a.alipayobjects.com/static/arale/seajs/1.2.1/??sea.js,plugin-combo.js"></script>
+    {%- if theme.debug %}<script>seajs._nicodebug = true</script>{%- endif %}
+    <script src="{{static_url('index.js')}}"></script>
+    {%- include "snippet/head.html" %}
+    <!--[if lt IE 9]>
         <script src="{{static_url('js/html5shiv.js')}}"></script>
         <![endif]-->
-    </head>
-    <body>
-        <div id="body-wrapper">
-            <div id="title-wrapper">            
-                <h1 id="title" class="inline">
-                    <a href="{{content_url('index.html')}}">{{resource.package.name|title}}</a>
-                </h1>
-                <input type="text" class="inline" id="search" placeholder="搜索 Arale 模块">
-                <p id="description">{{resource.package.description}}</p>
-            </div>
-            <div id="main-wrapper">
-                <div class="main-block" id="document-wrapper">
-                    <h2>Document</h2>
-                    <ol id="sidenav">
-                      {%- for item in resource.posts|same_category(post.category) %}
-                      {%- if item.filename != 'index' %}
-                      <li><a href="{{item|permalink}}">{{item.title}}</a></li>
-                      {%- endif %}
-                      {%- endfor %}
-                    </ol>
-                </div>
-                {%- if post.filename == 'index' %}
-                <div class="main-block" id="module-wrapper">
-                    <h2>infrastructure</h2>
-                    <div class="modules modules-infrastructure">
-                    </div>
- 
-                    <h2>utility</h2>
-                    <div class="modules modules-utility">
-                    </div>
-
-                    <h2>widget</h2>
-                    <div class="modules modules-widget">
-                    </div>
-
-                    <h2>alipay</h2>
-                    <div class="modules modules-alipay">
-                    </div>
-                </div>
-                <div id="card">
-                    <h2 class="card-name"></h2>
-                    <p class="card-version"></p>
-                    <p class="card-description"></p>
-                </div>
-                {%- else %}
-                <div class="main-block" id="doc-wrapper">
-                    <h1>{{post.title}}</h1>
-                    <div id="content">{{post.content}}</div>
-                </div>
-                {%- endif %}
-            </div>
+  </head>
+  <body>
+    <div id="body-wrapper">
+      <div id="title-wrapper">            
+        <h1 id="title" class="inline">
+          <a href="{{content_url('index.html')}}">{{resource.package.name|title}}</a>
+        </h1>
+        <input type="text" class="inline" id="search" placeholder="搜索 Arale 模块">
+        <p id="description">{{resource.package.description}}</p>
+      </div>
+      <div id="main-wrapper">
+        <div class="main-block" id="document-wrapper">
+          <h2>Document</h2>
+          <ol id="sidenav">
+            {%- for item in resource.posts|same_category(post.category) %}
+            {%- if item.filename != 'index' %}
+            <li><a href="{{item|permalink}}">{{item.title}}</a></li>
+            {%- endif %}
+            {%- endfor %}
+          </ol>
         </div>
-        <div id="footer-wrapper">
-            <footer>
-            <p class="powered"><a href="http://seajs.org">SeaJS</a> • <a href="https://github.com/seajs/spm">spm</a> • <a href="{{system.homepage}}">{{system.name}}</a> {{system.version}} ({{theme.version}})</p>
-            </footer>
+        {%- if post.filename == 'index' %}
+        <div class="main-block" id="module-wrapper">
+          <h2>infrastructure</h2>
+          <div class="modules modules-infrastructure">
+          </div>
+
+          <h2>utility</h2>
+          <div class="modules modules-utility">
+          </div>
+
+          <h2>widget</h2>
+          <div class="modules modules-widget">
+          </div>
+
+          <h2>alipay</h2>
+          <div class="modules modules-alipay">
+          </div>
         </div>
-    </body>
+        <div id="card">
+          <h2 class="card-name"></h2>
+          <p class="card-version"></p>
+          <p class="card-description"></p>
+        </div>
+        {%- else %}
+        <div class="main-block" id="doc-wrapper">
+          <h1>{{post.title}}</h1>
+          <div id="content">{{post.content}}</div>
+        </div>
+        {%- endif %}
+      </div>
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+        <p class="powered">
+        <a href="http://aralejs.org">Arale</a> •
+        <a href="http://seajs.org">SeaJS</a> •
+        <a href="https://github.com/seajs/spm">spm</a> •
+        <a href="{{system.homepage}}">{{system.name}}</a>
+        </p>
+      </footer>
+    </div>
+  </body>
 </html>
-

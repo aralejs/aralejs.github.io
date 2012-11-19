@@ -15,7 +15,7 @@
 ```
 $ sudo pip install -U liquidluck
 $ sudo pip install -U tornado
-$ liquidluck install alipay/arale2 -g
+$ liquidluck install aralejs/arale2 -g
 ```
 
     
@@ -144,7 +144,7 @@ $ make debug
 
 ## 本地调试
 
-demo 也使用 md 编写，这样写起来非常方便，除了基本的 markdown 预发还支持[额外的特性](https://github.com/aralejs/liquidluck-theme-arale2#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91)。
+demo 也使用 md 编写，这样写起来非常方便，除了基本的 markdown 语法还支持[额外的特性](https://github.com/aralejs/liquidluck-theme-arale2#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91)。
 
 在 `examples/index.md` 添加实例化代码，demo 引用的为源码，修改即展示。
 

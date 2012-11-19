@@ -20,7 +20,8 @@ a {
 #main-wrapper {
     padding: 15px;
     overflow: hidden;
-    border-bottom: 1px solid #ccc;    
+    border-bottom: 1px solid #ccc;
+    zoom: 1;
 }
 .main-block {
     float: left;
