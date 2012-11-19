@@ -44,7 +44,7 @@
             }
         });
 
-        $('#search').on('keyup', function(e) {
+        $('#search').focus().on('keyup', function(e) {
             if (e.keyCode !== 38 && e.keyCode !== 40) {
                 ac.set('selectedIndex', 0);
             }
