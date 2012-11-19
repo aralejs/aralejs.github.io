@@ -41,6 +41,11 @@ table .status:hover {background-color: #fff;}
 table .status span{cursor:pointer;}
 table .version{width: 180px;}
 #card{width:auto;}
+.heart {
+    font-weight: bold;
+    margin-right: 6px;
+    color: red;
+}
 </style>
 
 <script>
@@ -95,7 +100,7 @@ seajs.use(['$', 'popup'], function($, Popup){
             s.push('</select>');
     
             var tr = $('<tr data-name="' +  key + '" data-root="' + root + '">' +
-                '<td class="name">' + key + '</td>' +
+                '<td class="name"><span class="heart">♡</span> ' + key + '</td>' +
                 '<td class="version">' + s.join('') + '</td>' +
                 '<td class="dev status" data-status="dev"></td>' +
                 '<td class="test status" data-status="test"></td>' +
