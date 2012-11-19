@@ -4,6 +4,16 @@
 
 --------------
 
+<style>
+#doc-wrapper, table {width: 100%}
+table td, table th {text-align:left;padding: 5px 0;}
+table .status {width: 100px;}
+table .status span{cursor:pointer;}
+table .version{width: 180px;}
+
+#card{width:auto;}
+</style>
+
 ## Arale
 
 <div id="status-arale"></div>
@@ -19,17 +29,131 @@
 <div id="status-alipay"></div>
 
 
+<div id="card"></div>
+
 <script>
 seajs.config({
     alias: {
-        'jquery': 'jquery/1.7.2/jquery',
+        '$': 'jquery/1.7.2/jquery',
+        'popup': 'popup/0.9.8/popup',
         'status-arale': 'http://aralejs.alipay.im/status-arale.js',
         'status-gallery': 'http://aralejs.alipay.im/status-gallery.js',
         'status-alipay': 'http://aralejs.alipay.im/status-alipay.js'
     }
 });
-seajs.use(['jquery', 'status-arale', 'status-gallery', 'status-alipay'],
-function($, arale, gallery, alipay) {
-console.log(arale);
+
+seajs.use(['$', 'popup'], function($, Popup){
+    var globalData = {},
+        prefix = {
+            online: 'https://a.alipayobjects.com',
+            test: 'https://a.test.alipay.net',
+            dev: 'http://assets.dev.alipay.net'
+        };
+    
+    seajs.use(['status-arale'], function(data) {
+        globalData['arale'] = data;
+        createTable(data, 'arale');
+    });
+    
+    seajs.use(['status-gallery'], function(data) {
+        globalData['gallery'] = data;
+        createTable(data, 'gallery');
+    });
+    
+    seajs.use(['status-alipay'], function(data) {
+        globalData['alipay'] = data;
+        createTable(data, 'alipay');
+    });
+    
+    function createTable(data, root) {
+        var table = $('<table><tr><th class="name">组件名</th><th class="version">版本</th><th class="status">开发环境</th><th class="status">测试环境</th><th class="status">线上</th></tr></table>').appendTo('#status-' + root);
+    
+        $.each(data, function(key, value){
+            var name = key;
+    
+            // 生成所有版本
+            var s = ['<select>'];
+            $.each(value, function(key, value){
+                var files = [], version = key;
+                $.each(value, function(key, value){
+                    files.push([root, name, version, key].join('/'));
+                });
+                s.push('<option value="' + version + '" data-files="' + files.join(';') + '">' + version + '</option>');
+            });
+            s.push('</select>');
+    
+            var tr = $('<tr data-name="' +  key + '" data-root="' + root + '">' +
+                '<td class="name">' + key + '</td>' +
+                '<td class="version">' + s.join('') + '</td>' +
+                '<td class="dev status" data-status="dev"></td>' +
+                '<td class="test status" data-status="test"></td>' +
+                '<td class="online status" data-status="online"></td>' +
+                '</tr>');
+            table.append(tr);
+
+            testStatus(tr.find('select')[0]);
+
+            tr.find('.status').each(function() {
+                var item = this;
+                new Popup({
+                    trigger: item,
+                    element: '#card',
+                    align: {
+                        baseXY: [0, '50%'],
+                        selfXY: ['100%+5', '50%']
+                    }
+                }).before('show', function(){
+                    var selected = $(item).parents('tr').find('select :selected'),
+                        files = selected.data('files');
+
+                    files = $.map(files.split(';'), function(o){
+                        var link = prefix[$(item).data('status')] + '/' + o;
+                        return '<div><a href="' + link + '" target="_blank">' + link + '</a></div>';
+                    });
+                    $('#card').html(files.join(''));
+                });
+            });
+        });
+
+        $('#status-' + root).on('change', 'select', function() {
+            testStatus(this);
+        });
+    }
+
+    // 检测某个组件的版本在各环境是否存在
+    function testStatus(o){
+        var f = [], dev = true, test = true, online = true,
+            tr =  $(o).parents('tr');
+            root = tr.data('root'),
+            name = tr.data('name'),
+            version = o.value,
+            files = globalData[root][name][version];
+
+            for(file in files) {
+                f.push(file);
+                if (files[file]['dev'] !== 200) {
+                    dev = false;
+                }
+                if (files[file]['test'] !== 200) {
+                    test = false;
+                }
+                if (files[file]['online'] !== 200) {
+                    online = false;
+                }
+            }
+
+            tr.find('.dev').html(assert(dev));
+            tr.find('.test').html(assert(test));
+            tr.find('.online').html(assert(online));
+    }
+
+    function assert(value) {
+        return (
+            value ?
+            '<span class="assert" style="color:#1A9B20">✔</span>' :
+            '<span class="assert" style="color:#FF4C4C">✗</span>'
+        );
+    }
 });
+
 </script>
