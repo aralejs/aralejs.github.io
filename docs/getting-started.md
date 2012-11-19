@@ -36,7 +36,7 @@ $ sudo npm install spm -g
 
 ```
 {
-  "sources": ["modules.aralejs.org", "modules.seajs.org"]
+  "sources": ["modules.spmjs.org"]
 }
 ```
 
@@ -57,7 +57,11 @@ $ sudo npm install spm -g
       });
     </script>
 
-也可以本地部署，通过 spm 下载到本地
+也可以通过 spm 下载到本地进行开发，有两种方式
+
+### 手动定义下载
+
+
 
 ```
 $ spm install seajs@1.2.1
@@ -79,6 +83,10 @@ $ spm install arale.popup@0.9.8
         // use jQuery and Popup
       });
     </script>
+
+### 通过 package.json 的配置下载
+
+
 
 ## 找组件
 
