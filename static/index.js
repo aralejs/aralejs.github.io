@@ -9,9 +9,11 @@ seajs.config({
 seajs.use(['$', 'popup/0.9.8/popup'], function($, Popup) {
 
     seajs.use('http://aralejs.org/package.js', function(data) {
+        // 按字母顺序排序
         data = data.sort(function(a, b) {
             return a.name[0] > b.name[0];
         });
+
         for(var i=0; i<data.length; i++) {
             var item = $('<a class="module" target="_blank" href="#"></a>');
             item.html(data[i].name)
@@ -31,6 +33,7 @@ seajs.use(['$', 'popup/0.9.8/popup'], function($, Popup) {
         data = data.sort(function(a, b) {
             return a.name[0] > b.name[0];
         });
+
         for(var i=0; i<data.length; i++) {
             var item = $('<a class="module" target="_blank" href="#"></a>');
             item.html(data[i].name)
