@@ -26,8 +26,9 @@
             filter: function(data, query) {
                 var result = [];
                 $.each(data, function(index, value) {
-                    if (value.name.indexOf(query) > -1) {
-                        result.push({value: value.root + '.' + value.name});
+                    var temp = value.root + '.' + value.name;
+                    if (temp.indexOf(query) > -1) {
+                        result.push({value: temp});
                     }
                 });
                 return result;

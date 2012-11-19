@@ -161,7 +161,9 @@ a {
     text-overflow: ellipsis;
 }
 .ui-autocomplete-item-hover {
-    background:#BFDEE8;
+    background:#4B9A60;
+    color: #fff;
+    text-shadow: none;
 }
 .ui-autocomplete-item-hl {
     background: #ff0;
