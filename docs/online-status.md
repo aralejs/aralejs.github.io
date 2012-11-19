@@ -107,8 +107,12 @@ seajs.use(['$', 'popup'], function($, Popup){
                         files = selected.data('files');
 
                     files = $.map(files.split(';'), function(o){
-                        var link = prefix[$(item).data('status')] + '/' + o;
-                        return '<div><a href="' + link + '" target="_blank">' + link + '</a></div>';
+                        var s = $(item).data('status');
+                        var part = o.match(/^([^/]*)\/([^/]*)\/([^/]*)\/(.*)$/);
+                        var link = prefix[s] + '/' + o;
+                        var status = globalData[part[1]][part[2]][part[3]][part[4]][s];
+                        return '<div>' + (status == 200 ? assert(1) : assert(0)) +
+                            '<a href="' + link + '" target="_blank" style="margin-left:5px;">' + link + '</a></div>';
                     });
                     $('#card').html(files.join(''));
                 });
@@ -122,7 +126,9 @@ seajs.use(['$', 'popup'], function($, Popup){
 
     // 检测某个组件的版本在各环境是否存在
     function testStatus(o){
-        var f = [], dev = true, test = true, online = true,
+        var f = [], count = 0,
+            dev = test = online = 1,
+            deverror = testerror = onlineerror = 0;
             tr =  $(o).parents('tr');
             root = tr.data('root'),
             name = tr.data('name'),
@@ -132,14 +138,27 @@ seajs.use(['$', 'popup'], function($, Popup){
             for(file in files) {
                 f.push(file);
                 if (files[file]['dev'] !== 200) {
-                    dev = false;
+                    dev = 2;
+                    deverror++;
                 }
                 if (files[file]['test'] !== 200) {
-                    test = false;
+                    test = 2;
+                    testerror++;
                 }
                 if (files[file]['online'] !== 200) {
-                    online = false;
+                    online = 2;
+                    onlineerror++;
                 }
+                count++;
+            }
+            if (deverror === count) {
+                dev = 0;
+            }
+            if (testerror === count) {
+                test = 0;
+            }
+            if (onlineerror === count) {
+                online = 0;
             }
 
             tr.find('.dev').html(assert(dev));
@@ -147,12 +166,15 @@ seajs.use(['$', 'popup'], function($, Popup){
             tr.find('.online').html(assert(online));
     }
 
+    // 1:true 0:false 2:half
     function assert(value) {
-        return (
-            value ?
-            '<span class="assert" style="color:#1A9B20">✔</span>' :
-            '<span class="assert" style="color:#FF4C4C">✗</span>'
-        );
+        if (value === 1) {
+            return '<span class="assert" style="color:#1A9B20">✔</span>';
+        } else if(value === 0) {
+            return '<span class="assert" style="color:#FF4C4C">✗</span>'
+        } else if(value === 2) {
+            return '<span class="assert" style="color: #FFB800;">✙</span>'
+        }
     }
 });
 
