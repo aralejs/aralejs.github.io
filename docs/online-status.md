@@ -39,7 +39,7 @@ table .version{width: 180px;}
 .heart {
     font-weight: bold;
     margin-right: 6px;
-    color: red;
+    color: #FF7207;
 }
 </style>
 
@@ -95,7 +95,7 @@ seajs.use(['$', 'popup'], function($, Popup){
             s.push('</select>');
     
             var tr = $('<tr data-name="' +  key + '" data-root="' + root + '">' +
-                '<td class="name"><span class="heart">♡</span> ' + key + '</td>' +
+                '<td class="name"><span class="heart">☺</span> ' + key + '</td>' +
                 '<td class="version">' + s.join('') + '</td>' +
                 '<td class="dev status" data-status="dev"></td>' +
                 '<td class="test status" data-status="test"></td>' +
