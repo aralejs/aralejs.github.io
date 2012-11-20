@@ -43,7 +43,7 @@ a {
     margin: 20px 0;
 }
 #description {
-    color: #999;
+    color: #888;
     font-size: 22px;
 }
 #search {    
@@ -130,7 +130,7 @@ a {
 }
 
 #card .card-description {
-    color: #999;
+    color: #888;
     line-height: 1.4;
     margin: 3px 0;
 }
