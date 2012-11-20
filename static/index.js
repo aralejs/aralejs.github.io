@@ -12,12 +12,20 @@
                'http://aralejs.org/package.js'],
     function($, Popup, Autocomplete, araleModules) {
 
+        var modules;
+
         insertAraleModules(araleModules);
                 
         // 搜索组件自动完成
         var ac = new Autocomplete({
             trigger: '#search',
-            dataSource: araleModules,
+            dataSource: function() {
+                if (modules) {
+                    this.trigger('data', modules);
+                } else {
+                    this.trigger('data', araleModules);
+                }
+            },
             filter: function(data, query) {
                 var result = [];
                 $.each(data, function(index, value) {
@@ -50,7 +58,7 @@
                 return;
             }
             insertAlipayModules(alipayModules);
-            ac.set('dataSource', araleModules.concat(alipayModules));
+            modules = araleModules.concat(alipayModules);
         });
 
         function insertAraleModules(data) {
