@@ -11,6 +11,9 @@
 - <span class="assert" style="color: #FFB800;">✙</span> 部分文件存在，可能存在漏发或多余的文件。
 
 
+请尽量使用最新版，如测试环境不存在该文件，可联系前端基础技术组，或使用次新版。
+
+
 ## Arale
 
 <div id="status-arale"></div>
