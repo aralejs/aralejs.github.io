@@ -18,7 +18,7 @@ a {
     padding-bottom: 30px;
 }
 #main-wrapper {
-    padding: 15px 0;
+    padding: 15px;
     overflow: hidden;
     border-bottom: 1px solid #ccc;
     zoom: 1;
@@ -34,8 +34,8 @@ a {
     width: 290px;
 }
 #module-wrapper, #doc-wrapper {
-    max-width: 750px;
-    *width: 750px;
+    max-width: 720px;
+    *width: 720px;
 }
 #doc-wrapper h1 {
     font-family: "Marcellus",sans-serif; 
@@ -105,7 +105,7 @@ a {
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 105px;
+    width: 100px;
 }
 .module:hover {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
