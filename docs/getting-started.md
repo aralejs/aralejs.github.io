@@ -8,19 +8,21 @@
 
 通过下面的代码可直接使用组件，此处使用支付宝的 CDN。
 
-    <script charset="utf-8" id="seajsnode" 
-       src="http://static.alipayobjects.com/seajs/1.2.1/??sea.js,plugin-combo.js"></script>
-    <script>
-      seajs.config({
-        alias: {
-          '$': 'gallery/jquery/1.7.2/jquery',
-          'popup': 'arale/popup/0.9.8/popup'
-        }
-      });
-      seajs.use(['$', 'popup'], function($, Popup){
-        // use jQuery and Popup
-      });
-    </script>
+```html
+<script charset="utf-8" id="seajsnode" 
+   src="http://static.alipayobjects.com/seajs/1.2.1/??sea.js,plugin-combo.js"></script>
+<script>
+  seajs.config({
+    alias: {
+      '$': 'gallery/jquery/1.7.2/jquery',
+      'popup': 'arale/popup/0.9.8/popup'
+    }
+  });
+  seajs.use(['$', 'popup'], function($, Popup){
+    // use jQuery and Popup
+  });
+</script>
+```
 
 如果想把静态文件部署到自己的服务器，可继续
 
@@ -69,7 +71,7 @@ sea-modules
   |  ` - jquery
   |     ` - 1.7.2
   |        ` - jquery.js
-  ` - arale
+  | - arale
      ` - popup
         ` - 0.9.8
            ` - popup.js
@@ -81,19 +83,21 @@ sea-modules
 
 在当前目录新建页面（与 sea-modules 并列），如下配置
 
-    <script charset="utf-8" id="seajsnode" 
-       src="sea-modules/seajs/1.2.1/sea.js"></script>
-    <script>
-      seajs.config({
-        alias: {
-          '$': 'gallery/jquery/1.7.2/jquery',
-          'popup': 'arale/popup/0.9.8/popup'
-        }
-      });
-      seajs.use(['$', 'popup'], function($, Popup){
-        // use jQuery and Popup
-      });
-    </script>
+```html
+<script charset="utf-8" id="seajsnode" 
+   src="sea-modules/seajs/1.2.1/sea.js"></script>
+<script>
+  seajs.config({
+    alias: {
+      '$': 'gallery/jquery/1.7.2/jquery',
+      'popup': 'arale/popup/0.9.8/popup'
+    }
+  });
+  seajs.use(['$', 'popup'], function($, Popup){
+    // use jQuery and Popup
+  });
+</script>
+```
 
 ## 提问？回答！
 
