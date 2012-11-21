@@ -37,6 +37,9 @@ a {
     max-width: 750px;
     *width: 750px;
 }
+#doc-wrapper h1 {
+    font-family: "Marcellus",sans-serif; 
+}
 #title {
     font-family: "Marcellus",sans-serif;
     font-size: 36px;
