@@ -29,14 +29,26 @@
       </div>
       <div id="main-wrapper">
         <div class="main-block" id="document-wrapper">
-          <h2>Document</h2>
-          <ol id="sidenav">
-            {%- for item in resource.posts|same_category(post.category) %}
-            {%- if item.filename != 'index' %}
-            <li><a href="{{item|permalink}}">{{item.title}}</a></li>
-            {%- endif %}
-            {%- endfor %}
-          </ol>
+          <div>
+            <h2>Document</h2>
+            <ol id="sidenav">
+              {%- for item in resource.posts|same_category('docs') %}
+              {%- if item.filename != 'index' %}
+              <li><a href="{{item|permalink}}">{{item.title}}</a></li>
+              {%- endif %}
+              {%- endfor %}
+            </ol>
+          </div>
+          <div style="display:none" id="J-alipay">
+            <h2>Alipay</h2>
+            <ol id="sidenav">
+              {%- for item in resource.posts|same_category('alipay') %}
+              {%- if item.filename != 'index' %}
+              <li><a href="{{item|permalink}}">{{item.title}}</a></li>
+              {%- endif %}
+              {%- endfor %}
+            </ol>
+          </div>
         </div>
         {%- if post.filename == 'index' %}
         <div class="main-block" id="module-wrapper">

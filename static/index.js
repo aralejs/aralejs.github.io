@@ -59,6 +59,8 @@
             }
             insertAlipayModules(alipayModules);
             modules = araleModules.concat(alipayModules);
+
+            $('#J-alipay').show();
         });
 
         function insertAraleModules(data) {
