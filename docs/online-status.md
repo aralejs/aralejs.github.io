@@ -4,6 +4,10 @@
 
 --------------
 
+<style>
+.J-alipayStatus{display:none}
+</style>
+
 本页面提供了现有组件的发布状态，可以查看某组件的所有版本，以及其具体版本是否已上线。
 
 - <span class="assert" style="color:#1A9B20">✔</span> 所有文件均存在。
@@ -24,10 +28,10 @@
 <div id="status-gallery"></div>
 
 
+
 ## Alipay
 
-<div id="status-alipay"></div>
-
+<div id="status-alipay" class="J-alipayStatus"></div>
 
 <div id="card"></div>
 
@@ -51,8 +55,10 @@ seajs.config({
     alias: {
         '$': 'jquery/1.7.2/jquery',
         'popup': 'popup/0.9.8/popup',
-        'status-arale': 'http://aralejs.alipay.im/status-arale.js',
-        'status-gallery': 'http://aralejs.alipay.im/status-gallery.js',
+        'status-arale': 'http://aralejs.org/status-arale.js',
+        'status-arale-dev': 'http://aralejs.alipay.im/status-arale.js',
+        'status-gallery': 'http://aralejs.org/status-gallery.js',
+        'status-gallery-dev': 'http://aralejs.alipay.im/status-gallery.js',
         'status-alipay': 'http://aralejs.alipay.im/status-alipay.js'
     }
 });
@@ -64,24 +70,72 @@ seajs.use(['$', 'popup'], function($, Popup){
             test: 'https://a.test.alipay.net',
             dev: 'http://assets.dev.alipay.net'
         };
-    
-    seajs.use(['status-arale'], function(data) {
-        globalData['arale'] = data;
-        createTable(data, 'arale');
-    });
-    
-    seajs.use(['status-gallery'], function(data) {
-        globalData['gallery'] = data;
-        createTable(data, 'gallery');
+
+    test(function() {
+        seajs.use(['status-arale-dev'], function(data) {
+            globalData['arale'] = data;
+            createTable(data, 'arale');
+            $('.J-alipayStatus').show();
+        });
+
+        seajs.use(['status-gallery-dev'], function(data) {
+            globalData['gallery'] = data;
+            createTable(data, 'gallery');
+            $('.J-alipayStatus').show();
+        });
+    }, function() {
+        seajs.use(['status-arale'], function(data) {
+            globalData['arale'] = data;
+            createTable(data, 'arale');
+        });
+
+        seajs.use(['status-gallery'], function(data) {
+            globalData['gallery'] = data;
+            createTable(data, 'gallery');
+        });
     });
     
     seajs.use(['status-alipay'], function(data) {
+        if(!data) return;
         globalData['alipay'] = data;
         createTable(data, 'alipay');
+        $('.J-alipayStatus').show();
     });
+
+    function test(success, failure) {
+        var isCalled = false;
+        seajs.use(['status-alipay'], function(data) {
+            if (!isCalled) {
+                if (data) {
+                    success();
+                    isCalled = true;
+                } else {
+                    failure();
+                    isCalled = true;
+                }
+            }
+        });
+        setTimeout(function() {
+            if (!isCalled) {
+                failure();
+                isCalled = true;
+            }
+        }, 500);
+        //$.ajax({
+        //    url: 'http://aralejs.alipay.im/status-alipay.js',
+        //    dataType: 'script',
+        //    timeout: 500,
+        //    success: function() {
+        //        success();
+        //    },
+        //    error: function() {
+        //        failure();
+        //    }
+        //});
+    }
     
     function createTable(data, root) {
-        var table = $('<table><tr><th class="name">组件名</th><th class="version">版本</th><th class="status">开发环境</th><th class="status">测试环境</th><th class="status">线上</th></tr></table>').appendTo('#status-' + root);
+        var table = $('<table><tr><th class="name">组件名</th><th class="version">版本</th><th class="status J-alipayStatus">开发环境</th><th class="status J-alipayStatus">测试环境</th><th class="status">线上</th></tr></table>').appendTo('#status-' + root);
     
         $.each(data, function(key, value){
             var name = key;
@@ -100,8 +154,8 @@ seajs.use(['$', 'popup'], function($, Popup){
             var tr = $('<tr data-name="' +  key + '" data-root="' + root + '">' +
                 '<td class="name"><span class="heart">☺</span> ' + key + '</td>' +
                 '<td class="version">' + s.join('') + '</td>' +
-                '<td class="dev status" data-status="dev"></td>' +
-                '<td class="test status" data-status="test"></td>' +
+                '<td class="dev status J-alipayStatus" data-status="dev"></td>' +
+                '<td class="test status J-alipayStatus" data-status="test"></td>' +
                 '<td class="online status" data-status="online"></td>' +
                 '</tr>');
             table.append(tr);
