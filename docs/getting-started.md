@@ -15,7 +15,7 @@
   seajs.config({
     alias: {
       '$': 'gallery/jquery/1.7.2/jquery',
-      'popup': 'arale/popup/0.9.8/popup'
+      'popup': 'arale/popup/0.9.9/popup'
     }
   });
   seajs.use(['$', 'popup'], function($, Popup){
@@ -55,9 +55,9 @@ $ sudo npm install spm -g
 如上面的例子，我们需要 seajs、jquery、popup，可以通过 spm 直接下载。
 
 ```
-$ spm install seajs@1.2.1
+$ spm install seajs@1.3.0
 $ spm install gallery.jquery@1.7.2
-$ spm install arale.popup@0.9.8
+$ spm install arale.popup@0.9.9
 ```
 
 如不加 `@版本号` 会下载最新版本。所有的组件都会下载到 sea-modules 目录下，目录结构为
@@ -65,7 +65,7 @@ $ spm install arale.popup@0.9.8
 ```
 sea-modules
   | - seajs
-  |  ` - 1.2.1
+  |  ` - 1.3.0
   |     ` - sea.js
   | - gallery
   |  ` - jquery
@@ -73,7 +73,7 @@ sea-modules
   |        ` - jquery.js
   | - arale
      ` - popup
-        ` - 0.9.8
+        ` - 0.9.9
            ` - popup.js
 ```
 
@@ -85,12 +85,12 @@ sea-modules
 
 ```html
 <script charset="utf-8" id="seajsnode" 
-   src="sea-modules/seajs/1.2.1/sea.js"></script>
+   src="sea-modules/seajs/1.3.0/sea.js"></script>
 <script>
   seajs.config({
     alias: {
       '$': 'gallery/jquery/1.7.2/jquery',
-      'popup': 'arale/popup/0.9.8/popup'
+      'popup': 'arale/popup/0.9.9/popup'
     }
   });
   seajs.use(['$', 'popup'], function($, Popup){
