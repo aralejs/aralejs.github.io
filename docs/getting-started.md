@@ -6,7 +6,9 @@
 
 ## 快速上手
 
-通过下面的代码可直接使用组件，此处使用支付宝的 CDN。
+先来看这个[示例](http://aralejs.org/example-website/)。
+
+上面的示例使用了 `jquery` 和 `popup` 组件，最简单的方式是使用支付宝的 CDN。
 
 ```html
 <script charset="utf-8" id="seajsnode" 
@@ -20,6 +22,8 @@
   });
   seajs.use(['$', 'popup'], function($, Popup){
     // use jQuery and Popup
+    console.log($)
+    console.log(Popup)
   });
 </script>
 ```
@@ -60,7 +64,7 @@ $ spm install gallery.jquery@1.7.2
 $ spm install arale.popup@0.9.9
 ```
 
-如不加 `@版本号` 会下载最新版本。所有的组件都会下载到 sea-modules 目录下，目录结构为
+如不加「@版本号」会下载最新版本。所有的组件都会下载到 sea-modules 目录下，目录结构为
 
 ```
 sea-modules
@@ -77,11 +81,16 @@ sea-modules
            ` - popup.js
 ```
 
-
-
 ## 使用 Arale
 
-在当前目录新建页面（与 sea-modules 并列），如下配置
+在当前目录新建页面（与 sea-modules 并列）
+
+```
+ | - index.html
+ ` - sea-modules
+```
+
+如下配置，将 seajs 切换到本地。
 
 ```html
 <script charset="utf-8" id="seajsnode" 
@@ -98,6 +107,8 @@ sea-modules
   });
 </script>
 ```
+
+具体配置可以查看示例的[代码](https://github.com/aralejs/example-website)。
 
 ## 提问？回答！
 
