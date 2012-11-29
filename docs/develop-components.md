@@ -1,4 +1,4 @@
-# 开发一个 Arale 模块
+# 开发一个 Arale 组件
 
 - order: 3
 
