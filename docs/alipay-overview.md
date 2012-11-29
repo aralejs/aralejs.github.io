@@ -57,6 +57,14 @@ seajs.use('alipay/xbox/0.9.8/xbox', function(Xbox) {
 });
 ```
 
+## 查看组件
+
+> validator 最新的版本是什么？
+
+> xbox 0.9.8 到底上线了没有？
+
+经常会遇到这种问题，现在大家可以通过 [online status](online-status.html) 查看组件的状态。
+
 ## 开发 alipay 组件
 
 alipay 组件存放在 http://git.alipay.im 下，先到这里创建一个库，命名要加 alipay_ 前缀。
