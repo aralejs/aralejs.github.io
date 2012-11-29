@@ -34,7 +34,7 @@
     </script>
 
 
-seajs 的 base 为 https://a.alipayobjects.com，这是由 seajs 的存放目录决定的。线上的部署目录为
+seajs 的 base 为 https://a.alipayobjects.com ，这是由 seajs 的存放目录决定的。线上的部署目录为
 
 ```
 a.alipayobjects.com
@@ -49,7 +49,7 @@ a.alipayobjects.com
 
 支付宝使用3个公共 root：gallery、arale、alipay，除此之外还有系统 root，如 cashier，personal。
 
-每个组件的 id 形式为 `{{root}}/{{module}}/{{version}}/{{file}}`，比如 xbox 的 id 为 `alipay/xbox/0.9.8/xbox`，使用 xbox
+每个组件的 id 形式为 `{{root}}/{{module}}/{{version}}/{{file}}`，比如 xbox 的 id 为 `alipay/xbox/0.9.8/xbox`，同时这也是文件路径，使用 xbox 可直接 use。
 
 ```
 seajs.use('alipay/xbox/0.9.8/xbox', function(Xbox) {
@@ -95,4 +95,13 @@ alipay 组件存放在 http://git.alipay.im 下，先到这里创建一个库，
 
 **注意：** root 要配成系统名。
 
-其他可以参考开发 alipay 组件。
+需要忽略部分文件，在组件当前目录输入
+
+```
+$ svn propset svn:ignore '.gitignore' ./ 
+$ svn propset svn:ignore '_site' ./
+$ svn propset svn:ignore 'sea-modules' ./
+```
+
+其他可以参考 alipay 组件开发。
+
