@@ -77,4 +77,14 @@ alipay 组件存放在 http://git.alipay.im 下，先到这里创建一个库，
 
 `spm deploy` 部署到服务器。
 
+如果有多个项目需要使用，要建个任务单发布到 test 环境，test 环境会定时同步到所有的开发环境。
+
 ## 开发系统组件
+
+以 personal 消费记录为例子
+
+在 /static 目录创建 consume 目录，在 consume 下执行 `spm init`。
+
+**注意：** root 要配成系统名。
+
+其他可以参考开发 alipay 组件。
