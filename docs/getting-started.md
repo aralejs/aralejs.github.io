@@ -42,7 +42,7 @@ spm 使用的 `node >0.8.0`，如通过包管理工具安装需要注意。
 
 ### 安装 spm
 
-[spm](https://github.com/seajs/spm/wiki) 为 Arale 的打包部署工具，安装如下
+[spm](https://github.com/spmjs/spm/wiki) 为 Arale 的打包部署工具，安装如下
 
 ```
 $ sudo npm install spm -g

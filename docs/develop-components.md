@@ -90,7 +90,7 @@ git push origin master
     "root": "arale",
     "description": "基础浮层组件，提供浮层显示隐藏、定位和 select 遮挡等特性。"
     
-**注意：** `package.json` 为 json 文件，需要用双引号才合法，可以查看[详细配置](https://github.com/seajs/spm/wiki/package.json)。
+**注意：** `package.json` 为 json 文件，需要用双引号才合法，可以查看[详细配置](https://github.com/spmjs/spm/wiki/package.json)。
     
 分析组件的依赖，比如 `overlay` 需要 `widget`，先查看 `widget` 的版本
 
@@ -177,7 +177,7 @@ Arale 提供 mocha 作为测试框架，开发者只要关注如何写好测试�
 
 `'.'` 意味着只打包组件内部的文件（包括依赖的文件），由于 example.js 没有依赖所以就相当于 `"example.js": ["examples.js"]`。
 
-最常用的为以下三种，具体配置的参数可查看[文档](https://github.com/seajs/spm/wiki/package.json-:-output)。
+最常用的为以下三种，具体配置的参数可查看[文档](https://github.com/spmjs/spm/wiki/package.json-:-output)。
 
 ```
 {
@@ -193,7 +193,7 @@ Arale 提供 mocha 作为测试框架，开发者只要关注如何写好测试�
 $ spm build
 ```
 
-查看 [build 参数](https://github.com/seajs/spm/wiki/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0)进行定制
+查看 [build 参数](https://github.com/spmjs/spm/wiki/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0)进行定制
 
 上传到源
 
