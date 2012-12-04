@@ -13,7 +13,7 @@
 
 ```
 {
-  "sources": ["modules.alipay.im:7000"]
+  "sources": ["modules.alipay.im"]
 }
 ```
 
