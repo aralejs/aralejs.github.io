@@ -99,13 +99,13 @@ a {
     display: inline;
     float: left;
     margin-bottom: 0.8em;
-    margin-right: 0.5em;
+    margin-right: 0.7em;
     overflow: hidden;
     padding: 5px 6px;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100px;
+    width: 110px;
     border-left: 3px solid #B4D0EE;
 }
 .module:hover {
