@@ -2,13 +2,13 @@
 
     seajs.config({
         alias: {
-            '$': 'jquery/1.7.2/jquery'
+            '$': 'gallery/jquery/1.7.2/jquery'
         }
     });
 
     seajs.use(['$',
-               'popup/0.9.8/popup',
-               'autocomplete/0.8.0/autocomplete',
+               'arale/popup/0.9.8/popup',
+               'arale/autocomplete/0.8.0/autocomplete',
                'http://aralejs.org/package.js'],
     function($, Popup, Autocomplete, araleModules) {
 
