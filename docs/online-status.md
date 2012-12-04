@@ -53,8 +53,6 @@ table .version{width: 180px;}
 <script>
 seajs.config({
     alias: {
-        '$': 'jquery/1.7.2/jquery',
-        'popup': 'popup/0.9.8/popup',
         'status-arale': 'http://aralejs.org/status-arale.js',
         'status-arale-dev': 'http://aralejs.alipay.im/status-arale.js',
         'status-gallery': 'http://aralejs.org/status-gallery.js',
