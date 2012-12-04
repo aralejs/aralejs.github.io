@@ -75,11 +75,17 @@
 
             for(var i=0; i<data.length; i++) {
                 var item = $('<a class="module" target="_blank" href="#"></a>');
-                item.html(data[i].name)
-                    .attr('href', '/' + data[i].name + '/')
-                    .data('description', data[i].description)
-                    .data('version', data[i].version);
-                $('.modules-' + data[i]['tag']).append(item).prev().show();
+                var module = data[i];
+                item.html(module.name)
+                    .attr('href', '/' + module.name + '/')
+                    .data('description', module.description)
+                    .data('version', module.version);
+                if (module.root === 'gallery') {
+                    item.attr('href', module.homepage);
+                    $('.modules-gallery').append(item).prev().show();
+                } else {
+                    $('.modules-' + module.tag).append(item).prev().show();
+                }
                 cardPopup(item);
             }
         }
