@@ -1,5 +1,8 @@
-# aralejs.org
+# Arale
 
------------
+Arale 是一个开放、简单、易用的前端基础类库。
 
-aralejs首页
+------
+
+- homepage: <http://aralejs.org>
+- github: <https://github.com/aralejs>
