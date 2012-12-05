@@ -81,6 +81,8 @@ a {
 
 .catigory {
     color: #aaa;
+    text-transform: lowercase;
+    font-style: italic;
 }
 
 .modules {
