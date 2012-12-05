@@ -80,12 +80,11 @@ a {
 }
 
 .catigory {
-    color: #6C97C2;
-    font-size: 14px;
+    color: #aaa;
 }
 
 .modules {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     zoom: 1;
 }
 .modules:after {
