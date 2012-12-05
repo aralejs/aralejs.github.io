@@ -3,7 +3,7 @@
     alias: {
       '$': 'gallery/jquery/1.7.2/jquery',
       'popup': 'arale/popup/0.9.8/popup',
-      'autocomplete': 'arale/autocomplete/0.8.0/autocomplete'
+      'autocomplete': 'arale/autocomplete/0.9.0/autocomplete'
     }
   });
 
@@ -18,6 +18,7 @@
       // 搜索组件自动完成
       var ac = new Autocomplete({
         trigger: '#search',
+        selectFirst: true,
         dataSource: function() {
           if (modules) {
             this.trigger('data', modules);
@@ -30,27 +31,31 @@
           $.each(data, function(index, value) {
             var temp = value.root + '.' + value.name;
             if (temp.indexOf(query) > -1) {
-              result.push({value: temp});
+              result.push({matchKey: temp, url: value.homepage});
             }
           });
           return result;
         }
       }).render();
 
-      ac.on('itemSelect', function(value) {
+      ac.on('itemSelect', function(value, data) {
+        ac.get('trigger').val('正转到 ' + value).attr('disabled', 'disabled');
         value = value.split('.');
         if (value[0] === 'arale') {
           location.href = '/' + value[1];
         } else if (value[0] === 'alipay') {
           location.href = 'http://aralejs.alipay.im/' + value[1];
+        } else {
+          location.href = data.url;
         }
       });
-
+    
+        /*
       $('#search').focus().on('keyup', function(e) {
         if (e.keyCode !== 38 && e.keyCode !== 40) {
           ac.set('selectedIndex', 0);
         }
-      });
+      });*/
 
       seajs.use(['http://aralejs.alipay.im/package.js'], function(alipayModules) {
         if (!alipayModules) {
