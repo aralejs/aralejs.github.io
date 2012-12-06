@@ -32,6 +32,6 @@ Arale 使用简单好用的包管理工具 [SPM](https://github.com/spmjs/spm) �
 
 ## 了解更多
 
-[Arale 项目文档](https://github.com/alipay/arale/wiki)
-
 [Arale 组件仓库](https://github.com/aralejs/)
+
+[Arale 项目动态](https://github.com/aralejs/aralejs.org/issues)
