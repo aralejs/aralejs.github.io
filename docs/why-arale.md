@@ -8,7 +8,13 @@
 
 Arale 是支付宝的前端解决方案，基于 [SeaJS](http://seajs.org/) 和 CMD 规范，是一个开放、简单、易用的前端基础类库。
 
-Arale 拥有 [popup](/popup/)、[validator](/validator/)、[position](/position/) 等丰富且优秀的组件模块；使用简单好用的包管理工具 [SPM](https://github.com/spmjs/spm) 帮助我们处理打包部署等繁琐工作；使用 [liquidluck](https://github.com/aralejs/liquidluck-theme-arale2) 写文档和 Demo。这是一套完善的前端解决方案。
+通过 SeaJS，Arale 通过简单的方式精选了业界最优秀的开源类库（jQuery、underscore、moment等等）为我所用，并且始终保持对开源社区的敏锐嗅觉，我们站在并将始终巨人们的肩膀上。
+
+Arale 拥有 [popup](/popup/)、[validator](/validator/)、[position](/position/) 等丰富且优秀的组件模块，模块 API 设计简洁，迭代迅速。人性化的文档、丰富的演示和完善的测试用例是 Arale 对自有模块的要求。
+
+Arale 使用简单好用的包管理工具 [SPM](https://github.com/spmjs/spm) 帮助我们处理打包部署等繁琐工作；在 [liquidluck](https://github.com/aralejs/liquidluck-theme-arale2) 的协助下使用 Markdown 来写文档和演示。这是一套完善的前端解决方案。
+
+最重要的是，Arale 出生和成长在开源社区中，她会在不断的批评和拍砖中越来越好，欢迎大家的使用和参与，希望你也能成为 Arale 的贡献者。
 
 ## 优点
 
