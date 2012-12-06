@@ -76,7 +76,7 @@
         if ($('#module-wrapper').length === 0) {
           return;
         }
-
+        $('.modules').empty();
         for(var i=0; i<data.length; i++) {
           var item = $('<a class="module" target="_blank" href="#"></a>');
           var module = data[i];
