@@ -81,8 +81,7 @@ a {
 
 .catigory {
     color: #aaa;
-    text-transform: lowercase;
-    font-style: italic;
+    font-size: 14px;
 }
 
 .modules {
@@ -177,4 +176,11 @@ a {
 }
 .ui-autocomplete-item-hl {
     background: #ff0;
+}
+
+.heart {
+    font-size: 36px;
+    margin: 0 4px;
+    color:rgba(255,0,0,0.5);
+    text-shadow:1px 1px 2px #fff,0 0 0 #aaa,1px 1px 2px #fff;
 }
