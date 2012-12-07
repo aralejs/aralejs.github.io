@@ -55,12 +55,13 @@ a {
     padding: 8px;
     font-size: 16px;
     outline: none;
-    border: 1px solid #ccc;
+    border: 1px solid #e7e7e7;
     color: #888;
-    width:200px;
+    width:180px;    
 }
 #search:focus {
-    border-color: #bbb;
+    border-color: #aaa;
+    width:220px;    
 }
 
 #document-wrapper ol {
@@ -156,7 +157,7 @@ a {
     border: 1px solid #CCC;
     background:#fff;
     padding: 0;
-    width: 216px;
+    width: 236px;
     margin-top: -1px;
     font-family: tahoma;
 }
