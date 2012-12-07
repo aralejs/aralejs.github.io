@@ -56,7 +56,7 @@ a {
     outline: none;
     border: 1px solid #ccc;
     color: #888;
-    width:180px;
+    width:200px;
 }
 #search:focus {
     border-color: #bbb;
