@@ -182,8 +182,10 @@ a {
 
 .heart {
     font-size: 36px;
-    font-family: Menlo;
+    font-size: 36px\0;
+    font-family: Menlo, sans-serif;
     margin: 0 4px;
+    color:#FE7E7E;
     color:rgba(255,0,0,0.5);
     text-shadow:1px 1px 2px #fff,0 0 0 #aaa,1px 1px 2px #fff;
 }
