@@ -182,7 +182,8 @@ a {
 
 .heart {
     font-size: 36px;
-    font-size: 30px\0;
+    font-size: 26px\0;
+    *font-size: 26px;
     font-family: Menlo, sans-serif;
     margin: 0 4px;
     color:#FE7E7E;
