@@ -4,6 +4,8 @@
 
 ---
 
+![阿拉蕾](/static/arale.png)
+
 ## 简介
 
 Arale 是支付宝的前端解决方案，基于 [SeaJS](http://seajs.org/) 和 CMD 规范，是一个开放、简单、易用的前端基础类库。
