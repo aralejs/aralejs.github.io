@@ -21,6 +21,7 @@ a {
     padding: 15px;
     overflow: hidden;
     border-bottom: 1px solid #ccc;
+    border-top: 1px solid #fff;
     zoom: 1;
 }
 .main-block {
