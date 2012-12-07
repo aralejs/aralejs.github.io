@@ -55,10 +55,10 @@ a {
     padding: 8px;
     font-size: 16px;
     outline: none;
-    border: 1px solid #e7e7e7;
+    border: 1px solid #ccc;
     color: #888;
     width:180px;
-    transition: width 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s;
 }
 #search:focus {
     border-color: #aaa;
