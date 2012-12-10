@@ -2,7 +2,7 @@
   seajs.config({
     alias: {
       '$': 'gallery/jquery/1.7.2/jquery',
-      'popup': 'arale/popup/0.9.8/popup',
+      'popup': 'arale/popup/0.9.9/popup',
       'autocomplete': 'arale/autocomplete/0.9.0/autocomplete',
       'placeholder': 'arale/placeholder/1.0.0/placeholder',
       'afc163': '/sea-modules/afc163'
