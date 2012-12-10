@@ -4,14 +4,15 @@
       '$': 'gallery/jquery/1.7.2/jquery',
       'popup': 'arale/popup/0.9.8/popup',
       'autocomplete': 'arale/autocomplete/0.9.0/autocomplete',
+      'placeholder': 'arale/placeholder/1.0.0/placeholder',
       'afc163': '/sea-modules/afc163'
     },
     comboExcludes: /word\-color\.js/
   });
 
   seajs.use(
-    ['$', 'popup', 'autocomplete', 'afc163/word-color/1.0.0/word-color', 'http://aralejs.org/package.js'],
-    function($, Popup, Autocomplete, wordColor, araleModules) {
+    ['$', 'popup', 'autocomplete', 'placeholder', 'afc163/word-color/1.0.0/word-color', 'http://aralejs.org/package.js'],
+    function($, Popup, Autocomplete, Placeholder, wordColor, araleModules) {
 
       var modules;
 
