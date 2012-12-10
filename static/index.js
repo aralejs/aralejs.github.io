@@ -3,13 +3,14 @@
     alias: {
       '$': 'gallery/jquery/1.7.2/jquery',
       'popup': 'arale/popup/0.9.8/popup',
-      'autocomplete': 'arale/autocomplete/0.9.0/autocomplete'
+      'autocomplete': 'arale/autocomplete/0.9.0/autocomplete',
+      'afc163': '/sea-modules/afc163'
     }
   });
 
   seajs.use(
-    ['$', 'popup', 'autocomplete', 'http://aralejs.org/package.js'],
-    function($, Popup, Autocomplete, araleModules) {
+    ['$', 'popup', 'autocomplete', 'afc163/word-color/1.0.0/word-color', 'http://aralejs.org/package.js'],
+    function($, Popup, Autocomplete, wordColor, araleModules) {
 
       var modules;
 
@@ -91,6 +92,7 @@
             $('.modules-' + module.tag).append(item).prev().show();
           }
           cardPopup(item);
+          color(item);
         }
       }
 
@@ -113,6 +115,7 @@
           $('.modules-alipay').append(item);
           $('.modules-alipay').prev().show();
           cardPopup(item);
+          color(item);
         }
       }
 
@@ -131,6 +134,14 @@
           $('#card .card-description').html(item.data('description') || '');
           $('#card .card-version').html(item.data('version') || '');
         });
+      }
+
+      function color(item) {
+        item.css('border-color', toRgba(wordColor(item.html()), 0.65));
+      }
+
+      function toRgba(rgb, opacity) {
+        return rgb.replace('rgb', 'rgba').replace(')', ',' + opacity + ')');
       }
 
     });
