@@ -93,8 +93,8 @@
             $('.modules-' + module.tag).append(item).prev().show();
           }
           cardPopup(item);
-          color(item);
         }
+        color('.module');
       }
 
       function insertAlipayModules(data) {
@@ -116,8 +116,8 @@
           $('.modules-alipay').append(item);
           $('.modules-alipay').prev().show();
           cardPopup(item);
-          color(item);
         }
+        color('.modules-alipay .module');        
       }
 
       function cardPopup(item) {
@@ -137,8 +137,12 @@
         });
       }
 
-      function color(item) {
-        item.css('border-color', toRgba(wordColor(item.html()), 0.65));
+      function color(items) {
+        items = $(items);
+        items.each(function(index, item) {
+            item = $(item);
+            item.css('border-color', toRgba(wordColor(item.html()), 0.65));
+        });
       }
 
       function toRgba(rgb, opacity) {
