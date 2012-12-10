@@ -5,7 +5,8 @@
       'popup': 'arale/popup/0.9.8/popup',
       'autocomplete': 'arale/autocomplete/0.9.0/autocomplete',
       'afc163': '/sea-modules/afc163'
-    }
+    },
+    comboExcludes: /word\-color\.js/
   });
 
   seajs.use(
