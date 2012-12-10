@@ -146,6 +146,9 @@
       }
 
       function toRgba(rgb, opacity) {
+        if ($.browser.msie && $.browser.version < 9) {
+            return rgb;
+        }
         return rgb.replace('rgb', 'rgba').replace(')', ',' + opacity + ')');
       }
 
