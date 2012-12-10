@@ -6,7 +6,7 @@ define("afc163/word-color/1.0.0/word-color-debug", [], function(require, exports
 
     var wordColor = function(word) {
 
-        word = word.trim();
+        word = word.replace(/^\s+(.*)\s+$/g, '$1');
         var rgb = [0, 0, 0];
         
         for (var i=0; i<word.length; i++) {
