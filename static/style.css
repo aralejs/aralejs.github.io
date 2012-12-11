@@ -15,12 +15,13 @@ a {
 #title-wrapper {
     border-bottom: 1px solid #ccc;
     text-align:center;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 #main-wrapper {
     padding: 15px;
     overflow: hidden;
     border-bottom: 1px solid #ccc;
+    border-top: 1px solid #fff;
     zoom: 1;
 }
 .main-block {
@@ -57,9 +58,11 @@ a {
     border: 1px solid #ccc;
     color: #888;
     width:180px;
+    transition: all 0.3s ease-out 0s;
 }
 #search:focus {
-    border-color: #bbb;
+    border-color: #aaa;
+    width:220px;    
 }
 
 #document-wrapper ol {
@@ -79,8 +82,13 @@ a {
     text-shadow: 0 1px 0 #fff;
 }
 
+.catigory {
+    color: #aaa;
+    font-size: 14px;
+}
+
 .modules {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     zoom: 1;
 }
 .modules:after {
@@ -95,17 +103,19 @@ a {
 .module {
     background: #fff;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-    color: #777777;
+    color: #777;
     display: inline;
     float: left;
     margin-bottom: 0.8em;
-    margin-right: 0.5em;
+    margin-right: 0.8em;
     overflow: hidden;
-    padding: 5px 6px;
+    padding: 4px 6px;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100px;
+    width: 115px;
+    border-left: 3px solid #B4D0EE;
+    font-family: tahoma;
 }
 .module:hover {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
@@ -148,7 +158,7 @@ a {
     border: 1px solid #CCC;
     background:#fff;
     padding: 0;
-    width: 196px;
+    width: 236px;
     margin-top: -1px;
     font-family: tahoma;
 }
@@ -170,4 +180,15 @@ a {
 }
 .ui-autocomplete-item-hl {
     background: #ff0;
+}
+
+.heart {
+    font-size: 36px;
+    font-size: 26px\0;
+    *font-size: 26px;
+    font-family: Menlo, sans-serif;
+    margin: 0 4px;
+    color:#FE7E7E;
+    color:rgba(255,0,0,0.5);
+    text-shadow:1px 1px 2px #fff,0 0 0 #aaa,1px 1px 2px #fff;
 }
