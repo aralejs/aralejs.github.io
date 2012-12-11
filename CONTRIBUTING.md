@@ -23,3 +23,4 @@ Arale 是一个开放的类库，欢迎加入我们。
 如果 Arale 中没有你想要的组件，你也可以写一个 transfer 给我们。
 
 可以先提 [Issue](https://github.com/aralejs/aralejs.org/issues) 说明组件的用途和场景，我们一起来完善 Arale。
+
