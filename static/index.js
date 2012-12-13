@@ -41,15 +41,16 @@
         }
       }).render();
 
-      ac.on('itemSelect', function(value, data) {
-        ac.get('trigger').val('正转到 ' + value).attr('disabled', 'disabled');
-        value = value.split('.');
+      ac.on('itemSelect', function(item) {
+        console.log(item);
+        ac.get('trigger').val('正转到 ' + item.matchKey).attr('disabled', 'disabled');
+        var value = item.matchKey.split('.');
         if (value[0] === 'arale') {
           location.href = '/' + value[1];
         } else if (value[0] === 'alipay') {
           location.href = 'http://aralejs.alipay.im/' + value[1];
         } else {
-          location.href = data.url;
+          location.href = item.url;
         }
       });
     
