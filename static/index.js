@@ -1,9 +1,9 @@
 (function() {
   seajs.config({
     alias: {
-      '$': 'gallery/jquery/1.7.2/jquery',
-      'popup': 'arale/popup/0.9.9/popup',
-      'autocomplete': 'arale/autocomplete/0.9.0/autocomplete',
+      '$': 'gallery/jquery/1.8.2/jquery',
+      'popup': 'arale/popup/0.9.10/popup',
+      'autocomplete': 'arale/autocomplete/1.0.0/autocomplete',
       'placeholder': 'arale/placeholder/1.0.0/placeholder',
       'afc163': '/sea-modules/afc163'
     },
@@ -93,8 +93,8 @@
           } else {
             $('.modules-' + module.tag).append(item).prev().show();
           }
-          cardPopup(item);
         }
+        cardPopup('.module');        
         color('.module');
       }
 
@@ -116,25 +116,26 @@
 
           $('.modules-alipay').append(item);
           $('.modules-alipay').prev().show();
-          cardPopup(item);
         }
+        cardPopup('.modules-alipay .module');        
         color('.modules-alipay .module');        
       }
 
-      function cardPopup(item) {
+      function cardPopup(items) {
         // 卡片
         var popup = new Popup({
           element: '#card',
-          trigger: item,
+          trigger: items,
+          effect: 'fade',
           align: {
             baseXY: [0, -2],
             selfXY: [0, '100%']
           }
         });
         popup.on('before:show', function() {
-          $('#card .card-name').html(item.html());
-          $('#card .card-description').html(item.data('description') || '');
-          $('#card .card-version').html(item.data('version') || '');
+          $('#card .card-name').html(this.activeTrigger.html());
+          $('#card .card-description').html(this.activeTrigger.data('description') || '');
+          $('#card .card-version').html(this.activeTrigger.data('version') || '');
         });
       }
 
