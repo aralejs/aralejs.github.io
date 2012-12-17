@@ -1,122 +1,75 @@
-<!DOCTYPE HTML>
-<html lang="{{theme.lang}}">
-  <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}{{resource.package.name|title}} - {{post.title}}{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="{{system.name}} {{system.version}}" />
-    <link type="image/x-icon" href="{{static_url('css/favicon.ico')}}" rel="icon">
-    <link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
-    <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
-    <link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />
-    <link rel="stylesheet" href="{{static_url('style.css')}}" />
-    <script src="https://a.alipayobjects.com/seajs/1.2.1/??sea.js,plugin-combo.js"></script>
-    {%- if theme.debug %}<script>seajs._nicodebug = true</script>{%- endif %}
-    <script src="{{static_url('index.js')}}"></script>
-    {%- include "snippet/head.html" %}
-    <!--[if lt IE 9]>
-        <script src="{{static_url('js/html5shiv.js')}}"></script>
-        <![endif]-->
-  </head>
-  <body>
-    <div id="body-wrapper">
-      <div id="title-wrapper">            
-        <h1 id="title" class="inline">
-          <a href="{{content_url('index.html')}}">{{resource.package.name|title}}</a>
-        </h1>
-        <input type="text" class="inline" id="search" placeholder="搜索 Arale 模块">
-        <p id="description">{{resource.package.description}}</p>
-      </div>
-      <div id="main-wrapper">
-        <div class="main-block" id="document-wrapper">
-          <div>
-            <h2>Document</h2>
-            <ol id="sidenav">
-              {%- for item in resource.posts|same_category('docs') %}
-              {%- if item.filename != 'index' %}
-              <li><a href="{{item|permalink}}">{{item.title}}</a></li>
-              {%- endif %}
-              {%- endfor %}
-              <li><a href="contributing.html">加入我们</a></li>
-            </ol>
-          </div>
-          <div style="display:none" id="J-alipay">
-            <h2>Alipay</h2>
-            <ol id="sidenav">
-              {%- for item in resource.posts|same_category('alipay') %}
-              {%- if item.filename != 'index' %}
-              <li><a href="{{item|permalink}}">{{item.title}}</a></li>
-              {%- endif %}
-              {%- endfor %}
-            </ol>
-          </div>
-        </div>
-        {%- if post.filename == 'index' %}
-        <div class="main-block" id="module-wrapper">
-        <h2>Arale・<span class="catigory">基础设施</span></h2>
-          <div class="modules modules-infrastructure">
-          </div>
+{%- extends "layout.html" %}
 
-          <h2>Arale・<span class="catigory">工具</span></h2>
-          <div class="modules modules-utility">
-              正在用绳命加载模块...
-          </div>
+{%- block afterstyle %}
+<link rel="stylesheet" href="{{static_url('style.css')}}" />
+<script src="{{static_url('index.js')}}"></script>
+{%- endblock %}
 
-          <h2>Arale・<span class="catigory">UI组件</span></h2>
-          <div class="modules modules-widget">
-          </div>
-
-          <h2>gallery・<span class="catigory">业界精选</span></h2>
-          <div class="modules modules-gallery">
-          </div>
-
-          <h2>alipay・<span class="catigory">支付宝通用</span></h2>
-          <div class="modules modules-alipay">
-          </div>
-        </div>
-        <div id="card">
-          <h2 class="card-name"></h2>
-          <p class="card-version"></p>
-          <p class="card-description"></p>
-        </div>
-        {%- else %}
-        <div class="main-block" id="doc-wrapper">
-          <h1>{{post.title}}</h1>
-          <div id="content">{{post.content}}</div>
-        </div>
+{% block body %}
+<div id="title-wrapper">            
+  <h1 id="title" class="inline">
+    <a href="{{content_url('index.html')}}">{{config.package.name|title}}</a>
+  </h1>
+  <input type="text" class="inline" id="search" placeholder="搜索 Arale 模块">
+  <p id="description">{{config.package.description}}</p>
+</div>
+<div id="main-wrapper">
+  <div class="main-block" id="document-wrapper">
+    <div>
+      <h2>Document</h2>
+      <ol id="sidenav">
+        {%- for item in resource.pages|find_all('docs') %}
+        {%- if item.filename != 'index' %}
+        <li><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
         {%- endif %}
-      </div>
+        {%- endfor %}
+        <li><a href="contributing.html">加入我们</a></li>
+      </ol>
     </div>
-    <div id="footer-wrapper">
-      <footer>
-        <p class="powered">
-        <script type="text/javascript" charset="utf-8">
-        (function(){
-          var _w = 72 , _h = 16;
-          var param = {
-            url:location.href,
-            type:'3',
-            count:'1', /**是否显示分享数，1显示(可选)*/
-            appkey:'', /**您申请的应用appkey,显示分享来源(可选)*/
-            title:'Arale 是支付宝的前端解决方案，基于 SeaJS 和 CMD 规范，是一个开放、简单、易用的前端基础类库。', /**分享的文字内容(可选，默认为所在页面的title)*/
-            pic:'http://aralejs.org/static/arale.png', /**分享图片的路径(可选)*/
-            ralateUid:'', /**关联用户的UID，分享微博会@该用户(可选)*/
-            language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
-            rnd:new Date().valueOf()
-          }
-          var temp = [];
-          for( var p in param ){
-            temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
-          }
-          document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://hits.sinajs.cn/A1/weiboshare.html?' + temp.join('&') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
-        })()
-        </script>
-        <a href="http://aralejs.org">Arale</a> •
-        <a href="http://seajs.org">SeaJS</a> •
-        <a href="https://github.com/spmjs/spm">spm</a> •
-        <a href="{{system.homepage}}">{{system.name}}</a>
-        </p>
-      </footer>
+    <div style="display:none" id="J-alipay">
+      <h2>Alipay</h2>
+      <ol id="sidenav">
+        {%- for item in resource.pages|find_all('alipay') %}
+        {%- if item.filename != 'index' %}
+        <li><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
+        {%- endif %}
+        {%- endfor %}
+      </ol>
     </div>
-  </body>
-</html>
+  </div>
+  {%- if post.filename == 'index' %}
+  <div class="main-block" id="module-wrapper">
+    <h2>Arale・<span class="catigory">基础设施</span></h2>
+    <div class="modules modules-infrastructure">
+    </div>
+
+    <h2>Arale・<span class="catigory">工具</span></h2>
+    <div class="modules modules-utility">
+      正在用绳命加载模块...
+    </div>
+
+    <h2>Arale・<span class="catigory">UI组件</span></h2>
+    <div class="modules modules-widget">
+    </div>
+
+    <h2>gallery・<span class="catigory">业界精选</span></h2>
+    <div class="modules modules-gallery">
+    </div>
+
+    <h2>alipay・<span class="catigory">支付宝通用</span></h2>
+    <div class="modules modules-alipay">
+    </div>
+  </div>
+  <div id="card">
+    <h2 class="card-name"></h2>
+    <p class="card-version"></p>
+    <p class="card-description"></p>
+  </div>
+  {%- else %}
+  <div class="main-block" id="doc-wrapper">
+    <h1>{{post.title}}</h1>
+    <div id="content">{{post.html}}</div>
+  </div>
+  {%- endif %}
+</div>
+{%- endblock %}

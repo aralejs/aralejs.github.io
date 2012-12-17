@@ -1,7 +1,6 @@
 (function() {
   seajs.config({
     alias: {
-      '$': 'gallery/jquery/1.8.2/jquery',
       'popup': 'arale/popup/0.9.10/popup',
       'autocomplete': 'arale/autocomplete/1.0.0/autocomplete',
       'placeholder': 'arale/placeholder/1.0.0/placeholder',
