@@ -73,17 +73,7 @@ alipay 组件存放在 http://git.alipay.im 下，先到这里创建一个库，
 
 **注意：** root 要配成 alipay。
 
-开发完成后可以部署到 assets 服务器，在 package.json 增加如下配置并指定 host。
-
-```
-"deploy": {
-    "server": "dev",
-    "host": "assets.p46.alipay.net",
-    "path": "/home/admin/wwwroot/assets/"
-}
-```
-
-`spm deploy` 部署到服务器。
+开发完成后可以通过 `spm deploy --to dev` 部署到 assets 服务器，`dev` 是对应的坑位。详细查看 [spm deploy 文档](https://github.com/spmjs/spm/wiki/spm-deploy)
 
 如果有多个项目需要使用，要建个任务单发布到 test 环境，test 环境会定时同步到所有的开发环境。
 
