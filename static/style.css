@@ -58,7 +58,11 @@ a {
     border: 1px solid #ccc;
     color: #888;
     width:180px;
-    transition: all 0.3s ease-out 0s;
+    -webkit-transition: width 0.3s ease-out 0s;
+    -moz-transition: width 0.3s ease-out 0s;
+    -ms-transition: width 0.3s ease-out 0s;
+    -o-transition: width 0.3s ease-out 0s;
+    transition: width 0.3s ease-out 0s;
 }
 #search:focus {
     border-color: #aaa;
