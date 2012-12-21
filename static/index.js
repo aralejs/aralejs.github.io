@@ -1,7 +1,7 @@
 (function() {
   seajs.config({
     alias: {
-      'popup': 'arale/popup/0.9.10/popup',
+      'popup': 'arale/popup/0.9.11/popup',
       'autocomplete': 'arale/autocomplete/1.0.0/autocomplete',
       'placeholder': 'arale/placeholder/1.0.0/placeholder',
       'afc163': '/sea-modules/afc163'
@@ -41,7 +41,6 @@
       }).render();
 
       ac.on('itemSelect', function(item) {
-        console.log(item);
         ac.get('trigger').val('正转到 ' + item.matchKey).attr('disabled', 'disabled');
         var value = item.matchKey.split('.');
         if (value[0] === 'arale') {
