@@ -6,6 +6,7 @@
       'placeholder': 'arale/placeholder/1.0.0/placeholder',
       'afc163': '/sea-modules/afc163'
     },
+    preload: ['seajs/plugin-combo'],
     comboExcludes: /word\-color\.js/
   });
 
