@@ -1,5 +1,6 @@
 (function() {
   seajs.config({
+    base: 'http://static.alipayobjects.com/',
     alias: {
       'popup': 'arale/popup/0.9.11/popup',
       'autocomplete': 'arale/autocomplete/1.0.0/autocomplete',
