@@ -1,5 +1,7 @@
 {%- extends "layout.html" %}
 
+{%- block title -%}{{config.package.name|title}} - {{post.title}}{%- endblock -%}
+
 {%- block afterstyle %}
 <link rel="stylesheet" href="{{static_url('style.css')}}" />
 <script src="{{static_url('index.js')}}"></script>
