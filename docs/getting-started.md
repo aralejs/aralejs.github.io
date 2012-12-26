@@ -1,4 +1,4 @@
-# Getting Started
+# 5分钟快速上手
 
 - order: 2
 

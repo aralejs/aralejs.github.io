@@ -1,6 +1,6 @@
-# 开发一个 Arale 组件
+# 开发一个 Arale 模块
 
-- order: 3
+- order: 4
 
 ---
 

@@ -1,4 +1,4 @@
-# Why Arale?
+# 关于 Arale
 
 - order: 1
 
