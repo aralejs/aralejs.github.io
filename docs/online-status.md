@@ -192,12 +192,14 @@ seajs.use(['$', 'popup'], function($, Popup){
         
         // 为了让 aralejs.org/docs/online-status.html#arale.dialog
         // 这样的链接锚点能够正确的指向
-        if (location.hash !== '') {
+        if (location.hash !== '' && $(location.hash)[0]
+            && $(location.hash).attr('highlight') !== 'true') {
             location.href = location.href;
-            $(location.hash)[0] && $(location.hash).css({
+            $(location.hash).css({
                 'background-color': '#CDEDAC',
                 'font-weight': 'bold'
             });
+            $(location.hash).attr('highlight', 'true');
         }
     }
 
