@@ -18,7 +18,7 @@ Arale 手下拥有 [popup](/popup/)、[validator](/validator/)、[position](/pos
 
 Arale 有两大帮凶，一是心狠手辣的包管理工具 [spm](https://github.com/spmjs/spm/) 管家。spm 帮助她处理打包部署等繁琐工作，让她没有后顾之忧，放心上街砍人。 spm 还精心炮制了 [源](http://modules.spmjs.org/) 服务以供 Arale 发布和管理代码，实乃黑社会管家一行业界良心。
 
-第二位是杀千刀的 [nico](https://github.com/aralejs/nico-arale/) 兄，这位兄弟擅长玩弄 Markdown 格式，帮助 Arale 用 Markdown 来起草各类文档、演示、用例，方便本地开发，生成静态站点。他打破了互联网上的文档生成旧秩序，对`写文档`和`写演示`这两位苦大仇深的人犯下了不可饶恕的罪行。
+第二位是杀千刀的 [nico](https://github.com/aralejs/nico-arale/) 兄，这位兄弟擅长玩弄 Markdown 格式，帮助 Arale 用 Markdown 来起草各类文档、演示、用例，方便本地开发，生成静态站点。他打破了互联网上的文档生成旧秩序，对 **写文档** 和 **写演示** 这两位苦大仇深的人犯下了不可饶恕的罪行。
 
 最后，最重要的是，Arale 出生和成长在开源街区中，托管在 github 上，深谙互联网的开源黑文化。都在江湖飘哪能不挨刀，Arale 会在不断的闷棍、毒镖暗器、黑吃黑、内讧、街头火并中越挫越勇，希望道上的人抬爱，给个面子，大家同舟共济。
 
