@@ -17,7 +17,7 @@
 
       var modules;
 
-      insertAraleModules(araleModules);
+      insertAraleModules(araleModules);      
 
       // 搜索组件自动完成
       var ac = new Autocomplete({
@@ -53,13 +53,6 @@
           location.href = item.url;
         }
       });
-    
-        /*
-      $('#search').focus().on('keyup', function(e) {
-        if (e.keyCode !== 38 && e.keyCode !== 40) {
-          ac.set('selectedIndex', 0);
-        }
-      });*/
 
       seajs.use(['http://aralejs.alipay.im/package.js'], function(alipayModules) {
         if (!alipayModules) {
@@ -72,14 +65,15 @@
       });
 
       function insertAraleModules(data) {
+        if ($('#module-wrapper').length === 0) {
+          return;
+        }
+
         // 按字母顺序排序
         data = data.sort(function(a, b) {
           return a.name[0] > b.name[0];
         });
 
-        if ($('#module-wrapper').length === 0) {
-          return;
-        }
         $('.modules').empty();
         for(var i=0; i<data.length; i++) {
           var item = $('<a class="module" target="_blank" href="#"></a>');
@@ -95,18 +89,18 @@
             $('.modules-' + module.tag).append(item).prev().show();
           }
         }
-        cardPopup('.module');        
+        cardPopup('.module');
         color('.module');
       }
 
       function insertAlipayModules(data) {
-        data = data.sort(function(a, b) {
-          return a.name[0] > b.name[0];
-        });
-
         if ($('#module-wrapper').length === 0) {
           return;
         }
+
+        data = data.sort(function(a, b) {
+          return a.name[0] > b.name[0];
+        });
 
         for(var i=0; i<data.length; i++) {
           var item = $('<a class="module" target="_blank" href="#"></a>');
