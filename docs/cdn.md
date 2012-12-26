@@ -1,6 +1,6 @@
 # 支付宝 cdn
 
--order: 6
+- order: 6
 
 ---
 
