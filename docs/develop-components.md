@@ -1,4 +1,4 @@
-# 开发一个 Arale 模块
+# 如何开发一个 Arale 模块
 
 - order: 4
 

@@ -1,4 +1,4 @@
-# 使用 Arale 开发项目
+# 如何使用 Arale 开发项目
 
 - order: 3
 
