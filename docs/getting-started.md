@@ -4,126 +4,81 @@
 
 ---
 
-## 快速上手
+知道了 arale 是什么
+怎么样用
+到底要怎么用 arale
 
-先来看这个[示例](http://aralejs.org/example-website/)。
+arale 与 seajs 的关系，所以要引用seajs
+如何查看组件
+如何具体使用组件
 
-上面的示例使用了 `jquery` 和 `popup` 组件，最简单的方式是使用支付宝的 CDN。
+id 规则写在那篇文档中
 
-```html
-<script charset="utf-8" id="seajsnode" 
-   src="http://static.alipayobjects.com/seajs/1.2.1/??sea.js,plugin-combo.js"></script>
-<script>
-  seajs.config({
-    alias: {
-      '$': 'gallery/jquery/1.7.2/jquery',
-      'popup': 'arale/popup/0.9.9/popup'
-    }
-  });
-  seajs.use(['$', 'popup'], function($, Popup){
-    // use jQuery and Popup
-    console.log($)
-    console.log(Popup)
-  });
-</script>
+## 先看个例子吧
+
+新建一个文件，把以下代码复制进去，然后用浏览器打开
+
+    <style>
+    .target{width:50px;height:50px;border-radius:25px;background:#000;transition:All 1s ease;-webkit-transition:All 1s ease;-moz-transition:All 1s ease;}
+    </style>
+    <script charset="utf-8" id="seajsnode" 
+       src="http://static.alipayobjects.com/seajs/1.2.1/??sea.js,plugin-combo.js"></script>
+    <script>
+      seajs.config({
+        alias: {
+          '$': 'gallery/jquery/1.7.2/jquery',
+          'position': 'arale/position/1.0.0/position'
+        }
+      });
+      seajs.use(['$', 'position'], function($, Position){
+        var stop = false;
+        var target = $('<div class="target"></div>')
+          .hover(function(){stop = true;},function(){stop = false;})
+          .appendTo(document.body);
+        setInterval(function() {
+          if (stop) return;
+          var x = Math.floor(Math.random() * 100);
+          var y = Math.floor(Math.random() * 100);
+          Position.pin(
+            { element: target, x: 'center', y: 'center' }, 
+            { element: Position.VIEWPORT, x: x + '%', y: y + '%' }
+          ); 
+        }, 800);
+      });
+    </script>
+
+    
+TODO：说明下效果
+
+## 使用 SeaJS
+
+看过 Arale 的简介，大家已经知道 Arale 是基于 SeaJS 和 CMD 进行开发的，所以使用 Arale 之前要先引入 SeaJS。SeaJS 是一个模块加载器，它会异步请求需要的模块。
+
+在这个例子里，使用了 `jquery` 和 `position` 两个组件。大家可能会注意到 `seajs.config` 的配置，是的，这就是 Arale 组件的 ID，通过这个 ID 可以找到这个组件。
+
+比如 position 的完整路径就是：
+
+```
+http://static.alipayobjects.com/arale/position/1.0.0/position.js
 ```
 
-如果想把静态文件部署到自己的服务器，可继续
+Arale 的 ID 由四部分组成：`{{root}}/{{module}}/{{version}}/{{file}}`
 
-## 安装
-
-Arale 会使用一些工具帮你完成大部分的自动化工作。
-
-### 安装 node 和 npm
-
-进入 [http://nodejs.org/#download](http://nodejs.org/#download) 下载并安装
-
-spm 使用的 `node >0.8.0`，如通过包管理工具安装需要注意。 
-
-### 安装 spm
-
-[spm](https://github.com/spmjs/spm/wiki) 为 Arale 的打包部署工具，安装如下
-
-```
-$ sudo npm install spm -g
-```
+ -  Arale 的 root 除了 arale 外还有外部引入的 [gallery](https://github.com/seajs/gallery/)，如 jquery 就属于这个 root
+ -  module 为组件的名字
+ -  version 为版本
+ -  file 为具体的文件，可以有多个，一般与组件名相同
  
-配置 Arale 的源(只读)，修改 ~/.spm/config.json 文件
+请求完成后会调用回调函数，这时就可以使用这两个组件了。
 
-```
-{"sources": ["modules.spmjs.org"]}
-```
+## 查找组件
 
-## 下载依赖
+Arale 是一个基础类库，有自己开发的组件，也有精心挑选由外部引入的组件，那如何找到这些组件呢？
 
-如上面的例子，我们需要 seajs、jquery、popup，可以通过 spm 直接下载。
+在 [Arale 首页](http://aralejs.org/)能找到这些组件，选好组件后可以[查看组件是否可用](http://aralejs.org/docs/online-status.html)。
 
-```
-$ spm install seajs@1.3.0
-$ spm install gallery.jquery@1.7.2
-$ spm install arale.popup@0.9.9
-```
+## 才刚刚开始
 
-如不加「@版本号」会下载最新版本。所有的组件都会下载到 sea-modules 目录下，目录结构为
-
-```
-sea-modules
-  | - seajs
-  |  ` - 1.3.0
-  |     ` - sea.js
-  | - gallery
-  |  ` - jquery
-  |     ` - 1.7.2
-  |        ` - jquery.js
-  | - arale
-     ` - popup
-        ` - 0.9.9
-           ` - popup.js
-```
-
-## 使用 Arale
-
-在当前目录新建页面（与 sea-modules 并列）
-
-```
- | - index.html
- ` - sea-modules
-```
-
-如下配置，将 seajs 切换到本地。
-
-```html
-<script charset="utf-8" id="seajsnode" 
-   src="sea-modules/seajs/1.3.0/sea.js"></script>
-<script>
-  seajs.config({
-    alias: {
-      '$': 'gallery/jquery/1.7.2/jquery',
-      'popup': 'arale/popup/0.9.9/popup'
-    }
-  });
-  seajs.use(['$', 'popup'], function($, Popup){
-    // use jQuery and Popup
-  });
-</script>
-```
-
-具体配置可以查看示例的[代码](https://github.com/aralejs/example-website)。
-
-## 提问？回答！
-
-如果有问题，欢迎提 issue 沟通，这种方式有很多好处
-
- -  可以详细描述问题，并且有据可循。
- 
- -  可以对版本进行管理，升级的时候能列出所有的改动点，并且改动原因。
- 
- -  可以合理安排时间，统一解决问题。
- 
-如果遇到问题，可以到组件页面点击页面左边的「讨论」链接。
-
-## 还没完
-
-上面只是简单的介绍，接下来跟我们一起[写个组件](develop-components.html)！
+现在你已经可以在你的博客、网站等各种地方使用 Arale 了，如果你有更复杂的需求可以继续跟着我们学习[如何在项目中部署](develop-in-projects.html)和[如何写组件](develop-components.html)。如果有任何问题，欢迎[提问](https://github.com/aralejs/aralejs.org/issues)。
 
 
