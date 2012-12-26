@@ -149,7 +149,7 @@ seajs.use(['$', 'popup'], function($, Popup){
             });
             s.push('</select>');
     
-            var tr = $('<tr data-name="' +  key + '" data-root="' + root + '">' +
+            var tr = $('<tr data-name="' +  key + '" data-root="' + root + '" id="' + root + '.' + key + '">' +
                 '<td class="name"><span class="face">☺</span> ' + key + '</td>' +
                 '<td class="version">' + s.join('') + '</td>' +
                 '<td class="dev status J-alipayStatus" data-status="dev"></td>' +
