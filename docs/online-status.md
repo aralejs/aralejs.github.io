@@ -149,7 +149,7 @@ seajs.use(['$', 'popup'], function($, Popup){
             });
             s.push('</select>');
     
-            var tr = $('<tr data-name="' +  key + '" data-root="' + root + '">' +
+            var tr = $('<tr data-name="' +  key + '" data-root="' + root + '" id="' + root + '-' + key + '">' +
                 '<td class="name"><span class="face">☺</span> ' + key + '</td>' +
                 '<td class="version">' + s.join('') + '</td>' +
                 '<td class="dev status J-alipayStatus" data-status="dev"></td>' +
@@ -189,6 +189,18 @@ seajs.use(['$', 'popup'], function($, Popup){
         $('#status-' + root).on('change', 'select', function() {
             testStatus(this);
         });
+        
+        // 为了让 aralejs.org/docs/online-status.html#arale.dialog
+        // 这样的链接锚点能够正确的指向
+        if (location.hash !== '' && $(location.hash)[0]
+            && $(location.hash).attr('highlight') !== 'true') {
+            location.href = location.href;
+            $(location.hash).css({
+                'background-color': '#CDEDAC',
+                'font-weight': 'bold'
+            });
+            $(location.hash).attr('highlight', 'true');
+        }
     }
 
     // 检测某个组件的版本在各环境是否存在
