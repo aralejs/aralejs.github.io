@@ -122,8 +122,10 @@
           element: '#card',
           trigger: items,
           effect: 'fade',
+          duration: 100,
+          delay: 0,
           align: {
-            baseXY: [0, -2],
+            baseXY: [0, -10],
             selfXY: [0, '100%']
           }
         });
