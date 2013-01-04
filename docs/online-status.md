@@ -42,6 +42,7 @@ table .status {width: 80px; cursor: pointer; padding: 0px 10px;}
 table .status:hover {background-color: #fff;}
 table .status span{cursor:pointer;}
 table .version{width: 180px;}
+#content table .name a {color: #6381A6;}
 #card{width:auto;}
 .face {
     font-weight: bold;
@@ -134,7 +135,7 @@ seajs.use(['$', 'popup'], function($, Popup){
     
     function createTable(data, root) {
         var table = $('<table><tr><th class="name">组件名</th><th class="version">版本</th><th class="status J-alipayStatus">开发环境</th><th class="status J-alipayStatus">测试环境</th><th class="status">线上</th></tr></table>').appendTo('#status-' + root);
-    
+
         $.each(data, function(key, value){
             var name = key;
     
@@ -148,9 +149,18 @@ seajs.use(['$', 'popup'], function($, Popup){
                 s.push('<option value="' + version + '" data-files="' + files.join(';') + '">' + version + '</option>');
             });
             s.push('</select>');
+            
+            var keylink = '';
+            if (root === 'arale') {
+                keylink = '<a href="/' + key + '/">' + key + '</a>';
+            } else if (root === 'alipay') {
+                keylink = '<a href="http://aralejs.alipay.im/' + key + '/">' + key + '</a>';
+            } else {
+                keylink = key;
+            }
     
             var tr = $('<tr data-name="' +  key + '" data-root="' + root + '" id="' + root + '-' + key + '">' +
-                '<td class="name"><span class="face">☺</span> ' + key + '</td>' +
+                '<td class="name"><span class="face">☺</span> ' + keylink + '</td>' +
                 '<td class="version">' + s.join('') + '</td>' +
                 '<td class="dev status J-alipayStatus" data-status="dev"></td>' +
                 '<td class="test status J-alipayStatus" data-status="test"></td>' +
