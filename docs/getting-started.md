@@ -66,6 +66,10 @@ Arale 是一个基础类库，有自己开发的组件，也有精心挑选由�
 
 在 [Arale 首页](http://aralejs.org/)能找到这些组件，选好组件后可以[查看组件是否可用](http://aralejs.org/docs/online-status.html)。
 
+Arale 使用了最优秀的业界组件，比如负责操作 Dom 和 Ajax 的 jQuery，负责时间日期的 MomentJS，本地存储 Store 等。如果你发现了优秀的业界模块不在其中，请告诉我们。
+
+Arale 拥有丰富使用的基础前端组件，比如负责表单校验的 Validator ，负责区块切换的 Switchable ，负责定位元素的 Positioin。如果你需要用到浮层类的组件，你可以试试基础浮层 Overlay、有触发效果的 Popup、日历组件 Calendar、自动完成 Autocomplete 等等。如果找不到你需要的组件，请联系我们进行开发。
+
 ## 才刚刚开始
 
 现在你已经可以在你的博客、网站等各种地方使用 Arale 了，如果你有更复杂的需求可以继续跟着我们学习[如何在项目中部署](develop-in-projects.html)和[如何写组件](develop-components.html)。如果有任何问题，欢迎[提问](https://github.com/aralejs/aralejs.org/issues)。
