@@ -1,6 +1,7 @@
 # 5 分钟快速上手
 
 - order: 2
+- category: arale
 
 ---
 

@@ -1,6 +1,7 @@
 # 关于 Arale
 
 - order: 1
+- category: arale
 
 ---
 

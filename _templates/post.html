@@ -20,7 +20,7 @@
     <div>
       <h2>Document</h2>
       <ol id="sidenav">
-        {%- for item in resource.pages|find_all('docs') %}
+        {%- for item in resource.pages|find_all('arale') %}
         {%- if item.filename != 'index' %}
         <li><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
         {%- endif %}
