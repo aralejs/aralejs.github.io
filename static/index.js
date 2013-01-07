@@ -2,7 +2,7 @@
   seajs.config({
     base: 'http://static.alipayobjects.com/',
     alias: {
-      'popup': 'arale/popup/0.9.11/popup',
+      'popup': 'arale/popup/0.9.12/popup',
       'autocomplete': 'arale/autocomplete/1.0.0/autocomplete',
       'placeholder': 'arale/placeholder/1.0.0/placeholder',
       'afc163': '/sea-modules/afc163'
@@ -122,15 +122,18 @@
           element: '#card',
           trigger: items,
           effect: 'fade',
+          duration: 100,
+          delay: 0,
           align: {
-            baseXY: [0, -2],
+            baseXY: [0, -10],
             selfXY: [0, '100%']
           }
         });
         popup.on('before:show', function() {
-          $('#card .card-name').html(this.activeTrigger.html());
-          $('#card .card-description').html(this.activeTrigger.data('description') || '');
-          $('#card .card-version').html(this.activeTrigger.data('version') || '');
+          var at = $(this.activeTrigger);
+          $('#card .card-name').html(at.html());
+          $('#card .card-description').html(at.data('description') || '');
+          $('#card .card-version').html(at.data('version') || '');
         });
       }
 
