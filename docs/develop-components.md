@@ -5,10 +5,13 @@
 
 ---
 
-TODO：
+### 相关文档
 
-1. 基于 widget 开发组件
-2. 写好测试用例
+1. 基于 widget 开发组件 (TODO)
+2. 写好测试用例 (TODO)
+3. [开发规范](http://aralejs.org/docs/rules.html)
+
+---
 
 这个教程会简单说明一个组件的开发流程，通过[一个示例](http://popomore.github.com/puzzle/examples/)让你有切身体会，你也可以跟着一起做哦。
 
