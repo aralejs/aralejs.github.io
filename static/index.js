@@ -2,7 +2,7 @@
   seajs.config({
     base: 'http://static.alipayobjects.com/',
     alias: {
-      'popup': 'arale/popup/0.9.12/popup',
+      'popup': 'arale/popup/0.9.13/popup',
       'autocomplete': 'arale/autocomplete/1.0.0/autocomplete',
       'placeholder': 'arale/placeholder/1.0.0/placeholder',
       'afc163': '/sea-modules/afc163'
@@ -123,7 +123,7 @@
           trigger: items,
           effect: 'fade',
           duration: 100,
-          delay: 0,
+          delay: -1,
           align: {
             baseXY: [0, -10],
             selfXY: [0, '100%']
