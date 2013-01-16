@@ -1,4 +1,4 @@
-# 如何开发一个 Arale 组件
+# 开发一个 Arale 模块
 
 - order: 4
 - category: arale
