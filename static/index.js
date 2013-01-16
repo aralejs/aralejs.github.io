@@ -5,6 +5,7 @@
       'popup': 'arale/popup/0.9.13/popup',
       'autocomplete': 'arale/autocomplete/1.0.0/autocomplete',
       'placeholder': 'arale/placeholder/1.0.0/placeholder',
+      'fixed': 'arale/fixed/1.0.0/fixed',
       'afc163': '/sea-modules/afc163'
     },
     preload: ['seajs/plugin-combo'],
@@ -12,8 +13,8 @@
   });
 
   seajs.use(
-    ['$', 'popup', 'autocomplete', 'placeholder', 'afc163/word-color/1.0.0/word-color', 'http://aralejs.org/package.js'],
-    function($, Popup, Autocomplete, Placeholder, wordColor, araleModules) {
+    ['$', 'popup', 'autocomplete', 'placeholder', 'fixed', 'afc163/word-color/1.0.0/word-color', 'http://aralejs.org/package.js'],
+    function($, Popup, Autocomplete, Placeholder, Fixed, wordColor, araleModules) {
 
       var modules;
 
@@ -53,6 +54,8 @@
           location.href = item.url;
         }
       });
+
+      Fixed('#document-wrapper');
 
       seajs.use(['http://aralejs.alipay.im/package.js'], function(alipayModules) {
         if (!alipayModules) {
