@@ -9,34 +9,35 @@
 
 新建一个文件，把以下代码复制进去，然后用浏览器打开
 
-    <style>
-    .target{width:50px;height:50px;border-radius:25px;background:#000;transition:All 1s ease;-webkit-transition:All 1s ease;-moz-transition:All 1s ease;}
-    </style>
-    <script charset="utf-8" id="seajsnode" 
-       src="http://static.alipayobjects.com/seajs/1.2.1/??sea.js,plugin-combo.js"></script>
-    <script>
-      seajs.config({
-        alias: {
-          '$': 'gallery/jquery/1.7.2/jquery',
-          'position': 'arale/position/1.0.0/position'
-        }
-      });
-      seajs.use(['$', 'position'], function($, Position){
-        var stop = false;
-        var target = $('<div class="target"></div>')
-          .hover(function(){stop = true;},function(){stop = false;})
-          .appendTo(document.body);
-        setInterval(function() {
-          if (stop) return;
-          var x = Math.floor(Math.random() * 100);
-          var y = Math.floor(Math.random() * 100);
-          Position.pin(
-            { element: target, x: 'center', y: 'center' }, 
-            { element: Position.VIEWPORT, x: x + '%', y: y + '%' }
-          ); 
-        }, 800);
-      });
-    </script>
+```html
+<style>
+.target{width:50px;height:50px;border-radius:25px;background:#000;transition:All 1s ease;-webkit-transition:All 1s ease;-moz-transition:All 1s ease;}
+</style>
+<script charset="utf-8" id="seajsnode"src="http://static.alipayobjects.com/seajs/1.2.1/??sea.js,plugin-combo.js"></script>
+<script>
+  seajs.config({
+    alias: {
+      '$': 'gallery/jquery/1.7.2/jquery',
+      'position': 'arale/position/1.0.0/position'
+    }
+  });
+  seajs.use(['$', 'position'], function($, Position){
+    var stop = false;
+    var target = $('<div class="target"></div>')
+      .hover(function(){stop = true;},function(){stop = false;})
+      .appendTo(document.body);
+    setInterval(function() {
+      if (stop) return;
+      var x = Math.floor(Math.random() * 100);
+      var y = Math.floor(Math.random() * 100);
+      Position.pin(
+        { element: target, x: 'center', y: 'center' }, 
+        { element: Position.VIEWPORT, x: x + '%', y: y + '%' }
+      ); 
+    }, 800);
+  });
+</script>
+```
 
 看到有个球在飞来飞去么，你能抓到他么？
 
