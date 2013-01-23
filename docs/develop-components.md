@@ -1,4 +1,4 @@
-# 如何开发一个 Arale 组件
+# 开发一个 Arale 模块
 
 - order: 4
 - category: arale
@@ -36,7 +36,7 @@ Arale 代码使用 git 做版本控制工具，下载地址如下
 安装文档工具，如果是 Window 用户查看[其他安装方法](https://github.com/aralejs/nico-arale#3-%E5%AE%89%E8%A3%85-arale-theme)。
 
 ```
-sudo curl https://raw.github.com/aralejs/nico-arale/master/bootstrap.sh | sh
+curl https://raw.github.com/aralejs/nico-arale/master/bootstrap.sh | sudo sh
 ```
     
 ## 初始化组件项目

@@ -26,17 +26,18 @@ a {
 }
 .main-block {
     float: left;
-    display: inline;
 }
 #module-wrapper h2 {
     display: none;
 }
 #document-wrapper {
     width: 290px;
+    margin-right:-290px;
 }
 #module-wrapper, #doc-wrapper {
     max-width: 720px;
     *width: 720px;
+    margin-left:290px;    
 }
 #doc-wrapper h1 {
     font-family: "Marcellus",sans-serif; 
