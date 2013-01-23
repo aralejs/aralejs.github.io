@@ -13,7 +13,7 @@
 
 ---
 
-这个教程会简单说明一个组件的开发流程，通过[一个示例](http://popomore.github.com/puzzle/examples/)让你有切身体会，你也可以跟着一起做哦。
+这个教程会简单说明一个组件的开发流程，通过[一个示例](http://puzzle.chuo.me/examples/)让你有切身体会，你也可以跟着一起做哦。
 
 源码地址为：[https://github.com/popomore/puzzle](https://github.com/popomore/puzzle)
 
