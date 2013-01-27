@@ -13,7 +13,7 @@
 
 ---
 
-这个教程会简单说明一个组件的开发流程，通过[一个示例](http://popomore.github.com/puzzle/examples/)让你有切身体会，你也可以跟着一起做哦。
+这个教程会简单说明一个组件的开发流程，通过[一个示例](http://puzzle.chuo.me/examples/)让你有切身体会，你也可以跟着一起做哦。
 
 源码地址为：[https://github.com/popomore/puzzle](https://github.com/popomore/puzzle)
 
@@ -36,7 +36,7 @@ Arale 代码使用 git 做版本控制工具，下载地址如下
 安装文档工具，如果是 Window 用户查看[其他安装方法](https://github.com/aralejs/nico-arale#3-%E5%AE%89%E8%A3%85-arale-theme)。
 
 ```
-sudo curl https://raw.github.com/aralejs/nico-arale/master/bootstrap.sh | sh
+curl https://raw.github.com/aralejs/nico-arale/master/bootstrap.sh | sudo sh
 ```
     
 ## 初始化组件项目
