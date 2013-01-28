@@ -35,7 +35,8 @@
           var result = [];
           $.each(data, function(index, value) {
             var temp = value.root + '.' + value.name;
-            if (temp.indexOf(query) > -1) {
+            value.description = value.description || '';
+            if (temp.indexOf(query) > -1 || value.description.indexOf(query) > -1) {
               result.push({matchKey: temp, url: value.homepage});
             }
           });
