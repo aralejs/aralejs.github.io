@@ -36,7 +36,9 @@
           $.each(data, function(index, value) {
             var temp = value.root + '.' + value.name;
             value.description = value.description || '';
-            if (temp.indexOf(query) > -1 || value.description.indexOf(query) > -1) {
+            if (temp.indexOf(query) > -1) {
+              result.unshift({matchKey: temp, url: value.homepage});
+            } else if (value.description.indexOf(query) > -1) {
               result.push({matchKey: temp, url: value.homepage});
             }
           });
