@@ -59,8 +59,18 @@ Arale 的 ID 由四部分组成：`{{root}}/{{module}}/{{version}}/{{file}}`
  -  module 为组件的名字
  -  version 为版本
  -  file 为具体的文件，可以有多个，一般与组件名相同
- 
-请求完成后会调用回调函数，这时就可以使用这两个组件了。
+
+当你拿到上面的 ID 后，就可以直接用 `seajs.use` 来使用这个模块了。
+
+````js
+seajs.use(['arale/position/1.0.0/position'], function(Position) {
+    // use Position ...
+});
+````
+
+当然老这么写全 ID 会比较麻烦，这时你可以用 seajs.config 中的 alias 属性来统一配置别名（像最开始的代码里那样做）。
+
+这样就可以直接 `seajs.use(['position'])` 了，请求完成后会调用回调函数，这时就可以使用这两个组件了。
 
 ## 查找组件
 
