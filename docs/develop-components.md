@@ -41,6 +41,14 @@ curl https://raw.github.com/aralejs/nico-arale/master/bootstrap.sh | sudo sh
 
 如出现错误可先查看是否配置了 `PATH` 和 `NODE_PATH`，可以用 [nvm](https://github.com/creationix/nvm) 做 node 管理。
 
+### spm
+
+安装 spm，查看[其他方式](https://github.com/spmjs/spm/wiki/%E5%AE%89%E8%A3%85)安装
+
+```
+npm install spm -g
+```
+
 ## 初始化组件项目
 
 组件和目录的名称要符合 [a-z\d-]，并以英文字母开头，首选合适的英文单词，**禁止使用驼峰**。
