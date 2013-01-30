@@ -60,7 +60,7 @@ Arale 的 ID 由四部分组成：`{{root}}/{{module}}/{{version}}/{{file}}`
  -  version 为版本
  -  file 为具体的文件，可以有多个，一般与组件名相同
 
-当你拿到上面的 ID 后，就可以直接用 `seajs.use` 来使用这个模块了。
+这个 ID 和 seajs 的所在路径拼合后就是模块文件的具体地址了。当你拿到上面的 ID 后，就可以直接用 `seajs.use` 来使用这个模块了。
 
 ````js
 seajs.use(['arale/position/1.0.0/position'], function(Position) {
