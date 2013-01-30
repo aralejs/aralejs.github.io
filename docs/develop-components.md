@@ -217,6 +217,9 @@ $ spm build
 $ spm upload
 ```
 
+部署到服务器，请参见 [spm-deploy](https://github.com/spmjs/spm/wiki/spm-deploy)。
 
-
+```
+$ spm deploy
+```
 

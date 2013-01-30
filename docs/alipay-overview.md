@@ -9,7 +9,7 @@
 
 ## 支付宝内部源
 
-支付宝内部统一使用内部源，有很多内部定制的功能，编辑 `~/.spm/config.json`。
+支付宝内部统一使用内部源，有很多内部定制的功能，编辑 `vi ~/.spm/config.json`。
 
 ```
 {
@@ -67,13 +67,13 @@ seajs.use('alipay/xbox/0.9.8/xbox', function(Xbox) {
 
 ## 开发 alipay 组件
 
-alipay 组件存放在 http://git.alipay.im 下，先到这里创建一个库，命名要加 alipay_ 前缀。
+alipay 组件存放在 http://git.alipay.im/ 下，先到这里创建一个库，命名要加 `alipay.` 前缀。
 
 根据[组件编写文档](./develop-components.html)进行开发。
 
 **注意：** root 要配成 alipay。
 
-开发完成后可以通过 `spm deploy --to dev` 部署到 assets 服务器，`dev` 是对应的坑位。详细查看 [spm deploy 文档](https://github.com/spmjs/spm/wiki/spm-deploy)
+开发完成后可以通过 `spm deploy --to=dev` 部署到 assets 服务器，`dev` 是对应的坑位。详细查看 [spm deploy 文档](https://github.com/spmjs/spm/wiki/spm-deploy)
 
 如果有多个项目需要使用，要建个任务单发布到 test 环境，test 环境会定时同步到所有的开发环境。
 
