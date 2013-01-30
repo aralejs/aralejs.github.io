@@ -21,6 +21,10 @@
 
 首先需要[安装 spm](https://github.com/spmjs/spm/wiki/%E5%AE%89%E8%A3%85)。
 
+```
+npm install spm -g
+```
+
 ### git
 
 Arale 代码使用 git 做版本控制工具，下载地址如下
@@ -40,14 +44,6 @@ curl https://raw.github.com/aralejs/nico-arale/master/bootstrap.sh | sudo sh
 ```
 
 如出现错误可先查看是否配置了 `PATH` 和 `NODE_PATH`，可以用 [nvm](https://github.com/creationix/nvm) 做 node 管理。
-
-### spm
-
-安装 spm，查看[其他方式](https://github.com/spmjs/spm/wiki/%E5%AE%89%E8%A3%85)安装
-
-```
-npm install spm -g
-```
 
 ## 初始化组件项目
 
