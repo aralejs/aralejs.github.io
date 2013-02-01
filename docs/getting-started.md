@@ -59,8 +59,18 @@ Arale 的 ID 由四部分组成：`{{root}}/{{module}}/{{version}}/{{file}}`
  -  module 为组件的名字
  -  version 为版本
  -  file 为具体的文件，可以有多个，一般与组件名相同
- 
-请求完成后会调用回调函数，这时就可以使用这两个组件了。
+
+这个 ID 和 seajs 的所在路径拼合后就是模块文件的具体地址了。当你拿到上面的 ID 后，就可以直接用 `seajs.use` 来使用这个模块了。
+
+````js
+seajs.use(['arale/position/1.0.0/position'], function(Position) {
+    // use Position ...
+});
+````
+
+当然老这么写全 ID 会比较麻烦，这时你可以用 seajs.config 中的 alias 属性来统一配置别名（像最开始的代码里那样做）。
+
+这样就可以直接 `seajs.use(['position'])` 了，请求完成后会调用回调函数，这时就可以使用这两个组件了。
 
 ## 查找组件
 
@@ -74,6 +84,6 @@ Arale 拥有丰富使用的基础前端组件，比如负责表单校验的 Vali
 
 ## 才刚刚开始
 
-现在你已经可以在你的博客、网站等各种地方使用 Arale 了，如果你有更复杂的需求可以继续跟着我们学习[如何在项目中部署](develop-in-projects.html)和[如何写组件](develop-components.html)。如果有任何问题，欢迎[提问](https://github.com/aralejs/aralejs.org/issues)。
+现在你已经可以在你的博客、网站等各种地方使用 Arale 了，如果你有更复杂的需求可以继续跟着我们学习[如何写组件](develop-components.html)。如果有任何问题，欢迎[提问](https://github.com/aralejs/aralejs.org/issues)。
 
 
