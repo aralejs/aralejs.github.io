@@ -141,7 +141,18 @@ popup:
 $ spm install
 ```
 
-修改 `src/puzzle.js` 进行开发，启服务进行调试
+修改 `src/puzzle.js` 进行开发
+
+```
+define(function(require, exports, module) {
+  var popup = require('popup'),
+    $ = require('$');
+  var puzzle = function(){};
+  module.exports = puzzle;
+});
+```
+
+启服务进行调试
 
 ```
 $ make debug
