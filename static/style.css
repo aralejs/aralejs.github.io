@@ -121,10 +121,21 @@ a {
     width: 115px;
     border-left: 3px solid #B4D0EE;
     font-family: tahoma;
+    overflow: hidden;
+    position: relative;
 }
 .module:hover {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
     color: #6C97C2;    
+}
+
+.module img {
+    height: 13px;
+    left: 74px;
+    position: absolute;
+    top: -20px;
+    transform: rotate(45deg);
+    width: 80px;
 }
 
 #card {
