@@ -136,6 +136,7 @@ a {
     top: -20px;
     transform: rotate(45deg);
     width: 80px;
+    opacity: 0.7;
 }
 
 #card {
