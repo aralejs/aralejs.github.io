@@ -94,7 +94,11 @@
             $('.modules-gallery').append(item).prev().show();
           } else {
             item.append('<img alt="Build Status" src="https://secure.travis-ci.org/aralejs/' + item.html() + '.png">');
-            $('.modules-' + module.tag).append(item).prev().show();
+            if (module.tag) {
+                $('.modules-' + module.tag).append(item).prev().show();
+            } else if (module.keywords) {
+                $('.modules-' + module.keywords[0]).append(item).prev().show();                
+            }
           }
         }
         cardPopup('.module');
