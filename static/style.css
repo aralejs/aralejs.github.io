@@ -214,3 +214,16 @@ a {
     color:rgba(255,0,0,0.5);
     text-shadow:1px 1px 2px #fff,0 0 0 #aaa,1px 1px 2px #fff;
 }
+
+/* responsive */
+@media (max-width: 980px) {
+    #document-wrapper {
+        float: none;
+        position: static!important;
+    }
+    #module-wrapper {
+        margin-left: 0;
+        border-top: 1px dashed #999;
+        margin-top: 20px;
+    }
+}
