@@ -31,9 +31,9 @@ Arale 有两大帮凶，一是心狠手辣的包管理工具 [spm](https://githu
 
 - [Arale 项目文档](https://github.com/aralejs/aralejs.org/wiki)
 
-- [spm](https://github.com/spmjs/spm/)
+- [spm](https://github.com/spmjs/spm/) - cmd 包管理工具
 
-- [nico](http://lab.lepture.com/nico/)
+- [nico](http://lab.lepture.com/nico/) - 文档生成工具
 
 - [Arale 背后的一些设计理念](https://github.com/lifesinger/lifesinger.github.com/issues/106)
 
