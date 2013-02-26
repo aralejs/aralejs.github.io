@@ -8,7 +8,7 @@
 ### 相关文档
 
 1. 基于 widget 开发组件 (TODO)
-2. 写好测试用例 (TODO)
+2. [测试解决方案](https://github.com/alipay/totoro/wiki)
 3. [开发规范](http://aralejs.org/docs/rules.html)
 
 ---
@@ -178,7 +178,7 @@ nico 支持 livereload，只要通过 `make debug` 或 `make watch` 启动服务
 
 ## 编写测试用例
 
-Arale 提供 [mocha](https://github.com/visionmedia/mocha) 作为测试框架，开发者只要关注如何写好测试用例。
+Arale 提供 [mocha](https://github.com/alipay/totoro/wiki/mocha) 作为测试框架，开发者只要关注如何写好测试用例。
 
 修改 `package.json` 配置哪些文件需要测试，通过 **命名 + '-spec.js'** 拼装去找文件。
 
@@ -187,6 +187,8 @@ Arale 提供 [mocha](https://github.com/visionmedia/mocha) 作为测试框架，
 ```
 
 修改 `tests/puzzle-spec.js` 文件，开始写测试用例，可以直接看[示例](https://github.com/popomore/puzzle/blob/master/tests/puzzle-spec.js)。
+
+[详细文档请看](https://github.com/alipay/totoro/wiki/unit-testing-quick-start)
 
 访问 [http://127.0.0.1:8000/tests/runner.html](http://127.0.0.1:8000/tests/runner.html) 查看是否正确。
 
