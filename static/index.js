@@ -86,13 +86,19 @@
           var module = data[i];
           item.html(module.name)
           .attr('href', '/' + module.name + '/')
+          .data('name', module.name)
           .data('description', module.description)
           .data('version', module.version);
           if (module.root === 'gallery') {
             item.attr('href', module.homepage);
             $('.modules-gallery').append(item).prev().show();
           } else {
-            $('.modules-' + module.tag).append(item).prev().show();
+            item.append('<img alt="Build Status" src="https://secure.travis-ci.org/aralejs/' + item.html() + '.png">');
+            if (module.tag) {
+                $('.modules-' + module.tag).append(item).prev().show();
+            } else if (module.keywords) {
+                $('.modules-' + module.keywords[0]).append(item).prev().show();                
+            }
           }
         }
         cardPopup('.module');
@@ -131,13 +137,13 @@
           duration: 100,
           delay: -1,
           align: {
-            baseXY: [0, -10],
+            baseXY: [0, -5],
             selfXY: [0, '100%']
           }
         });
         popup.on('before:show', function() {
           var at = $(this.activeTrigger);
-          $('#card .card-name').html(at.html());
+          $('#card .card-name').html(at.data('name'));
           $('#card .card-description').html(at.data('description') || '');
           $('#card .card-version').html(at.data('version') || '');
         });

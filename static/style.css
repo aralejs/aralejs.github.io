@@ -42,10 +42,15 @@ a {
 #doc-wrapper h1 {
     font-family: "Marcellus",sans-serif; 
 }
-#title {
+#title a {
     font-family: "Marcellus",sans-serif;
     font-size: 36px;
     margin: 20px 0;
+    transition: all 0.6s ease;
+}
+#title a:hover {
+    color: transparent;
+    text-shadow: 0 0 3px #6C97C2;
 }
 #description {
     color: #888;
@@ -121,10 +126,22 @@ a {
     width: 115px;
     border-left: 3px solid #B4D0EE;
     font-family: tahoma;
+    overflow: hidden;
+    position: relative;
 }
 .module:hover {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
     color: #6C97C2;    
+}
+
+.module img {
+    height: 13px;
+    left: 74px;
+    position: absolute;
+    top: -20px;
+    transform: rotate(45deg);
+    width: 80px;
+    opacity: 0.7;
 }
 
 #card {
@@ -196,4 +213,17 @@ a {
     color:#FE7E7E;
     color:rgba(255,0,0,0.5);
     text-shadow:1px 1px 2px #fff,0 0 0 #aaa,1px 1px 2px #fff;
+}
+
+/* responsive */
+@media (max-width: 980px) {
+    #document-wrapper {
+        float: none;
+        position: static!important;
+    }
+    #module-wrapper {
+        margin-left: 0;
+        border-top: 1px dashed #999;
+        margin-top: 20px;
+    }
 }

@@ -5,9 +5,9 @@
 
 ---
 
-Arale 是支付宝的前端解决方案，基于 [SeaJS](http://seajs.org/) 
-和 [CMD](https://github.com/seajs/seajs/issues/242) 规范，
-是一个开放、简单、易用的前端基础类库。
+Arale 立足于支付宝的前端需求和国内前端社区，基于 [SeaJS](http://seajs.org/) 
+和 [CMD](https://github.com/seajs/seajs/issues/242) 规范，建立了一套从编码测试到部署的开发体系，
+是一个开放、简单、易用的前端解决方案。
 
 ## 简介
 
@@ -31,7 +31,11 @@ Arale 有两大帮凶，一是心狠手辣的包管理工具 [spm](https://githu
 
 - [Arale 项目文档](https://github.com/aralejs/aralejs.org/wiki)
 
-- [spm](https://github.com/spmjs/spm/)
+- [spm](https://github.com/spmjs/spm/) - cmd 包管理工具
 
-- [nico](http://lab.lepture.com/nico/)
+- [nico](http://lab.lepture.com/nico/) - 文档生成工具
+
+- [Arale 背后的一些设计理念](https://github.com/lifesinger/lifesinger.github.com/issues/106)
+
+- [Arale 和 SeaJS 的关系](http://www.zhihu.com/question/20651072)
 
