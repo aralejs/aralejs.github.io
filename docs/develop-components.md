@@ -236,3 +236,36 @@ $ spm upload
 $ spm deploy
 ```
 
+## 部署组件文档
+
+Arale 组件的文档地址为 http://aralejs.org/{{模块名}}，
+开发完毕后请 push 到 https://github.com/aralejs 下，并绑定 hook 为
+http://aralejs.org/-update/{{模块名}} 。这样只要 push 后文档会自动更新到位。
+
+其他组件的文档地址在内网：http://aralejs.org/{{模块root}}/{{模块名}}，比如
+`alipay.xbox` 的文档地址为 `http://arale.alipay.im/alipay/xbox/` 。
+
+开发完组件后，只需要把目录下的`Makefile`中的`make publish`这段换成如下代码：
+
+```
+name = `cat package.json | grep name | awk -F'"' '{print $$4}'`
+root = `cat package.json | grep root | awk -F'"' '{print $$4}'`
+html = _site
+tmpfile = tmp.tar.gz
+publish:
+	@git pull origin master
+	@nico build -v -C $(THEME)/nico.js
+	@rm -f ${tmpfile}
+	@tar --exclude='.git/*' -czf ${tmpfile} ${html}
+	@curl -F name=${root}/${name} -F file=@${tmpfile} http://site.alipay.im/repository/upload/arale
+	@rm -f ${tmpfile}
+```
+
+然后使用如下命名就可以把文档部署到对应地址了。
+
+```
+$ make publish
+```
+
+> 注意，Makefile文件 的缩进一律用 Tab，否则会报错。
+
