@@ -60,7 +60,7 @@
 
       Fixed('#document-wrapper');
 
-      seajs.use(['http://aralejs.alipay.im/package.js'], function(alipayModules) {
+      $.get('http://arale.alipay.im/repository/arale/alipay.json?callback=?', function(alipayModules) {
         if (!alipayModules) {
           return;
         }
@@ -68,7 +68,7 @@
         modules = araleModules.concat(alipayModules);
 
         $('#J-alipay').show();
-      });
+      }, 'jsonp');
 
       function insertAraleModules(data) {
         if ($('#module-wrapper').length === 0) {
@@ -92,7 +92,7 @@
           if (module.root === 'gallery') {
             item.attr('href', module.homepage);
             $('.modules-gallery').append(item).prev().show();
-          } else {
+          } else if (module.root === 'arale') {
             item.append('<img alt="Build Status" src="https://secure.travis-ci.org/aralejs/' + item.html() + '.png">');
             if (module.tag) {
                 $('.modules-' + module.tag).append(item).prev().show();
@@ -119,6 +119,7 @@
           item.html(data[i].name)
           .attr('href', 'http://aralejs.alipay.im/' + data[i].name + '/')
           .data('description', data[i].description || '暂无描述')
+          .data('name', data[i].name)
           .data('version', data[i].version);
 
           $('.modules-alipay').append(item);
