@@ -34,7 +34,7 @@
         filter: function(data, query) {
           var result = [];
           $.each(data, function(index, value) {
-            var temp = value.root + '.' + value.name;
+            var temp = (value.root||value.family) + '.' + value.name;
             value.description = value.description || '';
             if (temp.indexOf(query) > -1) {
               result.unshift({matchKey: temp, url: value.homepage});
@@ -84,15 +84,16 @@
         for(var i=0; i<data.length; i++) {
           var item = $('<a class="module" target="_blank" href="#"></a>');
           var module = data[i];
+          var root = module.root || module.family;
           item.html(module.name)
           .attr('href', '/' + module.name + '/')
           .data('name', module.name)
           .data('description', module.description)
           .data('version', module.version);
-          if (module.root === 'gallery') {
+          if (root === 'gallery') {
             item.attr('href', module.homepage);
             $('.modules-gallery').append(item).prev().show();
-          } else if (module.root === 'arale') {
+          } else if (root === 'arale') {
             item.append('<img alt="Build Status" src="https://secure.travis-ci.org/aralejs/' + item.html() + '.png">');
             if (module.tag) {
                 $('.modules-' + module.tag).append(item).prev().show();
