@@ -1,6 +1,6 @@
 # 模块线上状态
 
-- order: 8
+- order: 5
 - category: arale
 
 --------------
