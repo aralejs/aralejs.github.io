@@ -13,7 +13,7 @@
 
 ```
 {
-  "sources": ["modules.alipay.im"]
+  "sources": ["modules.alipay.im:7000"]
 }
 ```
 
@@ -22,7 +22,7 @@
 在所有的 `head.vm` 文件部署 seajs，部署 seajs 的 cms 为 `alipay/tracker/seajs.vm`，你只要确定系统中是否已经存在这个区域。
 
     <script charset="utf-8" id="seajsnode" 
-        src="https://a.alipayobjects.com/seajs/1.2.1/??sea.js,plugin-combo.js"></script>
+        src="https://a.alipayobjects.com/seajs/1.3.1/??sea.js,plugin-combo.js"></script>
     <script>
         seajs.config({
             alias: {
@@ -94,4 +94,11 @@ $ svn propset svn:ignore 'sea-modules' ./
 ```
 
 其他可以参考 alipay 组件开发。
+
+## 组件发布
+
+组件的发布是通过研发平台的，本地将代码打包成 zip 后上传。
+
+通过 `spm build --zip` 打包，zip 包里面的目录不包括 root，所以研发平台应该在 alipay 那一级上传。
+
 
