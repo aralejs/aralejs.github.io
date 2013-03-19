@@ -118,7 +118,7 @@
         for(var i=0; i<data.length; i++) {
           var item = $('<a class="module" target="_blank" href="#"></a>');
           item.html(data[i].name)
-          .attr('href', 'http://arale.alipay.im/' + data[i].root + '/' + data[i].name + '/')
+          .attr('href', 'http://arale.alipay.im/' + (data[i].root || data[i].family) + '/' + data[i].name + '/')
           .data('description', data[i].description || '暂无描述')
           .data('name', data[i].name)
           .data('version', data[i].version);
