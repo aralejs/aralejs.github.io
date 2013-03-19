@@ -60,7 +60,7 @@
 
       Fixed('#document-wrapper');
 
-      $.get('http://arale.alipay.im/repository/alipay.json?callback=?', function(alipayModules) {
+      $.get('http://arale.alipay.im/repository/alipay/packages.json?callback=?', function(alipayModules) {
         if (!alipayModules) {
           return;
         }
