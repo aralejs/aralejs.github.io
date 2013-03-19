@@ -52,7 +52,7 @@
         if (value[0] === 'arale') {
           location.href = '/' + value[1];
         } else if (value[0] === 'alipay') {
-          location.href = 'http://aralejs.alipay.im/' + value[1];
+          location.href = 'http://arale.alipay.im/alipay/' + value[1];
         } else {
           location.href = item.url;
         }
