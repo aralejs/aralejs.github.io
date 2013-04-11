@@ -248,8 +248,8 @@ http://aralejs.org/-update/{{模块名}} 。这样只要 push 后文档会自动
 开发完组件后，只需要把目录下的`Makefile`中的`make publish`这段换成如下代码：
 
 ```
-name = `cat package.json | grep name | awk -F'"' '{print $$4}'`
-root = `cat package.json | grep root | awk -F'"' '{print $$4}'`
+name = `cat package.json | grep \"name\" | awk -F'"' '{print $$4}'`
+root = `cat package.json | grep \"root\" | awk -F'"' '{print $$4}'`
 html = _site
 tmpfile = tmp.tar.gz
 publish:
@@ -257,7 +257,7 @@ publish:
 	@nico build -v -C $(THEME)/nico.js
 	@rm -f ${tmpfile}
 	@tar --exclude='.git/*' -czf ${tmpfile} ${html}
-	@curl -F name=${root}/${name} -F file=@${tmpfile} http://site.alipay.im/repository/upload/arale
+	@curl -F name=${name} -F file=@${tmpfile} http://arale.alipay.im/repository/upload/${root}
 	@rm -f ${tmpfile}
 ```
 

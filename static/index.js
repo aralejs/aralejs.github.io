@@ -52,7 +52,7 @@
         if (value[0] === 'arale') {
           location.href = '/' + value[1];
         } else if (value[0] === 'alipay') {
-          location.href = 'http://aralejs.alipay.im/' + value[1];
+          location.href = 'http://arale.alipay.im/alipay/' + value[1];
         } else {
           location.href = item.url;
         }
@@ -60,7 +60,7 @@
 
       Fixed('#document-wrapper');
 
-      $.get('http://arale.alipay.im/repository/arale/alipay.json?callback=?', function(alipayModules) {
+      $.get('http://arale.alipay.im/repository/alipay/packages.json?callback=?', function(alipayModules) {
         if (!alipayModules) {
           return;
         }
@@ -118,7 +118,7 @@
         for(var i=0; i<data.length; i++) {
           var item = $('<a class="module" target="_blank" href="#"></a>');
           item.html(data[i].name)
-          .attr('href', 'http://arale.alipay.im/' + data[i].root + '/' + data[i].name + '/')
+          .attr('href', 'http://arale.alipay.im/' + (data[i].root || data[i].family) + '/' + data[i].name + '/')
           .data('description', data[i].description || '暂无描述')
           .data('name', data[i].name)
           .data('version', data[i].version);
