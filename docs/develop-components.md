@@ -22,7 +22,7 @@
 首先需要[安装 spm](https://github.com/spmjs/spm/wiki/%E5%AE%89%E8%A3%85)。
 
 ```
-npm install spm -g
+npm install spm@1.7.7 -g
 ```
 
 ### git
