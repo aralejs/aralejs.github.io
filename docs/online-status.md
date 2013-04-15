@@ -52,7 +52,7 @@ table .version{width: 180px;}
 }
 </style>
 
-<script>
+`````js
 seajs.config({
     alias: {
         'status-arale': 'http://aralejs.org/status-arale.js',
@@ -267,5 +267,4 @@ seajs.use(['$', 'popup'], function($, Popup){
         }
     }
 });
-
-</script>
+`````
