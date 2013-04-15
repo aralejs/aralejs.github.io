@@ -1,6 +1,6 @@
 {%- extends "layout.html" %}
 
-{%- block title -%}{{config.package.name|title}} - {{post.title}}{%- endblock -%}
+{%- block title -%}{{config.package.title|title}} - {{post.title}}{%- endblock -%}
 
 {%- block afterstyle %}
 <link rel="stylesheet" href="{{static_url('style.css')}}" />
@@ -8,9 +8,9 @@
 {%- endblock %}
 
 {% block body %}
-<div id="title-wrapper">            
+<div id="title-wrapper">
   <h1 id="title" class="inline">
-    <a href="{{content_url('index.html')}}">{{config.package.name|title}}</a>
+    <a href="{{content_url('index.html')}}">{{config.package.title|title}}</a>
   </h1>
   <input type="text" class="inline" id="search" placeholder="搜索 Arale 模块">
   <p id="description">{{config.package.description}}</p>
@@ -20,7 +20,7 @@
     <div>
       <h2>Document</h2>
       <ol id="sidenav">
-        {%- for item in resource.pages|find_all('arale') %}
+        {%- for item in resource.pages|find_category('arale') %}
         {%- if item.filename != 'index' %}
         <li><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
         {%- endif %}
@@ -31,7 +31,7 @@
     <div style="display:none" id="J-alipay">
       <h2>Alipay</h2>
       <ol id="sidenav">
-        {%- for item in resource.pages|find_all('alipay') %}
+        {%- for item in resource.pages|find_category('alipay') %}
         {%- if item.filename != 'index' %}
         <li><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
         {%- endif %}
