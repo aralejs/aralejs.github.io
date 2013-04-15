@@ -1,8 +1,10 @@
-seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color'], function($, Popup, Placeholder, Fixed, wordColor) {
+seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], function($, Popup, Placeholder, Fixed, wordColor, Autocomplete) {
 
 
   Fixed('#document-wrapper');
   cardPopup('.module');
+
+  var modules = [];
 
   var urls = [
     'http://spmjs.org/repository/arale/?define',
@@ -11,6 +13,8 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color'], function($, Popu
 
   seajs.use(urls, function(arale, gallery) {
     $('.modules-utility').empty();
+    modules = modules.concat(arale);
+    modules = modules.concat(gallery);
 
     insertModules(arale);
     insertModules(gallery);
@@ -19,6 +23,7 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color'], function($, Popu
 
   seajs.use('http://arale.alipay.im/repository/alipay/packages.json?callback=define', function(alipay) {
     if (alipay) {
+      modules = modules.concat(alipay);
       insertModules(alipay);
       color('.module');
     }
@@ -108,18 +113,11 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color'], function($, Popu
     return rgb.replace('rgb', 'rgba').replace(')', ',' + opacity + ')');
   }
 
-  return;
-
-  // TODO
   var ac = new Autocomplete({
     trigger: '#search',
     selectFirst: true,
     dataSource: function() {
-      if (modules) {
-        this.trigger('data', modules);
-      } else {
-        this.trigger('data', araleModules);
-      }
+      this.trigger('data', modules);
     },
     filter: function(data, query) {
       var result = [];
