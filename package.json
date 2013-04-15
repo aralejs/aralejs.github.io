@@ -14,7 +14,7 @@
   },
   "spm": {
     "alias": {
-      "popup": "arale/popup/1.0.1/popup",
+      "popup": "arale/popup/1.0.2/popup",
       "autocomplete": "arale/autocomplete/1.2.1/autocomplete",
       "placeholder": "arale/placeholder/1.0.1/placeholder",
       "fixed": "arale/fixed/1.0.1/fixed",
