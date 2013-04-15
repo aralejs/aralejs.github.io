@@ -12,7 +12,11 @@ server:
 watch:
 	@nico server -C $(THEME)/nico.js --watch
 
-publish-doc: clean build-doc
+status:
+	@spm status arale -O _site/status-arale.js
+	@spm status arale -O _site/status-gallery.js
+
+publish-doc: clean build-doc status
 	@rm -fr _site/sea-modules
 	@spm publish --doc _site
 
