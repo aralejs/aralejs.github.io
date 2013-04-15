@@ -1,6 +1,6 @@
 # 模块线上状态
 
-- order: 9
+- order: 5
 - category: arale
 
 --------------
@@ -56,10 +56,10 @@ table .version{width: 180px;}
 seajs.config({
     alias: {
         'status-arale': 'http://aralejs.org/status-arale.js',
-        'status-arale-dev': 'http://aralejs.alipay.im/status-arale.js',
+        'status-arale-dev': 'http://arale.alipay.im/status-arale.js',
         'status-gallery': 'http://aralejs.org/status-gallery.js',
-        'status-gallery-dev': 'http://aralejs.alipay.im/status-gallery.js',
-        'status-alipay': 'http://aralejs.alipay.im/status-alipay.js'
+        'status-gallery-dev': 'http://arale.alipay.im/status-gallery.js',
+        'status-alipay': 'http://arale.alipay.im/status-alipay.js'
     }
 });
 
@@ -155,7 +155,7 @@ seajs.use(['$', 'popup'], function($, Popup){
             if (root === 'arale') {
                 keylink = '<a href="/' + key + '/">' + key + '</a>';
             } else if (root === 'alipay') {
-                keylink = '<a href="http://aralejs.alipay.im/' + key + '/">' + key + '</a>';
+                keylink = '<a href="http://arale.alipay.im/' + root + '/' + key + '/">' + key + '</a>';
             } else {
                 keylink = key;
             }

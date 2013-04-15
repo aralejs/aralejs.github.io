@@ -8,18 +8,22 @@
 ### 相关文档
 
 1. 基于 widget 开发组件 (TODO)
-2. 写好测试用例 (TODO)
+2. [测试解决方案](https://github.com/alipay/totoro/wiki)
 3. [开发规范](http://aralejs.org/docs/rules.html)
 
 ---
 
-这个教程会简单说明一个组件的开发流程，通过[一个示例](http://popomore.github.com/puzzle/examples/)让你有切身体会，你也可以跟着一起做哦。
+这个教程会简单说明一个组件的开发流程，通过[一个示例](http://puzzle.chuo.me/examples/)让你有切身体会，你也可以跟着一起做哦。
 
 源码地址为：[https://github.com/popomore/puzzle](https://github.com/popomore/puzzle)
 
 ## 安装
 
 首先需要[安装 spm](https://github.com/spmjs/spm/wiki/%E5%AE%89%E8%A3%85)。
+
+```
+npm install spm@1.7.7 -g
+```
 
 ### git
 
@@ -38,7 +42,9 @@ Arale 代码使用 git 做版本控制工具，下载地址如下
 ```
 curl https://raw.github.com/aralejs/nico-arale/master/bootstrap.sh | sudo sh
 ```
-    
+
+如出现错误可先查看是否配置了 `PATH` 和 `NODE_PATH`，可以用 [nvm](https://github.com/creationix/nvm) 做 node 管理。
+
 ## 初始化组件项目
 
 组件和目录的名称要符合 [a-z\d-]，并以英文字母开头，首选合适的英文单词，**禁止使用驼峰**。
@@ -135,7 +141,18 @@ popup:
 $ spm install
 ```
 
-修改 `src/puzzle.js` 进行开发，启服务进行调试
+修改 `src/puzzle.js` 进行开发
+
+```
+define(function(require, exports, module) {
+  var popup = require('popup'),
+    $ = require('$');
+  var puzzle = function(){};
+  module.exports = puzzle;
+});
+```
+
+启服务进行调试
 
 ```
 $ make debug
@@ -161,7 +178,7 @@ nico 支持 livereload，只要通过 `make debug` 或 `make watch` 启动服务
 
 ## 编写测试用例
 
-Arale 提供 [mocha](https://github.com/visionmedia/mocha) 作为测试框架，开发者只要关注如何写好测试用例。
+Arale 提供 [mocha](https://github.com/alipay/totoro/wiki/mocha) 作为测试框架，开发者只要关注如何写好测试用例。
 
 修改 `package.json` 配置哪些文件需要测试，通过 **命名 + '-spec.js'** 拼装去找文件。
 
@@ -170,6 +187,8 @@ Arale 提供 [mocha](https://github.com/visionmedia/mocha) 作为测试框架，
 ```
 
 修改 `tests/puzzle-spec.js` 文件，开始写测试用例，可以直接看[示例](https://github.com/popomore/puzzle/blob/master/tests/puzzle-spec.js)。
+
+[详细文档请看](https://github.com/alipay/totoro/wiki/unit-testing-quick-start)
 
 访问 [http://127.0.0.1:8000/tests/runner.html](http://127.0.0.1:8000/tests/runner.html) 查看是否正确。
 
@@ -211,6 +230,42 @@ $ spm build
 $ spm upload
 ```
 
+部署到服务器，请参见 [spm-deploy](https://github.com/spmjs/spm/wiki/spm-deploy)。
 
+```
+$ spm deploy
+```
 
+## 部署组件文档
+
+Arale 组件的文档地址为 aralejs.org/{{模块名}}，
+开发完毕后请 push 到 https://github.com/aralejs 下，并绑定 hook 为
+http://aralejs.org/-update/{{模块名}} 。这样只要 push 后文档会自动更新到位。
+
+其他组件的文档地址在内网：arale.alipay.im/{{模块root}}/{{模块名}}，比如
+`alipay.xbox` 的文档地址为 `http://arale.alipay.im/alipay/xbox/` 。
+
+开发完组件后，只需要把目录下的`Makefile`中的`make publish`这段换成如下代码：
+
+```
+name = `cat package.json | grep \"name\" | awk -F'"' '{print $$4}'`
+root = `cat package.json | grep \"root\" | awk -F'"' '{print $$4}'`
+html = _site
+tmpfile = tmp.tar.gz
+publish:
+	@git pull origin master
+	@nico build -v -C $(THEME)/nico.js
+	@rm -f ${tmpfile}
+	@tar --exclude='.git/*' -czf ${tmpfile} ${html}
+	@curl -F name=${name} -F file=@${tmpfile} http://arale.alipay.im/repository/upload/${root}
+	@rm -f ${tmpfile}
+```
+
+然后使用如下命名就可以把文档部署到对应地址了。
+
+```
+$ make publish
+```
+
+> 注意，Makefile文件 的缩进一律用 Tab，否则会报错。
 

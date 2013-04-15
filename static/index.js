@@ -34,8 +34,11 @@
         filter: function(data, query) {
           var result = [];
           $.each(data, function(index, value) {
-            var temp = value.root + '.' + value.name;
+            var temp = (value.root||value.family) + '.' + value.name;
+            value.description = value.description || '';
             if (temp.indexOf(query) > -1) {
+              result.unshift({matchKey: temp, url: value.homepage});
+            } else if (value.description.indexOf(query) > -1) {
               result.push({matchKey: temp, url: value.homepage});
             }
           });
@@ -49,7 +52,7 @@
         if (value[0] === 'arale') {
           location.href = '/' + value[1];
         } else if (value[0] === 'alipay') {
-          location.href = 'http://aralejs.alipay.im/' + value[1];
+          location.href = 'http://arale.alipay.im/alipay/' + value[1];
         } else {
           location.href = item.url;
         }
@@ -57,7 +60,7 @@
 
       Fixed('#document-wrapper');
 
-      seajs.use(['http://aralejs.alipay.im/package.js'], function(alipayModules) {
+      $.get('http://arale.alipay.im/repository/alipay/packages.json?callback=?', function(alipayModules) {
         if (!alipayModules) {
           return;
         }
@@ -65,7 +68,7 @@
         modules = araleModules.concat(alipayModules);
 
         $('#J-alipay').show();
-      });
+      }, 'jsonp');
 
       function insertAraleModules(data) {
         if ($('#module-wrapper').length === 0) {
@@ -81,15 +84,22 @@
         for(var i=0; i<data.length; i++) {
           var item = $('<a class="module" target="_blank" href="#"></a>');
           var module = data[i];
+          var root = module.root || module.family;
           item.html(module.name)
           .attr('href', '/' + module.name + '/')
+          .data('name', module.name)
           .data('description', module.description)
           .data('version', module.version);
-          if (module.root === 'gallery') {
+          if (root === 'gallery') {
             item.attr('href', module.homepage);
             $('.modules-gallery').append(item).prev().show();
-          } else {
-            $('.modules-' + module.tag).append(item).prev().show();
+          } else if (root === 'arale') {
+            item.append('<img alt="Build Status" src="https://secure.travis-ci.org/aralejs/' + item.html() + '.png">');
+            if (module.tag) {
+                $('.modules-' + module.tag).append(item).prev().show();
+            } else if (module.keywords) {
+                $('.modules-' + module.keywords[0]).append(item).prev().show();                
+            }
           }
         }
         cardPopup('.module');
@@ -108,8 +118,9 @@
         for(var i=0; i<data.length; i++) {
           var item = $('<a class="module" target="_blank" href="#"></a>');
           item.html(data[i].name)
-          .attr('href', 'http://aralejs.alipay.im/' + data[i].name + '/')
+          .attr('href', 'http://arale.alipay.im/' + (data[i].root || data[i].family) + '/' + data[i].name + '/')
           .data('description', data[i].description || '暂无描述')
+          .data('name', data[i].name)
           .data('version', data[i].version);
 
           $('.modules-alipay').append(item);
@@ -128,13 +139,13 @@
           duration: 100,
           delay: -1,
           align: {
-            baseXY: [0, -10],
+            baseXY: [0, -5],
             selfXY: [0, '100%']
           }
         });
         popup.on('before:show', function() {
           var at = $(this.activeTrigger);
-          $('#card .card-name').html(at.html());
+          $('#card .card-name').html(at.data('name'));
           $('#card .card-description').html(at.data('description') || '');
           $('#card .card-version').html(at.data('version') || '');
         });
