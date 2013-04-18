@@ -16,7 +16,7 @@ status:
 	@spm status arale -O _site/status-arale.js
 	@spm status gallery -O _site/status-gallery.js
 
-publish-doc: clean build-doc status
+publish-doc: clean build-doc
 	@rm -fr _site/sea-modules
 	@spm publish --doc _site
 
