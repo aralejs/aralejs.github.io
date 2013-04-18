@@ -54,7 +54,6 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
         item.attr('href', pkg.homepage);
         $('.modules-gallery').append(item).prev().show();
       } else if (family === 'arale') {
-        item.append('<img alt="Build Status" src="https://secure.travis-ci.org/aralejs/' + item.html() + '.png">');
         if (pkg.tag) {
           $('.modules-' + pkg.tag).append(item).prev().show();
         } else if (pkg.keywords) {
