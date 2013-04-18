@@ -54,20 +54,17 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
         item.attr('href', pkg.homepage);
         $('.modules-gallery').append(item).prev().show();
       } else if (family === 'arale') {
-        if (pkg.tag) {
-          $('.modules-' + pkg.tag).append(item).prev().show();
-        } else if (pkg.keywords) {
+        if (pkg.keywords) {
           $('.modules-' + pkg.keywords[0]).append(item).prev().show();
+        } else {
+          $('.modules-widget').append(item).prev().show();
         }
       } else if (family === 'alipay') {
-        var url = pkg.homepage;
-        if (!url) {
-          url = [
-            'http://arale.alipay.im',
-            (pkg.family || pkg.root),
-            pkg.name
-          ].join('/') + '/';
-        }
+        var url = [
+          'http://arale.alipay.im',
+          (pkg.family || pkg.root),
+          pkg.name
+        ].join('/') + '/';
         item.attr('href', url);
         $('.modules-alipay').append(item).prev().show();
       }
