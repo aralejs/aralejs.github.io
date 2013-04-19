@@ -55,9 +55,9 @@ table .version{width: 180px;}
 `````js
 seajs.config({
     alias: {
-        'status-arale': 'http://aralejs.org/status-arale.js',
+        'status-arale': '/status-arale.js',
         'status-arale-dev': 'http://arale.alipay.im/status-arale.js',
-        'status-gallery': 'http://aralejs.org/status-gallery.js',
+        'status-gallery': '/status-gallery.js',
         'status-gallery-dev': 'http://arale.alipay.im/status-gallery.js',
         'status-alipay': 'http://arale.alipay.im/status-alipay.js'
     }
@@ -73,31 +73,31 @@ seajs.use(['$', 'popup'], function($, Popup){
 
     test(function() {
         seajs.use(['status-arale-dev'], function(data) {
-            globalData['arale'] = data;
+            globalData['arale'] = data.arale;
             createTable(data, 'arale');
             $('.J-alipayStatus').show();
         });
 
         seajs.use(['status-gallery-dev'], function(data) {
-            globalData['gallery'] = data;
+            globalData['gallery'] = data.gallery;
             createTable(data, 'gallery');
             $('.J-alipayStatus').show();
         });
     }, function() {
         seajs.use(['status-arale'], function(data) {
-            globalData['arale'] = data;
-            createTable(data, 'arale');
+            globalData['arale'] = data.arale;
+            createTable(data.arale, 'arale');
         });
 
         seajs.use(['status-gallery'], function(data) {
-            globalData['gallery'] = data;
-            createTable(data, 'gallery');
+            globalData['gallery'] = data.gallery;
+            createTable(data.gallery, 'gallery');
         });
     });
     
     seajs.use(['status-alipay'], function(data) {
         if(!data) return;
-        globalData['alipay'] = data;
+        globalData['alipay'] = data.alipay;
         createTable(data, 'alipay');
         $('.J-alipayStatus').show();
     });
@@ -107,7 +107,7 @@ seajs.use(['$', 'popup'], function($, Popup){
         seajs.use(['status-alipay'], function(data) {
             if (!isCalled) {
                 if (data) {
-                    success();
+                    failure();
                     isCalled = true;
                 } else {
                     failure();
@@ -134,8 +134,8 @@ seajs.use(['$', 'popup'], function($, Popup){
         //});
     }
     
-    function createTable(data, root) {
-        var table = $('<table><tr><th class="name">组件名</th><th class="version">版本</th><th class="status J-alipayStatus">开发环境</th><th class="status J-alipayStatus">测试环境</th><th class="status">线上</th></tr></table>').appendTo('#status-' + root);
+    function createTable(data, family) {
+        var table = $('<table><tr><th class="name">组件名</th><th class="version">版本</th><th class="status J-alipayStatus">开发环境</th><th class="status J-alipayStatus">测试环境</th><th class="status">线上</th></tr></table>').appendTo('#status-' + family);
 
         $.each(data, function(key, value){
             var name = key;
@@ -143,24 +143,24 @@ seajs.use(['$', 'popup'], function($, Popup){
             // 生成所有版本
             var s = ['<select>'];
             $.each(value, function(key, value){
-                var files = [], version = key;
-                $.each(value, function(key, value){
-                    files.push([root, name, version, key].join('/'));
-                });
-                s.push('<option value="' + version + '" data-files="' + files.join(';') + '">' + version + '</option>');
+                var version = key;
+                var files = $.map(value, function(value, key){
+                    return [value.path, value.code].join('|');
+                }).join(';');
+                s.push('<option value="' + version + '" data-files="' + files + '">' + version + '</option>');
             });
             s.push('</select>');
             
             var keylink = '';
-            if (root === 'arale') {
+            if (family === 'arale') {
                 keylink = '<a href="/' + key + '/">' + key + '</a>';
-            } else if (root === 'alipay') {
-                keylink = '<a href="http://arale.alipay.im/' + root + '/' + key + '/">' + key + '</a>';
+            } else if (family === 'alipay') {
+                keylink = '<a href="http://arale.alipay.im/' + family + '/' + key + '/">' + key + '</a>';
             } else {
                 keylink = key;
             }
     
-            var tr = $('<tr data-name="' +  key + '" data-root="' + root + '" id="' + root + '-' + key + '">' +
+            var tr = $('<tr data-name="' +  key + '" data-family="' + family + '" id="' + family + '-' + key + '">' +
                 '<td class="name"><span class="face">☺</span> ' + keylink + '</td>' +
                 '<td class="version">' + s.join('') + '</td>' +
                 '<td class="dev status J-alipayStatus" data-status="dev"></td>' +
@@ -186,9 +186,9 @@ seajs.use(['$', 'popup'], function($, Popup){
 
                     files = $.map(files.split(';'), function(o){
                         var s = $(item).data('status');
-                        var part = o.match(/^([^/]*)\/([^/]*)\/([^/]*)\/(.*)$/);
-                        var link = prefix[s] + '/' + o;
-                        var status = globalData[part[1]][part[2]][part[3]][part[4]][s];
+                        var part = o.split('|');
+                        var link = prefix[s] + '/' + part[0];
+                        var status = part[1];
                         return '<div>' + (status == 200 ? assert(1) : assert(0)) +
                             '<a href="' + link + '" target="_blank" style="margin-left:5px;">' + link + '</a></div>';
                     });
@@ -197,7 +197,7 @@ seajs.use(['$', 'popup'], function($, Popup){
             });
         });
 
-        $('#status-' + root).on('change', 'select', function() {
+        $('#status-' + family).on('change', 'select', function() {
             testStatus(this);
         });
         
@@ -216,26 +216,25 @@ seajs.use(['$', 'popup'], function($, Popup){
 
     // 检测某个组件的版本在各环境是否存在
     function testStatus(o){
-        var f = [], count = 0,
+        var count = 0,
             dev = test = online = 1,
             deverror = testerror = onlineerror = 0;
             tr =  $(o).parents('tr');
-            root = tr.data('root'),
+            family = tr.data('family'),
             name = tr.data('name'),
             version = o.value,
-            files = globalData[root][name][version];
+            files = globalData[family][name][version];
 
             for(file in files) {
-                f.push(file);
-                if (files[file]['dev'] !== 200) {
+                if (files[file].name === 'dev' && files[file].code !== 200) {
                     dev = 2;
                     deverror++;
                 }
-                if (files[file]['test'] !== 200) {
+                if (files[file].name === 'test' && files[file].code !== 200) {
                     test = 2;
                     testerror++;
                 }
-                if (files[file]['online'] !== 200) {
+                if (files[file].name === 'alipay' && files[file].code !== 200) {
                     online = 2;
                     onlineerror++;
                 }
@@ -251,8 +250,8 @@ seajs.use(['$', 'popup'], function($, Popup){
                 online = 0;
             }
 
-            tr.find('.dev').html(assert(dev));
-            tr.find('.test').html(assert(test));
+            //tr.find('.dev').html(assert(dev));
+            //tr.find('.test').html(assert(test));
             tr.find('.online').html(assert(online));
     }
 
