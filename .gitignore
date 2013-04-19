@@ -19,3 +19,4 @@ Thumbs.db
 build
 node_modules
 _site
+.cache
