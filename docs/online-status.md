@@ -66,7 +66,7 @@ seajs.config({
 seajs.use(['$', 'popup'], function($, Popup){
     var globalData = {},
         prefix = {
-            online: 'https://a.alipayobjects.com',
+            stable: 'https://a.alipayobjects.com',
             test: 'https://a.test.alipay.net',
             dev: 'http://assets.dev.alipay.net'
         };
@@ -74,13 +74,13 @@ seajs.use(['$', 'popup'], function($, Popup){
     test(function() {
         seajs.use(['status-arale-dev'], function(data) {
             globalData['arale'] = data.arale;
-            createTable(data, 'arale');
+            createTable(data.arale, 'arale');
             $('.J-alipayStatus').show();
         });
 
         seajs.use(['status-gallery-dev'], function(data) {
             globalData['gallery'] = data.gallery;
-            createTable(data, 'gallery');
+            createTable(data.gallery, 'gallery');
             $('.J-alipayStatus').show();
         });
     }, function() {
@@ -98,7 +98,7 @@ seajs.use(['$', 'popup'], function($, Popup){
     seajs.use(['status-alipay'], function(data) {
         if(!data) return;
         globalData['alipay'] = data.alipay;
-        createTable(data, 'alipay');
+        createTable(data.alipay || {}, 'alipay');
         $('.J-alipayStatus').show();
     });
 
@@ -107,7 +107,7 @@ seajs.use(['$', 'popup'], function($, Popup){
         seajs.use(['status-alipay'], function(data) {
             if (!isCalled) {
                 if (data) {
-                    failure();
+                    success();
                     isCalled = true;
                 } else {
                     failure();
@@ -121,17 +121,6 @@ seajs.use(['$', 'popup'], function($, Popup){
                 isCalled = true;
             }
         }, 500);
-        //$.ajax({
-        //    url: 'http://aralejs.alipay.im/status-alipay.js',
-        //    dataType: 'script',
-        //    timeout: 500,
-        //    success: function() {
-        //        success();
-        //    },
-        //    error: function() {
-        //        failure();
-        //    }
-        //});
     }
     
     function createTable(data, family) {
@@ -145,7 +134,7 @@ seajs.use(['$', 'popup'], function($, Popup){
             $.each(value, function(key, value){
                 var version = key;
                 var files = $.map(value, function(value, key){
-                    return [value.path, value.code].join('|');
+                    return [value.path, value.code, value.name].join('|');
                 }).join(';');
                 s.push('<option value="' + version + '" data-files="' + files + '">' + version + '</option>');
             });
@@ -165,7 +154,7 @@ seajs.use(['$', 'popup'], function($, Popup){
                 '<td class="version">' + s.join('') + '</td>' +
                 '<td class="dev status J-alipayStatus" data-status="dev"></td>' +
                 '<td class="test status J-alipayStatus" data-status="test"></td>' +
-                '<td class="online status" data-status="online"></td>' +
+                '<td class="stable status" data-status="stable"></td>' +
                 '</tr>');
             table.append(tr);
 
@@ -187,6 +176,8 @@ seajs.use(['$', 'popup'], function($, Popup){
                     files = $.map(files.split(';'), function(o){
                         var s = $(item).data('status');
                         var part = o.split('|');
+                        if (part[2] !== s) return '';
+
                         var link = prefix[s] + '/' + part[0];
                         var status = part[1];
                         return '<div>' + (status == 200 ? assert(1) : assert(0)) +
@@ -216,54 +207,33 @@ seajs.use(['$', 'popup'], function($, Popup){
 
     // 检测某个组件的版本在各环境是否存在
     function testStatus(o){
-        var count = 0,
-            dev = test = online = 1,
-            deverror = testerror = onlineerror = 0;
-            tr =  $(o).parents('tr');
+        var tr =  $(o).parents('tr');
             family = tr.data('family'),
             name = tr.data('name'),
             version = o.value,
             files = globalData[family][name][version];
 
-            for(file in files) {
-                if (files[file].name === 'dev' && files[file].code !== 200) {
-                    dev = 2;
-                    deverror++;
-                }
-                if (files[file].name === 'test' && files[file].code !== 200) {
-                    test = 2;
-                    testerror++;
-                }
-                if (files[file].name === 'alipay' && files[file].code !== 200) {
-                    online = 2;
-                    onlineerror++;
-                }
-                count++;
-            }
-            if (deverror === count) {
-                dev = 0;
-            }
-            if (testerror === count) {
-                test = 0;
-            }
-            if (onlineerror === count) {
-                online = 0;
-            }
-
-            //tr.find('.dev').html(assert(dev));
-            //tr.find('.test').html(assert(test));
-            tr.find('.online').html(assert(online));
+        tr.find('.dev').html(assert(files, 'dev'));
+        tr.find('.test').html(assert(files, 'test'));
+        tr.find('.stable').html(assert(files, 'stable'));
     }
 
     // 1:true 0:false 2:half
-    function assert(value) {
-        if (value === 1) {
-            return '<span class="assert" style="color:#1A9B20">✔</span>';
-        } else if(value === 0) {
-            return '<span class="assert" style="color:#FF4C4C">✗</span>'
-        } else if(value === 2) {
-            return '<span class="assert" style="color: #FFB800;">✙</span>'
+    function assert(files, type) {
+        var afterFilter = $.grep(files, function(o, i) {
+            return o.name === type;
+        });
+        var count = 0, returned = '<span class="assert" style="color:#1A9B20">✔</span>';
+        $.each(afterFilter, function(i, o) {
+            if (o.code !== 200) {
+                returned = '<span class="assert" style="color: #FFB800;">✙</span>';
+                count++;
+            }
+        });
+        if (count === afterFilter.length) {
+            returned = '<span class="assert" style="color:#FF4C4C">✗</span>';
         }
+        return returned;
     }
 });
 `````
