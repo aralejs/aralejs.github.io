@@ -21,7 +21,7 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
     color('.module');
   });
 
-  seajs.use('http://arale.alipay.im/repository/alipay/packages.json?callback=define', function(alipay) {
+  seajs.use('http://yuan.alipay.im/repository/alipay/?define', function(alipay) {
     if (alipay) {
       modules = modules.concat(alipay);
       insertModules(alipay);
