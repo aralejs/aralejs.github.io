@@ -180,8 +180,12 @@ seajs.use(['$', 'popup'], function($, Popup){
 
                         var link = prefix[s] + '/' + part[0];
                         var status = part[1];
-                        return '<div>' + (status == 200 ? assert(1) : assert(0)) +
-                            '<a href="' + link + '" target="_blank" style="margin-left:5px;">' + link + '</a></div>';
+                        return '<div>' + 
+                            ((status === '200') ? 
+                                '<span class="assert" style="color:#1A9B20">✔</span>' :
+                                '<span class="assert" style="color:#FF4C4C">✗</span>') +
+                            '<a href="' + link + '" target="_blank" style="margin-left:5px;">' + link + '</a>' +
+                            '</div>';
                     });
                     $('#card').html(files.join(''));
                 });
