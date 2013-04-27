@@ -98,7 +98,7 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
     items = $(items);
     items.each(function(index, item) {
       item = $(item);
-      item.css('border-color', toRgba(wordColor(item.html()), 0.65));
+      item.css('border-left-color', toRgba(wordColor(item.html()), 0.65));
     });
   }
 
