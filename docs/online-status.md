@@ -42,7 +42,7 @@ table td, table th {text-align:left;padding: 5px 0;}
 table .status {width: 80px; cursor: pointer; padding: 0px 10px;}
 table .status:hover {background-color: #fff;}
 table .status span{cursor:pointer;}
-table .version{width: 180px;}
+table .version{width: 100px;}
 #content table .name a {color: #6381A6;}
 #card{width:auto;}
 .face {
@@ -66,7 +66,7 @@ seajs.config({
 seajs.use(['$', 'popup'], function($, Popup){
     var globalData = {},
         prefix = {
-            stable: 'https://a.alipayobjects.com',
+            online: 'https://a.alipayobjects.com',
             test: 'https://a.test.alipay.net',
             dev: 'http://assets.dev.alipay.net'
         };
@@ -154,7 +154,7 @@ seajs.use(['$', 'popup'], function($, Popup){
                 '<td class="version">' + s.join('') + '</td>' +
                 '<td class="dev status J-alipayStatus" data-status="dev"></td>' +
                 '<td class="test status J-alipayStatus" data-status="test"></td>' +
-                '<td class="stable status" data-status="stable"></td>' +
+                '<td class="online status" data-status="online"></td>' +
                 '</tr>');
             table.append(tr);
 
@@ -219,7 +219,7 @@ seajs.use(['$', 'popup'], function($, Popup){
 
         tr.find('.dev').html(assert(files, 'dev'));
         tr.find('.test').html(assert(files, 'test'));
-        tr.find('.stable').html(assert(files, 'stable'));
+        tr.find('.online').html(assert(files, 'online'));
     }
 
     // 1:true 0:false 2:half
