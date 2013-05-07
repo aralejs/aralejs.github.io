@@ -13,7 +13,7 @@ watch:
 	@nico server -C $(THEME)/nico.js --watch
 
 status:
-	@spm config online-status.stable https://a.alipayobjects.com/
+	@spm config online-status.online https://a.alipayobjects.com
 	@spm status arale -O _site/status-arale.js
 	@spm status gallery -O _site/status-gallery.js
 
