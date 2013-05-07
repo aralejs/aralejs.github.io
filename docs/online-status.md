@@ -42,7 +42,7 @@ table td, table th {text-align:left;padding: 5px 0;}
 table .status {width: 80px; cursor: pointer; padding: 0px 10px;}
 table .status:hover {background-color: #fff;}
 table .status span{cursor:pointer;}
-table .version{width: 180px;}
+table .version{width: 100px;}
 #content table .name a {color: #6381A6;}
 #card{width:auto;}
 .face {

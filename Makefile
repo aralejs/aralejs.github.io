@@ -19,7 +19,7 @@ status:
 
 publish-doc: clean build-doc status
 	@rm -fr _site/sea-modules
-	@spm publish --doc _site
+	@spm publish --doc _site -s spmjs
 
 clean:
 	@rm -fr _site
