@@ -222,7 +222,8 @@ $ spm build
 
 [spm build](https://github.com/spmjs/spm-build) 使用 gruntjs 进行实现，能够打包压缩符合 cmd 规范的 js 和 css 文件。
 
-发布到源中。publish 命令将会把你的模块发布到默认的源服务器中。（例如 spmjs.org，这个源服务器需要用户校验，请自行注册账号进行发布）
+发布到源中。publish 命令将会把你的模块发布到默认的源服务器中。
+（默认为 https://spmjs.org，这个源服务器需要用户校验以及对应 family 的权限，请自行[注册账号](http://docs.spmjs.org/en/#register-amp-login)进行发布）
 
 ```
 $ spm publish
@@ -258,3 +259,4 @@ $ make publish-doc
 
 > 注意，Makefile文件 的缩进一律用 Tab，否则会报错。
 
+发布到源中。publish 命令将会把你的模块发布到默认的源服务器中。（例如 spmjs.org，这个源服务器需要用户校验以及对应 family 的权限，请自行[注册账号](http://docs.spmjs.org/en/#register-amp-login)进行发布）
