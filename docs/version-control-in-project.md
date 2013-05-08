@@ -1,4 +1,7 @@
-# SeaJS 代码组织实战
+# 代码组织实践
+
+- order: 5
+- category: arale
 
 ---
 

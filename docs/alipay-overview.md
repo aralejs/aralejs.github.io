@@ -5,6 +5,8 @@
 
 ---
 
+> 目前 spm 已经升级到 2.0+，基础技术组正在推行中。本文暂时只适用于 spm 1.x 版本。
+
 > 在使用 Arale 之前可以先看一下 [seajs](http://seajs.org/docs/) 和 [spm](https://github.com/spmjs/spm/wiki) 的文档。
 
 ## 支付宝内部源
