@@ -34,6 +34,24 @@ export NODE_PATH=/usr/local/lib/node_modules
 
 把他加到你的 `.bash_profile` 或 `.zshrc` 中。
 
+### npm prefix
+
+有时你会发现 npm 的安装目录和 `NODE_PATH` 不是同一个。npm install 会安装到 `/usr/local/share/npm/lib/node_modules`，但 `NODE_PATH` 为 `/usr/local/lib/node_modules`。
+
+这是因为你设置了 prefix (可能是编译的时候加的) 为 `/usr/local/share/npm`。
+
+查看 prefix
+
+```
+npm config get prefix
+```
+
+修改 prefix
+
+```
+npm config set prefix /usr/local
+```
+
 ### 去除 sudo
 
 使用 npm 安装模块的时候经常要输入 sudo，还要输入密码，这点很让人烦躁。下面你可以简单粗暴的去除 sudo（看看作者的[软文](http://howtonode.org/introduction-to-npm)）
