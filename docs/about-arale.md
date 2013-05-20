@@ -35,6 +35,8 @@ Arale 有两大帮凶，一是心狠手辣的包管理工具 [spm](https://githu
 
 - [nico](http://lab.lepture.com/nico/) - 文档生成工具
 
+- [Alice 样式解决方案](http://aliceui.org/)
+
 - [Arale 背后的一些设计理念](https://github.com/lifesinger/lifesinger.github.com/issues/106)
 
 - [Arale 和 SeaJS 的关系](http://www.zhihu.com/question/20651072)
