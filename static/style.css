@@ -78,9 +78,13 @@ a {
 #document-wrapper ol {
     list-style-position: inside;
     margin: 0;
-    padding: 0;
-    line-height: 1.6;
+    line-height: 1.8;
     font-size: 16px;
+    margin-right: 60px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #ddd;
+    border-radius: 2px;
 }
 
 #document-wrapper h2, #module-wrapper h2 {
