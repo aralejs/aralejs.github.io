@@ -4,7 +4,6 @@
 
 {%- block afterstyle %}
 <link rel="stylesheet" href="{{static_url('style.css')}}" />
-<script src="{{static_url('index.js')}}"></script>
 {%- endblock %}
 
 {% block body %}
@@ -74,6 +73,7 @@
   </div>
   {%- endif %}
 </div>
+<script src="{{static_url('index.js')}}"></script>
 {%- endblock %}
 
 {%- block footer %}
