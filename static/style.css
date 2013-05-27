@@ -155,6 +155,7 @@ a {
     text-overflow: ellipsis;
     vertical-align: bottom;
     white-space: nowrap;
+    text-transform: capitalize;
 }
 
 .module-name:hover {
