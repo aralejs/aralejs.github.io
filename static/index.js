@@ -2,7 +2,7 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
 
 
   Fixed('#document-wrapper');
-  cardPopup('.module');
+  //cardPopup('.module');
 
   var modules = [];
 
@@ -40,18 +40,24 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
     });
 
     for (var i = 0; i < data.length; i++) {
-      var item = $('<a class="module" target="_blank" href="#"></a>');
+      var item = $('<div class="module">\
+        <a class="module-name" target="_blank" href="#"></a>\
+        <span class="module-version"></span>\
+        <p class="module-description"></p>\
+        </div>');
 
       var pkg = data[i];
       var family = pkg.family || pkg.root;
 
-      item.html(pkg.name)
-      .attr('href', '/' + pkg.name + '/')
-      .data('name', pkg.name)
-      .data('description', pkg.description)
-      .data('version', pkg.version);
+      item.find(".module-name").html(pkg.name)
+                                .attr('href', '/' + pkg.name + '/')
+                                .attr('title', pkg.name);
+      item.find(".module-version").html(pkg.version);
+      item.find(".module-description").html(pkg.description)
+                                      .attr('title', pkg.description);
+
       if (family === 'gallery') {
-        item.attr('href', pkg.homepage);
+        item.find(".module-name").attr('href', pkg.homepage);
         $('.modules-gallery').append(item).prev().show();
       } else if (family === 'arale') {
         if (pkg.keywords) {
@@ -65,7 +71,7 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
           (pkg.family || pkg.root),
           pkg.name
         ].join('/') + '/';
-        item.attr('href', url);
+        item.find(".module-name").attr('href', url);
         $('.modules-alipay').append(item).prev().show();
       }
     }
@@ -98,7 +104,7 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
     items = $(items);
     items.each(function(index, item) {
       item = $(item);
-      item.css('border-left-color', toRgba(wordColor(item.html()), 0.65));
+      item.css('border-left-color', toRgba(wordColor(item.find('.module-name').html()), 0.65));
     });
   }
 

@@ -117,25 +117,24 @@ a {
 .module {
     background: #fff;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-    color: #777;
+    color: #888;
     display: inline;
     float: left;
-    margin-bottom: 0.8em;
-    margin-right: 0.8em;
+    margin-bottom: 15px;
+    margin-right: 10px;
     overflow: hidden;
-    padding: 4px 6px;
-    text-align: center;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 115px;
+    padding: 4px 6px 6px 10px;
+    width: 150px;
+    height: 62px;
     border-left: 4px solid #B4D0EE;
     font-family: tahoma;
     overflow: hidden;
     position: relative;
 }
+
 .module:hover {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    color: #6C97C2;    
+    color: #666;
 }
 
 .module img {
@@ -146,6 +145,35 @@ a {
     transform: rotate(45deg);
     width: 80px;
     opacity: 0.7;
+}
+
+.module-name {
+    display: inline-block;
+    font-size: 18px;
+    max-width: 112px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+    white-space: nowrap;
+}
+
+.module-name:hover {
+    text-decoration:underline;
+}
+
+.module:hover .module-name {
+    color: #08c;
+}
+
+.module-version {
+    font-size: 12px;
+    color: #bbb;
+}
+
+.module-description {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 #card {
@@ -169,7 +197,6 @@ a {
 }
 
 #card .card-description {
-    color: #888;
     line-height: 1.4;
     margin: 3px 0;
 }
