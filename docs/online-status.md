@@ -28,6 +28,9 @@
 
 <div id="status-gallery"></div>
 
+## Jquery
+
+<div id="status-jquery"></div>
 
 
 ## Alipay
@@ -59,6 +62,8 @@ seajs.config({
         'status-arale-dev': 'http://arale.alipay.im/status-arale.js',
         'status-gallery': '/status-gallery.js',
         'status-gallery-dev': 'http://arale.alipay.im/status-gallery.js',
+        'status-jquery': '/status-jquery.js',
+        'status-jquery-dev': 'http://arale.alipay.im/status-jquery.js',
         'status-alipay': 'http://arale.alipay.im/status-alipay.js'
     }
 });
@@ -83,6 +88,12 @@ seajs.use(['$', 'popup'], function($, Popup){
             createTable(data.gallery, 'gallery');
             $('.J-alipayStatus').show();
         });
+
+        seajs.use(['status-jquery-dev'], function(data) {
+            globalData['jquery'] = data.jquery;
+            createTable(data.jquery, 'jquery');
+            $('.J-alipayStatus').show();
+        });
     }, function() {
         seajs.use(['status-arale'], function(data) {
             globalData['arale'] = data.arale;
@@ -92,6 +103,11 @@ seajs.use(['$', 'popup'], function($, Popup){
         seajs.use(['status-gallery'], function(data) {
             globalData['gallery'] = data.gallery;
             createTable(data.gallery, 'gallery');
+        });
+
+        seajs.use(['status-jquery'], function(data) {
+            globalData['jquery'] = data.jquery;
+            createTable(data.jquery, 'jquery');
         });
     });
     
