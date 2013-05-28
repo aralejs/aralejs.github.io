@@ -16,6 +16,7 @@ status:
 	@spm config online-status.online https://a.alipayobjects.com
 	@spm status arale -O _site/status-arale.js
 	@spm status gallery -O _site/status-gallery.js
+	@spm status jquery -O _site/status-jquery.js
 
 publish-doc: clean build-doc status
 	@rm -fr _site/sea-modules
