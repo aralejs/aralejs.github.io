@@ -61,18 +61,20 @@ a {
     padding: 8px;
     font-size: 16px;
     outline: none;
-    border: 1px solid #ccc;
+    border: 1px solid #bbb;
     color: #888;
+    background: #fafafa;
     width:180px;
-    -webkit-transition: width 0.3s ease-out 0s;
-    -moz-transition: width 0.3s ease-out 0s;
-    -ms-transition: width 0.3s ease-out 0s;
-    -o-transition: width 0.3s ease-out 0s;
-    transition: width 0.3s ease-out 0s;
+    -webkit-transition: all 0.3s ease-out 0s;
+    -moz-transition: all 0.3s ease-out 0s;
+    -ms-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s;
 }
 #search:focus {
-    border-color: #aaa;
-    width:220px;    
+    border-color: #999;
+    background: #fff;
+    width:300px;
 }
 
 #document-wrapper ol {
@@ -219,7 +221,7 @@ a {
     border: 1px solid #CCC;
     background:#fff;
     padding: 0;
-    width: 236px;
+    width: 316px;
     margin-top: -1px;
     font-family: tahoma;
 }
@@ -241,6 +243,13 @@ a {
 }
 .ui-autocomplete-item-hl {
     background: #ff0;
+}
+.ui-autocomplete-desc {
+    font-size: 12px;
+    color: #aaa;
+}
+.ui-autocomplete-item-hover .ui-autocomplete-desc {
+    color: #AFDEB2;
 }
 
 .heart {

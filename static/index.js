@@ -118,6 +118,17 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
   var ac = new Autocomplete({
     trigger: '#search',
     selectFirst: true,
+    template: 
+        '<div class="{{classPrefix}}">\
+            <ul class="{{classPrefix}}-ctn" data-role="items">\
+                {{#each items}}\
+                    <li data-role="item" class="{{../classPrefix}}-item" data-value="{{matchKey}}">\
+                        <div>{{highlightItem ../classPrefix matchKey}}</div>\
+                        <div class="ui-autocomplete-desc">{{desc}}</div>\
+                    </li>\
+                {{/each}}\
+            </ul>\
+         </div>',
     dataSource: function() {
       this.trigger('data', modules);
     },
@@ -126,10 +137,13 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
       $.each(data, function(index, value) {
         var temp = (value.root||value.family) + '.' + value.name;
         value.description = value.description || '';
-        if (temp.indexOf(query) > -1) {
-          result.unshift({matchKey: temp, url: value.homepage});
-        } else if (value.description.indexOf(query) > -1) {
-          result.push({matchKey: temp, url: value.homepage});
+        if (temp.indexOf(query) > -1 || 
+            value.description.indexOf(query) > -1) {
+          result.unshift({
+            matchKey: temp,
+            desc: value.description,            
+            url: value.homepage
+          });
         }
       });
       return result;
