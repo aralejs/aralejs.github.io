@@ -117,7 +117,7 @@ a {
 .module {
     background: #fff;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-    color: #888;
+    color: #999;
     display: inline;
     float: left;
     margin-bottom: 15px;
@@ -150,7 +150,7 @@ a {
 .module-name {
     display: inline-block;
     font-size: 18px;
-    max-width: 112px;
+    max-width: 145px;    
     overflow: hidden;
     text-overflow: ellipsis;
     vertical-align: bottom;
@@ -162,13 +162,20 @@ a {
     text-decoration:underline;
 }
 
-.module:hover .module-name {
-    color: #08c;
-}
-
 .module-version {
     font-size: 12px;
-    color: #bbb;
+    color: #aaa;
+    display: none;
+}
+
+.module:hover .module-name {
+    color: #08c;
+    max-width: 112px;    
+}
+
+.module:hover .module-version {
+    display: inline;
+    font-family: Menlo,Courier;
 }
 
 .module-description {
