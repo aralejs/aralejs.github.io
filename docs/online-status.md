@@ -92,7 +92,7 @@ seajs.use(['$', 'popup'], function($, Popup){
         seajs.use(['status-jquery-dev'], function(data) {
             globalData['jquery'] = data.jquery;
             createTable(data.jquery, 'jquery');
-            $('.J-jqueryStatus').show();
+            $('.J-alipayStatus').show();
         });
     }, function() {
         seajs.use(['status-arale'], function(data) {
