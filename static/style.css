@@ -63,13 +63,11 @@ a {
     outline: none;
     border: 1px solid #bbb;
     color: #888;
-    background: #fafafa;
     width:180px;
     transition: all 0.3s ease-out 0s;
 }
 #search:focus {
     border-color: #999;
-    background: #fff;
     width:300px;
 }
 
