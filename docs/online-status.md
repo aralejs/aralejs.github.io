@@ -46,6 +46,8 @@ table .status {width: 80px; cursor: pointer; padding: 0px 10px;}
 table .status:hover {background-color: #fff;}
 table .status span{cursor:pointer;}
 table .version{width: 100px;}
+table .build {width: 80px; padding: 0px 10px;}
+
 #content table .name a {color: #6381A6;}
 #card{width:auto;}
 .face {
@@ -140,7 +142,10 @@ seajs.use(['$', 'popup'], function($, Popup){
     }
     
     function createTable(data, family) {
-        var table = $('<table><tr><th class="name">组件名</th><th class="version">版本</th><th class="status J-alipayStatus">开发环境</th><th class="status J-alipayStatus">测试环境</th><th class="status">线上</th></tr></table>').appendTo('#status-' + family);
+        var table = $('<table><tr><th class="name">组件名</th>\
+            <th class="version">版本</th><th class="status J-alipayStatus">开发环境</th>\
+            <th class="status J-alipayStatus">测试环境</th><th class="status">线上</th>\
+            <th class="build">Build</th></tr></table>').appendTo('#status-' + family);
 
         $.each(data, function(key, value){
             var name = key;
@@ -157,8 +162,11 @@ seajs.use(['$', 'popup'], function($, Popup){
             s.push('</select>');
             
             var keylink = '';
+            var buildStatus = '';
             if (family === 'arale') {
                 keylink = '<a href="/' + key + '/">' + key + '</a>';
+                buildStatus = '<img src="https://secure.travis-ci.org/aralejs/' + name + '.png">' + 
+                    '<img src="https://coveralls.io/repos/aralejs/' + name + '/badge.png?branch=master">';
             } else if (family === 'alipay') {
                 keylink = '<a href="http://arale.alipay.im/' + family + '/' + key + '/">' + key + '</a>';
             } else {
@@ -171,6 +179,7 @@ seajs.use(['$', 'popup'], function($, Popup){
                 '<td class="dev status J-alipayStatus" data-status="dev"></td>' +
                 '<td class="test status J-alipayStatus" data-status="test"></td>' +
                 '<td class="online status" data-status="online"></td>' +
+                '<td class="build">' + buildStatus + '</td>' +
                 '</tr>');
             table.append(tr);
 
