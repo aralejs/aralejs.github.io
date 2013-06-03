@@ -23,7 +23,7 @@ Arale 有两大帮凶，一是心狠手辣的包管理工具 [spm](https://githu
 
 最后，最重要的是，Arale 出生和成长在开源街区中，托管在 github 上，深谙互联网的开源黑文化。都在江湖飘哪能不挨刀，Arale 会在不断的闷棍、毒镖暗器、黑吃黑、内讧、街头火并中越挫越勇，希望道上的人抬爱，给个面子，大家同舟共济。
 
-<img src="/static/arale.png" width="200">
+<img src="/static/arale.jpg" width="200">
 
 ## 了解更多
 
