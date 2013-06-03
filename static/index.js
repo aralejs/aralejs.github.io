@@ -8,16 +8,19 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
 
   var urls = [
     'http://spmjs.org/repository/arale/?define',
-    'http://spmjs.org/repository/gallery/?define'
+    'http://spmjs.org/repository/gallery/?define',
+    'http://spmjs.org/repository/jquery/?define'
   ];
 
-  seajs.use(urls, function(arale, gallery) {
+  seajs.use(urls, function(arale, gallery, jquery) {
     $('.modules-utility').empty();
     modules = modules.concat(arale);
     modules = modules.concat(gallery);
+    modules = modules.concat(jquery);
 
     insertModules(arale);
     insertModules(gallery);
+    insertModules(jquery);
     color('.module');
   });
 
@@ -56,9 +59,9 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
       item.find(".module-description").html(pkg.description)
                                       .attr('title', pkg.description);
 
-      if (family === 'gallery') {
+      if (family === 'gallery' || family === 'jquery') {
         item.find(".module-name").attr('href', pkg.homepage);
-        $('.modules-gallery').append(item).prev().show();
+        $('.modules-' + family).append(item).prev().show();
       } else if (family === 'arale') {
         if (pkg.keywords) {
           $('.modules-' + pkg.keywords[0]).append(item).prev().show();
@@ -118,7 +121,7 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
   var ac = new Autocomplete({
     trigger: '#search',
     selectFirst: true,
-    template: 
+    template:
         '<div class="{{classPrefix}}">\
             <ul class="{{classPrefix}}-ctn" data-role="items">\
                 {{#each items}}\
@@ -137,11 +140,11 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
       $.each(data, function(index, value) {
         var temp = (value.root||value.family) + '.' + value.name;
         value.description = value.description || '';
-        if (temp.indexOf(query) > -1 || 
+        if (temp.indexOf(query) > -1 ||
             value.description.indexOf(query) > -1) {
           result.unshift({
             matchKey: temp,
-            desc: value.description,            
+            desc: value.description,
             url: value.homepage
           });
         }
