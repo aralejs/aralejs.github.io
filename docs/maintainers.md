@@ -34,6 +34,14 @@
 
 ## Alipay
 
+<style>
+#doc-wrapper, table {width: 100%}
+
+table .people {
+    width: 120px;
+}
+</style>
+
 <div id="container-alipay"></div>
 
 <script type="text/javascript" src="https://a.alipayobjects.com/alipay/apww/1.1.0/apww.js"></script>
@@ -63,7 +71,7 @@ seajs.use(['$', 'apww'], function($, apww) {
   });
 
   function createTable(data, container) {
-    var table = $('<table><tr><th class="name">组件名</th><th>第一维护人</th><th>其他维护人</th></tr></table>')   
+    var table = $('<table><tr><th class="name" >组件名</th><th class="people">第一维护人</th><th class="people">其他维护人</th></tr></table>')
     for (var i in data) {
       var item = data[i];
       var name = item.name;
