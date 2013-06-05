@@ -50,7 +50,7 @@ seajs.use(['$', 'apww'], function($, apww) {
     createTable(arale, '#container-arale');
     apww.init({
       trigger:'.J-apww',
-      classPrefix: 'ui-ww-small'
+      classPrefix: 'ui-ww-static'
     });
   });
 
