@@ -75,9 +75,6 @@ seajs.use(['$', 'apww'], function($, apww) {
     table.appendTo(container);
   }
   var re = /^\s*(.*?)\s+<(\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)>\s*$/;
-  var wangwangMap = {
-    'guangao@alipay.com': '贯高'
-  };
   function showMaintainer(maintainers) {
     if (Object.prototype.toString.call(maintainers) === '[object Array]') {
       var r = [];
@@ -100,7 +97,7 @@ seajs.use(['$', 'apww'], function($, apww) {
         }
       }
       return '<a href="mailto:' + email + '">' + name + '</a> ' +
-        '<a class="J-apww" href="" data-account="' + (wangwangMap[email] || '') + '"></a>'
+        '<a class="J-apww" href="" data-account="' + name + '"></a>'
     }
   } 
 });
