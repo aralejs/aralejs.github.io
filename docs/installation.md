@@ -79,6 +79,7 @@ git 下载地址如下
 支付宝的同学可以略过下面的内容，直接安装一个套件
 
 ```
+npm install spm -g
 npm install spm-alipay-suite -g
 ```
 
@@ -130,8 +131,8 @@ npm install nico -g
 下载 Arale 和 alice 模板
 
 ```
-$ git clone https://github.com/aralejs/nico-arale.git ~/.spm/themes/arale
-$ git clone https://github.com/aliceui/nico-alice.git ~/.spm/themes/alice
+git clone https://github.com/aralejs/nico-arale.git ~/.spm/themes/arale
+git clone https://github.com/aliceui/nico-alice.git ~/.spm/themes/alice
 ```
 
 ## windows 环境

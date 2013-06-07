@@ -56,7 +56,7 @@ Arale 代码使用 git 做版本控制工具，下载地址如下
 
 ## 初始化组件项目
 
-组件和目录的名称要符合 [a-z\d-]，并以英文字母开头，首选合适的英文单词，**禁止使用驼峰**。
+组件和目录的名称要符合 [a-z\d-]，并以英文字母开头，首选合适的英文单词， **禁止使用驼峰** 。
 
 先来看看整个组件的结构，这样会有一个直观的感受。
 
@@ -200,7 +200,7 @@ Arale 提供 [mocha](https://github.com/totorojs/totoro/wiki/mocha) 作为测试
 
 访问 [http://127.0.0.1:8000/tests/runner.html](http://127.0.0.1:8000/tests/runner.html) 查看是否正确。
 
-Arale 已经配置 travis，只要开通就可以**持续集成**。[登录 travis](https://travis-ci.org/profile)，开启 travis。
+Arale 已经配置 travis，只要开通就可以 **持续集成** 。[登录 travis](https://travis-ci.org/profile)，开启 travis。
 
 ## 部署文件
 
