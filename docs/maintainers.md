@@ -55,7 +55,7 @@ seajs.config({
 });
 seajs.use(['$', 'apww'], function($, apww) {
   seajs.use('arale', function(arale) {
-    createTable(arale, '#container-arale');
+    createTable(arale, '#container-arale', "http://aralejs.org/");
     apww.init({
       trigger:'.J-apww',
       classPrefix: 'ui-ww-static'
@@ -63,14 +63,14 @@ seajs.use(['$', 'apww'], function($, apww) {
   });
 
   seajs.use('alipay', function(alipay) {
-    createTable(alipay, '#container-alipay');
+    createTable(alipay, '#container-alipay', "http://arale.alipay.im/alipay/");
     apww.init({
       trigger:'.J-apww',
       classPrefix: 'ui-ww-small'
     });
   });
 
-  function createTable(data, container) {
+  function createTable(data, container, dest) {
     var table = $('<table><tr><th class="name" >组件名</th><th class="people">第一维护人</th><th class="people">其他维护人</th></tr></table>')
     for (var i in data) {
       var item = data[i];
@@ -78,7 +78,7 @@ seajs.use(['$', 'apww'], function($, apww) {
       var maintainers = item.maintainers;
       var first = maintainers && maintainers.length ? showMaintainer(maintainers[0]) : '';
       var other = maintainers && maintainers.length > 1 ? showMaintainer(maintainers.slice(1)) : ''
-      $('<tr><td>' + name + '</td><td>' + first + '</td><td>' + other + '</td></tr>').appendTo(table);
+      $('<tr><td><a href="' + dest + name + '/">' + name + '</a></td><td>' + first + '</td><td>' + other + '</td></tr>').appendTo(table);
     }
     table.appendTo(container);
   }
