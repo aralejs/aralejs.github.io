@@ -1,8 +1,6 @@
-seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], function($, Popup, Placeholder, Fixed, wordColor, Autocomplete) {
+seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function($, Placeholder, Sticky, wordColor, Autocomplete) {
 
-
-  Fixed('#document-wrapper');
-  //cardPopup('.module');
+  Sticky.stick('#document-wrapper', 0);
 
   var modules = [];
 
@@ -80,29 +78,6 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
     }
   }
 
-
-  function cardPopup(items) {
-    // 卡片
-    var popup = new Popup({
-      element: '#card',
-      delegateNode: '.modules',
-      trigger: items,
-      effect: 'fade',
-      duration: 100,
-      delay: -1,
-      align: {
-        baseXY: [0, -5],
-        selfXY: [0, '100%']
-      }
-    });
-    popup.on('before:show', function() {
-      var at = $(this.activeTrigger);
-      $('#card .card-name').html(at.data('name'));
-      $('#card .card-description').html(at.data('description') || '');
-      $('#card .card-version').html(at.data('version') || '');
-    });
-  }
-
   function color(items) {
     items = $(items);
     items.each(function(index, item) {
@@ -112,7 +87,7 @@ seajs.use(['$', 'popup', 'placeholder', 'fixed', 'word-color', 'autocomplete'], 
   }
 
   function toRgba(rgb, opacity) {
-    if ($.browser.msie && $.browser.version < 9) {
+    if (!$.support.opacity) {
       return rgb;
     }
     return rgb.replace('rgb', 'rgba').replace(')', ',' + opacity + ')');

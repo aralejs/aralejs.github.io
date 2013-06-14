@@ -2,7 +2,7 @@
   "family": "arale",
   "name": "arale.spmjs.org",
   "title": "Arale",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "{ 基于 SeaJS 的前端解决方案，随<span class='heart'>❤</span>构建互联网应用 }",
   "homepage": "http://aralejs.org",
   "repository": {
@@ -14,10 +14,10 @@
   },
   "spm": {
     "alias": {
-      "popup": "arale/popup/1.0.2/popup",
-      "autocomplete": "arale/autocomplete/1.2.0/autocomplete",
+      "popup": "arale/popup/1.1.0/popup",
+      "autocomplete": "arale/autocomplete/1.2.1/autocomplete",
       "placeholder": "arale/placeholder/1.0.1/placeholder",
-      "fixed": "arale/fixed/1.0.1/fixed",
+      "sticky": "arale/sticky/1.2.0/sticky",
       "word-color": "afc163/word-color/1.0.0/word-color"
     }
   }
