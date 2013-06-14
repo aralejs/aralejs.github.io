@@ -27,11 +27,13 @@ Arale 有两大帮凶，一是心狠手辣的包管理工具 [spm](https://githu
 
 ## 了解更多
 
-- [Arale 组件仓库](https://github.com/aralejs/)
+- [github 仓库](https://github.com/aralejs/aralejs.org/)
 
-- [Arale 项目文档](https://github.com/aralejs/aralejs.org/wiki)
+- [github issues](https://github.com/aralejs/aralejs.org/issues/)
 
-- [spm](https://github.com/spmjs/spm2/) - cmd 包管理工具
+- [github 组织](https://github.com/aralejs/)
+
+- [spm](https://github.com/spmjs/spm2/) - CMD 包管理工具
 
 - [nico](http://lab.lepture.com/nico/) - 文档生成工具
 
