@@ -167,7 +167,7 @@ define(function(require, exports, module) {
 启服务进行调试
 
 ```
-$ make debug
+$ make watch
 ```
 
 通过浏览器访问 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
@@ -184,7 +184,7 @@ seajs.use('puzzle', function(Puzzle) {
 });
 ````
 
-nico 支持 livereload，只要通过 `make debug` 或 `make watch` 启动服务，修改文件后都会自动构建和刷新浏览器。
+nico 支持 livereload，只要通过 `make watch` 启动服务，修改文件后都会自动构建和刷新浏览器。
 
 [查看 Makefile 的配置](https://github.com/aralejs/nico-arale#-1)
 
@@ -222,14 +222,22 @@ $ spm build
 
 [spm build](https://github.com/spmjs/spm-build) 使用 gruntjs 进行实现，能够打包压缩符合 cmd 规范的 js 和 css 文件。
 
-发布到源中。publish 命令将会把你的模块发布到默认的源服务器中。
+标准模块的打包流程可见：https://github.com/spmjs/spm-build/blob/master/index.js#L39
+
+在支付宝，我们还添加了一些自定义的 task：https://github.com/spmjs/spm-alipay-suite/blob/master/Gruntfile.js#L97
+
+### 发布到源中
+
+只有发布到源中，你的模块才能被其他模块调用。通过 spm publish 命令将会把你的模块发布到默认的源服务器中。
 （默认为 https://spmjs.org，这个源服务器需要用户校验以及对应 family 的权限，请自行[注册账号](http://docs.spmjs.org/en/#register-amp-login)进行发布）
 
 ```
 $ spm publish
 ```
 
-部署到服务器，请参见 [spm-deploy](https://github.com/spmjs/spm-deploy)。
+### 部署到开发服务器
+
+请参见 [spm-deploy](https://github.com/spmjs/spm-deploy)。
 
 ```
 $ spm deploy
