@@ -17,7 +17,7 @@
       "popup": "arale/popup/1.1.0/popup",
       "autocomplete": "arale/autocomplete/1.2.1/autocomplete",
       "placeholder": "arale/placeholder/1.0.1/placeholder",
-      "sticky": "arale/sticky/1.2.0/sticky",
+      "sticky": "arale/sticky/1.2.1/sticky",
       "word-color": "afc163/word-color/1.0.0/word-color"
     }
   }
