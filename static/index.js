@@ -112,11 +112,13 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
     },
     filter: function(data, query) {
       var result = [];
+      query = query.toLowerCase();
+
       $.each(data, function(index, value) {
         var temp = (value.root||value.family) + '.' + value.name;
         value.description = value.description || '';
-        if (temp.indexOf(query) > -1 ||
-            value.description.indexOf(query) > -1) {
+        if (temp.toLowerCase().indexOf(query) > -1 ||
+            value.description.toLowerCase().indexOf(query) > -1) {
           result.unshift({
             matchKey: temp,
             desc: value.description,
