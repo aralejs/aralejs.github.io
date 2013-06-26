@@ -1,7 +1,7 @@
 THEME = $(HOME)/.spm/themes/arale
 
 build-doc:
-	@nico build -v -C $(THEME)/nico.js
+	@nico build -C $(THEME)/nico.js
 
 debug:
 	@nico server -C $(THEME)/nico.js --watch debug
