@@ -76,7 +76,7 @@ git 下载地址如下
 
 ### 支付宝套件
 
-支付宝的同学可以略过下面的内容，直接安装一个套件
+支付宝的同学可以略过下面的内容，直接安装一个套件 [apm](https://github.com/spmjs/apm/)：
 
 ```
 npm install apm -g
