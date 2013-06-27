@@ -19,39 +19,7 @@
 
 ## 安装
 
-首先需要[安装 spm](http://docs.spmjs.org/en/#installation)。
-
-```
-$ npm install spm -g
-```
-
-然后安装 [spm build](https://github.com/spmjs/spm-deploy)、
-[spm init](https://github.com/spmjs/spm-deploy)、[spm deploy](https://github.com/spmjs/spm-deploy) 等插件
-以及 [Nico和相关主题](https://github.com/aralejs/nico-arale)。
-
-也可以安装一个支付宝定制的套件来获得其余所有相关功能（如 init、build、deploy、nico 以及主题等）。
-
-```
-$ npm install spm-alipay-suite -g
-```
-
-> 注意：支付宝套装会设定你的默认源地址为 http://yuan.alipay.im 。外网的用户无法访问，请手动设置为 https://spmjs.org 。
-
-```
-$ spm config source.default.url https://spmjs.org
-```
-
-### git
-
-Arale 代码使用 git 做版本控制工具，下载地址如下
-
- -  [git for mac](http://code.google.com/p/git-osx-installer/)
-
- -  [git for windows ](http://code.google.com/p/msysgit/)
-
-对 git 不熟的可以看下这个[简易指南](http://rogerdudler.github.com/git-guide/index.zh.html)
-
-如出现错误可先查看是否配置了 `PATH` 和 `NODE_PATH`，可以用 [nvm](https://github.com/creationix/nvm) 做 node 管理。
+请仔细参考 [环境与工具配置](/docs/installation.html) 。
 
 
 ## 初始化组件项目
@@ -167,7 +135,7 @@ define(function(require, exports, module) {
 启服务进行调试
 
 ```
-$ make watch
+$ spm doc watch
 ```
 
 通过浏览器访问 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
@@ -184,9 +152,10 @@ seajs.use('puzzle', function(Puzzle) {
 });
 ````
 
-nico 支持 livereload，只要通过 `make watch` 启动服务，修改文件后都会自动构建和刷新浏览器。
+通过四个 ``` 所包裹的代码不仅会显示成代码片段，也会插入 HTML 中进行实际运行，这样你调试好代码后，演示页面的文档也同时生成好了。
 
-[查看 Makefile 的配置](https://github.com/aralejs/nico-arale#-1)
+spm doc 支持 livereload，只要通过 `spm doc watch` 启动服务，修改文件后都会自动构建和刷新浏览器。
+
 
 ## 编写测试用例
 
@@ -228,7 +197,7 @@ $ spm build
 
 ### 发布到源中
 
-只有发布到源中，你的模块才能被其他模块调用。通过 spm publish 命令将会把你的模块发布到默认的源服务器中。
+只有发布到源中，你的模块才能被其他模块调用。通过 `spm publish` 命令将会把你的模块发布到默认的源服务器中。
 （默认为 https://spmjs.org，这个源服务器需要用户校验以及对应 family 的权限，请自行[注册账号](http://docs.spmjs.org/en/#register-amp-login)进行发布）
 
 ```
@@ -252,19 +221,26 @@ Arale 组件的文档地址为 aralejs.org/{{模块名}}，
 其他组件的文档地址在内网：arale.alipay.im/{{模块root}}/{{模块名}}，比如
 `alipay.xbox` 的文档地址为 `http://arale.alipay.im/alipay/xbox/` 。
 
-开发完组件后，只需要把目录下的`Makefile`中的`make publish-doc`这段换成如下代码。
+开发完组件后，只需要运行如下代码就可以把文档部署上线。
 
 ```
-publish-doc: clean build-doc
-    @spm publish --doc _site -s alipay
+$ spm doc publish 
 ```
 
-`-s alipay` 这个参数指定了发布到内网的源服务器，然后使用如下命名就可以把文档部署到对应地址了。
+或者
 
 ```
-$ make publish-doc
+$ spm doc publish -s alipay
 ```
 
-> 注意，Makefile文件 的缩进一律用 Tab，否则会报错。
+`-s alipay` 这个参数指定了发布文档到哪台源服务器，如果没有指定，则发布到默认的地址中去，
+你可以在 `~/.spm/spmrc` 文件中查看配置的默认源是什么。
+
+```
+[source:default]
+url = http://yuan.alipay.im
+```
+
+一般来说，支付宝内部的源地址是 `http://yuan.alipay.im`，公网的源地址是 `https://spmjs.org`。
 
 发布到源中。publish 命令将会把你的模块发布到默认的源服务器中。（例如 spmjs.org，这个源服务器需要用户校验以及对应 family 的权限，请自行[注册账号](http://docs.spmjs.org/en/#register-amp-login)进行发布）

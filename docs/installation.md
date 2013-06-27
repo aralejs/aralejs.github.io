@@ -79,8 +79,13 @@ git 下载地址如下
 支付宝的同学可以略过下面的内容，直接安装一个套件
 
 ```
-npm install spm -g
-npm install spm-alipay-suite -g
+npm install apm -g
+```
+
+如果之前安装过 `spm-alipay-suite`，你可能会报错，请加上 `-f` 强制安装一下就好。
+
+```
+npm install apm -g -f
 ```
 
 ### 安装 spm
@@ -120,15 +125,16 @@ spm-init -i aralejs/template-arale
 spm-init -i aralejs/template-alice
 ```
 
-### 安装 nico
+### 安装 spm-doc
 
-[nico](https://github.com/lepture/nico) 是文档工具
+[spm-doc](https://github.com/spmjs/spm-doc) 是封装了静态文档生成工具
+[nico](https://github.com/lepture/nico) 的一个用于 Arale 模块文档生成调试的工具。
 
 ```
-npm install nico -g
+npm install spm-doc -g
 ```
 
-下载 Arale 和 alice 模板
+下载 Arale 和 Alice 模板
 
 ```
 git clone https://github.com/aralejs/nico-arale.git ~/.spm/themes/arale
