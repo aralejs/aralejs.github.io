@@ -1,4 +1,4 @@
-# 环境与工具配置
+# 工具配置
 
 - order: 3
 - category: arale

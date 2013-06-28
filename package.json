@@ -2,8 +2,8 @@
   "family": "arale",
   "name": "arale.spmjs.org",
   "title": "Arale",
-  "version": "0.0.2",
-  "description": "{ 基于 SeaJS 的前端解决方案，随<span class='heart'>❤</span>构建互联网应用 }",
+  "version": "0.1.0",
+  "description": "随心构建互联网应用",
   "homepage": "http://aralejs.org",
   "repository": {
     "type": "git",

@@ -1,9 +1,10 @@
 body {
-    color: #555;
-    font-family: Georgia,'Xin Gothic','PT Sans','微软雅黑','Hiragino Sans GB','Helvetica Neue',Helvetica,Arial,sans-serif;
+    background: none repeat scroll 0 0 #FDFDFD;
+    color: #666666;
+    font-family: "Marcellus","Lucida Grande",Georgia,sans-serif;
 }
 a {
-    color: #6C97C2;
+    color: #3B94B7;
     text-decoration: none;
 }
 .inline {
@@ -34,39 +35,21 @@ a {
     margin-right:-290px;
 }
 #module-wrapper, #doc-wrapper {
-    max-width: 720px;
-    *width: 720px;
     margin-left:290px;    
 }
-#doc-wrapper h1 {
-    font-family: "Marcellus",sans-serif; 
-}
-#title a {
-    font-family: "Marcellus",sans-serif;
-    font-size: 36px;
-    margin: 20px 0;
-    transition: all 0.6s ease;
-}
-#title a:hover {
-    color: transparent;
-    text-shadow: 0 0 3px #6C97C2;
-}
-#description {
-    color: #798B9D;
-    font-size: 22px;
-}
+
 #search {    
     margin-left: 2em;
     padding: 8px;
     font-size: 14px;
     outline: none;
-    border: 1px solid #bbb;
+    border: 3px solid #B1C0C6;
     color: #888;
     width:180px;
     transition: all 0.3s ease-out 0s;
 }
 #search:focus {
-    border-color: #999;
+    border-color: #3B94B7;
     width:300px;
 }
 
@@ -111,24 +94,24 @@ a {
 
 .module {
     background: #fff;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
     color: #999;
     display: inline;
     float: left;
     margin-bottom: 15px;
-    margin-right: 10px;
+    margin-right: 15px;
     overflow: hidden;
     padding: 4px 6px 6px 10px;
-    width: 150px;
+    width: 175px;
     height: 61px;
-    border-left: 4px solid #B4D0EE;
+    border-left: 5px solid #B4D0EE;
     font-family: tahoma;
     overflow: hidden;
     position: relative;
 }
 
 .module:hover {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     color: #666;
 }
 
@@ -179,31 +162,6 @@ a {
     line-height: 1.5;
 }
 
-#card {
-    padding: 5px 10px;
-    background: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    width: 160px;
-    font-size: 12px;
-    display: none;
-}
-
-#card p {
-    margin: 0;
-}
-
-#card .card-name {
-    margin: 0;
-    font-size: 16px;
-}
-
-#card .card-description {
-    line-height: 1.4;
-    margin: 3px 0;
-}
-
 #content {
     padding: 0;
 }
@@ -214,7 +172,7 @@ a {
     border: 1px solid #CCC;
     background:#fff;
     padding: 0;
-    width: 316px;
+    width: 320px;
     margin-top: -1px;
     font-family: tahoma;
 }
@@ -257,15 +215,403 @@ a {
     text-shadow:1px 1px 2px #fff,0 0 0 #aaa,1px 1px 2px #fff;
 }
 
+hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0));
+    background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0));
+    background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0));
+    background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0));
+    margin: 15px 0;
+}
+
+.content blockquote {
+    border-left: 0.4em solid #DDDDDD;
+    color: #999;
+    margin: 15px 0;
+    padding: 0 15px;
+}
+
+.content blockquote em {
+    color: #BB6E6E;
+    margin-left: 1em;
+}
+
+.content > p > img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.content > p {
+    margin: 20px 0;
+}
+
+.content code {
+    background-color: #FEE9CC;
+    border-radius: 3px 3px 3px 3px;
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 13px;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding: 1px 3px;
+}
+
+.content pre {
+    background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 13px;
+    line-height: 19px;
+    margin: 6px 0;
+    overflow: auto;
+    padding: 6px 10px;
+    white-space: pre;
+}
+
+.content pre code,
+.content .highlight code {
+    background-color: transparent;
+    color: #5D6A6A;
+    margin: auto;
+    padding: 0;
+}
+
+/* --- */
+
+#body-wrapper {
+    max-width: 100%;    
+    padding-top: 0;
+}
+
+#footer-wrapper {
+    width: 1140px;
+    max-width: 1140px;
+}
+
+/* - - - - - - - */
+
+.head-area {
+    padding-top: 20px;
+    background: #fff;
+}
+
+.title-area {
+    margin: 0 auto;
+    padding-top: 15px;
+    width: 600px;
+    text-align: center;
+    height: 120px;
+    position: relative;
+}
+
+.title-area h1 {
+    font-size: 44px;
+    margin: 0;
+    line-height: 60px;
+}
+
+.title-area h1 a {
+    color: #3B94B7;
+    transition: all 0.6s ease;    
+}
+
+.title-area h1 a:hover {
+    color: transparent;
+    text-decoration: none;
+    text-shadow: 0 0 3px #3B94B7;    
+}
+
+.title-area .description {
+    margin: 0;
+    color: #999;
+    font-size: 12px;
+}
+
+.nav-area {
+    font-size: 16px;
+    height: 60px;
+    color: #888;
+    margin-bottom: 15px;
+    border-top: 4px solid #3B94B7;
+    text-align: center;
+    background:#EEF3FB;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.main-nav {
+    list-style-position: inside;
+    line-height: 36px;
+    margin: 12px auto 0;
+    padding: 0;
+    width: 1000px;
+}
+
+.main-nav li {
+    margin: 0 18px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    font-weight: bold;
+}
+
+.main-nav a {
+    color: #3B94B7;
+}
+
+.main-nav a:hover {
+    opacity: 0.8;
+}
+
+.main-area {
+    width: 1140px;
+    margin: 30px auto 0;
+    position: relative;
+}
+
+.content-area {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 0 29px 20px;
+    width: 840px;
+    margin-left: 240px;
+}
+
+.comment-area {
+    width: 900px;
+    margin-top: 20px;
+    margin-left: 240px;
+}
+
+.side-area {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 220px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.side-area ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.side-area ul li ul {
+    display: none;
+}
+
+.side-area .side-highlight a {
+    background: #FBFFD7;
+    text-shadow: none;
+    font-weight: bold;
+    transition: background-color 0.8s ease-out;
+}
+
+.side-area .side-highlight a:hover {
+    background: #FBFFD7;
+}
+
+.side-loading {
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    border: 1px solid #ddd;
+    border-bottom: none;
+}
+
+.side-area a {
+    font-size: 14px;
+    display: block;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    position: relative;
+    text-shadow: 0 1px 2px #eee;
+    color: #3B94B7;
+}
+
+.side-area a .iconfont {
+    color: #aaa;
+    position: absolute;
+    right: 12px;
+    top: 11px;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.side-area a:hover {
+    background: #f8f8f8;
+    text-decoration: none;
+}
+
+.side-area a:hover .iconfont {
+    color: #aaa;
+}
+
+.content-area h1 {
+    font-size: 28px;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.content-area h1:before, 
+.content-area h1:after {
+    content: '—';
+    color: #eee;
+    margin: 1.5em;
+}
+
+.content-area h2 {
+    font-size: 22px;
+    color: #3B94B7;
+    margin-top: 40px;
+}
+
+.content-area h3 {
+    font-size: 18px;
+}
+
+.content-area h4 {
+    font-size: 14px;
+}
+
+/* 清理浮动 */
+.fn-clear:after {
+    visibility:hidden;
+    display:block;
+    font-size:0;
+    content:" ";
+    clear:both;
+    height:0;
+}
+.fn-clear {
+    zoom:1; /* for IE6 IE7 */
+}
+
+/* 隐藏, 通常用来与 JS 配合 */
+body .fn-hide {
+    display:none;
+}
+
+/* 设置内联, 减少浮动带来的bug */
+.fn-left,.fn-right {
+    display:inline;
+}
+.fn-left {
+    float:left;
+}
+.fn-right {
+    float:right;
+}
+
+/* 单行文字溢出时出现省略号，需设定宽度 */
+.fn-text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 简单的渐变 */
+.fn-linear {
+    background: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#f1f1f1));
+    background: -moz-linear-gradient(top, #fcfcfc, #f1f1f1);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f1f1f1');
+    background:-o-linear-gradient(top, #fcfcfc, #f1f1f1);
+    background: linear-gradient(top, #fcfcfc, #f1f1f1);
+}
+
+/* 浅色的渐变 */
+.fn-linear-light {
+    background: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#f9f9f9));
+    background: -moz-linear-gradient(top, #fcfcfc, #f9f9f9);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f9f9f9');
+    background:-o-linear-gradient(top, #fcfcfc, #f9f9f9);
+    background: linear-gradient(top, #fcfcfc, #f9f9f9);
+}
+
+/* 人民币符号 */
+.fn-rmb {
+    font-family: arial;
+    font-style: normal;
+    padding-right: 4px;
+}
+
+/* chrome 下字体过小的问题 */
+.fn-webkit-adjust {
+    -webkit-text-size-adjust: none;
+}
+
+/* --- */
+
+.content .nico-iframe {
+    position: relative;
+}
+.content .nico-iframe iframe {
+    width: 100%;
+}
+.content .nico-iframe .new-window {
+    position: absolute;
+    top: 30px;
+    right: -40px;
+    font-size: 12px;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+}
+.content .highlight {
+    background-color: transparent;
+    padding-top: 1px;
+    position: relative;
+}
+.content .collapse pre {
+    overflow: hidden;
+    height: 60px;
+}
+
+.content .highlight .code-toggle {
+    position: absolute;
+    top: -10px;
+    right: 2px;
+    font-size: 12px;
+    padding: 3px 5px;
+    background: rgba(0, 0, 0, 0.16);
+    border-radius: 4px 4px 0 0;
+    text-decoration: none;
+    color: #fff;
+    line-height: 1;
+}
+
 /* responsive */
 @media (max-width: 980px) {
-    #document-wrapper {
-        float: none;
-        position: static!important;
+    .main-area,
+    #footer-wrapper {
+        width: auto;
     }
-    #module-wrapper {
+    .nav-area {
+        height: auto;
+        font-size: 16px;
+    }
+    .main-nav {
+        width: auto;
+        margin: 0;
+        line-height: 40px;
+    }
+    .main-nav li {
+        display: block;
+        margin: 0;
+    }
+    .side-area {
+        position: relative!important;
+        top: 0!important;
+        margin-bottom: 20px;
+        width: auto;
+    }
+    .content-area,
+    .comment-area {
         margin-left: 0;
-        border-top: 1px dashed #999;
-        margin-top: 20px;
+        width: auto;
     }
 }

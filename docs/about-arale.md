@@ -1,4 +1,4 @@
-# 关于 Arale
+# 关于Arale
 
 - order: 1
 - category: arale
@@ -8,6 +8,8 @@
 Arale 立足于支付宝的前端需求和国内前端社区，基于 [SeaJS](http://seajs.org/) 
 和 [CMD](https://github.com/seajs/seajs/issues/242) 规范，建立了一套从编码测试到部署的开发体系，
 是一个开放、简单、易用的前端解决方案。
+
+<img src="/static/arale.jpg" width="300">
 
 ## 简介
 
@@ -22,8 +24,6 @@ Arale 有两大帮凶，一是心狠手辣的包管理工具 [spm](https://githu
 第二位是杀千刀的 [nico](https://github.com/aralejs/nico-arale/) 兄，这位兄弟擅长玩弄 Markdown 格式，帮助 Arale 用 Markdown 来起草各类文档、演示、用例，方便本地开发，生成静态站点。他打破了互联网上的文档生成旧秩序，对 **写文档** 和 **写演示** 这两位苦大仇深的人犯下了不可饶恕的罪行。
 
 最后，最重要的是，Arale 出生和成长在开源街区中，托管在 github 上，深谙互联网的开源黑文化。都在江湖飘哪能不挨刀，Arale 会在不断的闷棍、毒镖暗器、黑吃黑、内讧、街头火并中越挫越勇，希望道上的人抬爱，给个面子，大家同舟共济。
-
-<img src="/static/arale-line.png" width="300">
 
 ## 了解更多
 

@@ -1,11 +1,11 @@
-# 开发一个 Arale 模块
+# 开发一个模块
 
 - order: 4
 - category: arale
 
 ---
 
-### 相关文档
+## 相关文档
 
 1. 基于 widget 开发组件 (TODO)
 2. [测试解决方案](https://github.com/totorojs/totoro/wiki)
