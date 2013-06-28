@@ -24,9 +24,6 @@ a {
     border-top: 1px solid #fff;
     zoom: 1;
 }
-.main-block {
-    float: left;
-}
 #module-wrapper h2 {
     display: none;
 }
@@ -50,24 +47,18 @@ a {
     width:300px;
 }
 
-#document-wrapper ol {
-    list-style-position: inside;
-    margin: 0;
-    line-height: 1.8;
-    font-size: 16px;
-    margin-right: 80px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
-    border: 1px solid #ddd;
-    border-radius: 2px;
+#module-wrapper {
+    background: none;
+    padding: 0;
+    border: none;
+    width: auto;
 }
 
-#document-wrapper h2, #module-wrapper h2 {
+#module-wrapper h2 {
     text-transform: uppercase;
     font-style: normal;
     font-size: 18px;
     font-family: "Marcellus",sans-serif;
-    clear: both;
     margin: 0 0 20px;
     text-shadow: 0 1px 0 #fff;
 }
@@ -80,14 +71,8 @@ a {
 .modules {
     margin-bottom: 30px;
     zoom: 1;
-}
-.modules:after {
-    content: ' ';
-    font-size: 0;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-    display: block;
+    overflow: hidden;
+    padding-top: 1px;
 }
 
 .module {
@@ -383,6 +368,7 @@ hr {
 .side-area {
     overflow: hidden;
     position: absolute;
+    float: left;
     top: 0;
     width: 220px;
     background: #fff;
@@ -393,6 +379,10 @@ hr {
     padding: 0;
     margin: 0;
     list-style: none;
+}
+
+.side-area li {
+    list-style: none;    
 }
 
 .side-area ul li ul {
