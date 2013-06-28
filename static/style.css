@@ -7,6 +7,9 @@ a {
     color: #3B94B7;
     text-decoration: none;
 }
+a:hover {
+    text-decoration: underline;
+}
 .inline {
     display: inline-block;
     *display: inline;
@@ -569,6 +572,32 @@ body .fn-hide {
     text-decoration: none;
     color: #fff;
     line-height: 1;
+}
+
+
+#card {
+    padding: 5px 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    width: 160px;
+    font-size: 12px;
+    display: none;
+}
+
+#card p {
+    margin: 0;
+}
+
+#card .card-name {
+    margin: 0;
+    font-size: 16px;
+}
+
+#card .card-description {
+    line-height: 1.4;
+    margin: 3px 0;
 }
 
 /* responsive */
