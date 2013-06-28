@@ -31,10 +31,6 @@ a:hover {
     display: none;
 }
 
-#module-wrapper, #doc-wrapper {
-    margin-left:260px;    
-}
-
 #search {    
     margin-left: 2em;
     padding: 8px;
@@ -55,6 +51,7 @@ a:hover {
     padding: 0;
     border: none;
     width: auto;
+    margin-left: 290px;
 }
 
 #module-wrapper h2 {
@@ -85,10 +82,10 @@ a:hover {
     display: inline;
     float: left;
     margin-bottom: 15px;
-    margin-right: 15px;
+    margin-right: 20px;
     overflow: hidden;
     padding: 4px 6px 6px 10px;
-    width: 180px;
+    width: 170px;
     height: 61px;
     border-left: 5px solid #B4D0EE;
     font-family: tahoma;
