@@ -1,4 +1,4 @@
-# 关于Arale
+# 关于 Arale
 
 - order: 1
 - category: arale
@@ -24,6 +24,15 @@ Arale 有两大帮凶，一是心狠手辣的包管理工具 [spm](https://githu
 第二位是杀千刀的 [nico](https://github.com/aralejs/nico-arale/) 兄，这位兄弟擅长玩弄 Markdown 格式，帮助 Arale 用 Markdown 来起草各类文档、演示、用例，方便本地开发，生成静态站点。他打破了互联网上的文档生成旧秩序，对 **写文档** 和 **写演示** 这两位苦大仇深的人犯下了不可饶恕的罪行。
 
 最后，最重要的是，Arale 出生和成长在开源街区中，托管在 github 上，深谙互联网的开源黑文化。都在江湖飘哪能不挨刀，Arale 会在不断的闷棍、毒镖暗器、黑吃黑、内讧、街头火并中越挫越勇，希望道上的人抬爱，给个面子，大家同舟共济。
+
+
+## 谁在使用
+
+[![支付宝](https://i.alipayobjects.com/e/201305/N1Xm79x5h.png)](https://www.alipay.com/)
+[![Alibaba](http://ww3.sinaimg.cn/large/68361562gw1e1omdjti3vj.jpg)](http://www.alibaba.com/)
+[![阿里内外](https://i.alipayobjects.com/e/201306/biTtjKHBP.png)](http://work.alibaba-inc.com/)
+
+等等。
 
 ## 了解更多
 

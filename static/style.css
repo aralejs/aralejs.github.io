@@ -30,12 +30,9 @@ a {
 #module-wrapper h2 {
     display: none;
 }
-#document-wrapper {
-    width: 290px;
-    margin-right:-290px;
-}
+
 #module-wrapper, #doc-wrapper {
-    margin-left:290px;    
+    margin-left:260px;    
 }
 
 #search {    
@@ -68,9 +65,10 @@ a {
 #document-wrapper h2, #module-wrapper h2 {
     text-transform: uppercase;
     font-style: normal;
-    font-size: 16px;
+    font-size: 18px;
     font-family: "Marcellus",sans-serif;
     clear: both;
+    margin: 0 0 20px;
     text-shadow: 0 1px 0 #fff;
 }
 
@@ -80,7 +78,7 @@ a {
 }
 
 .modules {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     zoom: 1;
 }
 .modules:after {
@@ -378,9 +376,8 @@ hr {
 }
 
 .comment-area {
-    width: 900px;
-    margin-top: 20px;
-    margin-left: 240px;
+    width: 880px;
+    margin-left: 260px;
 }
 
 .side-area {
