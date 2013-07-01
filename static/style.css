@@ -309,8 +309,16 @@ hr {
 
 .title-area img {
     position: absolute;
-    top: -2px;
+    top: 20px;
     right: 130px;
+    transition: all 0.3s ease-out 0s;
+    opacity: 0.8;
+}
+
+#search:focus + img {
+    right: 75px;
+    top: -5px;
+    opacity: 1;    
 }
 
 .nav-area {
