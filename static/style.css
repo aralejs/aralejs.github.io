@@ -15,11 +15,7 @@ a:hover {
     *display: inline;
     vertical-align: middle;
 }
-#title-wrapper {
-    border-bottom: 1px solid #ccc;
-    text-align:center;
-    padding-bottom: 20px;
-}
+
 #main-wrapper {
     padding: 15px;
     overflow: hidden;
@@ -40,6 +36,8 @@ a:hover {
     color: #888;
     width:180px;
     transition: all 0.3s ease-out 0s;
+    position: relative;
+    z-index: 10;
 }
 #search:focus {
     border-color: #3B94B7;
@@ -285,10 +283,10 @@ hr {
 
 .title-area {
     margin: 0 auto;
-    padding-top: 15px;
+    padding-top: 30px;
     width: 600px;
     text-align: center;
-    height: 120px;
+    height: 105px;
     position: relative;
 }
 
@@ -309,10 +307,10 @@ hr {
     text-shadow: 0 0 3px #3B94B7;    
 }
 
-.title-area .description {
-    margin: 0;
-    color: #999;
-    font-size: 12px;
+.title-area img {
+    position: absolute;
+    top: -2px;
+    right: 130px;
 }
 
 .nav-area {
