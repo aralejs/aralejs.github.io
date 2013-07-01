@@ -44,6 +44,10 @@ a:hover {
     width:300px;
 }
 
+#search.placeholder {
+    color: #ccc;
+}
+
 #module-wrapper {
     background: none;
     padding: 0;
@@ -338,7 +342,7 @@ hr {
     line-height: 36px;
     margin: 12px auto 0;
     padding: 0;
-    width: 1000px;
+    width: 1100px;
 }
 
 .main-nav li {
