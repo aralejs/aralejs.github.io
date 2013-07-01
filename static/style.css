@@ -112,7 +112,7 @@ a:hover {
     opacity: 0.7;
 }
 
-.module-name {
+a.module-name {
     display: inline-block;
     font-size: 18px;
     max-width: 145px;    
