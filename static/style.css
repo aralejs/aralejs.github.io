@@ -324,6 +324,7 @@ hr {
     text-align: center;
     background: #F6F6F6;
     border-bottom: 1px solid #E8E8E8;
+    text-shadow: 0 2px 0 #fff;
 }
 
 .main-nav {
