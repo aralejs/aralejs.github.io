@@ -86,7 +86,8 @@ a:hover {
     overflow: hidden;
     padding: 4px 6px 6px 10px;
     width: 170px;
-    height: 61px;
+    height: 60px;
+    border: 1px solid #ddd\0;
     border-left: 5px solid #B4D0EE;
     font-family: tahoma;
     overflow: hidden;
@@ -94,6 +95,9 @@ a:hover {
 }
 
 .module:hover {
+    border-top: 1px solid #bbb\0;    
+    border-right: 1px solid #bbb\0;    
+    border-bottom: 1px solid #bbb\0;    
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     color: #666;
 }
@@ -140,7 +144,7 @@ a:hover {
 }
 
 .module-description {
-    margin: 5px 0 0 0;
+    margin: 6px 0 0 0;
     font-size: 12px;
     line-height: 1.5;
 }
