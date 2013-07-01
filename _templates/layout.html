@@ -42,7 +42,7 @@
             </div>
             <div class="nav-area">
                 <ol class="main-nav">
-                    <li><a href="/">首页</a></li>
+                    <li><a href="/"><i class="iconfont" title="首页">&#xF034;</i> 首页</a></li>
                     {%- for item in resource.pages|find_category('arale') %}
                     <li><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
                     {%- endfor %}
