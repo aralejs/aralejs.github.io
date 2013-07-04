@@ -4,7 +4,7 @@ body {
     font-family: "Marcellus","Lucida Grande",Georgia,sans-serif;
 }
 a {
-    color: #3B94B7;
+    color: #129ED5;
     text-decoration: none;
 }
 a:hover {
@@ -40,7 +40,7 @@ a:hover {
     z-index: 10;
 }
 #search:focus {
-    border-color: #3B94B7;
+    border-color: #129ED5;
     width:300px;
 }
 
@@ -301,14 +301,13 @@ hr {
 }
 
 .title-area h1 a {
-    color: #3B94B7;
     transition: all 0.6s ease;    
 }
 
 .title-area h1 a:hover {
     color: transparent;
     text-decoration: none;
-    text-shadow: 0 0 3px #3B94B7;    
+    text-shadow: 0 0 3px #129ED5;    
 }
 
 .title-area img {
@@ -328,7 +327,6 @@ hr {
 .nav-area {
     font-size: 16px;
     height: 60px;
-    color: #888;
     margin-bottom: 15px;
     border-top: 4px solid #5DADE2;
     text-align: center;
@@ -351,10 +349,6 @@ hr {
     *display: inline;
     *zoom: 1;
     font-weight: bold;
-}
-
-.main-nav a {
-    color: #3B94B7;
 }
 
 .main-nav a:hover {
@@ -431,7 +425,6 @@ hr {
     border-bottom: none;
     position: relative;
     text-shadow: 0 1px 2px #eee;
-    color: #3B94B7;
 }
 
 .side-area a .iconfont {
@@ -467,7 +460,7 @@ hr {
 
 .content-area h2 {
     font-size: 22px;
-    color: #587B88;
+    color: #3B94B7;
     margin-top: 40px;
 }
 
