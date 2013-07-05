@@ -39,7 +39,7 @@
 </script>
 ```
 
-看到有个球在飞来飞去么，你能抓到他么？
+看到有个球在飞来飞去么，你能抓到他么？[线上演示](http://jsfiddle.net/zPYqx/show/)
 
 ## 使用 SeaJS
 
