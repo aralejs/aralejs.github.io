@@ -4,7 +4,7 @@ body {
     font-family: "Marcellus","Lucida Grande",Georgia,sans-serif;
 }
 a {
-    color: #129ED5;
+    color: #3F9EB3;
     text-decoration: none;
 }
 a:hover {
@@ -40,7 +40,7 @@ a:hover {
     z-index: 10;
 }
 #search:focus {
-    border-color: #129ED5;
+    border-color: #3F9EB3;
     width:300px;
 }
 
@@ -307,7 +307,7 @@ hr {
 .title-area h1 a:hover {
     color: transparent;
     text-decoration: none;
-    text-shadow: 0 0 3px #129ED5;    
+    text-shadow: 0 0 3px #3F9EB3;    
 }
 
 .title-area img {
@@ -460,7 +460,7 @@ hr {
 
 .content-area h2 {
     font-size: 22px;
-    color: #3B94B7;
+    color: #777;
     margin-top: 40px;
 }
 
