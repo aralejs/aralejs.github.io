@@ -611,8 +611,7 @@ body .fn-hide {
     }
 
     #search:focus {
-        width: 60%;
-        max-width: 200px;
+        width: 220px;
     }
     .main-area,
     #footer-wrapper {
@@ -634,12 +633,12 @@ body .fn-hide {
     .side-area {
         margin-left: -10000px;
     }
-    .content-area,
+    #module-wrapper.content-area,
     .comment-area {
-        margin-left: 0;
+        margin-left: 16px;
         width: auto;
     }
-    #module-wrapper {
-        margin-left: 10px;
+    .ui-autocomplete {
+        width: 240px;
     }
 }
