@@ -599,6 +599,21 @@ body .fn-hide {
 
 /* responsive */
 @media (max-width: 980px) {
+    .head-area .title-area {
+        width: 100%;
+    }
+    .head-area .title-area h1.inline {
+        display: block;
+    }
+
+    #search {
+        margin-left: 0;
+    }
+
+    #search:focus {
+        width: 60%;
+        max-width: 200px;
+    }
     .main-area,
     #footer-wrapper {
         width: auto;
@@ -617,14 +632,14 @@ body .fn-hide {
         margin: 0;
     }
     .side-area {
-        position: relative!important;
-        top: 0!important;
-        margin-bottom: 20px;
-        width: auto;
+        margin-left: -10000px;
     }
     .content-area,
     .comment-area {
         margin-left: 0;
         width: auto;
+    }
+    #module-wrapper {
+        margin-left: 10px;
     }
 }
