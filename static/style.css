@@ -634,6 +634,7 @@ body .fn-hide {
         margin-left: -10000px;
     }
     #module-wrapper.content-area,
+    .content-area,
     .comment-area {
         margin-left: 16px;
         width: auto;
