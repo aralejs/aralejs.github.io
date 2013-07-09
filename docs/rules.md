@@ -52,7 +52,7 @@ overlay
 
 ## 编码风格
 
-需要通过 gjslint，查看具体[编码风格](https://github.com/aralejs/aralejs.org/wiki/JavaScript-%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC)
+需要通过 JSLint，查看具体[编码风格](https://github.com/aralejs/aralejs.org/wiki/JavaScript-%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC)
 
 ## 注释规范
 
