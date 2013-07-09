@@ -114,7 +114,7 @@
                 {%- else %}
                 <div class="content-area">
                     <h1>{{post.title}}</h1>
-                    <div class="content">{{post.html}}</div>
+                    <div class="content entry-content">{{post.html | add_anchor}}</div>
                 </div>
                 {%- endif %}                
             </div>
