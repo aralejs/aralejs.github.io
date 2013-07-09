@@ -45,13 +45,8 @@ a:hover {
 }
 
 #search:focus {
-<<<<<<< HEAD
     border-color: #3F9EB3;
-    width:300px;
-=======
-    border-color: #3B94B7;
     width: 300px;
->>>>>>> fcdb524986e2ef224a5b65e57a0421b95e796354
 }
 
 #search.placeholder {
@@ -316,22 +311,13 @@ hr {
 }
 
 .title-area h1 a {
-<<<<<<< HEAD
-    transition: all 0.6s ease;    
-=======
-    color: #3B94B7;
     transition: all 0.6s ease;
->>>>>>> fcdb524986e2ef224a5b65e57a0421b95e796354
 }
 
 .title-area h1 a:hover {
     color: transparent;
     text-decoration: none;
-<<<<<<< HEAD
-    text-shadow: 0 0 3px #3F9EB3;    
-=======
-    text-shadow: 0 0 3px #3B94B7;
->>>>>>> fcdb524986e2ef224a5b65e57a0421b95e796354
+    text-shadow: 0 0 3px #3F9EB3;
 }
 
 .title-area img {
