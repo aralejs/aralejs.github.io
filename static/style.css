@@ -629,6 +629,7 @@ body .fn-hide {
 
     .head-area .title-area h1.inline {
         display: block;
+        margin-top: -16px;
     }
 
     #search {
@@ -683,6 +684,10 @@ body .fn-hide {
     .content-area h1:before,
     .content-area h1:after {
         margin: 0 2px;
+    }
+
+    .title-area img {
+        visibility: hidden;
     }
 
 }
