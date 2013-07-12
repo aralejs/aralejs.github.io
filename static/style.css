@@ -257,9 +257,9 @@ hr {
 }
 
 .content pre {
-    background-color: #F8F8F8;
-    border: 1px solid #CCCCCC;
-    border-radius: 3px 3px 3px 3px;
+    background-color: #F8F8F9;
+    border: 1px solid #eee;
+    border-radius: 2px;
     font-size: 13px;
     line-height: 19px;
     margin: 6px 0;
