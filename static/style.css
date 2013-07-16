@@ -1,7 +1,9 @@
+@import url(http://fonts.googleapis.com/css?family=Marmelad);
+
 body {
     background: none repeat scroll 0 0 #FDFDFD;
     color: #666666;
-    font-family: "Marcellus", "Lucida Grande", Georgia, sans-serif;
+    font-family: "Marmelad", "Lucida Grande", Georgia, sans-serif;
 }
 
 a {
