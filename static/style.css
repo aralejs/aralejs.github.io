@@ -98,6 +98,7 @@ a:hover {
     overflow: hidden;
     position: relative;
     border-radius: 6px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 .module:hover {
@@ -106,6 +107,7 @@ a:hover {
     border-bottom: 1px solid #bbb;    
     color: #666;
     background: #fdfdff;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.08);    
 }
 
 .module img {
