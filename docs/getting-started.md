@@ -72,6 +72,16 @@ seajs.use(['arale/position/1.0.0/position'], function(Position) {
 
 这样就可以直接 `seajs.use(['position'])` 了，请求完成后会调用回调函数，这时就可以使用这两个组件了。
 
+## 安装到本地
+
+非常欢迎直接通过支付宝的 cdn 来调用 Arale 模块，但如果你需要在自己的网站上部署 Arale，建议使用 spm 工具来下载模块。
+
+```
+$ spm install arale/position
+```
+
+这行命令会把对应模块以及相关依赖安装到 sea-modules 目录中。像支付宝的 cdn 路径这样部署你的静态文件，就可以自由使用了。
+
 ## 查找组件
 
 Arale 是一个基础类库，有自己开发的组件，也有精心挑选由外部引入的组件，那如何找到这些组件呢？
