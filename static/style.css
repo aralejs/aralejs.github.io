@@ -328,6 +328,12 @@ hr {
     opacity: 0.8;
 }
 
+.head-area iframe {
+    position: absolute;
+    top: 70px;
+    right: 40px;
+}
+
 #search:focus + img {
     right: 75px;
     top: -5px;
