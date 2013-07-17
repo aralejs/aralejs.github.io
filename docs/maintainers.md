@@ -44,13 +44,13 @@ table .people {
 
 <div id="container-alipay"></div>
 
-<script type="text/javascript" src="https://a.alipayobjects.com/alipay/apww/1.1.0/apww.js"></script>
+<script type="text/javascript" src="https://a.alipayobjects.com/alipay/apww/1.2.0/apww.js"></script>
 <script type="text/javascript">
 seajs.config({
   alias: {
     arale: 'http://spmjs.org/repository/arale/?define',
     alipay: 'http://yuan.alipay.im/repository/alipay/?define',
-    apww: 'alipay/apww/1.1.0/apww'
+    apww: 'alipay/apww/1.2.0/apww'
   }
 });
 seajs.use(['$', 'apww'], function($, apww) {
