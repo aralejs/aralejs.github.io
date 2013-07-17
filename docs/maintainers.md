@@ -44,13 +44,13 @@ table .people {
 
 <div id="container-alipay"></div>
 
-<script type="text/javascript" src="https://a.alipayobjects.com/alipay/apww/1.1.0/apww.js"></script>
+<script type="text/javascript" src="https://a.alipayobjects.com/alipay/apww/1.2.0/apww.js"></script>
 <script type="text/javascript">
 seajs.config({
   alias: {
     arale: 'http://spmjs.org/repository/arale/?define',
     alipay: 'http://yuan.alipay.im/repository/alipay/?define',
-    apww: 'alipay/apww/1.1.0/apww'
+    apww: 'alipay/apww/1.2.0/apww'
   }
 });
 seajs.use(['$', 'apww'], function($, apww) {
@@ -58,6 +58,7 @@ seajs.use(['$', 'apww'], function($, apww) {
     createTable(arale, '#container-arale', "http://aralejs.org/");
     apww.init({
       trigger:'.J-apww',
+      host: 'http://amos.im.alisoft.com',
       classPrefix: 'ui-ww-static'
     });
   });
@@ -66,6 +67,7 @@ seajs.use(['$', 'apww'], function($, apww) {
     createTable(alipay, '#container-alipay', "http://arale.alipay.im/alipay/");
     apww.init({
       trigger:'.J-apww',
+      host: 'http://amos.im.alisoft.com',
       classPrefix: 'ui-ww-small'
     });
   });
