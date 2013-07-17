@@ -5,7 +5,7 @@
 
 ---
 
-Arale 立足于支付宝的前端需求和国内前端社区，基于 [SeaJS](http://seajs.org/) 
+Arale 立足于支付宝的前端需求和国内前端社区，基于 [Sea.js](http://seajs.org/) 
 和 [CMD](https://github.com/seajs/seajs/issues/242) 规范，建立了一套从编码测试到部署的开发体系，
 是一个开放、简单、易用的前端解决方案。
 
@@ -13,9 +13,9 @@ Arale 立足于支付宝的前端需求和国内前端社区，基于 [SeaJS](ht
 
 ## 简介
 
-Arale（阿拉蕾） 生在旧社会，长在新中国，本为一个乖巧可爱的机器人女娃，在 SeaJS 大叔的蛊惑下，逐渐走上了无恶不作的不归路。
+Arale（阿拉蕾） 生在旧社会，长在新中国，本为一个乖巧可爱的机器人女娃，在 Sea.js 大叔的蛊惑下，逐渐走上了无恶不作的不归路。
 
-在猥琐的 SeaJS 的帮助下，Arale 胁迫了业界最优秀的开源类库 (包括jQuery、underscore、momentjs 等等）为己所用，并且始终保持对开源社区的邪恶目光，站在并将始终站在这些无辜巨人们的肩膀上。
+在猥琐的 Sea.js 的帮助下，Arale 胁迫了业界最优秀的开源类库 (包括不限于 jQuery、underscore、momentjs、handlebars 等）为己所用，并且始终保持对开源社区的邪恶目光，站在并将始终站在这些无辜巨人们的肩膀上。
 
 Arale 手下拥有 [popup](http://aralejs.org/popup/)、[validator](http://aralejs.org/validator/)、[position](http://aralejs.org/position/)、[autocomplete](http://aralejs.org/autocomplete/) 等等等等下流狡猾的 CMD 模块喽啰们，他们手脚麻利，办事干净，各自独当一面讲义气，任你各种需求耀武扬威，上去就是一板砖，绝无二话。
 
