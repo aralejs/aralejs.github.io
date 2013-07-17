@@ -58,6 +58,7 @@ seajs.use(['$', 'apww'], function($, apww) {
     createTable(arale, '#container-arale', "http://aralejs.org/");
     apww.init({
       trigger:'.J-apww',
+      host: 'http://amos.im.alisoft.com',
       classPrefix: 'ui-ww-static'
     });
   });
@@ -66,6 +67,7 @@ seajs.use(['$', 'apww'], function($, apww) {
     createTable(alipay, '#container-alipay', "http://arale.alipay.im/alipay/");
     apww.init({
       trigger:'.J-apww',
+      host: 'http://amos.im.alisoft.com',
       classPrefix: 'ui-ww-small'
     });
   });
