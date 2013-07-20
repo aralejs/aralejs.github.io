@@ -19,7 +19,7 @@ Arale（阿拉蕾） 生在旧社会，长在新中国，本为一个乖巧可�
 
 Arale 手下拥有 [popup](http://aralejs.org/popup/)、[validator](http://aralejs.org/validator/)、[position](http://aralejs.org/position/)、[autocomplete](http://aralejs.org/autocomplete/) 等等等等下流狡猾的 CMD 模块喽啰们，他们手脚麻利，办事干净，各自独当一面讲义气，任你各种需求耀武扬威，上去就是一板砖，绝无二话。
 
-Arale 有两大帮凶，一是心狠手辣的包管理工具 [spm](https://github.com/spmjs/spm2/) 管家。spm 帮助她处理打包部署等繁琐工作，让她没有后顾之忧，放心上街砍人。 spm 还精心炮制了 [源](http://modules.spmjs.org/) 服务以供 Arale 发布和管理代码，实乃黑社会管家们之业界良心。
+Arale 有两大帮凶，一是心狠手辣的包管理工具 [spm](https://github.com/spmjs/spm2/) 管家。spm 帮助她处理打包部署等繁琐工作，让她没有后顾之忧，放心上街砍人。 spm 还精心炮制了 [源](https://spmjs.org/) 服务以供 Arale 发布和管理代码，实乃黑社会管家们之业界良心。
 
 第二位是杀千刀的 [nico](https://github.com/aralejs/nico-arale/) 兄，这位兄弟擅长玩弄 Markdown 格式，帮助 Arale 用 Markdown 来起草各类文档、演示、用例，方便本地开发，生成静态站点。他打破了互联网上的文档生成旧秩序，对 **写文档** 和 **写演示** 这两位苦大仇深的人犯下了不可饶恕的罪行。
 
