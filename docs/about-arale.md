@@ -6,7 +6,7 @@
 ---
 
 Arale 立足于支付宝的前端需求和国内前端社区，基于 [Sea.js](http://seajs.org/) 
-和 [CMD](https://github.com/seajs/seajs/issues/242) 规范，建立了一套从编码测试到部署的开发体系，
+和 [CMD](https://github.com/seajs/seajs/issues/242) 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系，
 是一个开放、简单、易用的前端解决方案。
 
 <img src="/static/arale.jpg" width="300">
@@ -33,6 +33,7 @@ Arale 还有个漂亮的好姐妹 [Alice](http://aliceui.org/) 协理样式方�
 [![支付宝](https://i.alipayobjects.com/e/201305/N1Xm79x5h.png)](https://www.alipay.com/)
 [![Alibaba](http://ww3.sinaimg.cn/large/68361562gw1e1omdjti3vj.jpg)](http://www.alibaba.com/)
 [![阿里内外](https://i.alipayobjects.com/e/201306/biTtjKHBP.png)](http://work.alibaba-inc.com/)
+[![好知网](http://www.howzhi.com/bundles/topxiaweb/img/base/logo.png?159)](http://www.howzhi.com/)
 
 等等。
 
