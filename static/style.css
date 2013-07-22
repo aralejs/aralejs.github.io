@@ -700,3 +700,23 @@ body .fn-hide {
     }
 
 }
+
+
+.module {
+  opacity: 0;
+  transform: translateX(-300px);
+  animation: 
+    openSpace 0.1s ease forwards,
+    moveIn 0.3s 0.1s ease forwards;
+}
+@keyframes openSpace {
+  to { 
+    max-height: 50px;
+  }
+}
+@keyframes moveIn {
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
