@@ -246,6 +246,7 @@ hr {
 
 .content > p {
     margin: 20px 0;
+    line-height: 1.5;
 }
 
 .content code {
