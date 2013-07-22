@@ -10,6 +10,7 @@
 1. 基于 widget 开发组件 (TODO)
 2. [测试解决方案](https://github.com/totorojs/totoro/wiki)
 3. [开发规范](http://aralejs.org/docs/rules.html)
+4. [alipay 模块维护文档(内)](https://github.com/alipay/wd-tech-team/issues/559#issuecomment-21323498)
 
 ---
 
