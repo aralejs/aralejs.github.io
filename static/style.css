@@ -701,19 +701,23 @@ body .fn-hide {
 
 }
 
-
 .module {
   opacity: 0;
+  -webkit-transform: translateX(-300px);
+  -webkit-animation:
+    moveIn 0.3s 0.1s ease forwards;
   transform: translateX(-300px);
   animation: 
-    openSpace 0.1s ease forwards,
     moveIn 0.3s 0.1s ease forwards;
 }
-@keyframes openSpace {
+
+@-webkit-keyframes moveIn {
   to { 
-    max-height: 50px;
+    opacity: 1;
+    -webkit-transform: translateX(0);
   }
 }
+
 @keyframes moveIn {
   to { 
     opacity: 1;
