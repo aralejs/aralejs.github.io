@@ -43,17 +43,21 @@ Arale 还有个漂亮的好姐妹 [Alice](http://aliceui.org/) 协理样式方�
 
 ## 了解更多
 
-- [github 仓库](https://github.com/aralejs/aralejs.org/)
+- [Arale github](https://github.com/aralejs/aralejs.org/)
 
-- [github issues](https://github.com/aralejs/aralejs.org/issues/)
+- [Arale issues](https://github.com/aralejs/aralejs.org/issues/)
 
-- [github 组织](https://github.com/aralejs/)
+- [Arale repos](https://github.com/aralejs/)
 
 - [spm](https://github.com/spmjs/spm2/) - CMD 包管理工具
 
-- [nico](http://lab.lepture.com/nico/) - 文档生成工具
+- [spmjs.org](https://spmjs.org) - CMD 生态圈
+
+- [apm](http://lab.lepture.com/nico/) - 支付宝 spm 工具集
 
 - [Alice 样式解决方案](http://aliceui.org/)
+
+- [totoro 测试解决方案](http://totorojs.org) 
 
 - [Arale 背后的一些设计理念](https://github.com/lifesinger/lifesinger.github.com/issues/106)
 
