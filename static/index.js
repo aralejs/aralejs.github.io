@@ -145,7 +145,9 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
         if (value.name.indexOf(query) === 0 && query.length > 1) {
           item.score += 100;
         }
-        result.push(item);
+        if (item.score > 0) {
+          result.push(item);
+        }
       });
 
       return result.sort(function(a, b) {
