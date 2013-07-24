@@ -54,7 +54,7 @@ Arale 还有个漂亮的好姐妹 [Alice](http://aliceui.org/) 协理样式方�
 
 - [spmjs.org](https://spmjs.org) - CMD 生态圈
 
-- [apm](http://lab.lepture.com/nico/) - 支付宝 spm 工具集
+- [apm](https://github.com/spmjs/apm/) - 支付宝 spm 工具集
 
 - [Alice 样式解决方案](http://aliceui.org/)
 
