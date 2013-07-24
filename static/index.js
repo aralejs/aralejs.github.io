@@ -115,18 +115,43 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
       query = query.toLowerCase();
 
       $.each(data, function(index, value) {
-        var temp = (value.root||value.family) + '.' + value.name;
-        value.description = value.description || '';
-        if (temp.toLowerCase().indexOf(query) > -1 ||
-            value.description.toLowerCase().indexOf(query) > -1) {
-          result.unshift({
-            matchKey: temp,
-            desc: value.description,
-            url: value.homepage
-          });
+        value.description = value.description.toLowerCase() || '';
+        value.family = value.family.toLowerCase();
+        value.name = value.name.toLowerCase();
+        var FamilyAndName = value.family + '.' + value.name;
+
+        var item = {
+          matchKey: FamilyAndName,
+          desc: value.description,
+          url: value.homepage,
+          score: 0  //匹配度
+        };
+        
+        if (FamilyAndName.indexOf(query) > -1) {
+          item.score += 1;
         }
+        if (value.description.indexOf(query) > -1) {
+          item.score += 1;
+        }
+        if (value.family.indexOf(query) > -1) {
+          item.score += 5;
+        }
+        if (value.family.indexOf(query) === 0 && query.length > 1) {
+          item.score += 10;
+        }
+        if (value.name.indexOf(query) > -1) {
+          item.score += 5;
+        }
+        if (value.name.indexOf(query) === 0 && query.length > 1) {
+          item.score += 100;
+        }
+        result.push(item);
       });
-      return result;
+
+      return result.sort(function(a, b) {
+        return a.score < b.score;
+      });
+
     }
   }).render();
 
