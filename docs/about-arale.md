@@ -39,7 +39,7 @@ Arale 还有个漂亮的好姐妹 [Alice](http://aliceui.org/) 协理样式方�
 
 ## 兼容性
 
-如无特别说明，Arale 模块均兼容于 `IE6+` 以及 Chrome/Firefox/Safari/Opera 的最新稳定版。
+如无特别说明，Arale 模块均兼容于 `IE6+` 以及 `Chrome/Firefox/Safari/Opera` 的最新稳定版。
 
 ## 了解更多
 
