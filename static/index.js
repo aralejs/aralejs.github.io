@@ -145,17 +145,23 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
         if (value.name.indexOf(query) === 0 && query.length > 1) {
           item.score += 100;
           item.score -= value.name.length; // shorter would be better
-          console.log(value.name.length, item.score);
         }
 
         if (item.score > 0) {
           result.push(item);
         }
+
       });
 
-      return result.sort(function(a, b) {
-        return a.score < b.score;
+      console.log(result);
+
+      result = result.sort(function(a, b) {
+        return b.score - a.score;
       });
+
+      console.log(result);
+      
+      return result;
 
     }
   }).render();
