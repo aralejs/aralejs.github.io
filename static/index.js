@@ -58,7 +58,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
                                       .attr('title', pkg.description);
 
       if (family === 'gallery' || family === 'jquery') {
-        item.find(".module-name").attr('href', pkg.homepage);
+        item.find(".module-name").attr('href', "https://spmjs.org/" + family + '/' + pkg.name);
         $('.modules-' + family).append(item).prev().show();
       } else if (family === 'arale') {
         if (pkg.keywords) {
@@ -127,25 +127,30 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
           score: 0  //匹配度
         };
         
+        // make sure that "arale.class" can be matched
         if (FamilyAndName.indexOf(query) > -1) {
+          item.score += 0.01;
+        }
+
+        if (value.family.indexOf(query) > -1) {
           item.score += 1;
         }
-        if (value.description.indexOf(query) > -1) {
-          item.score += 0.1;
-        }
-        if (value.family.indexOf(query) > -1) {
-          item.score += 5;
-        }
-        if (value.family.indexOf(query) === 0 && query.length >= 1) {
+        if (value.family.indexOf(query) === 0) {
           item.score += 10;
         }
+
         if (value.name.indexOf(query) > -1) {
-          item.score += 5;
+          item.score += 10;
+          item.score -= value.name.length/10.0; // shorter would be better
+        } else if (value.description.indexOf(query) > -1) {
+          item.score += 0.1;
         }
-        if (value.name.indexOf(query) === 0 && query.length >= 1) {
+
+        if (value.name.indexOf(query) === 0) {
           item.score += 100;
-          item.score -= value.name.length; // shorter would be better
         }
+
+        console.log(item.score);
 
         if (item.score > 0) {
           result.push(item);
