@@ -131,7 +131,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
           item.score += 1;
         }
         if (value.description.indexOf(query) > -1) {
-          item.score += 1;
+          item.score += 0.1;
         }
         if (value.family.indexOf(query) > -1) {
           item.score += 5;
@@ -144,7 +144,8 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
         }
         if (value.name.indexOf(query) === 0 && query.length > 1) {
           item.score += 100;
-          item.score -= query.length; // shorter would be better
+          item.score -= value.name.length; // shorter would be better
+          console.log(value.name.length, item.score);
         }
 
         if (item.score > 0) {
