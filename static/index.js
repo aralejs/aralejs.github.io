@@ -37,7 +37,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
     }
 
     data = data.sort(function(a, b) {
-      return a.name[0] > b.name[0];
+      return a.name.charCodeAt(0) - b.name.charCodeAt(0);
     });
 
     for (var i = 0; i < data.length; i++) {
@@ -150,8 +150,6 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
           item.score += 100;
         }
 
-        console.log(item.score);
-
         if (item.score > 0) {
           result.push(item);
         }
@@ -162,7 +160,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
         return b.score - a.score;
       });
 
-      return result;
+      return result.slice(0, 12);
 
     }
   }).render();

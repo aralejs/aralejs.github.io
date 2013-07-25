@@ -164,11 +164,13 @@ a.module-name {
 
 /* autocomplete */
 .ui-autocomplete {
-    border: 1px solid #CCC;
+    border: 1px solid #ddd;
+    border-top: none;
     background: #fff;
     padding: 0;
     width: 320px;
     margin-top: -1px;
+    box-shadow: 0 10px 16px #ccc;
     font-family: tahoma;
 }
 
@@ -178,7 +180,7 @@ a.module-name {
 }
 
 .ui-autocomplete-item {
-    padding: 5px 10px;
+    padding: 6px 12px;
     list-style: none;
     white-space: nowrap;
     overflow: hidden;
