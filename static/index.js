@@ -112,7 +112,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
     },
     filter: function(data, query) {
       var result = [];
-      query = query.toLowerCase();
+      query = query.toLowerCase().replace(/^\s+|\s+$/g, '');
 
       $.each(data, function(index, value) {
         value.description = (value.description || '').toLowerCase();
