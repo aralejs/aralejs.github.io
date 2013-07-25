@@ -136,13 +136,13 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
         if (value.family.indexOf(query) > -1) {
           item.score += 5;
         }
-        if (value.family.indexOf(query) === 0 && query.length > 1) {
+        if (value.family.indexOf(query) === 0 && query.length >= 1) {
           item.score += 10;
         }
         if (value.name.indexOf(query) > -1) {
           item.score += 5;
         }
-        if (value.name.indexOf(query) === 0 && query.length > 1) {
+        if (value.name.indexOf(query) === 0 && query.length >= 1) {
           item.score += 100;
           item.score -= value.name.length; // shorter would be better
         }
