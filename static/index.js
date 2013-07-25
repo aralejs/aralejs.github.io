@@ -153,14 +153,10 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
 
       });
 
-      console.log(result);
-
       result = result.sort(function(a, b) {
         return b.score - a.score;
       });
 
-      console.log(result);
-      
       return result;
 
     }
