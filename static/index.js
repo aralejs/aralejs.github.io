@@ -115,7 +115,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
       query = query.toLowerCase();
 
       $.each(data, function(index, value) {
-        value.description = value.description.toLowerCase() || '';
+        value.description = (value.description || '').toLowerCase();
         value.family = value.family.toLowerCase();
         value.name = value.name.toLowerCase();
         var FamilyAndName = value.family + '.' + value.name;
@@ -144,7 +144,9 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
         }
         if (value.name.indexOf(query) === 0 && query.length > 1) {
           item.score += 100;
+          item.score -= query.length; // shorter would be better
         }
+
         if (item.score > 0) {
           result.push(item);
         }
