@@ -13,7 +13,7 @@
 <style>
 .target{width:50px;height:50px;border-radius:25px;background:#000;transition:All 1s ease;-webkit-transition:All 1s ease;-moz-transition:All 1s ease;}
 </style>
-<script charset="utf-8" id="seajsnode"src="http://static.alipayobjects.com/seajs/1.3.1/??sea.js,plugin-combo.js"></script>
+<script charset="utf-8" id="seajsnode"src="http://static.alipayobjects.com/seajs/??seajs/2.1.1/sea.js,seajs-combo/1.0.0/seajs-combo.js"></script>
 <script>
   seajs.config({
     alias: {
@@ -39,18 +39,18 @@
 </script>
 ```
 
-看到有个球在飞来飞去么，你能抓到他么？[线上演示](http://jsfiddle.net/zPYqx/show/)
+看到有个球在飞来飞去么，你能抓到他么？[线上演示](http://jsfiddle.net/afc163/zPYqx/1/show/)
 
 ## 使用 SeaJS
 
-看过 Arale 的简介，大家已经知道 Arale 是基于 SeaJS 和 CMD 进行开发的，所以使用 Arale 之前要先引入 SeaJS。SeaJS 是一个模块加载器，它会异步请求需要的模块。
+看过 Arale 的简介，大家已经知道 Arale 是基于 Sea.js 和 CMD 模块开发的，所以使用 Arale 之前要先引入 Sea.js，它是一个模块加载器，会异步请求需要的模块。
 
 在这个例子里，使用了 `jquery` 和 `position` 两个组件。大家可能会注意到 `seajs.config` 的配置，是的，这就是 Arale 组件的 ID，通过这个 ID 可以找到这个组件。
 
-比如 position 的完整路径就是：
+比如模块 `position` 的完整路径就是：
 
 ```
-http://static.alipayobjects.com/arale/position/1.0.0/position.js
+http://static.alipayobjects.com/arale/position/1.0.1/position.js
 ```
 
 Arale 的 ID 由四部分组成：`{{root}}/{{module}}/{{version}}/{{file}}`
@@ -63,7 +63,7 @@ Arale 的 ID 由四部分组成：`{{root}}/{{module}}/{{version}}/{{file}}`
 这个 ID 和 seajs 的所在路径拼合后就是模块文件的具体地址了。当你拿到上面的 ID 后，就可以直接用 `seajs.use` 来使用这个模块了。
 
 ```js
-seajs.use(['arale/position/1.0.0/position'], function(Position) {
+seajs.use(['arale/position/1.0.1/position'], function(Position) {
     // use Position ...
 });
 ```
