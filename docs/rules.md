@@ -28,11 +28,11 @@ overlay
   -- docs                     markdown 文档，除了 README 的其他文档
        -- overlay.md
        -- dialog.md
-  -- examples                 例子
+  -- examples                 演示 markdown
        -- assets              例子中如果有用到 img 等资源时，存放在该目录
             -- test.png
-       -- overlay.html
-       -- dialog.html
+       -- overlay.md
+       -- dialog.md
   -- src                      存放 js, css 文件
        -- overlay.css
        -- overlay.js
@@ -40,9 +40,8 @@ overlay
   -- tests                    单元测试
        -- overlay-spec.js
        -- dialog-spec.js
-       -- runner.html         liquidluck 生成
   -- sea-modules              spm install 生成，存放依赖的其他组件
-  -- _site                    liquidluck 生成，存放站点
+  -- _site                    nico 生成，存放站点
   -- HISTORY.md               版本更新说明
   -- README.md                组件总体说明
   -- package.json             版本等元信息
@@ -64,7 +63,7 @@ overlay
 
 ### README.md
 
-每个组件必须有 README 文件，用来描述组件的基本情况。
+每个组件必须有 README.md 文件，用来描述组件的基本情况。
 
 ```
 # 模块名称
@@ -90,7 +89,7 @@ overlay
 
 ### HISTORY.md
 
-记录组件的变更，最好和 issue 绑定。请阅读[历史记录书写规范](https://github.com/aralejs/aralejs.org/wiki/%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83)。
+记录组件的变更，最好和 issues 进行绑定。请阅读[历史记录书写规范](https://github.com/aralejs/aralejs.org/wiki/%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83)。
 
 ```
 ### 1.1.0
