@@ -119,6 +119,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
         value.family = value.family.toLowerCase();
         value.name = value.name.toLowerCase();
         var FamilyAndName = value.family + '.' + value.name;
+        var keywords = value.keywords ? value.keywords.join(' ') : '';
 
         var item = {
           matchKey: FamilyAndName,
@@ -144,6 +145,10 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
           item.score -= value.name.length/10.0; // shorter would be better
         } else if (value.description.indexOf(query) > -1) {
           item.score += 0.1;
+        }
+
+        if (keywords.indexOf(query) > -1) {
+          item.score += 1;        
         }
 
         if (value.name.indexOf(query) === 0) {
