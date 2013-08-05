@@ -217,7 +217,7 @@ $ spm deploy --target p123  // 发布到 assets.p123.alipay.net
 ## 部署组件文档
 
 Arale 组件的文档地址为 aralejs.org/{{模块名}}，
-开发完毕后请 push 到 https://github.com/aralejs 下，发布文档请使用 `make publish-doc` 命令。
+开发完毕后请 push 到 https://github.com/aralejs 下，发布文档请使用 `spm doc publish` 命令。
 
 其他组件的文档地址在内网：arale.alipay.im/{{模块root}}/{{模块名}}，比如
 `alipay.xbox` 的文档地址为 `http://arale.alipay.im/alipay/xbox/` 。
