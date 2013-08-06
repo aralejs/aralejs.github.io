@@ -19,6 +19,10 @@
 请尽量使用最新版，如测试环境不存在该文件，可联系我们，或使用次新版。
 
 
+## Seajs
+
+<div id="status-seajs"></div>
+
 ## Arale
 
 <div id="status-arale"></div>
@@ -60,6 +64,8 @@ table .build {width: 80px; padding: 0px 10px;}
 `````js
 seajs.config({
     alias: {
+        'status-seajs': '/status-seajs.js',
+        'status-seajs-dev': 'http://arale.alipay.im/status-seajs.js',
         'status-arale': '/status-arale.js',
         'status-arale-dev': 'http://arale.alipay.im/status-arale.js',
         'status-gallery': '/status-gallery.js',
@@ -79,6 +85,11 @@ seajs.use(['$', 'popup'], function($, Popup){
         };
 
     test(function() {
+        seajs.use(['status-seajs-dev'], function(data) {
+            globalData['seajs'] = data.seajs;
+            createTable(data.seajs, 'seajs');
+            $('.J-alipayStatus').show();
+        });
         seajs.use(['status-arale-dev'], function(data) {
             globalData['arale'] = data.arale;
             createTable(data.arale, 'arale');
@@ -97,6 +108,10 @@ seajs.use(['$', 'popup'], function($, Popup){
             $('.J-alipayStatus').show();
         });
     }, function() {
+        seajs.use(['status-seajs'], function(data) {
+            globalData['seajs'] = data.seajs;
+            createTable(data.seajs, 'seajs');
+        });
         seajs.use(['status-arale'], function(data) {
             globalData['arale'] = data.arale;
             createTable(data.arale, 'arale');
@@ -112,7 +127,7 @@ seajs.use(['$', 'popup'], function($, Popup){
             createTable(data.jquery, 'jquery');
         });
     });
-    
+
     seajs.use(['status-alipay'], function(data) {
         if(!data) return;
         globalData['alipay'] = data.alipay;
@@ -140,7 +155,7 @@ seajs.use(['$', 'popup'], function($, Popup){
             }
         }, 500);
     }
-    
+
     function createTable(data, family) {
         var table = $('<table><tr><th class="name">组件名</th>\
             <th class="version">版本</th><th class="status J-alipayStatus">开发环境</th>\
@@ -149,7 +164,7 @@ seajs.use(['$', 'popup'], function($, Popup){
 
         $.each(data, function(key, value){
             var name = key;
-    
+
             // 生成所有版本
             var s = ['<select>'];
             $.each(value, function(key, value){
@@ -160,7 +175,7 @@ seajs.use(['$', 'popup'], function($, Popup){
                 s.push('<option value="' + version + '" data-files="' + files + '">' + version + '</option>');
             });
             s.push('</select>');
-            
+
             var keylink = '';
             var buildStatus = '';
             if (family === 'arale') {
@@ -171,7 +186,7 @@ seajs.use(['$', 'popup'], function($, Popup){
             } else {
                 keylink = key;
             }
-    
+
             var tr = $('<tr data-name="' +  key + '" data-family="' + family + '" id="' + family + '-' + key + '">' +
                 '<td class="name"><span class="face">☺</span> ' + keylink + '</td>' +
                 '<td class="version">' + s.join('') + '</td>' +
@@ -204,8 +219,8 @@ seajs.use(['$', 'popup'], function($, Popup){
 
                         var link = prefix[s] + '/' + part[0];
                         var status = part[1];
-                        return '<div>' + 
-                            ((status === '200') ? 
+                        return '<div>' +
+                            ((status === '200') ?
                                 '<span class="assert" style="color:#1A9B20">✔</span>' :
                                 '<span class="assert" style="color:#FF4C4C">✗</span>') +
                             '<a href="' + link + '" target="_blank" style="margin-left:5px;">' + link + '</a>' +
@@ -219,7 +234,7 @@ seajs.use(['$', 'popup'], function($, Popup){
         $('#status-' + family).on('change', 'select', function() {
             testStatus(this);
         });
-        
+
         // 为了让 aralejs.org/docs/online-status.html#arale.dialog
         // 这样的链接锚点能够正确的指向
         if (location.hash !== '' && $(location.hash)[0]
