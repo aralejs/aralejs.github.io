@@ -180,7 +180,7 @@ seajs.use(['$', 'popup'], function($, Popup){
             var buildStatus = '';
             if (family === 'arale') {
                 keylink = '<a href="/' + key + '/">' + key + '</a>';
-                buildStatus = '<a href="https://travis-ci.org/aralejs/' + name + '/" target="_blank"><img src="https://secure.travis-ci.org/aralejs/' + name + '.png"></a>';
+                buildStatus = '<a href="https://travis-ci.org/aralejs/' + name + '/" target="_blank"><img src="https://secure.travis-ci.org/aralejs/' + name + '.png?branch=master"></a>';
             } else if (family === 'alipay') {
                 keylink = '<a href="http://arale.alipay.im/' + family + '/' + key + '/">' + key + '</a>';
             } else {
