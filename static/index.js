@@ -127,7 +127,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
           url: value.homepage,
           score: 0  //匹配度
         };
-        
+
         // make sure that "arale.class" can be matched
         if (FamilyAndName.indexOf(query) > -1) {
           item.score += 0.01;
@@ -148,7 +148,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
         }
 
         if (keywords.indexOf(query) > -1) {
-          item.score += 1;        
+          item.score += 1;
         }
 
         if (value.name.indexOf(query) === 0) {
