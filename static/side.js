@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
     var $ = require('$');
-    
+
     exports.init = function() {
         var titles = $('.content-area > .content > h2, #module-wrapper > h2');
         var doc = $(document);

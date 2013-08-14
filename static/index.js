@@ -1,4 +1,5 @@
-seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function($, Placeholder, Sticky, wordColor, Autocomplete) {
+seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaster'],
+  function($, Placeholder, Sticky, wordColor, Autocomplete, key) {
 
   Sticky.stick('#document-wrapper', 0);
 
@@ -181,4 +182,17 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
       location.href = item.url;
     }
   });
+
+  // 首页将搜索功能定位到搜索框中
+  if ($('#module-wrapper').length !== 0) {
+    key.filter = function(event) {
+      return (event.target || event.srcElement).tagName;
+    };
+    key('command+f, ctrl+f', function(e, handler) {
+      $('#search').focus();
+      $('#search').attr('placeholder', '通过 名称/描述/关键字 搜索模块');
+      return false;
+    });
+  }
+
 });
