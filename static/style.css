@@ -718,6 +718,11 @@ body .fn-hide {
     moveIn 0.3s 0.1s ease forwards;
 }
 
+/* hack in ie9 */
+:root .module{
+    opacity: 1\0;
+}
+
 @-webkit-keyframes moveIn {
   to { 
     opacity: 1;
