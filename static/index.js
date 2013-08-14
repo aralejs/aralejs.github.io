@@ -152,6 +152,16 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
           item.score += 1;
         }
 
+        value.keywords && value.keywords.forEach(function(value) {
+          if (value === query) {
+            item.score += 10;
+          }
+        });
+
+        if (keywords.indexOf(query) > -1) {
+          item.score += 1;
+        }
+
         if (value.name.indexOf(query) === 0) {
           item.score += 100;
         }
