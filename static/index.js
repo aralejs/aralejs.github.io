@@ -193,6 +193,12 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
     }
   });
 
+  $('#search').focus(function() {
+      $(this).attr('placeholder', '通过 名称/描述/关键字 搜索模块');
+  }).blur(function() {
+      $(this).attr('placeholder', '随心构建互联网应用');
+  });
+
   // 首页将搜索功能定位到搜索框中
   if ($('#module-wrapper').length !== 0) {
     key.filter = function(event) {
@@ -201,7 +207,6 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
     key('command+f, ctrl+f', function(e, handler) {
       e.preventDefault();
       $('#search').focus();
-      $('#search').attr('placeholder', '通过 名称/描述/关键字 搜索模块');
       return false;
     });
   }
