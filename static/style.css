@@ -156,6 +156,11 @@ a.module-name {
     margin: 5px 0 0 0;
     font-size: 12px;
     line-height: 1.5;
+    height: 36px;
+}
+
+.module-description:hover {
+    overflow: auto;
 }
 
 #content {
@@ -711,6 +716,11 @@ body .fn-hide {
   transform: translateX(-300px);
   animation: 
     moveIn 0.3s 0.1s ease forwards;
+}
+
+/* hack in ie9 */
+:root .module{
+    opacity: 1\0;
 }
 
 @-webkit-keyframes moveIn {
