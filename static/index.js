@@ -189,6 +189,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
       return (event.target || event.srcElement).tagName;
     };
     key('command+f, ctrl+f', function(e, handler) {
+      e.preventDefault();
       $('#search').focus();
       $('#search').attr('placeholder', '通过 名称/描述/关键字 搜索模块');
       return false;
