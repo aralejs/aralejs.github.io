@@ -205,7 +205,6 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
       return (event.target || event.srcElement).tagName;
     };
     key('command+f, ctrl+f', function(e, handler) {
-      e.preventDefault();
       $('#search').focus();
       return false;
     });
