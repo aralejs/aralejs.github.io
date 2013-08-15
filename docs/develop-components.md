@@ -166,7 +166,7 @@ Arale 提供 [mocha](https://github.com/totorojs/totoro/wiki/mocha) 作为测试
 
 修改 `tests/puzzle-spec.js` 文件，开始写测试用例，可以直接看[示例](https://github.com/popomore/puzzle/blob/master/tests/puzzle-spec.js)。
 
-[详细文档请看](https://github.com/totorojs/totoro/wiki/unit-testing-quick-start)
+[详细文档请看](https://github.com/totorojs/totoro/wiki/unit-testing-quick-start.zh)
 
 访问 [http://127.0.0.1:8000/tests/runner.html](http://127.0.0.1:8000/tests/runner.html) 查看是否正确。
 
