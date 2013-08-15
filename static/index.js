@@ -1,4 +1,5 @@
-seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function($, Placeholder, Sticky, wordColor, Autocomplete) {
+seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaster'],
+  function($, Placeholder, Sticky, wordColor, Autocomplete, key) {
 
   Sticky.stick('#document-wrapper', 0);
 
@@ -151,6 +152,16 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
           item.score += 1;
         }
 
+        value.keywords && value.keywords.forEach(function(value) {
+          if (value === query) {
+            item.score += 10;
+          }
+        });
+
+        if (keywords.indexOf(query) > -1) {
+          item.score += 1;
+        }
+
         if (value.name.indexOf(query) === 0) {
           item.score += 100;
         }
@@ -181,4 +192,16 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete'], function
       location.href = item.url;
     }
   });
+
+  // 首页将搜索功能定位到搜索框中
+  if ($('#module-wrapper').length !== 0) {
+    key.filter = function(event) {
+      return (event.target || event.srcElement).tagName;
+    };
+    key('command+f, ctrl+f', function(e, handler) {
+      $('#search').focus();
+      return false;
+    });
+  }
+
 });

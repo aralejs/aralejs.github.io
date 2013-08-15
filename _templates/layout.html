@@ -20,6 +20,7 @@
         <script src="{{static_url('index.js')}}"></script>
         <!--[if lt IE 9]>
         <script src="{{static_url('js/html5shiv.js')}}"></script>
+        <script src="{{static_url('es5-safe.js')}}"></script>
         <![endif]-->
         {%- endblock %}
         {%- block afterstyle %}{% endblock %}
@@ -33,7 +34,7 @@
     <body>
         <div id="body-wrapper">
             <div class="head-area">
-                <div class="title-area">            
+                <div class="title-area">
                     <h1 class="inline">
                         <a href="{{content_url('index.html')}}">{{config.package.title|title}}</a>
                     </h1>
