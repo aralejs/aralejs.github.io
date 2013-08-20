@@ -202,6 +202,9 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
       $('#search').focus();
       return false;
     });
+    key('esc', function(e, handler) {
+      $('#search').blur();
+    });
   }
 
 });
