@@ -198,7 +198,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
     key.filter = function(event) {
       return (event.target || event.srcElement).tagName;
     };
-    key('command+f, ctrl+f', function(e, handler) {
+    key('command+f, ctrl+f, /', function(e, handler) {
       $('#search').focus();
       return false;
     });
