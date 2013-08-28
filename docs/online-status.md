@@ -112,7 +112,7 @@ seajs.use(['$', 'popup'], function($, Popup){
         "repeatable": 0,
         "request": 3315,
         "sensinfo": 0,
-        "share": 0,
+        "share": 3572,
         "slider": 0,
         "storex": 3489,
         "xbox": 2882
