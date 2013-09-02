@@ -15,9 +15,9 @@
 - <span class="assert" style="color:#FF4C4C">✗</span> 所有文件均不存在。 
 - <span class="assert" style="color: #FFB800;">✙</span> 部分文件存在，可能存在漏发或多余的文件。
 
-
 请尽量使用最新版，如测试环境不存在该文件，可联系我们，或使用次新版。
 
+你还可以在[这里](./maintainers.html)找到组件的维护人。
 
 ## Seajs
 
