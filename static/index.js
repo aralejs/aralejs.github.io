@@ -25,6 +25,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
 
   seajs.use('http://yuan.alipay.im/repository/alipay/?define', function(alipay) {
     if (alipay) {
+      $('.side-area li:last-child').show();
       modules = modules.concat(alipay);
       insertModules(alipay);
       color('.module');
