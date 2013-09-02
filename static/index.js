@@ -25,6 +25,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
 
   seajs.use('http://yuan.alipay.im/repository/alipay/?define', function(alipay) {
     if (alipay) {
+      $('.side-area li:last-child').show();
       modules = modules.concat(alipay);
       insertModules(alipay);
       color('.module');
@@ -198,9 +199,12 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
     key.filter = function(event) {
       return (event.target || event.srcElement).tagName;
     };
-    key('command+f, ctrl+f', function(e, handler) {
+    key('command+f, ctrl+f, /', function(e, handler) {
       $('#search').focus();
       return false;
+    });
+    key('esc', function(e, handler) {
+      $('#search').blur();
     });
   }
 

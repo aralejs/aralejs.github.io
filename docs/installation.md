@@ -78,17 +78,14 @@ git 下载地址如下
 
 ### 支付宝套件
 
-支付宝的同学可以略过下面的内容，直接安装一个套件 [apm](https://github.com/spmjs/apm/)：
+支付宝的同学可以略过下面的内容，直接安装下面的套件 [apm](https://github.com/spmjs/apm/)。
 
 ```
 npm install apm -g
 ```
 
-如果之前安装过 `spm-alipay-suite`，你可能会报错，请加上 `-f` 强制安装一下就好。
-
-```
-npm install apm -g -f
-```
+外网的同学不推荐安装 `apm`，
+套件会默认定制一些支付宝内部的配置，比如源地址 `yuan.alipay.im`，继续往下看就好。
 
 ### 安装 spm
 

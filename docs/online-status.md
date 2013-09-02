@@ -84,6 +84,40 @@ seajs.use(['$', 'popup'], function($, Popup){
             dev: 'http://assets.dev.alipay.net'
         };
 
+    var TOAST_ID = {
+        "appaside": 0,
+        "apww": 3002,
+        "async-html": 0,
+        "button-count": 3501,
+        "combo": 2881,
+        "contacts": 3574,
+        "date-slider": 3353,
+        "input-zoom": 3475,
+        "intro": 0,
+        "ip-input": 0,
+        "lightbox": 0,
+        "luckydraw": 3583,
+        "monitor": 0,
+        "morris": 3581,
+        "morrison": 3581,
+        "nav": 0,
+        "notice": 3252,
+        "object-shim": 2876,
+        "pop-validator": 3492,
+        "poptip": 0,
+        "pwd-strength": 3076,
+        "qrcode": 3476,
+        "rare-words": 0,
+        "realtime-checkcode": 0,
+        "repeatable": 0,
+        "request": 3315,
+        "sensinfo": 0,
+        "share": 3572,
+        "slider": 3546,
+        "storex": 3489,
+        "xbox": 2882
+    };
+
     test(function() {
         seajs.use(['status-seajs-dev'], function(data) {
             globalData['seajs'] = data.seajs;
@@ -183,6 +217,9 @@ seajs.use(['$', 'popup'], function($, Popup){
                 buildStatus = '<a href="https://travis-ci.org/aralejs/' + name + '/" target="_blank"><img src="https://secure.travis-ci.org/aralejs/' + name + '.png?branch=master"></a>';
             } else if (family === 'alipay') {
                 keylink = '<a href="http://arale.alipay.im/' + family + '/' + key + '/">' + key + '</a>';
+
+                TOAST_ID[key] && (buildStatus = '<a href="http://toast.corp.taobao.com/task/view/id/'+TOAST_ID[key]+'" target="_blank"><img src="http://toast.corp.taobao.com/task/state/id/'+TOAST_ID[key]+'"></a>');
+
             } else {
                 keylink = key;
             }
