@@ -115,7 +115,9 @@ seajs.use(['$', 'popup'], function($, Popup){
         "share": 3572,
         "slider": 3546,
         "storex": 3489,
-        "xbox": 2882
+        "xbox": 2882,
+        "cascadecity": 3641,
+        "cityhint": 3611
     };
 
     test(function() {
