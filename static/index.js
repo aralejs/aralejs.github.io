@@ -144,7 +144,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
 
         if (value.name.indexOf(query) > -1) {
           item.score += 10;
-          item.score -= value.name.length/10.0; // shorter would be better
+          item.score -= value.name.length*2; // shorter would be better
         } else if (value.description.indexOf(query) > -1) {
           item.score += 0.1;
         }
@@ -168,6 +168,7 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
         }
 
         if (item.score > 0) {
+          console.log(value.name, item.score);
           result.push(item);
         }
 
