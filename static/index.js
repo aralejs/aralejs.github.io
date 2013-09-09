@@ -143,8 +143,8 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
         }
 
         if (value.name.indexOf(query) > -1) {
-          item.score += 10;
-          item.score -= value.name.length*2; // shorter would be better
+          item.score += 20;
+          item.score -= value.name.length/0.99; // shorter would be better
         } else if (value.description.indexOf(query) > -1) {
           item.score += 0.1;
         }
@@ -153,15 +153,11 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
           item.score += 1;
         }
 
-        value.keywords && value.keywords.forEach(function(value) {
-          if (value === query) {
-            item.score += 10;
+        value.keywords && value.keywords.forEach(function(k) {
+          if (k === query && k !== value.name) {
+            item.score += 5;
           }
         });
-
-        if (keywords.indexOf(query) > -1) {
-          item.score += 1;
-        }
 
         if (value.name.indexOf(query) === 0) {
           item.score += 100;
