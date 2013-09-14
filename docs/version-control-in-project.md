@@ -192,9 +192,9 @@ seajs.use(['$', 'xbox', 'validator'], function($, Xbox, Validator) {
 3.  record/package.json 中配置 output，打包 main.js 模块：
 
     ```js
-    "output": {
-        "main": "."
-    }
+    "output": [
+        "main.js"
+    ]
     ```
 
 4.  spm build 后生成 /personal/record/1.0.0/main.js
