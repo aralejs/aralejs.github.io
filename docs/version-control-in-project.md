@@ -13,11 +13,15 @@ SeaJS 体系下衍生出数量巨大的各种 JS 模块，每个模块包括不�
 
 一个具体的使用场景中，假设页面中使用
 
-    seajs.use('arale/xxx/0.9.0/xxx')
-    
+```js
+seajs.use('arale/xxx/0.9.0/xxx')
+```
+
 调用模块，这时我决定使用新开发的 1.0.0 版本。上面的代码一共出现了 3 次，修改的时候只把两个地方修改成了
 
-    seajs.use('arale/xxx/1.0.0/xxx')
+```js
+seajs.use('arale/xxx/1.0.0/xxx')
+```
 
 结果造成同一页面中加载了同一组件的两个版本。这个时候我应该如何解决？
 
@@ -44,13 +48,15 @@ SeaJS 体系下衍生出数量巨大的各种 JS 模块，每个模块包括不�
 
 ### Example:
 
-    seajs.use(['$', 'alipay/xbox/0.9.8/xbox', 'arale/validator/0.8.9/validator'], function($, Xbox, Validator) {
-        // biz logic
-        $(function() {
-            var x = new Xbox({...});
-            var v = new Validator({...})
-        });
+```js
+seajs.use(['$', 'alipay/xbox/0.9.8/xbox', 'arale/validator/0.8.9/validator'], function($, Xbox, Validator) {
+    // biz logic
+    $(function() {
+        var x = new Xbox({...});
+        var v = new Validator({...})
     });
+});
+```
 
 ### 分析
 
@@ -88,22 +94,24 @@ alias，顾名思义，就是别名，可以用来做短命名。这里我们利
 
 ### Example
 
-    // 页头配置
-    seajs.config({
-        alias: {
-            '$': 'gallery/jquery/1.8.2/jquery',
-            'xbox': 'alipay/xbox/0.9.8/xbox',
-            'validator': 'arale/validator/0.8.9/validator'
-        }
-    });
+```js
+// 页头配置
+seajs.config({
+    alias: {
+        '$': 'gallery/jquery/1.8.2/jquery',
+        'xbox': 'alipay/xbox/0.9.8/xbox',
+        'validator': 'arale/validator/0.8.9/validator'
+    }
+});
 
-    // 页面中调用
-    seajs.use(['$', 'xbox', 'validator'], function($, Xbox, Validator) {
-        $(function() {
-            var x = new Xbox({...});
-            var v = new Validator({...});
-        });
+// 页面中调用
+seajs.use(['$', 'xbox', 'validator'], function($, Xbox, Validator) {
+    $(function() {
+        var x = new Xbox({...});
+        var v = new Validator({...});
     });
+});
+```
 
 ### 分析
 
@@ -148,54 +156,62 @@ alias，顾名思义，就是别名，可以用来做短命名。这里我们利
 
 1.  record/package.json 中配置所有用到的模块：
 
-        "dependencies": {
-            "$": "$",
-            "xbox": "alipay/xbox/0.9.8/xbox",
-            "validator": "arale/validator/0.8.9/validator"
-        }
+    ```js
+    "dependencies": {
+        "$": "$",
+        "xbox": "alipay/xbox/0.9.8/xbox",
+        "validator": "arale/validator/0.8.9/validator"
+    }
+    ```
 
 2.  创建模块入口文件record/src/main.js：
 
-        define(function(require, exports, module) {
-            module.exports = {
-                $: require('$'),
+    ```js
+    define(function(require, exports, module) {
+        module.exports = {
+            $: require('$'),
 
-                arale: {
-                    validator: require('validator')
-                },
+            arale: {
+                validator: require('validator')
+            },
 
-                alipay: {
-                    xbox: require('xbox')
-                },
+            alipay: {
+                xbox: require('xbox')
+            },
 
-                biz: {
-                	// 这是产品中独立研发的模块，使用相对路径
-                    someOtheAPI: require('./biz/some-other-api.js')
-                }
+            biz: {
+                // 这是产品中独立研发的模块，使用相对路径
+                someOtheAPI: require('./biz/some-other-api.js')
             }
-        });
+        }
+    });
+    ```
 
     这里 API 的命名空间可根据需要进行组织。
 
 3.  record/package.json 中配置 output，打包 main.js 模块：
 
-        "output": {
-            "main": "."
-        }
+    ```js
+    "output": {
+        "main": "."
+    }
+    ```
 
 4.  spm build 后生成 /personal/record/1.0.0/main.js
 
 5.  页面中调用：
 
-        seajs.use('personal/record/1.0.0/main', function(Record) {
-            var xbox = Record.xbox;
-            var validator = Record.validator;
-            // ...
-        });
+    ```js
+    seajs.use('personal/record/1.0.0/main', function(Record) {
+        var xbox = Record.xbox;
+        var validator = Record.validator;
+        // ...
+    });
+    ```
 
 6.  更进一步，可以通过变量或 alias 维护 SDK 的模块 id。例如
 
-    1. 使用 js 全局变量：
+    1) 使用 js 全局变量：
 
       ```
       // global variable
@@ -205,7 +221,7 @@ alias，顾名思义，就是别名，可以用来做短命名。这里我们利
       seajs.use(SDK, function(Record) {...});
       ```
 
-    2. 使用服务器变量
+    2) 使用服务器变量
 
       ```
       // 以 java velocity 模板引擎为例
