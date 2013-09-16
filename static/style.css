@@ -1,5 +1,5 @@
 body {
-    background: none repeat scroll 0 0 #FDFDFD;
+    background: #FDFDFD;
     color: #666666;
     font-family: "Marmelad", "Lucida Grande", Georgia, sans-serif;
 }
@@ -33,7 +33,7 @@ a:hover {
 
 #search {
     margin-left: 2em;
-    padding: 6px;
+    padding: 6px 8px;
     font-size: 18px;
     outline: none;
     border: 3px solid #B1C0C6;
@@ -347,7 +347,7 @@ hr {
 #search:focus + img {
     right: 75px;
     top: -5px;
-    opacity: 1;    
+    opacity: 1;
 }
 
 .nav-area {
@@ -356,7 +356,7 @@ hr {
     margin-bottom: 15px;
     border-top: 4px solid #5DADE2;
     text-align: center;
-    background: #F6F6F6;
+    background: #F6F6F6 url("bg.png");
     border-bottom: 1px solid #E8E8E8;
     text-shadow: 0 2px 0 #fff;
 }
