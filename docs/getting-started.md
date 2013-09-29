@@ -45,7 +45,7 @@
 
 看过 Arale 的简介，大家已经知道 Arale 是基于 Sea.js 和 CMD 模块开发的，所以使用 Arale 之前要先引入 Sea.js，它是一个模块加载器，会异步请求需要的模块。
 
-在这个例子里，使用了 `jquery` 和 `position` 两个组件。大家可能会注意到 `seajs.config` 的配置，是的，这就是 Arale 组件的 ID，通过这个 ID 可以找到这个组件。
+在这个例子里，使用了 `jquery` 和 `[position](http://aralejs.org/position)` 两个组件。大家可能会注意到 `seajs.config` 的配置，是的，这就是 Arale 组件的 ID，通过这个 ID 可以找到这个组件。
 
 比如模块 `position` 的完整路径就是：
 
@@ -86,11 +86,11 @@ $ spm install arale/position
 
 Arale 是一个基础类库，有自己开发的组件，也有精心挑选由外部引入的组件，那如何找到这些组件呢？
 
-在 [Arale 首页](http://aralejs.org/)能找到这些组件，选好组件后可以[查看组件是否可用](http://aralejs.org/docs/online-status.html)。
+在 [Arale 首页](http://aralejs.org/) 能找到这些组件，选好组件后可以[查看组件是否可用](http://aralejs.org/docs/online-status.html)。
 
 Arale 使用了最优秀的业界组件，比如负责操作 Dom 和 Ajax 的 jQuery，负责时间日期的 MomentJS，本地存储 Store 等。如果你发现了优秀的业界模块不在其中，请告诉我们。
 
-Arale 拥有丰富使用的基础前端组件，比如负责表单校验的 Validator ，负责区块切换的 Switchable ，负责定位元素的 Positioin。如果你需要用到浮层类的组件，你可以试试基础浮层 Overlay、有触发效果的 Popup、日历组件 Calendar、自动完成 Autocomplete 等等。如果找不到你需要的组件，请联系我们进行开发。
+Arale 拥有丰富实用的基础前端组件，比如负责表单校验的 [Validator](http://aralejs.org/validator) ，负责区块切换的 [Switchable](http://aralejs.org/switchable) ，负责定位元素的 [Positioin](http://aralejs.org/position)。如果你需要用到浮层类的组件，你可以试试基础浮层 [Overlay](http://aralejs.org/overlay)、负责浮层触发逻辑的 [Popup](http://aralejs.org/popup)、日历组件 [Calendar](http://aralejs.org/calendar)、自动完成 [Autocomplete](http://aralejs.org/autocomplete) 等等。如果找不到你需要的组件，请联系我们进行开发。
 
 ## 才刚刚开始
 
