@@ -55,7 +55,7 @@ http://static.alipayobjects.com/arale/position/1.0.1/position.js
 
 Arale 的 ID 由四部分组成：`{{family}}/{{module}}/{{version}}/{{file}}`
 
- -  Arale 的 family 除了 arale 外还有外部引入的 [gallery](https://github.com/seajs/gallery/)，如 jquery 就属于这个 family
+ -  Arale 的 family 除了 arale 外还有外部引入的 [gallery](https://github.com/cmdjs/gallery/) 和 [jquery](https://github.com/cmdjs/jquery/)
  -  module 为组件的名字
  -  version 为版本
  -  file 为具体的文件，可以有多个，一般与组件名相同
