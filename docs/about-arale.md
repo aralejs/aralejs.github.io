@@ -47,7 +47,7 @@ Arale 还有个漂亮的好姐妹 [Alice](http://aliceui.org/) 协理样式方�
 
 - [Arale github](https://github.com/aralejs/aralejs.org/)
 
-- [Arale issues](https://github.com/aralejs/aralejs.org/issues/)
+  <iframe src="http://lab.lepture.com/github-cards/card.html?user=aralejs&repo=aralejs.org" frameborder="0" scrolling="0" width="400" height="165" allowtransparency></iframe>
 
 - [Arale repos](https://github.com/aralejs/)
 
@@ -59,7 +59,9 @@ Arale 还有个漂亮的好姐妹 [Alice](http://aliceui.org/) 协理样式方�
 
 - [Alice 样式解决方案](http://aliceui.org/)
 
-- [totoro 测试解决方案](http://totorojs.org/) 
+  <iframe src="http://lab.lepture.com/github-cards/card.html?user=aliceui&repo=aliceui.org" frameborder="0" scrolling="0" width="400" height="165" allowtransparency></iframe>
+
+- [totoro 测试解决方案](http://totorojs.org/)
 
 - [Arale 背后的一些设计理念](https://github.com/lifesinger/lifesinger.github.com/issues/106)
 
