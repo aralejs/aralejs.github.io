@@ -7,14 +7,14 @@
 
 ## 相关文档
 
-1. [基于 widget 开发组件](http://aralejs.org/widget/)
+1. [基于 widget 开发模块](http://aralejs.org/widget/)
 2. [测试解决方案](https://github.com/totorojs/totoro/wiki)
 3. [开发规范](http://aralejs.org/docs/rules.html)
 4. [alipay 模块维护文档(内)](http://site.alipay.im/questions/spm/alipay-group.html)
 
 ---
 
-这个教程会简单说明一个组件的开发流程，通过 [一个示例](http://popomore.github.io/puzzle/examples/) 让你有切身体会，你也可以跟着一起做哦。
+这个教程会简单说明一个模块的开发流程，通过 [一个示例](http://popomore.github.io/puzzle/examples/) 让你有切身体会，你也可以跟着一起做哦。
 
 源码地址为：[https://github.com/popomore/puzzle](https://github.com/popomore/puzzle)
 
@@ -23,11 +23,11 @@
 请仔细参考 [环境与工具配置](/docs/installation.html) 。
 
 
-## 初始化组件项目
+## 初始化模块项目
 
-组件和目录的名称要符合 [a-z\d-]，并以英文字母开头，首选合适的英文单词， **禁止使用驼峰** 。
+模块和目录的名称要符合 [a-z\d-]，并以英文字母开头，首选合适的英文单词， **禁止使用驼峰** 。
 
-先来看看整个组件的结构，这样会有一个直观的感受。
+先来看看整个模块的结构，这样会有一个直观的感受。
 
 ```
 puzzle
@@ -46,10 +46,10 @@ puzzle
   -- tests                  单元测试
        -- overlay-spec.js
        -- dialog-spec.js
-  -- sea-modules            spm install 生成，存放依赖的其他组件
+  -- sea-modules            spm install 生成，存放依赖的其他模块
   -- _site                  nico 生成，存放站点
   -- HISTORY.md             版本更新说明
-  -- README.md              组件总体说明
+  -- README.md              模块总体说明
   -- package.json           版本等元信息
   -- .gitignore             git 忽略某些文件
   -- .travis.yml            travis 持续集成的配置
@@ -73,7 +73,7 @@ Please answer the following:
 [?] Do you need to make any changes to the above before continuing? (y/N)
 ```
 
-初始化的时候需要选择 arale 作为模板，family 为 arale，name 为组件名。初始化完成后会生成一个骨架，
+初始化的时候需要选择 arale 作为模板，family 为 arale，name 为模块名。初始化完成后会生成一个骨架，
 在这个基础上进行开发更方便，之后可以提交到版本库了，当然你可以在 github 上建一个。
 
 ```
@@ -86,7 +86,7 @@ git push origin master
 
 ## 进行开发
 
-首先分析组件的依赖，比如 `puzzle` 需要 `popup`。
+首先分析模块的依赖，比如 `puzzle` 需要 `popup`。
 
 根据 ID 规则要查看 `widget` 的版本，使用 `spm info` 的时候也要加 family 哦。
 
@@ -96,7 +96,7 @@ $ spm info arale/popup
   arale/popup
   1.0.2 ~ stable
   vers: 1.0.2  1.0.1
-  desc: Popup 是可触发的浮层组件。
+  desc: Popup 是可触发的浮层模块。
   link: http://aralejs.org/popup/
   repo: https://github.com/aralejs/popup.git
 
@@ -115,7 +115,7 @@ $ spm info arale/popup
 
 **注意：** `package.json` 为 json 文件，需要用双引号才合法，可以查看[详细配置](http://docs.spmjs.org/en/package)。
 
-使用 `spm install` 下载依赖，会把 alias 配置的组件都下载到 sea-modules 下。
+使用 `spm install` 下载依赖，会把 alias 配置的模块都下载到 sea-modules 下。
 `jquery` 配置为 $ 是因为使用了别名配置，不需要完整的依赖路径。
 
 ```
@@ -214,15 +214,15 @@ $ spm deploy
 $ spm deploy --target p123  // 发布到 assets.p123.alipay.net
 ```
 
-## 部署组件文档
+## 部署模块文档
 
-Arale 组件的文档地址为 aralejs.org/{{模块名}}，
+Arale 模块的文档地址为 aralejs.org/{{模块名}}，
 开发完毕后请 push 到 https://github.com/aralejs 下，发布文档请使用 `spm doc publish` 命令。
 
-其他组件的文档地址在内网：arale.alipay.im/{{模块root}}/{{模块名}}，比如
+其他模块的文档地址在内网：arale.alipay.im/{{模块root}}/{{模块名}}，比如
 `alipay.xbox` 的文档地址为 `http://arale.alipay.im/alipay/xbox/` 。
 
-开发完组件后，只需要运行如下代码就可以把文档部署上线。
+开发完模块后，只需要运行如下代码就可以把文档部署上线。
 
 ```
 $ spm doc publish 
