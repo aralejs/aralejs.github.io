@@ -7,10 +7,11 @@
 
 ## 相关文档
 
-1. [基于 widget 开发模块](http://aralejs.org/widget/)
-2. [测试解决方案](https://github.com/totorojs/totoro/wiki)
-3. [开发规范](http://aralejs.org/docs/rules.html)
-4. [alipay 模块维护文档(内)](http://site.alipay.im/questions/spm/alipay-group.html)
+1. [Base & Widget 入门教程](https://github.com/aralejs/widget/wiki/Base-&-Widget-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B)
+2. [基础设施快速 API 参考](https://github.com/aralejs/aralejs.org/issues/314)
+3. [测试解决方案](https://github.com/totorojs/totoro/wiki)
+4. [开发规范](http://aralejs.org/docs/rules.html)
+5. [alipay 模块维护文档(内)](http://site.alipay.im/questions/spm/alipay-group.html)
 
 ---
 
