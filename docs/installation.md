@@ -117,13 +117,6 @@ npm install spm-build -g
 npm install spm-init -g
 ```
 
-下载 Arale 和 Alice 模板
-
-```
-spm-init -i aralejs/template-arale
-spm-init -i aralejs/template-alice
-```
-
 ### 安装 spm-doc
 
 [spm-doc](https://github.com/spmjs/spm-doc) 是封装了静态文档生成工具
@@ -131,13 +124,6 @@ spm-init -i aralejs/template-alice
 
 ```
 npm install spm-doc -g
-```
-
-下载 Arale 和 Alice 模板
-
-```
-git clone https://github.com/aralejs/nico-arale.git ~/.spm/themes/arale
-git clone https://github.com/aliceui/nico-alice.git ~/.spm/themes/alice
 ```
 
 ## windows 环境

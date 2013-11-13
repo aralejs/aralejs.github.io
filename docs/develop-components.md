@@ -61,7 +61,7 @@ puzzle
 ```
 $ mkdir puzzle
 $ cd puzzle
-$ spm init arale
+$ spm init
 Please answer the following:
 [?] Project name (puzzle) 
 [?] your CMD family (arale) 
@@ -74,8 +74,8 @@ Please answer the following:
 [?] Do you need to make any changes to the above before continuing? (y/N)
 ```
 
-初始化的时候需要选择 arale 作为模板，family 为 arale，name 为模块名。初始化完成后会生成一个骨架，
-在这个基础上进行开发更方便，之后可以提交到版本库了，当然你可以在 github 上建一个。
+初始化的时候会自动选择 `~/.spm/init/cmd` 作为模板，family 为 arale，name 为模块名。初始化完成后会生成一个骨架，
+在这个基础上进行开发更方便，之后可以提交到版本库了，当然你可以在 github 上建一个库。
 
 ```
 git init
