@@ -91,7 +91,7 @@ git push origin master
 
 根据 ID 规则要查看 `widget` 的版本，使用 `spm info` 的时候也要加 family 哦。
 
-```
+```bash
 $ spm info arale/popup
 
   arale/popup
@@ -105,7 +105,7 @@ $ spm info arale/popup
 
 在 `package.json` 中添加依赖
 
-```
+```js
 "spm": {
     "alias": {
         "$": "$",
@@ -119,13 +119,13 @@ $ spm info arale/popup
 使用 `spm install` 下载依赖，会把 alias 配置的模块都下载到 sea-modules 下。
 `jquery` 配置为 $ 是因为使用了别名配置，不需要完整的依赖路径。
 
-```
+```bash
 $ spm install
 ```
 
 修改 `src/puzzle.js` 进行开发
 
-```
+```js
 define(function(require, exports, module) {
   var popup = require('popup'),
     $ = require('$');
@@ -136,7 +136,7 @@ define(function(require, exports, module) {
 
 启服务进行调试
 
-```
+```bash
 $ spm doc watch
 ```
 
@@ -150,7 +150,7 @@ examples 也使用 md 编写，这样写起来非常方便，除了基本的 mar
 
 ````javascript
 seajs.use('puzzle', function(Puzzle) {
-    
+  // use Puzzle
 });
 ````
 
@@ -177,7 +177,7 @@ Arale 已经配置 travis，只要开通就可以 **持续集成** 。[登录 tr
 
 修改 `package.json` 配置打包方式
 
-```
+```js
 "output": ["puzzle.js"]
 ```
 
@@ -187,7 +187,7 @@ Arale 已经配置 travis，只要开通就可以 **持续集成** 。[登录 tr
 
 接下来就可以开始打包，build 后会在 dist 目录生成打包的文件和 -debug 文件。
 
-```
+```bash
 $ spm build
 ```
 
@@ -202,7 +202,7 @@ $ spm build
 只有发布到源中，你的模块才能被其他模块调用。通过 `spm publish` 命令将会把你的模块发布到默认的源服务器中。
 （默认为 https://spmjs.org，这个源服务器需要用户校验以及对应 family 的权限，请自行[注册账号](http://docs.spmjs.org/en/#register-amp-login)进行发布）
 
-```
+```bash
 $ spm publish
 ```
 
@@ -210,7 +210,7 @@ $ spm publish
 
 请参见 [spm-deploy](https://github.com/spmjs/spm-deploy)。
 
-```
+```bash
 $ spm deploy
 $ spm deploy --target p123  // 发布到 assets.p123.alipay.net
 ```
@@ -225,20 +225,20 @@ Arale 模块的文档地址为 aralejs.org/{{模块名}}，
 
 开发完模块后，只需要运行如下代码就可以把文档部署上线。
 
-```
-$ spm doc publish 
+```bash
+$ spm doc publish
 ```
 
 或者
 
-```
+```bash
 $ spm doc publish -s alipay
 ```
 
 `-s alipay` 这个参数指定了发布文档到哪台源服务器，如果没有指定，则发布到默认的地址中去，
 你可以在 `~/.spm/spmrc` 文件中查看配置的默认源是什么。
 
-```
+```ini
 [source:default]
 url = http://yuan.alipay.im
 ```
