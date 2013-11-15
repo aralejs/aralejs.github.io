@@ -170,8 +170,6 @@ a.module-name {
 
 .module-new:after,
 .module-deprecated:after {
-  background: #1AB418;
-  border: 1px solid #E9F2E9;
   color: #FFFFFF;
   font-family: 'Helvetica Neue';
   font-size: 9px;
@@ -186,8 +184,8 @@ a.module-name {
 }
 
 .module-new:after {
-  background: #1AB418;
-  content: "New";
+  background: #6CCB21;
+  content: "NEW";
 }
 
 .module-deprecated:after {
