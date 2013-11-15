@@ -31,6 +31,7 @@
     "new": [
       "arale/dnd",
       "jquery/at",
+      "jquery/at",
       "arale/qrcode"
     ]
   }

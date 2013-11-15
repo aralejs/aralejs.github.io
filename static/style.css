@@ -182,6 +182,7 @@ a.module-name {
   top: 8px;
   transform: rotate(45deg);
   width: 100px;
+  font-weight: bold;
 }
 
 .module-new:after {
