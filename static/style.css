@@ -102,9 +102,9 @@ a:hover {
 }
 
 .module:hover {
-    border-top: 1px solid #bbb;    
-    border-right: 1px solid #bbb;    
-    border-bottom: 1px solid #bbb;    
+    border-top: 1px solid #bbb;
+    border-right: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
     color: #666;
     box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -161,6 +161,37 @@ a.module-name {
 
 .module-description:hover {
     overflow: auto;
+}
+
+.module-new,
+.module-deprecated {
+  position: relative;
+}
+
+.module-new:after,
+.module-deprecated:after {
+  background: #1AB418;
+  border: 1px solid #E9F2E9;
+  color: #FFFFFF;
+  font-family: 'Helvetica Neue';
+  font-size: 9px;
+  line-height: 1.2;
+  position: absolute;
+  right: -34px;
+  text-align: center;
+  top: 8px;
+  transform: rotate(45deg);
+  width: 100px;
+}
+
+.module-new:after {
+  background: #1AB418;
+  content: "New";
+}
+
+.module-deprecated:after {
+  background: #BB9007;
+  content: "Deprecated";
 }
 
 #content {

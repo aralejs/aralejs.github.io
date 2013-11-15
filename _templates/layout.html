@@ -2,7 +2,7 @@
 <html lang="{{theme.lang}}">
     <head>
         <meta charset="UTF-8">
-        {%- if post.filename == 'index' %}        
+        {%- if post.filename == 'index' %}
         <title>{{config.package.title|title}} - {{config.package.description}}</title>
         {%- else %}
         <title>{{config.package.title|title}} - {{post.title}}</title>
@@ -13,9 +13,10 @@
         <link type="image/x-icon" href="{{static_url('css/favicon.ico')}}" rel="icon">
         <link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
         <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
-        <link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />    
+        <link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />
         <link rel="stylesheet" href="{{static_url('style.css')}}" />
         {%- include "snippet/head.html" %}
+        <script src="{{config.assets_host}}/seajs/seajs-text/1.0.2/seajs-text.js"></script>
         <script src="{{static_url('js/site.js')}}"></script>
         <script src="{{static_url('index.js')}}"></script>
         <!--[if lt IE 9]>
@@ -64,7 +65,7 @@
                     <li style="display:none;"><a href="#index6">支付宝通用(内)<i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>            
                     </ul>
                 </div>
-                {%- else %}                
+                {%- else %}
                 <div class="side-area">{{post.toc}}</div>
                 {%- endif %}
                 <script type="text/template" id="list-template">
