@@ -45,7 +45,7 @@
 
 <style>
 #doc-wrapper, table {width: 100%}
-table td, table th {text-align:left;padding: 7px 10px;border: 1px solid #dd;}
+table td, table th {text-align:left;padding: 7px 10px;border: 1px solid #ddd;}
 table td:hover {background: #eee;}
 table .status {width: 80px; cursor: pointer; padding: 0px 10px;}
 table .status:hover {background-color: #fff;}
