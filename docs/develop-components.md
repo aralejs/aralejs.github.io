@@ -158,6 +158,8 @@ seajs.use('puzzle', function(Puzzle) {
 
 spm doc 支持 livereload，只要通过 `spm doc watch` 启动服务，修改文件后都会自动构建和刷新浏览器。
 
+> 更多 Markdown 写文档的技巧请参考 https://github.com/spmjs/nico-cmd#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91 。
+
 
 ## 编写测试用例
 
