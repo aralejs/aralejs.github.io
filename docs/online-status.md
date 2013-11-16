@@ -46,9 +46,8 @@
 <style>
 #doc-wrapper, table {width: 100%}
 table td, table th {text-align:left;padding: 7px 10px;border: 1px solid #ddd;}
-table td:hover {background: #eee;}
 table .status {width: 80px; cursor: pointer; padding: 0px 10px;}
-table .status:hover {background-color: #fff;}
+table .status:hover {background-color: #eee;}
 table .status span{cursor:pointer;}
 table .version{width: 100px;}
 table .build {width: 80px; padding: 0px 10px;}
