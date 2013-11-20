@@ -25,12 +25,11 @@
   "module-tags": {
     "deprecated": [
       "arale/placeholder",
-      "arale/easing",
       "alipay/qrcode"
     ],
     "new": [
       "arale/dnd",
-      "jquery/at",
+      "gallery/formatter",
       "jquery/at",
       "arale/qrcode"
     ]
