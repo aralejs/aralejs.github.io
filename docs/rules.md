@@ -72,7 +72,7 @@ overlay
 
 该模块的概要介绍。
 
-------
+-----
 
 ## 使用说明
 
@@ -94,14 +94,14 @@ overlay
 ```
 ### 1.1.0
 
-* [tag:fixed] #18 修复了 XXX 问题
-* [tag:fixed] #29 修复了 YYY 问题
-* [tag:new] #12 增加了 ZZZ 功能
-* [tag:improved] #23 优化了 BBB 代码
+* [fixed] #18 修复了 XXX 问题
+* [fixed] #29 修复了 YYY 问题
+* [new] #12 增加了 ZZZ 功能
+* [improved] #23 优化了 BBB 代码
 
 ### 1.0.0
 
-* [tag:new] 第一个发布版本
+* [new] 第一个发布版本
 ```
 
 
