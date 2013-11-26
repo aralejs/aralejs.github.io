@@ -172,13 +172,13 @@ a.module-name {
 .module-deprecated:after {
   color: #FFFFFF;
   font-family: 'Helvetica Neue';
-  font-size: 9px;
   line-height: 1.2;
   position: absolute;
   right: -34px;
   text-align: center;
   top: 8px;
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg) scale(0.6);
+  transform: rotate(45deg) scale(0.6);
   width: 100px;
   font-weight: bold;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
