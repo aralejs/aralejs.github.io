@@ -133,6 +133,7 @@ seajs.use(['$', 'xbox', 'validator'], function($, Xbox, Validator) {
 缺点
 
 > 比直接 use 模块 id 稍复杂
+> 所有版本集中控制，需要对整个页面的模块调用都有了解并负责模块版本的变更
 
 适用范围
 
