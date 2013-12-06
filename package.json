@@ -31,6 +31,7 @@
       "arale/dnd",
       "gallery/formatter",
       "jquery/at",
+      "gallery/spin",
       "arale/qrcode"
     ]
   }
