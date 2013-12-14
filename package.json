@@ -29,6 +29,7 @@
     ],
     "new": [
       "arale/dnd",
+      "gallery/blueimp-md5",
       "gallery/formatter",
       "jquery/at",
       "gallery/spin",
