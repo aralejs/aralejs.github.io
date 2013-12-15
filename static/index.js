@@ -1,10 +1,17 @@
-seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaster', "/package.json"],
-  function($, Placeholder, Sticky, wordColor, Autocomplete, key, package) {
+seajs.use([
+  '$',
+  'placeholder',
+  'sticky',
+  'word-color',
+  'autocomplete',
+  'keymaster',
+  'moment',
+  "/package.json"],
+  function($, Placeholder, Sticky, wordColor, Autocomplete, key, moment, package) {
 
   Sticky.stick('#document-wrapper', 0);
 
   var modules = [];
-  var newModules = package['module-tags'].new.join(' ');
   var deprecatedModules = package['module-tags'].deprecated.join(' ');
 
   var urls = [
@@ -54,13 +61,16 @@ seajs.use(['$', 'placeholder', 'sticky', 'word-color', 'autocomplete', 'keymaste
       var pkg = data[i];
       var family = pkg.family || pkg.root;
 
-      // 增加 new 和 deprecated 信息
-
-      var family_name = family + '/' + pkg.name;
-      if (newModules.indexOf(family_name) >= 0) {
+      // 三十天内更新的标注为新模块
+      if (moment().diff(moment(pkg.created_at), 'days') <= 30) {
         item.addClass('module-new');
         item.attr('title', "新模块");
-      } else if (deprecatedModules.indexOf(family_name) >= 0) {
+      }
+
+      // 增加 deprecated 信息
+
+      var family_name = family + '/' + pkg.name;
+      if (deprecatedModules.indexOf(family_name) >= 0) {
         item.addClass('module-deprecated');
         item.attr('title', "即将废弃的模块");
       }

@@ -2,7 +2,7 @@
   "family": "arale",
   "name": "arale.spmjs.org",
   "title": "Arale",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "随心构建互联网应用",
   "homepage": "http://aralejs.org",
   "repository": {
@@ -19,6 +19,7 @@
       "placeholder": "arale/placeholder/1.0.1/placeholder",
       "sticky": "arale/sticky/1.2.1/sticky",
       "keymaster": "gallery/keymaster/1.0.2/keymaster",
+      "moment": "gallery/moment/2.3.1/moment",
       "word-color": "afc163/word-color/1.0.0/word-color"
     }
   },
@@ -26,14 +27,6 @@
     "deprecated": [
       "arale/placeholder",
       "alipay/qrcode"
-    ],
-    "new": [
-      "arale/dnd",
-      "gallery/blueimp-md5",
-      "gallery/formatter",
-      "jquery/at",
-      "gallery/spin",
-      "arale/qrcode"
     ]
   }
 }
