@@ -149,7 +149,7 @@ seajs.use([
         var item = {
           matchKey: FamilyAndName,
           desc: value.description,
-          url: value.homepage,
+          url: "https://spmjs.org/" + value.family + '/' + value.name,
           score: 0  //匹配度
         };
 
