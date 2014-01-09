@@ -202,7 +202,7 @@ $ spm build
 ### 发布到源中
 
 只有发布到源中，你的模块才能被其他模块调用。通过 `spm publish` 命令将会把你的模块发布到默认的源服务器中。
-（默认为 https://spmjs.org，这个源服务器需要用户校验以及对应 family 的权限，请自行[注册账号](http://docs.spmjs.org/en/#register-amp-login)进行发布）
+（默认为 https://spmjs.org ，这个源服务器需要用户校验以及对应 family 的权限，请自行[注册账号](http://docs.spmjs.org/en/#register-amp-login)进行发布）
 
 ```bash
 $ spm publish
@@ -248,3 +248,16 @@ url = http://yuan.alipay.im
 一般来说，支付宝内部的源地址是 `http://yuan.alipay.im`，公网的源地址是 `https://spmjs.org`。
 
 发布到源中。publish 命令将会把你的模块发布到默认的源服务器中。（例如 spmjs.org，这个源服务器需要用户校验以及对应 family 的权限，请自行[注册账号](http://docs.spmjs.org/en/#register-amp-login)进行发布）
+
+
+### 使用这个模块
+
+我们现在已经写好了这个模块，那么如何使用呢？首先要把构建后的文件按目录部署到你的 assets 服务器上。
+
+比如 arale 的 position 模块：
+
+```
+http://static.alipayobjects.com/arale/position/1.0.1/position.js
+```
+
+然后就可以像《5 分钟上手指南》里那样用 seajs.use 来启动模块了。
