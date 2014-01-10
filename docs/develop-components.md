@@ -250,7 +250,7 @@ url = http://yuan.alipay.im
 发布到源中。publish 命令将会把你的模块发布到默认的源服务器中。（例如 spmjs.org，这个源服务器需要用户校验以及对应 family 的权限，请自行[注册账号](http://docs.spmjs.org/en/#register-amp-login)进行发布）
 
 
-### 使用这个模块
+## 使用这个模块
 
 我们现在已经写好了这个模块，那么如何使用呢？首先要把构建后的文件按目录部署到你的 assets 服务器上。
 
