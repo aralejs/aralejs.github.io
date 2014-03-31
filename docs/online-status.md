@@ -10,13 +10,13 @@
 </style>
 
 Arale 默认部署会在支付宝的 CDN 上，开发者可以自由选用，
-地址是 `https://a.alipayobject.com/` 和 `http://static.alipayobject.com/`。
+地址是 `https://a.alipayobjects.com/` 和 `http://static.alipayobjects.com/`。
 
 本页面提供了现有组件的发布状态，可以查看某组件的所有版本，以及其具体版本是否已上线。
 如果你需要的模块没有发布，很可能是此版本尚在开发阶段或我们忘记了，可以到对应仓库进行询问和催促。
 
 - <span class="assert" style="color:#1A9B20">✔</span> 所有文件均存在。
-- <span class="assert" style="color:#FF4C4C">✗</span> 所有文件均不存在。 
+- <span class="assert" style="color:#FF4C4C">✗</span> 所有文件均不存在。
 - <span class="assert" style="color: #FFB800;">✙</span> 部分文件存在，可能存在漏发或多余的文件。
 
 请尽量使用最新版，如测试环境不存在该文件，可联系我们，或使用次新版。
