@@ -33,7 +33,7 @@
       Position.pin(
         { element: target, x: 'center', y: 'center' }, 
         { element: Position.VIEWPORT, x: x + '%', y: y + '%' }
-      ); 
+      );
     }, 800);
   });
 </script>
@@ -44,6 +44,12 @@
 ## 使用 SeaJS
 
 看过 Arale 的简介，大家已经知道 Arale 是基于 [Sea.js](http://seajs.org) 和 CMD 模块开发的，所以使用 Arale 之前要先引入 Sea.js，它是一个模块加载器，会异步请求需要的模块。
+
+然后需要通过 `seajs.config` 来全局配置下 jQuery 的别名 `$`，这样可以统一控制 jQuery 的版本号。
+
+```js
+'$': 'gallery/jquery/1.7.2/jquery',
+```
 
 在这个例子里，使用了 `jquery` 和 [position](http://aralejs.org/position) 两个模块。大家可能会注意到 `seajs.config` 的配置，是的，这就是 Arale 模块的 ID，通过这个 ID 可以找到这个模块。
 
