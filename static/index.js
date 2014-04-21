@@ -143,7 +143,7 @@ seajs.use([
         value.description = (value.description || '').toLowerCase();
         value.family = value.family.toLowerCase();
         value.name = value.name.toLowerCase();
-        var FamilyAndName = value.family + '.' + value.name;
+        var FamilyAndName = value.family + '/' + value.name;
         var keywords = value.keywords ? value.keywords.join(' ') : '';
 
         var item = {
