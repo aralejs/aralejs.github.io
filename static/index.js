@@ -203,7 +203,7 @@ seajs.use([
 
   ac.on('itemSelect', function(item) {
     ac.get('trigger').val('正转到 ' + item.matchKey).attr('disabled', 'disabled');
-    var value = item.matchKey.split('.');
+    var value = item.matchKey.split('/');
     if (value[0] === 'arale') {
       location.href = '/' + value[1];
     } else if (value[0] === 'alipay') {
