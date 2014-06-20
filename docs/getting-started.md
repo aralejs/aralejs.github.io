@@ -16,8 +16,9 @@
 <script charset="utf-8" id="seajsnode"src="http://static.alipayobjects.com/seajs/??seajs/2.1.1/sea.js,seajs-combo/1.0.0/seajs-combo.js,seajs-style/1.0.0/seajs-style.js"></script>
 <script>
   seajs.config({
+    base: 'http://static.alipayobjects.com',
     alias: {
-      '$': 'gallery/jquery/1.7.2/jquery',
+      '$': 'jquery/jquery/1.7.2/jquery',
       'position': 'arale/position/1.0.0/position'
     }
   });
