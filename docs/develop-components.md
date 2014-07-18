@@ -214,7 +214,7 @@ $ spm publish
 
 ```bash
 $ spm deploy
-$ spm deploy --target p123  // 发布到 assets.p123.alipay.net
+$ spm deploy --target p123  // 发布到 assets.p123.example.net
 ```
 
 ## 部署模块文档
