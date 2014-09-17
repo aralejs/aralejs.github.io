@@ -20,3 +20,4 @@ build
 node_modules
 _site
 .cache
+spm_modules

@@ -1,138 +1,156 @@
 <!DOCTYPE HTML>
 <html lang="{{theme.lang}}">
-    <head>
-        <meta charset="UTF-8">
+<head>
+<meta charset="UTF-8">
+{%- if post.filename == 'index' %}
+<title>{{config.package.title|title}} - {{config.package.description}}</title>
+{%- else %}
+<title>{{config.package.title|title}} - {{post.title}}</title>
+{%- endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="{{system.name}} {{system.version}}" />
+{%- block assets %}
+<link type="image/x-icon" href="{{static_url('css/favicon.ico')}}" rel="icon">
+<link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
+<link rel="stylesheet" href="{{static_url('css/site.css')}}" />
+<link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />
+<link rel="stylesheet" href="{{static_url('style.css')}}" />
+
+<style>
+/* alipay iconfont */
+@font-face {
+  font-family: "rei";
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423"); /* IE9 */
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("https://i.alipayobjects.com/common/fonts/rei.woff?20130423") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.ttf?20130423")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.svg?20130423#rei") format("svg"); /* iOS 4.1- */
+}
+.iconfont {
+  font-family:"rei";
+  font-style: normal;
+  font-weight: normal;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+</style>
+
+{%- include "snippet/head.html" %}
+<script src="{{static_url('index.js?nowrap')}}"></script>
+<!--[if lt IE 9]>
+<script src="{{static_url('js/html5shiv.js?nowrap')}}"></script>
+<script src="{{static_url('es5-safe.js?nowrap')}}"></script>
+<![endif]-->
+{%- endblock %}
+{%- block afterstyle %}{% endblock %}
+<script>
+seajs.use(['arale-sticky', '/static/side'], function(Sticky, side) {
+  Sticky('.side-area', 20);
+  side.init();
+});
+</script>
+</head>
+<body>
+    <div id="body-wrapper">
+      <div class="head-area">
+        <div class="title-area">
+          <h1 class="inline">
+            <a href="{{content_url('index.html')}}">{{config.package.title|title}}</a>
+          </h1>
+          <input type="text" placeholder="{{config.package.description}}" id="search" class="inline" autocomplete="off">
+          <img width="60" src="/static/arale-small.jpg">
+        </div>
+        <iframe src="http://ghbtns.com/github-btn.html?user=aralejs&repo=aralejs.org&type=watch&count=true"
+        allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
+      </div>
+      <div class="nav-area">
+        <ol class="main-nav">
+          <li><a href="/"><i class="iconfont" title="首页">&#xF034;</i> 首页</a></li>
+          {%- for item in resource.pages|find_category('arale') %}
+          <li><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
+          {%- endfor %}
+        </ol>
+      </div>
+      <div class="main-area">
         {%- if post.filename == 'index' %}
-        <title>{{config.package.title|title}} - {{config.package.description}}</title>
+        <div class="side-area">
+          <ul>
+          <li><a href="#index1">基础设施<i class="iconfont" title="">&#x00E5;</i></a></li>
+          <li><a href="#index2">工具<i class="iconfont" title="">&#x00E5;</i></a></li>
+          <li><a href="#index3">UI 组件<i class="iconfont" title="">&#x00E5;</i></a></li>
+          <li style="display:none;"><a href="#index4">jQuery 插件<i class="iconfont" title="">&#x00E5;</i></a></li>
+          <li style="display:none;"><a href="#index5">业界精选<i class="iconfont" title="">&#x00E5;</i></a></li>
+          <li style="display:none;"><a href="#index6">支付宝通用(内)<i class="iconfont" title="">&#x00E5;</i></a></li>
+          </ul>
+        </div>
         {%- else %}
-        <title>{{config.package.title|title}} - {{post.title}}</title>
+        <div class="side-area">{{post.toc}}</div>
         {%- endif %}
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="generator" content="{{system.name}} {{system.version}}" />
-        {%- block assets %}
-        <link type="image/x-icon" href="{{static_url('css/favicon.ico')}}" rel="icon">
-        <link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
-        <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
-        <link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />
-        <link rel="stylesheet" href="{{static_url('style.css')}}" />
-        {%- include "snippet/head.html" %}
-        <script src="{{config.assets_host}}/seajs/seajs-text/1.0.2/seajs-text.js"></script>
-        <script src="{{static_url('js/site.js')}}"></script>
-        <script src="{{static_url('index.js')}}"></script>
-        <!--[if lt IE 9]>
-        <script src="{{static_url('js/html5shiv.js')}}"></script>
-        <script src="{{static_url('es5-safe.js')}}"></script>
-        <![endif]-->
-        {%- endblock %}
-        {%- block afterstyle %}{% endblock %}
-        <script>
-        seajs.use(['arale/sticky/1.2.1/sticky', '/static/side'], function(Sticky, side) {
-            Sticky('.side-area', 20);
-            side.init();
-        });
+        <script type="text/template" id="list-template">
+          <li><a href="#"><i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
         </script>
-    </head>
-    <body>
-        <div id="body-wrapper">
-            <div class="head-area">
-                <div class="title-area">
-                    <h1 class="inline">
-                        <a href="{{content_url('index.html')}}">{{config.package.title|title}}</a>
-                    </h1>
-                    <input type="text" placeholder="{{config.package.description}}" id="search" class="inline" autocomplete="off">
-                    <img width="60" src="/static/arale-small.jpg">
-                </div>
-                <iframe src="http://ghbtns.com/github-btn.html?user=aralejs&repo=aralejs.org&type=watch&count=true"
-                allowtransparency="true" frameborder="0" scrolling="0" width="90" height="20"></iframe>
-            </div>
-            <div class="nav-area">
-                <ol class="main-nav">
-                    <li><a href="/"><i class="iconfont" title="首页">&#xF034;</i> 首页</a></li>
-                    {%- for item in resource.pages|find_category('arale') %}
-                    <li><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
-                    {%- endfor %}
-                </ol>
-            </div>
-            <div class="main-area">
-                {%- if post.filename == 'index' %}
-                <div class="side-area">
-                    <ul>
-                    <li><a href="#index1">基础设施<i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
-                    <li><a href="#index2">工具<i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
-                    <li><a href="#index3">UI 组件<i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
-                    <li><a href="#index4">jQuery 插件<i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
-                    <li><a href="#index5">业界精选<i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
-                    <li style="display:none;"><a href="#index6">支付宝通用(内)<i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>            
-                    </ul>
-                </div>
-                {%- else %}
-                <div class="side-area">{{post.toc}}</div>
-                {%- endif %}
-                <script type="text/template" id="list-template">
-                    <li><a href="#"><i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
-                </script>
-                {%- if post.filename == 'index' %}
-                <div class="content-area" id="module-wrapper">
-                    <h2 id="index1"><a href="https://spmjs.org/arale/" target="_blank">Arale</a>・<span class="catigory">基础设施</span></h2>
-                    <div class="modules modules-infrastructure">
-                    </div>
+        {%- if post.filename == 'index' %}
+        <div class="content-area" id="module-wrapper">
+          <h2 id="index1"><a href="https://spmjs.org/arale/" target="_blank">Arale</a>・<span class="catigory">基础设施</span></h2>
+          <div class="modules modules-infrastructure">
+          </div>
 
-                    <h2 id="index2"><a href="https://spmjs.org/arale/" target="_blank">Arale</a>・<span class="catigory">工具</span></h2>
-                    <div class="modules modules-utility">
-                        <img width="30" src="https://i.alipayobjects.com/e/201305/M9UQl3TuH.gif">
-                        <p>正在用绳命加载模块...</p>
-                    </div>
+          <h2 id="index2"><a href="https://spmjs.org/arale/" target="_blank">Arale</a>・<span class="catigory">工具</span></h2>
+          <div class="modules modules-utility">
+            <img width="30" src="https://i.alipayobjects.com/e/201305/M9UQl3TuH.gif">
+            <p>正在用绳命加载模块...</p>
+          </div>
 
-                    <h2 id="index3"><a href="https://spmjs.org/arale/" target="_blank">Arale</a>・<span class="catigory">UI组件</span></h2>
-                    <div class="modules modules-widget">
-                    </div>
+          <h2 id="index3"><a href="https://spmjs.org/arale/" target="_blank">Arale</a>・<span class="catigory">UI组件</span></h2>
+          <div class="modules modules-widget">
+          </div>
 
-                    <h2 id="index4"><a href="https://spmjs.org/jquery/" target="_blank">jquery</a>・<span class="catigory">插件</span></h2>
-                    <div class="modules modules-jquery">
-                    </div>
+          <h2 id="index4"><a href="https://spmjs.org/jquery/" target="_blank">jquery</a>・<span class="catigory">插件</span></h2>
+          <div style="display:none;" class="modules modules-jquery">
+          </div>
 
-                    <h2 id="index5"><a href="https://spmjs.org/gallery/" target="_blank">gallery</a>・<span class="catigory">业界精选</span></h2>
-                    <div class="modules modules-gallery">
-                    </div>
+          <h2 id="index5"><a href="https://spmjs.org/gallery/" target="_blank">gallery</a>・<span class="catigory">业界精选</span></h2>
+          <div style="display:none;" class="modules modules-gallery">
+          </div>
 
-                    <h2 id="index6"><a href="http://yuan.alipay.im/alipay/" target="_blank">alipay</a>・<span class="catigory">支付宝通用</span></h2>
-                    <div class="modules modules-alipay">
-                    </div>
-                </div>
-                <div class="comment-area">
-                    <!-- Duoshuo Comment BEGIN -->
-                    <div class="ds-thread"></div>
-                    <script type="text/javascript">
-                    var duoshuoQuery = {short_name:"aralejs"};
-                    (function() {
-                        var ds = document.createElement('script');
-                        ds.type = 'text/javascript';ds.async = true;
-                        ds.src = 'http://static.duoshuo.com/embed.js';
-                        ds.charset = 'UTF-8';
-                        (document.getElementsByTagName('head')[0] 
-                        || document.getElementsByTagName('body')[0]).appendChild(ds);
-                        })();
-                    </script>
-                    <!-- Duoshuo Comment END -->
-                </div>
-                {%- else %}
-                <div class="content-area">
-                    <h1>{{post.title}}</h1>
-                    <div class="content entry-content">{{post.html | add_anchor}}</div>
-                </div>
-                {%- endif %}
-            </div>
+          <h2 id="index6"><a href="http://yuan.alipay.im/alipay/" target="_blank">alipay</a>・<span class="catigory">支付宝通用</span></h2>
+          <div class="modules modules-alipay">
+          </div>
         </div>
-        <div id="footer-wrapper">
-            <footer>
-            <p class="powered">
-                <a href="http://aralejs.org">Arale</a> •
-                <a href="http://aliceui.org">Alice</a> •
-                <a href="http://seajs.org">Sea.js</a> •
-                <a href="https://spmjs.org">spmjs.org</a> •
-                <a href="{{system.homepage}}">{{system.name}}</a>
-            </p>
-            </footer>
+        <div class="comment-area">
+          <!-- Duoshuo Comment BEGIN -->
+          <div class="ds-thread"></div>
+          <script type="text/javascript">
+          var duoshuoQuery = {short_name:"aralejs"};
+          (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = 'http://static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+          </script>
+          <!-- Duoshuo Comment END -->
         </div>
-    </body>
+        {%- else %}
+        <div class="content-area">
+          <h1>{{post.title}}</h1>
+          <div class="content entry-content">{{post.html | add_anchor}}</div>
+        </div>
+        {%- endif %}
+      </div>
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+      <p class="powered">
+        <a href="http://aralejs.org">Arale</a> •
+        <a href="http://aliceui.org">Alice</a> •
+        <a href="http://seajs.org">Sea.js</a> •
+        <a href="https://spmjs.org">spmjs.org</a> •
+        <a href="{{system.homepage}}">{{system.name}}</a>
+      </p>
+      </footer>
+    </div>
+</body>
 </html>

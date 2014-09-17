@@ -328,6 +328,18 @@ hr {
     width: 1140px;
     max-width: 1140px;
 }
+#footer-wrapper {
+  clear: both;
+  font-size: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 83%;
+  padding: 10px 0;
+  text-align: right;
+}
+#footer-wrapper a {
+  text-decoration: none;
+}
 
 /* - - - - - - - */
 

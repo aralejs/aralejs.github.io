@@ -1,6 +1,5 @@
 {
-  "family": "arale",
-  "name": "arale.spmjs.org",
+  "name": "aralejs.org",
   "title": "Arale",
   "version": "0.2.0",
   "description": "随心构建互联网应用",
@@ -13,14 +12,13 @@
     "url": "https://github.com/aralejs/aralejs.org/issues"
   },
   "spm": {
-    "alias": {
-      "popup": "arale/popup/1.1.2/popup",
-      "autocomplete": "arale/autocomplete/1.2.2/autocomplete",
-      "placeholder": "arale/placeholder/1.0.1/placeholder",
-      "sticky": "arale/sticky/1.2.1/sticky",
-      "keymaster": "gallery/keymaster/1.0.2/keymaster",
-      "moment": "gallery/moment/2.3.1/moment",
-      "word-color": "afc163/word-color/1.0.0/word-color"
+    "dependencies": {
+      "arale-popup": "1.2.0",
+      "arale-autocomplete": "1.4.1",
+      "arale-sticky": "1.4.0",
+      "keymaster": "1.6.2",
+      "moment": "2.8.1",
+      "word-color": "1.1.0"
     }
   },
   "module-tags": {

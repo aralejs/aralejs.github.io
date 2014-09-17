@@ -1,13 +1,12 @@
 seajs.use([
-  '$',
-  'placeholder',
-  'sticky',
+  'jquery',
+  'arale-sticky',
   'word-color',
-  'autocomplete',
+  'arale-autocomplete',
   'keymaster',
   'moment',
   "/package.json"],
-  function($, Placeholder, Sticky, wordColor, Autocomplete, key, moment, package) {
+  function($, Sticky, wordColor, Autocomplete, key, moment, package) {
 
   Sticky.stick('#document-wrapper', 0);
 
@@ -15,24 +14,18 @@ seajs.use([
   var deprecatedModules = package['module-tags'].deprecated.join(' ');
 
   var urls = [
-    'http://spmjs.org/repository/arale/?define',
-    'http://spmjs.org/repository/gallery/?define',
-    'http://spmjs.org/repository/jquery/?define'
+    'http://spmjs.io/repository/search?q=arale&define'
   ];
 
-  seajs.use(urls, function(arale, gallery, jquery) {
+  seajs.use(urls, function(arale) {
     $('.modules-utility').empty();
     modules = modules.concat(arale);
-    modules = modules.concat(gallery);
-    modules = modules.concat(jquery);
 
     insertModules(arale);
-    insertModules(gallery);
-    insertModules(jquery);
     color('.module');
   });
 
-  seajs.use('http://yuan.alipay.im/repository/alipay/?define', function(alipay) {
+  seajs.use('http://spm.alipay-inc.com/repository/search?q=alipay&define', function(alipay) {
     if (alipay) {
       $('.side-area li:last-child').show();
       modules = modules.concat(alipay);
@@ -42,10 +35,13 @@ seajs.use([
   });
 
   function insertModules(data) {
-
     if ($('#module-wrapper').length === 0) {
       return;
     }
+
+    try {
+      data = data.data.results;
+    } catch(e) {}
 
     data = data.sort(function(a, b) {
       return a.name.charCodeAt(0) - b.name.charCodeAt(0);
@@ -59,7 +55,7 @@ seajs.use([
         </div>');
 
       var pkg = data[i];
-      var family = pkg.family || pkg.root;
+      var family = pkg.name.split('-')[0];
 
       // 三十天内更新的标注为新模块
       if (moment().diff(moment(pkg.created_at), 'days') <= 30) {
@@ -68,14 +64,12 @@ seajs.use([
       }
 
       // 增加 deprecated 信息
-
-      var family_name = family + '/' + pkg.name;
-      if (deprecatedModules.indexOf(family_name) >= 0) {
+      if (deprecatedModules.indexOf(pkg.name) >= 0) {
         item.addClass('module-deprecated');
         item.attr('title', "即将废弃的模块");
       }
 
-      item.find(".module-name").html(pkg.name)
+      item.find(".module-name").html(pkg.name.split('-').slice(1).join('-'))
                                .attr('href', '/' + pkg.name + '/')
                                .attr('title', pkg.name);
       item.find(".module-version").html(pkg.version);
@@ -92,11 +86,7 @@ seajs.use([
           $('.modules-widget').append(item).prev().show();
         }
       } else if (family === 'alipay') {
-        var url = [
-          'http://arale.alipay.im',
-          (pkg.family || pkg.root),
-          pkg.name
-        ].join('/') + '/';
+        var url = 'http://spm.alipay-inc.com/docs/' + pkg.name + '/latest/';
         item.find(".module-name").attr('href', url);
         $('.modules-alipay').append(item).prev().show();
       }
