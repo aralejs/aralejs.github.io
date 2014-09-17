@@ -80,7 +80,7 @@ seajs.config({
     }
 });
 
-seajs.use(['$', 'popup'], function($, Popup){
+seajs.use(['jquery', 'arale-popup'], function($, Popup){
     var globalData = {},
         prefix = {
             online: 'https://a.alipayobjects.com',

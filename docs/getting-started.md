@@ -84,10 +84,10 @@ seajs.use(['arale/position/1.0.1/position'], function(Position) {
 非常欢迎直接通过支付宝的 cdn 来调用 Arale 模块，但如果你需要在自己的网站上部署 Arale，建议使用 spm 工具来下载模块。
 
 ```
-$ spm install arale/position
+$ spm install arale-position
 ```
 
-这行命令会把对应模块以及相关依赖安装到 sea-modules 目录中。像支付宝的 cdn 路径这样部署你的静态文件，就可以自由使用了。
+这行命令会把对应模块以及相关依赖安装到 spm_modules 目录中。像支付宝的 cdn 路径这样部署你的静态文件，就可以自由使用了。
 
 ## 查找模块
 
