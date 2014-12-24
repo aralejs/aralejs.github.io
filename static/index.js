@@ -70,7 +70,7 @@ seajs.use([
       }
 
       item.find(".module-name").html(pkg.name.split('-').slice(1).join('-'))
-                               .attr('href', '/' + pkg.name + '/')
+                               .attr('href', 'http://spmjs.io/docs/' + pkg.name + '/latest/')
                                .attr('title', pkg.name);
       item.find(".module-version").html(pkg.version);
       item.find(".module-description").html(pkg.description)
