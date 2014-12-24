@@ -21,11 +21,5 @@
       "word-color": "1.1.0",
       "jquery": "1.7.2"
     }
-  },
-  "module-tags": {
-    "deprecated": [
-      "arale/placeholder",
-      "alipay/qrcode"
-    ]
   }
 }

@@ -4,14 +4,13 @@ seajs.use([
   'word-color',
   'arale-autocomplete',
   'keymaster',
-  'moment',
-  "/package.json"],
-  function($, Sticky, wordColor, Autocomplete, key, moment, package) {
+  'moment'],
+  function($, Sticky, wordColor, Autocomplete, key, moment) {
 
   Sticky.stick('#document-wrapper', 0);
 
   var modules = [];
-  var deprecatedModules = package['module-tags'].deprecated.join(' ');
+  var deprecatedModules = '';
 
   var urls = [
     'http://spmjs.io/repository/search?q=arale&define'
@@ -70,7 +69,7 @@ seajs.use([
       }
 
       item.find(".module-name").html(pkg.name.split('-').slice(1).join('-'))
-                               .attr('href', 'http://spmjs.io/docs/' + pkg.name + '/latest/')
+                               .attr('href', '/' + pkg.name.replace(/^arale-/, '') + '/')
                                .attr('title', pkg.name);
       item.find(".module-version").html(pkg.version);
       item.find(".module-description").html(pkg.description)
