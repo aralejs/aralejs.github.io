@@ -7,19 +7,19 @@
 
 ## 先看个例子吧
 
-新建一个文件，把以下代码复制进去，然后用浏览器打开
+新建一个文件，把以下代码复制进去，然后用浏览器打开：
 
 ```html
 <style>
 .target{width:50px;height:50px;border-radius:25px;background:#000;transition:All 1s ease;-webkit-transition:All 1s ease;-moz-transition:All 1s ease;}
 </style>
-<script charset="utf-8" id="seajsnode"src="http://static.alipayobjects.com/seajs/??seajs/2.1.1/sea.js,seajs-combo/1.0.0/seajs-combo.js,seajs-style/1.0.0/seajs-style.js"></script>
+<script charset="utf-8" id="seajsnode"src="http://static.alipayobjects.com/seajs/??seajs/2.2.2/sea.js,seajs-combo/1.0.1/seajs-combo.js,seajs-style/1.0.2/seajs-style.js"></script>
 <script>
   seajs.config({
     base: 'http://static.alipayobjects.com',
     alias: {
-      '$': 'jquery/jquery/1.7.2/jquery',
-      'position': 'arale/position/1.0.0/position'
+      '$': 'jquery/1.7.2/jquery',
+      'position': 'position/1.1.0/index'
     }
   });
   seajs.use(['$', 'position'], function($, Position){
@@ -40,16 +40,18 @@
 </script>
 ```
 
-看到有个球在飞来飞去么，你能抓到他么？[线上演示](http://jsfiddle.net/afc163/zPYqx/1/)
+看到有个球在飞来飞去么，你能抓到他么？[线上演示](http://jsfiddle.net/zPYqx/85/)
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/zPYqx/85/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 ## 使用 SeaJS
 
 看过 Arale 的简介，大家已经知道 Arale 是基于 [Sea.js](http://seajs.org) 和 CMD 模块开发的，所以使用 Arale 之前要先引入 Sea.js，它是一个模块加载器，会异步请求需要的模块。
 
-然后需要通过 `seajs.config` 来全局配置下 jQuery 的别名 `$`，这样可以统一控制 jQuery 的版本号。
+然后需要通过 `seajs.config` 来全局配置下 jQuery 的别名 `jquery`，这样可以统一控制 jQuery 的版本号。
 
 ```js
-'$': 'gallery/jquery/1.7.2/jquery',
+'jquery': 'jquery/1.7.2/jquery',
 ```
 
 在这个例子里，使用了 `jquery` 和 [position](http://aralejs.org/position) 两个模块。大家可能会注意到 `seajs.config` 的配置，是的，这就是 Arale 模块的 ID，通过这个 ID 可以找到这个模块。
@@ -57,20 +59,19 @@
 比如模块 `position` 的完整路径就是：
 
 ```
-http://static.alipayobjects.com/arale/position/1.0.1/position.js
+http://static.alipayobjects.com/position/1.1.0/position.js
 ```
 
-Arale 的 ID 由四部分组成：`{{family}}/{{module}}/{{version}}/{{file}}`
+Arale 的 ID 由四部分组成：`{{module}}/{{version}}/{{file}}`
 
- -  Arale 的 family 除了 arale 外还有外部引入的 [gallery](https://github.com/cmdjs/gallery/) 和 [jquery](https://github.com/cmdjs/jquery/)
- -  module 为模块的名字
+ -  module 为模块的名字（即 http://spmjs.io 上的模块名称）
  -  version 为版本
  -  file 为具体的文件，可以有多个，一般与模块名相同
 
 这个 ID 和 seajs 的所在路径拼合后就是模块文件的具体地址了。当你拿到上面的 ID 后，就可以直接用 `seajs.use` 来使用这个模块了。
 
 ```js
-seajs.use(['arale/position/1.0.1/position'], function(Position) {
+seajs.use(['position/1.1.0/index'], function(Position) {
     // use Position ...
 });
 ```
@@ -81,10 +82,10 @@ seajs.use(['arale/position/1.0.1/position'], function(Position) {
 
 ## 安装到本地
 
-非常欢迎直接通过支付宝的 cdn 来调用 Arale 模块，但如果你需要在自己的网站上部署 Arale，建议使用 spm 工具来下载模块。
+非常欢迎直接通过支付宝的 cdn 来调用 Arale 模块，但如果你需要在自己的网站上部署 Arale，建议使用 [spm](https://github.com/spmjs/spm) 工具来下载模块。
 
 ```
-$ spm install arale-position
+$ spm install position
 ```
 
 这行命令会把对应模块以及相关依赖安装到 spm_modules 目录中。像支付宝的 cdn 路径这样部署你的静态文件，就可以自由使用了。

@@ -33,6 +33,8 @@ $ nvm alias default 0.10.24
 $ sudo chown -R $USER /usr/local
 ```
 
+或者参照 npm 官方的文档来设置：https://docs.npmjs.com/getting-started/fixing-npm-permissions
+
 ### 安装 git
 
 版本管理工具也是必须的，可以先[了解 git 的相关内容](http://rogerdudler.github.com/git-guide/index.zh.html) 。
@@ -59,3 +61,16 @@ c:\> cinst nodejs.install
 PATH = C:\Users\{{username}}\AppData\Roaming\npm
 NODE_PATH = C:\Users\{{username}}\AppData\Roaming\npm\node_modules
 ```
+
+
+### 安装 spm
+
+Arale 已经全面迁移到 [spm3](https://github.com/spmjs/spm/issues/819) 的体系上。
+
+```bash
+$ npm install spm -g
+```
+
+---
+
+好，安装工作完成！

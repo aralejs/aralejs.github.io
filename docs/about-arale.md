@@ -6,7 +6,7 @@
 ---
 
 Arale 立足于支付宝的前端需求和国内前端社区，基于 [Sea.js](http://seajs.org/) 
-和 [CMD](https://github.com/seajs/seajs/issues/242) 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系，
+和 [spm](https://spmjs.io) 生态圈，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系，
 是一个开放、简单、易用的前端解决方案。
 
 <img src="/static/arale.jpg" width="300">
@@ -15,7 +15,7 @@ Arale 立足于支付宝的前端需求和国内前端社区，基于 [Sea.js](h
 
 Arale（阿拉蕾） 生在旧社会，长在新中国，本为一个乖巧可爱的机器人女娃，在 Sea.js 大叔的蛊惑下，逐渐走上了无恶不作的不归路。
 
-在猥琐的 Sea.js 的帮助下，Arale 胁迫了业界最优秀的开源类库 (包括不限于 jQuery、underscore、momentjs、handlebars 等）为己所用，并且始终保持对开源社区的邪恶目光，站在并将始终站在这些无辜巨人们的肩膀上。（欢迎加入可能是最不愿意自己开发组件的前端团队！）
+在猥琐的 Sea.js 和 spm 两位叔叔的帮助下，Arale 胁迫了业界最优秀的开源类库 (包括不限于 jQuery、underscore、momentjs、handlebars 等）为己所用，并且始终保持对开源社区的邪恶目光，站在并将始终站在这些无辜巨人们的肩膀上。（欢迎加入可能是最不愿意自己开发组件的前端团队！）
 
 Arale 手下拥有 [popup](http://aralejs.org/arale-popup/)、[validator](http://aralejs.org/arale-validator/)、[position](http://aralejs.org/position/)、[autocomplete](http://aralejs.org/arale-autocomplete/) 等等等等下流狡猾的 CMD 模块喽啰们，他们手脚麻利，办事干净，各自独当一面讲义气，任你各种需求耀武扬威，上去就是一板砖，绝无二话。
 
@@ -48,17 +48,13 @@ Arale 还有个漂亮的好姐妹 [Alice](http://aliceui.org/) 协理样式方�
 
 - [Arale github](https://github.com/aralejs/aralejs.org/)
 
-  <iframe src="http://lab.lepture.com/github-cards/card.html?user=aralejs&repo=aralejs.org" frameborder="0" scrolling="0" width="400" height="165" allowtransparency></iframe>
-
 - [Arale repos](https://github.com/aralejs/)
 
-- [spm](https://github.com/spmjs/spm/) - CMD 包管理工具
+- [spm](https://github.com/spmjs/spm/) - 包管理工具
 
-- [spmjs.io](http://spmjs.io/) - CMD 生态圈
+- [spmjs.io](http://spmjs.io/) - 生态圈
 
 - [Alice 样式解决方案](http://aliceui.org/)
-
-  <iframe src="http://lab.lepture.com/github-cards/card.html?user=aliceui&repo=aliceui.org" frameborder="0" scrolling="0" width="400" height="165" allowtransparency></iframe>
 
 - [totoro 测试解决方案](http://totorojs.org/)
 
@@ -66,3 +62,6 @@ Arale 还有个漂亮的好姐妹 [Alice](http://aliceui.org/) 协理样式方�
 
 - [Arale 和 SeaJS 的关系](http://www.zhihu.com/question/20651072)
 
+- [spm3 发布日志](https://github.com/spmjs/spm/issues/819)
+
+- [Arale 的过去、现在和未来](https://github.com/aralejs/aralejs.org/issues/358)
