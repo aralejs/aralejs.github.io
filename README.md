@@ -1,6 +1,6 @@
 # Arale
 
-Arale 是一个开放、简单、易用的前端基础类库。
+[Arale](http://aralejs.org) 是一个开放、简单、易用的前端基础类库。
 
 ---
 
@@ -33,7 +33,3 @@ Arale 是一个开放、简单、易用的前端基础类库。
 - homepage: <http://aralejs.org>
 - github: <https://github.com/aralejs>
 - Google Groups：<https://groups.google.com/forum/#!forum/aralejs>
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/aralejs/aralejs.org/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
