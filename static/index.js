@@ -183,18 +183,4 @@ seajs.use([
     location.href = item.url;
   });
 
-  // 首页将搜索功能定位到搜索框中
-  if ($('#module-wrapper').length !== 0) {
-    key.filter = function(event) {
-      return (event.target || event.srcElement).tagName;
-    };
-    key('command+f, ctrl+f', function(e, handler) {
-      $('#search').focus();
-      return false;
-    });
-    key('esc', function(e, handler) {
-      $('#search').blur();
-    });
-  }
-
 });

@@ -209,12 +209,29 @@ $ spm doc publish
 
 ## 使用这个模块
 
-我们现在已经写好了这个模块，那么如何使用呢？首先要把构建后的文件按目录部署到你的 assets 服务器上。
+我们现在已经写好了这个模块，那么如何使用呢？
+
+### script 引用
+
+使用 spm3 ，我们强烈推荐使用 standalone 的方式进行构建，然后用 script 直接引用。
+
+```
+$ spm build --include standalone
+```
+
+```html
+<!-- use it without loader -->
+<script src="build.js"></script>
+```
+
+### seajs.use
+
+或者按照传统的 seajs 的方式，首先要把构建后的文件按目录部署到你的 assets 服务器上。
 
 比如 arale 的 position 模块：
 
 ```
-http://static.alipayobjects.com/position/1.1.0/position.js
+http://static.alipayobjects.com/position/1.1.0/index.js
 ```
 
 然后就可以像《5 分钟上手指南》里那样用 seajs.use 来启动模块了。

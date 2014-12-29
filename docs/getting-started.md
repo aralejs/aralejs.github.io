@@ -96,7 +96,7 @@ $ spm build
 
 Arale 是一个基础类库，有自己开发的模块，也有精心挑选由外部引入的模块，那如何找到这些模块呢？
 
-在 [Arale 首页](http://aralejs.org/) 能找到这些模块，选好模块后可以[查看模块是否可用](http://aralejs.org/docs/online-status.html)。或者使用 http://spmjs.io 的搜索框搜索你需要的模块。
+在 [Arale 首页](http://aralejs.org/) 能找到这些模块，或者使用 [spmjs.io](http://spmjs.io) 的搜索框搜索你需要的模块。
 
 Arale 使用了最优秀的业界模块，比如负责操作 Dom 和 Ajax 的 jQuery，负责时间日期的 Moment，本地存储 Store 等。如果你发现了优秀的业界模块不在其中，请告诉我们。
 

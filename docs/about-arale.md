@@ -9,6 +9,8 @@ Arale 立足于支付宝的前端需求和国内前端社区，基于 [Sea.js](h
 和 [spm](https://spmjs.io) 生态圈，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系，
 是一个开放、简单、易用的前端解决方案。
 
+> Arale 的模块和文档已经迁移到 [spm3](https://github.com/spmjs/spm/issues/819) 。
+
 <img src="/static/arale.jpg" width="300">
 
 ## 简介
