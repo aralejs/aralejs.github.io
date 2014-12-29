@@ -11,7 +11,7 @@
 2. [基础设施快速 API 参考](https://github.com/aralejs/aralejs.org/issues/314)
 3. [测试解决方案](https://github.com/totorojs/totoro/wiki)
 4. [开发规范](http://aralejs.org/docs/rules.html)
-5. [alipay 模块维护文档(内)](http://site.alipay.im/questions/spm/alipay-group.html)
+5. [Develop a pacakge with spm](http://spmjs.io/documentation/develop-a-package)
 
 ---
 
@@ -127,13 +127,13 @@ var puzzle = function(){};
 module.exports = puzzle;
 ```
 
-启服务进行调试
+启动本地服务进行调试。
 
 ```bash
 $ spm doc watch
 ```
 
-h通过浏览器访问 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+通过浏览器访问 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ## 本地调试
 
@@ -147,9 +147,16 @@ seajs.use('../index', function(Puzzle) {
 });
 ````
 
+也可以用 require 来调用模块。
+
+````javascript
+var Puzzle = require('index');
+// use Puzzle
+````
+
 通过四个 ```` 所包裹的代码不仅会显示成代码片段，也会插入 HTML 中进行实际运行，这样你调试好代码后，演示页面的文档也同时生成好了。
 
-spm doc 支持 livereload，只要通过 `spm doc watch` 启动服务，修改文件后都会自动构建和刷新浏览器。
+spm doc 支持 livereload，只要通过 `spm doc` 启动服务，修改文件后都会自动构建和刷新浏览器。
 
 > 更多 Markdown 写文档的技巧请参考 https://github.com/spmjs/nico-cmd#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91 。
 
@@ -171,7 +178,9 @@ Arale 已经配置 travis，只要开通就可以 **持续集成** 。[登录 tr
 修改 `package.json` 配置打包方式
 
 ```js
-"main": "index.js"
+"spm": {
+  "main": "index.js"
+}
 ```
 
 这样 `spm build` 将打包 `index.js` 文件，并将这个文件中的本地依赖文件也打包进来。
@@ -192,15 +201,11 @@ $ spm publish
 
 ## 部署模块文档
 
-Arale 模块的文档地址为 aralejs.org/{{模块名}}，
-开发完毕后请 push 到 https://github.com/aralejs 下，发布文档请使用 `spm doc publish` 命令。
-
-开发完模块后，只需要运行如下代码就可以把文档部署上线。
+模块的文档地址为 http://spmjs.io/docs？{{模块名}}，开发完模块后，只需要运行如下代码就可以把文档部署上线。
 
 ```bash
 $ spm doc publish
 ```
-
 
 ## 使用这个模块
 
@@ -209,7 +214,7 @@ $ spm doc publish
 比如 arale 的 position 模块：
 
 ```
-http://static.alipayobjects.com/arale/position/1.0.1/position.js
+http://static.alipayobjects.com/position/1.1.0/position.js
 ```
 
 然后就可以像《5 分钟上手指南》里那样用 seajs.use 来启动模块了。

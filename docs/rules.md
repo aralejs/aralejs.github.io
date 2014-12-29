@@ -40,8 +40,8 @@ overlay
   -- tests                    单元测试
        -- overlay-spec.js
        -- dialog-spec.js
-  -- sea-modules              spm install 生成，存放依赖的其他组件
-  -- _site                    nico 生成，存放站点
+  -- spm_modules              spm install 生成，存放依赖的其他组件
+  -- _site                    spm doc 生成，存放站点
   -- HISTORY.md               版本更新说明
   -- README.md                组件总体说明
   -- package.json             版本等元信息

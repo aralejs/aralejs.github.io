@@ -18,17 +18,26 @@ seajs.use([
 
   seajs.use(urls, function(arale) {
     $('.modules-utility').empty();
-    modules = modules.concat(arale);
-
     insertModules(arale);
+    var data = [];
+    for (var i=0; i<arale.data.results.length; i++) {
+      arale.data.results[i].label = arale.data.results[i].name;
+      data.push(arale.data.results[i]);
+    }
+    modules = modules.concat(data);
     color('.module');
   });
 
   seajs.use('http://spm.alipay-inc.com/repository/search?q=alipay&define', function(alipay) {
     if (alipay) {
       $('.side-area li:last-child').show();
-      modules = modules.concat(alipay);
       insertModules(alipay);
+      var data = [];
+      for (var i=0; i<alipay.data.results.length; i++) {
+        alipay.data.results[i].label = alipay.data.results[i].name;
+        data.push(alipay.data.results[i]);
+      }
+      modules = modules.concat(data);
       color('.module');
     }
   });
@@ -110,49 +119,28 @@ seajs.use([
   var ac = new Autocomplete({
     trigger: '#search',
     selectFirst: true,
-    template:
-        '<div class="{{classPrefix}}">\
-            <ul class="{{classPrefix}}-ctn" data-role="items">\
-                {{#each items}}\
-                    <li data-role="item" class="{{../classPrefix}}-item" data-value="{{matchKey}}">\
-                        <div>{{highlightItem ../classPrefix matchKey}}</div>\
-                        <div class="ui-autocomplete-desc">{{desc}}</div>\
-                    </li>\
-                {{/each}}\
-            </ul>\
-         </div>',
+    html: '<div>{{matchKey}}</div><div class="ui-select-desc">{{desc}}</div>',
     dataSource: function() {
-      this.trigger('data', modules);
+      return modules;
     },
     filter: function(data, query) {
+      if (!query) {
+        return [];
+      }
       var result = [];
       query = query.toLowerCase().replace(/^\s+|\s+$/g, '');
 
       $.each(data, function(index, value) {
         value.description = (value.description || '').toLowerCase();
-        value.family = value.family.toLowerCase();
         value.name = value.name.toLowerCase();
-        var FamilyAndName = value.family + '/' + value.name;
         var keywords = value.keywords ? value.keywords.join(' ') : '';
 
         var item = {
-          matchKey: FamilyAndName,
+          matchKey: value.name,
           desc: value.description,
-          url: "https://spmjs.org/" + value.family + '/' + value.name,
+          url: 'http://spmjs.io/package/' + value.name,
           score: 0  //匹配度
         };
-
-        // make sure that "arale.class" can be matched
-        if (FamilyAndName.indexOf(query) > -1) {
-          item.score += 0.01;
-        }
-
-        if (value.family.indexOf(query) > -1) {
-          item.score += 1;
-        }
-        if (value.family.indexOf(query) === 0) {
-          item.score += 10;
-        }
 
         if (value.name.indexOf(query) > -1) {
           item.score += 20;
@@ -190,16 +178,9 @@ seajs.use([
     }
   }).render();
 
-  ac.on('itemSelect', function(item) {
-    ac.get('trigger').val('正转到 ' + item.matchKey).attr('disabled', 'disabled');
-    var value = item.matchKey.split('/');
-    if (value[0] === 'arale') {
-      location.href = '/' + value[1];
-    } else if (value[0] === 'alipay') {
-      location.href = 'http://arale.alipay.im/alipay/' + value[1];
-    } else {
-      location.href = item.url;
-    }
+  ac.on('itemSelected', function(item) {
+    $(ac.get('trigger')).val('正转到 ' + item.matchKey).attr('disabled', 'disabled');
+    location.href = item.url;
   });
 
   // 首页将搜索功能定位到搜索框中

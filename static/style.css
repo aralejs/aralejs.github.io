@@ -199,7 +199,7 @@ a.module-name {
 }
 
 /* autocomplete */
-.ui-autocomplete {
+.ui-select {
     border: 1px solid #ddd;
     border-top: none;
     background: #fff;
@@ -210,12 +210,12 @@ a.module-name {
     font-family: tahoma;
 }
 
-.ui-autocomplete-ctn {
+.ui-select ul {
     margin: 0;
     padding: 0;
 }
 
-.ui-autocomplete-item {
+.ui-select-item {
     padding: 6px 12px;
     list-style: none;
     white-space: nowrap;
@@ -223,23 +223,23 @@ a.module-name {
     text-overflow: ellipsis;
 }
 
-.ui-autocomplete-item-hover {
+.ui-select-item-hover {
     background: #4B9A60;
     color: #fff;
     text-shadow: none;
     border-top: 4px solid #FFD11E;
 }
 
-.ui-autocomplete-item-hl {
+.ui-select-item-hl {
     background: #ff0;
 }
 
-.ui-autocomplete-desc {
+.ui-select-desc {
     font-size: 12px;
     color: #aaa;
 }
 
-.ui-autocomplete-item-hover .ui-autocomplete-desc {
+.ui-select-item-hover .ui-select-desc {
     color: #AFDEB2;
 }
 
@@ -731,7 +731,7 @@ body .fn-hide {
         width: auto;
     }
 
-    .ui-autocomplete {
+    .ui-select {
         width: 240px;
     }
 
