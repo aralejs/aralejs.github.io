@@ -7,9 +7,7 @@
 
 > 本文章会帮助你安装 Arale 配套的工具，包括 spm 和 git。
 
-## 环境准备
-
-### 安装 node
+## 安装 node
 
 作为一个前端，你需要 node 环境。
 
@@ -23,7 +21,7 @@ $ nvm alias default 0.10.24
 
 另外，也可以在[官方下载](http://nodejs.org/download/)或[通过包管理工具安装](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)。
 
-### 去除 sudo
+## 去除 sudo
 
 **如果你是用 nvm 来安装的 node，可跳过此节。**
 
@@ -35,7 +33,7 @@ $ sudo chown -R $USER /usr/local
 
 或者参照 npm 官方的文档来设置：https://docs.npmjs.com/getting-started/fixing-npm-permissions
 
-### 安装 git
+## 安装 git
 
 版本管理工具也是必须的，可以先[了解 git 的相关内容](http://rogerdudler.github.com/git-guide/index.zh.html) 。
 
@@ -63,7 +61,7 @@ NODE_PATH = C:\Users\{{username}}\AppData\Roaming\npm\node_modules
 ```
 
 
-### 安装 spm
+## 安装 spm
 
 Arale 已经全面迁移到 [spm3](https://github.com/spmjs/spm/issues/819) 的体系上。
 
