@@ -130,7 +130,7 @@ module.exports = puzzle;
 启动本地服务进行调试。
 
 ```bash
-$ spm doc watch
+$ spm doc
 ```
 
 通过浏览器访问 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
@@ -170,6 +170,12 @@ Arale 提供 [mocha](https://github.com/totorojs/totoro/wiki/mocha.zh) 作为测
 修改 `tests/puzzle-spec.js` 文件，开始写测试用例，可以直接看[示例](https://github.com/sorrycc/puzzle/blob/master/tests/puzzle-spec.js)。
 
 访问 [http://127.0.0.1:8000/tests/runner.html](http://127.0.0.1:8000/tests/runner.html) 查看是否正确。
+
+运行下面命令可以在命令行里跑测试用例：
+
+```bash
+$ spm test
+```
 
 Arale 已经配置 travis，只要开通就可以 **持续集成** 。[登录 travis](https://travis-ci.org/profile)，开启 travis。
 
