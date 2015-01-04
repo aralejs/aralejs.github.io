@@ -207,7 +207,7 @@ $ spm publish
 
 ## 部署模块文档
 
-模块的文档地址为 http://spmjs.io/docs？{{模块名}}，开发完模块后，只需要运行如下代码就可以把文档部署上线。
+模块的文档地址为 http://spmjs.io/docs/{{模块名}} ，开发完模块后，只需要运行如下代码就可以把文档部署上线。
 
 ```bash
 $ spm doc publish
