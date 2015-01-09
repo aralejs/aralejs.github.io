@@ -1,14 +1,14 @@
-body {
+body.spmjs {
     color: #666;
     font-family: "Marmelad", "Lucida Grande", Georgia, sans-serif;
 }
 
-a {
+.spmjs a {
     color: #3F9EB3;
     text-decoration: none;
 }
 
-a:hover {
+.spmjs a:hover {
     text-decoration: underline;
 }
 
