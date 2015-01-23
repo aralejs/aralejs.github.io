@@ -65,6 +65,8 @@ seajs.use([
       var pkg = data[i];
       var family = pkg.name.split('-')[0];
 
+      pkg.keywords = pkg.keywords || [];
+
       // 三十天内更新的标注为新模块
       if (moment().diff(moment(pkg.created_at), 'days') <= 30) {
         item.addClass('module-new');
@@ -91,16 +93,16 @@ seajs.use([
       if (family === 'gallery' || family === 'jquery') {
         item.find(".module-name").attr('href', "https://spmjs.org/" + family + '/' + pkg.name);
         $('.modules-' + family).append(item).prev().show();
+      } else if (family === 'alipay') {
+        var url = 'http://spm.alipay-inc.com/docs/' + pkg.name + '/latest/';
+        item.find(".module-name").attr('href', url);
+        $('.modules-alipay').append(item).prev().show();
       } else if (family === 'arale' || pkg.keywords.indexOf('arale')) {
         if (pkg.keywords) {
           $('.modules-' + pkg.keywords[0]).append(item).prev().show();
         } else {
           $('.modules-widget').append(item).prev().show();
         }
-      } else if (family === 'alipay') {
-        var url = 'http://spm.alipay-inc.com/docs/' + pkg.name + '/latest/';
-        item.find(".module-name").attr('href', url);
-        $('.modules-alipay').append(item).prev().show();
       }
     }
   }
