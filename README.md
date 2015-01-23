@@ -33,3 +33,4 @@
 - homepage: <http://aralejs.org>
 - github: <https://github.com/aralejs>
 - Google Groups：<https://groups.google.com/forum/#!forum/aralejs>
+- 关于 Arale 的过去、现在和未来：<https://github.com/aralejs/aralejs.org/issues/358>
