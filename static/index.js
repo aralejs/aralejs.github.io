@@ -77,7 +77,11 @@ seajs.use([
         item.attr('title', "即将废弃的模块");
       }
 
-      item.find(".module-name").html(pkg.name.split('-').slice(1).join('-'))
+      var moduleName = pkg.name.indexOf('-') > 0
+        ? pkg.name.split('-').slice(1).join('-')
+        : pkg.name;
+
+      item.find(".module-name").html(moduleName)
                                .attr('href', '/' + pkg.name.replace(/^arale-/, '') + '/')
                                .attr('title', pkg.name);
       item.find(".module-version").html(pkg.version);
@@ -87,7 +91,7 @@ seajs.use([
       if (family === 'gallery' || family === 'jquery') {
         item.find(".module-name").attr('href', "https://spmjs.org/" + family + '/' + pkg.name);
         $('.modules-' + family).append(item).prev().show();
-      } else if (family === 'arale') {
+      } else if (family === 'arale' || pkg.keywords.indexOf('arale')) {
         if (pkg.keywords) {
           $('.modules-' + pkg.keywords[0]).append(item).prev().show();
         } else {
