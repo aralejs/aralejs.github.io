@@ -143,22 +143,6 @@ seajs.use(['arale-sticky', '/static/side'], function(Sticky, side) {
           <div class="modules modules-alipay">
           </div>
         </div>
-        <div class="comment-area">
-          <!-- Duoshuo Comment BEGIN -->
-          <div class="ds-thread"></div>
-          <script type="text/javascript">
-          var duoshuoQuery = {short_name:"aralejs"};
-          (function() {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0] 
-            || document.getElementsByTagName('body')[0]).appendChild(ds);
-            })();
-          </script>
-          <!-- Duoshuo Comment END -->
-        </div>
         {%- else %}
         <div class="content-area">
           <h1>{{post.title}}</h1>
@@ -173,8 +157,7 @@ seajs.use(['arale-sticky', '/static/side'], function(Sticky, side) {
         <a href="http://aralejs.org">Arale</a> •
         <a href="http://aliceui.org">Alice</a> •
         <a href="http://seajs.org">Sea.js</a> •
-        <a href="http://spmjs.io">spmjs.io</a> •
-        <a href="{{system.homepage}}">{{system.name}}</a>
+        <a href="http://spmjs.io">spmjs.io</a>
       </p>
       </footer>
     </div>

@@ -101,10 +101,9 @@ $ spm install jquery arale-popup --save
         install: jquery@1.7.2
         install: arale-overlay@1.2.0
         ...
-
 ```
 
-spm 会自动在 `package.json` 中添加依赖
+这样 spm 会自动在 `package.json` 中添加依赖，你也可以手动添加并 install 。
 
 ```js
 "spm": {
