@@ -184,7 +184,7 @@ Arale 已经配置 travis，只要开通就可以 **持续集成** 。[登录 tr
 
 ## 部署文件
 
-修改 `package.json` 配置打包方式
+修改 `package.json` 配置打包方式，主入口用 main 字段标识，其余构建入口可以使用 `output: ['other.js']`。
 
 ```js
 "spm": {
@@ -225,7 +225,7 @@ $ spm doc publish
 使用 spm3 ，我们强烈推荐使用 standalone 的方式进行构建，然后用 script 直接引用。
 
 ```
-$ spm build --include standalone
+$ spm build --standalone
 ```
 
 ```html
@@ -236,6 +236,10 @@ $ spm build --include standalone
 ### seajs.use
 
 或者按照传统的 seajs 的方式，首先要把构建后的文件按目录部署到你的 assets 服务器上。
+
+```
+$ spm build --sea
+```
 
 比如 arale 的 position 模块：
 
