@@ -84,7 +84,7 @@ seajs.use([
         : pkg.name;
 
       item.find(".module-name").html(moduleName)
-                               .attr('href', '/' + pkg.name.replace(/^arale-/, '') + '/')
+                               .attr('href', 'http://spmjs.io/docs/' + pkg.name)
                                .attr('title', pkg.name);
       item.find(".module-version").html(pkg.version);
       item.find(".module-description").html(pkg.description)
