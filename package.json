@@ -21,5 +21,11 @@
       "word-color": "1.1.0",
       "jquery": "1.7.2"
     }
+  },
+  "scripts": {
+    "publish": "spm install && spm doc publish"
+  },
+  "dependencies": {
+    "spm": "3"
   }
 }
