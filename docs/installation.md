@@ -63,7 +63,7 @@ NODE_PATH = C:\Users\{{username}}\AppData\Roaming\npm\node_modules
 设置 prefix，使 Windows 下可全局安装：
 
 ```
-npm config set prefix C:\Users\{{username}}\AppData\Roaming\npm\node_modules
+npm config set prefix C:\Users\{{username}}\AppData\Roaming\npm
 ```
 
 ## 安装 spm
