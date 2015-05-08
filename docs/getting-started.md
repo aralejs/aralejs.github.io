@@ -18,11 +18,11 @@
   seajs.config({
     base: 'http://static.alipayobjects.com',
     alias: {
-      '$': 'jquery/1.7.2/jquery',
+      'jquery': 'jquery/1.7.2/jquery',
       'position': 'position/1.1.0/index'
     }
   });
-  seajs.use(['$', 'position'], function($, Position){
+  seajs.use(['jquery', 'position'], function($, Position){
     var stop = false;
     var target = $('<div class="target"></div>')
       .hover(function(){stop = true;},function(){stop = false;})
