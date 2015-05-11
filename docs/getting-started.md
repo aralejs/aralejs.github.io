@@ -59,14 +59,14 @@
 比如模块 `position` 的完整路径就是：
 
 ```
-http://static.alipayobjects.com/position/1.1.0/position.js
+http://static.alipayobjects.com/position/1.1.0/index.js
 ```
 
 Arale 的 ID 由四部分组成：`{{module}}/{{version}}/{{file}}`
 
  -  module 为模块的名字（即 http://spmjs.io 上的模块名称）
  -  version 为版本
- -  file 为具体的文件，可以有多个，一般与模块名相同
+ -  file 为具体的文件，可以有多个，一般为模块 package.json 的 `spm.main` 属性。
 
 这个 ID 和 seajs 的所在路径拼合后就是模块文件的具体地址了。当你拿到上面的 ID 后，就可以直接用 `seajs.use` 来使用这个模块了。
 
