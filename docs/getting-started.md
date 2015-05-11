@@ -80,17 +80,14 @@ seajs.use(['position/1.1.0/index'], function(Position) {
 
 这样就可以直接 `seajs.use(['position'])` 了，请求完成后会调用回调函数，这时就可以使用这两个模块了。
 
-## 本地构建
+## Standalone
 
-非常欢迎直接通过支付宝的 cdn 来调用 Arale 模块，但如果你需要在自己的网站上部署 Arale，你可以把源码下载到本地，用 spm 进行构建。
+上述是使用支付宝 cdn 来调用 Arale 模块的方式，在 spm3 之后，我们推荐直接使用 standalone 的方式来构建和使用 Arale 模块。
 
-```bash
-$ git clone git@github.com:aralejs/base.git
-$ cd base
-$ spm build
-```
+您可以参考文档：https://github.com/spmjs/docs/blob/master/project/get-started.md
 
-这样模块 arale-base 就会构建到 `dist` 目录中了。像支付宝的 cdn 路径这样部署你的静态文件，就可以自由使用了。
+使用 standalone 的方式会让业务模块的构建部署更加简单高效，独立解耦。而且不仅可以调用 Arale 模块，也可以直接使用 [spmjs.io](http://spmjs.io) 上的大量业界模块。
+
 
 ## 查找模块
 
