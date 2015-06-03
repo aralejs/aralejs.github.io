@@ -11,7 +11,7 @@
 2. [基础设施快速 API 参考](https://github.com/aralejs/aralejs.org/issues/314)
 3. [测试解决方案](https://github.com/totorojs/totoro/wiki)
 4. [开发规范](http://aralejs.org/docs/rules.html)
-5. [Develop a pacakge with spm](http://spmjs.io/documentation/develop-a-package)
+5. [Develop a pacakge with spm](https://github.com/spmjs/docs/blob/master/zh-cn/package/get-started.md)
 
 ---
 
@@ -122,7 +122,7 @@ $ spm install jquery arale-popup --save
 var popup = require('popup');
 var $ = require('jquery');
 
-var puzzle = function(){};
+var puzzle = function() {};
 module.exports = puzzle;
 ```
 
@@ -138,31 +138,16 @@ $ spm doc
 
 examples 也使用 md 编写，这样写起来非常方便，除了基本的 markdown 语法还支持[额外的特性](https://github.com/aralejs/nico-arale#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91)。
 
-在 `examples/index.md` 添加实例化代码，puzzle 已添加别名，可以直接 use。
+在 `examples/index.md` 添加实例化代码，用 require 来调用模块。
 
 ````javascript
-seajs.use('../index', function(Puzzle) {
-  // use Puzzle
-});
-````
-
-也可以用 require 来调用模块。
-
-````javascript
-var Puzzle = require('index');
+var Puzzle = require('puzzle');
 // use Puzzle
 ````
 
 通过四个 ```` 所包裹的代码不仅会显示成代码片段，也会插入 HTML 中进行实际运行，这样你调试好代码后，演示页面的文档也同时生成好了。
 
 spm doc 支持 livereload，只要通过 `spm doc` 启动服务，修改文件后都会自动构建和刷新浏览器（更多 Markdown 写文档的技巧请参考 https://github.com/spmjs/nico-cmd#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91 ）。
-
-> ### 调试 CommonJS 源码
-> 和 spm2 不同的是，新的 spmjs.io 上安装下来的包均为 CommonJS 源码，所以这些源码理论上无法直接使用。
-> 我们提供了一些方式来调试源码：
-> 1. `spm doc watch` 的方式，原理上是本地起一个服务，动态把源码包裹为 CMD 格式，一般用于模块开发。
-> 2. [spm-server](https://github.com/spmjs/spm-server)，和第一种方式原理相同，用于项目开发。
-> 3. [seajs-wrap](https://github.com/seajs/seajs-wrap) 插件，浏览器端的包裹，有同源条件限制。
 
 ## 编写测试用例
 
@@ -222,10 +207,10 @@ $ spm doc publish
 
 ### script 引用
 
-使用 spm3 ，我们强烈推荐使用 standalone 的方式进行构建，然后用 script 直接引用。
+使用 spm3 ，我们强烈推荐使用 standalone 的方式进行构建，然后用 script 直接引用构建后的文件。
 
 ```
-$ spm build --standalone
+$ spm build
 ```
 
 ```html
@@ -238,7 +223,8 @@ $ spm build --standalone
 或者按照传统的 seajs 的方式，首先要把构建后的文件按目录部署到你的 assets 服务器上。
 
 ```
-$ spm build --sea
+$ npm install spm-sea
+$ spm-sea
 ```
 
 比如 arale 的 position 模块：
