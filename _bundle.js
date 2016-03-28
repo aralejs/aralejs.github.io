@@ -1,0 +1,1 @@
+window['puzzle'] = require('puzzle');

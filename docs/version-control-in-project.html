@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arale - 代码组织实践</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="nico-spm 0.5.5" />
+<link type="image/x-icon" href="../static/favicon.ico" rel="icon">
+<link rel="stylesheet" href="../static/css/normalize.css" />
+<link rel="stylesheet" href="../static/css/site.css" />
+<link rel="stylesheet" href="../static/css/solarized.css" />
+<link rel="stylesheet" href="../static/style.css" />
+
+<style>
+/* alipay iconfont */
+@font-face {
+  font-family: "rei";
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423"); /* IE9 */
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("https://i.alipayobjects.com/common/fonts/rei.woff?20130423") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.ttf?20130423")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.svg?20130423#rei") format("svg"); /* iOS 4.1- */
+}
+.iconfont {
+  font-family:"rei" !important;
+  font-style: normal;
+  font-weight: normal;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+</style>
+
+<script>
+if (!location.port) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-36247332-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+<script src="../static/js/sea.js?nowrap"></script>
+
+<script>
+  seajs.config({
+    base: "../",
+    alias: {"arale-popup":"arale-popup/1.2.0/popup.js","arale-autocomplete":"arale-autocomplete/1.4.1/autocomplete.js","arale-sticky":"arale-sticky/1.4.0/index.js","keymaster":"keymaster/1.6.2/keymaster.js","moment":"moment/2.8.1/moment.js","word-color":"word-color/1.1.0/index.js","jquery":"jquery/1.7.2/jquery.js"}
+  });
+</script>
+
+<script src="../static/index.js?nowrap"></script>
+<!--[if lt IE 9]>
+<script src="../static/js/html5shiv.js?nowrap"></script>
+<script src="../static/es5-safe.js?nowrap"></script>
+<![endif]-->
+
+<script>
+seajs.use(['arale-sticky', '/static/side'], function(Sticky, side) {
+  Sticky('.side-area', 20);
+  side.init();
+});
+</script>
+</head>
+<body class="spmjs">
+    <div id="body-wrapper">
+      <div class="head-area">
+        <div class="title-area">
+          <h1 class="inline">
+            <a href="../">Arale</a>
+          </h1>
+          <input type="text" placeholder="随心构建互联网应用" id="search" class="inline" autocomplete="off">
+          <img width="60" src="/static/arale-small.jpg">
+        </div>
+        <iframe src="http://ghbtns.com/github-btn.html?user=aralejs&repo=aralejs.org&type=watch&count=true"
+        allowtransparency="true" frameborder="0" scrolling="0" width="120" height="20"></iframe>
+      </div>
+      <div class="nav-area">
+        <ol class="main-nav">
+          <li><a href="/"><i class="iconfont" title="首页">&#xF034;</i> 首页</a></li>
+          <li><a href="about-arale.html">关于 Arale</a></li>
+          <li><a href="getting-started.html">5 分钟快速上手</a></li>
+          <li><a href="installation.html">工具配置</a></li>
+          <li><a href="develop-components.html">开发一个模块</a></li>
+          <li><a href="version-control-in-project.html">代码组织实践</a></li>
+          <li><a href="rules.html">开发规范</a></li>
+        </ol>
+      </div>
+      <div class="main-area">
+        <div class="side-area"><ul><li><a href="#准备工作">准备工作</a></li><li><a href="#最简单直接">最简单直接</a><ul><li><a href="#example">Example:</a></li><li><a href="#分析">分析</a></li><li><a href="#小结">小结</a></li></ul></li><li><a href="#配置-alias">配置 alias</a><ul><li><a href="#example">Example</a></li><li><a href="#分析">分析</a></li><li><a href="#小结">小结</a></li></ul></li><li><a href="#封装-sdk">封装 SDK</a><ul><li><a href="#example">Example</a></li><li><a href="#分析">分析</a></li><li><a href="#小结">小结</a></li></ul></li><li><a href="#方案总结">方案总结</a></li></ul></div>
+        <script type="text/template" id="list-template">
+          <li><a href="#"><i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
+        </script>
+        <div class="content-area">
+          <h1>代码组织实践</h1>
+          <div class="content entry-content"><!--filepath:docs/version-control-in-project.md --> <p>SeaJS 提供了新的代码书写和组织方式，带来模块化开发的同时，向我们提出了新的挑战。</p>
+<p>首先来看一下使用 SeaJS 开发项目时我们遇到的问题：</p>
+<p>SeaJS 体系下衍生出数量巨大的各种 JS 模块，每个模块包括不同的版本，应该怎样选择？</p>
+<p>一个具体的使用场景中，假设页面中使用</p>
+<div class="highlight"><pre><code class="javascript">seajs.use(<span class="string">'arale/xxx/0.9.0/xxx'</span>)</code></pre></div><p>调用模块，这时我决定使用新开发的 1.0.0 版本。上面的代码一共出现了 3 次，修改的时候只把两个地方修改成了</p>
+<div class="highlight"><pre><code class="javascript">seajs.use(<span class="string">'arale/xxx/1.0.0/xxx'</span>)</code></pre></div><p>结果造成同一页面中加载了同一组件的两个版本。这个时候我应该如何解决？</p>
+<blockquote>
+<p>有时候会想，是否存在一种合理的代码组织方式，使我们在项目中可以合理调用版本化的模块？</p>
+</blockquote>
+<p>答案是肯定的。总结起来，上面所有都指向了同一个问题——版本管理策略。只要我们的代码组织能够将这件事做好就可以解决上面的问题，也只有这样才能充分享受到 SeaJS 社区为我们带来的所有乐趣。</p>
+<blockquote>
+<p>SeaJS 选择了模块版本化策略来保障稳健的产品演进，这就要求开发者对开发时和运行时选择合理的版本管理策略。那么，我们应该怎样根据产品和团队的具体情况做出合理选择？</p>
+</blockquote>
+<p>此文回答上面的问题，帮助大家了解代码组织的不同方式，并根据项目自身的需要做出选择。</p>
+<h2 id="准备工作">准备工作<a href="#准备工作" class="anchor">¶</a></h2><p>在这里假设你已经了解了包括但不限于 SeaJS 模块标识、版本策略等内容。如果不了解，可以先阅读：</p>
+<ul>
+<li><a href="https://github.com/seajs/seajs/issues/258">SeaJS 模块标识</a></li>
+</ul>
+<h2 id="最简单直接">最简单直接<a href="#最简单直接" class="anchor">¶</a></h2><p>也许这正是你现在使用的方式：</p>
+<blockquote>
+<p>直接 use 需要的组件，除 jQuery 外都需要完整的 id。</p>
+</blockquote>
+<h3 id="example">Example:<a href="#example" class="anchor">¶</a></h3><div class="highlight"><pre><code class="javascript">seajs.use([<span class="string">'$'</span>, <span class="string">'alipay/xbox/0.9.8/xbox'</span>, <span class="string">'arale/validator/0.8.9/validator'</span>], <span class="function"><span class="keyword">function</span><span class="params">($, Xbox, Validator)</span> {</span>
+    <span class="comment">// biz logic</span>
+    $(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        <span class="keyword">var</span> x = <span class="keyword">new</span> Xbox({...});
+        <span class="keyword">var</span> v = <span class="keyword">new</span> Validator({...})
+    });
+});</code></pre></div><h3 id="分析">分析<a href="#分析" class="anchor">¶</a></h3><p>这样做的好处显而易见：简单。</p>
+<p>不过在某些场景存在一些问题。来看一个例子：</p>
+<p>对于稍微大型点的网站，一个页面的导航（例如 foot 和 head）通常是单独维护的。而页面的其他部分由另外的人维护，也就是说，同一个页面可能隶属于不同的产品或由不同的人（团队）维护，这时很容易出现本文开始处提到的问题：升级版本号的时候一旦有遗漏会造成同一页面中存在加载同一模块的不同版本，从而带来不必要的页面性能开销。</p>
+<h3 id="小结">小结<a href="#小结" class="anchor">¶</a></h3><p>方案</p>
+<blockquote>
+<p>直接 use 需要的组件，除 jQuery 外都需要完整的 id。</p>
+</blockquote>
+<p>优点</p>
+<blockquote>
+<p>使用简单，无需额外配置，学习成本低</p>
+</blockquote>
+<p>缺点</p>
+<blockquote>
+<p>如果一个页面有多人维护，可能 use 不同版本，导致冗余加载。</p>
+</blockquote>
+<p>适用范围</p>
+<blockquote>
+<p>小型应用（页面），单人维护的场景。</p>
+</blockquote>
+<h2 id="配置-alias">配置 alias<a href="#配置-alias" class="anchor">¶</a></h2><p>也许你已经注意到 SeaJS 提供了一个功能，通过 <code>seajs.config</code> 配置 alias。(<a href="https://github.com/seajs/seajs/issues/262">了解SeaJS 配置</a>)</p>
+<p>alias，顾名思义，就是别名，可以用来做短命名。这里我们利用这个特性来约束版本管理，做如下约定：</p>
+<blockquote>
+<p>所有用到的模块必须配置成 alias，换言之，只可以 use alias 别名，不直接 use 模块 id。</p>
+</blockquote>
+<h3 id="example">Example<a href="#example" class="anchor">¶</a></h3><div class="highlight"><pre><code class="javascript"><span class="comment">// 页头配置</span>
+seajs.config({
+    alias: {
+        <span class="string">'$'</span>: <span class="string">'gallery/jquery/1.8.2/jquery'</span>,
+        <span class="string">'xbox'</span>: <span class="string">'alipay/xbox/0.9.8/xbox'</span>,
+        <span class="string">'validator'</span>: <span class="string">'arale/validator/0.8.9/validator'</span>
+    }
+});
+
+<span class="comment">// 页面中调用</span>
+seajs.use([<span class="string">'$'</span>, <span class="string">'xbox'</span>, <span class="string">'validator'</span>], <span class="function"><span class="keyword">function</span><span class="params">($, Xbox, Validator)</span> {</span>
+    $(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        <span class="keyword">var</span> x = <span class="keyword">new</span> Xbox({...});
+        <span class="keyword">var</span> v = <span class="keyword">new</span> Validator({...});
+    });
+});</code></pre></div><h3 id="分析">分析<a href="#分析" class="anchor">¶</a></h3><p>这种方式比直接 use 模块 id 的第一个方案更进了一步，将页面中的模块版本放在一起统一进行配置。这样即便是多人维护的页面，有一个地方进行统一管理，上面遇到的加载多版本的问题就不会存在。</p>
+<p>这里的 <code>seajs.config</code> 不仅可以作为页面级别的配置，也可以作为产品级别的配置。一个产品中有多个页面，可以公用这个配置。</p>
+<h3 id="小结">小结<a href="#小结" class="anchor">¶</a></h3><p>方案</p>
+<blockquote>
+<p>配置 alias 进行统一的版本管理。</p>
+</blockquote>
+<p>优点</p>
+<blockquote>
+<p>配置 alias 后，不需要写完整模块 id，用起来方便。
+版本统一维护，升级组件只需要修改一处。</p>
+</blockquote>
+<p>缺点</p>
+<blockquote>
+<p>比直接 use 模块 id 稍复杂
+所有版本集中控制，需要对整个页面的模块调用都有了解并负责模块版本的变更</p>
+</blockquote>
+<p>适用范围</p>
+<blockquote>
+<p>多人协作，多页面大中型产品维护</p>
+</blockquote>
+<h2 id="封装-sdk">封装 SDK<a href="#封装-sdk" class="anchor">¶</a></h2><p>首先思考一个问题，JS 在 WEB 应用中应该扮演什么角色，或者说应该承担哪些？</p>
+<p>现代浏览器中 JS 可以做很多事情，所以出现了各式各样的使用方法。有人拿它来做交互，有人拿它来做展示，有人拿它来做业务逻辑。我们认为，JS 应该尽量少碰触业务逻辑，少做展示性的功能，应该把重心放在结构、样式和行为中行为的一部分。我们相信，JS 是用来做交互的。否则是对 JS 的滥用，必带来维护性问题。在大型网站的维护中尤其如此。</p>
+<p>基于以上考虑，有了更进一步的 SeaJS 使用方式。</p>
+<blockquote>
+<p>封装以产品为粒度的交互 SDK。</p>
+</blockquote>
+<p>简单的说，就是提取页面中的交互形式，相对应封装出需要的 JS API，供页面中调用。</p>
+<h3 id="example">Example<a href="#example" class="anchor">¶</a></h3><p>创建 SDK 模块，可以以产品命名模块。以支付宝的消费纪录产品为例，命名为 record。</p>
+<ol>
+<li><p>record/package.json 中配置所有用到的模块：</p>
+<div class="highlight"><pre><code class="javascript"><span class="string">"dependencies"</span>: {
+    <span class="string">"$"</span>: <span class="string">"$"</span>,
+    <span class="string">"xbox"</span>: <span class="string">"alipay/xbox/0.9.8/xbox"</span>,
+    <span class="string">"validator"</span>: <span class="string">"arale/validator/0.8.9/validator"</span>
+}</code></pre></div></li>
+<li><p>创建模块入口文件record/src/main.js：</p>
+<div class="highlight"><pre><code class="javascript">define(<span class="function"><span class="keyword">function</span><span class="params">(require, exports, module)</span> {</span>
+    module.exports = {
+        $: require(<span class="string">'$'</span>),
+
+        arale: {
+            validator: require(<span class="string">'validator'</span>)
+        },
+
+        alipay: {
+            xbox: require(<span class="string">'xbox'</span>)
+        },
+
+        biz: {
+            <span class="comment">// 这是产品中独立研发的模块，使用相对路径</span>
+            someOtheAPI: require(<span class="string">'./biz/some-other-api.js'</span>)
+        }
+    }
+});</code></pre></div><p>这里 API 的命名空间可根据需要进行组织。</p>
+</li>
+<li><p>record/package.json 中配置 output，打包 main.js 模块：</p>
+<div class="highlight"><pre><code class="javascript"><span class="string">"output"</span>: [
+    <span class="string">"main.js"</span>
+]</code></pre></div></li>
+<li><p>spm build 后生成 /personal/record/1.0.0/main.js</p>
+</li>
+<li><p>页面中调用：</p>
+<div class="highlight"><pre><code class="javascript">seajs.use(<span class="string">'personal/record/1.0.0/main'</span>, <span class="function"><span class="keyword">function</span><span class="params">(Record)</span> {</span>
+    <span class="keyword">var</span> xbox = Record.xbox;
+    <span class="keyword">var</span> validator = Record.validator;
+    <span class="comment">// ...</span>
+});</code></pre></div></li>
+<li><p>更进一步，可以通过变量或 alias 维护 SDK 的模块 id。例如</p>
+<p>1) 使用 js 全局变量：</p>
+<pre>  // global variable
+  var SDK = &#39;personal/record/1.0.0/main&#39;;
+
+  // 调用
+  seajs.use(SDK, function(Record) {...});</pre><p>2) 使用服务器变量</p>
+<pre>  // 以 java velocity 模板引擎为例
+  #set($SDK = &quot;personal/record/1.0.0/main&quot;)
+  // 调用
+  seajs.use(&#39;$SDK&#39;, function() {...})
+
+  // 在支付宝是通过配置
+  &lt;vars&gt;
+      &lt;js_record&gt;personal/record/1.0.0/main&lt;/js_record&gt;
+  &lt;/vars&gt;
+  // 调用
+  seajs.use(&#39;$js_record&#39;, function() {...})</pre></li>
+</ol>
+<h3 id="分析">分析<a href="#分析" class="anchor">¶</a></h3><p>通过上面的例子可以看到，页面中所有模块通过一个 SDK 包进行管理，最终变成只需要维护 SDK 就可以了。页面中 API 都是从 SDK 包作为入口，所有模块的版本配置在 SDK 模块的 package.json 中，统一管理。</p>
+<p>回到刚才提到的问题，JS 应该扮演交互的实现者角色。使用 SDK 封装这种方式，不仅可以满足需求，而且可以达到额外的好处。例如，产品规划上有利于形成复用的交互包，同时可以在大型团队中形成可量化的交付产品，也就是这个 SDK 包。</p>
+<p>这种使用方式是一个新思路，尝试后或许会发现很实用。</p>
+<h3 id="小结">小结<a href="#小结" class="anchor">¶</a></h3><p>方案</p>
+<blockquote>
+<p>为产品封装 SDK 交互包。</p>
+</blockquote>
+<p>优点</p>
+<blockquote>
+<ol>
+<li>清晰</li>
+<li>可以在 SPM 编译期间发现并解决版本冲突(依赖冲突)</li>
+<li>版本统一管理目标达成的同时，可以带来额外好处。</li>
+</ol>
+</blockquote>
+<p>缺点</p>
+<blockquote>
+<p>每次都要下载所有组件，不能只下载用到的组件。</p>
+</blockquote>
+<p>适用范围</p>
+<blockquote>
+<p>大型项目。</p>
+</blockquote>
+<h2 id="方案总结">方案总结<a href="#方案总结" class="anchor">¶</a></h2><p>一共有三种主要的使用方式：</p>
+<ul>
+<li>直接 use 需要的组件</li>
+<li>配置 alias</li>
+<li>封装 SDK</li>
+</ul>
+<p>以上方案没有优劣之分，需要开发者根据自己产品的实际情况做具体的决策。适合项目的，才是最好的。</p>
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+      <p class="powered">
+        <a href="http://aralejs.org">Arale</a> •
+        <a href="http://aliceui.org">Alice</a> •
+        <a href="http://seajs.org">Sea.js</a> •
+        <a href="http://spmjs.io">spmjs.io</a>
+      </p>
+      </footer>
+    </div>
+</body>
+</html>

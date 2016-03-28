@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arale - 支付宝入门指南</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="nico-spm 0.5.5" />
+<link type="image/x-icon" href="../static/favicon.ico" rel="icon">
+<link rel="stylesheet" href="../static/css/normalize.css" />
+<link rel="stylesheet" href="../static/css/site.css" />
+<link rel="stylesheet" href="../static/css/solarized.css" />
+<link rel="stylesheet" href="../static/style.css" />
+
+<style>
+/* alipay iconfont */
+@font-face {
+  font-family: "rei";
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423"); /* IE9 */
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("https://i.alipayobjects.com/common/fonts/rei.woff?20130423") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.ttf?20130423")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.svg?20130423#rei") format("svg"); /* iOS 4.1- */
+}
+.iconfont {
+  font-family:"rei" !important;
+  font-style: normal;
+  font-weight: normal;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+</style>
+
+<script>
+if (!location.port) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-36247332-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+<script src="../static/js/sea.js?nowrap"></script>
+
+<script>
+  seajs.config({
+    base: "../",
+    alias: {"arale-popup":"arale-popup/1.2.0/popup.js","arale-autocomplete":"arale-autocomplete/1.4.1/autocomplete.js","arale-sticky":"arale-sticky/1.4.0/index.js","keymaster":"keymaster/1.6.2/keymaster.js","moment":"moment/2.8.1/moment.js","word-color":"word-color/1.1.0/index.js","jquery":"jquery/1.7.2/jquery.js"}
+  });
+</script>
+
+<script src="../static/index.js?nowrap"></script>
+<!--[if lt IE 9]>
+<script src="../static/js/html5shiv.js?nowrap"></script>
+<script src="../static/es5-safe.js?nowrap"></script>
+<![endif]-->
+
+<script>
+seajs.use(['arale-sticky', '/static/side'], function(Sticky, side) {
+  Sticky('.side-area', 20);
+  side.init();
+});
+</script>
+</head>
+<body class="spmjs">
+    <div id="body-wrapper">
+      <div class="head-area">
+        <div class="title-area">
+          <h1 class="inline">
+            <a href="../">Arale</a>
+          </h1>
+          <input type="text" placeholder="随心构建互联网应用" id="search" class="inline" autocomplete="off">
+          <img width="60" src="/static/arale-small.jpg">
+        </div>
+        <iframe src="http://ghbtns.com/github-btn.html?user=aralejs&repo=aralejs.org&type=watch&count=true"
+        allowtransparency="true" frameborder="0" scrolling="0" width="120" height="20"></iframe>
+      </div>
+      <div class="nav-area">
+        <ol class="main-nav">
+          <li><a href="/"><i class="iconfont" title="首页">&#xF034;</i> 首页</a></li>
+          <li><a href="about-arale.html">关于 Arale</a></li>
+          <li><a href="getting-started.html">5 分钟快速上手</a></li>
+          <li><a href="installation.html">工具配置</a></li>
+          <li><a href="develop-components.html">开发一个模块</a></li>
+          <li><a href="version-control-in-project.html">代码组织实践</a></li>
+          <li><a href="rules.html">开发规范</a></li>
+        </ol>
+      </div>
+      <div class="main-area">
+        <div class="side-area"><ul><li><a href="#支付宝内部源">支付宝内部源</a></li><li><a href="#seajs-配置">seajs 配置</a></li><li><a href="#查看组件">查看组件</a></li><li><a href="#开发-alipay-组件">开发 alipay 组件</a></li><li><a href="#开发系统组件">开发系统组件</a></li><li><a href="#组件发布">组件发布</a></li></ul></div>
+        <script type="text/template" id="list-template">
+          <li><a href="#"><i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
+        </script>
+        <div class="content-area">
+          <h1>支付宝入门指南</h1>
+          <div class="content entry-content"><!--filepath:docs/alipay-overview.md --> <blockquote>
+<p>目前 spm 已经升级到 2.0+，基础技术组正在推行中。本文暂时只适用于 spm 1.x 版本。</p>
+<p>在使用 Arale 之前可以先看一下 <a href="http://seajs.org/docs/">seajs</a> 和 <a href="https://github.com/spmjs/spm/wiki">spm</a> 的文档。</p>
+</blockquote>
+<h2 id="支付宝内部源">支付宝内部源<a href="#支付宝内部源" class="anchor">¶</a></h2><p>支付宝内部统一使用内部源，有很多内部定制的功能，编辑 <code>vi ~/.spm/config.json</code>。</p>
+<pre>{
+  &quot;sources&quot;: [&quot;modules.alipay.im:7000&quot;]
+}</pre><h2 id="seajs-配置">seajs 配置<a href="#seajs-配置" class="anchor">¶</a></h2><p>在所有的 <code>head.vm</code> 文件部署 seajs，部署 seajs 的 cms 为 <code>alipay/tracker/seajs.vm</code>，你只要确定系统中是否已经存在这个区域。</p>
+<pre>&lt;script charset=&quot;utf-8&quot; id=&quot;seajsnode&quot; 
+    src=&quot;https://a.alipayobjects.com/seajs/1.3.1/??sea.js,plugin-combo.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    seajs.config({
+        alias: {
+          &#39;$&#39;         : &#39;gallery/jquery/1.7.2/jquery&#39;,
+          &#39;$-debug&#39;   : &#39;gallery/jquery/1.7.2/jquery-debug&#39;,
+          &#39;jquery&#39;    : &#39;gallery/jquery/1.7.2/jquery&#39;
+        }
+    });
+&lt;/script&gt;
+
+
+</pre><p>seajs 的 base 为 <a href="https://a.alipayobjects.com">https://a.alipayobjects.com</a> ，这是由 seajs 的存放目录决定的。线上的部署目录为</p>
+<pre>a.alipayobjects.com
+    | - seajs
+    | - gallery
+    | - arale
+    | - alipay
+    | - cashier
+    | - personal
+    ` - ...</pre><p>支付宝使用3个公共 root：gallery、arale、alipay，除此之外还有系统 root，如 cashier，personal。</p>
+<p>每个组件的 id 形式为 <code>{{root}}/{{module}}/{{version}}/{{file}}</code>，比如 xbox 的 id 为 <code>alipay/xbox/0.9.8/xbox</code>，同时这也是文件路径，使用 xbox 可直接 use。</p>
+<pre>seajs.use(&#39;alipay/xbox/0.9.8/xbox&#39;, function(Xbox) {
+    // use Xbox
+});</pre><h2 id="查看组件">查看组件<a href="#查看组件" class="anchor">¶</a></h2><blockquote>
+<p>validator 最新的版本是什么？</p>
+<p>xbox 0.9.8 到底上线了没有？</p>
+</blockquote>
+<p>经常会遇到这种问题，现在大家可以通过 <a href="online-status.html">online status</a> 查看组件的状态。</p>
+<h2 id="开发-alipay-组件">开发 alipay 组件<a href="#开发-alipay-组件" class="anchor">¶</a></h2><p>alipay 组件存放在 <a href="http://git.alipay.im/">http://git.alipay.im/</a> 下，先到这里创建一个库，命名要加 <code>alipay.</code> 前缀。</p>
+<p>根据<a href="./develop-components.html">组件编写文档</a>进行开发。</p>
+<p><strong>注意：</strong> root 要配成 alipay。</p>
+<p>开发完成后可以通过 <code>spm deploy --to=dev</code> 部署到 assets 服务器，<code>dev</code> 是对应的坑位。详细查看 <a href="https://github.com/spmjs/spm/wiki/spm-deploy">spm deploy 文档</a></p>
+<p>如果有多个项目需要使用，要建个任务单发布到 test 环境，test 环境会定时同步到所有的开发环境。</p>
+<h2 id="开发系统组件">开发系统组件<a href="#开发系统组件" class="anchor">¶</a></h2><p>以 personal 消费记录为例子</p>
+<p>在 /static 目录创建 consume 目录，在 consume 下执行 <code>spm init</code>。</p>
+<p><strong>注意：</strong> root 要配成系统名。</p>
+<p>需要忽略部分文件，在组件当前目录输入</p>
+<pre>$ svn propset svn:ignore &#39;.gitignore&#39; ./ 
+$ svn propset svn:ignore &#39;_site&#39; ./
+$ svn propset svn:ignore &#39;sea-modules&#39; ./</pre><p>其他可以参考 alipay 组件开发。</p>
+<h2 id="组件发布">组件发布<a href="#组件发布" class="anchor">¶</a></h2><p>组件的发布是通过研发平台的，本地将代码打包成 zip 后上传。</p>
+<p>通过 <code>spm build --zip</code> 打包，zip 包里面的目录不包括 root，所以研发平台应该在 alipay 那一级上传。</p>
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+      <p class="powered">
+        <a href="http://aralejs.org">Arale</a> •
+        <a href="http://aliceui.org">Alice</a> •
+        <a href="http://seajs.org">Sea.js</a> •
+        <a href="http://spmjs.io">spmjs.io</a>
+      </p>
+      </footer>
+    </div>
+</body>
+</html>

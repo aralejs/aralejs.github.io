@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arale - 开发规范</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="nico-spm 0.5.5" />
+<link type="image/x-icon" href="../static/favicon.ico" rel="icon">
+<link rel="stylesheet" href="../static/css/normalize.css" />
+<link rel="stylesheet" href="../static/css/site.css" />
+<link rel="stylesheet" href="../static/css/solarized.css" />
+<link rel="stylesheet" href="../static/style.css" />
+
+<style>
+/* alipay iconfont */
+@font-face {
+  font-family: "rei";
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423"); /* IE9 */
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("https://i.alipayobjects.com/common/fonts/rei.woff?20130423") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.ttf?20130423")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.svg?20130423#rei") format("svg"); /* iOS 4.1- */
+}
+.iconfont {
+  font-family:"rei" !important;
+  font-style: normal;
+  font-weight: normal;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+</style>
+
+<script>
+if (!location.port) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-36247332-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+<script src="../static/js/sea.js?nowrap"></script>
+
+<script>
+  seajs.config({
+    base: "../",
+    alias: {"arale-popup":"arale-popup/1.2.0/popup.js","arale-autocomplete":"arale-autocomplete/1.4.1/autocomplete.js","arale-sticky":"arale-sticky/1.4.0/index.js","keymaster":"keymaster/1.6.2/keymaster.js","moment":"moment/2.8.1/moment.js","word-color":"word-color/1.1.0/index.js","jquery":"jquery/1.7.2/jquery.js"}
+  });
+</script>
+
+<script src="../static/index.js?nowrap"></script>
+<!--[if lt IE 9]>
+<script src="../static/js/html5shiv.js?nowrap"></script>
+<script src="../static/es5-safe.js?nowrap"></script>
+<![endif]-->
+
+<script>
+seajs.use(['arale-sticky', '/static/side'], function(Sticky, side) {
+  Sticky('.side-area', 20);
+  side.init();
+});
+</script>
+</head>
+<body class="spmjs">
+    <div id="body-wrapper">
+      <div class="head-area">
+        <div class="title-area">
+          <h1 class="inline">
+            <a href="../">Arale</a>
+          </h1>
+          <input type="text" placeholder="随心构建互联网应用" id="search" class="inline" autocomplete="off">
+          <img width="60" src="/static/arale-small.jpg">
+        </div>
+        <iframe src="http://ghbtns.com/github-btn.html?user=aralejs&repo=aralejs.org&type=watch&count=true"
+        allowtransparency="true" frameborder="0" scrolling="0" width="120" height="20"></iframe>
+      </div>
+      <div class="nav-area">
+        <ol class="main-nav">
+          <li><a href="/"><i class="iconfont" title="首页">&#xF034;</i> 首页</a></li>
+          <li><a href="about-arale.html">关于 Arale</a></li>
+          <li><a href="getting-started.html">5 分钟快速上手</a></li>
+          <li><a href="installation.html">工具配置</a></li>
+          <li><a href="develop-components.html">开发一个模块</a></li>
+          <li><a href="version-control-in-project.html">代码组织实践</a></li>
+          <li><a href="rules.html">开发规范</a></li>
+        </ol>
+      </div>
+      <div class="main-area">
+        <div class="side-area"><ul><li><a href="#命名规范">命名规范</a></li><li><a href="#目录结构">目录结构</a></li><li><a href="#编码风格">编码风格</a></li><li><a href="#注释规范">注释规范</a></li><li><a href="#文档规范">文档规范</a><ul><li><a href="#readme-md">README.md</a></li><li><a href="#docs">docs</a></li><li><a href="#history-md">HISTORY.md</a></li></ul></li><li><a href="#reference">Reference</a></li></ul></div>
+        <script type="text/template" id="list-template">
+          <li><a href="#"><i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
+        </script>
+        <div class="content-area">
+          <h1>开发规范</h1>
+          <div class="content entry-content"><!--filepath:docs/rules.md --> <h2 id="命名规范">命名规范<a href="#命名规范" class="anchor">¶</a></h2><ol>
+<li>文件和目录名只能包含 [a-z\d-]，并以英文字母开头</li>
+<li>首选合适的英文单词 </li>
+<li>data api 命名为小写并用连字符，如 data-trigger-type</li>
+<li>事件名为驼峰，如 .trigger(&#39;itemSelected&#39;)</li>
+<li>符合规范<ul>
+<li>常量全大写 UPPERCASE_WORD</li>
+<li>变量驼峰 camelName</li>
+<li>类名驼峰，并且首字母要大写 CamelName</li>
+</ul>
+</li>
+</ol>
+<h2 id="目录结构">目录结构<a href="#目录结构" class="anchor">¶</a></h2><p>整体的目录结构，大部分会由 <code>spm init</code> 生成</p>
+<pre>overlay
+  -- assets                   存放组件用到的 img 等文件
+       -- sprite.png
+       -- sprite.psd
+  -- docs                     markdown 文档，除了 README 的其他文档
+       -- overlay.md
+       -- dialog.md
+  -- examples                 演示 markdown
+       -- assets              例子中如果有用到 img 等资源时，存放在该目录
+            -- test.png
+       -- overlay.md
+       -- dialog.md
+  -- src                      存放 js, css 文件
+       -- overlay.css
+       -- overlay.js
+       -- dialog.js
+  -- tests                    单元测试
+       -- overlay-spec.js
+       -- dialog-spec.js
+  -- spm_modules              spm install 生成，存放依赖的其他组件
+  -- _site                    spm doc 生成，存放站点
+  -- HISTORY.md               版本更新说明
+  -- README.md                组件总体说明
+  -- package.json             版本等元信息
+  -- .gitignore               git 忽略某些文件
+  -- .travis.yml              travis 持续集成的配置</pre><h2 id="编码风格">编码风格<a href="#编码风格" class="anchor">¶</a></h2><p>需要通过 JSLint，查看具体<a href="https://github.com/aralejs/aralejs.org/wiki/JavaScript-%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC">编码风格</a></p>
+<h2 id="注释规范">注释规范<a href="#注释规范" class="anchor">¶</a></h2><p>不建议使用 jsdoc，注释的目的是：<strong>提高代码的可读性，从而提高代码的可维护性。</strong></p>
+<p>查看具体<a href="https://github.com/aralejs/aralejs.org/wiki/JavaScript-%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83">注释规范</a></p>
+<h2 id="文档规范">文档规范<a href="#文档规范" class="anchor">¶</a></h2><h3 id="readme-md">README.md<a href="#readme-md" class="anchor">¶</a></h3><p>每个组件必须有 README.md 文件，用来描述组件的基本情况。</p>
+<pre># 模块名称
+
+-----
+
+该模块的概要介绍。
+
+-----
+
+## 使用说明
+
+如何使用该模块，可以根据组件的具体特征，合理组织。
+
+## API
+
+需要提供 API 说明，属性、方法、事件等。</pre><h3 id="docs">docs<a href="#docs" class="anchor">¶</a></h3><p>如果组件需要写的东西比较多，可以划分好放到 docs 下。比如竞争者分析，多模块的情况。</p>
+<h3 id="history-md">HISTORY.md<a href="#history-md" class="anchor">¶</a></h3><p>记录组件的变更，最好和 issues 进行绑定。请阅读<a href="https://github.com/aralejs/aralejs.org/wiki/%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83">历史记录书写规范</a>。</p>
+<pre>### 1.1.0
+
+* [fixed] #18 修复了 XXX 问题
+* [fixed] #29 修复了 YYY 问题
+* [new] #12 增加了 ZZZ 功能
+* [improved] #23 优化了 BBB 代码
+
+### 1.0.0
+
+* [new] 第一个发布版本</pre><h2 id="reference">Reference<a href="#reference" class="anchor">¶</a></h2><ul>
+<li><p><a href="https://github.com/aralejs/aralejs.org/wiki/JavaScript-%E6%B3%A8%E9%87%8A%E8%A7%84%E8%8C%83">注释规范</a></p>
+</li>
+<li><p><a href="https://github.com/aralejs/aralejs.org/wiki/JavaScript-%E7%BC%96%E7%A0%81%E9%A3%8E%E6%A0%BC">编码风格</a></p>
+</li>
+<li><p><a href="https://github.com/aralejs/aralejs.org/issues/36">编码与文档的讨论</a></p>
+</li>
+<li><p><a href="https://github.com/aralejs/aralejs.org/wiki/%E5%B8%B8%E7%94%A8%E8%AF%8D%E5%91%BD%E5%90%8D%E7%BB%9F%E4%B8%80%E8%A1%A8">常用词命名统一表</a></p>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+      <p class="powered">
+        <a href="http://aralejs.org">Arale</a> •
+        <a href="http://aliceui.org">Alice</a> •
+        <a href="http://seajs.org">Sea.js</a> •
+        <a href="http://spmjs.io">spmjs.io</a>
+      </p>
+      </footer>
+    </div>
+</body>
+</html>
