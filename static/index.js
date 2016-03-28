@@ -9,6 +9,8 @@ seajs.use([
 
   Sticky.stick('#document-wrapper', 0);
 
+  return;
+
   var modules = [];
   var deprecatedModules = '';
 
