@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arale - 开发一个模块</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="nico-spm 0.5.5" />
+<link type="image/x-icon" href="../static/favicon.ico" rel="icon">
+<link rel="stylesheet" href="../static/css/normalize.css" />
+<link rel="stylesheet" href="../static/css/site.css" />
+<link rel="stylesheet" href="../static/css/solarized.css" />
+<link rel="stylesheet" href="../static/style.css" />
+
+<style>
+/* alipay iconfont */
+@font-face {
+  font-family: "rei";
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423"); /* IE9 */
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("https://i.alipayobjects.com/common/fonts/rei.woff?20130423") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.ttf?20130423")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.svg?20130423#rei") format("svg"); /* iOS 4.1- */
+}
+.iconfont {
+  font-family:"rei" !important;
+  font-style: normal;
+  font-weight: normal;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+</style>
+
+<script>
+if (!location.port) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-36247332-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+<script src="../static/js/sea.js?nowrap"></script>
+
+<script>
+  seajs.config({
+    base: "../",
+    alias: {"arale-popup":"arale-popup/1.2.0/popup.js","arale-autocomplete":"arale-autocomplete/1.4.1/autocomplete.js","arale-sticky":"arale-sticky/1.4.0/index.js","keymaster":"keymaster/1.6.2/keymaster.js","moment":"moment/2.8.1/moment.js","word-color":"word-color/1.1.0/index.js","jquery":"jquery/1.7.2/jquery.js"}
+  });
+</script>
+
+<script src="../static/index.js?nowrap"></script>
+<!--[if lt IE 9]>
+<script src="../static/js/html5shiv.js?nowrap"></script>
+<script src="../static/es5-safe.js?nowrap"></script>
+<![endif]-->
+
+<script>
+seajs.use(['arale-sticky', '/static/side'], function(Sticky, side) {
+  Sticky('.side-area', 20);
+  side.init();
+});
+</script>
+</head>
+<body class="spmjs">
+    <div id="body-wrapper">
+      <div class="head-area">
+        <div class="title-area">
+          <h1 class="inline">
+            <a href="../">Arale</a>
+          </h1>
+          <input type="text" placeholder="随心构建互联网应用" id="search" class="inline" autocomplete="off">
+          <img width="60" src="/static/arale-small.jpg">
+        </div>
+        <iframe src="http://ghbtns.com/github-btn.html?user=aralejs&repo=aralejs.org&type=watch&count=true"
+        allowtransparency="true" frameborder="0" scrolling="0" width="120" height="20"></iframe>
+      </div>
+      <div class="nav-area">
+        <ol class="main-nav">
+          <li><a href="/"><i class="iconfont" title="首页">&#xF034;</i> 首页</a></li>
+          <li><a href="about-arale.html">关于 Arale</a></li>
+          <li><a href="getting-started.html">5 分钟快速上手</a></li>
+          <li><a href="installation.html">工具配置</a></li>
+          <li><a href="develop-components.html">开发一个模块</a></li>
+          <li><a href="version-control-in-project.html">代码组织实践</a></li>
+          <li><a href="rules.html">开发规范</a></li>
+        </ol>
+      </div>
+      <div class="main-area">
+        <div class="side-area"><ul><li><a href="#相关文档">相关文档</a></li><li><a href="#安装">安装</a></li><li><a href="#初始化模块项目">初始化模块项目</a></li><li><a href="#进行开发">进行开发</a></li><li><a href="#本地调试">本地调试</a></li><li><a href="#编写测试用例">编写测试用例</a></li><li><a href="#部署文件">部署文件</a><ul><li><a href="#发布到源中">发布到源中</a></li></ul></li><li><a href="#部署模块文档">部署模块文档</a></li><li><a href="#使用这个模块">使用这个模块</a><ul><li><a href="#script-引用">script 引用</a></li><li><a href="#seajs-use">seajs.use</a></li></ul></ul></div>
+        <script type="text/template" id="list-template">
+          <li><a href="#"><i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
+        </script>
+        <div class="content-area">
+          <h1>开发一个模块</h1>
+          <div class="content entry-content"><!--filepath:docs/develop-components.md --> <h2 id="相关文档">相关文档<a href="#相关文档" class="anchor">¶</a></h2><ol>
+<li><a href="https://github.com/aralejs/widget/wiki/Base-&amp;-Widget-%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B">Base &amp; Widget 入门教程</a></li>
+<li><a href="https://github.com/aralejs/aralejs.org/issues/314">基础设施快速 API 参考</a></li>
+<li><a href="https://github.com/totorojs/totoro/wiki">测试解决方案</a></li>
+<li><a href="http://aralejs.org/docs/rules.html">开发规范</a></li>
+<li><a href="https://github.com/spmjs/docs/blob/master/zh-cn/package/get-started.md">Develop a pacakge with spm</a></li>
+</ol>
+<hr>
+<p>这个教程会简单说明一个模块的开发流程，通过 <a href="http://spmjs.io/docs/puzzle/">一个示例</a> 让你有切身体会，你也可以跟着一起做哦。</p>
+<p>源码地址为：<a href="https://github.com/sorrycc/puzzle"><a href="https://github.com/sorrycc/puzzle">https://github.com/sorrycc/puzzle</a></a></p>
+<h2 id="安装">安装<a href="#安装" class="anchor">¶</a></h2><p>请仔细参考 <a href="/docs/installation.html">环境与工具配置</a> 。</p>
+<h2 id="初始化模块项目">初始化模块项目<a href="#初始化模块项目" class="anchor">¶</a></h2><p>模块和目录的名称要符合 [a-z\d-.]，并以英文字母开头，首选合适的英文单词， <strong>禁止使用驼峰</strong> 。</p>
+<p>先来看看整个模块的结构，这样会有一个直观的感受。</p>
+<pre>puzzle
+  -- docs                   markdown 文档，除了 README 的其他文档
+       -- overlay.md
+       -- dialog.md
+  -- examples               例子
+       -- assets            例子中如果有用到 img 等资源时，存放在该目录
+            -- test.png
+       -- index.md
+       -- dialog.md
+  -- src                    存放 js, css 文件
+       -- overlay.css
+       -- overlay.js
+       -- dialog.js
+  -- tests                  单元测试
+       -- overlay-spec.js
+       -- dialog-spec.js
+  -- spm_modules            spm install 生成，存放依赖的其他模块
+  -- _site                  nico 生成，存放站点
+  -- HISTORY.md             版本更新说明
+  -- README.md              模块总体说明
+  -- package.json           版本等元信息
+  -- .gitignore             git 忽略某些文件
+  -- .travis.yml            travis 持续集成的配置</pre><p>那我们初始化一个项目看看</p>
+<pre>$ mkdir puzzle
+$ cd puzzle
+$ spm init
+Creating a spm package:
+[?] Package name: puzzle
+[?] Version: 0.0.0
+[?] Description:
+[?] Author: chencheng &lt;sorrycc@gmail.com&gt;
+Initialize a spm package Succeccfully!</pre><p>初始化完成后会生成一个骨架，在这个基础上进行开发更方便，之后可以提交到版本库了，当然你可以在 github 上建一个库。</p>
+<pre>git init
+git add .
+git commit -m &#39;first commit&#39;
+git remote add https://github.com/sorrycc/puzzle.git
+git push origin master</pre><h2 id="进行开发">进行开发<a href="#进行开发" class="anchor">¶</a></h2><p>首先分析模块的依赖，比如 <code>puzzle</code> 需要 <code>jquery</code> 和 <code>arale-popup</code>。</p>
+<p>可以使用 <code>spm install</code> 下载依赖。</p>
+<div class="highlight"><pre><code class="bash">$ spm install jquery arale-popup --save
+
+        install: jquery@stable
+        install: arale-popup@stable
+          saved: <span class="keyword">in</span> dependencies arale-popup@<span class="number">1.2</span>.<span class="number">0</span>
+       download: http://spmjs.io/repository/arale-popup/<span class="number">1.2</span>.<span class="number">0</span>/arale-popup-<span class="number">1.2</span>.<span class="number">0</span>.tar.gz
+          saved: <span class="keyword">in</span> dependencies jquery@<span class="number">2.1</span>.<span class="number">1</span>
+       download: http://spmjs.io/repository/jquery/<span class="number">2.1</span>.<span class="number">1</span>/jquery-<span class="number">2.1</span>.<span class="number">1</span>.tar.gz
+        extract: ~/.spm/cache/arale-popup-<span class="number">1.2</span>.<span class="number">0</span>.tar.gz
+      installed: <span class="variable">$CWD</span>/spm_modules/arale-popup/<span class="number">1.2</span>.<span class="number">0</span>
+        depends: jquery@<span class="number">1.7</span>.<span class="number">2</span>, arale-overlay@<span class="number">1.2</span>.<span class="number">0</span>
+        install: jquery@<span class="number">1.7</span>.<span class="number">2</span>
+        install: arale-overlay@<span class="number">1.2</span>.<span class="number">0</span>
+        ...</code></pre></div><p>这样 spm 会自动在 <code>package.json</code> 中添加依赖，你也可以手动添加并 install 。</p>
+<div class="highlight"><pre><code class="javascript"><span class="string">"spm"</span>: {
+  <span class="string">"dependencies"</span>: {
+    <span class="string">"jquery"</span>: <span class="string">"1.7.2"</span>,
+    <span class="string">"arale-popup"</span>: <span class="string">"1.2.0"</span>
+  }
+}</code></pre></div><p>并且，所有依赖的模块都会被下载到 spm_modules 下。</p>
+<p>修改 <code>index.js</code> 进行开发</p>
+<div class="highlight"><pre><code class="javascript"><span class="keyword">var</span> popup = require(<span class="string">'popup'</span>);
+<span class="keyword">var</span> $ = require(<span class="string">'jquery'</span>);
+
+<span class="keyword">var</span> puzzle = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>};
+module.exports = puzzle;</code></pre></div><p>启动本地服务进行调试。</p>
+<div class="highlight"><pre><code class="bash">$ spm doc</code></pre></div><p>通过浏览器访问 <a href="http://127.0.0.1:8000/"><a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a></a></p>
+<h2 id="本地调试">本地调试<a href="#本地调试" class="anchor">¶</a></h2><p>examples 也使用 md 编写，这样写起来非常方便，除了基本的 markdown 语法还支持<a href="https://github.com/aralejs/nico-arale#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91">额外的特性</a>。</p>
+<p>在 <code>examples/index.md</code> 添加实例化代码，用 require 来调用模块。</p>
+<script class="nico-insert-code">(function(){var Puzzle = require('puzzle');
+// use Puzzle})()</script><div class="highlight"><pre><code class="javascript"><span class="keyword">var</span> Puzzle = require(<span class="string">'puzzle'</span>);
+<span class="comment">// use Puzzle</span></code></pre></div><p>通过四个 ```` 所包裹的代码不仅会显示成代码片段，也会插入 HTML 中进行实际运行，这样你调试好代码后，演示页面的文档也同时生成好了。</p>
+<p>spm doc 支持 livereload，只要通过 <code>spm doc</code> 启动服务，修改文件后都会自动构建和刷新浏览器（更多 Markdown 写文档的技巧请参考 <a href="https://github.com/spmjs/nico-cmd#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91">https://github.com/spmjs/nico-cmd#%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91</a> ）。</p>
+<h2 id="编写测试用例">编写测试用例<a href="#编写测试用例" class="anchor">¶</a></h2><p>Arale 提供 <a href="https://github.com/totorojs/totoro/wiki/mocha.zh">mocha</a> 作为测试框架，开发者只要关注如何写好测试用例。</p>
+<p>工具会到 tests 目录下的通过 <strong>命名 + &#39;-spec.js&#39;</strong> 拼装去找文件。</p>
+<p>修改 <code>tests/puzzle-spec.js</code> 文件，开始写测试用例，可以直接看<a href="https://github.com/sorrycc/puzzle/blob/master/tests/puzzle-spec.js">示例</a>。</p>
+<p>访问 <a href="http://127.0.0.1:8000/tests/runner.html"><a href="http://127.0.0.1:8000/tests/runner.html">http://127.0.0.1:8000/tests/runner.html</a></a> 查看是否正确。</p>
+<p>运行下面命令可以在命令行里跑测试用例：</p>
+<div class="highlight"><pre><code class="bash">$ spm test</code></pre></div><p>Arale 已经配置 travis，只要开通就可以 <strong>持续集成</strong> 。<a href="https://travis-ci.org/profile">登录 travis</a>，开启 travis。</p>
+<h2 id="部署文件">部署文件<a href="#部署文件" class="anchor">¶</a></h2><p>修改 <code>package.json</code> 配置打包方式，主入口用 main 字段标识，其余构建入口可以使用 <code>output: [&#39;other.js&#39;]</code>。</p>
+<div class="highlight"><pre><code class="javascript"><span class="string">"spm"</span>: {
+  <span class="string">"main"</span>: <span class="string">"index.js"</span>
+}</code></pre></div><p>这样 <code>spm build</code> 将打包 <code>index.js</code> 文件，并将这个文件中的本地依赖文件也打包进来。</p>
+<p>接下来就可以开始打包，build 后会在 dist 目录生成打包的文件和 -debug 文件。</p>
+<div class="highlight"><pre><code class="bash">$ spm build</code></pre></div><h3 id="发布到源中">发布到源中<a href="#发布到源中" class="anchor">¶</a></h3><p>只有发布到源中，你的模块才能被其他模块调用。通过 <code>spm publish</code> 命令将会把你的模块发布到默认的源服务器中。（默认为 <a href="http://spmjs.io">http://spmjs.io</a> ，这个源服务器需要用户校验，请自行注册账号进行发布）</p>
+<div class="highlight"><pre><code class="bash">$ spm publish</code></pre></div><h2 id="部署模块文档">部署模块文档<a href="#部署模块文档" class="anchor">¶</a></h2><p>模块的文档地址为 <a href="http://spmjs.io/docs/{{模块名}}">http://spmjs.io/docs/{{模块名}}</a> ，开发完模块后，只需要运行如下代码就可以把文档部署上线。</p>
+<div class="highlight"><pre><code class="bash">$ spm doc publish</code></pre></div><h2 id="使用这个模块">使用这个模块<a href="#使用这个模块" class="anchor">¶</a></h2><p>我们现在已经写好了这个模块，那么如何使用呢？</p>
+<h3 id="script-引用">script 引用<a href="#script-引用" class="anchor">¶</a></h3><p>使用 spm3 ，我们强烈推荐使用 standalone 的方式进行构建，然后用 script 直接引用构建后的文件。</p>
+<pre>$ spm build</pre><div class="highlight"><pre><code class="xml"><span class="comment">&lt;!-- use it without loader --&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"build.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></pre></div><h3 id="seajs-use">seajs.use<a href="#seajs-use" class="anchor">¶</a></h3><p>或者按照传统的 seajs 的方式，首先要把构建后的文件按目录部署到你的 assets 服务器上。</p>
+<pre>$ npm install spm-sea
+$ spm-sea</pre><p>比如 arale 的 position 模块：</p>
+<pre>http://static.alipayobjects.com/position/1.1.0/index.js</pre><p>然后就可以像《5 分钟上手指南》里那样用 seajs.use 来启动模块了。</p>
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+      <p class="powered">
+        <a href="http://aralejs.org">Arale</a> •
+        <a href="http://aliceui.org">Alice</a> •
+        <a href="http://seajs.org">Sea.js</a> •
+        <a href="http://spmjs.io">spmjs.io</a>
+      </p>
+      </footer>
+    </div>
+</body>
+</html>

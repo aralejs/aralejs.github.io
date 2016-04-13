@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arale - 工具配置</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="nico-spm 0.5.5" />
+<link type="image/x-icon" href="../static/favicon.ico" rel="icon">
+<link rel="stylesheet" href="../static/css/normalize.css" />
+<link rel="stylesheet" href="../static/css/site.css" />
+<link rel="stylesheet" href="../static/css/solarized.css" />
+<link rel="stylesheet" href="../static/style.css" />
+
+<style>
+/* alipay iconfont */
+@font-face {
+  font-family: "rei";
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423"); /* IE9 */
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("https://i.alipayobjects.com/common/fonts/rei.woff?20130423") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.ttf?20130423")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.svg?20130423#rei") format("svg"); /* iOS 4.1- */
+}
+.iconfont {
+  font-family:"rei" !important;
+  font-style: normal;
+  font-weight: normal;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+</style>
+
+<script>
+if (!location.port) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-36247332-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+<script src="../static/js/sea.js?nowrap"></script>
+
+<script>
+  seajs.config({
+    base: "../",
+    alias: {"arale-popup":"arale-popup/1.2.0/popup.js","arale-autocomplete":"arale-autocomplete/1.4.1/autocomplete.js","arale-sticky":"arale-sticky/1.4.0/index.js","keymaster":"keymaster/1.6.2/keymaster.js","moment":"moment/2.8.1/moment.js","word-color":"word-color/1.1.0/index.js","jquery":"jquery/1.7.2/jquery.js"}
+  });
+</script>
+
+<script src="../static/index.js?nowrap"></script>
+<!--[if lt IE 9]>
+<script src="../static/js/html5shiv.js?nowrap"></script>
+<script src="../static/es5-safe.js?nowrap"></script>
+<![endif]-->
+
+<script>
+seajs.use(['arale-sticky', '/static/side'], function(Sticky, side) {
+  Sticky('.side-area', 20);
+  side.init();
+});
+</script>
+</head>
+<body class="spmjs">
+    <div id="body-wrapper">
+      <div class="head-area">
+        <div class="title-area">
+          <h1 class="inline">
+            <a href="../">Arale</a>
+          </h1>
+          <input type="text" placeholder="随心构建互联网应用" id="search" class="inline" autocomplete="off">
+          <img width="60" src="/static/arale-small.jpg">
+        </div>
+        <iframe src="http://ghbtns.com/github-btn.html?user=aralejs&repo=aralejs.org&type=watch&count=true"
+        allowtransparency="true" frameborder="0" scrolling="0" width="120" height="20"></iframe>
+      </div>
+      <div class="nav-area">
+        <ol class="main-nav">
+          <li><a href="/"><i class="iconfont" title="首页">&#xF034;</i> 首页</a></li>
+          <li><a href="about-arale.html">关于 Arale</a></li>
+          <li><a href="getting-started.html">5 分钟快速上手</a></li>
+          <li><a href="installation.html">工具配置</a></li>
+          <li><a href="develop-components.html">开发一个模块</a></li>
+          <li><a href="version-control-in-project.html">代码组织实践</a></li>
+          <li><a href="rules.html">开发规范</a></li>
+        </ol>
+      </div>
+      <div class="main-area">
+        <div class="side-area"><ul><li><a href="#安装-node">安装 node</a></li><li><a href="#去除-sudo">去除 sudo</a></li><li><a href="#安装-git">安装 git</a></li><li><a href="#windows-环境">windows 环境</a></li><li><a href="#安装-spm">安装 spm</a></li></ul></div>
+        <script type="text/template" id="list-template">
+          <li><a href="#"><i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
+        </script>
+        <div class="content-area">
+          <h1>工具配置</h1>
+          <div class="content entry-content"><!--filepath:docs/installation.md --> <blockquote>
+<p>本文章会帮助你安装 Arale 配套的工具，包括 spm 和 git。</p>
+</blockquote>
+<h2 id="安装-node">安装 node<a href="#安装-node" class="anchor">¶</a></h2><p>作为一个前端，你需要 node 环境。</p>
+<p>推荐使用 <a href="https://github.com/creationix/nvm">nvm</a> 来安装：</p>
+<div class="highlight"><pre><code class="bash">$ curl https://raw.githubusercontent.com/creationix/nvm/v0.<span class="number">16.1</span>/install.sh | bash
+$ nvm install <span class="number">0.10</span>.<span class="number">24</span>
+$ nvm alias default <span class="number">0.10</span>.<span class="number">24</span></code></pre></div><p>另外，也可以在<a href="http://nodejs.org/download/">官方下载</a>或<a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">通过包管理工具安装</a>。</p>
+<h2 id="去除-sudo">去除 sudo<a href="#去除-sudo" class="anchor">¶</a></h2><p><strong>如果你是用 nvm 来安装的 node，可跳过此节。</strong></p>
+<p>使用 npm 安装模块的时候经常要输入 sudo，还要输入密码，这点很让人烦躁。下面你可以简单粗暴的去除 sudo（看看作者的<a href="http://howtonode.org/introduction-to-npm">软文</a>）</p>
+<div class="highlight"><pre><code class="bash">$ <span class="built_in">sudo</span> chown -R <span class="variable">$USER</span> /usr/local</code></pre></div><p>或者参照 npm 官方的文档来设置：<a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions">https://docs.npmjs.com/getting-started/fixing-npm-permissions</a></p>
+<h2 id="安装-git">安装 git<a href="#安装-git" class="anchor">¶</a></h2><p>版本管理工具也是必须的，可以先<a href="http://rogerdudler.github.com/git-guide/index.zh.html">了解 git 的相关内容</a> 。</p>
+<p>git 下载地址如下</p>
+<ul>
+<li><a href="https://code.google.com/p/git-osx-installer/downloads/list?can=3&amp;q=&amp;sort=-uploaded&amp;colspec=Filename+Summary+Uploaded+Size+DownloadCount">git for mac</a></li>
+<li><a href="https://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git">git for windows </a></li>
+</ul>
+<h2 id="windows-环境">windows 环境<a href="#windows-环境" class="anchor">¶</a></h2><p>推荐使用 windows 的包管理工具 <a href="https://github.com/chocolatey/chocolatey">chocolatey</a>。</p>
+<p>安装 nodejs 和 git ：</p>
+<pre>c:\&gt; cinst git.install
+c:\&gt; cinst nodejs.install</pre><p>设置环境变量：</p>
+<pre>PATH = C:\Users\{{username}}\AppData\Roaming\npm
+NODE_PATH = C:\Users\{{username}}\AppData\Roaming\npm\node_modules</pre><p>设置 prefix，使 Windows 下可全局安装：</p>
+<pre>npm config set prefix C:\Users\{{username}}\AppData\Roaming\npm</pre><h2 id="安装-spm">安装 spm<a href="#安装-spm" class="anchor">¶</a></h2><p>Arale 已经全面迁移到 <a href="https://github.com/spmjs/spm/issues/819">spm3</a> 的体系上。</p>
+<div class="highlight"><pre><code class="bash">$ npm install spm -g</code></pre></div><hr>
+<p>好，安装工作完成！</p>
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+      <p class="powered">
+        <a href="http://aralejs.org">Arale</a> •
+        <a href="http://aliceui.org">Alice</a> •
+        <a href="http://seajs.org">Sea.js</a> •
+        <a href="http://spmjs.io">spmjs.io</a>
+      </p>
+      </footer>
+    </div>
+</body>
+</html>

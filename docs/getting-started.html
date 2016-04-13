@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arale - 5 分钟快速上手</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="nico-spm 0.5.5" />
+<link type="image/x-icon" href="../static/favicon.ico" rel="icon">
+<link rel="stylesheet" href="../static/css/normalize.css" />
+<link rel="stylesheet" href="../static/css/site.css" />
+<link rel="stylesheet" href="../static/css/solarized.css" />
+<link rel="stylesheet" href="../static/style.css" />
+
+<style>
+/* alipay iconfont */
+@font-face {
+  font-family: "rei";
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423"); /* IE9 */
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("https://i.alipayobjects.com/common/fonts/rei.woff?20130423") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.ttf?20130423")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.svg?20130423#rei") format("svg"); /* iOS 4.1- */
+}
+.iconfont {
+  font-family:"rei" !important;
+  font-style: normal;
+  font-weight: normal;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+</style>
+
+<script>
+if (!location.port) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-36247332-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+<script src="../static/js/sea.js?nowrap"></script>
+
+<script>
+  seajs.config({
+    base: "../",
+    alias: {"arale-popup":"arale-popup/1.2.0/popup.js","arale-autocomplete":"arale-autocomplete/1.4.1/autocomplete.js","arale-sticky":"arale-sticky/1.4.0/index.js","keymaster":"keymaster/1.6.2/keymaster.js","moment":"moment/2.8.1/moment.js","word-color":"word-color/1.1.0/index.js","jquery":"jquery/1.7.2/jquery.js"}
+  });
+</script>
+
+<script src="../static/index.js?nowrap"></script>
+<!--[if lt IE 9]>
+<script src="../static/js/html5shiv.js?nowrap"></script>
+<script src="../static/es5-safe.js?nowrap"></script>
+<![endif]-->
+
+<script>
+seajs.use(['arale-sticky', '/static/side'], function(Sticky, side) {
+  Sticky('.side-area', 20);
+  side.init();
+});
+</script>
+</head>
+<body class="spmjs">
+    <div id="body-wrapper">
+      <div class="head-area">
+        <div class="title-area">
+          <h1 class="inline">
+            <a href="../">Arale</a>
+          </h1>
+          <input type="text" placeholder="随心构建互联网应用" id="search" class="inline" autocomplete="off">
+          <img width="60" src="/static/arale-small.jpg">
+        </div>
+        <iframe src="http://ghbtns.com/github-btn.html?user=aralejs&repo=aralejs.org&type=watch&count=true"
+        allowtransparency="true" frameborder="0" scrolling="0" width="120" height="20"></iframe>
+      </div>
+      <div class="nav-area">
+        <ol class="main-nav">
+          <li><a href="/"><i class="iconfont" title="首页">&#xF034;</i> 首页</a></li>
+          <li><a href="about-arale.html">关于 Arale</a></li>
+          <li><a href="getting-started.html">5 分钟快速上手</a></li>
+          <li><a href="installation.html">工具配置</a></li>
+          <li><a href="develop-components.html">开发一个模块</a></li>
+          <li><a href="version-control-in-project.html">代码组织实践</a></li>
+          <li><a href="rules.html">开发规范</a></li>
+        </ol>
+      </div>
+      <div class="main-area">
+        <div class="side-area"><ul><li><a href="#先看个例子吧">先看个例子吧</a></li><li><a href="#使用-seajs">使用 SeaJS</a></li><li><a href="#standalone">Standalone</a></li><li><a href="#查找模块">查找模块</a></li><li><a href="#才刚刚开始">才刚刚开始</a></li></ul></div>
+        <script type="text/template" id="list-template">
+          <li><a href="#"><i class="iconfont" title="单箭头右">&#x00E5;</i></a></li>
+        </script>
+        <div class="content-area">
+          <h1>5 分钟快速上手</h1>
+          <div class="content entry-content"><!--filepath:docs/getting-started.md --> <h2 id="先看个例子吧">先看个例子吧<a href="#先看个例子吧" class="anchor">¶</a></h2><p>新建一个文件，把以下代码复制进去，然后用浏览器打开：</p>
+<div class="highlight"><pre><code class="xml"><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css">
+<span class="class">.target</span><span class="rules">{<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">50</span>px</span></span>;<span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">50</span>px</span></span>;<span class="rule"><span class="attribute">border-radius</span>:<span class="value"><span class="number">25</span>px</span></span>;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#000</span></span></span>;<span class="rule"><span class="attribute">transition</span>:<span class="value">All <span class="number">1</span>s ease</span></span>;<span class="rule"><span class="attribute">-webkit-transition</span>:<span class="value">All <span class="number">1</span>s ease</span></span>;<span class="rule"><span class="attribute">-moz-transition</span>:<span class="value">All <span class="number">1</span>s ease</span></span>;<span class="rule">}</span></span>
+</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span> <span class="attribute">id</span>=<span class="value">"seajsnode"</span><span class="attribute">src</span>=<span class="value">"http://static.alipayobjects.com/seajs/??seajs/2.2.2/sea.js,seajs-combo/1.0.1/seajs-combo.js,seajs-style/1.0.2/seajs-style.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
+  seajs.config({
+    base: <span class="string">'http://static.alipayobjects.com'</span>,
+    alias: {
+      <span class="string">'jquery'</span>: <span class="string">'jquery/1.7.2/jquery'</span>,
+      <span class="string">'position'</span>: <span class="string">'position/1.1.0/index'</span>
+    }
+  });
+  seajs.use([<span class="string">'jquery'</span>, <span class="string">'position'</span>], <span class="function"><span class="keyword">function</span><span class="params">($, Position)</span>{</span>
+    <span class="keyword">var</span> stop = <span class="literal">false</span>;
+    <span class="keyword">var</span> target = $(<span class="string">'&lt;div class="target"&gt;&lt;/div&gt;'</span>)
+      .hover(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>stop = <span class="literal">true</span>;},<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>stop = <span class="literal">false</span>;})
+      .appendTo(document.body);
+    setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+      <span class="keyword">if</span> (stop) <span class="keyword">return</span>;
+      <span class="keyword">var</span> x = Math.floor(Math.random() * <span class="number">100</span>);
+      <span class="keyword">var</span> y = Math.floor(Math.random() * <span class="number">100</span>);
+      Position.pin(
+        { element: target, x: <span class="string">'center'</span>, y: <span class="string">'center'</span> }, 
+        { element: Position.VIEWPORT, x: x + <span class="string">'%'</span>, y: y + <span class="string">'%'</span> }
+      );
+    }, <span class="number">800</span>);
+  });
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></pre></div><p>看到有个球在飞来飞去么，你能抓到他么？<a href="http://jsfiddle.net/zPYqx/85/">线上演示</a></p>
+<iframe width="100%" height="300" src="http://jsfiddle.net/zPYqx/85/embedded/result,html,js,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h2 id="使用-seajs">使用 SeaJS<a href="#使用-seajs" class="anchor">¶</a></h2><p>看过 Arale 的简介，大家已经知道 Arale 是基于 <a href="http://seajs.org">Sea.js</a> 和 spm 开发的，所以使用 Arale 之前要先引入 Sea.js，它是一个模块加载器，会异步请求需要的模块。</p>
+<p>然后需要通过 <code>seajs.config</code> 来全局配置下 jQuery 的别名 <code>jquery</code>，这样可以统一控制 jQuery 的版本号。</p>
+<div class="highlight"><pre><code class="javascript"><span class="string">'jquery'</span>: <span class="string">'jquery/1.7.2/jquery'</span>,</code></pre></div><p>在这个例子里，使用了 <code>jquery</code> 和 <a href="http://aralejs.org/position">position</a> 两个模块。大家可能会注意到 <code>seajs.config</code> 的配置，是的，这就是 Arale 模块的 ID，通过这个 ID 可以找到这个模块。</p>
+<p>比如模块 <code>position</code> 的完整路径就是：</p>
+<pre>http://static.alipayobjects.com/position/1.1.0/index.js</pre><p>Arale 的 ID 由四部分组成：<code>{{module}}/{{version}}/{{file}}</code></p>
+<ul>
+<li>module 为模块的名字（即 <a href="http://spmjs.io">http://spmjs.io</a> 上的模块名称）</li>
+<li>version 为版本</li>
+<li>file 为具体的文件，可以有多个，一般为模块 package.json 的 <code>spm.main</code> 属性。</li>
+</ul>
+<p>这个 ID 和 seajs 的所在路径拼合后就是模块文件的具体地址了。当你拿到上面的 ID 后，就可以直接用 <code>seajs.use</code> 来使用这个模块了。</p>
+<div class="highlight"><pre><code class="javascript">seajs.use([<span class="string">'position/1.1.0/index'</span>], <span class="function"><span class="keyword">function</span><span class="params">(Position)</span> {</span>
+  <span class="comment">// use Position ...</span>
+});</code></pre></div><p>当然老这么写全 ID 会比较麻烦，这时你可以用 seajs.config 中的 alias 属性来统一配置别名（像最开始的代码里那样做）。</p>
+<p>这样就可以直接 <code>seajs.use([&#39;position&#39;])</code> 了，请求完成后会调用回调函数，这时就可以使用这两个模块了。</p>
+<h2 id="standalone">Standalone<a href="#standalone" class="anchor">¶</a></h2><p>上述是使用支付宝 cdn 来调用 Arale 模块的方式，在 spm3 之后，我们推荐直接使用 standalone 的方式来构建和使用 Arale 模块。</p>
+<p>您可以参考文档：<a href="https://github.com/spmjs/docs/blob/master/project/get-started.md">https://github.com/spmjs/docs/blob/master/project/get-started.md</a></p>
+<p>使用 standalone 的方式会让业务模块的构建部署更加简单高效，独立解耦。而且不仅可以调用 Arale 模块，也可以直接使用 <a href="http://spmjs.io">spmjs.io</a> 上的大量业界模块。</p>
+<h2 id="查找模块">查找模块<a href="#查找模块" class="anchor">¶</a></h2><p>Arale 是一个基础类库，有自己开发的模块，也有精心挑选由外部引入的模块，那如何找到这些模块呢？</p>
+<p>在 <a href="http://aralejs.org/">Arale 首页</a> 能找到这些模块，或者使用 <a href="http://spmjs.io">spmjs.io</a> 的搜索框搜索你需要的模块。</p>
+<p>Arale 使用了最优秀的业界模块，比如负责操作 Dom 和 Ajax 的 jQuery，负责时间日期的 Moment，本地存储 Store 等。如果你发现了优秀的业界模块不在其中，请告诉我们。</p>
+<p>Arale 拥有丰富实用的基础前端模块，比如负责表单校验的 <a href="http://aralejs.org/validator">Validator</a> ，负责区块切换的 <a href="http://aralejs.org/switchable">Switchable</a> ，负责定位元素的 <a href="http://aralejs.org/position">Positioin</a>。
+如果你需要用到浮层类的模块，你可以试试基础浮层 <a href="http://aralejs.org/overlay">Overlay</a>、负责浮层触发逻辑的 <a href="http://aralejs.org/popup">Popup</a>、日历模块 <a href="http://aralejs.org/calendar">Calendar</a>、自动完成 <a href="http://aralejs.org/autocomplete">Autocomplete</a> 等等。</p>
+<h2 id="才刚刚开始">才刚刚开始<a href="#才刚刚开始" class="anchor">¶</a></h2><p>现在你已经可以在你的博客、网站等各种地方使用 Arale 了，如果你有更复杂的需求可以继续跟着我们学习<a href="develop-components.html">如何写模块</a>。如果有任何问题，欢迎<a href="https://github.com/aralejs/aralejs.org/issues">提问</a>。</p>
+</div>
+        </div>
+      </div>
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+      <p class="powered">
+        <a href="http://aralejs.org">Arale</a> •
+        <a href="http://aliceui.org">Alice</a> •
+        <a href="http://seajs.org">Sea.js</a> •
+        <a href="http://spmjs.io">spmjs.io</a>
+      </p>
+      </footer>
+    </div>
+</body>
+</html>
